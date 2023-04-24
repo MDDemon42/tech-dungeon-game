@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Type `yarn start` to interact
+### To get version of extension:
+ - `yarn install`
+ - `yarn build`
+ - load unpacked `build` folder in `chrome://extensions`
 
 Большая часть картинок для Tech Dungeon Game взята из сервиса heromachine.
