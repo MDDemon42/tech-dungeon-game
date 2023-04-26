@@ -7,4 +7,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  - `yarn build`
  - load unpacked `build` folder in `chrome://extensions`
 
-Большая часть картинок для Tech Dungeon Game взята из сервиса heromachine.
+### Comments
+ - Had to use `HashRouter` instead of modern `RouterProvider`
+ - Большая часть картинок для Tech Dungeon Game взята из сервиса heromachine.
