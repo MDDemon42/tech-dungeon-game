@@ -1,6 +1,8 @@
+import styles from '../index.module.css';
+
 function SettingsPage() {
     return (
-        <div>
+        <div className={styles.extensionPopup}>
             Settings Page
         </div>
     )

@@ -6,7 +6,6 @@ import healingPotion from './healingPotion.png';
 import leatherArmor from './leatherArmor.png';
 import steelArmor from './steelArmor.png';
 import sword from './sword.png';
-import noImage from '../noImage.jpg';
 
 const normalItems = {
     sword,
@@ -16,8 +15,7 @@ const normalItems = {
     leatherArmor,
     steelArmor,
     acidBomb,
-    healingPotion,
-    flight: noImage    
+    healingPotion    
 };
 
 export default normalItems;
