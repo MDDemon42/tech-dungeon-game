@@ -41,12 +41,12 @@ function MainPage() {
                     }
                 </select>
             </div>
-            <Link to={'settings'}>
-                Adjust settings
-            </Link>
             <button onClick={startButtonListener}>
                 Start adventure!
             </button>
+            <Link to={'settings'}>
+                Adjust settings
+            </Link>
         </div>
     )
 }
