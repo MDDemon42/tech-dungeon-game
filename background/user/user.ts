@@ -1,16 +1,19 @@
+const storageKey = 'tech-dungeon-game';
+
 const user = {
     name: 'Adventurer',
     class: 'noIcon'
 }
 
-function setUserName(name: string) {
-    user.name = name
+function loadOrCreateUser() {
+    chrome.storage.local.get()
+        .then(items => {
+            if (!(storageKey in items)) {
+                chrome.storage.local.set({
+                    'tech-dungeon-game': user
+                })
+            }
+        })
 }
 
-function setUserClass(value: string) {
-    user.class = value
-}
-
-function getUser() {
-    return user
-}
+loadOrCreateUser();

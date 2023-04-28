@@ -17,13 +17,10 @@ function SettingsPage() {
     });
 
     useEffect(() => {
-        const message = {
-            token: '0_0',
-            type: 'get'
-        }
-
-        chrome.runtime.sendMessage(message)
-            .then(result => setUser(result));
+        chrome.storage.local.get()
+            .then(result => {
+                setUser(result['tech-dungeon-game'])
+            });
     }, []);
 
     return (

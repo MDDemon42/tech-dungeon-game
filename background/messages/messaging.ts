@@ -8,12 +8,6 @@ function onMessage(
     }
 
     switch (request.type) {
-        case 'class':
-            setUserClass(request.class);
-            break
-        case 'get':
-            callback(getUser());
-            break
         default:
             break
     }

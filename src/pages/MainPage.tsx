@@ -16,13 +16,10 @@ function MainPage() {
     const [chosenClass, setChosenClass] = useState('noIcon');
 
     useEffect(() => {
-        const message = {
-            token: '0_0',
-            type: 'get'
-        }
-
-        chrome.runtime.sendMessage(message)
-            .then(result => setChosenClass(result.class));
+        chrome.storage.local.get()
+            .then(result => {
+                setChosenClass(result['tech-dungeon-game'].class)
+            });
     }, []);
 
     const classToClass = (value: string) => {
@@ -35,21 +32,29 @@ function MainPage() {
     }
 
     const changeClass = (value: string) => {
-        const message = {
-            token: '0_0',
-            type: 'class',
-            class: value
-        }
+        let user = {
+            name: '',
+            class: ''
+        };
 
-        chrome.runtime.sendMessage(message);
-        setChosenClass(value)
+        chrome.storage.local.get()
+            .then(items => {
+                user.name = items['tech-dungeon-game'].name;
+                user.class = value
+            })
+            .then(() => {
+                chrome.storage.local.set({
+                    'tech-dungeon-game': user
+                })
+            })
+            .then(() => {
+                setChosenClass(value)
+            });
     }
 
     const startButtonListener = () => {
         window.open('#/game');
     }
-
-    console.log(chosenClass, classIcons[chosenClass])
 
     return (
         <div className={styles.extensionPopup}>
