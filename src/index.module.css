@@ -7,6 +7,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    background-color: lightsteelblue;
 }
 
 .extensionPopup_iconBlock {
@@ -21,4 +22,39 @@
     height: 100px;
     margin-bottom: 15px;
     border: 1px dashed gray;
+}
+
+.extensionPopup_iconBlock > select {
+    padding: 2px 5px;
+    font-size: 14px;
+}
+
+.extensionPopup_buttonsBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 170px;
+}
+
+.extensionPopup_buttonsBlock > button {
+    padding: 7px;
+    font-size: 16px;
+    background-color: gold;
+    border-radius: 7px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.extensionPopup_buttonsBlock > a {
+    font-size: 24px;
+    margin-bottom: -4px;
+}
+
+.extensionPopup_userBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+    font-size: 14px;
 }

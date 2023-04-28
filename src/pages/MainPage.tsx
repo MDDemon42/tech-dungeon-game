@@ -1,7 +1,13 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 import styles from '../index.module.css';
 import images from '../images/images';
+
+import {Gear} from 'react-bootstrap-icons';
+
+export function upperCaseFirstLetter(value: string) {
+    return value.substring(0,1).toUpperCase() + value.substring(1)
+}
 
 function MainPage() {
     const {classIcons} = images as Record<string, any>;
@@ -9,18 +15,41 @@ function MainPage() {
 
     const [chosenClass, setChosenClass] = useState('noIcon');
 
+    useEffect(() => {
+        const message = {
+            token: '0_0',
+            type: 'get'
+        }
+
+        chrome.runtime.sendMessage(message)
+            .then(result => setChosenClass(result.class));
+    }, []);
+
     const classToClass = (value: string) => {
         switch (value) {
             case 'noIcon':
                 return '-random-'
             default:
-                return value.substring(0,1).toUpperCase() + value.substring(1)
+                return upperCaseFirstLetter(value)
         }
+    }
+
+    const changeClass = (value: string) => {
+        const message = {
+            token: '0_0',
+            type: 'class',
+            class: value
+        }
+
+        chrome.runtime.sendMessage(message);
+        setChosenClass(value)
     }
 
     const startButtonListener = () => {
         window.open('#/game');
     }
+
+    console.log(chosenClass, classIcons[chosenClass])
 
     return (
         <div className={styles.extensionPopup}>
@@ -28,7 +57,7 @@ function MainPage() {
                 <img src={classIcons[chosenClass]}/>
                 <select 
                     value={chosenClass} 
-                    onChange={(event) => setChosenClass(event.target.value)}
+                    onChange={(event) => changeClass(event.target.value)}
                 >
                     {
                         classes.map(item => {
@@ -41,12 +70,14 @@ function MainPage() {
                     }
                 </select>
             </div>
-            <button onClick={startButtonListener}>
-                Start adventure!
-            </button>
-            <Link to={'settings'}>
-                Adjust settings
-            </Link>
+            <div className={styles.extensionPopup_buttonsBlock}>
+                <button onClick={startButtonListener}>
+                    To adventure!
+                </button>
+                <Link to={'settings'}>
+                    <Gear/> 
+                </Link>
+            </div>                        
         </div>
     )
 }
