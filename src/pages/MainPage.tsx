@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import styles from '../index.module.css';
 import images from '../images/images';
 
+import abilities from '../abilities/abilities';
+
 import {Gear} from 'react-bootstrap-icons';
+import { Ability } from '../types/ability';
 
 export function upperCaseFirstLetter(value: string) {
     return value.substring(0,1).toUpperCase() + value.substring(1)
@@ -34,13 +37,15 @@ function MainPage() {
     const changeClass = (value: string) => {
         let user = {
             name: '',
-            class: ''
+            class: '',
+            abilities: [] as Ability[]
         };
 
         chrome.storage.local.get()
             .then(items => {
                 user = {...items['tech-dungeon-game']};
-                user.class = value
+                user.class = value;
+                user.abilities = abilities[value];
             })
             .then(() => {
                 chrome.storage.local.set({
@@ -57,7 +62,12 @@ function MainPage() {
     }
 
     return (
-        <div className={styles.extensionPopup}>
+        <div className={
+            [
+                styles.extensionPopup,
+                styles.border
+            ].join(' ')
+        }>
             <div className={styles.extensionPopup_iconBlock}>
                 <img src={classIcons[chosenClass]}/>
                 <select 
@@ -76,7 +86,10 @@ function MainPage() {
                 </select>
             </div>
             <div className={styles.extensionPopup_buttonsBlock}>
-                <button onClick={startButtonListener}>
+                <button 
+                    className={styles.border}
+                    onClick={startButtonListener}
+                >
                     To adventure!
                 </button>
                 <Link to={'settings'}>

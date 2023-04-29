@@ -17,9 +17,6 @@ function StatsScreen() {
             });
     }, []);
 
-    const params = Object.keys(user)
-        .filter(param => param !== 'name' && param !== 'class' && param !== 'level');
-
     return (
         <div className={styles.extensionPopup_userBlock}>
             <h3>
@@ -29,11 +26,12 @@ function StatsScreen() {
                 {upperCaseFirstLetter(user.class)} lvl. {user.level}
             </h4>
             <ul>
-                {params.map(param => (
-                    <li>
-                        {param}: {user[param as keyof User]}
-                    </li>
-                ))}
+                <li>
+                    money: {user.money}
+                </li>
+                <li>
+                    stage: {user.stage}
+                </li>
             </ul>
         </div>
     )

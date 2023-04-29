@@ -11,10 +11,18 @@ function SettingsPage() {
     }
 
     return (
-        <div className={styles.extensionPopup}>
+        <div className={
+            [
+                styles.extensionPopup,
+                styles.border
+            ].join(' ')
+        }>
             <StatsScreen />
             <div className={styles.extensionPopup_buttonsBlock}>
-                <button onClick={backButtonListener}>
+                <button 
+                    className={styles.border}
+                    onClick={backButtonListener}
+                >
                     Back to Main Page
                 </button>
             </div>

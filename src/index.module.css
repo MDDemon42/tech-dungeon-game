@@ -1,13 +1,13 @@
 .extensionPopup {
     width: 200px;
     height: 300px;
-    border: 1px solid black;
     outline: white solid 2px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     background-color: lightsteelblue;
+    border: 1px solid black;
 }
 
 .extensionPopup_iconBlock {
@@ -42,8 +42,8 @@
     font-size: 16px;
     background-color: gold;
     border-radius: 7px;
-    border: 1px solid black;
     cursor: pointer;
+    border: 1px solid black;
 }
 
 .extensionPopup_buttonsBlock > a {
@@ -59,4 +59,57 @@
     width: 170px;
     font-size: 14px;
     text-align: center;
+    border: 1px solid black;
+}
+
+.gamePage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 95vw;
+    height: 95vh;
+}
+
+.gamePage_componentsBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.gamePage_component {
+    border: 1px solid black;
+    padding: 5px;
+    width: 300px;
+    min-height: 100px;
+}
+
+.gamePage_mainBlock {
+    width: calc(95vw - 400px);
+    min-width: 500px;
+    height: 90vh;
+}
+
+.abilitiesScreen {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.abilitiesScreen_ability {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    width: 90px;
+    height: 90px;
+}
+
+.abilitiesScreen_ability > img {
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
 }

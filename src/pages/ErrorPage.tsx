@@ -8,7 +8,12 @@ export default function ErrorPage() {
   };
 
   return (
-    <div className={styles.extensionPopup}>
+    <div className={
+      [
+          styles.extensionPopup,
+          styles.border
+      ].join(' ')
+    }>
       <h1>Oops!</h1>
       <p>Sorry, an unexpected error has occurred.</p>
       <p>
