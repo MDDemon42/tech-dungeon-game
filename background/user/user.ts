@@ -2,7 +2,10 @@ const storageKey = 'tech-dungeon-game';
 
 const user = {
     name: 'Adventurer',
-    class: 'noIcon'
+    class: 'noIcon',
+    level: 1,
+    money: 0,
+    stage: 0
 }
 
 function loadOrCreateUser() {

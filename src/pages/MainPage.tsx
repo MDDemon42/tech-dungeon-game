@@ -39,7 +39,7 @@ function MainPage() {
 
         chrome.storage.local.get()
             .then(items => {
-                user.name = items['tech-dungeon-game'].name;
+                user = {...items['tech-dungeon-game']};
                 user.class = value
             })
             .then(() => {

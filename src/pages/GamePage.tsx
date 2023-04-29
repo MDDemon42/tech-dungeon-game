@@ -1,4 +1,4 @@
-function GamePage() {
+function GamePage() {   
     return (
         <div>
             Game Page
