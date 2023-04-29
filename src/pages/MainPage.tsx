@@ -4,9 +4,12 @@ import styles from '../index.module.css';
 import images from '../images/images';
 
 import abilities from '../abilities/abilities';
+import items from '../items/items';
 
 import {Gear} from 'react-bootstrap-icons';
 import { Ability } from '../types/ability';
+import { Item } from '../types/item';
+import { User } from '../types/user';
 
 export function upperCaseFirstLetter(value: string) {
     return value.substring(0,1).toUpperCase() + value.substring(1)
@@ -35,15 +38,16 @@ function MainPage() {
     }
 
     const changeClass = (value: string) => {
-        let user = {
+        let user: User = {
             name: '',
             class: '',
-            abilities: [] as Ability[]
+            abilities: [] as Ability[],
+            items: [] as Item[]
         };
 
         chrome.storage.local.get()
-            .then(items => {
-                user = {...items['tech-dungeon-game']};
+            .then(data => {
+                user = {...data['tech-dungeon-game']};
                 user.class = value;
                 user.abilities = abilities[value];
             })
