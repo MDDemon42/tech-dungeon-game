@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { User } from "../types/user";
+import { User } from "../types/interfaces";
 import styles from '../index.module.css';
 
 import { upperCaseFirstLetter } from "../pages/MainPage";
@@ -7,7 +7,7 @@ import { upperCaseFirstLetter } from "../pages/MainPage";
 function StatsScreen() {
     const [user, setUser] = useState({
         name: '',
-        class: ''
+        icon: ''
     } as User);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ function StatsScreen() {
                 {user.name}
             </h3>
             <h4>
-                {upperCaseFirstLetter(user.class)} lvl. {user.level}
+                {upperCaseFirstLetter(user.icon)} lvl. {user.level}
             </h4>
             <ul>
                 <li>

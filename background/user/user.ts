@@ -2,10 +2,22 @@ const storageKey = 'tech-dungeon-game';
 
 const user = {
     name: 'Adventurer',
-    class: 'noIcon',
+    icon: 'noIcon',
     level: 1,
     money: 0,
-    stage: 0
+    stage: 0,
+    items: [],
+    spells: [],
+    mutations: [],
+    cybers: []
+}
+
+const startingData = {
+    user,
+    items: [],
+    spells: [],
+    mutations: [],
+    cybers: []
 }
 
 function loadOrCreateUser() {
@@ -13,10 +25,11 @@ function loadOrCreateUser() {
         .then(items => {
             if (!(storageKey in items)) {
                 chrome.storage.local.set({
-                    'tech-dungeon-game': user
+                    'tech-dungeon-game': startingData
                 })
             }
         })
 }
 
+chrome.storage.local.clear()
 loadOrCreateUser();

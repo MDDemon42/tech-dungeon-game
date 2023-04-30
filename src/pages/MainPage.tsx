@@ -1,15 +1,23 @@
 import {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
+import {Gear} from 'react-bootstrap-icons';
 import styles from '../index.module.css';
 import images from '../images/images';
 
 import abilities from '../abilities/abilities';
 import items from '../items/items';
+import spells from '../spells/spells';
 
-import {Gear} from 'react-bootstrap-icons';
-import { Ability } from '../types/ability';
-import { Item } from '../types/item';
-import { User } from '../types/user';
+import { User } from '../types/interfaces';
+import { IItem } from '../types/interfaces';
+import { IAbility } from '../types/interfaces';
+
+const startingData = {
+    user: {},
+    abilities,
+    items,
+    spells
+}
 
 export function upperCaseFirstLetter(value: string) {
     return value.substring(0,1).toUpperCase() + value.substring(1)
@@ -19,12 +27,20 @@ function MainPage() {
     const {classIcons} = images as Record<string, any>;
     const classes = Object.keys(classIcons);
 
-    const [chosenClass, setChosenClass] = useState('noIcon');
+    const [chosenIcon, setChosenIcon] = useState('noIcon');
 
     useEffect(() => {
         chrome.storage.local.get()
             .then(result => {
-                setChosenClass(result['tech-dungeon-game'].class)
+                const data = result['tech-dungeon-game'];
+                if (data.items.length === 0) {
+                    startingData.user = data.user;
+                    chrome.storage.local.set({
+                        'tech-dungeon-game': startingData
+                    })
+                }
+
+                setChosenIcon(result['tech-dungeon-game'].user.icon)
             });
     }, []);
 
@@ -38,25 +54,24 @@ function MainPage() {
     }
 
     const changeClass = (value: string) => {
-        let user: User = {
-            name: '',
-            class: '',
-            abilities: [] as Ability[],
-            items: [] as Item[]
+        let newData = {
+            user: {
+                icon: ''
+            }
         };
 
         chrome.storage.local.get()
             .then(data => {
-                user = {...data['tech-dungeon-game']};
-                user.class = value;
+                newData = {...data['tech-dungeon-game']};
+                newData.user.icon = value;
             })
             .then(() => {
                 chrome.storage.local.set({
-                    'tech-dungeon-game': user
+                    'tech-dungeon-game': newData
                 })
             })
             .then(() => {
-                setChosenClass(value)
+                setChosenIcon(value)
             });
     }
 
@@ -72,9 +87,9 @@ function MainPage() {
             ].join(' ')
         }>
             <div className={styles.extensionPopup_iconBlock}>
-                <img src={classIcons[chosenClass]}/>
+                <img src={classIcons[chosenIcon]}/>
                 <select 
-                    value={chosenClass} 
+                    value={chosenIcon} 
                     onChange={(event) => changeClass(event.target.value)}
                 >
                     {

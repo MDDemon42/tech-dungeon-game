@@ -1,8 +1,7 @@
 import styles from '../index.module.css';
 
 import StatsScreen from "../components/StatsScreen";
-import ItemsScreen from "../components/ItemsScreen";
-import AbilitiesScreen from "../components/AbilitiesScreen";
+import CommonScreen from '../components/CommonScreen';
 import BattleScreen from "../components/BattleScreen";
 
 function GamePage() {   
@@ -10,8 +9,9 @@ function GamePage() {
         <div className={styles.gamePage}>
             <div className={styles.gamePage_componentsBlock}>
                 <StatsScreen />
-                <ItemsScreen />
-                <AbilitiesScreen /> 
+                <CommonScreen name={'items'}/>
+                <CommonScreen name={'abilities'}/> 
+                <CommonScreen name={'spells'}/>
             </div>
             <div className={styles.gamePage_mainBlock}>
                 <BattleScreen />
