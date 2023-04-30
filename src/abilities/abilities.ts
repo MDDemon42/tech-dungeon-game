@@ -32,12 +32,6 @@ const ability_bombThrowing: IAbility = {
     image: images.normalItems.acidBomb
 }
 
-const ability_guardianAura: IAbility = {
-    name: 'Guardian aura',
-    description: 'Ability to weaken enemy`s attacks aimed at you',
-    image: images.psionInsights.guardianAura
-}
-
 const ability_chakramThrowing: IAbility = {
     name: 'Chakram throwing',
     description: 'Ability to not throw chakram at multiple enemies',
@@ -50,7 +44,6 @@ const abilities: Record<string, IAbility> = {
     ability_swordsmanship,
     ability_brutalForce,
     ability_bombThrowing,
-    ability_guardianAura,
     ability_chakramThrowing
 }
 

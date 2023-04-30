@@ -11,6 +11,10 @@ export interface ISpell extends ICommon {
     value: number  
 }
 
+export interface IPower extends ISpell {
+    passive: boolean
+}
+
 export enum InventoryPlaces {
     armor = 'armor',
     hands = 'hands',
@@ -21,11 +25,22 @@ export enum InventoryPlaces {
 export interface IItem extends ISpell {
     cost: number,
     hands?: number,
-    inventoryPlace?: InventoryPlaces    
+    inventoryPlace: InventoryPlaces    
+}
+
+export enum BodyParts {
+    head = 'head',
+    skin = 'skin',
+    back = 'back',
+    shoulders = 'shoulders',
+    legs = 'legs',
+    hands = 'hands',
+    leftHand = 'leftHand',
+    rightHand = 'rightHand'
 }
 
 export interface IMutation extends ISpell {
-    bodyPart: string
+    bodyPart: BodyParts
 }
 
 export interface ICyber extends IMutation {

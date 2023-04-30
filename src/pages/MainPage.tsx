@@ -7,16 +7,18 @@ import images from '../images/images';
 import abilities from '../abilities/abilities';
 import items from '../items/items';
 import spells from '../spells/spells';
-
-import { User } from '../types/interfaces';
-import { IItem } from '../types/interfaces';
-import { IAbility } from '../types/interfaces';
+import powers from '../powers/powers';
+import mutations from '../mutations/mutations';
+import cybers from '../cybers/cybers';
 
 const startingData = {
     user: {},
     abilities,
     items,
-    spells
+    spells,
+    powers,
+    mutations,
+    cybers
 }
 
 export function upperCaseFirstLetter(value: string) {
@@ -33,7 +35,12 @@ function MainPage() {
         chrome.storage.local.get()
             .then(result => {
                 const data = result['tech-dungeon-game'];
-                if (data.items.length === 0) {
+                if (
+                    data.items.length === 0 ||
+                    data.abilities.length === 0 ||
+                    data.spells.length === 0 ||
+                    data.powers.length === 0
+                ) {
                     startingData.user = data.user;
                     chrome.storage.local.set({
                         'tech-dungeon-game': startingData
@@ -63,6 +70,7 @@ function MainPage() {
         chrome.storage.local.get()
             .then(data => {
                 newData = {...data['tech-dungeon-game']};
+                console.log('newData', newData)
                 newData.user.icon = value;
             })
             .then(() => {

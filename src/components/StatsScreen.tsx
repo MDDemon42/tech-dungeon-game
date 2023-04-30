@@ -13,7 +13,7 @@ function StatsScreen() {
     useEffect(() => {
         chrome.storage.local.get()
             .then(result => {
-                setUser(result['tech-dungeon-game'])
+                setUser(result['tech-dungeon-game'].user)
             });
     }, []);
 

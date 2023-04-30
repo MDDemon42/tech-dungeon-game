@@ -9,7 +9,8 @@ const user = {
     items: [],
     spells: [],
     mutations: [],
-    cybers: []
+    cybers: [],
+    powers: []
 }
 
 const startingData = {
@@ -17,19 +18,17 @@ const startingData = {
     items: [],
     spells: [],
     mutations: [],
-    cybers: []
+    cybers: [],
+    powers: []
 }
 
 function loadOrCreateUser() {
     chrome.storage.local.get()
-        .then(items => {
-            if (!(storageKey in items)) {
-                chrome.storage.local.set({
-                    'tech-dungeon-game': startingData
-                })
-            }
+        .then(() => {
+            chrome.storage.local.set({
+                'tech-dungeon-game': startingData
+            })
         })
 }
 
-chrome.storage.local.clear()
 loadOrCreateUser();

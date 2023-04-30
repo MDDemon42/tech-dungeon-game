@@ -80,8 +80,8 @@
 .gamePage_component {
     border: 1px solid black;
     padding: 5px;
-    width: 335px;
-    min-height: 100px;
+    width: 355px;
+    margin: 5px;
 }
 
 .gamePage_mainBlock {
