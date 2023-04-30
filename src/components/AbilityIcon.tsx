@@ -7,13 +7,14 @@ function AbilityIcon(props: {
 }) {
     const {ability} = props;
 
+    // TODO: remake without text under image
     return (
         <div className={styles.abilitiesScreen_ability}>
             <img 
                 src={ability.image}
                 title={ability.description}
             />
-            {ability.name}
+            {ability.name} 
         </div>
     )
 }

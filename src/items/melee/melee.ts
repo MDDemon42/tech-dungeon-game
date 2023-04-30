@@ -20,9 +20,19 @@ const item_steelGreataxe: Item = {
     image: images.normalItems.greataxe
 }
 
+const item_runicSword: Item = {
+    value: 2,
+    cost: 200,
+    disabled: false,
+    name: 'Runic sword',
+    description: 'Sword covered with runes',
+    image: images.guildianLearnings.runicSword
+}
+
 const melee = {
     item_steelSword,
-    item_steelGreataxe
+    item_steelGreataxe,
+    item_runicSword
 }
 
 export default melee

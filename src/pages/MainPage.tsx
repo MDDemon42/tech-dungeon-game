@@ -49,7 +49,6 @@ function MainPage() {
             .then(data => {
                 user = {...data['tech-dungeon-game']};
                 user.class = value;
-                user.abilities = abilities[value];
             })
             .then(() => {
                 chrome.storage.local.set({
