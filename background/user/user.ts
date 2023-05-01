@@ -25,12 +25,12 @@ const startingData = {
 }
 
 function loadOrCreateUser() {
-    chrome.storage.local.get()
-        .then(() => {
+    // chrome.storage.local.get()
+    //     .then(() => {
             chrome.storage.local.set({
                 'tech-dungeon-game': startingData
             })
-        })
+        // })
 }
 
 loadOrCreateUser();

@@ -42,15 +42,6 @@ function MainPage() {
                     data.spells.length === 0 ||
                     data.powers.length === 0
                 ) {
-                    // start of testing data
-                    data.user.powers.push(powers.power_psiBlades)
-                    data.user.mutations.push(mutations.mutation_clawsAndHorns)
-                    data.user.items.push(items.item_acidBomd)
-                    data.user.cybers.push(cybers.cyber_powerFist)
-                    data.user.abilities.push(abilities.ability_marksmanship)
-                    data.user.spells.push(spells.spell_fireball)
-                    // end of testing data
-
                     startingData.user = data.user;
                     chrome.storage.local.set({
                         'tech-dungeon-game': startingData

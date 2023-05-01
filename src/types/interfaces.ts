@@ -61,7 +61,8 @@ export interface User {
     items?: IItem[],
     spells?: ISpell[],
     mutations?: IMutation[],
-    cybers?: ICyber[]
+    cybers?: ICyber[],
+    powers?: IPower[]
 }
 
 export interface IInventory {

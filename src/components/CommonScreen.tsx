@@ -1,10 +1,19 @@
 import { useEffect, useState } from 'react';
 import styles from '../index.module.css';
 
-import { ICommon } from '../types/interfaces';
+import { ICommon, User } from '../types/interfaces';
 
 import { upperCaseFirstLetter } from '../pages/MainPage';
 import CommonIcon from './CommonIcon';
+
+const buyButtonTexts: Record<string, string> = {
+    'mutations': 'Mutate',
+    'abilities': 'Study',
+    'spells': 'Learn',
+    'powers': 'Develop',
+    'items': 'Buy',
+    'cybers': 'Modify'
+}
 
 function CommonScreen(props: {
     name: string,
@@ -15,10 +24,23 @@ function CommonScreen(props: {
     const {name, user, vertical, inventory} = props;
 
     const [common, setCommon] = useState({} as Record<string, ICommon>);
+    const [allData, setAllData] = useState({} as User);
+    const [userCommonNames, setUserCommonNames] = useState([] as string[]);
 
     useEffect(() => {
         chrome.storage.local.get()
             .then(result => {
+                setAllData(result['tech-dungeon-game'])
+
+                const mas: string[] = [];
+
+                result['tech-dungeon-game'].user[name]
+                    .forEach((item: {name: string}) => {
+                        mas.push(item.name)
+                    })
+
+                setUserCommonNames(mas)
+
                 if (user) {
                     setCommon(result['tech-dungeon-game'].user[name])
                 } else {
@@ -27,30 +49,15 @@ function CommonScreen(props: {
             });
     }, []);
 
-    let buyButtonText = '';
-
-    switch (name) {
-        case 'mutations':
-            buyButtonText = 'Mutate';
-            break
-        case 'abilities':
-            buyButtonText = 'Study';
-            break
-        case 'spells':
-            buyButtonText = 'Learn';
-            break
-        case 'powers':
-            buyButtonText = 'Develop';
-            break
-        case 'items':
-            buyButtonText = 'Buy';
-            break
-        case 'cybers':
-            buyButtonText = 'Modify';
-            break
-        default:
-            break
+    function buyButtonListener(item: ICommon) {
+        const newAllData = {...allData};
+        // @ts-ignore
+        newAllData.user[name as keyof User]?.push(item);
+        chrome.storage.local.set({'tech-dungeon-game': newAllData})
+            .then(() => window.location.reload())
     }
+
+    const buyButtonText = buyButtonTexts[name];
 
     return (
         <div className={styles.gamePage_component}>
@@ -69,7 +76,12 @@ function CommonScreen(props: {
                                     <CommonIcon item={item}/>
                                     {
                                         !inventory && 
-                                        <button>
+                                        <button
+                                            disabled={
+                                                userCommonNames.includes(item.name)
+                                            }
+                                            onClick={() => buyButtonListener(item)}
+                                        >
                                             {buyButtonText}
                                         </button>
                                     }
