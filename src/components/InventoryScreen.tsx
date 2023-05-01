@@ -64,7 +64,12 @@ function InventoryScreen() {
             styles.gamePage_component,
             styles.inventory
         ].join(' ')}>
-            <CommonScreen name={'abilities'} user={true} vertical={true}/> 
+            <CommonScreen 
+                name={'abilities'} 
+                user={true} 
+                vertical={true}
+                inventory={true}
+            /> 
             <div>
                 <div className={styles.inventory_header}>
                     <h3>
@@ -155,9 +160,19 @@ function InventoryScreen() {
                         className={styles.commonIcon}
                     />
                 </div>
-                <CommonScreen name={'spells'} user={true} vertical={false}/>
+                <CommonScreen 
+                    name={'spells'} 
+                    user={true} 
+                    vertical={false}
+                    inventory={true}
+                />
             </div>
-            <CommonScreen name={'powers'} user={true} vertical={true}/>
+            <CommonScreen 
+                name={'powers'} 
+                user={true} 
+                vertical={true}
+                inventory={true}
+            />
         </div>
     )
 }

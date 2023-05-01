@@ -13,12 +13,42 @@ function GamePage() {
             </div>
             <div className={styles.gamePage_mainBlock}>
                 <BattleScreen />
-                <CommonScreen name={'items'} user={false} vertical={false}/>
-                <CommonScreen name={'abilities'} user={false} vertical={false}/> 
-                <CommonScreen name={'spells'} user={false} vertical={false}/>
-                <CommonScreen name={'powers'} user={false} vertical={false}/>
-                <CommonScreen name={'cybers'} user={false} vertical={false}/>
-                <CommonScreen name={'mutations'} user={false} vertical={false}/>
+                <CommonScreen 
+                    name={'items'} 
+                    user={false} 
+                    vertical={false}
+                    inventory={false}
+                />
+                <CommonScreen 
+                    name={'abilities'} 
+                    user={false} 
+                    vertical={false}
+                    inventory={false}
+                />
+                <CommonScreen 
+                    name={'spells'} 
+                    user={false} 
+                    vertical={false}
+                    inventory={false}
+                />
+                <CommonScreen 
+                    name={'powers'} 
+                    user={false} 
+                    vertical={false}
+                    inventory={false}
+                />
+                <CommonScreen 
+                    name={'cybers'} 
+                    user={false} 
+                    vertical={false}
+                    inventory={false}
+                />
+                <CommonScreen 
+                    name={'mutations'} 
+                    user={false} 
+                    vertical={false}
+                    inventory={false}
+                />
             </div>
         </div>
     )
