@@ -58,7 +58,7 @@ const cyber_rocket: ICyber = {
     image: images.cyborgDetails.rocket
 }
 
-const cybers: Record<string, ICyber> = {
+const cybers = {
     cyber_energyWhip,
     cyber_laser,
     cyber_nanoMatrix,

@@ -58,7 +58,7 @@ const power_psiLightning: IPower = {
     image: images.psionInsights.psiLightning
 }
 
-const powers: Record<string, IPower> = {
+const powers = {
     power_telekinesis,
     power_guardianAura,
     power_guardianField,

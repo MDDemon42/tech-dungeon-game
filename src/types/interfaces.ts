@@ -17,26 +17,31 @@ export interface IPower extends ISpell {
 
 export enum InventoryPlaces {
     armor = 'armor',
-    hands = 'hands',
+    leftHand = 'leftHand',
+    rightHand = 'rightHand',
+    bothHands = 'bothHands',
     belt = 'belt',
+    leftPocket = 'leftPocket',
+    rightPocket = 'rightPocket',
     back = 'back'
 }
 
 export interface IItem extends ISpell {
     cost: number,
-    hands?: number,
-    inventoryPlace: InventoryPlaces    
+    inventoryPlace: InventoryPlaces
 }
 
 export enum BodyParts {
     head = 'head',
+    chin = 'chin',
     skin = 'skin',
     back = 'back',
     shoulders = 'shoulders',
+    tail = 'tail',
     legs = 'legs',
-    hands = 'hands',
     leftHand = 'leftHand',
-    rightHand = 'rightHand'
+    rightHand = 'rightHand',
+    bothHands = 'bothHands'
 }
 
 export interface IMutation extends ISpell {
@@ -57,4 +62,21 @@ export interface User {
     spells?: ISpell[],
     mutations?: IMutation[],
     cybers?: ICyber[]
+}
+
+export interface IInventory {
+    head: IMutation,
+    chin: IMutation,
+    armor: IItem,
+    skin: IMutation | ICyber,
+    back: IMutation | IItem,
+    shoulders: IMutation | ICyber,
+    belt: IItem,
+    leftPocket: IItem,
+    rightPocket: IItem,
+    tail: IMutation,
+    legs: ICyber,
+    leftHand: ICyber | IItem,
+    rightHand: ICyber | IItem,
+    bothHands: IMutation | IItem
 }

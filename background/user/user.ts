@@ -10,11 +10,13 @@ const user = {
     spells: [],
     mutations: [],
     cybers: [],
-    powers: []
+    powers: [],
+    abilities: []
 }
 
 const startingData = {
     user,
+    abilities: [],
     items: [],
     spells: [],
     mutations: [],

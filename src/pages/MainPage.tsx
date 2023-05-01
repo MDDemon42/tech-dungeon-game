@@ -35,12 +35,22 @@ function MainPage() {
         chrome.storage.local.get()
             .then(result => {
                 const data = result['tech-dungeon-game'];
+                console.log('data', data)
                 if (
                     data.items.length === 0 ||
                     data.abilities.length === 0 ||
                     data.spells.length === 0 ||
                     data.powers.length === 0
                 ) {
+                    // start of testing data
+                    data.user.powers.push(powers.power_psiBlades)
+                    data.user.mutations.push(mutations.mutation_clawsAndHorns)
+                    data.user.items.push(items.item_acidBomd)
+                    data.user.cybers.push(cybers.cyber_powerFist)
+                    data.user.abilities.push(abilities.ability_marksmanship)
+                    data.user.spells.push(spells.spell_fireball)
+                    // end of testing data
+
                     startingData.user = data.user;
                     chrome.storage.local.set({
                         'tech-dungeon-game': startingData
@@ -54,7 +64,7 @@ function MainPage() {
     const classToClass = (value: string) => {
         switch (value) {
             case 'noIcon':
-                return '-random-'
+                return '-not this one-'
             default:
                 return upperCaseFirstLetter(value)
         }
@@ -113,6 +123,7 @@ function MainPage() {
             </div>
             <div className={styles.extensionPopup_buttonsBlock}>
                 <button 
+                    disabled={chosenIcon === 'noIcon'}
                     className={styles.border}
                     onClick={startButtonListener}
                 >

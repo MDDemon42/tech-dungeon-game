@@ -38,7 +38,7 @@ const ability_chakramThrowing: IAbility = {
     image: images.guildianLearnings.chakram
 }
 
-const abilities: Record<string, IAbility> = {
+const abilities = {
     ability_archery,
     ability_marksmanship,
     ability_swordsmanship,

@@ -24,7 +24,7 @@ const item_steelArmor: IItem = {
 const item_acidBomd: IItem = {
     value: 1,
     cost: 100,
-    inventoryPlace: InventoryPlaces.belt,
+    inventoryPlace: InventoryPlaces.rightPocket,
     name: 'Acid bomb',
     description: 'Burns without a fire',
     image: images.normalItems.acidBomb
@@ -33,7 +33,7 @@ const item_acidBomd: IItem = {
 const item_healingPotion: IItem = {
     value: 1,
     cost: 100,
-    inventoryPlace: InventoryPlaces.belt,
+    inventoryPlace: InventoryPlaces.leftPocket,
     name: 'Healing potion',
     description: 'Drink of herbs',
     image: images.normalItems.healingPotion
@@ -69,7 +69,7 @@ const item_steelChakram: IItem = {
 const item_steelSword: IItem = {
     value: 1,
     cost: 100,
-    inventoryPlace: InventoryPlaces.hands,
+    inventoryPlace: InventoryPlaces.rightHand,
     name: 'Steel sword',
     description: 'Usual steel sword',
     image: images.normalItems.sword
@@ -78,7 +78,7 @@ const item_steelSword: IItem = {
 const item_steelGreataxe: IItem = {
     value: 2,
     cost: 200,
-    inventoryPlace: InventoryPlaces.hands,
+    inventoryPlace: InventoryPlaces.bothHands,
     name: 'Steel greataxe',
     description: 'Massive steel greataxe',
     image: images.normalItems.greataxe
@@ -87,13 +87,13 @@ const item_steelGreataxe: IItem = {
 const item_runicSword: IItem = {
     value: 2,
     cost: 200,
-    inventoryPlace: InventoryPlaces.hands,
+    inventoryPlace: InventoryPlaces.leftHand,
     name: 'Runic sword',
     description: 'Sword covered with runes',
     image: images.guildianLearnings.runicSword
 }
 
-const items: Record<string, IItem> = {
+const items = {
     item_leatherArmor,
     item_steelArmor,
     item_acidBomd,

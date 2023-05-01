@@ -7,9 +7,10 @@ import { upperCaseFirstLetter } from '../pages/MainPage';
 
 function CommonScreen(props: {
     name: string,
-    user: boolean
+    user: boolean,
+    vertical: boolean
 }) {
-    const {name, user} = props;
+    const {name, user, vertical} = props;
 
     const [common, setCommon] = useState({} as Record<string, ICommon>);
 
@@ -27,7 +28,11 @@ function CommonScreen(props: {
     return (
         <div className={styles.gamePage_component}>
             {user ? upperCaseFirstLetter(name) : 'Possible ' + name}:
-            <div className={styles.commonScreen}>
+            <div className={
+                vertical ? 
+                    styles.commonScreen_vertical : 
+                    styles.commonScreen_notVertical
+            }>
                 {
                     common && Object.keys(common).length > 0 ? 
                         Object.keys(common).map(key => {

@@ -65,7 +65,7 @@ const spell_teleport: ISpell = {
     image: images.wizardSpells.teleport
 }
 
-const spells: Record<string, ISpell> = {
+const spells = {
     spell_multistrike,
     spell_titanSkin,
     spell_defensiveCharms,

@@ -80,8 +80,28 @@
 .gamePage_component {
     border: 1px solid black;
     padding: 5px;
-    width: 355px;
     margin: 5px;
+}
+
+.inventory {
+    display: flex;
+    flex-direction: row;
+}
+
+.inventory_header {
+    text-align: center;
+}
+
+.inventory_line {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.inventory_line__hands {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .gamePage_mainBlock {
@@ -90,10 +110,18 @@
     height: 90vh;
 }
 
-.commonScreen {
+.commonScreen_notVertical {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
+    min-width: 355px;
+}
+
+.commonScreen_vertical {
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
     justify-content: space-around;
 }
 

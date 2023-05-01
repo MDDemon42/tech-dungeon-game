@@ -6,7 +6,7 @@ import images from "../images/images";
 const mutation_acidSplit: IMutation = {
     name: 'Acid split',
     description: 'Mutation to split acid in your enemy`s face',
-    bodyPart: BodyParts.head,
+    bodyPart: BodyParts.chin,
     value: 1,
     image: images.mutantEvolvings.acidSplit
 }
@@ -14,7 +14,7 @@ const mutation_acidSplit: IMutation = {
 const mutation_clawsAndHorns: IMutation = {
     name: 'Claws and horns',
     description: 'Mutation to rip your opponents apart',
-    bodyPart: BodyParts.hands,
+    bodyPart: BodyParts.bothHands,
     value: 1,
     image: images.mutantEvolvings.clawsAndHorns
 }
@@ -30,7 +30,7 @@ const mutation_scales: IMutation = {
 const mutation_tailWithSting: IMutation = {
     name: 'Tail with sting',
     description: 'Mutation to pierce your victims',
-    bodyPart: BodyParts.legs,
+    bodyPart: BodyParts.tail,
     value: 1,
     image: images.mutantEvolvings.tailWithSting
 }
@@ -51,7 +51,7 @@ const mutation_wings: IMutation = {
     image: images.mutantEvolvings.wings
 }
 
-const mutations: Record<string, IMutation> = {
+const mutations = {
     mutation_acidSplit,
     mutation_clawsAndHorns,
     mutation_scales,
