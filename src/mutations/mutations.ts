@@ -11,12 +11,20 @@ const mutation_acidSplit: IMutation = {
     image: images.mutantEvolvings.acidSplit
 }
 
-const mutation_clawsAndHorns: IMutation = {
-    name: 'Claws and horns',
+const mutation_claws: IMutation = {
+    name: 'Claws',
     description: 'Mutation to rip your opponents apart',
     bodyPart: BodyParts.bothHands,
     value: 1,
-    image: images.mutantEvolvings.clawsAndHorns
+    image: images.mutantEvolvings.claws
+}
+
+const mutation_horns: IMutation = {
+    name: 'Horns',
+    description: 'Mutation to use your head as a double-spear',
+    bodyPart: BodyParts.head,
+    value: 1,
+    image: images.mutantEvolvings.horns
 }
 
 const mutation_scales: IMutation = {
@@ -53,7 +61,8 @@ const mutation_wings: IMutation = {
 
 const mutations = {
     mutation_acidSplit,
-    mutation_clawsAndHorns,
+    mutation_claws,
+    mutation_horns,
     mutation_scales,
     mutation_tailWithSting,
     mutation_twoExtraPincers,
