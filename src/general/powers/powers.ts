@@ -1,6 +1,6 @@
-import { IPower } from "../types/interfaces";
+import { IPower } from "../../types/interfaces";
 
-import images from "../images/images";
+import images from "../../images/images";
 
 const power_telekinesis: IPower = {
     name: 'Telekinesis',

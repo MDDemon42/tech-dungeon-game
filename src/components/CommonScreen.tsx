@@ -6,9 +6,11 @@ import { ICommon, User } from '../types/interfaces';
 import { upperCaseFirstLetter } from '../pages/MainPage';
 import CommonIcon from './CommonIcon';
 
+import constants from '../redux/constants';
+
 const buyButtonTexts: Record<string, string> = {
     'mutations': 'Mutate',
-    'abilities': 'Study',
+    'masteries': 'Study',
     'spells': 'Learn',
     'powers': 'Develop',
     'items': 'Buy',
@@ -24,37 +26,34 @@ function CommonScreen(props: {
     const {name, user, vertical, inventory} = props;
 
     const [common, setCommon] = useState({} as Record<string, ICommon>);
-    const [allData, setAllData] = useState({} as User);
     const [userCommonNames, setUserCommonNames] = useState([] as string[]);
+    const [userMasteries, setUserMasteries] = useState([] as string[]);
 
     useEffect(() => {
         chrome.storage.local.get()
             .then(result => {
-                setAllData(result['tech-dungeon-game'])
-
+                const data = result[constants.name];
+                
                 const mas: string[] = [];
 
-                result['tech-dungeon-game'].user[name]
+                data.generalUser[name]
                     .forEach((item: {name: string}) => {
                         mas.push(item.name)
                     })
 
-                setUserCommonNames(mas)
+                setUserCommonNames(mas);
+
+                setUserMasteries([...data.generalUser.masteries, null]);
 
                 if (user) {
-                    setCommon(result['tech-dungeon-game'].user[name])
+                    setCommon(data.generalUser[name])
                 } else {
-                    setCommon(result['tech-dungeon-game'][name])
+                    setCommon(data.generalAll[name])
                 }
             });
     }, []);
 
     function buyButtonListener(item: ICommon) {
-        const newAllData = {...allData};
-        // @ts-ignore
-        newAllData.user[name as keyof User]?.push(item);
-        chrome.storage.local.set({'tech-dungeon-game': newAllData})
-            .then(() => window.location.reload())
     }
 
     const buyButtonText = buyButtonTexts[name];
@@ -78,7 +77,10 @@ function CommonScreen(props: {
                                         !inventory && 
                                         <button
                                             disabled={
-                                                userCommonNames.includes(item.name)
+                                                userCommonNames.includes(item.name) ||
+                                                (name === 'items' && 
+                                                // @ts-ignore
+                                                !userMasteries.includes(item.requiredMastery))
                                             }
                                             onClick={() => buyButtonListener(item)}
                                         >

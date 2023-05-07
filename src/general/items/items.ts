@@ -1,7 +1,8 @@
-import { IItem } from "../types/interfaces";
-import { InventoryPlaces } from "../types/interfaces";
+import { IItem } from "../../types/interfaces";
+import { InventoryPlaces } from "../../types/interfaces";
 
-import images from "../images/images";
+import images from "../../images/images";
+import masteries from "../masteries/masteries";
 
 const item_leatherArmor: IItem = {
     value: 1,
@@ -9,7 +10,8 @@ const item_leatherArmor: IItem = {
     inventoryPlace: InventoryPlaces.armor,
     name: 'Leather armor',
     description: 'Usual leather armor',
-    image: images.normalItems.leatherArmor
+    image: images.normalItems.leatherArmor,
+    requiredMastery: null
 }
 
 const item_steelArmor: IItem = {
@@ -18,7 +20,8 @@ const item_steelArmor: IItem = {
     inventoryPlace: InventoryPlaces.armor,
     name: 'Steel armor',
     description: 'Massive steel armor',
-    image: images.normalItems.steelArmor
+    image: images.normalItems.steelArmor,
+    requiredMastery: null
 }
 
 const item_acidBomd: IItem = {
@@ -27,7 +30,8 @@ const item_acidBomd: IItem = {
     inventoryPlace: InventoryPlaces.rightPocket,
     name: 'Acid bomb',
     description: 'Burns without a fire',
-    image: images.normalItems.acidBomb
+    image: images.normalItems.acidBomb,
+    requiredMastery: masteries.mastery_bombThrowing
 }
 
 const item_healingPotion: IItem = {
@@ -36,7 +40,8 @@ const item_healingPotion: IItem = {
     inventoryPlace: InventoryPlaces.leftPocket,
     name: 'Healing potion',
     description: 'Drink of herbs',
-    image: images.normalItems.healingPotion
+    image: images.normalItems.healingPotion,
+    requiredMastery: null
 }
 
 const item_oakBow: IItem = {
@@ -45,7 +50,8 @@ const item_oakBow: IItem = {
     inventoryPlace: InventoryPlaces.back,
     name: 'Bow',
     description: 'Usual oak bow',
-    image: images.normalItems.bow
+    image: images.normalItems.bow,
+    requiredMastery: masteries.mastery_archery
 }
 
 const item_oakCrossow: IItem = {
@@ -54,7 +60,8 @@ const item_oakCrossow: IItem = {
     inventoryPlace: InventoryPlaces.back,
     name: 'Crossbow',
     description: 'Usual oak crossbow',
-    image: images.normalItems.crossbow
+    image: images.normalItems.crossbow,
+    requiredMastery: masteries.mastery_marksmanship
 }
 
 const item_steelChakram: IItem = {
@@ -63,7 +70,8 @@ const item_steelChakram: IItem = {
     inventoryPlace: InventoryPlaces.belt,
     name: 'Steel chakram',
     description: 'Spinning disk of death',
-    image: images.guildianLearnings.chakram
+    image: images.guildianLearnings.chakram,
+    requiredMastery: masteries.mastery_chakramThrowing
 }
 
 const item_steelSword: IItem = {
@@ -72,7 +80,8 @@ const item_steelSword: IItem = {
     inventoryPlace: InventoryPlaces.rightHand,
     name: 'Steel sword',
     description: 'Usual steel sword',
-    image: images.normalItems.sword
+    image: images.normalItems.sword,
+    requiredMastery: masteries.mastery_swordsmanship
 }
 
 const item_steelGreataxe: IItem = {
@@ -81,7 +90,8 @@ const item_steelGreataxe: IItem = {
     inventoryPlace: InventoryPlaces.bothHands,
     name: 'Steel greataxe',
     description: 'Massive steel greataxe',
-    image: images.normalItems.greataxe
+    image: images.normalItems.greataxe,
+    requiredMastery: masteries.mastery_brutalForce
 }
 
 const item_runicSword: IItem = {
@@ -90,7 +100,8 @@ const item_runicSword: IItem = {
     inventoryPlace: InventoryPlaces.leftHand,
     name: 'Runic sword',
     description: 'Sword covered with runes',
-    image: images.guildianLearnings.runicSword
+    image: images.guildianLearnings.runicSword,
+    requiredMastery: masteries.mastery_swordsmanship
 }
 
 const items = {

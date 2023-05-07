@@ -1,6 +1,6 @@
-import { BodyParts, ICyber } from "../types/interfaces";
+import { BodyParts, ICyber } from "../../types/interfaces";
 
-import images from "../images/images";
+import images from "../../images/images";
 
 const cyber_energyWhip: ICyber = {
     name: 'Energy whip',

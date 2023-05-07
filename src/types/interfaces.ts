@@ -4,7 +4,7 @@ export interface ICommon {
     image: any
 }
 
-export interface IAbility extends ICommon {
+export interface IMastery extends ICommon {
 }
 
 export interface ISpell extends ICommon {
@@ -28,7 +28,8 @@ export enum InventoryPlaces {
 
 export interface IItem extends ISpell {
     cost: number,
-    inventoryPlace: InventoryPlaces
+    inventoryPlace: InventoryPlaces,
+    requiredMastery: IMastery | null
 }
 
 export enum BodyParts {
@@ -57,7 +58,7 @@ export interface User {
     level?: number,
     money?: number,
     stage?: number,
-    abilities?: IAbility[],
+    masteries?: IMastery[],
     items?: IItem[],
     spells?: ISpell[],
     mutations?: IMutation[],
@@ -80,4 +81,27 @@ export interface IInventory {
     leftHand: ICyber | IItem,
     rightHand: ICyber | IItem,
     bothHands: IMutation | IItem
+}
+
+export interface IUserParams {
+    name: string,
+    icon: string,
+    level: number,
+    money: number,
+    stage: number
+}
+
+export interface IGeneral {
+    masteries: IMastery[],
+    items: IItem[],
+    spells: ISpell[],
+    mutations: IMutation[],
+    cybers: ICyber[],
+    powers: IPower[]
+}
+
+export interface IStore {
+    userParams: IUserParams,
+    generalAll: IGeneral,
+    generalUser: IGeneral
 }

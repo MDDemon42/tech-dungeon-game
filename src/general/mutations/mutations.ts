@@ -1,7 +1,7 @@
-import { IMutation } from "../types/interfaces";
-import { BodyParts } from "../types/interfaces";
+import { IMutation } from "../../types/interfaces";
+import { BodyParts } from "../../types/interfaces";
 
-import images from "../images/images";
+import images from "../../images/images";
 
 const mutation_acidSplit: IMutation = {
     name: 'Acid split',

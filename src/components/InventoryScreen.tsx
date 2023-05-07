@@ -1,24 +1,20 @@
-import { BodyParts, ICommon, IInventory, IItem, IMutation, InventoryPlaces, User } from "../types/interfaces";
+import { 
+    BodyParts, 
+    IInventory, 
+    IItem, IMutation, 
+    IStore, 
+    InventoryPlaces
+} from "../types/interfaces";
 
 import styles from '../index.module.css';
-import { useEffect, useState } from "react";
 import images from "../images/images";
 import CommonScreen from "./CommonScreen";
 import { upperCaseFirstLetter } from "../pages/MainPage";
+import { useSelector } from "react-redux";
 
 function InventoryScreen() {
-    const [user, setUser] = useState({
-        name: '',
-        icon: '',
-        level: 0
-    } as User);
-
-    useEffect(() => {
-        chrome.storage.local.get()
-            .then(result => {
-                setUser(result['tech-dungeon-game'].user)
-            });
-    }, []);
+    const user = useSelector((state: IStore) => state.userParams);
+    const generalUser = useSelector((state: IStore) => state.generalUser);
 
     const noItem: IMutation & IItem = {
         name: 'Nothing yet',
@@ -27,7 +23,8 @@ function InventoryScreen() {
         value: 0,
         cost: 0,
         inventoryPlace: InventoryPlaces.belt,
-        image: images.classIcons.noIcon
+        image: images.classIcons.noIcon,
+        requiredMastery: null
     }
 
     const inventory = {
@@ -47,15 +44,15 @@ function InventoryScreen() {
         bothHands: noItem
     } as IInventory;
 
-    user?.items?.forEach(item => {
+    generalUser?.items?.forEach(item => {
         inventory[item.inventoryPlace] = item;
     })
 
-    user?.mutations?.forEach(item => {
+    generalUser?.mutations?.forEach(item => {
         inventory[item.bodyPart] = item;
     })
 
-    user?.cybers?.forEach(item => {
+    generalUser?.cybers?.forEach(item => {
         inventory[item.bodyPart] = item;
     })
 
@@ -65,7 +62,7 @@ function InventoryScreen() {
             styles.inventory
         ].join(' ')}>
             <CommonScreen 
-                name={'abilities'} 
+                name={'masteries'} 
                 user={true} 
                 vertical={true}
                 inventory={true}

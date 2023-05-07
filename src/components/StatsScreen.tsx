@@ -1,21 +1,11 @@
-import { useEffect, useState } from "react";
-import { User } from "../types/interfaces";
+import {IStore} from "../types/interfaces";
 import styles from '../index.module.css';
 
 import { upperCaseFirstLetter } from "../pages/MainPage";
+import { useSelector } from "react-redux";
 
 function StatsScreen() {
-    const [user, setUser] = useState({
-        name: '',
-        icon: ''
-    } as User);
-
-    useEffect(() => {
-        chrome.storage.local.get()
-            .then(result => {
-                setUser(result['tech-dungeon-game'].user)
-            });
-    }, []);
+    const user = useSelector((state: IStore) => state.userParams);
 
     return (
         <div className={styles.extensionPopup_userBlock}>

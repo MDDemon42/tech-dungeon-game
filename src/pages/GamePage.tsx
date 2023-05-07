@@ -20,7 +20,7 @@ function GamePage() {
                     inventory={false}
                 />
                 <CommonScreen 
-                    name={'abilities'} 
+                    name={'masteries'} 
                     user={false} 
                     vertical={false}
                     inventory={false}

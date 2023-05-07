@@ -1,6 +1,6 @@
-import { ISpell } from "../types/interfaces"
+import { ISpell } from "../../types/interfaces"
 
-import images from "../images/images"
+import images from "../../images/images"
 
 const spell_multistrike: ISpell = {
     name: 'Multistrike',
