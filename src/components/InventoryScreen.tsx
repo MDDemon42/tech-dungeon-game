@@ -92,8 +92,18 @@ function InventoryScreen() {
                 </div>
                 <div className={styles.inventory_line}>
                     <img 
+                        src={inventory.shoulders.image}
+                        title={inventory.shoulders.name + '\n' + inventory.shoulders.description}
+                        className={styles.commonIcon}
+                    />
+                    <img 
                         src={inventory.chin.image}
                         title={inventory.chin.name + '\n' + inventory.chin.description}
+                        className={styles.commonIcon}
+                    />
+                    <img 
+                        src={inventory.back.image}
+                        title={inventory.back.name + '\n' + inventory.back.description}
                         className={styles.commonIcon}
                     />
                 </div>
@@ -108,18 +118,8 @@ function InventoryScreen() {
                         title={inventory.skin.name + '\n' + inventory.skin.description}
                         className={styles.commonIcon}
                     />
-                    <img 
-                        src={inventory.back.image}
-                        title={inventory.back.name + '\n' + inventory.back.description}
-                        className={styles.commonIcon}
-                    />
-                    <img 
-                        src={inventory.shoulders.image}
-                        title={inventory.shoulders.name + '\n' + inventory.shoulders.description}
-                        className={styles.commonIcon}
-                    />
                 </div>
-                <div className={styles.inventory_line__hands}>
+                <div className={styles.inventory_line}>
                     <img 
                         src={inventory.rightHand.image}
                         title={inventory.rightHand.name + '\n' + inventory.rightHand.description}

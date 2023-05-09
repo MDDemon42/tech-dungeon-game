@@ -15,6 +15,9 @@ const generalUser = createSlice({
         buyItem(state, action) {
             state.items.push(action.payload)
         },
+        studySpell(state, action) {
+            state.spells.push(action.payload)
+        },
         setState(state, action) {
             Object.keys(state).forEach(key => {
                 // @ts-ignore

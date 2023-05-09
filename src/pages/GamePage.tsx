@@ -4,6 +4,7 @@ import MarketScreen from '../components/MarketScreen';
 import CommonScreen from '../components/CommonScreen';
 import BattleScreen from "../components/BattleScreen";
 import InventoryScreen from '../components/InventoryScreen';
+import AcademyScreen from '../components/AcademyScreen';
 
 function GamePage() {   
     return (
@@ -20,12 +21,7 @@ function GamePage() {
                     vertical={false}
                     inventory={false}
                 />
-                <CommonScreen 
-                    name={'spells'} 
-                    user={false} 
-                    vertical={false}
-                    inventory={false}
-                />
+                <AcademyScreen/>
                 <CommonScreen 
                     name={'powers'} 
                     user={false} 

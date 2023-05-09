@@ -8,10 +8,13 @@ export interface IMastery extends ICommon {
 }
 
 export interface ISpell extends ICommon {
-    value: number  
+    value: number,
+    cost: number,
+    requiredMastery: IMastery | null
 }
 
-export interface IPower extends ISpell {
+export interface IPower extends ICommon {
+    value: number,
     passive: boolean
 }
 
@@ -28,9 +31,7 @@ export enum InventoryPlaces {
 }
 
 export interface IItem extends ISpell {
-    cost: number,
-    inventoryPlace: InventoryPlaces,
-    requiredMastery: IMastery | null
+    inventoryPlace: InventoryPlaces
 }
 
 export enum BodyParts {
@@ -46,7 +47,8 @@ export enum BodyParts {
     bothHands = 'bothHands'
 }
 
-export interface IMutation extends ISpell {
+export interface IMutation extends ICommon {
+    value: number,
     bodyPart: BodyParts
 }
 
