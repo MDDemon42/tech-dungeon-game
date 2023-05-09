@@ -104,6 +104,66 @@ const item_runicSword: IItem = {
     requiredMastery: masteries.mastery_swordsmanship
 }
 
+const item_apprenticeHat: IItem = {
+    value: 1,
+    cost: 100,
+    inventoryPlace: InventoryPlaces.hat,
+    name: 'Apprentice hat',
+    description: 'Hat to focus thoughts on studying',
+    image: images.wizardItems.apprenticeHat,
+    requiredMastery: masteries.mastery_scholarship
+}
+
+const item_apprenticeRod: IItem = {
+    value: 1,
+    cost: 100,
+    inventoryPlace: InventoryPlaces.bothHands,
+    name: 'Apprentice rod',
+    description: 'Rod to help focus magic power',
+    image: images.wizardItems.apprenticeRod,
+    requiredMastery: masteries.mastery_scholarship
+}
+
+const item_flyingCape: IItem = {
+    value: 1,
+    cost: 200,
+    inventoryPlace: InventoryPlaces.back,
+    name: 'Flying cape',
+    description: 'Cape to make his owner fly',
+    image: images.wizardItems.flyingCape,
+    requiredMastery: null
+}
+
+const item_magisterHat: IItem = {
+    value: 2,
+    cost: 200,
+    inventoryPlace: InventoryPlaces.hat,
+    name: 'Magister hat',
+    description: 'Hat to hide baldness',
+    image: images.wizardItems.magisterHat,
+    requiredMastery: masteries.mastery_magisterDegree
+}
+
+const item_magisterRobe: IItem = {
+    value: 2,
+    cost: 200,
+    inventoryPlace: InventoryPlaces.armor,
+    name: 'Magister robe',
+    description: 'Robe to hide thinness',
+    image: images.wizardItems.magisterRobe,
+    requiredMastery: masteries.mastery_magisterDegree
+}
+
+const item_magisterScepter: IItem = {
+    value: 2,
+    cost: 200,
+    inventoryPlace: InventoryPlaces.bothHands,
+    name: 'Magister scepter',
+    description: 'Scepter to lean on between casting spells',
+    image: images.wizardItems.magisterScepter,
+    requiredMastery: masteries.mastery_magisterDegree
+}
+
 const items = {
     item_leatherArmor,
     item_steelArmor,
@@ -114,7 +174,13 @@ const items = {
     item_steelChakram,
     item_steelSword,
     item_steelGreataxe,
-    item_runicSword
+    item_runicSword,
+    item_apprenticeHat,
+    item_apprenticeRod,
+    item_flyingCape,
+    item_magisterHat,
+    item_magisterRobe,
+    item_magisterScepter
 }
 
 export default items

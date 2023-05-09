@@ -17,3 +17,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  3) Possibility to sell `Items`
  4) Extra `MASPIC`
  5) Make mutual exclusions within `MASPIC`
+ 6) Fix styles

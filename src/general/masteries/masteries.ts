@@ -34,8 +34,20 @@ const mastery_bombThrowing: IMastery = {
 
 const mastery_chakramThrowing: IMastery = {
     name: 'Chakram throwing',
-    description: 'Msstery in throwing chakram at multiple enemies',
+    description: 'Mastery in throwing chakram at multiple enemies',
     image: images.guildianLearnings.chakram
+}
+
+const mastery_scholarship: IMastery = {
+    name: 'Scholarship',
+    description: 'Mastery to read really boring books',
+    image: images.wizardItems.apprenticeHat
+}
+
+const mastery_magisterDegree: IMastery = {
+    name: 'Magister degree',
+    description: 'Mastery of knowing everything but living',
+    image: images.wizardItems.magisterHat
 }
 
 const masteries = {
@@ -44,7 +56,9 @@ const masteries = {
     mastery_swordsmanship,
     mastery_brutalForce,
     mastery_bombThrowing,
-    mastery_chakramThrowing
+    mastery_chakramThrowing,
+    mastery_scholarship,
+    mastery_magisterDegree
 }
 
 export default masteries

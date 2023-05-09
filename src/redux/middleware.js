@@ -1,3 +1,4 @@
+import { chromeStorageSaver } from '..';
 import C from './constants';
 
 export const logger = store => 
@@ -10,6 +11,7 @@ export const saver = store => next => action => {
     const storeData = store.getState();
 
     localStorage[C.name] = JSON.stringify(storeData);
+    chromeStorageSaver()
 
     return result;
 };

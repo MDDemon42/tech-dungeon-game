@@ -33,7 +33,7 @@ function MainPage() {
             dispatch(userParams.actions.setState(result[C.name].userParams));
             dispatch(generalUser.actions.setState(result[C.name].generalUser));
         })
-    })
+    }, [])
 
     const classToClass = (value: string) => {
         switch (value) {

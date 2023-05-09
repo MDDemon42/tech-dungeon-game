@@ -16,6 +16,7 @@ export interface IPower extends ISpell {
 }
 
 export enum InventoryPlaces {
+    hat = 'hat',
     armor = 'armor',
     leftHand = 'leftHand',
     rightHand = 'rightHand',
@@ -67,6 +68,7 @@ export interface User {
 }
 
 export interface IInventory {
+    hat: IItem,
     head: IMutation,
     chin: IMutation,
     armor: IItem,
@@ -91,7 +93,16 @@ export interface IUserParams {
     stage: number
 }
 
-export interface IGeneral {
+export interface IGeneralAll {
+    masteries: Record<string, IMastery>,
+    items: Record<string, IItem>,
+    spells: Record<string, ISpell>,
+    mutations: Record<string, IMutation>,
+    cybers: Record<string, ICyber>,
+    powers: Record<string, IPower>
+}
+
+export interface IGeneralUser {
     masteries: IMastery[],
     items: IItem[],
     spells: ISpell[],
@@ -102,6 +113,6 @@ export interface IGeneral {
 
 export interface IStore {
     userParams: IUserParams,
-    generalAll: IGeneral,
-    generalUser: IGeneral
+    generalAll: IGeneralAll,
+    generalUser: IGeneralUser
 }

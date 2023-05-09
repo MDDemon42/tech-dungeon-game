@@ -1,6 +1,6 @@
 import styles from '../index.module.css';
 
-import StatsScreen from "../components/StatsScreen";
+import MarketScreen from '../components/MarketScreen';
 import CommonScreen from '../components/CommonScreen';
 import BattleScreen from "../components/BattleScreen";
 import InventoryScreen from '../components/InventoryScreen';
@@ -13,12 +13,7 @@ function GamePage() {
             </div>
             <div className={styles.gamePage_mainBlock}>
                 <BattleScreen />
-                <CommonScreen 
-                    name={'items'} 
-                    user={false} 
-                    vertical={false}
-                    inventory={false}
-                />
+                <MarketScreen/>
                 <CommonScreen 
                     name={'masteries'} 
                     user={false} 

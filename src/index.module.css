@@ -92,15 +92,27 @@
     text-align: center;
 }
 
-.inventory_line {
+.inventory_body {
+    position: absolute;
+}
+
+.inventory_body > img {
+    position: absolute;
+    z-index: 1;
+    top: 60px;
+    width: 380px;
+    height: 420px;
+}
+
+.inventory_line, .inventory_line__hands {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
 .inventory_line__hands {
-    display: flex;
-    flex-direction: row;
     justify-content: space-around;
 }
 

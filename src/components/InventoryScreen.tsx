@@ -1,7 +1,8 @@
 import { 
     BodyParts, 
     IInventory, 
-    IItem, IMutation, 
+    IItem, 
+    IMutation, 
     IStore, 
     InventoryPlaces
 } from "../types/interfaces";
@@ -10,7 +11,7 @@ import styles from '../index.module.css';
 import images from "../images/images";
 import CommonScreen from "./CommonScreen";
 import { upperCaseFirstLetter } from "../pages/MainPage";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 
 function InventoryScreen() {
     const user = useSelector((state: IStore) => state.userParams);
@@ -28,6 +29,7 @@ function InventoryScreen() {
     }
 
     const inventory = {
+        hat: noItem,
         head: noItem,
         chin: noItem,
         armor: noItem,
@@ -68,6 +70,9 @@ function InventoryScreen() {
                 inventory={true}
             /> 
             <div>
+                <div className={styles.inventory_body}>
+                    <img src={images.body}/>
+                </div>
                 <div className={styles.inventory_header}>
                     <h3>
                         {user.name} the {upperCaseFirstLetter(user.icon)} lvl. {user.level}
@@ -77,6 +82,11 @@ function InventoryScreen() {
                     <img 
                         src={inventory.head.image}
                         title={inventory.head.name + '\n' + inventory.head.description}
+                        className={styles.commonIcon}
+                    />
+                    <img 
+                        src={inventory.hat.image}
+                        title={inventory.hat.name + '\n' + inventory.hat.description}
                         className={styles.commonIcon}
                     />
                 </div>
