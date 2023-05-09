@@ -4,7 +4,11 @@ import MarketScreen from '../components/MarketScreen';
 import CommonScreen from '../components/CommonScreen';
 import BattleScreen from "../components/BattleScreen";
 import InventoryScreen from '../components/InventoryScreen';
+import SpellShopScreen from '../components/SpellShopScreen';
+import FocusSiteScreen from '../components/FocusSiteScreen';
 import AcademyScreen from '../components/AcademyScreen';
+import CyberLabScreen from '../components/CyberLabScreen';
+import MutationLabScreen from '../components/MutationLabScreen';
 
 function GamePage() {   
     return (
@@ -15,31 +19,11 @@ function GamePage() {
             <div className={styles.gamePage_mainBlock}>
                 <BattleScreen />
                 <MarketScreen/>
-                <CommonScreen 
-                    name={'masteries'} 
-                    user={false} 
-                    vertical={false}
-                    inventory={false}
-                />
                 <AcademyScreen/>
-                <CommonScreen 
-                    name={'powers'} 
-                    user={false} 
-                    vertical={false}
-                    inventory={false}
-                />
-                <CommonScreen 
-                    name={'cybers'} 
-                    user={false} 
-                    vertical={false}
-                    inventory={false}
-                />
-                <CommonScreen 
-                    name={'mutations'} 
-                    user={false} 
-                    vertical={false}
-                    inventory={false}
-                />
+                <SpellShopScreen/>
+                <FocusSiteScreen/>
+                <CyberLabScreen/>
+                <MutationLabScreen/>
             </div>
         </div>
     )

@@ -1,39 +1,39 @@
 import {useSelector, useDispatch} from "react-redux";
-import {IItem, IStore} from '../types/interfaces';
+import {ISpell, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
 
-function MarketScreen() {
-    const itemsAll = useSelector((store: IStore) => store.generalAll.items);
-    const itemsAllNames = Object.keys(itemsAll);
+function SpellShopScreen() {
+    const spellsAll = useSelector((store: IStore) => store.generalAll.spells);
+    const spellsAllNames = Object.keys(spellsAll);
 
-    const itemsUser = useSelector((store: IStore) => store.generalUser.items);
+    const spellsUser = useSelector((store: IStore) => store.generalUser.spells);
     const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries)
     const dispatch = useDispatch();
 
-    function buyButtonListener(item: IItem) {
-        dispatch(generalUser.actions.buyItem(item))
+    function studyButtonListener(spell: ISpell) {
+        dispatch(generalUser.actions.studySpell(spell))
     }
 
     return (
         <div className={styles.gamePage_component}>
-            Welcome to Market!
+            Welcome to Spell Shop!
             <div className={styles.commonScreen_notVertical}>
                 {
-                    itemsAll && itemsAllNames.map(name => {
-                        const item = itemsAll[name];
-                        const disabled = itemsUser.includes(item) ||
-                            (!!item.requiredMastery && !masteriesUser.includes(item.requiredMastery));
+                    spellsAll && spellsAllNames.map(name => {
+                        const spell = spellsAll[name];
+                        const disabled = spellsUser.includes(spell) ||
+                            (!!spell.requiredMastery && !masteriesUser.includes(spell.requiredMastery));
                         return (
                             <div className={styles.commonIconWithButton}>
-                                <CommonIcon item={item}/>
+                                <CommonIcon item={spell}/>
                                 {
                                     <button
                                         disabled={disabled}
-                                        onClick={() => buyButtonListener(item)}
+                                        onClick={() => studyButtonListener(spell)}
                                     >
-                                        Buy!
+                                        Study!
                                     </button>
                                 }
                             </div>
@@ -45,4 +45,4 @@ function MarketScreen() {
     )
 }
 
-export default MarketScreen
+export default SpellShopScreen

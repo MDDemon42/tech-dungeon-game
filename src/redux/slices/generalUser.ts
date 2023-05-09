@@ -18,6 +18,18 @@ const generalUser = createSlice({
         studySpell(state, action) {
             state.spells.push(action.payload)
         },
+        developPower(state, action) {
+            state.powers.push(action.payload)
+        },
+        learnMastery(state, action) {
+            state.masteries.push(action.payload)
+        },
+        implementCyber(state, action) {
+            state.cybers.push(action.payload)
+        },
+        mutateMutation(state, action) {
+            state.mutations.push(action.payload)
+        },
         setState(state, action) {
             Object.keys(state).forEach(key => {
                 // @ts-ignore

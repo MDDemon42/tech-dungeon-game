@@ -50,6 +50,18 @@ const mastery_magisterDegree: IMastery = {
     image: images.wizardItems.magisterHat
 }
 
+const mastery_psiEnergy: IMastery = {
+    name: 'Psi-energy',
+    description: 'Mastery to gain control over psi-energy',
+    image: images.psionInsights.psiLightning
+}
+
+const mastery_meditativeInsights: IMastery = {
+    name: 'Meditative insights',
+    description: 'Mastery to gain control over inner powers',
+    image: images.psionInsights.intuition
+}
+
 const masteries = {
     mastery_archery,
     mastery_marksmanship,
@@ -58,7 +70,9 @@ const masteries = {
     mastery_bombThrowing,
     mastery_chakramThrowing,
     mastery_scholarship,
-    mastery_magisterDegree
+    mastery_magisterDegree,
+    mastery_psiEnergy,
+    mastery_meditativeInsights
 }
 
 export default masteries

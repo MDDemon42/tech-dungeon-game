@@ -1,37 +1,37 @@
 import {useSelector, useDispatch} from "react-redux";
-import {IMastery, IStore} from '../types/interfaces';
+import {ICyber, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
 
-function AcademyScreen() {
-    const masteriesAll = useSelector((store: IStore) => store.generalAll.masteries);
-    const masteriesAllNames = Object.keys(masteriesAll);
+function CyberLabScreen() {
+    const cybersAll = useSelector((store: IStore) => store.generalAll.cybers);
+    const cybersAllNames = Object.keys(cybersAll);
 
-    const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries)
+    const cybersUser = useSelector((store: IStore) => store.generalUser.cybers)
     const dispatch = useDispatch();
 
-    function learnButtonListener(mastery: IMastery) {
-        dispatch(generalUser.actions.learnMastery(mastery))
+    function implementButtonListener(cyber: ICyber) {
+        dispatch(generalUser.actions.implementCyber(cyber))
     }
 
     return (
         <div className={styles.gamePage_component}>
-            Welcome to Academy!
+            Welcome to Cyber Lab!
             <div className={styles.commonScreen_notVertical}>
                 {
-                    masteriesAll && masteriesAllNames.map(name => {
-                        const mastery = masteriesAll[name];
-                        const disabled = masteriesUser.includes(mastery);
+                    cybersAll && cybersAllNames.map(name => {
+                        const cyber = cybersAll[name];
+                        const disabled = cybersUser.includes(cyber);
                         return (
                             <div className={styles.commonIconWithButton}>
-                                <CommonIcon item={mastery}/>
+                                <CommonIcon item={cyber}/>
                                 {
                                     <button
                                         disabled={disabled}
-                                        onClick={() => learnButtonListener(mastery)}
+                                        onClick={() => implementButtonListener(cyber)}
                                     >
-                                        Learn!
+                                        Implement!
                                     </button>
                                 }
                             </div>
@@ -43,4 +43,4 @@ function AcademyScreen() {
     )
 }
 
-export default AcademyScreen
+export default CyberLabScreen

@@ -1,39 +1,39 @@
 import {useSelector, useDispatch} from "react-redux";
-import {IItem, IStore} from '../types/interfaces';
+import {IPower, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
 
-function MarketScreen() {
-    const itemsAll = useSelector((store: IStore) => store.generalAll.items);
-    const itemsAllNames = Object.keys(itemsAll);
+function FocusSiteScreen() {
+    const powersAll = useSelector((store: IStore) => store.generalAll.powers);
+    const powersAllNames = Object.keys(powersAll);
 
-    const itemsUser = useSelector((store: IStore) => store.generalUser.items);
+    const powersUser = useSelector((store: IStore) => store.generalUser.powers);
     const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries)
     const dispatch = useDispatch();
 
-    function buyButtonListener(item: IItem) {
-        dispatch(generalUser.actions.buyItem(item))
+    function developButtonListener(power: IPower) {
+        dispatch(generalUser.actions.developPower(power))
     }
 
     return (
         <div className={styles.gamePage_component}>
-            Welcome to Market!
+            Welcome to Focus Site!
             <div className={styles.commonScreen_notVertical}>
                 {
-                    itemsAll && itemsAllNames.map(name => {
-                        const item = itemsAll[name];
-                        const disabled = itemsUser.includes(item) ||
-                            (!!item.requiredMastery && !masteriesUser.includes(item.requiredMastery));
+                    powersAll && powersAllNames.map(name => {
+                        const power = powersAll[name];
+                        const disabled = powersUser.includes(power) ||
+                            (!!power.requiredMastery && !masteriesUser.includes(power.requiredMastery));
                         return (
                             <div className={styles.commonIconWithButton}>
-                                <CommonIcon item={item}/>
+                                <CommonIcon item={power}/>
                                 {
                                     <button
                                         disabled={disabled}
-                                        onClick={() => buyButtonListener(item)}
+                                        onClick={() => developButtonListener(power)}
                                     >
-                                        Buy!
+                                        Develop!
                                     </button>
                                 }
                             </div>
@@ -45,4 +45,4 @@ function MarketScreen() {
     )
 }
 
-export default MarketScreen
+export default FocusSiteScreen

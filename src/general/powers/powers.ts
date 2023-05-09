@@ -1,13 +1,16 @@
 import { IPower } from "../../types/interfaces";
 
 import images from "../../images/images";
+import masteries from "../masteries/masteries";
 
 const power_telekinesis: IPower = {
     name: 'Telekinesis',
     description: 'Power that can do a lot of things',
     value: 1,
     passive: false,
-    image: images.psionInsights.telekinesis
+    image: images.psionInsights.telekinesis,
+    cost: 1,
+    requiredMastery: masteries.mastery_meditativeInsights
 }
 
 const power_guardianAura: IPower = {
@@ -15,7 +18,9 @@ const power_guardianAura: IPower = {
     description: 'Power to weaken enemy`s attacks aimed at everyone in your squad',
     value: 1,
     passive: true,
-    image: images.psionInsights.guardianAura
+    image: images.psionInsights.guardianAura,
+    cost: 0,
+    requiredMastery: masteries.mastery_meditativeInsights
 }
 
 const power_guardianField: IPower = {
@@ -23,7 +28,9 @@ const power_guardianField: IPower = {
     description: 'Power to weaken enemy`s attacks aimed at you',
     value: 1,
     passive: true,
-    image: images.psionInsights.guardianField
+    image: images.psionInsights.guardianField,
+    cost: 0,
+    requiredMastery: masteries.mastery_meditativeInsights
 }
 
 const power_intuition: IPower = {
@@ -31,7 +38,9 @@ const power_intuition: IPower = {
     description: 'Power to unintentionally avoid enemy attacks',
     value: 1,
     passive: true,
-    image: images.psionInsights.intuition
+    image: images.psionInsights.intuition,
+    cost: 0,
+    requiredMastery: masteries.mastery_meditativeInsights
 }
 
 const power_levitation: IPower = {
@@ -39,7 +48,9 @@ const power_levitation: IPower = {
     description: 'Power to pass any obstacles on earth',
     value: 1,
     passive: false,
-    image: images.psionInsights.levitation
+    image: images.psionInsights.levitation,
+    cost: 0,
+    requiredMastery: masteries.mastery_meditativeInsights
 }
 
 const power_psiBlades: IPower = {
@@ -47,7 +58,9 @@ const power_psiBlades: IPower = {
     description: 'Power to create (and use) blades with your mind',
     value: 1,
     passive: false,
-    image: images.psionInsights.psiBlades
+    image: images.psionInsights.psiBlades,
+    cost: 1,
+    requiredMastery: masteries.mastery_psiEnergy
 }
 
 const power_psiLightning: IPower = {
@@ -55,7 +68,9 @@ const power_psiLightning: IPower = {
     description: 'Power to create chain lightning with your mind',
     value: 1,
     passive: false,
-    image: images.psionInsights.psiLightning
+    image: images.psionInsights.psiLightning,
+    cost: 2,
+    requiredMastery: masteries.mastery_psiEnergy
 }
 
 const powers = {

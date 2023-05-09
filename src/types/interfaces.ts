@@ -13,8 +13,7 @@ export interface ISpell extends ICommon {
     requiredMastery: IMastery | null
 }
 
-export interface IPower extends ICommon {
-    value: number,
+export interface IPower extends ISpell {
     passive: boolean
 }
 
