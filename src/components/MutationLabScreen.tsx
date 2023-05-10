@@ -8,7 +8,7 @@ function MutationLabScreen() {
     const mutationsAll = useSelector((store: IStore) => store.generalAll.mutations);
     const mutationsAllNames = Object.keys(mutationsAll);
 
-    const mutationsUser = useSelector((store: IStore) => store.generalUser.mutations)
+    const mutationsUser = useSelector((store: IStore) => store.generalUser.mutations.map(data => data.name))
     const dispatch = useDispatch();
 
     function mutateButtonListener(mutation: IMutation) {
@@ -22,7 +22,7 @@ function MutationLabScreen() {
                 {
                     mutationsAll && mutationsAllNames.map(name => {
                         const mutation = mutationsAll[name];
-                        const disabled = mutationsUser.includes(mutation);
+                        const disabled = mutationsUser.includes(mutation.name);
                         return (
                             <div className={styles.commonIconWithButton}>
                                 <CommonIcon item={mutation}/>

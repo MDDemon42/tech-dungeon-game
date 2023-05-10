@@ -8,8 +8,8 @@ function MarketScreen() {
     const itemsAll = useSelector((store: IStore) => store.generalAll.items);
     const itemsAllNames = Object.keys(itemsAll);
 
-    const itemsUser = useSelector((store: IStore) => store.generalUser.items);
-    const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries)
+    const itemsUser = useSelector((store: IStore) => store.generalUser.items.map(data => data.name));
+    const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
     const dispatch = useDispatch();
 
     function buyButtonListener(item: IItem) {
@@ -23,8 +23,8 @@ function MarketScreen() {
                 {
                     itemsAll && itemsAllNames.map(name => {
                         const item = itemsAll[name];
-                        const disabled = itemsUser.includes(item) ||
-                            (!!item.requiredMastery && !masteriesUser.includes(item.requiredMastery));
+                        const disabled = itemsUser.includes(item.name) ||
+                            (!!item.requiredMastery && !masteriesUser.includes(item.requiredMastery.name));
                         return (
                             <div className={styles.commonIconWithButton}>
                                 <CommonIcon item={item}/>

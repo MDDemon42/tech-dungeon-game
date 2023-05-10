@@ -8,7 +8,7 @@ function CyberLabScreen() {
     const cybersAll = useSelector((store: IStore) => store.generalAll.cybers);
     const cybersAllNames = Object.keys(cybersAll);
 
-    const cybersUser = useSelector((store: IStore) => store.generalUser.cybers)
+    const cybersUser = useSelector((store: IStore) => store.generalUser.cybers.map(data => data.name))
     const dispatch = useDispatch();
 
     function implementButtonListener(cyber: ICyber) {
@@ -22,7 +22,7 @@ function CyberLabScreen() {
                 {
                     cybersAll && cybersAllNames.map(name => {
                         const cyber = cybersAll[name];
-                        const disabled = cybersUser.includes(cyber);
+                        const disabled = cybersUser.includes(cyber.name);
                         return (
                             <div className={styles.commonIconWithButton}>
                                 <CommonIcon item={cyber}/>

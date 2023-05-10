@@ -9,6 +9,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Comments
  - Had to use `HashRouter` instead of modern `RouterProvider`
+ - Had to use both `chrome.storage` and `redux store` to store data
  - Most of images for Tech Dungeon Game is from `heromachine` service.
 
  # TODO:

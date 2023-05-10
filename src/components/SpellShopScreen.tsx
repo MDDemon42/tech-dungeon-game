@@ -8,8 +8,8 @@ function SpellShopScreen() {
     const spellsAll = useSelector((store: IStore) => store.generalAll.spells);
     const spellsAllNames = Object.keys(spellsAll);
 
-    const spellsUser = useSelector((store: IStore) => store.generalUser.spells);
-    const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries)
+    const spellsUser = useSelector((store: IStore) => store.generalUser.spells.map(data => data.name));
+    const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
     const dispatch = useDispatch();
 
     function studyButtonListener(spell: ISpell) {
@@ -23,8 +23,8 @@ function SpellShopScreen() {
                 {
                     spellsAll && spellsAllNames.map(name => {
                         const spell = spellsAll[name];
-                        const disabled = spellsUser.includes(spell) ||
-                            (!!spell.requiredMastery && !masteriesUser.includes(spell.requiredMastery));
+                        const disabled = spellsUser.includes(spell.name) ||
+                            (!!spell.requiredMastery && !masteriesUser.includes(spell.requiredMastery.name));
                         return (
                             <div className={styles.commonIconWithButton}>
                                 <CommonIcon item={spell}/>

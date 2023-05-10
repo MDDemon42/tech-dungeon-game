@@ -8,7 +8,7 @@ function AcademyScreen() {
     const masteriesAll = useSelector((store: IStore) => store.generalAll.masteries);
     const masteriesAllNames = Object.keys(masteriesAll);
 
-    const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries)
+    const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
     const dispatch = useDispatch();
 
     function learnButtonListener(mastery: IMastery) {
@@ -22,7 +22,7 @@ function AcademyScreen() {
                 {
                     masteriesAll && masteriesAllNames.map(name => {
                         const mastery = masteriesAll[name];
-                        const disabled = masteriesUser.includes(mastery);
+                        const disabled = masteriesUser.includes(mastery.name);
                         return (
                             <div className={styles.commonIconWithButton}>
                                 <CommonIcon item={mastery}/>

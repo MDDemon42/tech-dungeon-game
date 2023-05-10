@@ -65,9 +65,7 @@ function InventoryScreen() {
         ].join(' ')}>
             <CommonScreen 
                 name={'masteries'} 
-                user={true} 
                 vertical={true}
-                inventory={true}
             /> 
             <div>
                 <div className={styles.inventory_body}>
@@ -169,16 +167,12 @@ function InventoryScreen() {
                 </div>
                 <CommonScreen 
                     name={'spells'} 
-                    user={true} 
                     vertical={false}
-                    inventory={true}
                 />
             </div>
             <CommonScreen 
                 name={'powers'} 
-                user={true} 
                 vertical={true}
-                inventory={true}
             />
         </div>
     )

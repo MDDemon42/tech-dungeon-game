@@ -8,8 +8,8 @@ function FocusSiteScreen() {
     const powersAll = useSelector((store: IStore) => store.generalAll.powers);
     const powersAllNames = Object.keys(powersAll);
 
-    const powersUser = useSelector((store: IStore) => store.generalUser.powers);
-    const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries)
+    const powersUser = useSelector((store: IStore) => store.generalUser.powers.map(data => data.name));
+    const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name));
     const dispatch = useDispatch();
 
     function developButtonListener(power: IPower) {
@@ -23,8 +23,8 @@ function FocusSiteScreen() {
                 {
                     powersAll && powersAllNames.map(name => {
                         const power = powersAll[name];
-                        const disabled = powersUser.includes(power) ||
-                            (!!power.requiredMastery && !masteriesUser.includes(power.requiredMastery));
+                        const disabled = powersUser.includes(power.name) ||
+                            (!!power.requiredMastery && !masteriesUser.includes(power.requiredMastery.name));
                         return (
                             <div className={styles.commonIconWithButton}>
                                 <CommonIcon item={power}/>
