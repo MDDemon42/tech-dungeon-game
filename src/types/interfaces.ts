@@ -112,8 +112,13 @@ export interface IGeneralUser {
     powers: IPower[]
 }
 
+interface IGameScreens {
+    screen: string
+}
+
 export interface IStore {
     userParams: IUserParams,
     generalAll: IGeneralAll,
-    generalUser: IGeneralUser
+    generalUser: IGeneralUser,
+    gameScreens: IGameScreens
 }
