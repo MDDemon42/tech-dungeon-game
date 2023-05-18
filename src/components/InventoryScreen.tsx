@@ -80,89 +80,89 @@ function InventoryScreen() {
                     <div className={styles.inventory_line}>
                         <img 
                             src={inventory.head.image}
-                            title={inventory.head.name + '\n' + inventory.head.description}
+                            title={inventory.head.name}
                             className={styles.commonIcon}
                         />
                         <img 
                             src={inventory.hat.image}
-                            title={inventory.hat.name + '\n' + inventory.hat.description}
+                            title={inventory.hat.name}
                             className={styles.commonIcon}
                         />
                     </div>
                     <div className={styles.inventory_line}>
                         <img 
                             src={inventory.shoulders.image}
-                            title={inventory.shoulders.name + '\n' + inventory.shoulders.description}
+                            title={inventory.shoulders.name}
                             className={styles.commonIcon}
                         />
                         <img 
                             src={inventory.chin.image}
-                            title={inventory.chin.name + '\n' + inventory.chin.description}
+                            title={inventory.chin.name}
                             className={styles.commonIcon}
                         />
                         <img 
                             src={inventory.back.image}
-                            title={inventory.back.name + '\n' + inventory.back.description}
+                            title={inventory.back.name}
                             className={styles.commonIcon}
                         />
                     </div>
                     <div className={styles.inventory_line}>
                         <img 
                             src={inventory.armor.image}
-                            title={inventory.armor.name + '\n' + inventory.armor.description}
+                            title={inventory.armor.name}
                             className={styles.commonIcon}
                         />
                         <img 
                             src={inventory.skin.image}
-                            title={inventory.skin.name + '\n' + inventory.skin.description}
+                            title={inventory.skin.name}
                             className={styles.commonIcon}
                         />
                     </div>
                     <div className={styles.inventory_line}>
                         <img 
                             src={inventory.rightHand.image}
-                            title={inventory.rightHand.name + '\n' + inventory.rightHand.description}
+                            title={inventory.rightHand.name}
                             className={styles.commonIcon}
                         />
                         <img 
                             src={inventory.bothHands.image}
-                            title={inventory.bothHands.name + '\n' + inventory.bothHands.description}
+                            title={inventory.bothHands.name}
                             className={styles.commonIcon}
                         />
                         <img 
                             src={inventory.leftHand.image}
-                            title={inventory.leftHand.name + '\n' + inventory.leftHand.description}
+                            title={inventory.leftHand.name}
                             className={styles.commonIcon}
                         />
                     </div>
                     <div className={styles.inventory_line}>
                         <img 
                             src={inventory.belt.image}
-                            title={inventory.belt.name + '\n' + inventory.belt.description}
+                            title={inventory.belt.name}
                             className={styles.commonIcon}
                         />
                         <img 
                             src={inventory.tail.image}
-                            title={inventory.tail.name + '\n' + inventory.tail.description}
+                            title={inventory.tail.name}
                             className={styles.commonIcon}
                         />
                     </div>
                     <div className={styles.inventory_line}>
                         <img 
                             src={inventory.rightPocket.image}
-                            title={inventory.rightPocket.name + '\n' + inventory.rightPocket.description}
+                            title={inventory.rightPocket.name}
                             className={styles.commonIcon}
                         />       
                         <img 
                             src={inventory.leftPocket.image}
-                            title={inventory.leftPocket.name + '\n' + inventory.leftPocket.description}
+                            title={inventory.leftPocket.name}
                             className={styles.commonIcon}
                         />         
                     </div>
                     <div className={styles.inventory_line}>
                         <img 
                             src={inventory.legs.image}
-                            title={inventory.legs.name + '\n' + inventory.legs.description}
+                            title={inventory.legs.name}
                             className={styles.commonIcon}
                         />
                     </div>

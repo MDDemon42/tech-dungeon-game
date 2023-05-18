@@ -18,15 +18,15 @@ export interface IPower extends ISpell {
 }
 
 export enum InventoryPlaces {
-    hat = 'hat',
-    armor = 'armor',
-    leftHand = 'leftHand',
-    rightHand = 'rightHand',
-    bothHands = 'bothHands',
-    belt = 'belt',
-    leftPocket = 'leftPocket',
-    rightPocket = 'rightPocket',
-    back = 'back'
+    hat = 'Hat',
+    armor = 'Armor',
+    leftHand = 'Left hand',
+    rightHand = 'Right hand',
+    bothHands = 'Both hands',
+    belt = 'Belt',
+    leftPocket = 'Left pocket',
+    rightPocket = 'Right pocket',
+    back = 'Back'
 }
 
 export interface IItem extends ISpell {
@@ -34,16 +34,16 @@ export interface IItem extends ISpell {
 }
 
 export enum BodyParts {
-    head = 'head',
-    chin = 'chin',
-    skin = 'skin',
-    back = 'back',
-    shoulders = 'shoulders',
-    tail = 'tail',
-    legs = 'legs',
-    leftHand = 'leftHand',
-    rightHand = 'rightHand',
-    bothHands = 'bothHands'
+    head = 'Head',
+    chin = 'Chin',
+    skin = 'Skin',
+    back = 'Back',
+    shoulders = 'Shoulders',
+    tail = 'Tail',
+    legs = 'Legs',
+    leftHand = 'Left hand',
+    rightHand = 'Right hand',
+    bothHands = 'Both hands'
 }
 
 export interface IMutation extends ICommon {
@@ -68,7 +68,7 @@ export interface User {
     powers?: IPower[]
 }
 
-export interface IInventory {
+export interface IInventory extends Record<string, any> {
     hat: IItem,
     head: IMutation,
     chin: IMutation,

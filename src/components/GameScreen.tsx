@@ -21,6 +21,16 @@ const screens: Record<string, JSX.Element> = {
     'mutationlab': <MutationLabScreen/>
 }
 
+const screensButtonTexts: Record<string, string> = {
+    'battle': 'To battle!',
+    'market': 'To Market',
+    'academy': 'To Academy',
+    'spellshop': 'To Spell Shop',
+    'focussite': 'To Focus Site',
+    'cyberlab': 'To Cyber Lab',
+    'mutationlab': 'To Mutation Lab'
+}
+
 function GameScreen() {
     const screen = useSelector((store: IStore) => store.gameScreens.screen);
     const dispatch = useDispatch();
@@ -34,11 +44,11 @@ function GameScreen() {
             {
                 screens[screen]
             }
-            <div>
+            <div className={styles.gamePage_mainBlock_buttonsBlock}>
                 {
                     Object.keys(screens).map(item => (
                         <button onClick={() => changeScreenButtonListener(item)}>
-                            {item}
+                            {screensButtonTexts[item]}
                         </button>
                     ))
                 }
