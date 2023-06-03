@@ -13,6 +13,9 @@ const userParams = createSlice({
         changeIcon(state, action) {
             state.icon = action.payload
         },
+        buyItem(state, action) {
+            state.money -= action.payload
+        },
         setState(state, action) {
             Object.keys(state).forEach(key => {
                 // @ts-ignore

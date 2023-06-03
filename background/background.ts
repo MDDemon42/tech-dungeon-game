@@ -1,6 +1,7 @@
 try {
     importScripts(
-        './messaging.js'
+        './messaging.js',
+        './contextMenus.js'
     )
 } catch {
     console.error('Error in importing scripts in background')

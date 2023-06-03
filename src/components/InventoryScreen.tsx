@@ -16,6 +16,7 @@ import {useSelector} from "react-redux";
 function InventoryScreen() {
     const user = useSelector((state: IStore) => state.userParams);
     const generalUser = useSelector((state: IStore) => state.generalUser);
+    // TODO: fix new items disappear 
 
     const noItem: IMutation & IItem = {
         name: 'Nothing yet',
@@ -70,6 +71,9 @@ function InventoryScreen() {
                 /> 
                 <div>
                     <div className={styles.inventory_body}>
+                        <p>
+                            Money: {user.money}
+                        </p>
                         <img src={images.body}/>
                     </div>
                     <div className={styles.inventory_header}>

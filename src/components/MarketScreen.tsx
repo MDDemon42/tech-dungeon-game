@@ -3,6 +3,7 @@ import {IItem, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
+import userParams from "../redux/slices/userParams";
 
 function MarketScreen() {
     const itemsAll = useSelector((store: IStore) => store.generalAll.items);
@@ -12,8 +13,12 @@ function MarketScreen() {
     const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
     const dispatch = useDispatch();
 
+    const userMoney = useSelector((store: IStore) => store.userParams.money);
     function buyButtonListener(item: IItem) {
-        dispatch(generalUser.actions.buyItem(item))
+        if (item.cost <= userMoney) {
+            dispatch(generalUser.actions.buyItem(item));
+            dispatch(userParams.actions.buyItem(item.cost));
+        }        
     }
 
     return (
@@ -24,6 +29,7 @@ function MarketScreen() {
                     itemsAll && itemsAllNames.map(name => {
                         const item = itemsAll[name];
                         const disabled = itemsUser.includes(item.name) ||
+                            userMoney < item.cost ||
                             (!!item.requiredMastery && !masteriesUser.includes(item.requiredMastery.name));
                         return (
                             <div className={styles.commonIconWithButton}>
