@@ -16,7 +16,6 @@ import {useSelector} from "react-redux";
 function InventoryScreen() {
     const user = useSelector((state: IStore) => state.userParams);
     const generalUser = useSelector((state: IStore) => state.generalUser);
-    // TODO: fix new items disappear 
 
     const noItem: IMutation & IItem = {
         name: 'Nothing yet',
@@ -47,16 +46,27 @@ function InventoryScreen() {
         bothHands: noItem
     } as IInventory;
 
+    function placeAsKey(place: string) {
+        return place.split(' ').map((part, index) => {
+            if (index === 0) {
+                part = part[0].toLowerCase() + part.substring(1);
+            } else {
+                part = part[0].toUpperCase() + part.substring(1);
+            }
+            return part
+        }).join('');
+    }
+
     generalUser?.items?.forEach(item => {
-        inventory[item.inventoryPlace] = item;
+        inventory[placeAsKey(item.inventoryPlace)] = item;
     })
 
     generalUser?.mutations?.forEach(item => {
-        inventory[item.bodyPart] = item;
+        inventory[placeAsKey(item.bodyPart)] = item;
     })
 
     generalUser?.cybers?.forEach(item => {
-        inventory[item.bodyPart] = item;
+        inventory[placeAsKey(item.bodyPart)] = item;
     })
 
     return (

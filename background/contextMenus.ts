@@ -14,6 +14,7 @@ interface ITab {
 
 const cheatContextMenuIds = {
     money: 'cheat-money',
+    zero: 'cheat-zero'
 }
 
 function createContextMenu(options: IContextMenusOptions) {
@@ -24,7 +25,18 @@ function createCheatContextMenus() {
     createContextMenu({
         title: 'Money = 1000',
         id: cheatContextMenuIds.money
+    });
+
+    createContextMenu({
+        title: 'Zero Hero',
+        id: cheatContextMenuIds.zero
     })
+}
+
+function createAllContextMenus() {
+    chrome.contextMenus.removeAll();
+
+    createCheatContextMenus();
 }
 
 function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
@@ -42,12 +54,31 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
                 });
             };
             break;
+        
+        case cheatContextMenuIds.zero:
+            if (tab?.url?.endsWith('index.html#/game')) {
+                chrome.storage.local.get().then(result => {
+                    const user = {...result['tech-dungeon-game'].generalUser};
+                    user.cybers = [];
+                    user.masteries = [];
+                    user.mutations = [];
+                    user.items = [];
+                    user.spells = [];
+                    user.powers = [];
+                    result['tech-dungeon-game'].generalUser = user;
 
+                    chrome.storage.local.set(result);
+
+                    chrome.tabs.reload(tab!.id!);
+                });
+            }
+            break;
+            
         default:
             break;
     }
 }
 
-createCheatContextMenus();
+createAllContextMenus();
 
 chrome.contextMenus.onClicked.addListener(contextMenusListeners)
