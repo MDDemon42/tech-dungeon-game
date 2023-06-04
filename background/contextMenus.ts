@@ -59,12 +59,10 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
             if (tab?.url?.endsWith('index.html#/game')) {
                 chrome.storage.local.get().then(result => {
                     const user = {...result['tech-dungeon-game'].generalUser};
-                    user.cybers = [];
                     user.masteries = [];
-                    user.mutations = [];
-                    user.items = [];
                     user.spells = [];
                     user.powers = [];
+                    user.inventory = null;
                     result['tech-dungeon-game'].generalUser = user;
 
                     chrome.storage.local.set(result);

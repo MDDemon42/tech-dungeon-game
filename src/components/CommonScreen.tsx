@@ -2,7 +2,7 @@ import styles from '../index.module.css';
 import {useSelector} from "react-redux";
 import CommonIcon from './CommonIcon';
 import { upperCaseFirstLetter } from '../pages/MainPage';
-import { IGeneralUser, IStore } from '../types/interfaces';
+import { ICommon, IGeneralUser, IStore } from '../types/interfaces';
 
 function CommonScreen(props: {
     name: string,
@@ -21,7 +21,7 @@ function CommonScreen(props: {
             }>
                 {
                     common && common.length > 0 ?
-                        common.map(item => (
+                        common.map((item: ICommon) => (
                             <div className={styles.commonIconWithButton}>
                                 <CommonIcon item={item}/>
                             </div>

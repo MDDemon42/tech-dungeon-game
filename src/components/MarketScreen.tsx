@@ -9,7 +9,21 @@ function MarketScreen() {
     const itemsAll = useSelector((store: IStore) => store.generalAll.items);
     const itemsAllNames = Object.keys(itemsAll);
 
-    const itemsUser = useSelector((store: IStore) => store.generalUser.items.map(data => data.name));
+    const itemsUser = useSelector((store: IStore) => {
+        const inventory = store.generalUser.inventory;
+        
+        if (!inventory) {
+            return []
+        }
+
+        const keys = Object.keys(inventory);
+
+        return keys.map(data => {
+            if (inventory[data].inventoryPlace) {
+                return inventory[data].name
+            }
+        })
+    });
     const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
     const dispatch = useDispatch();
 

@@ -8,7 +8,21 @@ function MutationLabScreen() {
     const mutationsAll = useSelector((store: IStore) => store.generalAll.mutations);
     const mutationsAllNames = Object.keys(mutationsAll);
 
-    const mutationsUser = useSelector((store: IStore) => store.generalUser.mutations.map(data => data.name))
+    const mutationsUser = useSelector((store: IStore) => {
+        const inventory = store.generalUser.inventory;
+
+        if (!inventory) {
+            return []
+        }
+        
+        const keys = Object.keys(inventory);
+
+        return keys.map(data => {
+            if (inventory[data].bodyPart) {
+                return inventory[data].name
+            }
+        })
+    });
     const dispatch = useDispatch();
 
     function mutateButtonListener(mutation: IMutation) {

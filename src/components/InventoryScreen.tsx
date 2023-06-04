@@ -1,73 +1,16 @@
-import { 
-    BodyParts, 
-    IInventory, 
-    IItem, 
-    IMutation, 
-    IStore, 
-    InventoryPlaces
-} from "../types/interfaces";
-
+import { IStore } from "../types/interfaces";
 import styles from '../index.module.css';
 import images from "../images/images";
 import CommonScreen from "./CommonScreen";
 import { upperCaseFirstLetter } from "../pages/MainPage";
 import {useSelector} from "react-redux";
+import { emptyInventory } from "../redux/slices/generalUser";
 
 function InventoryScreen() {
     const user = useSelector((state: IStore) => state.userParams);
     const generalUser = useSelector((state: IStore) => state.generalUser);
 
-    const noItem: IMutation & IItem = {
-        name: 'Nothing yet',
-        description: 'Nothing at all',
-        bodyPart: BodyParts.head,
-        value: 0,
-        cost: 0,
-        inventoryPlace: InventoryPlaces.belt,
-        image: images.classIcons.noIcon,
-        requiredMastery: null
-    }
-
-    const inventory = {
-        hat: noItem,
-        head: noItem,
-        chin: noItem,
-        armor: noItem,
-        skin: noItem,
-        back: noItem,
-        shoulders: noItem,
-        belt: noItem,
-        leftPocket: noItem,
-        rightPocket: noItem,
-        tail: noItem,
-        legs: noItem,
-        leftHand: noItem,
-        rightHand: noItem,
-        bothHands: noItem
-    } as IInventory;
-
-    function placeAsKey(place: string) {
-        return place.split(' ').map((part, index) => {
-            if (index === 0) {
-                part = part[0].toLowerCase() + part.substring(1);
-            } else {
-                part = part[0].toUpperCase() + part.substring(1);
-            }
-            return part
-        }).join('');
-    }
-
-    generalUser?.items?.forEach(item => {
-        inventory[placeAsKey(item.inventoryPlace)] = item;
-    })
-
-    generalUser?.mutations?.forEach(item => {
-        inventory[placeAsKey(item.bodyPart)] = item;
-    })
-
-    generalUser?.cybers?.forEach(item => {
-        inventory[placeAsKey(item.bodyPart)] = item;
-    })
+    const inventory = generalUser.inventory ? generalUser.inventory : emptyInventory();
 
     return (
         <div className={styles.gamePage_componentsBlock}>

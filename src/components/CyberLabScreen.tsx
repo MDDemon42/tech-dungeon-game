@@ -8,7 +8,21 @@ function CyberLabScreen() {
     const cybersAll = useSelector((store: IStore) => store.generalAll.cybers);
     const cybersAllNames = Object.keys(cybersAll);
 
-    const cybersUser = useSelector((store: IStore) => store.generalUser.cybers.map(data => data.name))
+    const cybersUser = useSelector((store: IStore) => {
+        const inventory = store.generalUser.inventory;
+
+        if (!inventory) {
+            return []
+        }
+        
+        const keys = Object.keys(inventory);
+
+        return keys.map(data => {
+            if (inventory[data].bodyPart) {
+                return inventory[data].name
+            }
+        })
+    });
     const dispatch = useDispatch();
 
     function implementButtonListener(cyber: ICyber) {

@@ -105,10 +105,8 @@ export interface IGeneralAll {
 
 export interface IGeneralUser {
     masteries: IMastery[],
-    items: IItem[],
+    inventory: IInventory,
     spells: ISpell[],
-    mutations: IMutation[],
-    cybers: ICyber[],
     powers: IPower[]
 }
 
