@@ -30,8 +30,10 @@ function MainPage() {
     // loading storaged state
     useEffect(() => {
         chrome.storage.local.get().then(result => {
-            dispatch(userParams.actions.setState(result[C.name].userParams));
-            dispatch(generalUser.actions.setState(result[C.name].generalUser));
+            if (result[C.name]) {
+                dispatch(userParams.actions.setState(result[C.name].userParams));
+                dispatch(generalUser.actions.setState(result[C.name].generalUser));
+            }
         })
     }, [])
 

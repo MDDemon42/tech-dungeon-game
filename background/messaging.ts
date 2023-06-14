@@ -27,6 +27,3 @@ function onMessage(
 }
 
 chrome.runtime.onMessage.addListener(onMessage);
-
-// in case of adding new images
-// chrome.storage.local.clear()

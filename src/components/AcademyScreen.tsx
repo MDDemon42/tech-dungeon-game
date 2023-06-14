@@ -15,6 +15,14 @@ function AcademyScreen() {
         dispatch(generalUser.actions.learnMastery(mastery))
     }
 
+    function disableChecker(mastery: IMastery) {
+        const masteriesCheck = masteriesUser.includes(mastery.name);
+        const requiredMasteryCheck = !!mastery.requiredMastery ? 
+            masteriesUser.includes(mastery.requiredMastery.name) : true;
+
+        return masteriesCheck || !requiredMasteryCheck
+    }
+
     return (
         <div className={styles.gamePage_component}>
             Welcome to Academy!
@@ -22,13 +30,12 @@ function AcademyScreen() {
                 {
                     masteriesAll && masteriesAllNames.map(name => {
                         const mastery = masteriesAll[name];
-                        const disabled = masteriesUser.includes(mastery.name);
                         return (
                             <div className={styles.commonIconWithButton}>
                                 <CommonIcon item={mastery}/>
                                 {
                                     <button
-                                        disabled={disabled}
+                                        disabled={disableChecker(mastery)}
                                         onClick={() => learnButtonListener(mastery)}
                                     >
                                         Learn!

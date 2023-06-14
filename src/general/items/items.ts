@@ -84,6 +84,16 @@ const item_steelSword: IItem = {
     requiredMastery: masteries.mastery_swordsmanship
 }
 
+const item_steelShield: IItem = {
+    value: 1,
+    cost: 100,
+    inventoryPlace: InventoryPlaces.leftHand,
+    name: 'Steel shield',
+    description: 'Usual steel shield',
+    image: images.normalItems.shield,
+    requiredMastery: null
+}
+
 const item_steelGreataxe: IItem = {
     value: 2,
     cost: 200,
@@ -173,6 +183,7 @@ const items = {
     item_oakCrossow,
     item_steelChakram,
     item_steelSword,
+    item_steelShield,
     item_steelGreataxe,
     item_runicSword,
     item_apprenticeHat,

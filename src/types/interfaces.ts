@@ -5,12 +5,12 @@ export interface ICommon {
 }
 
 export interface IMastery extends ICommon {
+    requiredMastery: IMastery | null
 }
 
-export interface ISpell extends ICommon {
+export interface ISpell extends IMastery {
     value: number,
-    cost: number,
-    requiredMastery: IMastery | null
+    cost: number
 }
 
 export interface IPower extends ISpell {

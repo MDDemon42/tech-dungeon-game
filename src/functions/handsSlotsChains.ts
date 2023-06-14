@@ -6,7 +6,8 @@ import store from "../redux/store";
 import { BodyParts, IHandSlot, InventoryPlaces } from "../types/interfaces";
 
 const leftHandSlotChain = [
-    noItem.name, 
+    noItem.name,
+    items.item_steelShield.name,
     items.item_runicSword.name, 
     cybers.cyber_laser.name
 ];
@@ -22,18 +23,15 @@ function checkChain(
     slot_new: string,
     position: InventoryPlaces | BodyParts
 ) {
-    console.log('checking', slot_new)
     let index_old;
     let index_new;
 
     const inventory = store.getState().generalUser.inventory || emptyInventory();
     const slot_old = inventory[placeAsKey(position)].name;
-    console.log('comparing', slot_old)
-
+    
     if (position === InventoryPlaces.leftHand) {
         index_old = leftHandSlotChain.indexOf(slot_old);
         index_new = leftHandSlotChain.indexOf(slot_new);
-        console.log('indexes', index_new, index_old)
         if (index_new > index_old) {
             return true
         } else {
