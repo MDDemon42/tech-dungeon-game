@@ -2,18 +2,18 @@ import {createSlice} from '@reduxjs/toolkit';
 import { BodyParts, IInventory, IItem, IMastery, IMutation, IPower, ISpell, InventoryPlaces } from '../../types/interfaces';
 import images from '../../images/images';
 
-export function emptyInventory() {
-    const noItem: IMutation & IItem = {
-        name: 'Nothing yet',
-        description: 'Nothing at all',
-        bodyPart: BodyParts.head,
-        value: 0,
-        cost: 0,
-        inventoryPlace: InventoryPlaces.belt,
-        image: images.classIcons.noIcon,
-        requiredMastery: null
-    }
+export const noItem: IMutation & IItem = {
+    name: 'Nothing yet',
+    description: 'Nothing at all',
+    bodyPart: BodyParts.head,
+    value: 0,
+    cost: 0,
+    inventoryPlace: InventoryPlaces.belt,
+    image: images.classIcons.noIcon,
+    requiredMastery: null
+}
 
+export function emptyInventory() {
     const inventory = {
         hat: noItem,
         head: noItem,
@@ -35,7 +35,7 @@ export function emptyInventory() {
     return inventory
 }
 
-function placeAsKey(place: string) {
+export function placeAsKey(place: string) {
     return place.split(' ').map((part, index) => {
         if (index === 0) {
             part = part[0].toLowerCase() + part.substring(1);
@@ -59,7 +59,22 @@ const generalUser = createSlice({
             if (!state.inventory) {
                 state.inventory = emptyInventory();
             }
-            state.inventory[placeAsKey(action.payload.inventoryPlace)] = action.payload;
+
+            const position = action.payload.inventoryPlace;
+
+            if (position === InventoryPlaces.bothHands) {
+                state.inventory[placeAsKey(InventoryPlaces.leftHand)] = noItem;
+                state.inventory[placeAsKey(InventoryPlaces.rightHand)] = noItem;
+            }
+
+            if (
+                position === InventoryPlaces.leftHand || 
+                position === InventoryPlaces.rightHand
+            ) {
+                state.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem;
+            }
+
+            state.inventory[placeAsKey(position)] = action.payload;
         },
         studySpell(state, action) {
             state.spells.push(action.payload);
@@ -74,13 +89,31 @@ const generalUser = createSlice({
             if (!state.inventory) {
                 state.inventory = emptyInventory();
             }
-            state.inventory[placeAsKey(action.payload.bodyPart)] = action.payload;
+
+            const position = action.payload.bodyPart;
+
+            if (
+                position === BodyParts.leftHand || 
+                position === BodyParts.rightHand
+            ) {
+                state.inventory[placeAsKey(BodyParts.bothHands)] = noItem;
+            }
+
+            state.inventory[placeAsKey(position)] = action.payload;
         },
         mutateMutation(state, action) {
             if (!state.inventory) {
                 state.inventory = emptyInventory();
             }
-            state.inventory[placeAsKey(action.payload.bodyPart)] = action.payload;
+
+            const position = action.payload.bodyPart;
+
+            if (position === BodyParts.bothHands) {
+                state.inventory[placeAsKey(BodyParts.leftHand)] = noItem;
+                state.inventory[placeAsKey(BodyParts.rightHand)] = noItem;
+            }
+
+            state.inventory[placeAsKey(position)] = action.payload;
         },
         setState(state, action) {
             Object.keys(state).forEach(key => {

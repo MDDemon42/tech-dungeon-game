@@ -1,8 +1,9 @@
 import {useSelector, useDispatch} from "react-redux";
-import {IMutation, IStore} from '../types/interfaces';
+import {BodyParts, IMutation, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
+import handsSlotsChainsChecker from "../functions/handsSlotsChains";
 
 function MutationLabScreen() {
     const mutationsAll = useSelector((store: IStore) => store.generalAll.mutations);
@@ -29,6 +30,14 @@ function MutationLabScreen() {
         dispatch(generalUser.actions.mutateMutation(mutation))
     }
 
+    function disableChecker(mutation: IMutation) {
+        const mutationCheck = mutationsUser.includes(mutation.name);
+        const slotChainCheck = mutation.bodyPart === BodyParts.bothHands ? 
+            handsSlotsChainsChecker(mutation) : true;
+
+        return mutationCheck || !slotChainCheck
+    }
+
     return (
         <div className={styles.gamePage_component}>
             Welcome to Mutation Lab!
@@ -36,13 +45,12 @@ function MutationLabScreen() {
                 {
                     mutationsAll && mutationsAllNames.map(name => {
                         const mutation = mutationsAll[name];
-                        const disabled = mutationsUser.includes(mutation.name);
                         return (
                             <div className={styles.commonIconWithButton}>
                                 <CommonIcon item={mutation}/>
                                 {
                                     <button
-                                        disabled={disabled}
+                                        disabled={disableChecker(mutation)}
                                         onClick={() => mutateButtonListener(mutation)}
                                     >
                                         Mutate!

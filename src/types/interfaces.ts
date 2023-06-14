@@ -51,6 +51,12 @@ export interface IMutation extends ICommon {
     bodyPart: BodyParts
 }
 
+export interface IHandSlot {
+    name: string,
+    inventoryPlace?: InventoryPlaces,
+    bodyPart?: BodyParts
+}
+
 export interface ICyber extends IMutation {
 }
 

@@ -4,7 +4,7 @@ import images from "../images/images";
 import CommonScreen from "./CommonScreen";
 import { upperCaseFirstLetter } from "../pages/MainPage";
 import {useSelector} from "react-redux";
-import { emptyInventory } from "../redux/slices/generalUser";
+import { emptyInventory, noItem } from "../redux/slices/generalUser";
 
 function InventoryScreen() {
     const user = useSelector((state: IStore) => state.userParams);
@@ -76,21 +76,26 @@ function InventoryScreen() {
                         />
                     </div>
                     <div className={styles.inventory_line}>
-                        <img 
-                            src={inventory.rightHand.image}
-                            title={inventory.rightHand.name}
-                            className={styles.commonIcon}
-                        />
-                        <img 
-                            src={inventory.bothHands.image}
-                            title={inventory.bothHands.name}
-                            className={styles.commonIcon}
-                        />
-                        <img 
-                            src={inventory.leftHand.image}
-                            title={inventory.leftHand.name}
-                            className={styles.commonIcon}
-                        />
+                        {
+                            inventory.bothHands.name !== noItem.name ?
+                            <img 
+                                src={inventory.bothHands.image}
+                                title={inventory.bothHands.name}
+                                className={styles.commonIcon}
+                            /> :
+                            <>
+                                <img 
+                                    src={inventory.rightHand.image}
+                                    title={inventory.rightHand.name}
+                                    className={styles.commonIcon}
+                                />
+                                <img 
+                                    src={inventory.leftHand.image}
+                                    title={inventory.leftHand.name}
+                                    className={styles.commonIcon}
+                                />
+                            </>
+                        }
                     </div>
                     <div className={styles.inventory_line}>
                         <img 

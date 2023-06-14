@@ -1,38 +1,34 @@
 import {useSelector, useDispatch} from "react-redux";
-import {IItem, IStore} from '../types/interfaces';
+import {IItem, IStore, InventoryPlaces} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
 import userParams from "../redux/slices/userParams";
+import handsSlotsChainsChecker from "../functions/handsSlotsChains";
 
 function MarketScreen() {
     const itemsAll = useSelector((store: IStore) => store.generalAll.items);
     const itemsAllNames = Object.keys(itemsAll);
 
-    const itemsUser = useSelector((store: IStore) => {
-        const inventory = store.generalUser.inventory;
-        
-        if (!inventory) {
-            return []
-        }
-
-        const keys = Object.keys(inventory);
-
-        return keys.map(data => {
-            if (inventory[data].inventoryPlace) {
-                return inventory[data].name
-            }
-        })
-    });
     const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
     const dispatch = useDispatch();
 
     const userMoney = useSelector((store: IStore) => store.userParams.money);
     function buyButtonListener(item: IItem) {
-        if (item.cost <= userMoney) {
-            dispatch(generalUser.actions.buyItem(item));
-            dispatch(userParams.actions.buyItem(item.cost));
-        }        
+        dispatch(generalUser.actions.buyItem(item));
+        dispatch(userParams.actions.buyItem(item.cost));
+    }
+
+    function disableChecker(item: IItem) {
+        const moneyCheck = userMoney < item.cost;
+        const requiredMasteryCheck = !!item.requiredMastery && !masteriesUser.includes(item.requiredMastery.name)
+        const slotChainCheck = (
+            item.inventoryPlace === InventoryPlaces.leftHand ||
+            item.inventoryPlace === InventoryPlaces.rightHand ||
+            item.inventoryPlace === InventoryPlaces.bothHands
+        ) ? handsSlotsChainsChecker(item) : true;
+        
+        return moneyCheck || requiredMasteryCheck || !slotChainCheck; 
     }
 
     return (
@@ -42,15 +38,13 @@ function MarketScreen() {
                 {
                     itemsAll && itemsAllNames.map(name => {
                         const item = itemsAll[name];
-                        const disabled = itemsUser.includes(item.name) ||
-                            userMoney < item.cost ||
-                            (!!item.requiredMastery && !masteriesUser.includes(item.requiredMastery.name));
+                            
                         return (
                             <div className={styles.commonIconWithButton}>
                                 <CommonIcon item={item}/>
                                 {
                                     <button
-                                        disabled={disabled}
+                                        disabled={disableChecker(item)}
                                         onClick={() => buyButtonListener(item)}
                                     >
                                         Buy!

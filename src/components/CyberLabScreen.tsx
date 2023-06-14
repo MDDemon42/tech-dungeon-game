@@ -1,32 +1,28 @@
 import {useSelector, useDispatch} from "react-redux";
-import {ICyber, IStore} from '../types/interfaces';
+import {BodyParts, ICyber, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
+import handsSlotsChainsChecker from "../functions/handsSlotsChains";
 
 function CyberLabScreen() {
     const cybersAll = useSelector((store: IStore) => store.generalAll.cybers);
     const cybersAllNames = Object.keys(cybersAll);
 
-    const cybersUser = useSelector((store: IStore) => {
-        const inventory = store.generalUser.inventory;
-
-        if (!inventory) {
-            return []
-        }
-        
-        const keys = Object.keys(inventory);
-
-        return keys.map(data => {
-            if (inventory[data].bodyPart) {
-                return inventory[data].name
-            }
-        })
-    });
+    const inventory = useSelector((store: IStore) => store.generalUser.inventory);
     const dispatch = useDispatch();
 
     function implementButtonListener(cyber: ICyber) {
         dispatch(generalUser.actions.implementCyber(cyber))
+    }
+
+    function disableChecker(cyber: ICyber) {
+        const slotChainCheck = (
+            cyber.bodyPart === BodyParts.leftHand ||
+            cyber.bodyPart === BodyParts.rightHand
+        ) ? handsSlotsChainsChecker(cyber) : true;
+        
+        return !slotChainCheck;
     }
 
     return (
@@ -36,13 +32,12 @@ function CyberLabScreen() {
                 {
                     cybersAll && cybersAllNames.map(name => {
                         const cyber = cybersAll[name];
-                        const disabled = cybersUser.includes(cyber.name);
                         return (
                             <div className={styles.commonIconWithButton}>
                                 <CommonIcon item={cyber}/>
                                 {
                                     <button
-                                        disabled={disabled}
+                                        disabled={disableChecker(cyber)}
                                         onClick={() => implementButtonListener(cyber)}
                                     >
                                         Implement!
