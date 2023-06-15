@@ -18,7 +18,7 @@ export interface IPower extends ISpell {
 }
 
 export enum InventoryPlaces {
-    hat = 'Hat',
+    head = 'Head',
     armor = 'Armor',
     leftHand = 'Left hand',
     rightHand = 'Right hand',
@@ -48,7 +48,7 @@ export enum BodyParts {
 }
 
 export interface IMutation extends ICommon {
-    value: number,
+    cost: number,
     bodyPart: BodyParts,
     priority: number
 }
@@ -98,9 +98,14 @@ export interface IInventory extends Record<string, any> {
 export interface IUserParams {
     name: string,
     icon: string,
+    stage: number,
+    health: number,
     level: number,
-    money: number,
-    stage: number
+    diamonds: number,
+    mechaCores: number,
+    mutaGenes: number,
+    mana: number,
+    focus: number
 }
 
 export interface IGeneralAll {

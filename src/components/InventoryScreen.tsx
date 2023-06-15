@@ -2,7 +2,6 @@ import { IStore } from "../types/interfaces";
 import styles from '../index.module.css';
 import images from "../images/images";
 import CommonScreen from "./CommonScreen";
-import { upperCaseFirstLetter } from "../pages/MainPage";
 import {useSelector} from "react-redux";
 import { emptyInventory, noItem } from "../redux/slices/generalUser";
 
@@ -25,13 +24,28 @@ function InventoryScreen() {
                 <div>
                     <div className={styles.inventory_body}>
                         <p>
-                            Money: {user.money}
+                            Health: {user.health}
                         </p>
-                        <img src={images.body}/>
+                        <p>
+                            Mana: {user.mana}
+                        </p>
+                        <p>
+                            Focus: {user.focus}
+                        </p>
+                        <p>
+                            Diamonds: {user.diamonds}
+                        </p>
+                        <p>
+                            Mecha-cores: {user.mechaCores}
+                        </p>
+                        <p>
+                            Muta-genes: {user.mutaGenes}
+                        </p>
+                        <img src={images.body} alt='body'/>
                     </div>
                     <div className={styles.inventory_header}>
                         <h3>
-                            {user.name} the {upperCaseFirstLetter(user.icon)} lvl. {user.level}
+                            {user.name} level {user.level}
                         </h3>
                     </div>
                     <div className={styles.inventory_line}>
@@ -39,11 +53,7 @@ function InventoryScreen() {
                             src={inventory.head.image}
                             title={inventory.head.name}
                             className={styles.commonIcon}
-                        />
-                        <img 
-                            src={inventory.hat.image}
-                            title={inventory.hat.name}
-                            className={styles.commonIcon}
+                            alt='head'
                         />
                     </div>
                     <div className={styles.inventory_line}>
@@ -51,16 +61,19 @@ function InventoryScreen() {
                             src={inventory.shoulders.image}
                             title={inventory.shoulders.name}
                             className={styles.commonIcon}
+                            alt='shoulders'
                         />
                         <img 
                             src={inventory.chin.image}
                             title={inventory.chin.name}
                             className={styles.commonIcon}
+                            alt='chin'
                         />
                         <img 
                             src={inventory.back.image}
                             title={inventory.back.name}
                             className={styles.commonIcon}
+                            alt='back'
                         />
                     </div>
                     <div className={styles.inventory_line}>
@@ -68,11 +81,13 @@ function InventoryScreen() {
                             src={inventory.armor.image}
                             title={inventory.armor.name}
                             className={styles.commonIcon}
+                            alt='armor'
                         />
                         <img 
                             src={inventory.skin.image}
                             title={inventory.skin.name}
                             className={styles.commonIcon}
+                            alt='skin'
                         />
                     </div>
                     <div className={styles.inventory_line}>
@@ -82,17 +97,20 @@ function InventoryScreen() {
                                 src={inventory.bothHands.image}
                                 title={inventory.bothHands.name}
                                 className={styles.commonIcon}
+                                alt='bothHands'
                             /> :
                             <>
                                 <img 
                                     src={inventory.rightHand.image}
                                     title={inventory.rightHand.name}
                                     className={styles.commonIcon}
+                                    alt='rightHand'
                                 />
                                 <img 
                                     src={inventory.leftHand.image}
                                     title={inventory.leftHand.name}
                                     className={styles.commonIcon}
+                                    alt='leftHand'
                                 />
                             </>
                         }
@@ -102,11 +120,13 @@ function InventoryScreen() {
                             src={inventory.belt.image}
                             title={inventory.belt.name}
                             className={styles.commonIcon}
+                            alt='belt'
                         />
                         <img 
                             src={inventory.tail.image}
                             title={inventory.tail.name}
                             className={styles.commonIcon}
+                            alt='tail'
                         />
                     </div>
                     <div className={styles.inventory_line}>
@@ -114,11 +134,13 @@ function InventoryScreen() {
                             src={inventory.rightPocket.image}
                             title={inventory.rightPocket.name}
                             className={styles.commonIcon}
+                            alt='rightPocket'
                         />       
                         <img 
                             src={inventory.leftPocket.image}
                             title={inventory.leftPocket.name}
                             className={styles.commonIcon}
+                            alt='leftPocket'
                         />         
                     </div>
                     <div className={styles.inventory_line}>
@@ -126,6 +148,7 @@ function InventoryScreen() {
                             src={inventory.legs.image}
                             title={inventory.legs.name}
                             className={styles.commonIcon}
+                            alt='legs'
                         />
                     </div>
                     <CommonScreen 

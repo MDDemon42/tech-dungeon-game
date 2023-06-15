@@ -17,7 +17,7 @@ function StatsScreen() {
             </h4>
             <ul>
                 <li>
-                    money: {user.money}
+                    diamonds: {user.diamonds}
                 </li>
                 <li>
                     stage: {user.stage}

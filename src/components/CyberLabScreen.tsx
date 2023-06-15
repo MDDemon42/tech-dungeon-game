@@ -4,24 +4,26 @@ import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
 import prioritisationChecker from "../functions/prioritisation";
+import userParams from "../redux/slices/userParams";
 
 function CyberLabScreen() {
     const cybersAll = useSelector((store: IStore) => store.generalAll.cybers);
     const cybersAllNames = Object.keys(cybersAll);
 
-    // needed for page reload
-    const inventory = useSelector((store: IStore) => store.generalUser.inventory);
+    const userResource = useSelector((store: IStore) => store.userParams.mechaCores);
     
     const dispatch = useDispatch();
 
     function implementButtonListener(cyber: ICyber) {
-        dispatch(generalUser.actions.implementCyber(cyber))
+        dispatch(generalUser.actions.implementCyber(cyber));
+        dispatch(userParams.actions.implementCyber(cyber.cost));
     }
 
     function disableChecker(cyber: ICyber) {
+        const resourceCheck = userResource >= cyber.cost;
         const priorityCheck = prioritisationChecker(cyber);
         
-        return !priorityCheck;
+        return !resourceCheck || !priorityCheck;
     }
 
     return (

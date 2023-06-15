@@ -9,6 +9,7 @@ function AcademyScreen() {
     const masteriesAllNames = Object.keys(masteriesAll);
 
     const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
+    const userResource = useSelector((store: IStore) => store.userParams.level);
     const dispatch = useDispatch();
 
     function learnButtonListener(mastery: IMastery) {
@@ -16,11 +17,12 @@ function AcademyScreen() {
     }
 
     function disableChecker(mastery: IMastery) {
+        const resourceCheck = userResource > masteriesUser.length;
         const masteriesCheck = masteriesUser.includes(mastery.name);
         const requiredMasteryCheck = !!mastery.requiredMastery ? 
             masteriesUser.includes(mastery.requiredMastery.name) : true;
 
-        return masteriesCheck || !requiredMasteryCheck
+        return !resourceCheck || masteriesCheck || !requiredMasteryCheck
     }
 
     return (

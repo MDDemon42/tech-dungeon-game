@@ -1,20 +1,13 @@
 import {useSelector, useDispatch} from 'react-redux';
-
 import {Link} from "react-router-dom";
 import {Gear} from 'react-bootstrap-icons';
-
 import styles from '../index.module.css';
 import images from '../images/images';
-
 import {IStore} from '../types/interfaces';
-
 import userParams from '../redux/slices/userParams';
-
-import { chromeStorageSaver } from '..';
-import { useEffect } from 'react';
-
+import { useEffect, useState } from 'react';
 import C from '../redux/constants';
-import generalUser from '../redux/slices/generalUser';
+import generalUser, { emptyInventory } from '../redux/slices/generalUser';
 
 const {classIcons} = images as Record<string, any>;
 const classes = Object.keys(classIcons);
@@ -27,12 +20,25 @@ function MainPage() {
     const icon = useSelector((store: IStore) => store.userParams.icon);
     const dispatch = useDispatch();
 
+    const [startButtonText, setStartButtonText] = useState('Start!')
+
     // loading storaged state
     useEffect(() => {
         chrome.storage.local.get().then(result => {
             if (result[C.name]) {
                 dispatch(userParams.actions.setState(result[C.name].userParams));
                 dispatch(generalUser.actions.setState(result[C.name].generalUser));
+                if (
+                    result[C.name].userParams.level > 0 ||
+                    result[C.name].userParams.diamonds > 0 ||
+                    result[C.name].userParams.mechaCores > 0 ||
+                    result[C.name].userParams.mutaGenes > 0 ||
+                    result[C.name].userParams.mana > 0 ||
+                    result[C.name].userParams.focus > 0 || 
+                    !Object.is(result[C.name].generalUser.inventory, emptyInventory())
+                ) {
+                    setStartButtonText('Continue!')
+                }
             }
         })
     }, [])
@@ -47,9 +53,9 @@ function MainPage() {
     }
 
     const changeClass = (value: string) => {
-        dispatch(userParams.actions.changeIcon(value));
-
-        chromeStorageSaver()
+        dispatch(userParams.actions.refreshState(value));
+        dispatch(generalUser.actions.refreshState(''));
+        setStartButtonText('Start!');
     }
 
     const startButtonListener = () => {
@@ -64,7 +70,7 @@ function MainPage() {
             ].join(' ')
         }>
             <div className={styles.extensionPopup_iconBlock}>
-                <img src={classIcons[icon]}/>
+                <img src={classIcons[icon]} alt='classIcon'/>
                 <select 
                     value={icon}
                     onChange={(event) => changeClass(event.target.value)}
@@ -86,7 +92,7 @@ function MainPage() {
                     className={styles.border}
                     onClick={startButtonListener}
                 >
-                    To adventure!
+                    {startButtonText}
                 </button>
                 <Link to={'settings'}>
                     <Gear/> 

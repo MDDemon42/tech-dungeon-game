@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from "react-redux";
-import {IItem, IStore, InventoryPlaces} from '../types/interfaces';
+import {IItem, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
@@ -13,18 +13,18 @@ function MarketScreen() {
     const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
     const dispatch = useDispatch();
 
-    const userMoney = useSelector((store: IStore) => store.userParams.money);
+    const userResource = useSelector((store: IStore) => store.userParams.diamonds);
     function buyButtonListener(item: IItem) {
         dispatch(generalUser.actions.buyItem(item));
         dispatch(userParams.actions.buyItem(item.cost));
     }
 
     function disableChecker(item: IItem) {
-        const moneyCheck = userMoney < item.cost;
+        const resourceCheck = userResource >= item.cost;
         const requiredMasteryCheck = !!item.requiredMastery && !masteriesUser.includes(item.requiredMastery.name)
         const priorityCheck = prioritisationChecker(item);
         
-        return moneyCheck || requiredMasteryCheck || !priorityCheck; 
+        return !resourceCheck || requiredMasteryCheck || !priorityCheck; 
     }
 
     return (

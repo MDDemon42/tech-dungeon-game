@@ -23,7 +23,7 @@ function createContextMenu(options: IContextMenusOptions) {
 
 function createCheatContextMenus() {
     createContextMenu({
-        title: 'Money = 1000',
+        title: 'All resources = 10',
         id: cheatContextMenuIds.money
     });
 
@@ -45,7 +45,10 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
             if (tab?.url?.endsWith('index.html#/game')) {
                 chrome.storage.local.get().then(result => {
                     const params = {...result['tech-dungeon-game'].userParams};
-                    params.money = 1000;
+                    params.diamonds = 10;
+                    params.mechaCores = 10;
+                    params.mutaGenes = 10;
+                    params.level = 20;
                     result['tech-dungeon-game'].userParams = params;
 
                     chrome.storage.local.set(result);
@@ -64,6 +67,13 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
                     user.powers = [];
                     user.inventory = null;
                     result['tech-dungeon-game'].generalUser = user;
+
+                    const params = {...result['tech-dungeon-game'].userParams};
+                    params.diamonds = 0;
+                    params.mechaCores = 0;
+                    params.mutaGenes = 0;
+                    params.level = 0;
+                    result['tech-dungeon-game'].userParams = params;
 
                     chrome.storage.local.set(result);
 

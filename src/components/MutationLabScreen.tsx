@@ -1,40 +1,28 @@
 import {useSelector, useDispatch} from "react-redux";
-import {BodyParts, IMutation, IStore} from '../types/interfaces';
+import {IMutation, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
 import prioritisationChecker from "../functions/prioritisation";
+import userParams from "../redux/slices/userParams";
 
 function MutationLabScreen() {
     const mutationsAll = useSelector((store: IStore) => store.generalAll.mutations);
     const mutationsAllNames = Object.keys(mutationsAll);
 
-    const mutationsUser = useSelector((store: IStore) => {
-        const inventory = store.generalUser.inventory;
-
-        if (!inventory) {
-            return []
-        }
-        
-        const keys = Object.keys(inventory);
-
-        return keys.map(data => {
-            if (inventory[data].bodyPart) {
-                return inventory[data].name
-            }
-        })
-    });
+    const userResource = useSelector((store: IStore) => store.userParams.mutaGenes);
     const dispatch = useDispatch();
 
     function mutateButtonListener(mutation: IMutation) {
-        dispatch(generalUser.actions.mutateMutation(mutation))
+        dispatch(generalUser.actions.mutateMutation(mutation));
+        dispatch(userParams.actions.mutateMutation(mutation.cost));
     }
 
     function disableChecker(mutation: IMutation) {
-        const mutationCheck = mutationsUser.includes(mutation.name);
+        const resourceCheck = userResource >= mutation.cost;
         const priorityCheck = prioritisationChecker(mutation);
 
-        return mutationCheck || !priorityCheck
+        return !resourceCheck || !priorityCheck
     }
 
     return (

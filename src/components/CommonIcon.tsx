@@ -48,6 +48,7 @@ function CommonIcon(props: {
                 src={item.image}
                 title={description}
                 className={styles.commonIcon}
+                alt={description}
             /> 
         </div>
     )

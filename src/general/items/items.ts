@@ -6,7 +6,7 @@ import masteries from "../masteries/masteries";
 
 const item_leatherArmor: IItem = {
     value: 1,
-    cost: 100,
+    cost: 1,
     inventoryPlace: InventoryPlaces.armor,
     name: 'Leather armor',
     description: 'Usual leather armor',
@@ -17,7 +17,7 @@ const item_leatherArmor: IItem = {
 
 const item_steelArmor: IItem = {
     value: 2,
-    cost: 200,
+    cost: 2,
     inventoryPlace: InventoryPlaces.armor,
     name: 'Steel armor',
     description: 'Massive steel armor',
@@ -28,7 +28,7 @@ const item_steelArmor: IItem = {
 
 const item_acidBomd: IItem = {
     value: 1,
-    cost: 100,
+    cost: 1,
     inventoryPlace: InventoryPlaces.rightPocket,
     name: 'Acid bomb',
     description: 'Burns without a fire',
@@ -39,7 +39,7 @@ const item_acidBomd: IItem = {
 
 const item_healingPotion: IItem = {
     value: 1,
-    cost: 100,
+    cost: 1,
     inventoryPlace: InventoryPlaces.leftPocket,
     name: 'Healing potion',
     description: 'Drink of herbs',
@@ -50,7 +50,7 @@ const item_healingPotion: IItem = {
 
 const item_oakBow: IItem = {
     value: 1,
-    cost: 100,
+    cost: 1,
     inventoryPlace: InventoryPlaces.back,
     name: 'Bow',
     description: 'Usual oak bow',
@@ -61,7 +61,7 @@ const item_oakBow: IItem = {
 
 const item_oakCrossow: IItem = {
     value: 2,
-    cost: 200,
+    cost: 2,
     inventoryPlace: InventoryPlaces.back,
     name: 'Crossbow',
     description: 'Usual oak crossbow',
@@ -72,7 +72,7 @@ const item_oakCrossow: IItem = {
 
 const item_steelChakram: IItem = {
     value: 1,
-    cost: 200,
+    cost: 2,
     inventoryPlace: InventoryPlaces.belt,
     name: 'Steel chakram',
     description: 'Spinning disk of death',
@@ -83,7 +83,7 @@ const item_steelChakram: IItem = {
 
 const item_steelSword: IItem = {
     value: 1,
-    cost: 100,
+    cost: 1,
     inventoryPlace: InventoryPlaces.rightHand,
     name: 'Steel sword',
     description: 'Usual steel sword',
@@ -94,7 +94,7 @@ const item_steelSword: IItem = {
 
 const item_steelShield: IItem = {
     value: 1,
-    cost: 100,
+    cost: 1,
     inventoryPlace: InventoryPlaces.leftHand,
     name: 'Steel shield',
     description: 'Usual steel shield',
@@ -105,7 +105,7 @@ const item_steelShield: IItem = {
 
 const item_steelGreataxe: IItem = {
     value: 2,
-    cost: 200,
+    cost: 2,
     inventoryPlace: InventoryPlaces.bothHands,
     name: 'Steel greataxe',
     description: 'Massive steel greataxe',
@@ -116,7 +116,7 @@ const item_steelGreataxe: IItem = {
 
 const item_runicSword: IItem = {
     value: 2,
-    cost: 200,
+    cost: 2,
     inventoryPlace: InventoryPlaces.leftHand,
     name: 'Runic sword',
     description: 'Sword covered with runes',
@@ -127,8 +127,8 @@ const item_runicSword: IItem = {
 
 const item_apprenticeHat: IItem = {
     value: 1,
-    cost: 100,
-    inventoryPlace: InventoryPlaces.hat,
+    cost: 1,
+    inventoryPlace: InventoryPlaces.head,
     name: 'Apprentice hat',
     description: 'Hat to focus thoughts on studying',
     image: images.wizardItems.apprenticeHat,
@@ -138,7 +138,7 @@ const item_apprenticeHat: IItem = {
 
 const item_apprenticeRod: IItem = {
     value: 1,
-    cost: 100,
+    cost: 1,
     inventoryPlace: InventoryPlaces.bothHands,
     name: 'Apprentice rod',
     description: 'Rod to help focus magic power',
@@ -149,7 +149,7 @@ const item_apprenticeRod: IItem = {
 
 const item_flyingCape: IItem = {
     value: 1,
-    cost: 200,
+    cost: 2,
     inventoryPlace: InventoryPlaces.back,
     name: 'Flying cape',
     description: 'Cape to make his owner fly',
@@ -160,8 +160,8 @@ const item_flyingCape: IItem = {
 
 const item_magisterHat: IItem = {
     value: 2,
-    cost: 200,
-    inventoryPlace: InventoryPlaces.hat,
+    cost: 2,
+    inventoryPlace: InventoryPlaces.head,
     name: 'Magister hat',
     description: 'Hat to hide baldness',
     image: images.wizardItems.magisterHat,
@@ -171,7 +171,7 @@ const item_magisterHat: IItem = {
 
 const item_magisterRobe: IItem = {
     value: 2,
-    cost: 200,
+    cost: 2,
     inventoryPlace: InventoryPlaces.armor,
     name: 'Magister robe',
     description: 'Robe to hide thinness',
@@ -182,7 +182,7 @@ const item_magisterRobe: IItem = {
 
 const item_magisterScepter: IItem = {
     value: 2,
-    cost: 200,
+    cost: 2,
     inventoryPlace: InventoryPlaces.bothHands,
     name: 'Magister scepter',
     description: 'Scepter to lean on between casting spells',

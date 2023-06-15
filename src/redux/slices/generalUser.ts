@@ -47,14 +47,16 @@ export function placeAsKey(place: string) {
     }).join('');
 }
 
+const initialState = {
+    masteries: [] as IMastery[],
+    inventory: emptyInventory(),
+    spells: [] as ISpell[],
+    powers: [] as IPower[]
+}
+
 const generalUser = createSlice({
     name: 'generalUser',
-    initialState: {
-        masteries: [] as IMastery[],
-        inventory: emptyInventory(),
-        spells: [] as ISpell[],
-        powers: [] as IPower[]
-    },
+    initialState,
     reducers: {
         buyItem(state, action) {
             if (!state.inventory) {
@@ -120,6 +122,12 @@ const generalUser = createSlice({
             Object.keys(state).forEach(key => {
                 // @ts-ignore
                 state[key] = action.payload[key];
+            })
+        },
+        refreshState(state, action) {
+            Object.keys(state).forEach(key => {
+                // @ts-ignore
+                state[key] = initialState[key];
             })
         }
     }
