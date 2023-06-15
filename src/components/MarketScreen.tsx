@@ -4,7 +4,7 @@ import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
 import userParams from "../redux/slices/userParams";
-import handsSlotsChainsChecker from "../functions/handsSlotsChains";
+import prioritisationChecker from "../functions/prioritisation";
 
 function MarketScreen() {
     const itemsAll = useSelector((store: IStore) => store.generalAll.items);
@@ -22,13 +22,9 @@ function MarketScreen() {
     function disableChecker(item: IItem) {
         const moneyCheck = userMoney < item.cost;
         const requiredMasteryCheck = !!item.requiredMastery && !masteriesUser.includes(item.requiredMastery.name)
-        const slotChainCheck = (
-            item.inventoryPlace === InventoryPlaces.leftHand ||
-            item.inventoryPlace === InventoryPlaces.rightHand ||
-            item.inventoryPlace === InventoryPlaces.bothHands
-        ) ? handsSlotsChainsChecker(item) : true;
+        const priorityCheck = prioritisationChecker(item);
         
-        return moneyCheck || requiredMasteryCheck || !slotChainCheck; 
+        return moneyCheck || requiredMasteryCheck || !priorityCheck; 
     }
 
     return (

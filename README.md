@@ -15,7 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  1) Add extra params and things like `Hit Points`, `Mana Points`, `Exp`
  2) Changing posessed `MASPIC` (specially `skin` and `shoulders`)
  3) Add abilities to use on battle screen
- 4) Extra `MASPIC`
- 5) Make mutual exclusions within `MASPIC`
+ 4) Extra `MASPIC` (mutation for legs)
+ 5) Make mutual exclusions within `MASPIC` (head and hat)
  6) Fix styles
  7) New images for powers

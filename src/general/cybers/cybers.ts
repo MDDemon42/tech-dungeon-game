@@ -4,10 +4,11 @@ import images from "../../images/images";
 
 const cyber_energyWhip: ICyber = {
     name: 'Energy whip',
-    description: 'Cyber to deal pain and suffer',
+    description: 'Cyber to deal pain and sufferings',
     value: 2,
     bodyPart: BodyParts.rightHand,
-    image: images.cyborgDetails.energyWhip
+    image: images.cyborgDetails.energyWhip,
+    priority: 6
 }
 
 const cyber_laser: ICyber = {
@@ -15,7 +16,8 @@ const cyber_laser: ICyber = {
     description: 'Cyber to burn with focused light',
     value: 1,
     bodyPart: BodyParts.leftHand,
-    image: images.cyborgDetails.laser
+    image: images.cyborgDetails.laser,
+    priority: 5
 }
 
 const cyber_nanoMatrix: ICyber = {
@@ -23,7 +25,8 @@ const cyber_nanoMatrix: ICyber = {
     description: 'Cyber to deflect almost any damage',
     value: 2,
     bodyPart: BodyParts.skin,
-    image: images.cyborgDetails.nanoMatrix
+    image: images.cyborgDetails.nanoMatrix,
+    priority: 3
 }
 
 const cyber_nanoVest: ICyber = {
@@ -31,7 +34,8 @@ const cyber_nanoVest: ICyber = {
     description: 'Cyber to boost your survival rate',
     value: 1,
     bodyPart: BodyParts.skin,
-    image: images.cyborgDetails.nanoVest
+    image: images.cyborgDetails.nanoVest,
+    priority: 2
 }
 
 const cyber_powerFist: ICyber = {
@@ -39,7 +43,8 @@ const cyber_powerFist: ICyber = {
     description: 'Cyber to give ultimate punches',
     value: 1,
     bodyPart: BodyParts.rightHand,
-    image: images.cyborgDetails.powerFist
+    image: images.cyborgDetails.powerFist,
+    priority: 5
 }
 
 const cyber_reactiveFeet: ICyber = {
@@ -47,7 +52,8 @@ const cyber_reactiveFeet: ICyber = {
     description: 'Cyber to fly in short distances',
     value: 1,
     bodyPart: BodyParts.legs,
-    image: images.cyborgDetails.reactiveFeet
+    image: images.cyborgDetails.reactiveFeet,
+    priority: 1
 }
 
 const cyber_rocket: ICyber = {
@@ -55,17 +61,18 @@ const cyber_rocket: ICyber = {
     description: 'Cyber to destroy everything in an area',
     value: 1,
     bodyPart: BodyParts.shoulders,
-    image: images.cyborgDetails.rocket
+    image: images.cyborgDetails.rocket,
+    priority: 2
 }
 
 const cybers = {
-    cyber_energyWhip,
-    cyber_laser,
-    cyber_nanoMatrix,
-    cyber_nanoVest,
     cyber_powerFist,
+    cyber_energyWhip,
+    cyber_rocket,
+    cyber_laser,
+    cyber_nanoVest,
+    cyber_nanoMatrix,
     cyber_reactiveFeet,
-    cyber_rocket
 }
 
 export default cybers

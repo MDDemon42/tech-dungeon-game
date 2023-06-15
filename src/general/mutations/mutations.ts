@@ -8,7 +8,8 @@ const mutation_acidSplit: IMutation = {
     description: 'Mutation to split acid in your enemy`s face',
     bodyPart: BodyParts.chin,
     value: 1,
-    image: images.mutantEvolvings.acidSplit
+    image: images.mutantEvolvings.acidSplit,
+    priority: 1
 }
 
 const mutation_claws: IMutation = {
@@ -16,7 +17,8 @@ const mutation_claws: IMutation = {
     description: 'Mutation to rip your opponents apart',
     bodyPart: BodyParts.bothHands,
     value: 1,
-    image: images.mutantEvolvings.claws
+    image: images.mutantEvolvings.claws,
+    priority: 4
 }
 
 const mutation_horns: IMutation = {
@@ -24,7 +26,8 @@ const mutation_horns: IMutation = {
     description: 'Mutation to use your head as a double-spear',
     bodyPart: BodyParts.head,
     value: 1,
-    image: images.mutantEvolvings.horns
+    image: images.mutantEvolvings.horns,
+    priority: 3
 }
 
 const mutation_scales: IMutation = {
@@ -32,7 +35,8 @@ const mutation_scales: IMutation = {
     description: 'Mutation to make your skin much tougher',
     bodyPart: BodyParts.skin,
     value: 1,
-    image: images.mutantEvolvings.scales
+    image: images.mutantEvolvings.scales,
+    priority: 1
 }
 
 const mutation_tailWithSting: IMutation = {
@@ -40,7 +44,8 @@ const mutation_tailWithSting: IMutation = {
     description: 'Mutation to pierce your victims',
     bodyPart: BodyParts.tail,
     value: 1,
-    image: images.mutantEvolvings.tailWithSting
+    image: images.mutantEvolvings.tailWithSting,
+    priority: 1
 }
 
 const mutation_twoExtraPincers: IMutation = {
@@ -48,7 +53,8 @@ const mutation_twoExtraPincers: IMutation = {
     description: 'Mutation to make holes in you rival',
     bodyPart: BodyParts.shoulders,
     value: 1,
-    image: images.mutantEvolvings.twoExtraPincers
+    image: images.mutantEvolvings.twoExtraPincers,
+    priority: 1
 }
 
 const mutation_wings: IMutation = {
@@ -56,7 +62,8 @@ const mutation_wings: IMutation = {
     description: 'Mutation to fly over battlefield',
     bodyPart: BodyParts.back,
     value: 1,
-    image: images.mutantEvolvings.wings
+    image: images.mutantEvolvings.wings,
+    priority: 3
 }
 
 const mutations = {

@@ -10,7 +10,8 @@ export const noItem: IMutation & IItem = {
     cost: 0,
     inventoryPlace: InventoryPlaces.belt,
     image: images.classIcons.noIcon,
-    requiredMastery: null
+    requiredMastery: null,
+    priority: 0
 }
 
 export function emptyInventory() {

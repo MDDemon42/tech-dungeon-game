@@ -3,7 +3,7 @@ import {BodyParts, IMutation, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
-import handsSlotsChainsChecker from "../functions/handsSlotsChains";
+import prioritisationChecker from "../functions/prioritisation";
 
 function MutationLabScreen() {
     const mutationsAll = useSelector((store: IStore) => store.generalAll.mutations);
@@ -32,10 +32,9 @@ function MutationLabScreen() {
 
     function disableChecker(mutation: IMutation) {
         const mutationCheck = mutationsUser.includes(mutation.name);
-        const slotChainCheck = mutation.bodyPart === BodyParts.bothHands ? 
-            handsSlotsChainsChecker(mutation) : true;
+        const priorityCheck = prioritisationChecker(mutation);
 
-        return mutationCheck || !slotChainCheck
+        return mutationCheck || !priorityCheck
     }
 
     return (

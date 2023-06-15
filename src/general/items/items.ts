@@ -11,7 +11,8 @@ const item_leatherArmor: IItem = {
     name: 'Leather armor',
     description: 'Usual leather armor',
     image: images.normalItems.leatherArmor,
-    requiredMastery: null
+    requiredMastery: null,
+    priority: 1
 }
 
 const item_steelArmor: IItem = {
@@ -21,7 +22,8 @@ const item_steelArmor: IItem = {
     name: 'Steel armor',
     description: 'Massive steel armor',
     image: images.normalItems.steelArmor,
-    requiredMastery: null
+    requiredMastery: masteries.mastery_brutalForce,
+    priority: 2
 }
 
 const item_acidBomd: IItem = {
@@ -31,7 +33,8 @@ const item_acidBomd: IItem = {
     name: 'Acid bomb',
     description: 'Burns without a fire',
     image: images.normalItems.acidBomb,
-    requiredMastery: masteries.mastery_bombThrowing
+    requiredMastery: masteries.mastery_bombThrowing,
+    priority: 1
 }
 
 const item_healingPotion: IItem = {
@@ -41,7 +44,8 @@ const item_healingPotion: IItem = {
     name: 'Healing potion',
     description: 'Drink of herbs',
     image: images.normalItems.healingPotion,
-    requiredMastery: null
+    requiredMastery: null,
+    priority: 1
 }
 
 const item_oakBow: IItem = {
@@ -51,7 +55,8 @@ const item_oakBow: IItem = {
     name: 'Bow',
     description: 'Usual oak bow',
     image: images.normalItems.bow,
-    requiredMastery: masteries.mastery_archery
+    requiredMastery: masteries.mastery_archery,
+    priority: 1
 }
 
 const item_oakCrossow: IItem = {
@@ -61,7 +66,8 @@ const item_oakCrossow: IItem = {
     name: 'Crossbow',
     description: 'Usual oak crossbow',
     image: images.normalItems.crossbow,
-    requiredMastery: masteries.mastery_marksmanship
+    requiredMastery: masteries.mastery_marksmanship,
+    priority: 2
 }
 
 const item_steelChakram: IItem = {
@@ -71,7 +77,8 @@ const item_steelChakram: IItem = {
     name: 'Steel chakram',
     description: 'Spinning disk of death',
     image: images.guildianLearnings.chakram,
-    requiredMastery: masteries.mastery_chakramThrowing
+    requiredMastery: masteries.mastery_chakramThrowing,
+    priority: 1
 }
 
 const item_steelSword: IItem = {
@@ -81,7 +88,8 @@ const item_steelSword: IItem = {
     name: 'Steel sword',
     description: 'Usual steel sword',
     image: images.normalItems.sword,
-    requiredMastery: masteries.mastery_swordsmanship
+    requiredMastery: masteries.mastery_swordsmanship,
+    priority: 1
 }
 
 const item_steelShield: IItem = {
@@ -91,7 +99,8 @@ const item_steelShield: IItem = {
     name: 'Steel shield',
     description: 'Usual steel shield',
     image: images.normalItems.shield,
-    requiredMastery: null
+    requiredMastery: null,
+    priority: 1
 }
 
 const item_steelGreataxe: IItem = {
@@ -101,7 +110,8 @@ const item_steelGreataxe: IItem = {
     name: 'Steel greataxe',
     description: 'Massive steel greataxe',
     image: images.normalItems.greataxe,
-    requiredMastery: masteries.mastery_brutalForce
+    requiredMastery: masteries.mastery_brutalForce,
+    priority: 2
 }
 
 const item_runicSword: IItem = {
@@ -111,7 +121,8 @@ const item_runicSword: IItem = {
     name: 'Runic sword',
     description: 'Sword covered with runes',
     image: images.guildianLearnings.runicSword,
-    requiredMastery: masteries.mastery_swordsmanship
+    requiredMastery: masteries.mastery_swordsmanship,
+    priority: 2
 }
 
 const item_apprenticeHat: IItem = {
@@ -121,7 +132,8 @@ const item_apprenticeHat: IItem = {
     name: 'Apprentice hat',
     description: 'Hat to focus thoughts on studying',
     image: images.wizardItems.apprenticeHat,
-    requiredMastery: masteries.mastery_scholarship
+    requiredMastery: masteries.mastery_scholarship,
+    priority: 1
 }
 
 const item_apprenticeRod: IItem = {
@@ -131,7 +143,8 @@ const item_apprenticeRod: IItem = {
     name: 'Apprentice rod',
     description: 'Rod to help focus magic power',
     image: images.wizardItems.apprenticeRod,
-    requiredMastery: masteries.mastery_scholarship
+    requiredMastery: masteries.mastery_scholarship,
+    priority: 2
 }
 
 const item_flyingCape: IItem = {
@@ -141,7 +154,8 @@ const item_flyingCape: IItem = {
     name: 'Flying cape',
     description: 'Cape to make his owner fly',
     image: images.wizardItems.flyingCape,
-    requiredMastery: null
+    requiredMastery: null,
+    priority: 2
 }
 
 const item_magisterHat: IItem = {
@@ -151,7 +165,8 @@ const item_magisterHat: IItem = {
     name: 'Magister hat',
     description: 'Hat to hide baldness',
     image: images.wizardItems.magisterHat,
-    requiredMastery: masteries.mastery_magisterDegree
+    requiredMastery: masteries.mastery_magisterDegree,
+    priority: 2
 }
 
 const item_magisterRobe: IItem = {
@@ -161,7 +176,8 @@ const item_magisterRobe: IItem = {
     name: 'Magister robe',
     description: 'Robe to hide thinness',
     image: images.wizardItems.magisterRobe,
-    requiredMastery: masteries.mastery_magisterDegree
+    requiredMastery: masteries.mastery_magisterDegree,
+    priority: 2
 }
 
 const item_magisterScepter: IItem = {
@@ -171,7 +187,8 @@ const item_magisterScepter: IItem = {
     name: 'Magister scepter',
     description: 'Scepter to lean on between casting spells',
     image: images.wizardItems.magisterScepter,
-    requiredMastery: masteries.mastery_magisterDegree
+    requiredMastery: masteries.mastery_magisterDegree,
+    priority: 3
 }
 
 const items = {

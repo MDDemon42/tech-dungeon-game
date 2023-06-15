@@ -30,7 +30,8 @@ export enum InventoryPlaces {
 }
 
 export interface IItem extends ISpell {
-    inventoryPlace: InventoryPlaces
+    inventoryPlace: InventoryPlaces,
+    priority: number
 }
 
 export enum BodyParts {
@@ -48,13 +49,15 @@ export enum BodyParts {
 
 export interface IMutation extends ICommon {
     value: number,
-    bodyPart: BodyParts
+    bodyPart: BodyParts,
+    priority: number
 }
 
-export interface IHandSlot {
+export interface IInventorySlot {
     name: string,
     inventoryPlace?: InventoryPlaces,
-    bodyPart?: BodyParts
+    bodyPart?: BodyParts,
+    priority: number
 }
 
 export interface ICyber extends IMutation {

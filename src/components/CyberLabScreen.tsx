@@ -1,15 +1,17 @@
 import {useSelector, useDispatch} from "react-redux";
-import {BodyParts, ICyber, IStore} from '../types/interfaces';
+import {ICyber, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
-import handsSlotsChainsChecker from "../functions/handsSlotsChains";
+import prioritisationChecker from "../functions/prioritisation";
 
 function CyberLabScreen() {
     const cybersAll = useSelector((store: IStore) => store.generalAll.cybers);
     const cybersAllNames = Object.keys(cybersAll);
 
+    // needed for page reload
     const inventory = useSelector((store: IStore) => store.generalUser.inventory);
+    
     const dispatch = useDispatch();
 
     function implementButtonListener(cyber: ICyber) {
@@ -17,12 +19,9 @@ function CyberLabScreen() {
     }
 
     function disableChecker(cyber: ICyber) {
-        const slotChainCheck = (
-            cyber.bodyPart === BodyParts.leftHand ||
-            cyber.bodyPart === BodyParts.rightHand
-        ) ? handsSlotsChainsChecker(cyber) : true;
+        const priorityCheck = prioritisationChecker(cyber);
         
-        return !slotChainCheck;
+        return !priorityCheck;
     }
 
     return (

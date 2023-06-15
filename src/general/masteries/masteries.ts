@@ -89,8 +89,8 @@ const masteries = {
     mastery_chakramThrowing,
     mastery_scholarship,
     mastery_magisterDegree,
-    mastery_psiEnergy,
-    mastery_meditativeInsights
+    mastery_meditativeInsights,
+    mastery_psiEnergy
 }
 
 export default masteries
