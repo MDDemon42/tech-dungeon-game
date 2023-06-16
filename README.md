@@ -12,7 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  - Most of images for Tech Dungeon Game is from `heromachine` service.
 
  # TODO:
- 1) Add extra params and things like `Hit Points`, `Mana Points`, `Exp`
+ 1) Add `team` instead of `user`
  2) Add more actions 
  3) Add abilities to use on `Battle Screen`
  4) Extra `MASPIC`

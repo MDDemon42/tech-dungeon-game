@@ -83,6 +83,15 @@
     margin: 5px;
 }
 
+.gamePage_component_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: scroll;
+    max-height: 600px;
+}
+
 .inventory {
     display: flex;
     flex-direction: row;
@@ -131,7 +140,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     min-width: 355px;
 }
 
@@ -147,4 +156,12 @@
     margin: 5px;
     width: 50px;
     height: 50px;
+}
+
+.inventorySlotItems_title {
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
