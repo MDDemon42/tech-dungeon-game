@@ -1,24 +1,21 @@
 import styles from '../index.module.css';
-
 import BattleScreen from "../components/BattleScreen";
-import MarketScreen from '../components/MarketScreen';
 import SpellShopScreen from '../components/SpellShopScreen';
 import FocusSiteScreen from '../components/FocusSiteScreen';
 import AcademyScreen from '../components/AcademyScreen';
-import CyberLabScreen from '../components/CyberLabScreen';
-import MutationLabScreen from '../components/MutationLabScreen';
 import { useSelector, useDispatch } from 'react-redux';
 import { IStore } from '../types/interfaces';
 import gameScreens from '../redux/slices/gameScreens';
+import SubInventoryScreen from './SubInventoryScreen';
 
 const screens: Record<string, JSX.Element> = {
     'battle': <BattleScreen />,
-    'market': <MarketScreen/>,
+    'market': <SubInventoryScreen dataName='items'/>,
     'academy': <AcademyScreen/>,
     'spellshop': <SpellShopScreen/>,
     'focussite': <FocusSiteScreen/>,
-    'cyberlab': <CyberLabScreen/>,
-    'mutationlab': <MutationLabScreen/>
+    'cyberlab': <SubInventoryScreen dataName='cybers'/>,
+    'mutationlab': <SubInventoryScreen dataName='mutations'/>
 }
 
 const screensButtonTexts: Record<string, string> = {

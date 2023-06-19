@@ -161,7 +161,14 @@
     height: 50px;
 }
 
-.inventorySlotItems_title {
+.inventorySlotLine {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.inventorySlotLine_title {
     min-width: 140px;
     display: flex;
     align-items: center;

@@ -1,5 +1,5 @@
 import styles from '../index.module.css';
-import { BodyParts, DamageTypes, IMastery, InventoryPlaces } from '../types/interfaces';
+import { DamageTypes, IMastery, InventoryPlaces } from '../types/interfaces';
 
 function CommonIcon(props: {
     item: {
@@ -10,8 +10,7 @@ function CommonIcon(props: {
         cost?: number,
         requiredMastery?: IMastery | null,
         passive?: boolean,
-        inventoryPlace?: InventoryPlaces,
-        bodyPart?: BodyParts,
+        inventoryPlace?: InventoryPlaces
         manaCost?: number,
         focusCost?: number,
         staminaCost?: number,
@@ -47,10 +46,6 @@ function CommonIcon(props: {
 
     if (item.inventoryPlace) {
         description += '\nInventory place: ' + item.inventoryPlace;
-    }
-
-    if (item.bodyPart) {
-        description += '\nBody part: ' + item.bodyPart;
     }
 
     if (item.manaCost && item.manaCost > 0) {

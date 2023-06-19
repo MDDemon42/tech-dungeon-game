@@ -19,53 +19,36 @@ export interface IPower extends ISpell {
 
 export enum InventoryPlaces {
     head = 'Head',
+    chin = 'Chin',
+    skin = 'Skin',
+    back = 'Back',
     armor = 'Armor',
+    shoulders = 'Shoulders',
+    tail = 'Tail',
     leftHand = 'Left hand',
     rightHand = 'Right hand',
     bothHands = 'Both hands',
     belt = 'Belt',
     leftPocket = 'Left pocket',
     rightPocket = 'Right pocket',
-    back = 'Back'
+    legs = 'Legs'
 }
 
-export interface IItem extends ICommon {
+export interface IInventorySlot extends ICommon {
     cost: number,
     inventoryPlace: InventoryPlaces,
     priority: number,
+    linkedMastery?: IMastery,
+    masterAbility?: IAbility
+}
+
+export interface IItem extends IInventorySlot {
     ability: IAbility | null,
-    linkedMastery?: IMastery,
-    requiredMastery?: IMastery,
-    masterAbility?: IAbility
+    requiredMastery?: IMastery
 }
 
-export enum BodyParts {
-    head = 'Head',
-    chin = 'Chin',
-    skin = 'Skin',
-    back = 'Back',
-    shoulders = 'Shoulders',
-    tail = 'Tail',
-    legs = 'Legs',
-    leftHand = 'Left hand',
-    rightHand = 'Right hand',
-    bothHands = 'Both hands'
-}
-
-export interface IMutation extends ICommon {
-    cost: number,
-    bodyPart: BodyParts,
-    priority: number,
-    ability?: IAbility | null,
-    linkedMastery?: IMastery,
-    masterAbility?: IAbility
-}
-
-export interface IInventorySlot {
-    name: string,
-    inventoryPlace?: InventoryPlaces,
-    bodyPart?: BodyParts,
-    priority: number
+export interface IMutation extends IInventorySlot {
+    ability?: IAbility | null
 }
 
 export interface ICyber extends IMutation {

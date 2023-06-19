@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { 
-    BodyParts, 
     IAbility, 
     IInventory, 
     IItem, 
@@ -16,7 +15,6 @@ import mutations from '../../general/mutations/mutations';
 export const noItem: IMutation & IItem = {
     name: 'Nothing yet',
     description: 'Nothing at all',
-    bodyPart: BodyParts.head,
     cost: 0,
     inventoryPlace: InventoryPlaces.belt,
     image: images.classIcons.noIcon,
@@ -106,23 +104,23 @@ const generalUser = createSlice({
             const position = action.payload.bodyPart;
 
             if (
-                position === BodyParts.leftHand
+                position === InventoryPlaces.leftHand
             ) {
-                if (state.inventory[placeAsKey(BodyParts.bothHands)].name === mutations.mutation_claws.name) {
-                    state.inventory[placeAsKey(BodyParts.rightHand)] = mutations.mutation_clawRight;
+                if (state.inventory[placeAsKey(InventoryPlaces.bothHands)].name === mutations.mutation_claws.name) {
+                    state.inventory[placeAsKey(InventoryPlaces.rightHand)] = mutations.mutation_clawRight;
                 }
                 
-                state.inventory[placeAsKey(BodyParts.bothHands)] = noItem;                
+                state.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem;                
             }
 
             if (
-                position === BodyParts.rightHand
+                position === InventoryPlaces.rightHand
             ) {
-                if (state.inventory[placeAsKey(BodyParts.bothHands)].name === mutations.mutation_claws.name) {
-                    state.inventory[placeAsKey(BodyParts.leftHand)] = mutations.mutation_clawLeft;
+                if (state.inventory[placeAsKey(InventoryPlaces.bothHands)].name === mutations.mutation_claws.name) {
+                    state.inventory[placeAsKey(InventoryPlaces.leftHand)] = mutations.mutation_clawLeft;
                 }
 
-                state.inventory[placeAsKey(BodyParts.bothHands)] = noItem;
+                state.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem;
             }
 
             state.inventory[placeAsKey(position)] = action.payload;
@@ -134,9 +132,9 @@ const generalUser = createSlice({
 
             const position = action.payload.bodyPart;
 
-            if (position === BodyParts.bothHands) {
-                state.inventory[placeAsKey(BodyParts.leftHand)] = noItem;
-                state.inventory[placeAsKey(BodyParts.rightHand)] = noItem;
+            if (position === InventoryPlaces.bothHands) {
+                state.inventory[placeAsKey(InventoryPlaces.leftHand)] = noItem;
+                state.inventory[placeAsKey(InventoryPlaces.rightHand)] = noItem;
             }
 
             state.inventory[placeAsKey(position)] = action.payload;
