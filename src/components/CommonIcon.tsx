@@ -1,5 +1,5 @@
 import styles from '../index.module.css';
-import { BodyParts, IMastery, InventoryPlaces } from '../types/interfaces';
+import { BodyParts, DamageTypes, IMastery, InventoryPlaces } from '../types/interfaces';
 
 function CommonIcon(props: {
     item: {
@@ -11,12 +11,23 @@ function CommonIcon(props: {
         requiredMastery?: IMastery | null,
         passive?: boolean,
         inventoryPlace?: InventoryPlaces,
-        bodyPart?: BodyParts
+        bodyPart?: BodyParts,
+        manaCost?: number,
+        focusCost?: number,
+        staminaCost?: number,
+        damage?: number,
+        damageType?: DamageTypes,
+        hitChance?: number,
+        targetAmount?: number
     }
 }) {
     const {item} = props;
 
-    let description = item.name + '\n\n' + item.description + '\n';
+    let description = item.name + '\n\n' 
+    
+    if (item.description.length > 0) {
+        description += item.description + '\n';
+    }
     
     if (item.value) {
         description += '\nValue: ' + item.value;
@@ -40,6 +51,34 @@ function CommonIcon(props: {
 
     if (item.bodyPart) {
         description += '\nBody part: ' + item.bodyPart;
+    }
+
+    if (item.manaCost && item.manaCost > 0) {
+        description += '\Mana cost: ' + item.manaCost;
+    }
+
+    if (item.focusCost && item.focusCost > 0) {
+        description += '\nFocus cost: ' + item.focusCost;
+    }
+
+    if (item.staminaCost && item.staminaCost > 0) {
+        description += '\nStamina cost: ' + item.staminaCost;
+    }
+
+    if (item.damage && item.damage > 0) {
+        description += '\nDamage: ' + item.damage;
+    }
+
+    if (item.damageType) {
+        description += '\nDamage type: ' + item.damageType;
+    }
+
+    if (item.hitChance) {
+        description += '\nHit chance: ' + item.hitChance;
+    }
+
+    if (item.targetAmount) {
+        description += '\nTarget amount: ' + item.targetAmount;
     }
 
     return(

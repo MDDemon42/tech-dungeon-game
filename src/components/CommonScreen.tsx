@@ -20,7 +20,7 @@ function CommonScreen(props: {
                     styles.commonScreen_notVertical
             }>
                 {
-                    common && common.length > 0 ?
+                    common && Array.isArray(common) && common.length > 0 ?
                         common.map((item: ICommon) => (
                             <div className={styles.commonIconWithButton}>
                                 <CommonIcon item={item}/>

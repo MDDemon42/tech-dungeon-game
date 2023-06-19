@@ -4,6 +4,9 @@ import images from "../images/images";
 import CommonScreen from "./CommonScreen";
 import {useSelector} from "react-redux";
 import { emptyInventory, noItem } from "../redux/slices/generalUser";
+import mutations from "../general/mutations/mutations";
+import cybers from "../general/cybers/cybers";
+import items from "../general/items/items";
 
 function InventoryScreen() {
     const user = useSelector((state: IStore) => state.userParams);
@@ -21,7 +24,7 @@ function InventoryScreen() {
                     name={'masteries'} 
                     vertical={true}
                 /> 
-                <div>
+                <div className={styles.inventory_screen}>
                     <div className={styles.inventory_body}>
                         <p>
                             Health: {user.health}
@@ -41,115 +44,127 @@ function InventoryScreen() {
                         <p>
                             Muta-genes: {user.mutaGenes}
                         </p>
-                        <img src={images.body} alt='body'/>
+                        {
+                            inventory.back.name === mutations.mutation_wings.name ?
+                                <img src={images.bodyElements.wings} alt='wings'/> :
+                                inventory.back.name === items.item_flyingCape.name ?
+                                    <img src={images.bodyElements.cape} alt='cape'/> :
+                                    inventory.back.name === items.item_oakCrossow.name ?
+                                        <img src={images.bodyElements.oakCrossbow} alt='oakCrossbow'/> :
+                                        inventory.back.name === items.item_oakBow.name ?
+                                            <img src={images.bodyElements.oakBow} alt='oakBow'/> : null
+                        }
+                        {
+                            inventory.tail.name === mutations.mutation_tailWithSting.name ?
+                                <img src={images.bodyElements.tail} alt='tail'/> : null
+                        }
+                        {
+                            inventory.legs.name === mutations.mutation_hooves.name ?
+                                <img src={images.bodyElements.hooves} alt='hooves'/> :
+                                [
+                                    <img src={images.bodyElements.legs} alt='legs'/>,
+                                    inventory.skin.name === cybers.cyber_nanoMatrix.name ?
+                                        <img src={images.bodyElements.nanoMatrixLegs} alt='nanoMatrixLegs'/> :
+                                        inventory.skin.name === cybers.cyber_nanoVest.name ?
+                                            <img src={images.bodyElements.nanoVestLegs} alt='nanoVestLegs'/> :
+                                            inventory.skin.name === mutations.mutation_scales.name ?
+                                                <img src={images.bodyElements.scalesLegs} alt='scalesLegs'/> : null
+                                ]                                
+                        }
+                        {
+                            inventory.legs.name === cybers.cyber_reactiveFeet.name ?
+                                <img src={images.bodyElements.reactiveFeet} alt='reactiveFeet'/> : null
+                        }
+                        {
+                            inventory.skin.name === cybers.cyber_nanoMatrix.name ?
+                                <img src={images.bodyElements.nanoMatrixTorso} alt='nanoMatrixTorso'/> :
+                                inventory.skin.name === cybers.cyber_nanoVest.name ?
+                                    <img src={images.bodyElements.nanoVestTorso} alt='nanoVestTorso'/> :
+                                    inventory.skin.name === mutations.mutation_scales.name ?
+                                        <img src={images.bodyElements.scalesTorso} alt='scalesTorso'/> :
+                                        <img src={images.bodyElements.torso} alt='torso'/>
+                        }
+                        {
+                            inventory.shoulders.name === cybers.cyber_rocket.name ?
+                                <img src={images.bodyElements.rocket} alt='rocket'/> :
+                                inventory.shoulders.name === mutations.mutation_twoExtraPincers.name ?
+                                    <img src={images.bodyElements.pincers} alt='pincers'/> : null
+                        }
+                        {
+                            inventory.armor.name === items.item_magisterRobe.name ?
+                                <img src={images.bodyElements.magisterRobe} alt='magisterRobe'/> :
+                                inventory.armor.name === items.item_steelArmor.name ?
+                                    <img src={images.bodyElements.steelArmor} alt='steelArmor'/> :
+                                    inventory.armor.name === items.item_leatherArmor.name ?
+                                        <img src={images.bodyElements.leatherArmor} alt='leatherArmor'/> : null 
+                        }
+                        {
+                            inventory.rightPocket.name === items.item_acidBomd.name ?
+                                <img src={images.bodyElements.acidBomb} alt='acidBomb'/> : null
+                        }
+                        {
+                            inventory.leftPocket.name === items.item_healingPotion.name ?
+                                <img src={images.bodyElements.healingPotion} alt='healingPotion'/> : null
+                        }
+                                                
+                                                {
+                            inventory.leftHand.name === cybers.cyber_laser.name ?
+                                <img src={images.bodyElements.laser} alt='laser'/> :
+                                (
+                                    inventory.bothHands.name === mutations.mutation_claws.name ||
+                                    inventory.leftHand.name === mutations.mutation_clawLeft.name
+                                ) ?
+                                    <img src={images.bodyElements.clawLeft} alt='clawLeft'/> :
+                                    inventory.bothHands.name === items.item_steelGreataxe.name ?
+                                        <img src={images.bodyElements.steelGreataxe} alt='steelGreataxe'/> :
+                                        inventory.leftHand.name === items.item_steelSwordLeftHand.name ?
+                                            <img src={images.bodyElements.steelSwordLeftHand} alt='steelSwordLeftHand'/> :
+                                            inventory.leftHand.name === items.item_steelShield.name ?
+                                                <img src={images.bodyElements.steelShield} alt='steelShield'/> :
+                                                [
+                                                    inventory.leftHand.name === items.item_steelChakram.name ?
+                                                        <img src={images.bodyElements.chakram} alt='chakram'/> : null,
+                                                    <img src={images.bodyElements.leftHand} alt='leftHand'/>
+                                                ]
+                        }
+                        {
+                            inventory.rightHand.name === cybers.cyber_energyWhip.name ?
+                                <img src={images.bodyElements.energyWhip} alt='energyWhip'/> :
+                                inventory.rightHand.name === cybers.cyber_powerFist.name ?
+                                    <img src={images.bodyElements.powerFist} alt='powerFist'/> :
+                                    (
+                                        inventory.bothHands.name === mutations.mutation_claws.name ||
+                                        inventory.rightHand.name === mutations.mutation_clawRight.name
+                                    ) ?
+                                        <img src={images.bodyElements.clawRight} alt='clawRight'/> :
+                                        inventory.bothHands.name === items.item_magisterScepter.name ?
+                                            <img src={images.bodyElements.magisterScepter} alt='magisterScepter'/> :
+                                            inventory.bothHands.name === items.item_runicGreatsword.name ?
+                                                <img src={images.bodyElements.runicGreatsword} alt='runicGreatsword'/> :
+                                                inventory.bothHands.name === items.item_apprenticeRod.name ?
+                                                    <img src={images.bodyElements.apprenticeRod} alt='apprenticeRod'/> :
+                                                    inventory.rightHand.name === items.item_steelSwordRightHand.name ?
+                                                        <img src={images.bodyElements.steelSwordRightHand} alt='steelSwordRightHand'/> :
+                                                        <img src={images.bodyElements.rightHand} alt='rightHand'/>
+                        }
+                        <img src={images.bodyElements.head} alt='head'/>
+                        {
+                            inventory.chin.name === mutations.mutation_acidSplit.name ?
+                                <img src={images.bodyElements.acidSplit} alt='acidSplit'/> : null
+                        }
+                        {
+                            inventory.head.name === mutations.mutation_horns.name ?
+                                <img src={images.bodyElements.horns} alt='horns'/> :
+                                inventory.head.name === items.item_magisterHat.name ?
+                                    <img src={images.bodyElements.magisterHat} alt='magisterHat'/> :
+                                    inventory.head.name === items.item_apprenticeHat.name ?
+                                        <img src={images.bodyElements.apprenticeHat} alt='apprenticeHat'/> : null
+                        }
                     </div>
                     <div className={styles.inventory_header}>
                         <h3>
                             {user.name} level {user.level}
                         </h3>
-                    </div>
-                    <div className={styles.inventory_line}>
-                        <img 
-                            src={inventory.head.image}
-                            title={inventory.head.name}
-                            className={styles.commonIcon}
-                            alt='head'
-                        />
-                    </div>
-                    <div className={styles.inventory_line}>
-                        <img 
-                            src={inventory.shoulders.image}
-                            title={inventory.shoulders.name}
-                            className={styles.commonIcon}
-                            alt='shoulders'
-                        />
-                        <img 
-                            src={inventory.chin.image}
-                            title={inventory.chin.name}
-                            className={styles.commonIcon}
-                            alt='chin'
-                        />
-                        <img 
-                            src={inventory.back.image}
-                            title={inventory.back.name}
-                            className={styles.commonIcon}
-                            alt='back'
-                        />
-                    </div>
-                    <div className={styles.inventory_line}>
-                        <img 
-                            src={inventory.armor.image}
-                            title={inventory.armor.name}
-                            className={styles.commonIcon}
-                            alt='armor'
-                        />
-                        <img 
-                            src={inventory.skin.image}
-                            title={inventory.skin.name}
-                            className={styles.commonIcon}
-                            alt='skin'
-                        />
-                    </div>
-                    <div className={styles.inventory_line}>
-                        {
-                            inventory.bothHands.name !== noItem.name ?
-                            <img 
-                                src={inventory.bothHands.image}
-                                title={inventory.bothHands.name}
-                                className={styles.commonIcon}
-                                alt='bothHands'
-                            /> :
-                            <>
-                                <img 
-                                    src={inventory.rightHand.image}
-                                    title={inventory.rightHand.name}
-                                    className={styles.commonIcon}
-                                    alt='rightHand'
-                                />
-                                <img 
-                                    src={inventory.leftHand.image}
-                                    title={inventory.leftHand.name}
-                                    className={styles.commonIcon}
-                                    alt='leftHand'
-                                />
-                            </>
-                        }
-                    </div>
-                    <div className={styles.inventory_line}>
-                        <img 
-                            src={inventory.belt.image}
-                            title={inventory.belt.name}
-                            className={styles.commonIcon}
-                            alt='belt'
-                        />
-                        <img 
-                            src={inventory.tail.image}
-                            title={inventory.tail.name}
-                            className={styles.commonIcon}
-                            alt='tail'
-                        />
-                    </div>
-                    <div className={styles.inventory_line}>
-                        <img 
-                            src={inventory.rightPocket.image}
-                            title={inventory.rightPocket.name}
-                            className={styles.commonIcon}
-                            alt='rightPocket'
-                        />       
-                        <img 
-                            src={inventory.leftPocket.image}
-                            title={inventory.leftPocket.name}
-                            className={styles.commonIcon}
-                            alt='leftPocket'
-                        />         
-                    </div>
-                    <div className={styles.inventory_line}>
-                        <img 
-                            src={inventory.legs.image}
-                            title={inventory.legs.name}
-                            className={styles.commonIcon}
-                            alt='legs'
-                        />
                     </div>
                     <CommonScreen 
                         name={'spells'} 

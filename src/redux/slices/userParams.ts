@@ -6,12 +6,13 @@ const initialState: IUserParams = {
     icon: 'noIcon',
     stage: 0,
     health: 3,
-    level: 0,
+    level: 1,
     diamonds: 0,
     mechaCores: 0,
     mutaGenes: 0,
     mana: 0,
-    focus: 0
+    focus: 0,
+    stamina: 3
 }
 
 const startBonuses: Record<string, keyof IUserParams> = {

@@ -33,7 +33,7 @@ const mastery_dualSwords: IMastery = {
 const mastery_brutalForce: IMastery = {
     name: 'Brutal force',
     description: 'Mastery in smashing and beheading your enemies',
-    image: images.normalItems.greataxe,
+    image: images.guildianLearnings.brutalForce,
     requiredMastery: null
 }
 

@@ -21,6 +21,24 @@ const mutation_claws: IMutation = {
     priority: 4
 }
 
+const mutation_clawLeft: IMutation = {
+    name: 'Claws',
+    description: 'Mutation to rip your opponents apart',
+    bodyPart: BodyParts.leftHand,
+    cost: 1,
+    image: images.mutantEvolvings.claws,
+    priority: 4
+}
+
+const mutation_clawRight: IMutation = {
+    name: 'Claws',
+    description: 'Mutation to rip your opponents apart',
+    bodyPart: BodyParts.rightHand,
+    cost: 1,
+    image: images.mutantEvolvings.claws,
+    priority: 4
+}
+
 const mutation_horns: IMutation = {
     name: 'Horns',
     description: 'Mutation to use your head as a double-spear',
@@ -78,6 +96,8 @@ const mutation_hooves: IMutation = {
 const mutations = {
     mutation_acidSplit,
     mutation_claws,
+    mutation_clawLeft,
+    mutation_clawRight,
     mutation_horns,
     mutation_scales,
     mutation_tailWithSting,

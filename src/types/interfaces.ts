@@ -29,9 +29,14 @@ export enum InventoryPlaces {
     back = 'Back'
 }
 
-export interface IItem extends ISpell {
+export interface IItem extends ICommon {
+    cost: number,
     inventoryPlace: InventoryPlaces,
-    priority: number
+    priority: number,
+    ability: IAbility | null,
+    linkedMastery?: IMastery,
+    requiredMastery?: IMastery,
+    masterAbility?: IAbility
 }
 
 export enum BodyParts {
@@ -50,7 +55,10 @@ export enum BodyParts {
 export interface IMutation extends ICommon {
     cost: number,
     bodyPart: BodyParts,
-    priority: number
+    priority: number,
+    ability?: IAbility | null,
+    linkedMastery?: IMastery,
+    masterAbility?: IAbility
 }
 
 export interface IInventorySlot {
@@ -77,7 +85,7 @@ export interface User {
     powers?: IPower[]
 }
 
-export interface IInventory extends Record<string, any> {
+export interface IInventory extends Record<string, IItem | ICyber | IMutation> {
     hat: IItem,
     head: IMutation,
     chin: IMutation,
@@ -105,7 +113,8 @@ export interface IUserParams {
     mechaCores: number,
     mutaGenes: number,
     mana: number,
-    focus: number
+    focus: number,
+    stamina: number
 }
 
 export interface IGeneralAll {
@@ -133,4 +142,26 @@ export interface IStore {
     generalAll: IGeneralAll,
     generalUser: IGeneralUser,
     gameScreens: IGameScreens
+}
+
+export enum DamageTypes {
+    physical = 'Physical',
+    fire = 'Fire',
+    electrical = 'Electrical',
+    psionic = 'Psionic',
+    acid = 'Acid'
+}
+
+export interface IBattleAbility extends ICommon {
+    manaCost: number,
+    focusCost: number,
+    staminaCost: number,
+    damage: number,
+    damageType: DamageTypes,
+    hitChance: number,
+    targetAmount: number
+}
+
+export interface IAbility extends IBattleAbility {
+
 }

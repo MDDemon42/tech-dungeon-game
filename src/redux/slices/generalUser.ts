@@ -1,17 +1,27 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { BodyParts, IInventory, IItem, IMastery, IMutation, IPower, ISpell, InventoryPlaces } from '../../types/interfaces';
+import { 
+    BodyParts, 
+    IAbility, 
+    IInventory, 
+    IItem, 
+    IMastery, 
+    IMutation, 
+    IPower, 
+    ISpell, 
+    InventoryPlaces 
+} from '../../types/interfaces';
 import images from '../../images/images';
+import mutations from '../../general/mutations/mutations';
 
 export const noItem: IMutation & IItem = {
     name: 'Nothing yet',
     description: 'Nothing at all',
     bodyPart: BodyParts.head,
-    value: 0,
     cost: 0,
     inventoryPlace: InventoryPlaces.belt,
     image: images.classIcons.noIcon,
-    requiredMastery: null,
-    priority: 0
+    priority: 0,
+    ability: null
 }
 
 export function emptyInventory() {
@@ -96,9 +106,22 @@ const generalUser = createSlice({
             const position = action.payload.bodyPart;
 
             if (
-                position === BodyParts.leftHand || 
+                position === BodyParts.leftHand
+            ) {
+                if (state.inventory[placeAsKey(BodyParts.bothHands)].name === mutations.mutation_claws.name) {
+                    state.inventory[placeAsKey(BodyParts.rightHand)] = mutations.mutation_clawRight;
+                }
+                
+                state.inventory[placeAsKey(BodyParts.bothHands)] = noItem;                
+            }
+
+            if (
                 position === BodyParts.rightHand
             ) {
+                if (state.inventory[placeAsKey(BodyParts.bothHands)].name === mutations.mutation_claws.name) {
+                    state.inventory[placeAsKey(BodyParts.leftHand)] = mutations.mutation_clawLeft;
+                }
+
                 state.inventory[placeAsKey(BodyParts.bothHands)] = noItem;
             }
 

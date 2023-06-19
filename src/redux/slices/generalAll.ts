@@ -6,6 +6,7 @@ import mutations from '../../general/mutations/mutations';
 import items from '../../general/items/items';
 import spells from '../../general/spells/spells';
 import powers from '../../general/powers/powers';
+import abilities from '../../general/abilities';
 
 const generalAll = createSlice({
     name: 'generalAll',
@@ -15,7 +16,8 @@ const generalAll = createSlice({
         mutations,
         items,
         spells,
-        powers
+        powers,
+        abilities
     },
     reducers: {}
 })

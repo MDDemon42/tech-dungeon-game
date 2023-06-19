@@ -82,6 +82,10 @@ function MarketScreen() {
             <div className={styles.gamePage_component_container}>
                 {
                     Object.keys(itemsSpecified).map(key => {
+                        if (itemsSpecified[key].length === 0) {
+                            return null
+                        }
+                        
                         return <InventorySlotItemsLine 
                             items={itemsSpecified[key]}
                             title={key}

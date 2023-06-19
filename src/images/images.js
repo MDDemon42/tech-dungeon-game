@@ -1,4 +1,4 @@
-import body from './misc/body.png';
+import bodyElements from './bodyElements/bodyElements';
 import classIcons from './classIcons/classIcons';
 import normalItems from './normalItems/normalItems';
 import cyborgDetails from './cyborgDetails/cyborgDetails';
@@ -9,7 +9,7 @@ import psionInsights from './psionInsights/psionInsights';
 import guildianLearnings from './guildianLearnings/guildianLearnings';
 
 const images = {
-    body,
+    bodyElements,
     classIcons,
     normalItems,
     cyborgDetails,

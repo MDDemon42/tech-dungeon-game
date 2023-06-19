@@ -15,30 +15,15 @@ function checkPriority(
     const name_old = inventory[placeAsKey(position)].name;
     const priority_old = inventory[placeAsKey(position)].priority;
 
-    if (
-        (
-            position === InventoryPlaces.leftHand ||
-            position === InventoryPlaces.rightHand ||
-            name_new === items.item_oakBow.name
-        ) && inventory.bothHands.name === mutations.mutation_claws.name
-    ) {
-        return priority_new > mutations.mutation_claws.priority
-    } 
-    
+    const result = name_old !== name_new && priority_new >= priority_old;
+
     if (position === InventoryPlaces.bothHands) {
-        if (
-            inventory.leftHand.priority > priority_new ||
-            inventory.rightHand.priority > priority_new ||
-            inventory.bothHands.priority > priority_new ||
-            name_new === name_old
-        ) {
-            return false
-        } else {
-            return true
-        }
-    } 
+        return result &&
+            priority_new >= inventory[placeAsKey(InventoryPlaces.leftHand)].priority &&
+            priority_new >= inventory[placeAsKey(InventoryPlaces.rightHand)].priority
+    }
     
-    return priority_new > priority_old
+    return result
 }
 
 function prioritisationChecker(slot: IInventorySlot) {
