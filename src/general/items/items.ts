@@ -34,7 +34,7 @@ const item_acidBomd: IItem = {
     image: images.normalItems.acidBomb,
     linkedMastery: masteries.mastery_bombThrowing,
     ability: abilities.battleAbilities.battleAbility_acidBombThrow,
-    masterAbility: abilities.battleAbilities.battleAbility_masterAcidBombThrow,
+    masterAbilities: [abilities.battleAbilities.battleAbility_masterAcidBombThrow],
     priority: 1
 }
 
@@ -54,8 +54,9 @@ const item_oakBow: IItem = {
     name: 'Bow',
     description: 'Usual oak bow',
     image: images.normalItems.bow,
-    requiredMastery: masteries.mastery_archery,
-    ability: null,
+    linkedMastery: masteries.mastery_archery,
+    ability: abilities.battleAbilities.battleAbility_oakBowShot,
+    masterAbilities: [abilities.battleAbilities.battleAbility_masterOakBowShot],
     priority: 1
 }
 
@@ -65,8 +66,9 @@ const item_oakCrossow: IItem = {
     name: 'Crossbow',
     description: 'Usual oak crossbow',
     image: images.normalItems.crossbow,
-    requiredMastery: masteries.mastery_marksmanship,
-    ability: null,
+    linkedMastery: masteries.mastery_marksmanship,
+    ability: abilities.battleAbilities.battleAbility_crossbowShot,
+    masterAbilities: [abilities.battleAbilities.battleAbility_masterCrossbowShot],
     priority: 2
 }
 
@@ -76,8 +78,12 @@ const item_steelChakram: IItem = {
     name: 'Steel chakram',
     description: 'Spinning disk of death',
     image: images.guildianLearnings.chakram,
-    requiredMastery: masteries.mastery_chakramThrowing,
-    ability: null,
+    linkedMastery: masteries.mastery_chakramThrowing,
+    ability: abilities.battleAbilities.battleAbility_chakramSlash,
+    masterAbilities: [
+        abilities.battleAbilities.battleAbility_masterChakramSlash,
+        abilities.battleAbilities.battleAbility_chakramThrow
+    ],
     priority: 1
 }
 
@@ -89,7 +95,7 @@ const item_steelSwordRightHand: IItem = {
     image: images.normalItems.sword,
     linkedMastery: masteries.mastery_swordsmanship,
     ability: abilities.battleAbilities.battleAbility_swordSlash,
-    masterAbility: abilities.battleAbilities.battleAbility_masterSwordSlash,
+    masterAbilities: [abilities.battleAbilities.battleAbility_masterSwordSlash],
     priority: 1
 }
 
@@ -102,7 +108,7 @@ const item_steelSwordLeftHand: IItem = {
     requiredMastery: masteries.mastery_dualSwords,
     linkedMastery: masteries.mastery_swordsmanship,
     ability: abilities.battleAbilities.battleAbility_swordSlash,
-    masterAbility: abilities.battleAbilities.battleAbility_masterSwordSlash,
+    masterAbilities: [abilities.battleAbilities.battleAbility_masterSwordSlash],
     priority: 1
 }
 
@@ -123,7 +129,7 @@ const item_steelGreataxe: IItem = {
     description: 'Massive steel greataxe',
     image: images.normalItems.greataxe,
     requiredMastery: masteries.mastery_brutalForce,
-    ability: null,
+    ability: abilities.battleAbilities.battleAbility_greataxeSlash,
     priority: 2
 }
 
@@ -134,7 +140,12 @@ const item_runicGreatsword: IItem = {
     description: 'Massive sword covered with runes',
     image: images.guildianLearnings.runicSword,
     requiredMastery: masteries.mastery_brutalForce,
-    ability: null,
+    ability: abilities.battleAbilities.battleAbility_greatswordSlash,
+    linkedMastery: masteries.mastery_runicWeapons,
+    masterAbilities: [
+        abilities.battleAbilities.battleAbility_greatswordSlash,
+        abilities.battleAbilities.battleAbility_runicGreatswordSlash
+    ],
     priority: 2
 }
 

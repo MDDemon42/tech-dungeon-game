@@ -51,6 +51,13 @@ const mastery_chakramThrowing: IMastery = {
     requiredMastery: null
 }
 
+const mastery_runicWeapons: IMastery = {
+    name: 'Runic weapons',
+    description: 'Mastery in activating runes on weapons',
+    image: images.guildianLearnings.runicSword,
+    requiredMastery: null
+}
+
 const mastery_scholarship: IMastery = {
     name: 'Scholarship',
     description: 'Mastery to read really boring books',
@@ -87,6 +94,7 @@ const masteries = {
     mastery_brutalForce,
     mastery_bombThrowing,
     mastery_chakramThrowing,
+    mastery_runicWeapons,
     mastery_scholarship,
     mastery_magisterDegree,
     mastery_meditativeInsights,

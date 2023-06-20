@@ -164,16 +164,16 @@ function InventoryScreen() {
                         }
                         <img src={images.bodyElements.head} alt='head'/>
                         {
-                            powersUserNames.includes(powers.power_intuition.name) ?
-                                <img src={images.bodyElements.intuition} alt='intuition'/> : null
-                        }
-                        {
                             powersUserNames.includes(powers.power_telekinesis.name) ?
                                 <img src={images.bodyElements.telekinesis} alt='telekinesis'/> : null
                         }
                         {
                             inventory.chin.name === mutations.mutation_acidSplit.name ?
                                 <img src={images.bodyElements.acidSplit} alt='acidSplit'/> : null
+                        }
+                        {
+                            powersUserNames.includes(powers.power_intuition.name) ?
+                                <img src={images.bodyElements.intuition} alt='intuition'/> : null
                         }
                         {
                             inventory.head.name === mutations.mutation_horns.name ?

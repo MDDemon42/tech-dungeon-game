@@ -39,7 +39,7 @@ export interface IInventorySlot extends ICommon {
     inventoryPlace: InventoryPlaces,
     priority: number,
     linkedMastery?: IMastery,
-    masterAbility?: IAbility
+    masterAbilities?: IAbility[]
 }
 
 export interface IItem extends IInventorySlot {
