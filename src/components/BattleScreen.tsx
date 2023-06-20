@@ -24,6 +24,8 @@ function BattleScreen() {
                 return inventory[name].ability
             }
         }
+
+        return null
     }).filter(ability => !!ability);
 
     return (
@@ -37,6 +39,8 @@ function BattleScreen() {
                                 <CommonIcon item={ability}/>
                             </div>
                         }
+
+                        return null
                     })
                 }
             </div>

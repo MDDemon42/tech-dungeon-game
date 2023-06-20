@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { 
-    IAbility, 
     IInventory, 
     IItem, 
     IMastery, 
@@ -101,7 +100,7 @@ const generalUser = createSlice({
                 state.inventory = emptyInventory();
             }
 
-            const position = action.payload.bodyPart;
+            const position = action.payload.inventoryPlace;
 
             if (
                 position === InventoryPlaces.leftHand
@@ -130,7 +129,7 @@ const generalUser = createSlice({
                 state.inventory = emptyInventory();
             }
 
-            const position = action.payload.bodyPart;
+            const position = action.payload.inventoryPlace;
 
             if (position === InventoryPlaces.bothHands) {
                 state.inventory[placeAsKey(InventoryPlaces.leftHand)] = noItem;

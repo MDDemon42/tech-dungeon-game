@@ -49,7 +49,7 @@ function CommonIcon(props: {
     }
 
     if (item.manaCost && item.manaCost > 0) {
-        description += '\Mana cost: ' + item.manaCost;
+        description += '\nMana cost: ' + item.manaCost;
     }
 
     if (item.focusCost && item.focusCost > 0) {

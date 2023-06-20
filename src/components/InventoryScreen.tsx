@@ -3,14 +3,16 @@ import styles from '../index.module.css';
 import images from "../images/images";
 import CommonScreen from "./CommonScreen";
 import {useSelector} from "react-redux";
-import { emptyInventory, noItem } from "../redux/slices/generalUser";
+import { emptyInventory } from "../redux/slices/generalUser";
 import mutations from "../general/mutations/mutations";
 import cybers from "../general/cybers/cybers";
 import items from "../general/items/items";
+import powers from "../general/powers/powers";
 
 function InventoryScreen() {
     const user = useSelector((state: IStore) => state.userParams);
     const generalUser = useSelector((state: IStore) => state.generalUser);
+    const powersUserNames = generalUser.powers.map(power => power.name);
 
     const inventory = generalUser.inventory ? generalUser.inventory : emptyInventory();
 
@@ -63,6 +65,8 @@ function InventoryScreen() {
                                 <img src={images.bodyElements.hooves} alt='hooves'/> :
                                 [
                                     <img src={images.bodyElements.legs} alt='legs'/>,
+                                    powersUserNames.includes(powers.power_levitation.name) ?
+                                        <img src={images.bodyElements.levitation} alt='levitation'/> : null,
                                     inventory.skin.name === cybers.cyber_nanoMatrix.name ?
                                         <img src={images.bodyElements.nanoMatrixLegs} alt='nanoMatrixLegs'/> :
                                         inventory.skin.name === cybers.cyber_nanoVest.name ?
@@ -82,8 +86,19 @@ function InventoryScreen() {
                                     <img src={images.bodyElements.nanoVestTorso} alt='nanoVestTorso'/> :
                                     inventory.skin.name === mutations.mutation_scales.name ?
                                         <img src={images.bodyElements.scalesTorso} alt='scalesTorso'/> :
-                                        <img src={images.bodyElements.torso} alt='torso'/>
+                                        [
+                                            <img src={images.bodyElements.torso} alt='torso'/>,
+                                            powersUserNames.includes(powers.power_guardianAura.name) ?
+                                                <img src={images.bodyElements.guardianAura} alt='guardianAura'/> :
+                                                powersUserNames.includes(powers.power_guardianField.name) ?
+                                                    <img src={images.bodyElements.guardianField} alt='guardianField'/> : null,
+                                            powersUserNames.includes(powers.power_psiBlade.name) ?
+                                                <img src={images.bodyElements.psiBlade} alt='psiBlade'/> : null,
+                                            powersUserNames.includes(powers.power_psiLightning.name) ?
+                                                <img src={images.bodyElements.psiLightning} alt='psiLightning'/> : null,
+                                        ]
                         }
+                        <img src={images.bodyElements.belt} alt='belt'/>
                         {
                             inventory.shoulders.name === cybers.cyber_rocket.name ?
                                 <img src={images.bodyElements.rocket} alt='rocket'/> :
@@ -148,6 +163,14 @@ function InventoryScreen() {
                                                         <img src={images.bodyElements.rightHand} alt='rightHand'/>
                         }
                         <img src={images.bodyElements.head} alt='head'/>
+                        {
+                            powersUserNames.includes(powers.power_intuition.name) ?
+                                <img src={images.bodyElements.intuition} alt='intuition'/> : null
+                        }
+                        {
+                            powersUserNames.includes(powers.power_telekinesis.name) ?
+                                <img src={images.bodyElements.telekinesis} alt='telekinesis'/> : null
+                        }
                         {
                             inventory.chin.name === mutations.mutation_acidSplit.name ?
                                 <img src={images.bodyElements.acidSplit} alt='acidSplit'/> : null

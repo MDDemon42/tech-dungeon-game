@@ -4,7 +4,7 @@ import intuition from './intuition.png';
 import levitation from './levitation.png';
 import telekinesis from './telekinesis.png';
 import psiLightning from './psiLightning.png';
-import psiBlades from './psiBlades.png';
+import psiBlade from './psiBlade.png';
 
 const psionInsights = {
     guardianAura,
@@ -13,7 +13,7 @@ const psionInsights = {
     levitation,
     telekinesis,
     psiLightning,
-    psiBlades
+    psiBlade
 };
 
 export default psionInsights;

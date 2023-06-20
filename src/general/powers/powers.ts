@@ -53,12 +53,12 @@ const power_levitation: IPower = {
     requiredMastery: masteries.mastery_meditativeInsights
 }
 
-const power_psiBlades: IPower = {
-    name: 'Psi-blades',
-    description: 'Power to create (and use) blades with your mind',
+const power_psiBlade: IPower = {
+    name: 'Psi-blade',
+    description: 'Power to create (and use) blade with your mind',
     value: 1,
     passive: false,
-    image: images.psionInsights.psiBlades,
+    image: images.psionInsights.psiBlade,
     cost: 1,
     requiredMastery: masteries.mastery_psiEnergy
 }
@@ -79,7 +79,7 @@ const powers = {
     power_guardianField,
     power_intuition,
     power_levitation,
-    power_psiBlades,
+    power_psiBlade,
     power_psiLightning
 }
 

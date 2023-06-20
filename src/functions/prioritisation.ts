@@ -1,15 +1,6 @@
-import items from "../general/items/items";
-import mutations from "../general/mutations/mutations";
 import { emptyInventory, placeAsKey } from "../redux/slices/generalUser";
 import store from "../redux/store";
 import { IInventorySlot, InventoryPlaces } from "../types/interfaces";
-
-function checkPriority(
-    slot: IInventorySlot,
-    position: InventoryPlaces
-) {
-    
-}
 
 function prioritisationChecker(slot: IInventorySlot) {
     const position = slot.inventoryPlace;
