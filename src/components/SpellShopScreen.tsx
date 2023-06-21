@@ -3,10 +3,10 @@ import {ISpell, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
+import spells from "../general/spells/spells";
 
 function SpellShopScreen() {
-    const spellsAll = useSelector((store: IStore) => store.generalAll.spells);
-    const spellsAllNames = Object.keys(spellsAll);
+    const spellsNames = Object.keys(spells);
 
     const spellsUser = useSelector((store: IStore) => store.generalUser.spells.map(data => data.name));
     const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
@@ -21,8 +21,8 @@ function SpellShopScreen() {
             Welcome to Spell Shop!
             <div className={styles.commonScreen_notVertical}>
                 {
-                    spellsAll && spellsAllNames.map(name => {
-                        const spell = spellsAll[name];
+                    spells && spellsNames.map(name => {
+                        const spell = spells[name as keyof typeof spells];
                         const disabled = spellsUser.includes(spell.name) ||
                             (!!spell.requiredMastery && !masteriesUser.includes(spell.requiredMastery.name));
                         return (

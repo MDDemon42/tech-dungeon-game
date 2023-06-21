@@ -6,10 +6,13 @@ import { emptyInventory } from '../redux/slices/generalUser';
 import items from '../general/items/items';
 import masteries from '../general/masteries/masteries';
 import abilities from '../general/abilities';
+import spells from '../general/spells/spells';
 
 function BattleScreen() {
     const generalUser = useSelector((store: IStore) => store.generalUser);
-    const masteriesUser = generalUser.masteries.map(mastery => mastery.name);;
+    const masteriesUser = generalUser.masteries.map(mastery => mastery.name);
+    const spellsUser = generalUser.spells;
+
     const inventory = generalUser.inventory ? generalUser.inventory : emptyInventory();
 
     const abilitiesUser: IAbility[] = [];
@@ -31,6 +34,21 @@ function BattleScreen() {
                 if (ability) {
                     abilitiesUser.push(ability);
                 }
+            }
+        }
+    })
+
+    spellsUser.forEach(spell => {
+        if (!!spell.ability) {
+            if (!!spell.requiresRod) {
+                if (
+                    inventory.bothHands.name === items.item_apprenticeRod.name ||
+                    inventory.bothHands.name === items.item_magisterScepter.name
+                ) {
+                    abilitiesUser.push(spell.ability);
+                }
+            } else {
+                abilitiesUser.push(spell.ability);
             }
         }
     })

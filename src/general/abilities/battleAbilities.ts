@@ -196,6 +196,32 @@ const battleAbility_runicGreatswordSlash: IBattleAbility = {
     hitChance: 70
 }
 
+const battleAbilities_magicBolt: IBattleAbility = {
+    name: 'Magic bolt',
+    description: '',
+    image: images.wizardSpells.magicBolt,
+    manaCost: 1,
+    focusCost: 0,
+    staminaCost: 0,
+    damage: 1,
+    damageType: DamageTypes.electrical,
+    targetAmount: 5,
+    hitChance: 85
+}
+
+const battleAbilities_fireball: IBattleAbility = {
+    name: 'Fireball',
+    description: '',
+    image: images.wizardSpells.fireball,
+    manaCost: 2,
+    focusCost: 0,
+    staminaCost: 0,
+    damage: 2,
+    damageType: DamageTypes.fire,
+    targetAmount: 5,
+    hitChance: 70
+}
+
 const battleAbilities = {
     battleAbility_swordSlash,
     battleAbility_masterSwordSlash,
@@ -211,7 +237,9 @@ const battleAbilities = {
     battleAbility_chakramThrow,
     battleAbility_greataxeSlash,
     battleAbility_greatswordSlash,
-    battleAbility_runicGreatswordSlash
+    battleAbility_runicGreatswordSlash,
+    battleAbilities_magicBolt,
+    battleAbilities_fireball
 }
 
 export default battleAbilities

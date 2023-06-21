@@ -9,11 +9,11 @@ export interface IMastery extends ICommon {
 }
 
 export interface ISpell extends IMastery {
-    value: number,
-    cost: number
+    ability?: IAbility,
+    requiresRod?: boolean
 }
 
-export interface IPower extends ISpell {
+export interface IPower extends IMastery {
     passive: boolean
 }
 

@@ -3,10 +3,10 @@ import {IMastery, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
+import masteries from "../general/masteries/masteries";
 
 function AcademyScreen() {
-    const masteriesAll = useSelector((store: IStore) => store.generalAll.masteries);
-    const masteriesAllNames = Object.keys(masteriesAll);
+    const masteriesNames = Object.keys(masteries);
 
     const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
     const userResource = useSelector((store: IStore) => store.userParams.level);
@@ -30,8 +30,8 @@ function AcademyScreen() {
             Welcome to Academy!
             <div className={styles.commonScreen_notVertical}>
                 {
-                    masteriesAll && masteriesAllNames.map(name => {
-                        const mastery = masteriesAll[name];
+                    masteries && masteriesNames.map(name => {
+                        const mastery = masteries[name as keyof typeof masteries];
                         return (
                             <div className={styles.commonIconWithButton}>
                                 <CommonIcon item={mastery}/>

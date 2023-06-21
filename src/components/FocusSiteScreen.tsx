@@ -3,10 +3,10 @@ import {IPower, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
 import generalUser from "../redux/slices/generalUser";
+import powers from "../general/powers/powers";
 
 function FocusSiteScreen() {
-    const powersAll = useSelector((store: IStore) => store.generalAll.powers);
-    const powersAllNames = Object.keys(powersAll);
+    const powersNames = Object.keys(powers);
 
     const powersUser = useSelector((store: IStore) => store.generalUser.powers.map(data => data.name));
     const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name));
@@ -21,8 +21,8 @@ function FocusSiteScreen() {
             Welcome to Focus Site!
             <div className={styles.commonScreen_notVertical}>
                 {
-                    powersAll && powersAllNames.map(name => {
-                        const power = powersAll[name];
+                    powers && powersNames.map(name => {
+                        const power = powers[name as keyof typeof powers];
                         const disabled = powersUser.includes(power.name) ||
                             (!!power.requiredMastery && !masteriesUser.includes(power.requiredMastery.name));
                         return (
