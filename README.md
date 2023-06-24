@@ -13,9 +13,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
  # TODO:
  1) Add `team` instead of `user`
- 2)
+ 2) `Dummy` on `Battle Screen`
  3) Add more abilities to use on `Battle Screen`
  4) Extra `MASPIC`
  5) Make mutual exclusions within `MASPIC`
  6) Fix styles
- 7) Icons for `user params`
+ 7) `user params` growth on level up

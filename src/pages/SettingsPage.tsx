@@ -1,8 +1,6 @@
 import {useNavigate} from 'react-router-dom';
 import styles from '../index.module.css';
 
-import StatsScreen from '../components/StatsScreen';
-
 function SettingsPage() {
     const navigation = useNavigate()
 
@@ -17,7 +15,6 @@ function SettingsPage() {
                 styles.border
             ].join(' ')
         }>
-            <StatsScreen />
             <div className={styles.extensionPopup_buttonsBlock}>
                 <button 
                     className={styles.border}

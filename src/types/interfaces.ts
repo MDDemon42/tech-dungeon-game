@@ -54,20 +54,6 @@ export interface IMutation extends IInventorySlot {
 export interface ICyber extends IMutation {
 }
 
-export interface User {
-    name: string,
-    icon: string,
-    level?: number,
-    money?: number,
-    stage?: number,
-    masteries?: IMastery[],
-    items?: IItem[],
-    spells?: ISpell[],
-    mutations?: IMutation[],
-    cybers?: ICyber[],
-    powers?: IPower[]
-}
-
 export interface IInventory extends Record<string, IItem | ICyber | IMutation> {
     hat: IItem,
     head: IMutation,
@@ -90,14 +76,28 @@ export interface IUserParams {
     name: string,
     icon: string,
     stage: number,
-    health: number,
+    currentHealth: number,
+    maxHealth: number,
     level: number,
-    diamonds: number,
+    gems: number,
     mechaCores: number,
     mutaGenes: number,
-    mana: number,
-    focus: number,
-    stamina: number
+    currentMana: number,
+    maxMana: number,
+    currentFocus: number,
+    maxFocus: number,
+    currentStamina: number,
+    maxStamina: number
+}
+
+export enum UserResource {
+    gem = 'Gems',
+    core = 'Mecha-cores',
+    gene = 'Muta-genes',
+    health = 'Health',
+    mana = 'Mana',
+    focus = 'Focus',
+    stamina = 'Stamina'
 }
 
 export interface IGeneralAll {

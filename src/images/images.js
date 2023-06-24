@@ -7,6 +7,7 @@ import wizardSpells from './wizardSpells/wizardSpells';
 import mutantEvolvings from './mutantEvolvings/mutantEvolvings';
 import psionInsights from './psionInsights/psionInsights';
 import guildianLearnings from './guildianLearnings/guildianLearnings';
+import resourceIcons from './resourceIcons/resourceIcons';
 
 const images = {
     bodyElements,
@@ -17,7 +18,8 @@ const images = {
     wizardSpells,
     mutantEvolvings,
     psionInsights,
-    guildianLearnings
+    guildianLearnings,
+    resourceIcons
 };
 
 export default images;

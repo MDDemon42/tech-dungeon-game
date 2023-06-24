@@ -8,9 +8,9 @@ import mutations from "../general/mutations/mutations";
 import cybers from "../general/cybers/cybers";
 import items from "../general/items/items";
 import powers from "../general/powers/powers";
+import StatsScreen from "./StatsScreen";
 
 function InventoryScreen() {
-    const user = useSelector((state: IStore) => state.userParams);
     const generalUser = useSelector((state: IStore) => state.generalUser);
     const powersUserNames = generalUser.powers.map(power => power.name);
 
@@ -27,25 +27,8 @@ function InventoryScreen() {
                     vertical={true}
                 /> 
                 <div className={styles.inventory_screen}>
-                    <div className={styles.inventory_body}>
-                        <p>
-                            Health: {user.health}
-                        </p>
-                        <p>
-                            Mana: {user.mana}
-                        </p>
-                        <p>
-                            Focus: {user.focus}
-                        </p>
-                        <p>
-                            Diamonds: {user.diamonds}
-                        </p>
-                        <p>
-                            Mecha-cores: {user.mechaCores}
-                        </p>
-                        <p>
-                            Muta-genes: {user.mutaGenes}
-                        </p>
+                    <StatsScreen />
+                    <div className={styles.inventory_body}>                       
                         {
                             inventory.back.name === mutations.mutation_wings.name ?
                                 <img src={images.bodyElements.wings} alt='wings'/> :
@@ -183,11 +166,6 @@ function InventoryScreen() {
                                     inventory.head.name === items.item_apprenticeHat.name ?
                                         <img src={images.bodyElements.apprenticeHat} alt='apprenticeHat'/> : null
                         }
-                    </div>
-                    <div className={styles.inventory_header}>
-                        <h3>
-                            {user.name} level {user.level}
-                        </h3>
                     </div>
                     <CommonScreen 
                         name={'spells'} 

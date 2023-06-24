@@ -51,15 +51,15 @@
     margin-bottom: -4px;
 }
 
-.extensionPopup_userBlock {
+.extensionPopup_userParams {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 170px;
     font-size: 14px;
     text-align: center;
     border: 1px solid black;
+    padding-bottom: 5px;
 }
 
 .gamePage {
@@ -99,13 +99,21 @@
     flex-direction: row;
 }
 
-.inventory_header {
+.userParams_header {
     text-align: center;
 }
 
+.userParams_body {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .inventory_screen {
-    width: 380px;
-    height: 583px; 
+    width: 405px;
+    height: 625px; 
     position: relative;
     display: flex;
     flex-direction: column;
@@ -114,6 +122,7 @@
 
 .inventory_body {
     position: absolute;
+    top: 42px;
 }
 
 .inventory_body > img {
@@ -174,4 +183,10 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.resourceIcon {
+    position: relative;
+    width: 12px;
+    height: 12px;
 }

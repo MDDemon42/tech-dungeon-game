@@ -5,22 +5,26 @@ const initialState: IUserParams = {
     name: 'Adventurer',
     icon: 'noIcon',
     stage: 0,
-    health: 3,
+    currentHealth: 3,
+    maxHealth: 3,
     level: 1,
-    diamonds: 0,
+    gems: 0,
     mechaCores: 0,
     mutaGenes: 0,
-    mana: 0,
-    focus: 0,
-    stamina: 3
+    currentMana: 0,
+    maxMana: 0,
+    currentFocus: 0,
+    maxFocus: 0,
+    currentStamina: 3,
+    maxStamina: 3
 }
 
 const startBonuses: Record<string, keyof IUserParams> = {
     mutant: 'mutaGenes',
     cyborg: 'mechaCores',
-    normal: 'diamonds',
-    wizard: 'mana',
-    psion: 'focus',
+    normal: 'gems',
+    wizard: 'maxMana',
+    psion: 'maxFocus',
     guildian: 'level'
 }
 
@@ -29,7 +33,7 @@ const userParams = createSlice({
     initialState,
     reducers: {
         buyItem(state, action) {
-            state.diamonds -= action.payload
+            state.gems -= action.payload
         },
         implementCyber(state, action) {
             state.mechaCores -= action.payload
@@ -42,6 +46,12 @@ const userParams = createSlice({
                 // @ts-ignore
                 state[key] = action.payload[key]
             })
+        },
+        relaxate(state, action) {
+            state.currentFocus = state.maxFocus;
+            state.currentMana = state.maxMana;
+            state.currentHealth = state.maxHealth;
+            state.currentStamina = state.maxStamina;
         },
         refreshState(state, action) { 
             Object.keys(state).forEach(key => {
