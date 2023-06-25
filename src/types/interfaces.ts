@@ -87,7 +87,8 @@ export interface IUserParams {
     currentFocus: number,
     maxFocus: number,
     currentStamina: number,
-    maxStamina: number
+    maxStamina: number,
+    blank: number
 }
 
 export enum UserResource {
@@ -147,4 +148,20 @@ export interface IBattleAbility extends ICommon {
 
 export interface IAbility extends IBattleAbility {
 
+}
+
+interface IClassInfoItem {
+    startBonus: keyof IUserParams,
+    levelUpBonuses: (keyof IUserParams)[],
+    description: string
+}
+
+export interface IClassInfo {
+    mutant: IClassInfoItem,
+    cyborg: IClassInfoItem,
+    normal: IClassInfoItem,
+    wizard: IClassInfoItem,
+    psion: IClassInfoItem,
+    guildian: IClassInfoItem,
+    noIcon: IClassInfoItem
 }

@@ -18,4 +18,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  4) Extra `MASPIC`
  5) Make mutual exclusions within `MASPIC`
  6) Fix styles
- 7) `user params` growth on level up
+ 7) More ~ abilities ~ to get more user resources (~ battery capacity ~ for cyborg)
+ 8) Mix `MASPIC` to get `elf`, `orc`, `vampire` and `werewolf`

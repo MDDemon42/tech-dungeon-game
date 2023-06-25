@@ -3,6 +3,7 @@ import styles from '../index.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import ResourceIcon from "./ResourceIcon";
 import userParams from "../redux/slices/userParams";
+import { upperCaseFirstLetter } from "../pages/MainPage";
 
 function StatsScreen() {
     const user = useSelector((state: IStore) => state.userParams);
@@ -22,7 +23,7 @@ function StatsScreen() {
         <div className={styles.extensionPopup_userParams}>
             <div className={styles.userParams_header}>
                 <h3>
-                    {user.name} level {user.level}
+                    {user.name}, {upperCaseFirstLetter(user.icon)} level {user.level}
                 </h3>
             </div>
             <div className={styles.userParams_body}>

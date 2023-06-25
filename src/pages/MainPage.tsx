@@ -3,14 +3,12 @@ import {Link} from "react-router-dom";
 import {Gear} from 'react-bootstrap-icons';
 import styles from '../index.module.css';
 import images from '../images/images';
-import {IStore} from '../types/interfaces';
+import {IClassInfo, IStore} from '../types/interfaces';
 import userParams from '../redux/slices/userParams';
 import { useEffect, useState } from 'react';
 import C from '../redux/constants';
 import generalUser, { emptyInventory } from '../redux/slices/generalUser';
-
-const {classIcons} = images as Record<string, any>;
-const classes = Object.keys(classIcons);
+import { classInfo } from '../redux/slices/userParams';
 
 export function upperCaseFirstLetter(value: string) {
     return value.substring(0,1).toUpperCase() + value.substring(1)
@@ -18,6 +16,8 @@ export function upperCaseFirstLetter(value: string) {
 
 function MainPage() {
     const icon = useSelector((store: IStore) => store.userParams.icon);
+    const classes = Object.keys(images.classIcons);
+
     const dispatch = useDispatch();
 
     const [startButtonText, setStartButtonText] = useState('Start!')
@@ -70,7 +70,11 @@ function MainPage() {
             ].join(' ')
         }>
             <div className={styles.extensionPopup_iconBlock}>
-                <img src={classIcons[icon]} alt='classIcon'/>
+                <img 
+                    src={images.classIcons[icon]} 
+                    alt='classIcon' 
+                    title={classInfo[icon as keyof IClassInfo].description}
+                />
                 <select 
                     value={icon}
                     onChange={(event) => changeClass(event.target.value)}

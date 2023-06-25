@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { IUserParams } from '../../types/interfaces';
+import { IClassInfo, IUserParams } from '../../types/interfaces';
 
 const initialState: IUserParams = {
     name: 'Adventurer',
@@ -16,16 +16,46 @@ const initialState: IUserParams = {
     currentFocus: 0,
     maxFocus: 0,
     currentStamina: 3,
-    maxStamina: 3
+    maxStamina: 3,
+    blank: 0
 }
 
-const startBonuses: Record<string, keyof IUserParams> = {
-    mutant: 'mutaGenes',
-    cyborg: 'mechaCores',
-    normal: 'gems',
-    wizard: 'maxMana',
-    psion: 'maxFocus',
-    guildian: 'level'
+export const classInfo: IClassInfo = {
+    mutant: {
+        startBonus: 'mutaGenes',
+        levelUpBonuses: ['maxHealth', 'maxFocus', 'maxMana', 'maxStamina', 'maxHealth', 'maxStamina', 'blank'],
+        description: 'Gets extra Muta-gene on start.\n\nOn level up has increased chance of getting Health or Stamina.\n\nBut there is a chance to get nothing too',
+    },
+    cyborg: {
+        startBonus: 'mechaCores',
+        levelUpBonuses: ['maxHealth', 'maxFocus', 'maxMana', 'maxStamina', 'maxStamina', 'blank', 'blank'],
+        description: 'Gets extra Mecha-core on start.\n\nOn level up has increased chance of getting Stamina.\n\nBut there is a big chance to get nothing too'
+    },
+    normal: {
+        startBonus: 'gems',
+        levelUpBonuses: ['maxHealth', 'maxFocus', 'maxMana', 'maxStamina', 'maxStamina', 'maxStamina', 'blank'],
+        description: 'Gets extra Gem on start.\n\nOn level up has super increased chance of getting Stamina.\n\nBut there is a chance to get nothing too'
+    },
+    wizard: {
+        startBonus: 'maxMana',
+        levelUpBonuses: ['maxHealth', 'maxFocus', 'maxMana', 'maxStamina', 'maxMana', 'maxMana', 'blank'],
+        description: 'Gets extra Mana on start.\n\nOn level up has super increased chance of getting Mana.\n\nBut there is a chance to get nothing too'
+    },
+    psion: {
+        startBonus: 'maxFocus',
+        levelUpBonuses: ['maxHealth', 'maxFocus', 'maxMana', 'maxStamina', 'maxFocus', 'maxFocus', 'blank'],
+        description: 'Gets extra Focus on start.\n\nOn level up has super increased chance of getting Focus.\n\nBut there is a chance to get nothing too'
+    },
+    guildian: {
+        startBonus: 'level',
+        levelUpBonuses: ['maxHealth', 'maxFocus', 'maxMana', 'maxStamina', 'maxHealth', 'maxMana', 'blank'],
+        description: 'Gets extra Level on start.\n\nOn level up has increased chance of getting Health or Mana.\n\nBut there is a chance to get nothing too'
+    },
+    noIcon: {
+        startBonus: 'blank',
+        levelUpBonuses: ['blank'],
+        description: 'Choose one of classes to start playing'
+    }
 }
 
 const userParams = createSlice({
@@ -53,6 +83,14 @@ const userParams = createSlice({
             state.currentHealth = state.maxHealth;
             state.currentStamina = state.maxStamina;
         },
+        levelUp(state, action) {
+            const rand = Math.floor(Math.random()*7);
+
+            state.level += 1;
+            
+            // @ts-ignore
+            state[classInfo[state.icon].levelUpBonuses[rand]] += 1;
+        },
         refreshState(state, action) { 
             Object.keys(state).forEach(key => {
                 // @ts-ignore
@@ -62,7 +100,7 @@ const userParams = createSlice({
             state.icon = action.payload;
 
             // @ts-ignore
-            state[startBonuses[action.payload]] += 1;
+            state[classInfo[action.payload].startBonus] += 1;
         }
     }
 })
