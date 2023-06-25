@@ -14,7 +14,8 @@ interface ITab {
 
 const cheatContextMenuIds = {
     money: 'cheat-money',
-    zero: 'cheat-zero'
+    zero: 'cheat-zero',
+    strongStart: 'cheat-strong-start'
 }
 
 function createContextMenu(options: IContextMenusOptions) {
@@ -23,14 +24,9 @@ function createContextMenu(options: IContextMenusOptions) {
 
 function createCheatContextMenus() {
     createContextMenu({
-        title: 'All resources = 10',
-        id: cheatContextMenuIds.money
+        title: 'Strong start',
+        id: cheatContextMenuIds.strongStart
     });
-
-    createContextMenu({
-        title: 'Zero Hero',
-        id: cheatContextMenuIds.zero
-    })
 }
 
 function createAllContextMenus() {
@@ -47,7 +43,7 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
                     const params = {...result['tech-dungeon-game'].userParams};
                     params.gems = 10;
                     params.mechaCores = 10;
-                    params.mutaGenes = 9;
+                    params.mutaGenes = 10;
                     params.level = 20;
                     result['tech-dungeon-game'].userParams = params;
 
@@ -69,7 +65,7 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
                     result['tech-dungeon-game'].generalUser = user;
 
                     const params = {...result['tech-dungeon-game'].userParams};
-                    params.diamonds = 0;
+                    params.gems = 0;
                     params.mechaCores = 0;
                     params.mutaGenes = 0;
                     params.level = 0;
@@ -82,6 +78,30 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
             }
             break;
             
+        case cheatContextMenuIds.strongStart:
+            if (tab?.url?.endsWith('index.html#/game')) {
+                chrome.storage.local.get().then(result => {
+                    const user = {...result['tech-dungeon-game'].generalUser};
+                    user.masteries = [];
+                    user.spells = [];
+                    user.powers = [];
+                    user.inventory = null;
+                    result['tech-dungeon-game'].generalUser = user;
+
+                    const params = {...result['tech-dungeon-game'].userParams};
+                    params.gems = 27;
+                    params.mechaCores = 7;
+                    params.mutaGenes = 9;
+                    params.level = 12;
+                    result['tech-dungeon-game'].userParams = params;
+
+                    chrome.storage.local.set(result);
+
+                    chrome.tabs.reload(tab!.id!);
+                });
+            }
+            break;
+
         default:
             break;
     }
