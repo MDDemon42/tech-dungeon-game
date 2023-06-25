@@ -20,6 +20,7 @@ import leatherArmor from './leatherArmor.png';
 import leftHand from './leftHand.png';
 import legs from './legs.png';
 import levitation from './levitation.png';
+import lowerFangs from './lowerFangs.png';
 import magisterHat from './magisterHat.png';
 import magisterRobe from './magisterRobe.png';
 import magisterScepter from './magisterScepter.png';
@@ -37,7 +38,6 @@ import reactiveFeet from './reactiveFeet.png';
 import rightHand from './rightHand.png';
 import rocket from './rocket.png';
 import runicGreatsword from './runicGreatsword.png';
-import scalesLegs from './scalesLegs.png';
 import scalesTorso from './scalesTorso.png';
 import steelArmor from './steelArmor.png';
 import steelGreataxe from './steelGreataxe.png';
@@ -72,6 +72,7 @@ const bodyElements = {
     leftHand,
     legs,
     levitation,
+    lowerFangs,
     magisterHat,
     magisterRobe,
     magisterScepter,
@@ -89,7 +90,6 @@ const bodyElements = {
     rightHand,
     rocket,
     runicGreatsword,
-    scalesLegs,
     scalesTorso,
     steelArmor,
     steelGreataxe,

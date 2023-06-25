@@ -45,9 +45,9 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
             if (tab?.url?.endsWith('index.html#/game')) {
                 chrome.storage.local.get().then(result => {
                     const params = {...result['tech-dungeon-game'].userParams};
-                    params.diamonds = 10;
+                    params.gems = 10;
                     params.mechaCores = 10;
-                    params.mutaGenes = 10;
+                    params.mutaGenes = 9;
                     params.level = 20;
                     result['tech-dungeon-game'].userParams = params;
 

@@ -53,9 +53,7 @@ function InventoryScreen() {
                                     inventory.skin.name === cybers.cyber_nanoMatrix.name ?
                                         <img src={images.bodyElements.nanoMatrixLegs} alt='nanoMatrixLegs'/> :
                                         inventory.skin.name === cybers.cyber_nanoVest.name ?
-                                            <img src={images.bodyElements.nanoVestLegs} alt='nanoVestLegs'/> :
-                                            inventory.skin.name === mutations.mutation_scales.name ?
-                                                <img src={images.bodyElements.scalesLegs} alt='scalesLegs'/> : null
+                                            <img src={images.bodyElements.nanoVestLegs} alt='nanoVestLegs'/> : null
                                 ]                                
                         }
                         {
@@ -152,7 +150,9 @@ function InventoryScreen() {
                         }
                         {
                             inventory.chin.name === mutations.mutation_acidSplit.name ?
-                                <img src={images.bodyElements.acidSplit} alt='acidSplit'/> : null
+                                <img src={images.bodyElements.acidSplit} alt='acidSplit'/> :
+                                inventory.chin.name === mutations.mutation_lowerFangs.name ? 
+                                    <img src={images.bodyElements.lowerFangs} alt='lowerFangs'/> : null
                         }
                         {
                             powersUserNames.includes(powers.power_intuition.name) ?

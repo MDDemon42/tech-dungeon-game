@@ -8,6 +8,15 @@ const mutation_acidSplit: IMutation = {
     inventoryPlace: InventoryPlaces.chin,
     cost: 1,
     image: images.mutantEvolvings.acidSplit,
+    priority: 2
+}
+
+const mutation_lowerFangs: IMutation = {
+    name: 'Lower fangs',
+    description: 'Mutation to turn your chin to a cutting machine',
+    inventoryPlace: InventoryPlaces.chin,
+    cost: 1,
+    image: images.mutantEvolvings.lowerFangs,
     priority: 1
 }
 
@@ -94,6 +103,7 @@ const mutation_hooves: IMutation = {
 
 const mutations = {
     mutation_acidSplit,
+    mutation_lowerFangs,
     mutation_claws,
     mutation_clawLeft,
     mutation_clawRight,
