@@ -1,6 +1,6 @@
 import images from "../../images/images";
 import opponents from "./opponents";
-import { ICharacher, ICharacherParams, ICharacterGeneral, IInventory, IItem, IMastery, IMutation, IPower, ISpell, InventoryPlaces } from "../../types/interfaces";
+import { DamageTypes, ICharacher, ICharacherParams, ICharacterGeneral, IInventory, IItem, IMastery, IMutation, IPower, ISpell, InventoryPlaces } from "../../types/interfaces";
 
 export function noItem(): IMutation & IItem {
     return {
@@ -55,7 +55,14 @@ function emptyParams(): ICharacherParams {
         currentFocus: 0,
         maxFocus: 0,
         currentStamina: 0,
-        maxStamina: 0
+        maxStamina: 0,
+        resistances: {
+            [DamageTypes.physical]: 0,
+            [DamageTypes.fire]: 0,
+            [DamageTypes.electrical]: 0,
+            [DamageTypes.psionic]: 0,
+            [DamageTypes.acid]: 0
+        }
     }    
 }
 

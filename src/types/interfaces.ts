@@ -82,6 +82,13 @@ export interface ICharacherParams {
     maxFocus: number,
     currentStamina: number,
     maxStamina: number,
+    resistances: {
+        [DamageTypes.physical]: number,
+        [DamageTypes.fire]: number,
+        [DamageTypes.electrical]: number,
+        [DamageTypes.psionic]: number,
+        [DamageTypes.acid]: number
+    }
 }
 
 export interface IUserParams extends ICharacherParams{

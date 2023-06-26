@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import styles from '../index.module.css';
-import { IAbility, IStore } from '../types/interfaces';
+import { DamageTypes, IAbility, IStore } from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import items from '../general/items/items';
 import masteries from '../general/masteries/masteries';
@@ -89,7 +89,10 @@ function BattleScreen() {
     function processAbility(index: number) {
         if (selectedAbility) {
             const allOpponents = [...opponents];
-            allOpponents[index].params.currentHealth -= selectedAbility.damage;
+
+            const damage = selectedAbility.damage - allOpponents[index].params.resistances[selectedAbility.damageType];
+            allOpponents[index].params.currentHealth -= damage;
+
             setOpponents(allOpponents);
 
             deselectAbility();

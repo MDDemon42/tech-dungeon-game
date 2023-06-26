@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { IClassInfo, IUserParams } from '../../types/interfaces';
+import { DamageTypes, IClassInfo, IUserParams } from '../../types/interfaces';
 
 const initialState: IUserParams = {
     name: 'Adventurer',
@@ -17,6 +17,13 @@ const initialState: IUserParams = {
     maxFocus: 0,
     currentStamina: 3,
     maxStamina: 3,
+    resistances: {
+        [DamageTypes.physical]: 0,
+        [DamageTypes.fire]: 0,
+        [DamageTypes.electrical]: 0,
+        [DamageTypes.psionic]: 0,
+        [DamageTypes.acid]: 0
+    },
     blank: 0
 }
 
