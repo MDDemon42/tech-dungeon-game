@@ -17,7 +17,7 @@ function SubInventoryScreen(props: {
     const resourceList = {
         cybers: 'mechaCores',
         mutations: 'mutaGenes',
-        items: 'diamonds',
+        items: 'gems',
         masteries: '',
         spells: '',
         powers: '',

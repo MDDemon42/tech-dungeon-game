@@ -13,7 +13,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
  # TODO:
  1) Add `team` instead of `user`
- 2) `Dummy` on `Battle Screen`
+ 2) Characters resistances
  3) Add more abilities to use on `Battle Screen`
  4) Extra `MASPIC`
  5) Make mutual exclusions within `MASPIC`

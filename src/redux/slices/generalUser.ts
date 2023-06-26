@@ -1,47 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { 
-    IInventory, 
-    IItem, 
-    IMastery, 
-    IMutation, 
-    IPower, 
-    ISpell, 
-    InventoryPlaces 
-} from '../../types/interfaces';
-import images from '../../images/images';
+import { InventoryPlaces } from '../../types/interfaces';
 import mutations from '../../general/mutations/mutations';
-
-export const noItem: IMutation & IItem = {
-    name: 'Nothing yet',
-    description: 'Nothing at all',
-    cost: 0,
-    inventoryPlace: InventoryPlaces.belt,
-    image: images.classIcons.noIcon,
-    priority: 0,
-    ability: null
-}
-
-export function emptyInventory() {
-    const inventory = {
-        hat: noItem,
-        head: noItem,
-        chin: noItem,
-        armor: noItem,
-        skin: noItem,
-        back: noItem,
-        shoulders: noItem,
-        belt: noItem,
-        leftPocket: noItem,
-        rightPocket: noItem,
-        tail: noItem,
-        legs: noItem,
-        leftHand: noItem,
-        rightHand: noItem,
-        bothHands: noItem
-    } as IInventory;
-
-    return inventory
-}
+import { emptyGeneral, emptyInventory, noItem } from '../../general/characters/characters';
 
 export function placeAsKey(place: string) {
     return place.split(' ').map((part, index) => {
@@ -54,16 +14,9 @@ export function placeAsKey(place: string) {
     }).join('');
 }
 
-const initialState = {
-    masteries: [] as IMastery[],
-    inventory: emptyInventory(),
-    spells: [] as ISpell[],
-    powers: [] as IPower[]
-}
-
 const generalUser = createSlice({
     name: 'generalUser',
-    initialState,
+    initialState: emptyGeneral,
     reducers: {
         buyItem(state, action) {
             if (!state.inventory) {
@@ -73,15 +26,15 @@ const generalUser = createSlice({
             const position = action.payload.inventoryPlace;
 
             if (position === InventoryPlaces.bothHands) {
-                state.inventory[placeAsKey(InventoryPlaces.leftHand)] = noItem;
-                state.inventory[placeAsKey(InventoryPlaces.rightHand)] = noItem;
+                state.inventory[placeAsKey(InventoryPlaces.leftHand)] = noItem();
+                state.inventory[placeAsKey(InventoryPlaces.rightHand)] = noItem();
             }
 
             if (
                 position === InventoryPlaces.leftHand || 
                 position === InventoryPlaces.rightHand
             ) {
-                state.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem;
+                state.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem();
             }
 
             state.inventory[placeAsKey(position)] = action.payload;
@@ -109,7 +62,7 @@ const generalUser = createSlice({
                     state.inventory[placeAsKey(InventoryPlaces.rightHand)] = mutations.mutation_clawRight;
                 }
                 
-                state.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem;                
+                state.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem();                
             }
 
             if (
@@ -119,7 +72,7 @@ const generalUser = createSlice({
                     state.inventory[placeAsKey(InventoryPlaces.leftHand)] = mutations.mutation_clawLeft;
                 }
 
-                state.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem;
+                state.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem();
             }
 
             state.inventory[placeAsKey(position)] = action.payload;
@@ -132,8 +85,8 @@ const generalUser = createSlice({
             const position = action.payload.inventoryPlace;
 
             if (position === InventoryPlaces.bothHands) {
-                state.inventory[placeAsKey(InventoryPlaces.leftHand)] = noItem;
-                state.inventory[placeAsKey(InventoryPlaces.rightHand)] = noItem;
+                state.inventory[placeAsKey(InventoryPlaces.leftHand)] = noItem();
+                state.inventory[placeAsKey(InventoryPlaces.rightHand)] = noItem();
             }
 
             state.inventory[placeAsKey(position)] = action.payload;

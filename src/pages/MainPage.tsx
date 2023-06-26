@@ -7,8 +7,9 @@ import {IClassInfo, IStore} from '../types/interfaces';
 import userParams from '../redux/slices/userParams';
 import { useEffect, useState } from 'react';
 import C from '../redux/constants';
-import generalUser, { emptyInventory } from '../redux/slices/generalUser';
+import generalUser from '../redux/slices/generalUser';
 import { classInfo } from '../redux/slices/userParams';
+import { emptyInventory } from '../general/characters/characters';
 
 export function upperCaseFirstLetter(value: string) {
     return value.substring(0,1).toUpperCase() + value.substring(1)

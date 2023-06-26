@@ -72,22 +72,25 @@ export interface IInventory extends Record<string, IItem | ICyber | IMutation> {
     bothHands: IMutation | IItem
 }
 
-export interface IUserParams {
+export interface ICharacherParams {
     name: string,
-    icon: string,
-    stage: number,
     currentHealth: number,
     maxHealth: number,
-    level: number,
-    gems: number,
-    mechaCores: number,
-    mutaGenes: number,
     currentMana: number,
     maxMana: number,
     currentFocus: number,
     maxFocus: number,
     currentStamina: number,
     maxStamina: number,
+}
+
+export interface IUserParams extends ICharacherParams{
+    icon: string,
+    stage: number,
+    level: number,
+    gems: number,
+    mechaCores: number,
+    mutaGenes: number,
     blank: number
 }
 
@@ -110,11 +113,16 @@ export interface IGeneralAll {
     powers: Record<string, IPower>
 }
 
-export interface IGeneralUser {
+export interface ICharacterGeneral {
     masteries: IMastery[],
     inventory: IInventory,
     spells: ISpell[],
     powers: IPower[]
+}
+
+export interface ICharacher {
+    general: ICharacterGeneral,
+    params: ICharacherParams
 }
 
 interface IGameScreens {
@@ -124,7 +132,7 @@ interface IGameScreens {
 export interface IStore {
     userParams: IUserParams,
     generalAll: IGeneralAll,
-    generalUser: IGeneralUser,
+    generalUser: ICharacterGeneral,
     gameScreens: IGameScreens
 }
 

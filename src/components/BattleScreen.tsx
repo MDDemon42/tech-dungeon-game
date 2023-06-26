@@ -2,13 +2,21 @@ import { useSelector } from 'react-redux';
 import styles from '../index.module.css';
 import { IAbility, IStore } from '../types/interfaces';
 import CommonIcon from './CommonIcon';
-import { emptyInventory } from '../redux/slices/generalUser';
 import items from '../general/items/items';
 import masteries from '../general/masteries/masteries';
 import abilities from '../general/abilities';
-import spells from '../general/spells/spells';
+import { useState } from 'react';
+import ResourceIcon from './ResourceIcon';
+import characters, { emptyInventory } from '../general/characters/characters';
 
 function BattleScreen() {
+    const [selectedAbility, setSelectedAbility] = useState<IAbility|null>(null);
+    const [selectedAbilityDiv, setSelectedAbilityDiv] = useState<HTMLElement|null>(null);
+    const [opponents, setOpponents] = useState([
+        characters.opponents.opponent_dummy(),
+        characters.opponents.opponent_dummy()
+    ]);
+
     const generalUser = useSelector((store: IStore) => store.generalUser);
     const masteriesUser = generalUser.masteries.map(mastery => mastery.name);
     const spellsUser = generalUser.spells;
@@ -62,20 +70,83 @@ function BattleScreen() {
         abilitiesUser.push(abilities.battleAbilities.battleAbilities_dualSwordsSlash);
     }
 
+    function selectAbility(ability: IAbility, id: string) {
+        const abilityDiv = document.querySelectorAll<HTMLElement>('#' + id)[0];
+        abilityDiv.style.cssText = 'background-color: lightblue';
+
+        setSelectedAbility(ability);
+        setSelectedAbilityDiv(abilityDiv);
+    }
+
+    function deselectAbility() {
+        if (selectedAbilityDiv) {
+            selectedAbilityDiv.style.cssText = '';
+            setSelectedAbility(null);
+            setSelectedAbilityDiv(null);
+        }
+    }
+
+    function processAbility(index: number) {
+        if (selectedAbility) {
+            const allOpponents = [...opponents];
+            allOpponents[index].params.currentHealth -= selectedAbility.damage;
+            setOpponents(allOpponents);
+
+            deselectAbility();
+        }
+    }
+
     return (
         <div className={styles.gamePage_component}>
-            Battle Screen
-            <div className={styles.commonScreen_notVertical}>
-                {
-                    abilitiesUser && abilitiesUser.map(ability => {
-                        if (!!ability) {
-                            return <div className={styles.commonIconWithButton}>
-                                <CommonIcon item={ability}/>
+            <h3 className={styles.inventory_header}>
+                Battle Screen
+            </h3>            
+            <div className={styles.gamePage_battleScreen_container}>
+                <div className={styles.gamePage_battleScreen_container_opponents}>
+                    {
+                        opponents.map((opponent, index) => 
+                            <div className={styles.gamePage_battleScreen}>
+                                <div>
+                                    {
+                                        [...Array(opponent.params.currentHealth)].map(icon => <ResourceIcon resource='health'/>)
+                                    }
+                                </div>
+                                <div 
+                                    className={styles.dummy}
+                                    onClick={() => processAbility(index)}
+                                >
+                                    <h4 style={{textAlign: 'center'}}>
+                                        {opponent.params.name}
+                                    </h4>
+                                </div>
                             </div>
-                        }
+                        )
+                    }
+                </div>                
+                <div className={styles.commonScreen_notVertical}>
+                    {
+                        abilitiesUser && abilitiesUser.map(ability => {
+                            const id = ability.name.split(' ').join('');
 
-                        return null
-                    })
+                            if (!!ability) {
+                                return <div 
+                                    className={styles.commonIconWithButton}
+                                    id={id}
+                                    onClick={() => selectAbility(ability, id)}
+                                >
+                                    <CommonIcon item={ability}/>
+                                </div>
+                            }
+
+                            return null
+                        })
+                    }
+                </div>
+                {
+                    selectedAbility ?
+                        <button onClick={() => deselectAbility()}>
+                            Deselect ability
+                        </button> : null
                 }
             </div>
         </div>

@@ -1,4 +1,5 @@
-import { emptyInventory, placeAsKey } from "../redux/slices/generalUser";
+import { emptyInventory } from "../general/characters/characters";
+import { placeAsKey } from "../redux/slices/generalUser";
 import store from "../redux/store";
 import { IInventorySlot, InventoryPlaces } from "../types/interfaces";
 

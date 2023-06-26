@@ -3,12 +3,12 @@ import styles from '../index.module.css';
 import images from "../images/images";
 import CommonScreen from "./CommonScreen";
 import {useSelector} from "react-redux";
-import { emptyInventory } from "../redux/slices/generalUser";
 import mutations from "../general/mutations/mutations";
 import cybers from "../general/cybers/cybers";
 import items from "../general/items/items";
 import powers from "../general/powers/powers";
 import StatsScreen from "./StatsScreen";
+import { emptyInventory } from "../general/characters/characters";
 
 function InventoryScreen() {
     const generalUser = useSelector((state: IStore) => state.generalUser);
