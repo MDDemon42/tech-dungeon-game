@@ -14,9 +14,11 @@ export function placeAsKey(place: string) {
     }).join('');
 }
 
+const initialState = emptyGeneral();
+
 const generalUser = createSlice({
     name: 'generalUser',
-    initialState: emptyGeneral,
+    initialState,
     reducers: {
         buyItem(state, action) {
             if (!state.inventory) {

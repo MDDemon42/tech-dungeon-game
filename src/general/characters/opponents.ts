@@ -1,10 +1,11 @@
+import { UserParam } from "../../types/interfaces";
 import { emptyCharacter } from "./characters";
 
 const opponent_dummy = () => {
     const opponent = emptyCharacter();
     opponent.params.name = 'Dummy';
-    opponent.params.maxHealth = 3;
-    opponent.params.currentHealth = 3;
+    opponent.params.maxParams[UserParam.health] = 3;
+    opponent.params.currentParams[UserParam.health] = 3;
 
     return opponent
 }

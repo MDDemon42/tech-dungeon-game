@@ -1,6 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../index.module.css';
-import { IStore, IGeneralAll, IUserParams, IMutation, ICyber, IItem, InventoryPlaces, IInventorySlot } from '../types/interfaces';
+import { 
+    IStore, 
+    IMutation, 
+    ICyber, 
+    IItem, 
+    InventoryPlaces, 
+    IInventorySlot, 
+    UserResource, 
+    ISubInventoryDataName,
+    ISubInventoryMapping
+} from '../types/interfaces';
 import generalUser from '../redux/slices/generalUser';
 import userParams from '../redux/slices/userParams';
 import prioritisationChecker from '../functions/prioritisation';
@@ -8,45 +18,48 @@ import { upperCaseFirstLetter } from '../pages/MainPage';
 import CommonIcon from './CommonIcon';
 
 function SubInventoryScreen(props: {
-    dataName: keyof IGeneralAll
+    dataName: keyof ISubInventoryDataName
 }) {
     const {dataName} = props;
     const dataAll = useSelector((store: IStore) => store.generalAll[dataName]);
     const dataAllNames = Object.keys(dataAll);
 
-    const resourceList = {
-        cybers: 'mechaCores',
-        mutations: 'mutaGenes',
-        items: 'gems',
-        masteries: '',
-        spells: '',
-        powers: '',
-        abilities: ''
-    }
-    const userResource = useSelector((store: IStore) => Number(store.userParams[resourceList[dataName] as keyof IUserParams]));
-
-    const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
-
     const dispatch = useDispatch();
 
-    function buyButtonListener(data: IItem | IMutation | ICyber) {
-        switch (dataName) {
-            case 'cybers':
+    const subInventoryMappings: Record<string, ISubInventoryMapping> = {
+        cybers: {
+            resource: UserResource.core,
+            title: 'Welcome to Cyber Lab!',
+            button: 'Implement!',
+            listener: (data: IItem | IMutation | ICyber) => {
                 dispatch(generalUser.actions.implementCyber(data));
                 dispatch(userParams.actions.implementCyber(data.cost));
-                break;
-            case 'items':
+            }
+        },
+        mutations: {
+            resource: UserResource.gene,
+            title: 'Welcome to Mutation Lab!',
+            button: 'Mutate!',
+            listener: (data: IItem | IMutation | ICyber) => {
                 dispatch(generalUser.actions.buyItem(data));
                 dispatch(userParams.actions.buyItem(data.cost));
-                break;
-            case 'mutations':
+            }
+        },
+        items: {
+            resource: UserResource.gem,
+            title: 'Welcome to Market!',
+            button: 'Buy!',
+            listener: (data: IItem | IMutation | ICyber) => {
                 dispatch(generalUser.actions.mutateMutation(data));
                 dispatch(userParams.actions.mutateMutation(data.cost));
-                break;
-            default:
-                break;
-        }        
+            }
+        }
     }
+    const userResource = useSelector((store: IStore) => 
+        Number(store.userParams.resources[subInventoryMappings[dataName].resource])
+    );
+
+    const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
 
     function disableChecker(data: IItem | IMutation | ICyber) {
         const resourceCheck = userResource >= data.cost;
@@ -87,37 +100,6 @@ function SubInventoryScreen(props: {
         return keyArray.join(' ')
     }
 
-    const representTexts = {
-        cybers: {
-            title: 'Welcome to Cyber Lab!',
-            button: 'Implement!'
-        },
-        mutations: {
-            title: 'Welcome to Mutation Lab!',
-            button: 'Mutate!'
-        },
-        items: {
-            title: 'Welcome to Market!',
-            button: 'Buy!'
-        },
-        masteries: {
-            title: '',
-            button: ''
-        },
-        spells: {
-            title: '',
-            button: ''
-        },
-        powers: {
-            title: '',
-            button: ''
-        },
-        abilities: {
-            title: '',
-            button: ''
-        }
-    }
-
     const InventorySlotLine = (props: {
         data: IInventorySlot[],
         title: string
@@ -134,10 +116,10 @@ function SubInventoryScreen(props: {
                         {
                             <button
                                 disabled={disableChecker(datum)}
-                                onClick={() => buyButtonListener(datum)}
+                                onClick={() => subInventoryMappings[dataName].listener(datum)}
                             >
                                 {
-                                    representTexts[dataName].button
+                                    subInventoryMappings[dataName].button
                                 }
                             </button>
                         }
@@ -151,7 +133,7 @@ function SubInventoryScreen(props: {
         <div className={styles.gamePage_component}>
             <h3 className={styles.inventory_header}>
                 {
-                    representTexts[dataName].title
+                    subInventoryMappings[dataName].title
                 }
             </h3>            
             <div className={styles.gamePage_component_container}>

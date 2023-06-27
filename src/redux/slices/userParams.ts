@@ -1,22 +1,28 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { DamageTypes, IClassInfo, IUserParams } from '../../types/interfaces';
+import { DamageTypes, IClassInfo, IUserParams, UserParam, UserResource } from '../../types/interfaces';
 
 const initialState: IUserParams = {
     name: 'Adventurer',
     icon: 'noIcon',
     stage: 0,
-    currentHealth: 3,
-    maxHealth: 3,
+    currentParams: {
+        Health: 3,
+        Mana: 0,
+        Focus: 0,
+        Stamina: 3
+    },
+    maxParams: {
+        Health: 3,
+        Mana: 0,
+        Focus: 0,
+        Stamina: 3
+    },
+    resources: {
+        [UserResource.gem]: 0,
+        [UserResource.gene]: 0,
+        [UserResource.core]: 0
+    },
     level: 1,
-    gems: 0,
-    mechaCores: 0,
-    mutaGenes: 0,
-    currentMana: 0,
-    maxMana: 0,
-    currentFocus: 0,
-    maxFocus: 0,
-    currentStamina: 3,
-    maxStamina: 3,
     resistances: {
         [DamageTypes.physical]: 0,
         [DamageTypes.fire]: 0,
@@ -27,40 +33,52 @@ const initialState: IUserParams = {
     blank: 0
 }
 
+function createLevelUpBonuses(params: UserParam[]) {
+    const standartLevelUpBonuses = [
+        UserParam.health, UserParam.focus, UserParam.mana, UserParam.stamina, UserParam.blank
+    ];
+
+    const result = [...standartLevelUpBonuses];
+    result.push(...params);
+
+    return result
+}
+
+
 export const classInfo: IClassInfo = {
     mutant: {
-        startBonus: 'mutaGenes',
-        levelUpBonuses: ['maxHealth', 'maxFocus', 'maxMana', 'maxStamina', 'maxHealth', 'maxStamina', 'blank'],
+        startBonus: ['resources', UserResource.gene],
+        levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.stamina]),
         description: 'Gets extra Muta-gene on start.\n\nOn level up has increased chance of getting Health or Stamina.\n\nBut there is a chance to get nothing too',
     },
     cyborg: {
-        startBonus: 'mechaCores',
-        levelUpBonuses: ['maxHealth', 'maxFocus', 'maxMana', 'maxStamina', 'maxStamina', 'blank', 'blank'],
+        startBonus: ['resources', UserResource.core],
+        levelUpBonuses: createLevelUpBonuses([UserParam.blank, UserParam.stamina]),
         description: 'Gets extra Mecha-core on start.\n\nOn level up has increased chance of getting Stamina.\n\nBut there is a big chance to get nothing too'
     },
     normal: {
-        startBonus: 'gems',
-        levelUpBonuses: ['maxHealth', 'maxFocus', 'maxMana', 'maxStamina', 'maxStamina', 'maxStamina', 'blank'],
+        startBonus: ['resources', UserResource.gem],
+        levelUpBonuses: createLevelUpBonuses([UserParam.stamina, UserParam.stamina]),
         description: 'Gets extra Gem on start.\n\nOn level up has super increased chance of getting Stamina.\n\nBut there is a chance to get nothing too'
     },
     wizard: {
-        startBonus: 'maxMana',
-        levelUpBonuses: ['maxHealth', 'maxFocus', 'maxMana', 'maxStamina', 'maxMana', 'maxMana', 'blank'],
+        startBonus: ['maxParams', UserParam.mana],
+        levelUpBonuses: createLevelUpBonuses([UserParam.mana, UserParam.mana]),
         description: 'Gets extra Mana on start.\n\nOn level up has super increased chance of getting Mana.\n\nBut there is a chance to get nothing too'
     },
     psion: {
-        startBonus: 'maxFocus',
-        levelUpBonuses: ['maxHealth', 'maxFocus', 'maxMana', 'maxStamina', 'maxFocus', 'maxFocus', 'blank'],
+        startBonus: ['maxParams', UserParam.focus],
+        levelUpBonuses: createLevelUpBonuses([UserParam.focus, UserParam.focus]),
         description: 'Gets extra Focus on start.\n\nOn level up has super increased chance of getting Focus.\n\nBut there is a chance to get nothing too'
     },
     guildian: {
-        startBonus: 'level',
-        levelUpBonuses: ['maxHealth', 'maxFocus', 'maxMana', 'maxStamina', 'maxHealth', 'maxMana', 'blank'],
-        description: 'Gets extra Level on start.\n\nOn level up has increased chance of getting Health or Mana.\n\nBut there is a chance to get nothing too'
+        startBonus: ['maxParams', UserParam.stamina],
+        levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.mana]),
+        description: 'Gets extra Stamina on start.\n\nOn level up has increased chance of getting Health or Mana.\n\nBut there is a chance to get nothing too'
     },
     noIcon: {
-        startBonus: 'blank',
-        levelUpBonuses: ['blank'],
+        startBonus: ['currentParams', UserParam.blank],
+        levelUpBonuses: [UserParam.blank],
         description: 'Choose one of classes to start playing'
     }
 }
@@ -70,13 +88,19 @@ const userParams = createSlice({
     initialState,
     reducers: {
         buyItem(state, action) {
-            state.gems -= action.payload
+            state.resources[UserResource.gem] -= action.payload
         },
         implementCyber(state, action) {
-            state.mechaCores -= action.payload
+            state.resources[UserResource.core] -= action.payload
         },
         mutateMutation(state, action) {
-            state.mutaGenes -= action.payload
+            state.resources[UserResource.gene] -= action.payload
+        },
+        processAbility(state, action) {
+            Object.keys(action.payload).forEach(key => {
+                // @ts-ignore
+                state.currentParams[key] -= action.payload[key];
+            })
         },
         setState(state, action) {
             Object.keys(state).forEach(key => {
@@ -85,10 +109,10 @@ const userParams = createSlice({
             })
         },
         relaxate(state, action) {
-            state.currentFocus = state.maxFocus;
-            state.currentMana = state.maxMana;
-            state.currentHealth = state.maxHealth;
-            state.currentStamina = state.maxStamina;
+            state.currentParams.Focus = state.maxParams.Focus;
+            state.currentParams.Mana = state.maxParams.Mana;
+            state.currentParams[UserParam.health] = state.maxParams[UserParam.health];
+            state.currentParams.Stamina = state.maxParams.Stamina;
         },
         levelUp(state, action) {
             const rand = Math.floor(Math.random()*7);
@@ -96,7 +120,7 @@ const userParams = createSlice({
             state.level += 1;
             
             // @ts-ignore
-            state[classInfo[state.icon].levelUpBonuses[rand]] += 1;
+            state.maxParams[classInfo[state.icon].levelUpBonuses[rand]] += 1;
         },
         refreshState(state, action) { 
             Object.keys(state).forEach(key => {
@@ -107,7 +131,13 @@ const userParams = createSlice({
             state.icon = action.payload;
 
             // @ts-ignore
-            state[classInfo[action.payload].startBonus] += 1;
+            const {startBonus} = classInfo[action.payload];
+            // @ts-ignore
+            const stateWithBonus = {...state[startBonus[0]]};
+            stateWithBonus[startBonus[1]] += 1;
+
+            // @ts-ignore
+            state[startBonus[0]] = stateWithBonus;
         }
     }
 })

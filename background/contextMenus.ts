@@ -89,9 +89,9 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
                     result['tech-dungeon-game'].generalUser = user;
 
                     const params = {...result['tech-dungeon-game'].userParams};
-                    params.gems = 27;
-                    params.mechaCores = 7;
-                    params.mutaGenes = 9;
+                    params.resources['Gems'] = 27;
+                    params.resources['Mecha-cores'] = 7;
+                    params.resources['Muta-genes'] = 9;
                     params.level = 12;
                     result['tech-dungeon-game'].userParams = params;
 

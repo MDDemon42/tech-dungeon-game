@@ -1,21 +1,17 @@
-import {IStore} from "../types/interfaces";
+import {IStore, UserParam, UserResource} from "../types/interfaces";
 import styles from '../index.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import ResourceIcon from "./ResourceIcon";
 import userParams from "../redux/slices/userParams";
 import { upperCaseFirstLetter } from "../pages/MainPage";
+import ParamIcon from "./ParamIcon";
 
 function StatsScreen() {
     const user = useSelector((state: IStore) => state.userParams);
 
     const dispatch = useDispatch();
 
-    if (   
-        user.currentFocus < user.maxFocus ||
-        user.currentHealth < user.maxHealth ||
-        user.currentMana < user.maxMana ||
-        user.currentStamina < user.maxStamina
-    ) {
+    function relaxate() {
         dispatch(userParams.actions.relaxate(''));
     }
 
@@ -29,42 +25,45 @@ function StatsScreen() {
             <div className={styles.userParams_body}>
                 <div>
                     {
-                        [...Array(user.currentHealth)].map(icon => <ResourceIcon resource='health'/>)
+                        [...Array(user.currentParams[UserParam.health])].map(icon => <ParamIcon param='health'/>)
                     }
                 </div>
                 {
-                    user.maxMana > 0 ?
+                    user.maxParams.Mana > 0 ?
                         <div>
                             {
-                                [...Array(user.currentMana)].map(icon => <ResourceIcon resource='mana'/>)
+                                [...Array(user.currentParams.Mana)].map(icon => <ParamIcon param='mana'/>)
                             }
                         </div> : 
                         null
                 }
                 {
-                    user.maxFocus > 0 ?
+                    user.maxParams.Focus > 0 ?
                         <div>
                             {
-                                [...Array(user.currentFocus)].map(icon => <ResourceIcon resource='focus'/>)
+                                [...Array(user.currentParams.Focus)].map(icon => <ParamIcon param='focus'/>)
                             }
                         </div> : 
                         null
                 }                
                 <div>
                     {
-                        [...Array(user.currentStamina)].map(icon => <ResourceIcon resource='stamina'/>)
+                        [...Array(user.currentParams.Stamina)].map(icon => <ParamIcon param='stamina'/>)
                     }
                 </div>
+                <button onClick={relaxate}>
+                    Relaxate
+                </button>
             </div>
             <div className={styles.userParams_body}>
                 <div>
-                    <ResourceIcon resource='gem'/>: {user.gems}
+                    <ResourceIcon resource='gem'/>: {user.resources.Gems}
                 </div>
                 <div>
-                    <ResourceIcon resource='core'/>: {user.mechaCores}
+                    <ResourceIcon resource='core'/>: {user.resources["Mecha-cores"]}
                 </div>
                 <div>
-                    <ResourceIcon resource='gene'/>: {user.mutaGenes}
+                    <ResourceIcon resource='gene'/>: {user.resources[UserResource.gene]}
                 </div>
             </div>
         </div>

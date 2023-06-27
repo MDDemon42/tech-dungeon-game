@@ -8,6 +8,7 @@ import mutantEvolvings from './mutantEvolvings/mutantEvolvings';
 import psionInsights from './psionInsights/psionInsights';
 import guildianLearnings from './guildianLearnings/guildianLearnings';
 import resourceIcons from './resourceIcons/resourceIcons';
+import paramIcons from './paramIcons/paramIcons';
 
 const images = {
     bodyElements,
@@ -19,7 +20,8 @@ const images = {
     mutantEvolvings,
     psionInsights,
     guildianLearnings,
-    resourceIcons
+    resourceIcons,
+    paramIcons
 };
 
 export default images;

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import styles from '../index.module.css';
-import { DamageTypes, IAbility, IStore } from '../types/interfaces';
+import { DamageTypes, IAbility, IStore, UserParam, UserResource } from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import items from '../general/items/items';
 import masteries from '../general/masteries/masteries';
@@ -8,6 +8,9 @@ import abilities from '../general/abilities';
 import { useState } from 'react';
 import ResourceIcon from './ResourceIcon';
 import characters, { emptyInventory } from '../general/characters/characters';
+import ParamIcon from './ParamIcon';
+import { useDispatch } from 'react-redux';
+import userParams from '../redux/slices/userParams';
 
 function BattleScreen() {
     const [selectedAbility, setSelectedAbility] = useState<IAbility|null>(null);
@@ -18,6 +21,10 @@ function BattleScreen() {
     ]);
 
     const generalUser = useSelector((store: IStore) => store.generalUser);
+    const currentParams = useSelector((store: IStore) => store.userParams.currentParams);
+
+    const dispatch = useDispatch();
+
     const masteriesUser = generalUser.masteries.map(mastery => mastery.name);
     const spellsUser = generalUser.spells;
 
@@ -71,16 +78,36 @@ function BattleScreen() {
     }
 
     function selectAbility(ability: IAbility, id: string) {
+        let enoughResources = true;
         const abilityDiv = document.querySelectorAll<HTMLElement>('#' + id)[0];
-        abilityDiv.style.cssText = 'background-color: lightblue';
 
-        setSelectedAbility(ability);
-        setSelectedAbilityDiv(abilityDiv);
+        const {costs} = ability;
+        Object.keys(costs).forEach(key => {
+            // @ts-ignore
+            if (costs[key] > currentParams[key]) {
+                enoughResources = false;
+                return;
+            }
+        })
+
+        if (enoughResources) {
+            abilityDiv.style.cssText = 'background-color: lightblue';
+
+            setSelectedAbility(ability);
+            setSelectedAbilityDiv(abilityDiv);
+        } else {
+            abilityDiv.style.cssText = 'background-color: red';
+
+            setTimeout(() => {
+                abilityDiv.style.cssText = '';
+            }, 300)
+        }
     }
 
     function deselectAbility() {
         if (selectedAbilityDiv) {
             selectedAbilityDiv.style.cssText = '';
+
             setSelectedAbility(null);
             setSelectedAbilityDiv(null);
         }
@@ -89,9 +116,10 @@ function BattleScreen() {
     function processAbility(index: number) {
         if (selectedAbility) {
             const allOpponents = [...opponents];
-
+            
             const damage = selectedAbility.damage - allOpponents[index].params.resistances[selectedAbility.damageType];
-            allOpponents[index].params.currentHealth -= damage;
+            allOpponents[index].params.currentParams[UserParam.health] -= damage;
+            dispatch(userParams.actions.processAbility(selectedAbility.costs))
 
             setOpponents(allOpponents);
 
@@ -111,7 +139,8 @@ function BattleScreen() {
                             <div className={styles.gamePage_battleScreen}>
                                 <div>
                                     {
-                                        [...Array(opponent.params.currentHealth)].map(icon => <ResourceIcon resource='health'/>)
+                                        [...Array(opponent.params.currentParams[UserParam.health])]
+                                            .map(icon => <ParamIcon param='health'/>)
                                     }
                                 </div>
                                 <div 

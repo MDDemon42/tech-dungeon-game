@@ -74,14 +74,19 @@ export interface IInventory extends Record<string, IItem | ICyber | IMutation> {
 
 export interface ICharacherParams {
     name: string,
-    currentHealth: number,
-    maxHealth: number,
-    currentMana: number,
-    maxMana: number,
-    currentFocus: number,
-    maxFocus: number,
-    currentStamina: number,
-    maxStamina: number,
+    currentParams: {
+        [UserParam.health]: number,
+        [UserParam.mana]: number,
+        [UserParam.focus]: number,
+        [UserParam.stamina]: number,
+        [UserParam.blank]?: number
+    },
+    maxParams: {
+        [UserParam.health]: number,
+        [UserParam.mana]: number,
+        [UserParam.focus]: number,
+        [UserParam.stamina]: number
+    },
     resistances: {
         [DamageTypes.physical]: number,
         [DamageTypes.fire]: number,
@@ -95,20 +100,39 @@ export interface IUserParams extends ICharacherParams{
     icon: string,
     stage: number,
     level: number,
-    gems: number,
-    mechaCores: number,
-    mutaGenes: number,
+    resources: {
+        [UserResource.gene]: number,
+        [UserResource.gem]: number,
+        [UserResource.core]: number
+    },
     blank: number
+}
+
+export enum UserParam {
+    blank = 'Blank',
+    health = 'Health',
+    mana = 'Mana',
+    focus = 'Focus',
+    stamina = 'Stamina'    
 }
 
 export enum UserResource {
     gem = 'Gems',
     core = 'Mecha-cores',
-    gene = 'Muta-genes',
-    health = 'Health',
-    mana = 'Mana',
-    focus = 'Focus',
-    stamina = 'Stamina'
+    gene = 'Muta-genes'
+}
+
+export interface ISubInventoryDataName {
+    mutations: Record<string, IMutation>,
+    cybers: Record<string, ICyber>,
+    items: Record<string, IItem>
+}
+
+export interface ISubInventoryMapping {
+    resource: UserResource,
+    title: string,
+    button: string,
+    listener: any
 }
 
 export interface IGeneralAll {
@@ -152,9 +176,13 @@ export enum DamageTypes {
 }
 
 export interface IBattleAbility extends ICommon {
-    manaCost: number,
-    focusCost: number,
-    staminaCost: number,
+    costs: {
+        [UserParam.health]?: number,
+        [UserParam.mana]?: number,
+        [UserParam.focus]?: number,
+        [UserParam.stamina]?: number,
+        [UserParam.blank]?: number        
+    }
     damage: number,
     damageType: DamageTypes,
     hitChance: number,
@@ -166,8 +194,8 @@ export interface IAbility extends IBattleAbility {
 }
 
 interface IClassInfoItem {
-    startBonus: keyof IUserParams,
-    levelUpBonuses: (keyof IUserParams)[],
+    startBonus: [keyof IUserParams, UserParam | UserResource | keyof IUserParams],
+    levelUpBonuses: UserParam[],
     description: string
 }
 
