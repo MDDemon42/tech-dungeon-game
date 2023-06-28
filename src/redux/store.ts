@@ -3,15 +3,13 @@ import {logger, saver} from './middleware';
 import {combineReducers} from 'redux';
 
 import gameScreens from './slices/gameScreens';
-import userParams from './slices/userParams';
 import generalAll from './slices/generalAll';
-import generalUser from './slices/generalUser';
+import gameSquad from './slices/gameSquad';
 
 const reducer = combineReducers({
-    userParams: userParams.reducer,
     generalAll: generalAll.reducer,
-    generalUser: generalUser.reducer,
-    gameScreens: gameScreens.reducer
+    gameScreens: gameScreens.reducer,
+    gameSquad: gameSquad.reducer
 })
 
 const middleware = (getDefaultMiddleware: any) => getDefaultMiddleware().concat(logger, saver);

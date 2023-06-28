@@ -2,18 +2,22 @@ import {useSelector, useDispatch} from "react-redux";
 import {IMastery, IStore} from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import styles from '../index.module.css';
-import generalUser from "../redux/slices/generalUser";
 import masteries from "../general/masteries/masteries";
+import gameSquad from "../redux/slices/gameSquad";
 
 function AcademyScreen() {
-    const masteriesNames = Object.keys(masteries);
+    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
-    const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
-    const userResource = useSelector((store: IStore) => store.userParams.level);
+    const masteriesNames = Object.keys(masteries);
+    const masteriesUser = useSelector((store: IStore) => 
+        store.gameSquad.squadMembers[index]?.general.masteries.map(data => data.name))!;
+    const userResource = useSelector((store: IStore) => 
+        store.gameSquad.squadMembers[index]?.params.level)!;
+        
     const dispatch = useDispatch();
 
     function learnButtonListener(mastery: IMastery) {
-        dispatch(generalUser.actions.learnMastery(mastery))
+        dispatch(gameSquad.actions.learnMastery({index, data: mastery}))
     }
 
     function disableChecker(mastery: IMastery) {

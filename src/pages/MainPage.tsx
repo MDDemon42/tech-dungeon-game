@@ -4,19 +4,21 @@ import {Gear} from 'react-bootstrap-icons';
 import styles from '../index.module.css';
 import images from '../images/images';
 import {IClassInfo, IStore} from '../types/interfaces';
-import userParams from '../redux/slices/userParams';
 import { useEffect, useState } from 'react';
 import C from '../redux/constants';
-import generalUser from '../redux/slices/generalUser';
-import { classInfo } from '../redux/slices/userParams';
 import { emptyInventory } from '../general/characters/characters';
+import gameSquad, { classInfo } from '../redux/slices/gameSquad';
 
 export function upperCaseFirstLetter(value: string) {
     return value.substring(0,1).toUpperCase() + value.substring(1)
 }
 
 function MainPage() {
-    const icon = useSelector((store: IStore) => store.userParams.icon);
+    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
+
+    const icon = useSelector((store: IStore) => 
+        store.gameSquad.squadMembers[index]?.params.icon)!;
+
     const classes = Object.keys(images.classIcons);
 
     const dispatch = useDispatch();
@@ -27,16 +29,12 @@ function MainPage() {
     useEffect(() => {
         chrome.storage.local.get().then(result => {
             if (result[C.name]) {
-                dispatch(userParams.actions.setState(result[C.name].userParams));
-                dispatch(generalUser.actions.setState(result[C.name].generalUser));
+                dispatch(gameSquad.actions.setState(result[C.name].gameSquad));
+
+                const user = result[C.name].gameSquad.squadMembers[index];
                 if (
-                    result[C.name].userParams.level > 0 ||
-                    result[C.name].userParams.diamonds > 0 ||
-                    result[C.name].userParams.mechaCores > 0 ||
-                    result[C.name].userParams.mutaGenes > 0 ||
-                    result[C.name].userParams.mana > 0 ||
-                    result[C.name].userParams.focus > 0 || 
-                    !Object.is(result[C.name].generalUser.inventory, emptyInventory())
+                    user.params.level > 0 ||
+                    !Object.is(user.general.inventory, emptyInventory())
                 ) {
                     setStartButtonText('Continue!')
                 }
@@ -54,8 +52,7 @@ function MainPage() {
     }
 
     const changeClass = (value: string) => {
-        dispatch(userParams.actions.refreshState(value));
-        dispatch(generalUser.actions.refreshState(''));
+        dispatch(gameSquad.actions.refreshState(value));
         setStartButtonText('Start!');
     }
 

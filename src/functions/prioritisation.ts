@@ -1,5 +1,5 @@
 import { emptyInventory } from "../general/characters/characters";
-import { placeAsKey } from "../redux/slices/generalUser";
+import { placeAsKey } from "../redux/slices/gameSquad";
 import store from "../redux/store";
 import { IInventorySlot, InventoryPlaces } from "../types/interfaces";
 
@@ -9,7 +9,8 @@ function prioritisationChecker(slot: IInventorySlot) {
     const name_new = slot.name;
     const priority_new = slot.priority;
 
-    const inventory = store.getState().generalUser.inventory || emptyInventory();
+    const index = store.getState().gameSquad.currentlyWatched;
+    const inventory = store.getState().gameSquad.squadMembers[index]?.general.inventory || emptyInventory();
     const name_old = inventory[placeAsKey(position)].name;
     const priority_old = inventory[placeAsKey(position)].priority;
 

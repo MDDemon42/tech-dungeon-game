@@ -1,16 +1,15 @@
 import { useSelector } from 'react-redux';
 import styles from '../index.module.css';
-import { DamageTypes, IAbility, IStore, UserParam, UserResource } from '../types/interfaces';
+import { IAbility, IStore, UserParam } from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import items from '../general/items/items';
 import masteries from '../general/masteries/masteries';
 import abilities from '../general/abilities';
 import { useState } from 'react';
-import ResourceIcon from './ResourceIcon';
 import characters, { emptyInventory } from '../general/characters/characters';
 import ParamIcon from './ParamIcon';
 import { useDispatch } from 'react-redux';
-import userParams from '../redux/slices/userParams';
+import gameSquad from '../redux/slices/gameSquad';
 
 function BattleScreen() {
     const [selectedAbility, setSelectedAbility] = useState<IAbility|null>(null);
@@ -20,15 +19,17 @@ function BattleScreen() {
         characters.opponents.opponent_dummy()
     ]);
 
-    const generalUser = useSelector((store: IStore) => store.generalUser);
-    const currentParams = useSelector((store: IStore) => store.userParams.currentParams);
+    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
+
+    const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
+    const user = squad[index];
 
     const dispatch = useDispatch();
 
-    const masteriesUser = generalUser.masteries.map(mastery => mastery.name);
-    const spellsUser = generalUser.spells;
+    const masteriesUser = user?.general.masteries.map(mastery => mastery.name)!;
+    const spellsUser = user?.general.spells!;
 
-    const inventory = generalUser.inventory ? generalUser.inventory : emptyInventory();
+    const inventory = user?.general.inventory ? user.general.inventory : emptyInventory();
 
     const abilitiesUser: IAbility[] = [];
     
@@ -84,7 +85,7 @@ function BattleScreen() {
         const {costs} = ability;
         Object.keys(costs).forEach(key => {
             // @ts-ignore
-            if (costs[key] > currentParams[key]) {
+            if (costs[key] > user?.params.currentParams[key]) {
                 enoughResources = false;
                 return;
             }
@@ -113,17 +114,20 @@ function BattleScreen() {
         }
     }
 
-    function processAbility(index: number) {
+    function processAbility(opponentIndex: number) {
         if (selectedAbility) {
             const allOpponents = [...opponents];
             
-            const damage = selectedAbility.damage - allOpponents[index].params.resistances[selectedAbility.damageType];
+            const damage = selectedAbility.damage - allOpponents[opponentIndex].params.resistances[selectedAbility.damageType];
             const chance = Math.floor(Math.random()*100);
             if (selectedAbility.hitChance > chance) {
-                allOpponents[index].params.currentParams[UserParam.health] -= damage;
+                allOpponents[opponentIndex].params.currentParams[UserParam.health] -= damage;
             }            
             
-            dispatch(userParams.actions.processAbility(selectedAbility.costs))
+            dispatch(gameSquad.actions.processAbility({
+                index,
+                data: selectedAbility.costs
+            }));
 
             setOpponents(allOpponents);
 
@@ -139,7 +143,7 @@ function BattleScreen() {
             <div className={styles.gamePage_battleScreen_container}>
                 <div className={styles.gamePage_battleScreen_container_opponents}>
                     {
-                        opponents.map((opponent, index) => 
+                        opponents.map((opponent, opponentIndex) => 
                             <div className={styles.gamePage_battleScreen}>
                                 <div>
                                     {
@@ -149,7 +153,7 @@ function BattleScreen() {
                                 </div>
                                 <div 
                                     className={styles.dummy}
-                                    onClick={() => processAbility(index)}
+                                    onClick={() => processAbility(opponentIndex)}
                                 >
                                     <h4 style={{textAlign: 'center'}}>
                                         {opponent.params.name}

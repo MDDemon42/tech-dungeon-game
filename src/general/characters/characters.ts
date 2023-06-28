@@ -1,6 +1,6 @@
 import images from "../../images/images";
 import opponents from "./opponents";
-import { DamageTypes, ICharacher, ICharacherParams, ICharacterGeneral, IInventory, IItem, IMastery, IMutation, IPower, ISpell, InventoryPlaces, UserParam } from "../../types/interfaces";
+import { DamageTypes, ICharacher, ICharacherParams, ICharacterGeneral, IInventory, IItem, IMastery, IMutation, IPower, ISpell, InventoryPlaces, UserParam, UserResource } from "../../types/interfaces";
 
 export function noItem(): IMutation & IItem {
     return {
@@ -48,6 +48,7 @@ export function emptyGeneral(): ICharacterGeneral {
 function emptyParams(): ICharacherParams {
     return {
         name: '',
+        icon: 'noIcon',
         currentParams: {
             [UserParam.health]: 0,
             [UserParam.mana]: 0,
@@ -66,6 +67,11 @@ function emptyParams(): ICharacherParams {
             [DamageTypes.electrical]: 0,
             [DamageTypes.psionic]: 0,
             [DamageTypes.acid]: 0
+        },
+        resources: {
+            [UserResource.core]: 0,
+            [UserResource.gem]: 0,
+            [UserResource.gene]: 0
         }
     }    
 }

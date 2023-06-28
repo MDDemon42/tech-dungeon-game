@@ -11,15 +11,16 @@ import {
     ISubInventoryDataName,
     ISubInventoryMapping
 } from '../types/interfaces';
-import generalUser from '../redux/slices/generalUser';
-import userParams from '../redux/slices/userParams';
 import prioritisationChecker from '../functions/prioritisation';
 import { upperCaseFirstLetter } from '../pages/MainPage';
 import CommonIcon from './CommonIcon';
+import gameSquad from '../redux/slices/gameSquad';
 
 function SubInventoryScreen(props: {
     dataName: keyof ISubInventoryDataName
 }) {
+    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
+
     const {dataName} = props;
     const dataAll = useSelector((store: IStore) => store.generalAll[dataName]);
     const dataAllNames = Object.keys(dataAll);
@@ -32,8 +33,7 @@ function SubInventoryScreen(props: {
             title: 'Welcome to Cyber Lab!',
             button: 'Implement!',
             listener: (data: IItem | IMutation | ICyber) => {
-                dispatch(generalUser.actions.implementCyber(data));
-                dispatch(userParams.actions.implementCyber(data.cost));
+                dispatch(gameSquad.actions.implementCyber({index, data}));
             }
         },
         mutations: {
@@ -41,8 +41,7 @@ function SubInventoryScreen(props: {
             title: 'Welcome to Mutation Lab!',
             button: 'Mutate!',
             listener: (data: IItem | IMutation | ICyber) => {
-                dispatch(generalUser.actions.mutateMutation(data));
-                dispatch(userParams.actions.mutateMutation(data.cost));
+                dispatch(gameSquad.actions.mutateMutation({index, data}));
             }
         },
         items: {
@@ -50,16 +49,16 @@ function SubInventoryScreen(props: {
             title: 'Welcome to Market!',
             button: 'Buy!',
             listener: (data: IItem | IMutation | ICyber) => {
-                dispatch(generalUser.actions.buyItem(data));
-                dispatch(userParams.actions.buyItem(data.cost));
+                dispatch(gameSquad.actions.buyItem({index, data}));
             }
         }
     }
-    const userResource = useSelector((store: IStore) => 
-        Number(store.userParams.resources[subInventoryMappings[dataName].resource])
-    );
 
-    const masteriesUser = useSelector((store: IStore) => store.generalUser.masteries.map(data => data.name))
+    const userResource = useSelector((store: IStore) => 
+        store.gameSquad.squadMembers[index]?.params.resources[subInventoryMappings[dataName].resource])!;
+
+    const masteriesUser = useSelector((store: IStore) => 
+        store.gameSquad.squadMembers[index]?.general.masteries.map(data => data.name));
 
     function disableChecker(data: IItem | IMutation | ICyber) {
         const resourceCheck = userResource >= data.cost;

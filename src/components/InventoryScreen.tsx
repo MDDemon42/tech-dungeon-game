@@ -11,10 +11,13 @@ import StatsScreen from "./StatsScreen";
 import { emptyInventory } from "../general/characters/characters";
 
 function InventoryScreen() {
-    const generalUser = useSelector((state: IStore) => state.generalUser);
-    const powersUserNames = generalUser.powers.map(power => power.name);
+    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
-    const inventory = generalUser.inventory ? generalUser.inventory : emptyInventory();
+    const user = useSelector((store: IStore) => 
+        store.gameSquad.squadMembers[index]?.general)!;
+    const powersUserNames = user.powers.map(power => power.name);
+
+    const inventory = user.inventory ? user.inventory : emptyInventory();
 
     return (
         <div className={styles.gamePage_componentsBlock}>

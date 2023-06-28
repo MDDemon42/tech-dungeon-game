@@ -73,6 +73,14 @@ export interface IInventory extends Record<string, IItem | ICyber | IMutation> {
 }
 
 export interface ICharacherParams {
+    icon: string,
+    stage?: number,
+    level?: number,
+    resources: {
+        [UserResource.gene]: number,
+        [UserResource.gem]: number,
+        [UserResource.core]: number
+    },
     name: string,
     currentParams: {
         [UserParam.health]: number,
@@ -93,19 +101,8 @@ export interface ICharacherParams {
         [DamageTypes.electrical]: number,
         [DamageTypes.psionic]: number,
         [DamageTypes.acid]: number
-    }
-}
-
-export interface IUserParams extends ICharacherParams{
-    icon: string,
-    stage: number,
-    level: number,
-    resources: {
-        [UserResource.gene]: number,
-        [UserResource.gem]: number,
-        [UserResource.core]: number
     },
-    blank: number
+    blank?: number
 }
 
 export enum UserParam {
@@ -160,11 +157,15 @@ interface IGameScreens {
     screen: string
 }
 
+export interface IGameSquad {
+    currentlyWatched: number,
+    squadMembers: Record<string, ICharacher | null>
+}
+
 export interface IStore {
-    userParams: IUserParams,
     generalAll: IGeneralAll,
-    generalUser: ICharacterGeneral,
-    gameScreens: IGameScreens
+    gameScreens: IGameScreens,
+    gameSquad: IGameSquad
 }
 
 export enum DamageTypes {
@@ -194,7 +195,7 @@ export interface IAbility extends IBattleAbility {
 }
 
 interface IClassInfoItem {
-    startBonus: [keyof IUserParams, UserParam | UserResource | keyof IUserParams],
+    startBonus: [keyof ICharacherParams, UserParam | UserResource | keyof ICharacherParams],
     levelUpBonuses: UserParam[],
     description: string
 }

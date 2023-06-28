@@ -9,7 +9,10 @@ function CommonScreen(props: {
     vertical: boolean
 }) {
     const {name, vertical} = props;
-    const common = useSelector((state: IStore) => state.generalUser[name as keyof ICharacterGeneral]);
+    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
+
+    const common = useSelector((state: IStore) => 
+        state.gameSquad.squadMembers[index]?.general[name as keyof ICharacterGeneral]);
 
     return (
         <div className={styles.gamePage_component}>

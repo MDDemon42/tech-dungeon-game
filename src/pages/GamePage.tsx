@@ -3,9 +3,8 @@ import C from '../redux/constants';
 import InventoryScreen from '../components/InventoryScreen';
 import {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import userParams from '../redux/slices/userParams';
-import generalUser from '../redux/slices/generalUser';
 import GameScreen from '../components/GameScreen';
+import gameSquad from '../redux/slices/gameSquad';
 
 function GamePage() { 
     const dispatch = useDispatch();
@@ -14,8 +13,7 @@ function GamePage() {
     useEffect(() => {
         chrome.storage.local.get().then(result => {
             if (result[C.name]) {
-                dispatch(userParams.actions.setState(result[C.name].userParams));
-                dispatch(generalUser.actions.setState(result[C.name].generalUser));
+                dispatch(gameSquad.actions.setState(result[C.name].gameSquad));
             }
         })
     }, [])
