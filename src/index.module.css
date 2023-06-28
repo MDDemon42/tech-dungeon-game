@@ -170,6 +170,30 @@
     height: 50px;
 }
 
+.commonIcon_damage {
+    width: 90%;
+    margin-left: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: -5px;
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: grey 2px 1px;
+}
+
+.commonIcon_costs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
 .inventorySlotLine {
     display: flex;
     flex-direction: row;

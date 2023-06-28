@@ -118,7 +118,11 @@ function BattleScreen() {
             const allOpponents = [...opponents];
             
             const damage = selectedAbility.damage - allOpponents[index].params.resistances[selectedAbility.damageType];
-            allOpponents[index].params.currentParams[UserParam.health] -= damage;
+            const chance = Math.floor(Math.random()*100);
+            if (selectedAbility.hitChance > chance) {
+                allOpponents[index].params.currentParams[UserParam.health] -= damage;
+            }            
+            
             dispatch(userParams.actions.processAbility(selectedAbility.costs))
 
             setOpponents(allOpponents);

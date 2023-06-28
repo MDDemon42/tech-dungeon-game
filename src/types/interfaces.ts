@@ -182,7 +182,7 @@ export interface IBattleAbility extends ICommon {
         [UserParam.focus]?: number,
         [UserParam.stamina]?: number,
         [UserParam.blank]?: number        
-    }
+    },
     damage: number,
     damageType: DamageTypes,
     hitChance: number,

@@ -41,8 +41,8 @@ function SubInventoryScreen(props: {
             title: 'Welcome to Mutation Lab!',
             button: 'Mutate!',
             listener: (data: IItem | IMutation | ICyber) => {
-                dispatch(generalUser.actions.buyItem(data));
-                dispatch(userParams.actions.buyItem(data.cost));
+                dispatch(generalUser.actions.mutateMutation(data));
+                dispatch(userParams.actions.mutateMutation(data.cost));
             }
         },
         items: {
@@ -50,8 +50,8 @@ function SubInventoryScreen(props: {
             title: 'Welcome to Market!',
             button: 'Buy!',
             listener: (data: IItem | IMutation | ICyber) => {
-                dispatch(generalUser.actions.mutateMutation(data));
-                dispatch(userParams.actions.mutateMutation(data.cost));
+                dispatch(generalUser.actions.buyItem(data));
+                dispatch(userParams.actions.buyItem(data.cost));
             }
         }
     }
