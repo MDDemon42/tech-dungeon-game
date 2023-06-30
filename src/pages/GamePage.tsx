@@ -1,6 +1,6 @@
 import styles from '../index.module.css';
 import C from '../redux/constants';
-import InventoryScreen from '../components/InventoryScreen';
+import ProfileScreen from '../components/ProfileScreen';
 import {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import GameScreen from '../components/GameScreen';
@@ -20,7 +20,7 @@ function GamePage() {
 
     return (
         <div className={styles.gamePage}>
-            <InventoryScreen/>
+            <ProfileScreen/>
             <GameScreen/>
         </div>
     )

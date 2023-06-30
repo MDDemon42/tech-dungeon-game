@@ -1,6 +1,7 @@
 import { IPower } from "../../types/interfaces";
 import images from "../../images/images";
 import masteries from "../masteries/masteries";
+import abilities from "../abilities";
 
 const power_telekinesis: IPower = {
     name: 'Telekinesis',
@@ -47,7 +48,8 @@ const power_psiBlade: IPower = {
     description: 'Power to create (and use) blade with your mind',
     passive: false,
     image: images.psionInsights.psiBlade,
-    requiredMastery: masteries.mastery_psiEnergy
+    requiredMastery: masteries.mastery_psiEnergy,
+    ability: abilities.battleAbilities.battleAbility_psiBladeSlash
 }
 
 const power_psiLightning: IPower = {
@@ -55,7 +57,8 @@ const power_psiLightning: IPower = {
     description: 'Power to create chain lightning with your mind',
     passive: false,
     image: images.psionInsights.psiLightning,
-    requiredMastery: masteries.mastery_psiEnergy
+    requiredMastery: masteries.mastery_psiEnergy,
+    ability: abilities.battleAbilities.battleAbility_psiLightning
 }
 
 const powers = {

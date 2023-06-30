@@ -1,8 +1,8 @@
-import images from "../../../images/images"
 import { DamageTypes, IBattleAbility, UserParam } from "../../../types/interfaces"
 import magic from "./magic";
 import melee from "./melee";
 import ranged from "./ranged";
+import power from "./power";
 
 export function createBattleAbility(
     name: string,
@@ -17,8 +17,8 @@ export function createBattleAbility(
     },
     damage: number,
     damageType: DamageTypes,
-    hitChance: number,
-    targetAmount: number
+    targetAmount: number,
+    hitChance: number    
 ): IBattleAbility {
     return {
         name, description, image,
@@ -46,7 +46,10 @@ const battleAbilities = {
 
     battleAbility_runicGreatswordSlash: magic.battleAbility_runicGreatswordSlash,
     battleAbilities_magicBolt: magic.battleAbilities_magicBolt,
-    battleAbilities_fireball: magic.battleAbilities_fireball
+    battleAbilities_fireball: magic.battleAbilities_fireball,
+
+    battleAbility_psiBladeSlash: power.battleAbility_psiBladeSlash,
+    battleAbility_psiLightning: power.battleAbility_psiLightning
 }
 
 export default battleAbilities

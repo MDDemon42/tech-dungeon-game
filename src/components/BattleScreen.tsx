@@ -41,6 +41,7 @@ function BattleScreen() {
 
     const masteriesUser = user?.general.masteries.map(mastery => mastery.name)!;
     const spellsUser = user?.general.spells!;
+    const powersUser = user?.general.powers!;
 
     const inventory = user?.general.inventory ? user.general.inventory : emptyInventory();
 
@@ -83,6 +84,12 @@ function BattleScreen() {
             } else {
                 abilitiesUser.push(spell.ability);
             }
+        }
+    })
+
+    powersUser.forEach(power => {
+        if (!!power.ability) {
+            abilitiesUser.push(power.ability);
         }
     })
 

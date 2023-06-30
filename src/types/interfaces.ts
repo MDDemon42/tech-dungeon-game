@@ -5,11 +5,11 @@ export interface ICommon {
 }
 
 export interface IMastery extends ICommon {
+    ability?: IAbility,
     requiredMastery: IMastery | null
 }
 
 export interface ISpell extends IMastery {
-    ability?: IAbility,
     requiresRod?: boolean
 }
 

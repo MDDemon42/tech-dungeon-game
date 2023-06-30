@@ -7,5 +7,5 @@ try {
     console.error('Error in importing scripts in background')
 }
 
-// in case of adding new images
+// in case of adding new features or images
 // chrome.storage.local.clear()

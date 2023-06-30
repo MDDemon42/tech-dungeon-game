@@ -206,6 +206,10 @@ const gameSquad = createSlice({
             const isStrong = squadMember.general.masteries
                 .map(data => data.name)
                 .includes(masteries.mastery_brutalForce.name);
+
+            if (!squadMember.general.inventory) {
+                squadMember.general.inventory = emptyInventory();
+            }
                 
             squadMember.params.race = raceCheck(squadMember.general.inventory, isStrong);
 
