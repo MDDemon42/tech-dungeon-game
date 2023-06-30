@@ -13,7 +13,7 @@ function StatsScreen() {
         <div className={styles.extensionPopup_userParams}>
             <div className={styles.userParams_header}>
                 <h3>
-                    {user.name}, {upperCaseFirstLetter(user.icon!)} level {user.level}
+                    {user.name} the {user.race}, {upperCaseFirstLetter(user.class!)} level {user.level}
                 </h3>
             </div>
             <div className={styles.userParams_body}>

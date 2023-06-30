@@ -1,6 +1,6 @@
 import images from "../../images/images";
 import opponents from "./opponents";
-import { DamageTypes, ICharacher, ICharacherParams, ICharacterGeneral, IInventory, IItem, IMastery, IMutation, IPower, ISpell, InventoryPlaces, UserParam, UserResource } from "../../types/interfaces";
+import { DamageTypes, ICharacher, ICharacherParams, ICharacterGeneral, IInventory, IItem, IMastery, IMutation, IPower, ISpell, InventoryPlaces, Race, UserParam, UserResource } from "../../types/interfaces";
 
 export function noItem(): IMutation & IItem {
     return {
@@ -48,7 +48,8 @@ export function emptyGeneral(): ICharacterGeneral {
 function emptyParams(): ICharacherParams {
     return {
         name: '',
-        icon: 'noIcon',
+        class: 'noIcon',
+        race: Race.human,
         currentParams: {
             [UserParam.health]: 0,
             [UserParam.mana]: 0,

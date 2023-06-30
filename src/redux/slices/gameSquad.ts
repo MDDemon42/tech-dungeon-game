@@ -2,6 +2,8 @@ import {createSlice} from '@reduxjs/toolkit';
 import { emptyCharacter, emptyInventory, noItem } from '../../general/characters/characters';
 import { IClassInfo, IGameSquad, InventoryPlaces, UserParam, UserResource } from '../../types/interfaces';
 import mutations from '../../general/mutations/mutations';
+import masteries from '../../general/masteries/masteries';
+import raceCheck from '../../functions/raceCheck';
 
 export function placeAsKey(place: string) {
     return place.split(' ').map((part, index) => {
@@ -98,7 +100,7 @@ const gameSquad = createSlice({
             user.params.maxParams[UserParam.stamina] = 3;
             user.params.level = 1;
             user.params.name = user.params.name || 'Adventurer';
-            user.params.icon = action.payload;
+            user.params.class = action.payload;
 
             // @ts-ignore
             const {startBonus} = classInfo[action.payload];
@@ -127,7 +129,7 @@ const gameSquad = createSlice({
             squadMember.params.level += 1;
             
             // @ts-ignore
-            squadMember.params.maxParams[classInfo[squadMember.params.icon].levelUpBonuses[rand]] += 1;
+            squadMember.params.maxParams[classInfo[squadMember.params.class].levelUpBonuses[rand]] += 1;
 
             Object.keys(squad).forEach(key => {
                 if (!!squad[key]) {
@@ -196,6 +198,12 @@ const gameSquad = createSlice({
 
             squadMember.general.masteries.push(action.payload.data);
 
+            const isStrong = squadMember.general.masteries
+                .map(data => data.name)
+                .includes(masteries.mastery_brutalForce.name);
+                
+            squadMember.params.race = raceCheck(squadMember.general.inventory, isStrong);
+
             state.squadMembers = squad;
         },
         implementCyber(state, action) {
@@ -252,6 +260,12 @@ const gameSquad = createSlice({
 
             squadMember.general.inventory[placeAsKey(position)] = action.payload.data;
             squadMember.params.resources[UserResource.gene] -= action.payload.data.cost;
+
+            const isStrong = squadMember.general.masteries
+                .map(data => data.name)
+                .includes(masteries.mastery_brutalForce.name);
+                
+            squadMember.params.race = raceCheck(squadMember.general.inventory, isStrong);
 
             state.squadMembers = squad;
         },

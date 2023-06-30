@@ -72,8 +72,34 @@ export interface IInventory extends Record<string, IItem | ICyber | IMutation> {
     bothHands: IMutation | IItem
 }
 
+export enum Race {
+    human = 'Human',
+    unknown = 'Unknown',
+    satyr = 'Satyr',
+    minotaur = 'Minotaur',
+    orc = 'Orc',
+    gnoll = 'Gnoll',
+    naga = 'Naga',
+    demon = 'Demon',
+    dragon = 'Dragon',
+    chimera = 'Chimera'
+}
+
+export interface IMutationsRaceCheck {
+    horns: boolean,
+    hooves: boolean,
+    lowerFangs: boolean,
+    scales: boolean,
+    tailWithSting: boolean,
+    claws: boolean,
+    acidSplit: boolean,
+    wings: boolean,
+    pincers: boolean
+}
+
 export interface ICharacherParams {
-    icon: string,
+    class: string,
+    race: Race,
     stage?: number,
     level?: number,
     resources: {

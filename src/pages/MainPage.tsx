@@ -17,7 +17,7 @@ function MainPage() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
     const icon = useSelector((store: IStore) => 
-        store.gameSquad.squadMembers[index]?.params.icon)!;
+        store.gameSquad.squadMembers[index]?.params.class)!;
 
     const classes = Object.keys(images.classIcons);
 

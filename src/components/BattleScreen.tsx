@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import styles from '../index.module.css';
-import { IAbility, IStore, UserParam } from '../types/interfaces';
+import { IAbility, IBattleAbility, IStore, Race, UserParam } from '../types/interfaces';
 import CommonIcon from './CommonIcon';
 import items from '../general/items/items';
 import masteries from '../general/masteries/masteries';
@@ -10,6 +10,19 @@ import characters, { emptyInventory } from '../general/characters/characters';
 import ParamIcon from './ParamIcon';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../redux/slices/gameSquad';
+
+const specialRaceAbilities: Record<Race, (IBattleAbility | null)> = {
+    [Race.human]: null,
+    [Race.unknown]: null,
+    [Race.satyr]: null,
+    [Race.minotaur]: null,
+    [Race.orc]: null,
+    [Race.gnoll]: null,
+    [Race.naga]: null,
+    [Race.demon]: null,
+    [Race.dragon]: null,
+    [Race.chimera]: null
+}
 
 function BattleScreen() {
     const [selectedAbility, setSelectedAbility] = useState<IAbility|null>(null);
@@ -22,7 +35,7 @@ function BattleScreen() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
     const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
-    const user = squad[index];
+    const user = squad[index]!;
 
     const dispatch = useDispatch();
 
@@ -32,6 +45,10 @@ function BattleScreen() {
     const inventory = user?.general.inventory ? user.general.inventory : emptyInventory();
 
     const abilitiesUser: IAbility[] = [];
+
+    if (!!specialRaceAbilities[user.params.race]) {
+        abilitiesUser.push(specialRaceAbilities[user.params.race]!);
+    }
     
     Object.keys(inventory).forEach(name => {
         if (inventory[name].ability) {
