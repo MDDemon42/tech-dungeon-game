@@ -54,14 +54,14 @@ function SubInventoryScreen(props: {
         }
     }
 
-    const userResource = useSelector((store: IStore) => 
-        store.gameSquad.squadMembers[index]?.params.resources[subInventoryMappings[dataName].resource])!;
+    const resource = useSelector((store: IStore) => 
+        store.gameSquad.resources[subInventoryMappings[dataName].resource])!;
 
     const masteriesUser = useSelector((store: IStore) => 
         store.gameSquad.squadMembers[index]?.general.masteries.map(data => data.name));
 
     function disableChecker(data: IItem | IMutation | ICyber) {
-        const resourceCheck = userResource >= data.cost;
+        const resourceCheck = resource >= data.cost;
         let requiredMasteryCheck = false;
         if (dataName === 'items') {
             // @ts-ignore

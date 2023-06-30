@@ -38,17 +38,28 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
         case cheatContextMenuIds.strongStart:
             if (tab?.url?.endsWith('index.html#/game')) {
                 chrome.storage.local.get().then(result => {
-                    const squad = {...result['tech-dungeon-game'].gameSquad.squadMembers};
-                    const user = squad[2];
+                    const squad = {...result['tech-dungeon-game'].gameSquad};
+
+                    const user = squad.squadMembers[2];
                     user.general.masteries = [];
                     user.general.spells = [];
                     user.general.powers = [];
                     user.general.inventory = null;
-                    user.params.resources['Gems'] = 27;
-                    user.params.resources['Mecha-cores'] = 9;
-                    user.params.resources['Muta-genes'] = 9;
                     user.params.level = 12;
-                    result['tech-dungeon-game'].gameSquad.squadMembers = squad;
+
+                    squad.resources['Gems'] = 27;
+                    squad.resources['Mecha-cores'] = 9;
+                    squad.resources['Muta-genes'] = 9;
+
+                    squad.squadMembers = {
+                        0: null,
+                        1: null,
+                        2: user,
+                        3: null,
+                        4: null
+                    }
+
+                    result['tech-dungeon-game'].gameSquad = squad;
 
                     chrome.storage.local.set(result);
 

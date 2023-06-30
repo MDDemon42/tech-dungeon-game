@@ -50,19 +50,19 @@ const item_healingPotion: IItem = {
 
 const item_oakBow: IItem = {
     cost: 1,
-    inventoryPlace: InventoryPlaces.back,
+    inventoryPlace: InventoryPlaces.bothHands,
     name: 'Bow',
     description: 'Usual oak bow',
     image: images.normalItems.bow,
     linkedMastery: masteries.mastery_archery,
     ability: abilities.battleAbilities.battleAbility_oakBowShot,
     masterAbilities: [abilities.battleAbilities.battleAbility_masterOakBowShot],
-    priority: 1
+    priority: 2
 }
 
 const item_oakCrossow: IItem = {
     cost: 2,
-    inventoryPlace: InventoryPlaces.back,
+    inventoryPlace: InventoryPlaces.bothHands,
     name: 'Crossbow',
     description: 'Usual oak crossbow',
     image: images.normalItems.crossbow,

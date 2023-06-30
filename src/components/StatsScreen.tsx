@@ -8,7 +8,9 @@ import ParamIcon from "./ParamIcon";
 function StatsScreen() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
-    const user = useSelector((state: IStore) => state.gameSquad.squadMembers[index]?.params)!;
+    const squad = useSelector((state: IStore) => state.gameSquad);
+    const user = squad.squadMembers[index]?.params!;
+    const resources = squad.resources;
     return (
         <div className={styles.extensionPopup_userParams}>
             <div className={styles.userParams_header}>
@@ -48,13 +50,13 @@ function StatsScreen() {
             </div>
             <div className={styles.userParams_body}>
                 <div>
-                    <ResourceIcon resource='gem'/>: {user.resources.Gems}
+                    <ResourceIcon resource='gem'/>: {resources.Gems}
                 </div>
                 <div>
-                    <ResourceIcon resource='core'/>: {user.resources["Mecha-cores"]}
+                    <ResourceIcon resource='core'/>: {resources["Mecha-cores"]}
                 </div>
                 <div>
-                    <ResourceIcon resource='gene'/>: {user.resources[UserResource.gene]}
+                    <ResourceIcon resource='gene'/>: {resources[UserResource.gene]}
                 </div>
             </div>
         </div>

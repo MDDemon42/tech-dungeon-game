@@ -102,11 +102,6 @@ export interface ICharacherParams {
     race: Race,
     stage?: number,
     level?: number,
-    resources: {
-        [UserResource.gene]: number,
-        [UserResource.gem]: number,
-        [UserResource.core]: number
-    },
     name: string,
     currentParams: {
         [UserParam.health]: number,
@@ -185,7 +180,12 @@ interface IGameScreens {
 
 export interface IGameSquad {
     currentlyWatched: number,
-    squadMembers: Record<string, ICharacher | null>
+    squadMembers: Record<string, ICharacher | null>,
+    resources: {
+        [UserResource.gene]: number,
+        [UserResource.gem]: number,
+        [UserResource.core]: number
+    }
 }
 
 export interface IStore {

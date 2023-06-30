@@ -24,6 +24,11 @@ const initialState: IGameSquad = {
         2: emptyCharacter(),
         3: null,
         4: null
+    },
+    resources: {
+        [UserResource.core]: 0,
+        [UserResource.gem]: 0,
+        [UserResource.gene]: 0
     }
 };
 
@@ -40,19 +45,19 @@ function createLevelUpBonuses(params: UserParam[]) {
 
 export const classInfo: IClassInfo = {
     mutant: {
-        startBonus: ['resources', UserResource.gene],
+        startBonus: ['maxParams', UserParam.health],
         levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.stamina]),
-        description: 'Gets extra Muta-gene on start.\n\nOn level up has increased chance of getting Health or Stamina.\n\nBut there is a chance to get nothing too',
+        description: 'Gets extra Health on start.\n\nOn level up has increased chance of getting Health or Stamina.\n\nBut there is a chance to get nothing too',
     },
     cyborg: {
-        startBonus: ['resources', UserResource.core],
+        startBonus: ['maxParams', UserParam.health],
         levelUpBonuses: createLevelUpBonuses([UserParam.blank, UserParam.stamina]),
-        description: 'Gets extra Mecha-core on start.\n\nOn level up has increased chance of getting Stamina.\n\nBut there is a big chance to get nothing too'
+        description: 'Gets extra Health on start.\n\nOn level up has increased chance of getting Stamina.\n\nBut there is a big chance to get nothing too'
     },
     normal: {
-        startBonus: ['resources', UserResource.gem],
+        startBonus: ['maxParams', UserParam.health],
         levelUpBonuses: createLevelUpBonuses([UserParam.stamina, UserParam.stamina]),
-        description: 'Gets extra Gem on start.\n\nOn level up has super increased chance of getting Stamina.\n\nBut there is a chance to get nothing too'
+        description: 'Gets extra Health on start.\n\nOn level up has super increased chance of getting Stamina.\n\nBut there is a chance to get nothing too'
     },
     wizard: {
         startBonus: ['maxParams', UserParam.mana],
@@ -147,8 +152,8 @@ const gameSquad = createSlice({
         },
         buyItem(state, action) {
             const {index} = action.payload;
-            const squad = {...state.squadMembers};
-            const squadMember = squad[index]!;
+            const oldState = {...state};
+            const squadMember = oldState.squadMembers[index]!;
 
             if (!squadMember.general.inventory) {
                 squadMember.general.inventory = emptyInventory();
@@ -169,9 +174,9 @@ const gameSquad = createSlice({
             }
 
             squadMember.general.inventory[placeAsKey(position)] = action.payload.data;
-            squadMember.params.resources[UserResource.gem] -= action.payload.data.cost;
+            oldState.resources[UserResource.gem] -= action.payload.data.cost;
 
-            state.squadMembers = squad;
+            state = oldState;
         },
         studySpell(state, action) {
             const {index} = action.payload;
@@ -208,8 +213,8 @@ const gameSquad = createSlice({
         },
         implementCyber(state, action) {
             const {index} = action.payload;
-            const squad = {...state.squadMembers};
-            const squadMember = squad[index]!;
+            const oldState = {...state};
+            const squadMember = oldState.squadMembers[index]!;
             
             if (!squadMember.general.inventory) {
                 squadMember.general.inventory = emptyInventory();
@@ -238,14 +243,14 @@ const gameSquad = createSlice({
             }
 
             squadMember.general.inventory[placeAsKey(position)] = action.payload.data;
-            squadMember.params.resources[UserResource.core] -= action.payload.data.cost;
+            oldState.resources[UserResource.core] -= action.payload.data.cost;
 
-            state.squadMembers = squad;
+            state = oldState;
         },
         mutateMutation(state, action) {
             const {index} = action.payload;
-            const squad = {...state.squadMembers};
-            const squadMember = squad[index]!;
+            const oldState = {...state};
+            const squadMember = oldState.squadMembers[index]!;
 
             if (!squadMember.general.inventory) {
                 squadMember.general.inventory = emptyInventory();
@@ -259,7 +264,7 @@ const gameSquad = createSlice({
             }
 
             squadMember.general.inventory[placeAsKey(position)] = action.payload.data;
-            squadMember.params.resources[UserResource.gene] -= action.payload.data.cost;
+            oldState.resources[UserResource.gene] -= action.payload.data.cost;
 
             const isStrong = squadMember.general.masteries
                 .map(data => data.name)
@@ -267,7 +272,7 @@ const gameSquad = createSlice({
                 
             squadMember.params.race = raceCheck(squadMember.general.inventory, isStrong);
 
-            state.squadMembers = squad;
+            state = oldState;
         },
         processAbility(state, action) {
             const {index, data} = action.payload;

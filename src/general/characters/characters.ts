@@ -68,11 +68,6 @@ function emptyParams(): ICharacherParams {
             [DamageTypes.electrical]: 0,
             [DamageTypes.psionic]: 0,
             [DamageTypes.acid]: 0
-        },
-        resources: {
-            [UserResource.core]: 0,
-            [UserResource.gem]: 0,
-            [UserResource.gene]: 0
         }
     }    
 }

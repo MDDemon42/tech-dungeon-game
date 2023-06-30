@@ -31,16 +31,16 @@ function InventoryScreen() {
                 /> 
                 <div className={styles.inventory_screen}>
                     <StatsScreen />
-                    <div className={styles.inventory_body}>                       
+                    <div className={styles.inventory_body}>       
+                        {
+                            inventory.bothHands.name === items.item_oakBow.name ?
+                                <img src={images.bodyElements.oakBow} alt='oakBow'/> : null
+                        }                
                         {
                             inventory.back.name === mutations.mutation_wings.name ?
                                 <img src={images.bodyElements.wings} alt='wings'/> :
                                 inventory.back.name === items.item_flyingCape.name ?
-                                    <img src={images.bodyElements.cape} alt='cape'/> :
-                                    inventory.back.name === items.item_oakCrossow.name ?
-                                        <img src={images.bodyElements.oakCrossbow} alt='oakCrossbow'/> :
-                                        inventory.back.name === items.item_oakBow.name ?
-                                            <img src={images.bodyElements.oakBow} alt='oakBow'/> : null
+                                    <img src={images.bodyElements.cape} alt='cape'/> : null
                         }
                         {
                             inventory.tail.name === mutations.mutation_tailWithSting.name ?
@@ -140,11 +140,13 @@ function InventoryScreen() {
                                             <img src={images.bodyElements.magisterScepter} alt='magisterScepter'/> :
                                             inventory.bothHands.name === items.item_runicGreatsword.name ?
                                                 <img src={images.bodyElements.runicGreatsword} alt='runicGreatsword'/> :
-                                                inventory.bothHands.name === items.item_apprenticeRod.name ?
-                                                    <img src={images.bodyElements.apprenticeRod} alt='apprenticeRod'/> :
-                                                    inventory.rightHand.name === items.item_steelSwordRightHand.name ?
-                                                        <img src={images.bodyElements.steelSwordRightHand} alt='steelSwordRightHand'/> :
-                                                        <img src={images.bodyElements.rightHand} alt='rightHand'/>
+                                                inventory.bothHands.name === items.item_oakCrossow.name ?
+                                                    <img src={images.bodyElements.oakCrossbow} alt='oakCrossbow'/> :
+                                                    inventory.bothHands.name === items.item_apprenticeRod.name ?
+                                                        <img src={images.bodyElements.apprenticeRod} alt='apprenticeRod'/> :
+                                                        inventory.rightHand.name === items.item_steelSwordRightHand.name ?
+                                                            <img src={images.bodyElements.steelSwordRightHand} alt='steelSwordRightHand'/> :
+                                                            <img src={images.bodyElements.rightHand} alt='rightHand'/>
                         }
                         <img src={images.bodyElements.head} alt='head'/>
                         {
