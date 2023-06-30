@@ -19,9 +19,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  5) Make mutual exclusions within `MASPIC`
  6) Fix styles (when adding `masteries`)
  7) More ~abilities~ to get more user resources (~battery capacity~ for cyborg)
- 8) Move `Bow` and `Crossbow` to `hands`
- 9) Mix `MASPIC` to get `elf`, `orc`, `vampire`(?) and `werewolf`(?)
- 10) Add `_locales`
+ 8) Mix `MASPIC` to get `elf`, `orc`, `vampire`(?) and `werewolf`(?)
+ 9) Add `_locales`
 
  # Mutations to races (with special abilities)
  1) Horns + Hooves => Satyr (Rod + 1)
