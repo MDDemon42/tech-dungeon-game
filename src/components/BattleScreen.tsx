@@ -7,7 +7,6 @@ import masteries from '../general/masteries/masteries';
 import abilities from '../general/abilities';
 import { useState } from 'react';
 import characters, { emptyInventory } from '../general/characters/characters';
-import ParamIcon from './ParamIcon';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../redux/slices/gameSquad';
 import BattleOrder from './BattleOrder';

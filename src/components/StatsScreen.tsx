@@ -1,16 +1,13 @@
-import {IStore, UserParam, UserResource} from "../types/interfaces";
+import {IStore, UserParam} from "../types/interfaces";
 import styles from '../index.module.css';
 import { useSelector } from "react-redux";
-import ResourceIcon from "./ResourceIcon";
 import { upperCaseFirstLetter } from "../pages/MainPage";
 import ParamIcon from "./ParamIcon";
 
 function StatsScreen() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
-    const squad = useSelector((state: IStore) => state.gameSquad);
-    const user = squad.squadMembers[index]?.params!;
-    const resources = squad.resources;
+    const user = useSelector((state: IStore) => state.gameSquad.squadMembers[index]?.params!);
     return (
         <div className={styles.extensionPopup_userParams}>
             <div className={styles.userParams_header}>
@@ -46,17 +43,6 @@ function StatsScreen() {
                     {
                         [...Array(user.currentParams.Stamina)].map(icon => <ParamIcon param='stamina'/>)
                     }
-                </div>
-            </div>
-            <div className={styles.userParams_body}>
-                <div>
-                    <ResourceIcon resource='gem'/>: {resources.Gems}
-                </div>
-                <div>
-                    <ResourceIcon resource='core'/>: {resources["Mecha-cores"]}
-                </div>
-                <div>
-                    <ResourceIcon resource='gene'/>: {resources[UserResource.gene]}
                 </div>
             </div>
         </div>

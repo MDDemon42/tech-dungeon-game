@@ -4,6 +4,7 @@ import StatsScreen from "./StatsScreen";
 import InventoryScreen from "./InventoryScreen";
 import { useSelector } from 'react-redux';
 import { IStore } from '../types/interfaces';
+import BackpacksScreen from './BackpacksScreen';
 
 function ProfileScreen() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
@@ -33,6 +34,7 @@ function ProfileScreen() {
                     vertical={true}
                 />
             </div>
+            <BackpacksScreen/> 
         </div>
     )
 }

@@ -97,6 +97,28 @@ export interface IMutationsRaceCheck {
     pincers: boolean
 }
 
+export enum UserParam {
+    blank = 'Blank',
+    health = 'Health',
+    mana = 'Mana',
+    focus = 'Focus',
+    stamina = 'Stamina'    
+}
+
+export enum UserResource {
+    gem = 'Gems',
+    core = 'Mecha-cores',
+    gene = 'Muta-genes'
+}
+
+export enum DamageTypes {
+    physical = 'Physical',
+    fire = 'Fire',
+    electrical = 'Electrical',
+    psionic = 'Psionic',
+    acid = 'Acid'
+}
+
 export interface ICharacherParams {
     class: string,
     race: Race,
@@ -124,20 +146,6 @@ export interface ICharacherParams {
         [DamageTypes.acid]: number
     },
     blank?: number
-}
-
-export enum UserParam {
-    blank = 'Blank',
-    health = 'Health',
-    mana = 'Mana',
-    focus = 'Focus',
-    stamina = 'Stamina'    
-}
-
-export enum UserResource {
-    gem = 'Gems',
-    core = 'Mecha-cores',
-    gene = 'Muta-genes'
 }
 
 export interface ISubInventoryDataName {
@@ -181,25 +189,20 @@ interface IGameScreens {
 export interface IGameSquad {
     currentlyWatched: number,
     squadMembers: Record<string, ICharacher>,
-    resources: {
-        [UserResource.gene]: number,
-        [UserResource.gem]: number,
-        [UserResource.core]: number
-    }
+    squadBackpacks: {
+        resources: {
+            [UserResource.gene]: number,
+            [UserResource.gem]: number,
+            [UserResource.core]: number
+        },
+        items: IItem[]
+    }    
 }
 
 export interface IStore {
     generalAll: IGeneralAll,
     gameScreens: IGameScreens,
     gameSquad: IGameSquad
-}
-
-export enum DamageTypes {
-    physical = 'Physical',
-    fire = 'Fire',
-    electrical = 'Electrical',
-    psionic = 'Psionic',
-    acid = 'Acid'
 }
 
 export interface IBattleAbility extends ICommon {

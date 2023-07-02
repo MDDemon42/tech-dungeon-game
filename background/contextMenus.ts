@@ -50,9 +50,10 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
                     user.params.level = 12;
                     user.params.currentParams = {...user.params.maxParams}; 
 
-                    squad.resources['Gems'] = 27;
-                    squad.resources['Mecha-cores'] = 9;
-                    squad.resources['Muta-genes'] = 9;
+                    squad.squadBackpacks.resources['Gems'] = 27;
+                    squad.squadBackpacks.resources['Mecha-cores'] = 9;
+                    squad.squadBackpacks.resources['Muta-genes'] = 9;
+                    squad.squadBackpacks.items = [];
 
                     squad.squadMembers = {
                         0: null,

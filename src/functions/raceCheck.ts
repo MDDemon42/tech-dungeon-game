@@ -65,14 +65,14 @@ function raceCheck(inventory: IInventory, isStrong: boolean) {
     const chimeraCheck = checkRace(chimeraRace);
 
     return (
-        chimeraCheck && Race.chimera ||
-        dragonCheck && Race.dragon ||
-        demonCheck && Race.demon ||
-        nagaCheck && Race.naga ||
-        orkCheck && Race.orc ||
-        minotaurCheck && Race.minotaur ||
-        satyrCheck && Race.satyr ||
-        humanCheck && Race.human ||
+        (chimeraCheck && Race.chimera) ||
+        (dragonCheck && Race.dragon) ||
+        (demonCheck && Race.demon) ||
+        (nagaCheck && Race.naga) ||
+        (orkCheck && Race.orc) ||
+        (minotaurCheck && Race.minotaur) ||
+        (satyrCheck && Race.satyr) ||
+        (humanCheck && Race.human) ||
         Race.unknown
     )
 }

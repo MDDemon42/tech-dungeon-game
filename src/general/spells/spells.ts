@@ -1,8 +1,7 @@
-import { ISpell } from "../../types/interfaces"
-import images from "../../images/images"
-import masteries from "../masteries/masteries"
-import abilities from "../abilities"
-import items from "../items/items"
+import { ISpell } from "../../types/interfaces";
+import images from "../../images/images";
+import masteries from "../masteries/masteries";
+import abilities from "../abilities";
 
 const spell_multistrike: ISpell = {
     name: 'Multistrike',

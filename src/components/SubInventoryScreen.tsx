@@ -49,13 +49,13 @@ function SubInventoryScreen(props: {
             title: 'Welcome to Market!',
             button: 'Buy!',
             listener: (data: IItem | IMutation | ICyber) => {
-                dispatch(gameSquad.actions.buyItem({index, data}));
+                dispatch(gameSquad.actions.buyItem(data));
             }
         }
     }
 
     const resource = useSelector((store: IStore) => 
-        store.gameSquad.resources[subInventoryMappings[dataName].resource])!;
+        store.gameSquad.squadBackpacks.resources[subInventoryMappings[dataName].resource])!;
 
     const masteriesUser = useSelector((store: IStore) => 
         store.gameSquad.squadMembers[index]?.general.masteries.map(data => data.name));
