@@ -16,7 +16,6 @@ function CommonScreen(props: {
 
     return (
         <div className={styles.gamePage_component}>
-            {upperCaseFirstLetter(name)}
             <div className={
                 vertical ? 
                     styles.commonScreen_vertical : 
@@ -30,7 +29,7 @@ function CommonScreen(props: {
                             </div>
                         )) :
                         <p>
-                            No {name} yet
+                            No {upperCaseFirstLetter(name)} yet
                         </p>
                 }
             </div>

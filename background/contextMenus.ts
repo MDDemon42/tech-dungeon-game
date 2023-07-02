@@ -41,11 +41,14 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
                     const squad = {...result['tech-dungeon-game'].gameSquad};
 
                     const user = squad.squadMembers[2];
+
                     user.general.masteries = [];
                     user.general.spells = [];
                     user.general.powers = [];
                     user.general.inventory = null;
+
                     user.params.level = 12;
+                    user.params.currentParams = {...user.params.maxParams}; 
 
                     squad.resources['Gems'] = 27;
                     squad.resources['Mecha-cores'] = 9;

@@ -60,6 +60,7 @@
     text-align: center;
     border: 1px solid black;
     padding-bottom: 5px;
+    margin: 5px;
 }
 
 .gamePage {
@@ -82,7 +83,7 @@
     padding: 5px;
     margin: 5px;
     min-width: 65px;
-    min-height: 82px;
+    min-height: 65px;
 }
 
 .gamePage_component_container {
@@ -112,8 +113,6 @@
 }
 
 .inventory_screen {
-    width: 405px;
-    height: 625px; 
     position: relative;
     display: flex;
     flex-direction: column;
@@ -121,16 +120,15 @@
 }
 
 .inventory_body {
-    position: absolute;
-    top: 42px;
+    position: relative;
+    margin: 5px;
 }
 
 .inventory_body > img {
     position: absolute;
     z-index: 1;
-    top: 60px;
-    width: 380px;
-    height: 420px;
+    width: 100%;
+    height: 100%;
 }
 
 .gamePage_mainBlock {
@@ -226,22 +224,16 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    border: 1px solid black;
+    padding: 10px;
+    width: 100%;
 }
 
 .gamePage_battleScreen {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    width: 100px;
-    height: 100px;
-}
-
-.dummy {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    background-color: wheat;
-    border: 1px solid black;
+    width: 150px;
+    height: 175px;
 }

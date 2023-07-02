@@ -180,7 +180,7 @@ interface IGameScreens {
 
 export interface IGameSquad {
     currentlyWatched: number,
-    squadMembers: Record<string, ICharacher | null>,
+    squadMembers: Record<string, ICharacher>,
     resources: {
         [UserResource.gene]: number,
         [UserResource.gem]: number,

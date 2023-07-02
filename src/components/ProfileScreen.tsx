@@ -22,7 +22,7 @@ function ProfileScreen() {
                 /> 
                 <div className={styles.inventory_screen}>
                     <StatsScreen />
-                    <InventoryScreen character={user}/>
+                    <InventoryScreen character={user} battle={false}/>
                     <CommonScreen 
                         name={'spells'} 
                         vertical={false}

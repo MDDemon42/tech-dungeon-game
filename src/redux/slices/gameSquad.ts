@@ -19,11 +19,7 @@ export function placeAsKey(place: string) {
 const initialState: IGameSquad = {
     currentlyWatched: 2,
     squadMembers: {
-        0: null,
-        1: null,
-        2: emptyCharacter(),
-        3: null,
-        4: null
+        2: emptyCharacter()
     },
     resources: {
         [UserResource.core]: 0,

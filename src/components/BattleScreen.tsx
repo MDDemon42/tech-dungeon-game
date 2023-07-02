@@ -10,6 +10,7 @@ import characters, { emptyInventory } from '../general/characters/characters';
 import ParamIcon from './ParamIcon';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../redux/slices/gameSquad';
+import BattleOrder from './BattleOrder';
 
 const specialRaceAbilities: Record<Race, (IBattleAbility | null)> = {
     [Race.human]: null,
@@ -35,6 +36,10 @@ function BattleScreen() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
     const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
+    const squadMembers = Object.keys(squad)
+        .map(key => squad[key])
+        .filter(member => !!member);
+
     const user = squad[index]!;
 
     const dispatch = useDispatch();
@@ -166,26 +171,7 @@ function BattleScreen() {
             </h3>            
             <div className={styles.gamePage_battleScreen_container}>
                 <div className={styles.gamePage_battleScreen_container_opponents}>
-                    {
-                        opponents.map((opponent, opponentIndex) => 
-                            <div className={styles.gamePage_battleScreen}>
-                                <div>
-                                    {
-                                        [...Array(opponent.params.currentParams[UserParam.health])]
-                                            .map(icon => <ParamIcon param='health'/>)
-                                    }
-                                </div>
-                                <div 
-                                    className={styles.dummy}
-                                    onClick={() => processAbility(opponentIndex)}
-                                >
-                                    <h4 style={{textAlign: 'center'}}>
-                                        {opponent.params.name}
-                                    </h4>
-                                </div>
-                            </div>
-                        )
-                    }
+                    <BattleOrder squad={opponents} attacker={true} listener={processAbility}/>
                 </div>                
                 <div className={styles.commonScreen_notVertical}>
                     {
@@ -212,6 +198,9 @@ function BattleScreen() {
                             Deselect ability
                         </button> : null
                 }
+                <div className={styles.gamePage_battleScreen_container_opponents}>
+                    <BattleOrder squad={squadMembers} attacker={false} listener={processAbility}/>
+                </div> 
             </div>
         </div>
     )
