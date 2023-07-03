@@ -20,6 +20,26 @@ function FocusSiteScreen() {
         dispatch(gameSquad.actions.developPower({index, data: power}))
     }
 
+    let disableReason = '';
+    function enableChecker(power: IPower) {
+        const powersUserCheck = powersUser.includes(power.name);
+        if (powersUserCheck) {
+            disableReason = 'Already developed';
+            return false
+        }
+        
+        const requiredMasteryCheck = !!power.requiredMastery ? 
+            masteriesUser.includes(power.requiredMastery.name) :
+            true;
+            
+        if (!requiredMasteryCheck) {
+            disableReason = 'Does not have required mastery';
+            return false
+        }
+
+        return true
+    }
+
     return (
         <div className={styles.gamePage_component}>
             Welcome to Focus Site!
@@ -27,14 +47,12 @@ function FocusSiteScreen() {
                 {
                     powers && powersNames.map(name => {
                         const power = powers[name as keyof typeof powers];
-                        const disabled = powersUser.includes(power.name) ||
-                            (!!power.requiredMastery && !masteriesUser.includes(power.requiredMastery.name));
                         return (
                             <div className={styles.commonIconWithButton}>
-                                <CommonIcon item={power}/>
+                                <CommonIcon item={power} disableReason={disableReason}/>
                                 {
                                     <button
-                                        disabled={disabled}
+                                        disabled={!enableChecker(power)}
                                         onClick={() => developButtonListener(power)}
                                     >
                                         Develop!

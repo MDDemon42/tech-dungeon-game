@@ -23,16 +23,24 @@ function CommonIcon(props: {
         damageType?: DamageTypes,
         hitChance?: number,
         targetAmount?: number
-    }
+    },
+    disableReason?: string
 }) {
-    const {item} = props;
+    const {item, disableReason} = props;
 
     let description = item.name + '\n' 
     
     if (item.description.length > 0) {
-        description += '\n' + item.description + '\n';
+        description += '\n' + item.description;
     }
     
+    if (
+        item.value || item.cost || item.requiredMastery ||
+        item.passive || item.inventoryPlace || item.damage
+    ) {
+        description += '\n';
+    }
+
     if (item.value) {
         description += '\nValue: ' + item.value;
     }
@@ -67,6 +75,10 @@ function CommonIcon(props: {
 
     if (item.targetAmount) {
         description += '\nTarget amount: ' + item.targetAmount;
+    }
+
+    if (!!disableReason) {
+        description += '\n\nNot allowed: ' + disableReason;
     }
 
     const damageColors = {

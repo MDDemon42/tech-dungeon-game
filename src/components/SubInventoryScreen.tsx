@@ -11,15 +11,17 @@ import {
     ISubInventoryDataName,
     ISubInventoryMapping
 } from '../types/interfaces';
-import prioritisationChecker from '../functions/prioritisation';
 import { upperCaseFirstLetter } from '../pages/MainPage';
 import CommonIcon from './CommonIcon';
 import gameSquad from '../redux/slices/gameSquad';
+import { backpacksCapability } from '../functions/putItemInBackpacks';
 
 function SubInventoryScreen(props: {
     dataName: keyof ISubInventoryDataName
 }) {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
+    const members = useSelector((store: IStore) => store.gameSquad.squadMembers);
+    const currentBackpacksItemsAmount = useSelector((store: IStore) => store.gameSquad.squadBackpacks.items.length);
 
     const {dataName} = props;
     const dataAll = useSelector((store: IStore) => store.generalAll[dataName]);
@@ -57,19 +59,22 @@ function SubInventoryScreen(props: {
     const resource = useSelector((store: IStore) => 
         store.gameSquad.squadBackpacks.resources[subInventoryMappings[dataName].resource])!;
 
-    const masteriesUser = useSelector((store: IStore) => 
-        store.gameSquad.squadMembers[index]?.general.masteries.map(data => data.name));
 
-    function disableChecker(data: IItem | IMutation | ICyber) {
+    let disableReason = '';
+    function enableChecker(data: IItem | IMutation | ICyber) {
         const resourceCheck = resource >= data.cost;
-        let requiredMasteryCheck = false;
-        if (dataName === 'items') {
-            // @ts-ignore
-            requiredMasteryCheck = !!data.requiredMastery && !masteriesUser.includes(data.requiredMastery.name)
+        if (!resourceCheck) {
+            disableReason = 'Not enough resouces';
+            return false
         }
-        const priorityCheck = prioritisationChecker(data);
-        
-        return !resourceCheck || requiredMasteryCheck || !priorityCheck; 
+
+        const backpacksCapabilityCheck = currentBackpacksItemsAmount < backpacksCapability(members);
+        if (!backpacksCapabilityCheck) {
+            disableReason = 'Not enough space in backpacks';
+            return false
+        }
+
+        return true 
     }
 
     // @ts-ignore
@@ -111,10 +116,10 @@ function SubInventoryScreen(props: {
             {
                 data && data.map(datum => (
                     <div className={styles.commonIconWithButton}>
-                        <CommonIcon item={datum}/>
+                        <CommonIcon item={datum} disableReason={disableReason}/>
                         {
                             <button
-                                disabled={disableChecker(datum)}
+                                disabled={!enableChecker(datum)}
                                 onClick={() => subInventoryMappings[dataName].listener(datum)}
                             >
                                 {

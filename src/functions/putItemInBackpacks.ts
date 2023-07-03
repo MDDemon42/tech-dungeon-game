@@ -1,10 +1,7 @@
 import masteries from "../general/masteries/masteries";
 import { ICharacher, IItem } from "../types/interfaces";
 
-function putItemInBackpacks(members: Record<string, ICharacher>, items: IItem[], item: IItem) {
-    const {length} = items;
-
-    function backpacksCapability(members: Record<string, ICharacher>) {
+export function backpacksCapability(members: Record<string, ICharacher>) {
         let result = 0;
         Object.keys(members).forEach(key => {
             if (!!members[key]) {
@@ -19,6 +16,9 @@ function putItemInBackpacks(members: Record<string, ICharacher>, items: IItem[],
     
         return result
     }
+
+function putItemInBackpacks(members: Record<string, ICharacher>, items: IItem[], item: IItem) {
+    const {length} = items;
 
     const maxItemsAmount = backpacksCapability(members); console.log('==', maxItemsAmount)
 

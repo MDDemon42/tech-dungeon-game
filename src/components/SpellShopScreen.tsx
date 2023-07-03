@@ -20,6 +20,26 @@ function SpellShopScreen() {
         dispatch(gameSquad.actions.studySpell({index, data: spell}))
     }
 
+    let disableReason = '';
+    function enableChecker(spell: ISpell) {
+        const spellsUserCheck = spellsUser.includes(spell.name);
+        if (spellsUserCheck) {
+            disableReason = 'Already studied';
+            return false
+        }
+        
+        const requiredMasteryCheck = !!spell.requiredMastery ? 
+            masteriesUser.includes(spell.requiredMastery.name) :
+            true;
+            
+        if (!requiredMasteryCheck) {
+            disableReason = 'Does not have required mastery';
+            return false
+        }
+
+        return true
+    }
+
     return (
         <div className={styles.gamePage_component}>
             Welcome to Spell Shop!
@@ -27,14 +47,12 @@ function SpellShopScreen() {
                 {
                     spells && spellsNames.map(name => {
                         const spell = spells[name as keyof typeof spells];
-                        const disabled = spellsUser.includes(spell.name) ||
-                            (!!spell.requiredMastery && !masteriesUser.includes(spell.requiredMastery.name));
                         return (
                             <div className={styles.commonIconWithButton}>
-                                <CommonIcon item={spell}/>
+                                <CommonIcon item={spell} disableReason={disableReason}/>
                                 {
                                     <button
-                                        disabled={disabled}
+                                        disabled={!enableChecker(spell)}
                                         onClick={() => studyButtonListener(spell)}
                                     >
                                         Study!

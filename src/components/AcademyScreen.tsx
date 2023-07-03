@@ -20,13 +20,30 @@ function AcademyScreen() {
         dispatch(gameSquad.actions.learnMastery({index, data: mastery}))
     }
 
-    function disableChecker(mastery: IMastery) {
+    let disableReason = '';
+    function enableChecker(mastery: IMastery) {
         const resourceCheck = userResource > masteriesUser.length;
-        const masteriesCheck = masteriesUser.includes(mastery.name);
-        const requiredMasteryCheck = !!mastery.requiredMastery ? 
-            masteriesUser.includes(mastery.requiredMastery.name) : true;
+        if (!resourceCheck) {
+            disableReason = 'Not enough levels';
+            return false
+        }
 
-        return !resourceCheck || masteriesCheck || !requiredMasteryCheck
+        const masteriesCheck = masteriesUser.includes(mastery.name);
+        if (masteriesCheck) {
+            disableReason = 'Already learned';
+            return false
+        }
+        
+        const requiredMasteryCheck = !!mastery.requiredMastery ? 
+            masteriesUser.includes(mastery.requiredMastery.name) :
+            true;
+            
+        if (!requiredMasteryCheck) {
+            disableReason = 'Does not have required mastery';
+            return false
+        }
+
+        return true
     }
 
     return (
@@ -38,10 +55,10 @@ function AcademyScreen() {
                         const mastery = masteries[name as keyof typeof masteries];
                         return (
                             <div className={styles.commonIconWithButton}>
-                                <CommonIcon item={mastery}/>
+                                <CommonIcon item={mastery} disableReason={disableReason}/>
                                 {
                                     <button
-                                        disabled={disableChecker(mastery)}
+                                        disabled={!enableChecker(mastery)}
                                         onClick={() => learnButtonListener(mastery)}
                                     >
                                         Learn!
