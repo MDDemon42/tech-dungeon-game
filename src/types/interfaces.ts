@@ -186,6 +186,11 @@ interface IGameScreens {
     screen: string
 }
 
+export interface IManageItemsProps {
+    index: number,
+    item: IItem
+}
+
 export interface IGameSquad {
     currentlyWatched: number,
     squadMembers: Record<string, ICharacher>,

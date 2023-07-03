@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { emptyCharacter, emptyInventory, noItem } from '../../general/characters/characters';
-import { IClassInfo, IGameSquad, InventoryPlaces, UserParam, UserResource } from '../../types/interfaces';
+import { IClassInfo, IGameSquad, IManageItemsProps, InventoryPlaces, UserParam, UserResource } from '../../types/interfaces';
 import mutations from '../../general/mutations/mutations';
 import masteries from '../../general/masteries/masteries';
 import raceCheck from '../../functions/raceCheck';
@@ -160,7 +160,10 @@ const gameSquad = createSlice({
 
             state.squadBackpacks = backpacks;
         },
-        equipItem(state, action) {
+        equipItem(state, action: {
+            type: string,
+            payload: IManageItemsProps
+        }) {
             const oldState = {...state};
             const index = oldState.currentlyWatched;
             const members = oldState.squadMembers;
@@ -171,7 +174,10 @@ const gameSquad = createSlice({
                 squadMember.general.inventory = emptyInventory();
             }
 
-            const position: InventoryPlaces = action.payload.inventoryPlace;
+            const itemIndex = action.payload.index;
+            const {item} = action.payload;
+
+            const position: InventoryPlaces = item.inventoryPlace;
 
             if (
                 position === InventoryPlaces.bothHands
@@ -223,18 +229,26 @@ const gameSquad = createSlice({
                 }
             }
             
-            squadMember.general.inventory[placeAsKey(position)] = action.payload;
+            squadMember.general.inventory[placeAsKey(position)] = item;
 
-            for (let i=0, {length} = backpacksItems; i < length; i++) {
-                if (backpacksItems[i].name === action.payload.name) {
-                    backpacksItems.splice(i, 1);
-                    break
-                }
-            }
+            backpacksItems.splice(itemIndex, 1);
 
             oldState.squadBackpacks.items = backpacksItems;
 
             state = oldState;
+        },
+        sellItem(state, action: {
+            type: string,
+            payload: IManageItemsProps
+        }) {
+            const backpacks = {...state.squadBackpacks};
+
+            const {index, item} = action.payload;
+
+            backpacks.items.splice(index, 1);
+            backpacks.resources.Gems += 1;
+
+            state.squadBackpacks = backpacks;
         },
         studySpell(state, action) {
             const {index} = action.payload;
