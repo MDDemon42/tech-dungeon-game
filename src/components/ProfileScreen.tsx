@@ -2,14 +2,12 @@ import styles from '../index.module.css';
 import CommonScreen from "./CommonScreen";
 import StatsScreen from "./StatsScreen";
 import InventoryScreen from "./InventoryScreen";
-import { useSelector } from 'react-redux';
-import { IStore } from '../types/interfaces';
-import BackpacksScreen from './BackpacksScreen';
+import { ICharacher } from '../types/interfaces';
 
-function ProfileScreen() {
-    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
-    const user = useSelector((store: IStore) => 
-        store.gameSquad.squadMembers[index])!;
+function ProfileScreen(props: {
+    character: ICharacher
+}) {
+    const {character} = props;
 
     return (
         <div className={styles.gamePage_componentsBlock}>
@@ -23,7 +21,7 @@ function ProfileScreen() {
                 /> 
                 <div className={styles.inventory_screen}>
                     <StatsScreen />
-                    <InventoryScreen character={user} battle={false}/>
+                    <InventoryScreen character={character} battle={false}/>
                     <CommonScreen 
                         name={'spells'} 
                         vertical={false}
@@ -33,8 +31,7 @@ function ProfileScreen() {
                     name={'powers'} 
                     vertical={true}
                 />
-            </div>
-            <BackpacksScreen/> 
+            </div> 
         </div>
     )
 }

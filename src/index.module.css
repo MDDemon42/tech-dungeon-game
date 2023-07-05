@@ -69,7 +69,7 @@
 .gamePage {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 95vw;
     height: 95vh;
 }
@@ -145,8 +145,8 @@
 }
 
 .gamePage_mainBlock {
-    width: calc(95vw - 435px);
-    min-width: 500px;
+    width: calc(95vw - 655px);
+    min-width: 400px;
     height: 90vh;
     display: flex;
     flex-direction: column;
@@ -164,7 +164,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    min-width: 355px;
 }
 
 .commonScreen_vertical {
@@ -252,9 +251,50 @@
 }
 
 .backpacksScreen {
-    width: 100%;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.backpacksScreen_itemsLine {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.squadScreen {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.squadScreen_squadMembers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    max-height: 250px;
+    width: 55px;
+    padding: 10px 0;
+    border: 1px solid black;
+} 
+
+.squadScreen_squadMembers > img, svg {
+    width: 30px;
+    height: 30px;
+    margin: 5px 0; 
+    cursor: pointer;
+}
+
+.squadScreen_squadMembers > img {
+    border: 1px solid black;
+}
+
+.squadScreen_profileScreen {
+    display: flex;
+    flex-direction: column;
 }

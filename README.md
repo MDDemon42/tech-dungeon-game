@@ -15,7 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  1) Squad and opponents order lines
  2) More `opponents`
  3) Add more abilities to use on `Battle Screen`
- 4) Extra `MASPIC` (Mace, Greathammer, Runic Greathammer, Spear, Fur, Musket, Rifle)
+ 4) Extra `MASPIC` (Axe, Mace, Greathammer, Runic Greathammer, Spear, Fur, Musket, Rifle)
  5) Make mutual exclusions within `MASPIC`
  6) Fix styles (when adding `masteries`)
  7) More ~abilities~ to get more user resources (~battery capacity~ for cyborg)

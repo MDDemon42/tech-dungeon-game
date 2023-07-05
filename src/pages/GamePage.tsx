@@ -1,10 +1,10 @@
 import styles from '../index.module.css';
 import C from '../redux/constants';
-import ProfileScreen from '../components/ProfileScreen';
 import {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import GameScreen from '../components/GameScreen';
 import gameSquad from '../redux/slices/gameSquad';
+import SquadScreen from '../components/SquadScreen';
 
 function GamePage() { 
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ function GamePage() {
 
     return (
         <div className={styles.gamePage}>
-            <ProfileScreen/>
+            <SquadScreen/>
             <GameScreen/>
         </div>
     )

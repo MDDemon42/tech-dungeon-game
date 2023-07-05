@@ -16,8 +16,8 @@ function InventoryScreen(props: {
     const powersUserNames = general.powers.map(power => power.name);
     const inventory = general.inventory ? general.inventory : emptyInventory();
 
-    const width = battle ? '150px' : '405px';
-    const height = battle ? '160px' : '420px';
+    const width = battle ? '150px' : '355px';
+    const height = battle ? '160px' : '370px';
 
     return (
         <div className={styles.inventory_body} style={{width, height}}>       

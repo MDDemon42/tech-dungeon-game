@@ -68,11 +68,13 @@ function SubInventoryScreen(props: {
             return false
         }
 
-        const backpacksCapabilityCheck = currentBackpacksItemsAmount < backpacksCapability(members);
-        if (!backpacksCapabilityCheck) {
-            disableReason = 'Not enough space in backpacks';
-            return false
-        }
+        if (dataName === 'items') {
+            const backpacksCapabilityCheck = currentBackpacksItemsAmount < backpacksCapability(members);
+            if (!backpacksCapabilityCheck) {
+                disableReason = 'Not enough space in backpacks';
+                return false
+            }
+        }        
 
         return true 
     }

@@ -58,7 +58,7 @@ function BackpacksScreen() {
                 <ResourceIcon resource='gene'/>: {resources[UserResource.gene]}
             </div>
         </div>
-        <div className={styles.inventorySlotLine}>
+        <div className={styles.backpacksScreen_itemsLine}>
             {
                 items.map((item, index) => (
                     <div className={styles.commonIconWithButton}>
