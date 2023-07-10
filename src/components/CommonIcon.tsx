@@ -85,8 +85,11 @@ function CommonIcon(props: {
         [DamageTypes.acid]: 'lightgreen',
         [DamageTypes.electrical]: 'yellow',
         [DamageTypes.fire]: 'orange',
-        [DamageTypes.physical]: 'lightblue',
-        [DamageTypes.psionic]: 'pink'
+        [DamageTypes.physicalSlashing]: 'lightblue',
+        [DamageTypes.physicalSmashing]: 'darkblue',
+        [DamageTypes.physicalPiercing]: 'blue',
+        [DamageTypes.psionic]: 'pink',
+        [DamageTypes.cold]: 'aqua'
     }
 
     const manaCost = item.costs?.Mana!;

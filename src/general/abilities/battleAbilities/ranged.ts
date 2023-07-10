@@ -17,31 +17,31 @@ const battleAbility_masterAcidBombThrow = createBattleAbility(
 const battleAbility_oakBowShot = createBattleAbility(
     'Oak bow shot', '', images.normalItems.bow, 
     {Stamina: 1}, 
-    1, DamageTypes.physical, 1, 70
+    1, DamageTypes.physicalPiercing, 1, 70
 );
 
 const battleAbility_masterOakBowShot = createBattleAbility(
     'Master oak bow shot', '', images.normalItems.bow, 
     {Stamina: 1}, 
-    1, DamageTypes.physical, 1, 95
+    1, DamageTypes.physicalPiercing, 1, 95
 );
 
 const battleAbility_crossbowShot = createBattleAbility(
     'Crossbow shot', '', images.normalItems.crossbow, 
     {Blank: 0}, 
-    1, DamageTypes.physical, 1, 60
+    1, DamageTypes.physicalPiercing, 1, 60
 );
 
 const battleAbility_masterCrossbowShot = createBattleAbility(
     'Master crossbow shot', '', images.normalItems.crossbow, 
     {Blank: 0}, 
-    1, DamageTypes.physical, 1, 95
+    1, DamageTypes.physicalPiercing, 1, 95
 );
 
 const battleAbility_chakramThrow = createBattleAbility(
     'Chakram throw', '', images.guildianLearnings.chakram, 
     {Blank: 0}, 
-    1, DamageTypes.physical, 2, 70
+    1, DamageTypes.physicalSlashing, 2, 70
 );
 
 const ranged = {

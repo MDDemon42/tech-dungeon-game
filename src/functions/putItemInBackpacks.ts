@@ -20,7 +20,7 @@ export function backpacksCapability(members: Record<string, ICharacher>) {
 function putItemInBackpacks(members: Record<string, ICharacher>, items: IItem[], item: IItem) {
     const {length} = items;
 
-    const maxItemsAmount = backpacksCapability(members); console.log('==', maxItemsAmount)
+    const maxItemsAmount = backpacksCapability(members);
 
     const newItems = [...items];
     if (length === maxItemsAmount) {

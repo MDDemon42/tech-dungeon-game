@@ -77,11 +77,14 @@ function emptyParams(): ICharacherParams {
             [UserParam.stamina]: 0
         },
         resistances: {
-            [DamageTypes.physical]: 0,
+            [DamageTypes.physicalSlashing]: 0,
+            [DamageTypes.physicalSmashing]: 0,
+            [DamageTypes.physicalPiercing]: 0,
             [DamageTypes.fire]: 0,
             [DamageTypes.electrical]: 0,
             [DamageTypes.psionic]: 0,
-            [DamageTypes.acid]: 0
+            [DamageTypes.acid]: 0,
+            [DamageTypes.cold]: 0,
         }
     }    
 }

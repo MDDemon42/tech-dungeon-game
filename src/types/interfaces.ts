@@ -112,11 +112,14 @@ export enum UserResource {
 }
 
 export enum DamageTypes {
-    physical = 'Physical',
+    physicalSlashing = 'Physical (Slashing)',
+    physicalSmashing = 'Physical (Smashing)',
+    physicalPiercing = 'Physical (Piercing)',
     fire = 'Fire',
     electrical = 'Electrical',
     psionic = 'Psionic',
-    acid = 'Acid'
+    acid = 'Acid',
+    cold = 'Cold'
 }
 
 export interface ICharacherParams {
@@ -139,11 +142,14 @@ export interface ICharacherParams {
         [UserParam.stamina]: number
     },
     resistances: {
-        [DamageTypes.physical]: number,
+        [DamageTypes.physicalSlashing]: number,
+        [DamageTypes.physicalSmashing]: number,
+        [DamageTypes.physicalPiercing]: number,
         [DamageTypes.fire]: number,
         [DamageTypes.electrical]: number,
         [DamageTypes.psionic]: number,
-        [DamageTypes.acid]: number
+        [DamageTypes.acid]: number,
+        [DamageTypes.cold]: number,
     },
     blank?: number
 }
