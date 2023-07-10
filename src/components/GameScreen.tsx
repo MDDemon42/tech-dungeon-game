@@ -4,36 +4,30 @@ import SpellShopScreen from '../components/SpellShopScreen';
 import FocusSiteScreen from '../components/FocusSiteScreen';
 import AcademyScreen from '../components/AcademyScreen';
 import { useSelector, useDispatch } from 'react-redux';
-import { IStore } from '../types/interfaces';
-import gameScreens from '../redux/slices/gameScreens';
+import { GameScreens, IStore } from '../types/interfaces';
+import gameScreens from '../redux/slices/gameScreen';
 import SubInventoryScreen from './SubInventoryScreen';
 
-const screens: Record<string, JSX.Element> = {
-    'battle': <BattleScreen />,
-    'market': <SubInventoryScreen dataName='items'/>,
-    'academy': <AcademyScreen/>,
-    'spellshop': <SpellShopScreen/>,
-    'focussite': <FocusSiteScreen/>,
-    'cyberlab': <SubInventoryScreen dataName='cybers'/>,
-    'mutationlab': <SubInventoryScreen dataName='mutations'/>
-}
-
-const screensButtonTexts: Record<string, string> = {
-    'battle': 'To battle!',
-    'market': 'To Market',
-    'academy': 'To Academy',
-    'spellshop': 'To Spell Shop',
-    'focussite': 'To Focus Site',
-    'cyberlab': 'To Cyber Lab',
-    'mutationlab': 'To Mutation Lab'
-}
-
 function GameScreen() {
-    const screen = useSelector((store: IStore) => store.gameScreens.screen);
+    const screen = useSelector((store: IStore) => store.gameScreen.screen);
     const dispatch = useDispatch();
 
     function changeScreenButtonListener(item: string) {
         dispatch(gameScreens.actions.changeScreen(item))
+    }
+
+    const screens: Record<GameScreens, JSX.Element> = {
+        [GameScreens.academy]: <AcademyScreen/>,
+        [GameScreens.battle]: <BattleScreen />,
+        [GameScreens.cyberLab]: <SubInventoryScreen dataName='cybers'/>,
+        [GameScreens.focusSite]: <FocusSiteScreen/>,
+        [GameScreens.market]: <SubInventoryScreen dataName='items'/>,
+        [GameScreens.mutationLab]: <SubInventoryScreen dataName='mutations'/>,
+        [GameScreens.spellShop]: <SpellShopScreen/>
+    }
+
+    function keyToButtonText(key: string) {
+        return 'To ' + key.replace('_', ' ') + '!';
     }
 
     return (
@@ -45,7 +39,7 @@ function GameScreen() {
                 {
                     Object.keys(screens).map(item => (
                         <button onClick={() => changeScreenButtonListener(item)}>
-                            {screensButtonTexts[item]}
+                            {keyToButtonText(item)}
                         </button>
                     ))
                 }

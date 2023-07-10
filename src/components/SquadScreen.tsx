@@ -3,11 +3,10 @@ import styles from '../index.module.css';
 import { IStore } from '../types/interfaces';
 import ProfileScreen from './ProfileScreen';
 import BackpacksScreen from './BackpacksScreen';
-import CommonIcon from './CommonIcon';
 import images from '../images/images';
 import {BoxSeam, BoxSeamFill} from 'react-bootstrap-icons';
 import { backpacksCapability } from '../functions/putItemInBackpacks';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../redux/slices/gameSquad';
 
@@ -19,7 +18,11 @@ function SquadScreen() {
 
     const dispatch = useDispatch();
 
+    const gameScreen = useSelector((store: IStore) => store.gameScreen);
+    const {screen, shouldShowBackpacks, shouldShowProfile} = gameScreen;
+
     const [showProfile, setShowProfile] = useState(false);
+
     const showProfileHandler = (index: number) => {
         dispatch(gameSquad.actions.changeSquadMember(index));
         setShowProfile((state) => !state);
@@ -28,28 +31,41 @@ function SquadScreen() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
     const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
+
     const currentBackpacksItemsAmount = useSelector((store: IStore) => store.gameSquad.squadBackpacks.items.length);
 
+    const backpacksFullCheck = currentBackpacksItemsAmount < backpacksCapability(squad);
+    
     const user = squad[index]!; 
 
-    const backpacksFullCheck = currentBackpacksItemsAmount < backpacksCapability(squad);
+    useEffect(() => {
+        if (shouldShowProfile) {
+            setShowProfile(true);
+        }
+
+        if (shouldShowBackpacks) {
+            setShowBackpacks(true);
+        }
+    }, [screen]);
 
     return (
         <div className={styles.squadScreen}>
             <div className={styles.squadScreen_squadMembers}>
                 {
-                    Object.keys(squad).map(key => {
-                        if (!!squad[key]) {
+                    Array(5).fill(0).map((value, index: number) => {
+                        if (!!squad[index]) {
                             return <img 
-                                src={images.classIcons[squad[key].params.class]}
-                                title={squad[key].params.name}
-                                onClick={() => showProfileHandler(Number(key))}
+                                src={images.classIcons[squad[index].params.class]}
+                                title={squad[index].params.name}
+                                onClick={() => showProfileHandler(index)}
+                                alt='squadMember'
                             />
                         }
 
                         return <img 
                             src={images.classIcons.noIcon}
                             style={{cursor: 'default'}}
+                            alt='emptySquadSlot'
                         />
                     })
                 }

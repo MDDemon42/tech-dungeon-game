@@ -246,6 +246,7 @@ const gameSquad = createSlice({
             const {index, item} = action.payload;
 
             backpacks.items.splice(index, 1);
+            // backpacks.resources.Gems += item.cost; <- with special mastery
             backpacks.resources.Gems += 1;
 
             state.squadBackpacks = backpacks;

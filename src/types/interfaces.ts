@@ -188,8 +188,10 @@ export interface ICharacher {
     params: ICharacherParams
 }
 
-interface IGameScreens {
-    screen: string
+export interface IGameScreen {
+    screen: GameScreens,
+    shouldShowBackpacks: boolean,
+    shouldShowProfile: boolean
 }
 
 export interface IManageItemsProps {
@@ -212,7 +214,7 @@ export interface IGameSquad {
 
 export interface IStore {
     generalAll: IGeneralAll,
-    gameScreens: IGameScreens,
+    gameScreen: IGameScreen,
     gameSquad: IGameSquad
 }
 
@@ -248,4 +250,14 @@ export interface IClassInfo {
     psion: IClassInfoItem,
     guildian: IClassInfoItem,
     noIcon: IClassInfoItem
+}
+
+export enum GameScreens {
+    battle = 'Battle',
+    market = 'Market',
+    academy = 'Academy',
+    spellShop = 'Spell_Shop',
+    focusSite = 'Focus_Site',
+    cyberLab = 'Cyber_Lab',
+    mutationLab = 'Mutation_Lab'
 }
