@@ -5,7 +5,7 @@ import ProfileScreen from './ProfileScreen';
 import BackpacksScreen from './BackpacksScreen';
 import images from '../images/images';
 import {BoxSeam, BoxSeamFill} from 'react-bootstrap-icons';
-import { backpacksCapability } from '../functions/putItemInBackpacks';
+import { backpacksCapability } from '../helpers/putItemInBackpacks';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../redux/slices/gameSquad';

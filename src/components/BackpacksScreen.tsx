@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import gameSquad from '../redux/slices/gameSquad';
 import ResourceIcon from './ResourceIcon';
 import {ArrowUpCircle, ArrowUpCircleFill} from 'react-bootstrap-icons';
-import prioritisationChecker from '../functions/prioritisation';
+import priorityChecker from '../helpers/priorityChecker';
 
 function BackpacksScreen() {
     const backpacks = useSelector((store: IStore) => store.gameSquad.squadBackpacks);
@@ -37,7 +37,7 @@ function BackpacksScreen() {
             return false
         }
 
-        const priorityCheck = prioritisationChecker(item);
+        const priorityCheck = priorityChecker(item);
         if (!priorityCheck) {
             disableReason = 'Better equipment in use';
             return false

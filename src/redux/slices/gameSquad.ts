@@ -3,8 +3,8 @@ import { emptyCharacter, emptyInventory, noItem } from '../../general/characters
 import { IClassInfo, IGameSquad, IManageItemsProps, InventoryPlaces, UserParam, UserResource } from '../../types/interfaces';
 import mutations from '../../general/mutations/mutations';
 import masteries from '../../general/masteries/masteries';
-import raceCheck from '../../functions/raceCheck';
-import putItemInBackpacks from '../../functions/putItemInBackpacks';
+import checkRace from '../../general/races/checkRace';
+import putItemInBackpacks from '../../helpers/putItemInBackpacks';
 
 export function placeAsKey(place: string) {
     return place.split(' ').map((part, index) => {
@@ -284,7 +284,7 @@ const gameSquad = createSlice({
                 squadMember.general.inventory = emptyInventory();
             }
                 
-            squadMember.params.race = raceCheck(squadMember.general.inventory, isStrong);
+            squadMember.params.race = checkRace(squadMember.general.inventory, isStrong);
 
             state.squadMembers = squad;
         },
@@ -347,7 +347,7 @@ const gameSquad = createSlice({
                 .map(data => data.name)
                 .includes(masteries.mastery_brutalForce.name);
                 
-            squadMember.params.race = raceCheck(squadMember.general.inventory, isStrong);
+            squadMember.params.race = checkRace(squadMember.general.inventory, isStrong);
 
             state = oldState;
         },

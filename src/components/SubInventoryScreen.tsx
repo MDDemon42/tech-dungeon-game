@@ -14,7 +14,7 @@ import {
 import { upperCaseFirstLetter } from '../pages/MainPage';
 import CommonIcon from './CommonIcon';
 import gameSquad from '../redux/slices/gameSquad';
-import { backpacksCapability } from '../functions/putItemInBackpacks';
+import { backpacksCapability } from '../helpers/putItemInBackpacks';
 
 function SubInventoryScreen(props: {
     dataName: keyof ISubInventoryDataName

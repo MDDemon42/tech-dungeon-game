@@ -85,7 +85,7 @@ export enum Race {
     chimera = 'Chimera'
 }
 
-export interface IMutationsRaceCheck {
+export interface IMutationsForRaceCheck {
     horns: boolean,
     hooves: boolean,
     lowerFangs: boolean,

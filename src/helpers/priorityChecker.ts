@@ -3,7 +3,7 @@ import { placeAsKey } from "../redux/slices/gameSquad";
 import store from "../redux/store";
 import { IInventorySlot, InventoryPlaces } from "../types/interfaces";
 
-function prioritisationChecker(slot: IInventorySlot) {
+function priorityChecker(slot: IInventorySlot) {
     const position = slot.inventoryPlace;
 
     const name_new = slot.name;
@@ -25,4 +25,4 @@ function prioritisationChecker(slot: IInventorySlot) {
     return result
 }
 
-export default prioritisationChecker
+export default priorityChecker
