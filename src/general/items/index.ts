@@ -1,8 +1,8 @@
 import { IAbility, IItem, IMastery } from "../../types/interfaces";
 import { InventoryPlaces } from "../../types/interfaces";
-import images from "../../images/images";
 import weapons from "./weapons";
 import armors from "./armors";
+import other from "./other";
 
 export function createItem(
     name: string,
@@ -30,17 +30,10 @@ export function createItem(
     }
 }
 
-const item_healingPotion = createItem(
-    'Healing potion', 'Drink of herbs',
-    images.normalItems.healingPotion, 
-    1, InventoryPlaces.leftPocket,
-    null, null, null, null, 1
-)
-
 const items = {
     weapons,
     armors,
-    item_healingPotion
+    other
 }
 
 export default items

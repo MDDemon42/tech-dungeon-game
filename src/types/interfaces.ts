@@ -154,10 +154,16 @@ export interface ICharacherParams {
     blank?: number
 }
 
-export interface ISubInventoryDataName {
-    mutations: Record<string, IMutation>,
-    cybers: Record<string, ICyber>,
-    items: Record<string, IItem>
+export enum InventorySlotOptions {
+    mutations = 'mutations',
+    cybers = 'cybers',
+    items = 'items'
+}
+
+export enum InventorySlotOptionParts {
+    armors = 'armors',
+    weapons = 'weapons',
+    other = 'other'
 }
 
 export interface ISubInventoryMapping {
@@ -167,13 +173,31 @@ export interface ISubInventoryMapping {
     listener: any
 }
 
+export enum MindSlotOptions {
+    masteries = 'masteries',
+    spells = 'spells',
+    powers = 'powers'
+}
+
 export interface IGeneralAll {
-    masteries: Record<string, IMastery>,
-    items: Record<string, IItem>,
-    spells: Record<string, ISpell>,
-    mutations: Record<string, IMutation>,
-    cybers: Record<string, ICyber>,
-    powers: Record<string, IPower>
+    [MindSlotOptions.masteries]: Record<string, IMastery>,
+    [MindSlotOptions.spells]: Record<string, ISpell>,
+    [MindSlotOptions.powers]: Record<string, IPower>
+    [InventorySlotOptions.items]: {
+        [InventorySlotOptionParts.armors]: Record<string, IItem>,
+        [InventorySlotOptionParts.weapons]: Record<string, IItem>,
+        [InventorySlotOptionParts.other]: Record<string, IItem>
+    },    
+    [InventorySlotOptions.cybers]: {
+        [InventorySlotOptionParts.armors]: Record<string, ICyber>,
+        [InventorySlotOptionParts.weapons]: Record<string, ICyber>,
+        [InventorySlotOptionParts.other]: Record<string, ICyber>
+    },
+    [InventorySlotOptions.mutations]: {
+        [InventorySlotOptionParts.armors]: Record<string, IMutation>,
+        [InventorySlotOptionParts.weapons]: Record<string, IMutation>,
+        [InventorySlotOptionParts.other]: Record<string, IMutation>
+    },   
 }
 
 export interface ICharacterGeneral {

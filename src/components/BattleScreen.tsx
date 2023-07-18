@@ -80,8 +80,8 @@ function BattleScreen() {
         if (!!spell.ability) {
             if (!!spell.requiresRod) {
                 if (
-                    inventory.bothHands.name === items.weapons.magic.item_apprenticeRod.name ||
-                    inventory.bothHands.name === items.weapons.magic.item_magisterScepter.name
+                    inventory.bothHands.name === items.weapons.item_apprenticeRod.name ||
+                    inventory.bothHands.name === items.weapons.item_magisterScepter.name
                 ) {
                     abilitiesUser.push(spell.ability);
                 }
@@ -99,8 +99,8 @@ function BattleScreen() {
 
     // special abilities
     if (
-        inventory.leftHand.name === items.weapons.melee.item_steelSwordLeftHand.name &&
-        inventory.rightHand.name === items.weapons.melee.item_steelSwordRightHand.name &&
+        inventory.leftHand.name === items.weapons.item_steelSwordLeftHand.name &&
+        inventory.rightHand.name === items.weapons.item_steelSwordRightHand.name &&
         masteriesUser.includes(masteries.mastery_dualSwords.name)
     ) {
         abilitiesUser.push(abilities.battleAbilities.melee.battleAbility_dualSwordsSlash);

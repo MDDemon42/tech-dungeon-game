@@ -4,7 +4,7 @@ import SpellShopScreen from '../components/SpellShopScreen';
 import FocusSiteScreen from '../components/FocusSiteScreen';
 import AcademyScreen from '../components/AcademyScreen';
 import { useSelector, useDispatch } from 'react-redux';
-import { GameScreens, IStore } from '../types/interfaces';
+import { GameScreens, IStore, InventorySlotOptions } from '../types/interfaces';
 import gameScreens from '../redux/slices/gameScreen';
 import SubInventoryScreen from './SubInventoryScreen';
 
@@ -19,10 +19,10 @@ function GameScreen() {
     const screens: Record<GameScreens, JSX.Element> = {
         [GameScreens.academy]: <AcademyScreen/>,
         [GameScreens.battle]: <BattleScreen />,
-        [GameScreens.cyberLab]: <SubInventoryScreen dataName='cybers'/>,
+        [GameScreens.cyberLab]: <SubInventoryScreen dataName={InventorySlotOptions.cybers}/>,
         [GameScreens.focusSite]: <FocusSiteScreen/>,
-        [GameScreens.market]: <SubInventoryScreen dataName='items'/>,
-        [GameScreens.mutationLab]: <SubInventoryScreen dataName='mutations'/>,
+        [GameScreens.market]: <SubInventoryScreen dataName={InventorySlotOptions.items}/>,
+        [GameScreens.mutationLab]: <SubInventoryScreen dataName={InventorySlotOptions.mutations}/>,
         [GameScreens.spellShop]: <SpellShopScreen/>
     }
 

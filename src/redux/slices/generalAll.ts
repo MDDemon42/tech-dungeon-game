@@ -1,8 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-import cybers from '../../general/cybers/cybers';
+import cybers from '../../general/cybers';
 import masteries from '../../general/masteries/masteries';
-import mutations from '../../general/mutations/mutations';
+import mutations from '../../general/mutations';
 import items from '../../general/items';
 import spells from '../../general/spells/spells';
 import powers from '../../general/powers/powers';

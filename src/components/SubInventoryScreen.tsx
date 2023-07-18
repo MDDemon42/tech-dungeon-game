@@ -7,9 +7,10 @@ import {
     IItem, 
     InventoryPlaces, 
     IInventorySlot, 
-    UserResource, 
-    ISubInventoryDataName,
-    ISubInventoryMapping
+    UserResource,
+    ISubInventoryMapping,
+    InventorySlotOptions,
+    InventorySlotOptionParts
 } from '../types/interfaces';
 import { upperCaseFirstLetter } from '../pages/MainPage';
 import CommonIcon from './CommonIcon';
@@ -17,7 +18,7 @@ import gameSquad from '../redux/slices/gameSquad';
 import { backpacksCapability } from '../helpers/putItemInBackpacks';
 
 function SubInventoryScreen(props: {
-    dataName: keyof ISubInventoryDataName
+    dataName: InventorySlotOptions
 }) {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
     const members = useSelector((store: IStore) => store.gameSquad.squadMembers);
@@ -25,7 +26,6 @@ function SubInventoryScreen(props: {
 
     const {dataName} = props;
     const dataAll = useSelector((store: IStore) => store.generalAll[dataName]);
-    const dataAllNames = Object.keys(dataAll);
 
     const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ function SubInventoryScreen(props: {
             resource: UserResource.core,
             title: 'Welcome to Cyber Lab!',
             button: 'Implement!',
-            listener: (data: IItem | IMutation | ICyber) => {
+            listener: (data: ICyber) => {
                 dispatch(gameSquad.actions.implementCyber({index, data}));
             }
         },
@@ -42,7 +42,7 @@ function SubInventoryScreen(props: {
             resource: UserResource.gene,
             title: 'Welcome to Mutation Lab!',
             button: 'Mutate!',
-            listener: (data: IItem | IMutation | ICyber) => {
+            listener: (data: IMutation) => {
                 dispatch(gameSquad.actions.mutateMutation({index, data}));
             }
         },
@@ -50,7 +50,7 @@ function SubInventoryScreen(props: {
             resource: UserResource.gem,
             title: 'Welcome to Market!',
             button: 'Buy!',
-            listener: (data: IItem | IMutation | ICyber) => {
+            listener: (data: IItem) => {
                 dispatch(gameSquad.actions.buyItem(data));
             }
         }
@@ -79,8 +79,15 @@ function SubInventoryScreen(props: {
         return true 
     }
 
-    // @ts-ignore
-    const dataArray: IInventorySlot[] = dataAllNames.map(name => dataAll[name]);
+    const dataArray: IInventorySlot[] = [];
+    Object.keys(dataAll)
+        .forEach(key => {
+            Object.keys(dataAll[key as InventorySlotOptionParts])
+                .forEach(subkey => {
+                    dataArray.push(dataAll[key as InventorySlotOptionParts][subkey])
+                })
+        })
+    
     const dataSpecified: Record<string, IInventorySlot[]> = {
         data_for_head: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.head),
         data_for_chin: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.chin),

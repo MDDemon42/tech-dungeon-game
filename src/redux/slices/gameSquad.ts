@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { emptyCharacter, emptyInventory, noItem } from '../../general/characters/characters';
 import { IClassInfo, IGameSquad, IManageItemsProps, InventoryPlaces, UserParam, UserResource } from '../../types/interfaces';
-import mutations from '../../general/mutations/mutations';
+import mutations from '../../general/mutations';
 import masteries from '../../general/masteries/masteries';
 import checkRace from '../../general/races/checkRace';
 import putItemInBackpacks from '../../helpers/putItemInBackpacks';
@@ -302,8 +302,8 @@ const gameSquad = createSlice({
             if (
                 position === InventoryPlaces.leftHand
             ) {
-                if (squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)].name === mutations.mutation_claws.name) {
-                    squadMember.general.inventory[placeAsKey(InventoryPlaces.rightHand)] = mutations.mutation_clawRight;
+                if (squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)].name === mutations.weapons.mutation_claws.name) {
+                    squadMember.general.inventory[placeAsKey(InventoryPlaces.rightHand)] = mutations.weapons.mutation_clawRight;
                 }
                 
                 squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem();                
@@ -312,8 +312,8 @@ const gameSquad = createSlice({
             if (
                 position === InventoryPlaces.rightHand
             ) {
-                if (squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)].name === mutations.mutation_claws.name) {
-                    squadMember.general.inventory[placeAsKey(InventoryPlaces.leftHand)] = mutations.mutation_clawLeft;
+                if (squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)].name === mutations.weapons.mutation_claws.name) {
+                    squadMember.general.inventory[placeAsKey(InventoryPlaces.leftHand)] = mutations.weapons.mutation_clawLeft;
                 }
 
                 squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem();

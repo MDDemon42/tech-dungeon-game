@@ -36,7 +36,7 @@ const spell_fireball: ISpell = {
     description: 'Spell to clash a group of enemies with fire. Casted via rod or staff',
     image: images.wizardSpells.fireball,
     requiredMastery: masteries.mastery_magisterDegree,
-    ability: abilities.battleAbilities.battleAbilities_fireball,
+    ability: abilities.battleAbilities.magic.battleAbility_fireball,
     requiresRod: true
 }
 
@@ -59,7 +59,7 @@ const spell_magicBolt: ISpell = {
     description: 'Spell to make one enemy hurt. Casted via rod or staff',
     image: images.wizardSpells.magicBolt,
     requiredMastery: masteries.mastery_scholarship,
-    ability: abilities.battleAbilities.battleAbilities_magicBolt,
+    ability: abilities.battleAbilities.magic.battleAbility_magicBolt,
     requiresRod: true
 }
 

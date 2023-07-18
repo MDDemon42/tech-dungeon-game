@@ -49,7 +49,7 @@ const power_psiBlade: IPower = {
     passive: false,
     image: images.psionInsights.psiBlade,
     requiredMastery: masteries.mastery_psiEnergy,
-    ability: abilities.battleAbilities.battleAbility_psiBladeSlash
+    ability: abilities.battleAbilities.power.battleAbility_psiBladeSlash
 }
 
 const power_psiLightning: IPower = {
@@ -58,7 +58,7 @@ const power_psiLightning: IPower = {
     passive: false,
     image: images.psionInsights.psiLightning,
     requiredMastery: masteries.mastery_psiEnergy,
-    ability: abilities.battleAbilities.battleAbility_psiLightning
+    ability: abilities.battleAbilities.power.battleAbility_psiLightning
 }
 
 const powers = {

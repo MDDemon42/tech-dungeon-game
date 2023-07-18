@@ -1,18 +1,18 @@
-import mutations from "../mutations/mutations";
+import mutations from "../mutations";
 import races from "./races";
 import { IInventory, IMutationsForRaceCheck, Race } from "../../types/interfaces";
 
 function checkRace(inventory: IInventory, isStrong: boolean) {
     const currentRace: IMutationsForRaceCheck = {
-        horns: inventory.head.name === mutations.mutation_horns.name,
-        hooves: inventory.legs.name === mutations.mutation_hooves.name,
-        lowerFangs: inventory.chin.name === mutations.mutation_lowerFangs.name,
-        scales: inventory.skin.name === mutations.mutation_scales.name,
-        tailWithSting: inventory.tail.name === mutations.mutation_tail.name,
-        claws: inventory.bothHands.name === mutations.mutation_claws.name,
-        acidSplit: inventory.chin.name === mutations.mutation_acidSplit.name,
-        wings: inventory.back.name === mutations.mutation_wings.name,
-        pincers: inventory.shoulders.name === mutations.mutation_pincers.name
+        horns: inventory.head.name === mutations.weapons.mutation_horns.name,
+        hooves: inventory.legs.name === mutations.other.mutation_hooves.name,
+        lowerFangs: inventory.chin.name === mutations.weapons.mutation_lowerFangs.name,
+        scales: inventory.skin.name === mutations.armors.mutation_scales.name,
+        tailWithSting: inventory.tail.name === mutations.weapons.mutation_tail.name,
+        claws: inventory.bothHands.name === mutations.weapons.mutation_claws.name,
+        acidSplit: inventory.chin.name === mutations.weapons.mutation_acidSplit.name,
+        wings: inventory.back.name === mutations.other.mutation_wings.name,
+        pincers: inventory.shoulders.name === mutations.weapons.mutation_pincers.name
     }
 
     const isRace = (race: IMutationsForRaceCheck) => {

@@ -1,26 +1,6 @@
-import { IMutation, InventoryPlaces } from "../../types/interfaces";
-
-import images from "../../images/images";
-
-function createMutation(
-    name: string,
-    description: string,
-    cost: number,
-    inventoryPlace: InventoryPlaces,
-    image: string,
-    priority: number
-): IMutation {
-    return {
-        name,
-        description,
-        cost,
-        inventoryPlace,
-        image,
-        priority,
-        linkedMastery: null,
-        masterAbilities: null
-    }
-}
+import { createMutation } from ".."
+import images from "../../../images/images"
+import { InventoryPlaces } from "../../../types/interfaces"
 
 const mutation_acidSplit = createMutation(
     'Acid split', 'Mutation to split acid in your enemy`s face',
@@ -58,12 +38,6 @@ const mutation_horns = createMutation(
     images.mutantEvolvings.horns, 3
 )
 
-const mutation_scales = createMutation(
-    'Scales', 'Mutation to make your skin much tougher',
-    1, InventoryPlaces.skin,
-    images.mutantEvolvings.scales, 1
-)
-
 const mutation_tail = createMutation(
     'Tail with sting', 'Mutation to pierce your victims',
     1, InventoryPlaces.tail,
@@ -76,30 +50,15 @@ const mutation_pincers = createMutation(
     images.mutantEvolvings.twoExtraPincers, 1
 )
 
-const mutation_wings = createMutation(
-    'Wings', 'Mutation to fly over battlefield',
-    1, InventoryPlaces.back,
-    images.mutantEvolvings.wings, 3
-)
-
-const mutation_hooves = createMutation(
-    'Hooves', 'Mutation to make confident steps',
-    1, InventoryPlaces.legs,
-    images.mutantEvolvings.hooves, 1
-)
-
-const mutations = {
+const weapons = {
     mutation_acidSplit,
-    mutation_lowerFangs,
-    mutation_claws,
     mutation_clawLeft,
     mutation_clawRight,
+    mutation_claws,
     mutation_horns,
-    mutation_scales,
-    mutation_tail,
+    mutation_lowerFangs,
     mutation_pincers,
-    mutation_wings,
-    mutation_hooves
+    mutation_tail
 }
 
-export default mutations
+export default weapons
