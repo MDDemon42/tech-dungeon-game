@@ -2,7 +2,7 @@ import styles from '../index.module.css';
 import images from "../images/images";
 import mutations from "../general/mutations/mutations";
 import cybers from "../general/cybers/cybers";
-import items from "../general/items/items";
+import items from "../general/items";
 import powers from "../general/powers/powers";
 import { ICharacher } from '../types/interfaces';
 import { emptyInventory } from '../general/characters/characters';
@@ -22,17 +22,17 @@ function InventoryScreen(props: {
     return (
         <div className={styles.inventory_body} style={{width, height}}>       
             {
-                inventory.bothHands.name === items.item_oakBow.name ?
+                inventory.bothHands.name === items.weapons.ranged.item_oakBow.name ?
                     <img src={images.bodyElements.oakBow} alt='oakBow' /> : null
             }                
             {
                 inventory.back.name === mutations.mutation_wings.name ?
                     <img src={images.bodyElements.wings} alt='wings' /> :
-                    inventory.back.name === items.item_flyingCape.name ?
+                    inventory.back.name === items.armors.forMage.item_flyingCape.name ?
                         <img src={images.bodyElements.cape} alt='cape' /> : null
             }
             {
-                inventory.tail.name === mutations.mutation_tailWithSting.name ?
+                inventory.tail.name === mutations.mutation_tail.name ?
                     <img src={images.bodyElements.tail} alt='tail' /> : null
             }
             {
@@ -75,19 +75,19 @@ function InventoryScreen(props: {
             {
                 inventory.shoulders.name === cybers.cyber_rocket.name ?
                     <img src={images.bodyElements.rocket} alt='rocket' /> :
-                    inventory.shoulders.name === mutations.mutation_twoExtraPincers.name ?
+                    inventory.shoulders.name === mutations.mutation_pincers.name ?
                         <img src={images.bodyElements.pincers} alt='pincers' /> : null
             }
             {
-                inventory.armor.name === items.item_magisterRobe.name ?
+                inventory.armor.name === items.armors.forMage.item_magisterRobe.name ?
                     <img src={images.bodyElements.magisterRobe} alt='magisterRobe' /> :
-                    inventory.armor.name === items.item_steelArmor.name ?
+                    inventory.armor.name === items.armors.forWarrior.item_steelArmor.name ?
                         <img src={images.bodyElements.steelArmor} alt='steelArmor' /> :
-                        inventory.armor.name === items.item_leatherArmor.name ?
+                        inventory.armor.name === items.armors.forWarrior.item_leatherArmor.name ?
                             <img src={images.bodyElements.leatherArmor} alt='leatherArmor' /> : null 
             }
             {
-                inventory.rightPocket.name === items.item_acidBomd.name ?
+                inventory.rightPocket.name === items.weapons.ranged.item_acidBomd.name ?
                     <img src={images.bodyElements.acidBomb} alt='acidBomb' /> : null
             }
             {
@@ -103,14 +103,14 @@ function InventoryScreen(props: {
                         inventory.leftHand.name === mutations.mutation_clawLeft.name
                     ) ?
                         <img src={images.bodyElements.clawLeft} alt='clawLeft' /> :
-                        inventory.bothHands.name === items.item_steelGreataxe.name ?
+                        inventory.bothHands.name === items.weapons.melee.item_steelGreataxe.name ?
                             <img src={images.bodyElements.steelGreataxe} alt='steelGreataxe' /> :
-                            inventory.leftHand.name === items.item_steelSwordLeftHand.name ?
+                            inventory.leftHand.name === items.weapons.melee.item_steelSwordLeftHand.name ?
                                 <img src={images.bodyElements.steelSwordLeftHand} alt='steelSwordLeftHand' /> :
-                                inventory.leftHand.name === items.item_steelShield.name ?
+                                inventory.leftHand.name === items.armors.forWarrior.item_steelShield.name ?
                                     <img src={images.bodyElements.steelShield} alt='steelShield' /> :
                                     [
-                                        inventory.leftHand.name === items.item_steelChakram.name ?
+                                        inventory.leftHand.name === items.weapons.ranged.item_steelChakram.name ?
                                             <img src={images.bodyElements.chakram} alt='chakram' /> : null,
                                         <img src={images.bodyElements.leftHand} alt='leftHand' />
                                     ]
@@ -125,15 +125,15 @@ function InventoryScreen(props: {
                             inventory.rightHand.name === mutations.mutation_clawRight.name
                         ) ?
                             <img src={images.bodyElements.clawRight} alt='clawRight' /> :
-                            inventory.bothHands.name === items.item_magisterScepter.name ?
+                            inventory.bothHands.name === items.weapons.magic.item_magisterScepter.name ?
                                 <img src={images.bodyElements.magisterScepter} alt='magisterScepter' /> :
-                                inventory.bothHands.name === items.item_runicGreatsword.name ?
+                                inventory.bothHands.name === items.weapons.melee.item_runicGreatsword.name ?
                                     <img src={images.bodyElements.runicGreatsword} alt='runicGreatsword' /> :
-                                    inventory.bothHands.name === items.item_oakCrossow.name ?
+                                    inventory.bothHands.name === items.weapons.ranged.item_oakCrossow.name ?
                                         <img src={images.bodyElements.oakCrossbow} alt='oakCrossbow' /> :
-                                        inventory.bothHands.name === items.item_apprenticeRod.name ?
+                                        inventory.bothHands.name === items.weapons.magic.item_apprenticeRod.name ?
                                             <img src={images.bodyElements.apprenticeRod} alt='apprenticeRod' /> :
-                                            inventory.rightHand.name === items.item_steelSwordRightHand.name ?
+                                            inventory.rightHand.name === items.weapons.melee.item_steelSwordRightHand.name ?
                                                 <img src={images.bodyElements.steelSwordRightHand} alt='steelSwordRightHand' /> :
                                                 <img src={images.bodyElements.rightHand} alt='rightHand' />
             }
@@ -155,9 +155,9 @@ function InventoryScreen(props: {
             {
                 inventory.head.name === mutations.mutation_horns.name ?
                     <img src={images.bodyElements.horns} alt='horns' /> :
-                    inventory.head.name === items.item_magisterHat.name ?
+                    inventory.head.name === items.armors.forMage.item_magisterHat.name ?
                         <img src={images.bodyElements.magisterHat} alt='magisterHat' /> :
-                        inventory.head.name === items.item_apprenticeHat.name ?
+                        inventory.head.name === items.armors.forMage.item_apprenticeHat.name ?
                             <img src={images.bodyElements.apprenticeHat} alt='apprenticeHat' /> : null
             }
         </div>

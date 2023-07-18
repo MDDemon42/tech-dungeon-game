@@ -8,13 +8,19 @@ const battleAbility_swordSlash = createBattleAbility(
     1, DamageTypes.physicalSlashing, 1, 70
 );
 
+const battleAbility_leftHandSwordSlash = createBattleAbility(
+    'Left hand sword slash', '', images.normalItems.sword, 
+    {Stamina: 1}, 
+    1, DamageTypes.physicalSlashing, 1, 70
+);
+
 const battleAbility_masterSwordSlash = createBattleAbility(
     'Master sword slash', '', images.normalItems.sword, 
     {Stamina: 1}, 
     1, DamageTypes.physicalSlashing, 1, 95
 );
 
-const battleAbilities_dualSwordsSlash = createBattleAbility(
+const battleAbility_dualSwordsSlash = createBattleAbility(
     'Dual swords slash', '', images.guildianLearnings.dualSwords, 
     {Stamina: 2}, 
     3, DamageTypes.physicalSlashing, 1, 95
@@ -46,8 +52,9 @@ const battleAbility_greatswordSlash = createBattleAbility(
 
 const melee = {
     battleAbility_swordSlash,
+    battleAbility_leftHandSwordSlash,
     battleAbility_masterSwordSlash,
-    battleAbilities_dualSwordsSlash,
+    battleAbility_dualSwordsSlash,
     battleAbility_chakramSlash,
     battleAbility_masterChakramSlash,
     battleAbility_greataxeSlash,

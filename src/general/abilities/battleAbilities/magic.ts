@@ -8,13 +8,13 @@ const battleAbility_runicGreatswordSlash = createBattleAbility(
     3, DamageTypes.fire, 1, 70
 );
 
-const battleAbilities_magicBolt = createBattleAbility(
+const battleAbility_magicBolt = createBattleAbility(
     'Magic bolt', '', images.wizardSpells.magicBolt, 
     {Mana: 1}, 
     1, DamageTypes.electrical, 1, 85
 );
 
-const battleAbilities_fireball = createBattleAbility(
+const battleAbility_fireball = createBattleAbility(
     'Fireball', '', images.wizardSpells.fireball, 
     {Mana: 2}, 
     2, DamageTypes.electrical, 5, 70
@@ -22,8 +22,8 @@ const battleAbilities_fireball = createBattleAbility(
 
 const magic = {
     battleAbility_runicGreatswordSlash,
-    battleAbilities_magicBolt,
-    battleAbilities_fireball
+    battleAbility_magicBolt,
+    battleAbility_fireball
 }
 
 export default magic

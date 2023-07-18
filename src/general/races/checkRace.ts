@@ -8,11 +8,11 @@ function checkRace(inventory: IInventory, isStrong: boolean) {
         hooves: inventory.legs.name === mutations.mutation_hooves.name,
         lowerFangs: inventory.chin.name === mutations.mutation_lowerFangs.name,
         scales: inventory.skin.name === mutations.mutation_scales.name,
-        tailWithSting: inventory.tail.name === mutations.mutation_tailWithSting.name,
+        tailWithSting: inventory.tail.name === mutations.mutation_tail.name,
         claws: inventory.bothHands.name === mutations.mutation_claws.name,
         acidSplit: inventory.chin.name === mutations.mutation_acidSplit.name,
         wings: inventory.back.name === mutations.mutation_wings.name,
-        pincers: inventory.shoulders.name === mutations.mutation_twoExtraPincers.name
+        pincers: inventory.shoulders.name === mutations.mutation_pincers.name
     }
 
     const isRace = (race: IMutationsForRaceCheck) => {

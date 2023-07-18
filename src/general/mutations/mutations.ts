@@ -2,104 +2,91 @@ import { IMutation, InventoryPlaces } from "../../types/interfaces";
 
 import images from "../../images/images";
 
-const mutation_acidSplit: IMutation = {
-    name: 'Acid split',
-    description: 'Mutation to split acid in your enemy`s face',
-    inventoryPlace: InventoryPlaces.chin,
-    cost: 1,
-    image: images.mutantEvolvings.acidSplit,
-    priority: 2
+function createMutation(
+    name: string,
+    description: string,
+    cost: number,
+    inventoryPlace: InventoryPlaces,
+    image: string,
+    priority: number
+): IMutation {
+    return {
+        name,
+        description,
+        cost,
+        inventoryPlace,
+        image,
+        priority,
+        linkedMastery: null,
+        masterAbilities: null
+    }
 }
 
-const mutation_lowerFangs: IMutation = {
-    name: 'Lower fangs',
-    description: 'Mutation to turn your chin to a cutting machine',
-    inventoryPlace: InventoryPlaces.chin,
-    cost: 1,
-    image: images.mutantEvolvings.lowerFangs,
-    priority: 1
-}
+const mutation_acidSplit = createMutation(
+    'Acid split', 'Mutation to split acid in your enemy`s face',
+    1, InventoryPlaces.chin,
+    images.mutantEvolvings.acidSplit, 2
+)
 
-const mutation_claws: IMutation = {
-    name: 'Claws',
-    description: 'Mutation to rip your opponents apart',
-    inventoryPlace: InventoryPlaces.bothHands,
-    cost: 1,
-    image: images.mutantEvolvings.claws,
-    priority: 4
-}
+const mutation_lowerFangs = createMutation(
+    'Lower fangs', 'Mutation to turn your chin to a cutting machine',
+    1, InventoryPlaces.chin,
+    images.mutantEvolvings.lowerFangs, 1
+)
 
-const mutation_clawLeft: IMutation = {
-    name: 'Claws',
-    description: 'Mutation to rip your opponents apart',
-    inventoryPlace: InventoryPlaces.leftHand,
-    cost: 1,
-    image: images.mutantEvolvings.claws,
-    priority: 4
-}
+const mutation_claws = createMutation(
+    'Claws', 'Mutation to rip your opponents apart',
+    1, InventoryPlaces.bothHands,
+    images.mutantEvolvings.claws, 4
+)
 
-const mutation_clawRight: IMutation = {
-    name: 'Claws',
-    description: 'Mutation to rip your opponents apart',
-    inventoryPlace: InventoryPlaces.rightHand,
-    cost: 1,
-    image: images.mutantEvolvings.claws,
-    priority: 4
-}
+const mutation_clawLeft = createMutation(
+    'Claws', 'Mutation to rip your opponents apart',
+    1, InventoryPlaces.leftHand,
+    images.mutantEvolvings.claws, 4
+)
 
-const mutation_horns: IMutation = {
-    name: 'Horns',
-    description: 'Mutation to use your head as a double-spear',
-    inventoryPlace: InventoryPlaces.head,
-    cost: 1,
-    image: images.mutantEvolvings.horns,
-    priority: 3
-}
+const mutation_clawRight = createMutation(
+    'Claws', 'Mutation to rip your opponents apart',
+    1, InventoryPlaces.rightHand,
+    images.mutantEvolvings.claws, 4
+)
 
-const mutation_scales: IMutation = {
-    name: 'Scales',
-    description: 'Mutation to make your skin much tougher',
-    inventoryPlace: InventoryPlaces.skin,
-    cost: 1,
-    image: images.mutantEvolvings.scales,
-    priority: 1
-}
+const mutation_horns = createMutation(
+    'Horns', 'Mutation to use your head as a double-spear',
+    1, InventoryPlaces.head,
+    images.mutantEvolvings.horns, 3
+)
 
-const mutation_tailWithSting: IMutation = {
-    name: 'Tail with sting',
-    description: 'Mutation to pierce your victims',
-    inventoryPlace: InventoryPlaces.tail,
-    cost: 1,
-    image: images.mutantEvolvings.tailWithSting,
-    priority: 1
-}
+const mutation_scales = createMutation(
+    'Scales', 'Mutation to make your skin much tougher',
+    1, InventoryPlaces.skin,
+    images.mutantEvolvings.scales, 1
+)
 
-const mutation_twoExtraPincers: IMutation = {
-    name: 'Two extra pincers',
-    description: 'Mutation to make holes in you rival',
-    inventoryPlace: InventoryPlaces.shoulders,
-    cost: 1,
-    image: images.mutantEvolvings.twoExtraPincers,
-    priority: 1
-}
+const mutation_tail = createMutation(
+    'Tail with sting', 'Mutation to pierce your victims',
+    1, InventoryPlaces.tail,
+    images.mutantEvolvings.tailWithSting, 1
+)
 
-const mutation_wings: IMutation = {
-    name: 'Wings',
-    description: 'Mutation to fly over battlefield',
-    inventoryPlace: InventoryPlaces.back,
-    cost: 1,
-    image: images.mutantEvolvings.wings,
-    priority: 3
-}
+const mutation_pincers = createMutation(
+    'Two extra pincers', 'Mutation to make holes in you rival',
+    1, InventoryPlaces.shoulders,
+    images.mutantEvolvings.twoExtraPincers, 1
+)
 
-const mutation_hooves: IMutation = {
-    name: 'Hooves',
-    description: 'Mutation to make confident steps',
-    inventoryPlace: InventoryPlaces.legs,
-    cost: 1,
-    image: images.mutantEvolvings.hooves,
-    priority: 1
-}
+const mutation_wings = createMutation(
+    'Wings', 'Mutation to fly over battlefield',
+    1, InventoryPlaces.back,
+    images.mutantEvolvings.wings, 3
+)
+
+const mutation_hooves = createMutation(
+    'Hooves', 'Mutation to make confident steps',
+    1, InventoryPlaces.legs,
+    images.mutantEvolvings.hooves, 1
+)
 
 const mutations = {
     mutation_acidSplit,
@@ -109,8 +96,8 @@ const mutations = {
     mutation_clawRight,
     mutation_horns,
     mutation_scales,
-    mutation_tailWithSting,
-    mutation_twoExtraPincers,
+    mutation_tail,
+    mutation_pincers,
     mutation_wings,
     mutation_hooves
 }

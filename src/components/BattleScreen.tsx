@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import styles from '../index.module.css';
 import { IAbility, IBattleAbility, IStore, Race, UserParam } from '../types/interfaces';
 import CommonIcon from './CommonIcon';
-import items from '../general/items/items';
+import items from '../general/items';
 import masteries from '../general/masteries/masteries';
 import abilities from '../general/abilities';
 import { useState } from 'react';
@@ -80,8 +80,8 @@ function BattleScreen() {
         if (!!spell.ability) {
             if (!!spell.requiresRod) {
                 if (
-                    inventory.bothHands.name === items.item_apprenticeRod.name ||
-                    inventory.bothHands.name === items.item_magisterScepter.name
+                    inventory.bothHands.name === items.weapons.magic.item_apprenticeRod.name ||
+                    inventory.bothHands.name === items.weapons.magic.item_magisterScepter.name
                 ) {
                     abilitiesUser.push(spell.ability);
                 }
@@ -99,11 +99,11 @@ function BattleScreen() {
 
     // special abilities
     if (
-        inventory.leftHand.name === items.item_steelSwordLeftHand.name &&
-        inventory.rightHand.name === items.item_steelSwordRightHand.name &&
+        inventory.leftHand.name === items.weapons.melee.item_steelSwordLeftHand.name &&
+        inventory.rightHand.name === items.weapons.melee.item_steelSwordRightHand.name &&
         masteriesUser.includes(masteries.mastery_dualSwords.name)
     ) {
-        abilitiesUser.push(abilities.battleAbilities.battleAbilities_dualSwordsSlash);
+        abilitiesUser.push(abilities.battleAbilities.melee.battleAbility_dualSwordsSlash);
     }
 
     function selectAbility(ability: IAbility, id: string) {

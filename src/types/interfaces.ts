@@ -38,13 +38,13 @@ export interface IInventorySlot extends ICommon {
     cost: number,
     inventoryPlace: InventoryPlaces,
     priority: number,
-    linkedMastery?: IMastery,
-    masterAbilities?: IAbility[]
+    linkedMastery: IMastery | null,
+    masterAbilities: IAbility[] | null
 }
 
 export interface IItem extends IInventorySlot {
     ability: IAbility | null,
-    requiredMastery?: IMastery
+    requiredMastery: IMastery | null
 }
 
 export interface IMutation extends IInventorySlot {

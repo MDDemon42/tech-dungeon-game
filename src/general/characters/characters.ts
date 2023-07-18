@@ -24,7 +24,10 @@ export function noItem(): IMutation & IItem {
         inventoryPlace: InventoryPlaces.belt,
         image: images.classIcons.noIcon,
         priority: 0,
-        ability: null
+        requiredMastery: null,
+        ability: null,
+        linkedMastery: null,
+        masterAbilities: null
     }    
 }
 
