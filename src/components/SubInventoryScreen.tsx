@@ -16,6 +16,7 @@ import { upperCaseFirstLetter } from '../pages/MainPage';
 import CommonIcon from './CommonIcon';
 import gameSquad from '../redux/slices/gameSquad';
 import { backpacksCapability } from '../helpers/putItemInBackpacks';
+import priorityChecker from '../helpers/priorityChecker';
 
 function SubInventoryScreen(props: {
     dataName: InventorySlotOptions
@@ -74,7 +75,13 @@ function SubInventoryScreen(props: {
                 disableReason = 'Not enough space in backpacks';
                 return false
             }
-        }        
+        } else {
+            const priorityCheck = priorityChecker(data);
+            if (!priorityCheck) {
+                disableReason = 'Better equipment in use';
+                return false
+            }
+        }
 
         return true 
     }
