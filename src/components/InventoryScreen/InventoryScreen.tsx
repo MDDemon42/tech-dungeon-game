@@ -4,8 +4,8 @@ import mutations from "../../general/mutations";
 import cybers from "../../general/cybers";
 import items from "../../general/items";
 import powers from "../../general/powers/powers";
-import { ICharacher } from '../../interfaces/interfaces';
-import { createEmptyInventory } from '../../general/characters/createEmptyCharacter';
+import { ICharacher } from '../../enums-and-interfaces/interfaces';
+import { createEmptyInventory } from '../../helpers/emptyEssencesCreators';
 
 function InventoryScreen(props: {
     character: ICharacher,

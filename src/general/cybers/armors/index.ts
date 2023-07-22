@@ -1,6 +1,6 @@
-import { createCyber } from ".."
-import images from "../../../images/images"
-import { InventoryPlaces } from "../../../interfaces/interfaces"
+import { createCyber } from "..";
+import { InventoryPlace } from "../../../enums-and-interfaces/enums";
+import images from "../../../images/images";
 
 const cyber_nanoMatrix = createCyber(
     [
@@ -9,7 +9,7 @@ const cyber_nanoMatrix = createCyber(
         images.cyborgDetails.nanoMatrix
     ],
     [
-        2, InventoryPlaces.skin, 3
+        2, InventoryPlace.skin, 3
     ],
     [
         null, null, null
@@ -23,7 +23,7 @@ const cyber_nanoVest = createCyber(
         images.cyborgDetails.nanoVest
     ],
     [
-        1, InventoryPlaces.skin, 2
+        1, InventoryPlace.skin, 2
     ],
     [
         null, null, null

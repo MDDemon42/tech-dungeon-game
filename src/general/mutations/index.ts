@@ -1,7 +1,8 @@
-import { IAbility, IMastery, IMutation, InventoryPlaces } from "../../interfaces/interfaces";
+import { IAbility, IMastery, IMutation } from "../../enums-and-interfaces/interfaces";
 import armors from "./armors";
 import weapons from "./weapons";
 import other from "./other";
+import { InventoryPlace } from "../../enums-and-interfaces/enums";
 
 export function createMutation(
     commonInfo: [
@@ -11,7 +12,7 @@ export function createMutation(
     ],
     inventoryInfo: [
         cost: number,
-        inventoryPlace: InventoryPlaces,
+        inventoryPlace: InventoryPlace,
         priority: number
     ],
     abilityInfo: [

@@ -1,4 +1,4 @@
-import { IMastery } from "../../interfaces/interfaces";
+import { IMastery } from "../../enums-and-interfaces/interfaces";
 import images from "../../images/images";
 
 function createMastery(

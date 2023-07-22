@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { GameScreens, IGameScreen } from '../../interfaces/interfaces';
+import { IGameScreen } from '../../enums-and-interfaces/interfaces';
+import { GameScreens } from '../../enums-and-interfaces/enums';
 
 const initialState: IGameScreen = {
     screen: GameScreens.battle,

@@ -1,6 +1,6 @@
 import { createCyber } from "..";
+import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
-import { InventoryPlaces } from "../../../interfaces/interfaces";
 
 const cyber_reactiveFeet = createCyber(
     [
@@ -9,7 +9,7 @@ const cyber_reactiveFeet = createCyber(
         images.cyborgDetails.reactiveFeet
     ],
     [
-        1, InventoryPlaces.legs, 2
+        1, InventoryPlace.legs, 2
     ],
     [
         null, null, null

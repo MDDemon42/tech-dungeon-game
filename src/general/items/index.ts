@@ -1,8 +1,8 @@
-import { IAbility, IItem, IMastery } from "../../interfaces/interfaces";
-import { InventoryPlaces } from "../../interfaces/interfaces";
+import { IAbility, IItem, IMastery } from "../../enums-and-interfaces/interfaces";
 import weapons from "./weapons";
 import armors from "./armors";
 import other from "./other";
+import { InventoryPlace } from "../../enums-and-interfaces/enums";
 
 export function createItem(
     commonInfo: [
@@ -12,7 +12,7 @@ export function createItem(
     ],
     inventoryInfo: [
         cost: number,
-        inventoryPlace: InventoryPlaces,
+        inventoryPlace: InventoryPlace,
         priority: number
     ],
     abilityInfo: [

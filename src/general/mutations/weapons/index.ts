@@ -1,6 +1,6 @@
-import { createMutation } from ".."
-import images from "../../../images/images"
-import { InventoryPlaces } from "../../../interfaces/interfaces"
+import { createMutation } from "..";
+import { InventoryPlace } from "../../../enums-and-interfaces/enums";
+import images from "../../../images/images";
 
 const mutation_acidSplit = createMutation(
     [
@@ -9,7 +9,7 @@ const mutation_acidSplit = createMutation(
         images.mutantEvolvings.acidSplit
     ],
     [
-        1, InventoryPlaces.chin, 2
+        1, InventoryPlace.chin, 2
     ],
     [
         null, null, null
@@ -23,7 +23,7 @@ const mutation_lowerFangs = createMutation(
         images.mutantEvolvings.lowerFangs
     ],
     [
-        1, InventoryPlaces.chin, 1
+        1, InventoryPlace.chin, 1
     ],
     [
         null, null, null
@@ -37,7 +37,7 @@ const mutation_claws = createMutation(
         images.mutantEvolvings.claws
     ],
     [
-        1, InventoryPlaces.bothHands, 4
+        1, InventoryPlace.bothHands, 4
     ],
     [
         null, null, null
@@ -51,7 +51,7 @@ const mutation_clawLeft = createMutation(
         images.mutantEvolvings.claws
     ],
     [
-        1, InventoryPlaces.leftHand, 4
+        1, InventoryPlace.leftHand, 4
     ],
     [
         null, null, null
@@ -65,7 +65,7 @@ const mutation_clawRight = createMutation(
         images.mutantEvolvings.claws
     ],
     [
-        1, InventoryPlaces.rightHand, 4
+        1, InventoryPlace.rightHand, 4
     ],
     [
         null, null, null
@@ -79,7 +79,7 @@ const mutation_horns = createMutation(
         images.mutantEvolvings.horns
     ],
     [
-        1, InventoryPlaces.head, 3
+        1, InventoryPlace.head, 3
     ],
     [
         null, null, null
@@ -93,7 +93,7 @@ const mutation_tail = createMutation(
         images.mutantEvolvings.tailWithSting
     ],
     [
-        1, InventoryPlaces.tail, 1
+        1, InventoryPlace.tail, 1
     ],
     [
         null, null, null
@@ -107,7 +107,7 @@ const mutation_pincers = createMutation(
         images.mutantEvolvings.twoExtraPincers
     ],
     [
-        1, InventoryPlaces.shoulders, 1
+        1, InventoryPlace.shoulders, 1
     ],
     [
         null, null, null

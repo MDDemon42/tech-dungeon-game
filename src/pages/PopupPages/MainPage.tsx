@@ -3,10 +3,10 @@ import {Link} from "react-router-dom";
 import {Gear} from 'react-bootstrap-icons';
 import styles from './PopupPage.module.css';
 import images from '../../images/images';
-import {IClassInfo, IStore} from '../../interfaces/interfaces';
+import {IClassInfo, IStore} from '../../enums-and-interfaces/interfaces';
 import { useEffect, useState } from 'react';
 import C from '../../redux/constants';
-import { createEmptyInventory } from '../../general/characters/createEmptyCharacter';
+import { createEmptyInventory } from '../../helpers/emptyEssencesCreators';
 import gameSquad, { classInfo } from '../../redux/slices/gameSquad';
 
 export function upperCaseFirstLetter(value: string) {

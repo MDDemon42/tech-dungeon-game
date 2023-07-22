@@ -1,7 +1,8 @@
-import { InventoryPlaces, ICyber, IAbility, IMastery } from "../../interfaces/interfaces";
+import { ICyber, IAbility, IMastery } from "../../enums-and-interfaces/interfaces";
 import armors from "./armors";
 import weapons from "./weapons";
 import other from "./other";
+import { InventoryPlace } from "../../enums-and-interfaces/enums";
 
 export function createCyber(
     commonInfo: [
@@ -11,7 +12,7 @@ export function createCyber(
     ],
     inventoryInfo: [
         cost: number,
-        inventoryPlace: InventoryPlaces,
+        inventoryPlace: InventoryPlace,
         priority: number
     ],
     abilityInfo: [

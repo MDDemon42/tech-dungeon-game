@@ -3,10 +3,8 @@ import styles from './BattleScreen.module.css';
 import { 
     IAbility, 
     IBattleAbility, 
-    IStore, 
-    Race, 
-    UserParam 
-} from '../../interfaces/interfaces';
+    IStore
+} from '../../enums-and-interfaces/interfaces';
 import CommonIcon from '../Icons/CommonIcon';
 import items from '../../general/items';
 import masteries from '../../general/masteries/masteries';
@@ -16,7 +14,8 @@ import characters from '../../general/characters';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
 import BattleOrder from '../BattleOrder/BattleOrder';
-import { createEmptyInventory } from '../../general/characters/createEmptyCharacter';
+import { createEmptyInventory } from '../../helpers/emptyEssencesCreators';
+import { Race, UserParam } from '../../enums-and-interfaces/enums';
 
 const specialRaceAbilities: Record<Race, (IBattleAbility | null)> = {
     [Race.human]: null,

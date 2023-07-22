@@ -2,7 +2,8 @@ import styles from './MindScreen.module.css';
 import {useSelector} from "react-redux";
 import CommonIcon from '../Icons/CommonIcon';
 import { upperCaseFirstLetter } from '../../pages/PopupPages/MainPage';
-import { ICommon, IStore, MindOptions } from '../../interfaces/interfaces';
+import { ICommon, IStore } from '../../enums-and-interfaces/interfaces';
+import { MindOption } from '../../enums-and-interfaces/enums';
 
 function MindScreen(props: {
     name: string,
@@ -12,7 +13,7 @@ function MindScreen(props: {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
     const common = useSelector((state: IStore) => 
-        state.gameSquad.squadMembers[index].general.mind[name as MindOptions]);
+        state.gameSquad.squadMembers[index].general.mind[name as MindOption]);
 
     return (
         <div className={styles.MindZoneScreen}>

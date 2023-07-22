@@ -1,5 +1,5 @@
-import { UserParam } from "../../interfaces/interfaces";
-import createEmptyCharacter from "./createEmptyCharacter";
+import { UserParam } from "../../enums-and-interfaces/enums";
+import createEmptyCharacter from "../../helpers/emptyEssencesCreators";
 
 const opponent_dummy = () => {
     const opponent = createEmptyCharacter();

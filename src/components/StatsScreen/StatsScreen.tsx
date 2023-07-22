@@ -1,8 +1,9 @@
-import {IStore, UserParam} from "../../interfaces/interfaces";
+import {IStore} from "../../enums-and-interfaces/interfaces";
 import styles from './StatsScreen.module.css';
 import { useSelector } from "react-redux";
 import { upperCaseFirstLetter } from "../../pages/PopupPages/MainPage";
 import ParamIcon from "../Icons/ParamIcon";
+import { UserParam } from "../../enums-and-interfaces/enums";
 
 function StatsScreen() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);

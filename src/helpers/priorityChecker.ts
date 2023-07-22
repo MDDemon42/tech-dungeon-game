@@ -1,7 +1,8 @@
-import { createEmptyInventory } from "../general/characters/createEmptyCharacter";
+import { createEmptyInventory } from "./emptyEssencesCreators";
 import { placeAsKey } from "../redux/slices/gameSquad";
 import store from "../redux/store";
-import { IInventorySlot, InventoryPlaces } from "../interfaces/interfaces";
+import { IInventorySlot } from "../enums-and-interfaces/interfaces";
+import { InventoryPlace } from "../enums-and-interfaces/enums";
 
 function priorityChecker(slot: IInventorySlot) {
     const position = slot.inventoryPlace;
@@ -16,10 +17,10 @@ function priorityChecker(slot: IInventorySlot) {
 
     const result = name_old !== name_new && priority_new >= priority_old;
 
-    if (position === InventoryPlaces.bothHands) {
+    if (position === InventoryPlace.bothHands) {
         return result &&
-            priority_new >= inventory[placeAsKey(InventoryPlaces.leftHand)].priority &&
-            priority_new >= inventory[placeAsKey(InventoryPlaces.rightHand)].priority
+            priority_new >= inventory[placeAsKey(InventoryPlace.leftHand)].priority &&
+            priority_new >= inventory[placeAsKey(InventoryPlace.rightHand)].priority
     }
     
     return result

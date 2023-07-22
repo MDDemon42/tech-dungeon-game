@@ -1,6 +1,6 @@
 import { createItem } from "..";
+import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
-import { InventoryPlaces } from "../../../interfaces/interfaces";
 
 const item_healingPotion = createItem(
     [
@@ -9,7 +9,7 @@ const item_healingPotion = createItem(
         images.normalItems.healingPotion
     ], 
     [
-        1, InventoryPlaces.leftPocket, 1
+        1, InventoryPlace.leftPocket, 1
     ],
     [
         null, null, null, null

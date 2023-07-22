@@ -1,6 +1,7 @@
 import mutations from "../mutations";
 import races from "./races";
-import { IInventory, IMutationsForRaceCheck, Race } from "../../interfaces/interfaces";
+import { IInventory, IMutationsForRaceCheck } from "../../enums-and-interfaces/interfaces";
+import { Race } from "../../enums-and-interfaces/enums";
 
 function checkRace(inventory: IInventory, isStrong: boolean) {
     const currentRace: IMutationsForRaceCheck = {

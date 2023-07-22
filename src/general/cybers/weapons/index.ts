@@ -1,6 +1,6 @@
-import { createCyber } from ".."
-import images from "../../../images/images"
-import { InventoryPlaces } from "../../../interfaces/interfaces"
+import { createCyber } from "..";
+import { InventoryPlace } from "../../../enums-and-interfaces/enums";
+import images from "../../../images/images";
 
 const cyber_energyWhip = createCyber(
     [
@@ -9,7 +9,7 @@ const cyber_energyWhip = createCyber(
         images.cyborgDetails.energyWhip
     ],
     [
-        2, InventoryPlaces.rightHand, 6
+        2, InventoryPlace.rightHand, 6
     ],
     [
         null, null, null
@@ -23,7 +23,7 @@ const cyber_laser = createCyber(
         images.cyborgDetails.laser
     ],
     [
-        1, InventoryPlaces.leftHand, 5
+        1, InventoryPlace.leftHand, 5
     ],
     [
         null, null, null
@@ -37,7 +37,7 @@ const cyber_powerFist = createCyber(
         images.cyborgDetails.powerFist
     ],
     [
-        1, InventoryPlaces.rightHand, 5
+        1, InventoryPlace.rightHand, 5
     ],
     [
         null, null, null
@@ -51,7 +51,7 @@ const cyber_rocket = createCyber(
         images.cyborgDetails.rocket
     ],
     [
-        1, InventoryPlaces.shoulders, 2
+        1, InventoryPlace.shoulders, 2
     ],
     [
         null, null, null

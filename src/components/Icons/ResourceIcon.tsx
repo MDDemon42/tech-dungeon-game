@@ -1,5 +1,5 @@
+import { UserResource } from "../../enums-and-interfaces/enums";
 import images from "../../images/images";
-import { UserResource } from "../../interfaces/interfaces";
 import styles from './Icons.module.css';
 
 function ResourceIcon(props: {

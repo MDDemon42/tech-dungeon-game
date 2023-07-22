@@ -4,34 +4,36 @@ import {
     IStore, 
     IMutation, 
     ICyber, 
-    IItem, 
-    InventoryPlaces, 
+    IItem,  
     IInventorySlot, 
-    UserResource,
     ISubInventoryMapping,
-    InventoryOptions,
-    InventoryOptionParts
-} from '../../interfaces/interfaces';
+} from '../../enums-and-interfaces/interfaces';
 import { upperCaseFirstLetter } from '../../pages/PopupPages/MainPage';
 import CommonIcon from '../Icons/CommonIcon';
 import gameSquad from '../../redux/slices/gameSquad';
-import { backpacksCapability } from '../../helpers/putItemInBackpacks';
+import { backpacksCapability } from '../../helpers/backpacksPutter';
 import priorityChecker from '../../helpers/priorityChecker';
+import { 
+    InventoryOption, 
+    UserResource, 
+    InventoryOptionPart, 
+    InventoryPlace 
+} from '../../enums-and-interfaces/enums';
 
 function SubInventoryScreen(props: {
-    dataName: InventoryOptions
+    dataName: InventoryOption
 }) {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
     const members = useSelector((store: IStore) => store.gameSquad.squadMembers);
     const currentBackpacksItemsAmount = useSelector((store: IStore) => store.gameSquad.squadBackpacks.items.length);
 
     const {dataName} = props;
-    const dataAll = useSelector((store: IStore) => store.generalAll[dataName]);
+    const dataAll = useSelector((store: IStore) => store.everything[dataName]);
 
     const dispatch = useDispatch();
 
-    const subInventoryMappings: Record<InventoryOptions, ISubInventoryMapping> = {
-        [InventoryOptions.cybers]: {
+    const subInventoryMappings: Record<InventoryOption, ISubInventoryMapping> = {
+        [InventoryOption.cybers]: {
             resource: UserResource.core,
             title: 'Welcome to Cyber Lab!',
             button: 'Implement!',
@@ -39,7 +41,7 @@ function SubInventoryScreen(props: {
                 dispatch(gameSquad.actions.implementCyber({index, data}));
             }
         },
-        [InventoryOptions.mutations]: {
+        [InventoryOption.mutations]: {
             resource: UserResource.gene,
             title: 'Welcome to Mutation Lab!',
             button: 'Mutate!',
@@ -47,7 +49,7 @@ function SubInventoryScreen(props: {
                 dispatch(gameSquad.actions.mutateMutation({index, data}));
             }
         },
-        [InventoryOptions.items]: {
+        [InventoryOption.items]: {
             resource: UserResource.gem,
             title: 'Welcome to Market!',
             button: 'Buy!',
@@ -89,27 +91,27 @@ function SubInventoryScreen(props: {
     const dataArray: IInventorySlot[] = [];
     Object.keys(dataAll)
         .forEach(key => {
-            Object.keys(dataAll[key as InventoryOptionParts])
+            Object.keys(dataAll[key as InventoryOptionPart])
                 .forEach(subkey => {
-                    dataArray.push(dataAll[key as InventoryOptionParts][subkey])
+                    dataArray.push(dataAll[key as InventoryOptionPart][subkey])
                 })
         })
     
     const dataSpecified: Record<string, IInventorySlot[]> = {
-        data_for_head: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.head),
-        data_for_chin: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.chin),
-        data_for_skin: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.skin),
-        data_for_back: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.back),
-        data_for_armor: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.armor),
-        data_for_shoulders: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.shoulders),
-        data_for_tail: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.tail),
-        data_for_left_hand: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.leftHand && dataName !== 'mutations'),
-        data_for_right_hand: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.rightHand && dataName !== 'mutations'),
-        data_for_both_hands: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.bothHands),
-        data_for_belt: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.belt),
-        data_for_left_pocket: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.leftPocket),
-        data_for_right_pocket: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.rightPocket),
-        data_for_legs: dataArray.filter(item => item.inventoryPlace === InventoryPlaces.legs)
+        data_for_head: dataArray.filter(item => item.inventoryPlace === InventoryPlace.head),
+        data_for_chin: dataArray.filter(item => item.inventoryPlace === InventoryPlace.chin),
+        data_for_skin: dataArray.filter(item => item.inventoryPlace === InventoryPlace.skin),
+        data_for_back: dataArray.filter(item => item.inventoryPlace === InventoryPlace.back),
+        data_for_armor: dataArray.filter(item => item.inventoryPlace === InventoryPlace.armor),
+        data_for_shoulders: dataArray.filter(item => item.inventoryPlace === InventoryPlace.shoulders),
+        data_for_tail: dataArray.filter(item => item.inventoryPlace === InventoryPlace.tail),
+        data_for_left_hand: dataArray.filter(item => item.inventoryPlace === InventoryPlace.leftHand && dataName !== 'mutations'),
+        data_for_right_hand: dataArray.filter(item => item.inventoryPlace === InventoryPlace.rightHand && dataName !== 'mutations'),
+        data_for_both_hands: dataArray.filter(item => item.inventoryPlace === InventoryPlace.bothHands),
+        data_for_belt: dataArray.filter(item => item.inventoryPlace === InventoryPlace.belt),
+        data_for_left_pocket: dataArray.filter(item => item.inventoryPlace === InventoryPlace.leftPocket),
+        data_for_right_pocket: dataArray.filter(item => item.inventoryPlace === InventoryPlace.rightPocket),
+        data_for_legs: dataArray.filter(item => item.inventoryPlace === InventoryPlace.legs)
     }
 
     const keyToTitle = (key: string) => {

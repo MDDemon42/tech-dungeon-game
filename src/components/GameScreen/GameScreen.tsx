@@ -2,9 +2,10 @@ import styles from './GameScreen.module.css';
 import BattleScreen from "../BattleScreen/BattleScreen";
 import SubMindScreen from '../SubMindScreen/SubMindScreen';
 import { useSelector, useDispatch } from 'react-redux';
-import { GameScreens, IStore, InventoryOptions, MindOptions } from '../../interfaces/interfaces';
+import { IStore } from '../../enums-and-interfaces/interfaces';
 import gameScreens from '../../redux/slices/gameScreen';
 import SubInventoryScreen from '../SubInventoryScreen/SubInventoryScreen';
+import { MindOption, InventoryOption, GameScreens } from '../../enums-and-interfaces/enums';
 
 function GameScreen() {
     const screen = useSelector((store: IStore) => store.gameScreen.screen);
@@ -15,13 +16,13 @@ function GameScreen() {
     }
 
     const screens: Record<GameScreens, JSX.Element> = {
-        [GameScreens.academy]: <SubMindScreen dataName={MindOptions.masteries}/>,
+        [GameScreens.academy]: <SubMindScreen dataName={MindOption.masteries}/>,
         [GameScreens.battle]: <BattleScreen />,
-        [GameScreens.cyberLab]: <SubInventoryScreen dataName={InventoryOptions.cybers}/>,
-        [GameScreens.focusSite]: <SubMindScreen dataName={MindOptions.powers}/>,
-        [GameScreens.market]: <SubInventoryScreen dataName={InventoryOptions.items}/>,
-        [GameScreens.mutationLab]: <SubInventoryScreen dataName={InventoryOptions.mutations}/>,
-        [GameScreens.spellShop]: <SubMindScreen dataName={MindOptions.spells}/>
+        [GameScreens.cyberLab]: <SubInventoryScreen dataName={InventoryOption.cybers}/>,
+        [GameScreens.focusSite]: <SubMindScreen dataName={MindOption.powers}/>,
+        [GameScreens.market]: <SubInventoryScreen dataName={InventoryOption.items}/>,
+        [GameScreens.mutationLab]: <SubInventoryScreen dataName={InventoryOption.mutations}/>,
+        [GameScreens.spellShop]: <SubMindScreen dataName={MindOption.spells}/>
     }
 
     function keyToButtonText(key: string) {

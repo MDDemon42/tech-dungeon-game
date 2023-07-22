@@ -1,6 +1,6 @@
-import { createMutation } from ".."
-import images from "../../../images/images"
-import { InventoryPlaces } from "../../../interfaces/interfaces"
+import { createMutation } from "..";
+import { InventoryPlace } from "../../../enums-and-interfaces/enums";
+import images from "../../../images/images";
 
 const mutation_wings = createMutation(
     [
@@ -9,7 +9,7 @@ const mutation_wings = createMutation(
         images.mutantEvolvings.wings
     ],
     [
-        1, InventoryPlaces.back, 3
+        1, InventoryPlace.back, 3
     ],
     [
         null, null, null
@@ -23,7 +23,7 @@ const mutation_hooves = createMutation(
         images.mutantEvolvings.hooves
     ],
     [
-        1, InventoryPlaces.legs, 1
+        1, InventoryPlace.legs, 1
     ],
     [
         null, null, null

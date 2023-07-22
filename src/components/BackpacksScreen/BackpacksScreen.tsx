@@ -1,12 +1,13 @@
 import { useSelector } from 'react-redux';
 import styles from './BackpacksScreen.module.css';
-import { IItem, IManageItemsProps, IStore, UserResource } from '../../interfaces/interfaces';
+import { IItem, IManageItemsProps, IStore } from '../../enums-and-interfaces/interfaces';
 import CommonIcon from '../Icons/CommonIcon';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
 import ResourceIcon from '../Icons/ResourceIcon';
 import {ArrowUpCircle, ArrowUpCircleFill} from 'react-bootstrap-icons';
 import priorityChecker from '../../helpers/priorityChecker';
+import { UserResource } from '../../enums-and-interfaces/enums';
 
 function BackpacksScreen() {
     const backpacks = useSelector((store: IStore) => store.gameSquad.squadBackpacks);

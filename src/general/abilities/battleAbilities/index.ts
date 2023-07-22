@@ -1,8 +1,9 @@
-import { DamageTypes, IBattleAbility, UserParam } from "../../../interfaces/interfaces"
+import { IBattleAbility } from "../../../enums-and-interfaces/interfaces";
 import magic from "./magic";
 import melee from "./melee";
 import ranged from "./ranged";
 import power from "./power";
+import { DamageType, UserParam } from "../../../enums-and-interfaces/enums";
 
 export function createBattleAbility(
     commonInfo: [
@@ -19,7 +20,7 @@ export function createBattleAbility(
     },
     damageInfo: [
         damage: number,
-        damageType: DamageTypes,
+        damageType: DamageType,
         targetAmount: number,
         hitChance: number
     ]        

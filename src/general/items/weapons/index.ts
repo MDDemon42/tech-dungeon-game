@@ -1,8 +1,8 @@
-import { createItem } from ".."
-import images from "../../../images/images"
-import { InventoryPlaces } from "../../../interfaces/interfaces"
-import abilities from "../../abilities"
-import masteries from "../../masteries/masteries"
+import { createItem } from "..";
+import { InventoryPlace } from "../../../enums-and-interfaces/enums";
+import images from "../../../images/images";
+import abilities from "../../abilities";
+import masteries from "../../masteries/masteries";
 
 const item_apprenticeRod = createItem(
     [
@@ -11,7 +11,7 @@ const item_apprenticeRod = createItem(
         images.wizardItems.apprenticeRod
     ],
     [
-        1, InventoryPlaces.bothHands, 2
+        1, InventoryPlace.bothHands, 2
     ],
     [
         masteries.mastery_scholarship,
@@ -26,7 +26,7 @@ const item_magisterScepter = createItem(
         images.wizardItems.magisterScepter
     ],
     [
-        2, InventoryPlaces.bothHands, 3
+        2, InventoryPlace.bothHands, 3
     ],
     [
         masteries.mastery_magisterDegree,
@@ -41,7 +41,7 @@ const item_steelSwordRightHand = createItem(
         images.normalItems.sword
     ],
     [
-        1, InventoryPlaces.rightHand, 1
+        1, InventoryPlace.rightHand, 1
     ],
     [
         null, abilities.battleAbilities.melee.battleAbility_swordSlash,
@@ -57,7 +57,7 @@ const item_steelSwordLeftHand = createItem(
         images.normalItems.sword
     ],
     [
-        1, InventoryPlaces.leftHand, 1
+        1, InventoryPlace.leftHand, 1
     ],
     [
         masteries.mastery_dualSwords,
@@ -74,7 +74,7 @@ const item_steelGreataxe = createItem(
         images.normalItems.greataxe
     ],
     [
-        2, InventoryPlaces.bothHands, 2
+        2, InventoryPlace.bothHands, 2
     ],
     [
         masteries.mastery_brutalForce,
@@ -90,7 +90,7 @@ const item_runicGreatsword = createItem(
         images.guildianLearnings.runicSword
     ],
     [
-        2, InventoryPlaces.bothHands, 2
+        2, InventoryPlace.bothHands, 2
     ],
     [
         masteries.mastery_brutalForce,
@@ -110,7 +110,7 @@ const item_oakBow = createItem(
         images.normalItems.bow
     ], 
     [
-        1, InventoryPlaces.bothHands, 2
+        1, InventoryPlace.bothHands, 2
     ],
     [
         null, abilities.battleAbilities.ranged.battleAbility_oakBowShot,
@@ -126,7 +126,7 @@ const item_oakCrossow = createItem(
         images.normalItems.crossbow
     ],
     [
-        2, InventoryPlaces.bothHands, 2
+        2, InventoryPlace.bothHands, 2
     ],
     [
         null, abilities.battleAbilities.ranged.battleAbility_crossbowShot,
@@ -142,7 +142,7 @@ const item_steelChakram = createItem(
         images.guildianLearnings.chakram
     ],
     [
-        2, InventoryPlaces.leftHand, 1
+        2, InventoryPlace.leftHand, 1
     ],
     [
         null, abilities.battleAbilities.melee.battleAbility_chakramSlash,
@@ -161,7 +161,7 @@ const item_acidBomd = createItem(
         images.normalItems.acidBomb
     ],
     [
-        1, InventoryPlaces.rightPocket, 1
+        1, InventoryPlace.rightPocket, 1
     ],
     [
         null, abilities.battleAbilities.ranged.battleAbility_acidBombThrow,

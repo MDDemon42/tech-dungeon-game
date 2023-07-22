@@ -1,7 +1,8 @@
-import { ICharacher, UserParam } from "../../interfaces/interfaces";
+import { ICharacher } from "../../enums-and-interfaces/interfaces";
 import styles from './BattleOrder.module.css';
 import InventoryScreen from "../InventoryScreen/InventoryScreen";
 import ParamIcon from "../Icons/ParamIcon";
+import { UserParam } from "../../enums-and-interfaces/enums";
 
 function BattleOrder(props: {
     squad: ICharacher[],

@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 import styles from './SquadScreen.module.css';
-import { IStore } from '../../interfaces/interfaces';
+import { IStore } from '../../enums-and-interfaces/interfaces';
 import ProfileScreen from '../ProfileScreen/ProfileScreen';
 import BackpacksScreen from '../BackpacksScreen/BackpacksScreen';
 import images from '../../images/images';
 import {BoxSeam, BoxSeamFill} from 'react-bootstrap-icons';
-import { backpacksCapability } from '../../helpers/putItemInBackpacks';
+import { backpacksCapability } from '../../helpers/backpacksPutter';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';

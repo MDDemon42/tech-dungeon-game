@@ -1,7 +1,7 @@
-import { createItem } from ".."
-import images from "../../../images/images"
-import { InventoryPlaces } from "../../../interfaces/interfaces"
-import masteries from "../../masteries/masteries"
+import { createItem } from "..";
+import { InventoryPlace } from "../../../enums-and-interfaces/enums";
+import images from "../../../images/images";
+import masteries from "../../masteries/masteries";
 
 const item_apprenticeHat = createItem(
     [
@@ -10,7 +10,7 @@ const item_apprenticeHat = createItem(
         images.wizardItems.apprenticeHat
     ], 
     [
-        1, InventoryPlaces.head, 1
+        1, InventoryPlace.head, 1
     ],
     [
         masteries.mastery_scholarship,
@@ -25,7 +25,7 @@ const item_flyingCape = createItem(
         images.wizardItems.flyingCape
     ],
     [
-        2, InventoryPlaces.back, 2
+        2, InventoryPlace.back, 2
     ],
     [
         null, null, null, null
@@ -39,7 +39,7 @@ const item_magisterHat = createItem(
         images.wizardItems.magisterHat
     ],
     [
-        2, InventoryPlaces.head, 2
+        2, InventoryPlace.head, 2
     ],
     [
         masteries.mastery_magisterDegree,
@@ -54,7 +54,7 @@ const item_magisterRobe = createItem(
         images.wizardItems.magisterRobe
     ],
     [
-        2, InventoryPlaces.armor, 2
+        2, InventoryPlace.armor, 2
     ],
     [
         masteries.mastery_magisterDegree,
@@ -69,7 +69,7 @@ const item_leatherArmor = createItem(
         images.normalItems.leatherArmor
     ],
     [
-        1, InventoryPlaces.armor, 1
+        1, InventoryPlace.armor, 1
     ],
     [
         null, null, null, null
@@ -83,7 +83,7 @@ const item_steelArmor = createItem(
         images.normalItems.steelArmor
     ], 
     [
-        2, InventoryPlaces.armor, 2
+        2, InventoryPlace.armor, 2
     ],
     [
         masteries.mastery_brutalForce, 
@@ -98,7 +98,7 @@ const item_steelShield = createItem(
         images.normalItems.shield
     ],
     [
-        1, InventoryPlaces.leftHand, 1
+        1, InventoryPlace.leftHand, 1
     ],
     [
         null, null, null, null

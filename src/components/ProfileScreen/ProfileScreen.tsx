@@ -2,7 +2,7 @@ import styles from './ProfileScreen.module.css';
 import MindScreen from "../MindScreen/MindScreen";
 import StatsScreen from "../StatsScreen/StatsScreen";
 import InventoryScreen from "../InventoryScreen/InventoryScreen";
-import { ICharacher } from '../../interfaces/interfaces';
+import { ICharacher } from '../../enums-and-interfaces/interfaces';
 
 function ProfileScreen(props: {
     character: ICharacher

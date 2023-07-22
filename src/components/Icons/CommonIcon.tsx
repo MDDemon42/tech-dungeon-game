@@ -1,6 +1,7 @@
 import styles from './Icons.module.css';
-import { DamageTypes, IMastery, InventoryPlaces, UserParam } from '../../interfaces/interfaces';
+import { IMastery } from '../../enums-and-interfaces/interfaces';
 import ParamIcon from './ParamIcon';
+import { DamageType, InventoryPlace, UserParam } from '../../enums-and-interfaces/enums';
 
 function CommonIcon(props: {
     item: {
@@ -11,7 +12,7 @@ function CommonIcon(props: {
         cost?: number,
         requiredMastery?: IMastery | null,
         passive?: boolean,
-        inventoryPlace?: InventoryPlaces
+        inventoryPlace?: InventoryPlace
         costs?: {
             [UserParam.health]?: number,
             [UserParam.mana]?: number,
@@ -20,7 +21,7 @@ function CommonIcon(props: {
             [UserParam.blank]?: number        
         },
         damage?: number,
-        damageType?: DamageTypes,
+        damageType?: DamageType,
         hitChance?: number,
         targetAmount?: number
     },
@@ -82,14 +83,14 @@ function CommonIcon(props: {
     }
 
     const damageColors = {
-        [DamageTypes.acid]: 'lightgreen',
-        [DamageTypes.electrical]: 'yellow',
-        [DamageTypes.fire]: 'orange',
-        [DamageTypes.physicalSlashing]: 'lightblue',
-        [DamageTypes.physicalSmashing]: 'darkblue',
-        [DamageTypes.physicalPiercing]: 'blue',
-        [DamageTypes.psionic]: 'pink',
-        [DamageTypes.cold]: 'aqua'
+        [DamageType.acid]: 'lightgreen',
+        [DamageType.electrical]: 'yellow',
+        [DamageType.fire]: 'orange',
+        [DamageType.physicalSlashing]: 'lightblue',
+        [DamageType.physicalSmashing]: 'darkblue',
+        [DamageType.physicalPiercing]: 'blue',
+        [DamageType.psionic]: 'pink',
+        [DamageType.cold]: 'aqua'
     }
 
     const manaCost = item.costs?.Mana!;

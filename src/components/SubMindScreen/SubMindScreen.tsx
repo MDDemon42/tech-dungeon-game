@@ -1,12 +1,13 @@
 import { useSelector } from 'react-redux';
 import styles from './SubMindScreen.module.css';
-import { IMastery, IPower, ISpell, IStore, ISubMindMapping, MindOptions, UserParam } from '../../interfaces/interfaces';
+import { IMastery, IPower, ISpell, IStore, ISubMindMapping } from '../../enums-and-interfaces/interfaces';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
 import CommonIcon from '../Icons/CommonIcon';
+import { MindOption, UserParam } from '../../enums-and-interfaces/enums';
 
 function SubMindScreen(props: {
-    dataName: MindOptions
+    dataName: MindOption
 }) {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
     const member = useSelector((store: IStore) => store.gameSquad.squadMembers[index]);
@@ -17,13 +18,13 @@ function SubMindScreen(props: {
     member.general.mind.spells.map(data => memberMind.push(data.name));
 
     const {dataName} = props;
-    const dataAll = useSelector((store: IStore) => store.generalAll[dataName]);
+    const dataAll = useSelector((store: IStore) => store.everything[dataName]);
     const dataAllNames = Object.keys(dataAll);
 
     const dispatch = useDispatch();
 
-    const subMindMappings: Record<MindOptions, ISubMindMapping> = {
-        [MindOptions.masteries]: {
+    const subMindMappings: Record<MindOption, ISubMindMapping> = {
+        [MindOption.masteries]: {
             capacity: member.params.level,
             posessed: member.general.mind.masteries.length,
             title: 'Welcome to Academy!',
@@ -32,7 +33,7 @@ function SubMindScreen(props: {
                 dispatch(gameSquad.actions.learnMastery({index, data}));
             }
         },
-        [MindOptions.powers]: {
+        [MindOption.powers]: {
             capacity: member.params.maxParams[UserParam.focus],
             posessed: member.general.mind.powers.length,
             title: 'Welcome to Focus Site!',
@@ -41,7 +42,7 @@ function SubMindScreen(props: {
                 dispatch(gameSquad.actions.developPower({index, data}));
             }
         },
-        [MindOptions.spells]: {
+        [MindOption.spells]: {
             capacity: member.params.maxParams[UserParam.mana],
             posessed: member.general.mind.spells.length,
             title: 'Welcome to Spell Shop!',

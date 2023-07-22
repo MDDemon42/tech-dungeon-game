@@ -1,5 +1,5 @@
+import { UserParam } from "../../enums-and-interfaces/enums";
 import images from "../../images/images";
-import { UserParam } from "../../interfaces/interfaces";
 import styles from './Icons.module.css';
 
 function ParamIcon(props: {

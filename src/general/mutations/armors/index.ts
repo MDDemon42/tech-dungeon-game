@@ -1,6 +1,6 @@
-import { createMutation } from ".."
-import images from "../../../images/images"
-import { InventoryPlaces } from "../../../interfaces/interfaces"
+import { createMutation } from "..";
+import { InventoryPlace } from "../../../enums-and-interfaces/enums";
+import images from "../../../images/images";
 
 const mutation_scales = createMutation(
     [
@@ -9,7 +9,7 @@ const mutation_scales = createMutation(
         images.mutantEvolvings.scales
     ],
     [
-        1, InventoryPlaces.skin, 1
+        1, InventoryPlace.skin, 1
     ],
     [
         null, null, null
