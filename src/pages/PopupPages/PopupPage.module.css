@@ -1,0 +1,52 @@
+.Popup {
+    width: 200px;
+    height: 300px;
+    outline: white solid 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: lightsteelblue;
+    border: 1px solid black;
+}
+
+.Popup_iconBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Popup_iconBlock > img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+    border: 1px dashed gray;
+}
+
+.Popup_iconBlock > select {
+    padding: 2px 5px;
+    font-size: 14px;
+}
+
+.Popup_buttonsBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 170px;
+}
+
+.Popup_buttonsBlock > button {
+    padding: 7px;
+    font-size: 16px;
+    background-color: gold;
+    border-radius: 7px;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.Popup_buttonsBlock > a {
+    font-size: 24px;
+    margin-bottom: -4px;
+}

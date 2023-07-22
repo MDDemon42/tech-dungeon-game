@@ -1,0 +1,19 @@
+.SubMindScreen {
+    border: 1px solid black;
+    padding: 5px;
+    min-width: 65px;
+    min-height: 65px;
+}
+
+.SubMindScreen_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.SubMindScreen_body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

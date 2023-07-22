@@ -1,0 +1,36 @@
+.SubInventoryScreen {
+    border: 1px solid black;
+    padding: 5px;
+    min-width: 65px;
+    min-height: 65px;
+}
+
+.SubInventoryScreen_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.SubInventoryScreen_body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: scroll;
+    max-height: 75vh;
+}
+
+.inventorySlotLine {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.inventorySlotLine_header {
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

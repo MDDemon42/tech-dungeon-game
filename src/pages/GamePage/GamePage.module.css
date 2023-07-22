@@ -1,0 +1,11 @@
+.GamePage_component {
+    margin: 2px;
+}
+
+.GamePage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95vw;
+    height: 95vh;
+}

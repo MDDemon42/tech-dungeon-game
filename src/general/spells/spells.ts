@@ -1,74 +1,147 @@
-import { ISpell } from "../../types/interfaces";
+import { IAbility, IMastery, ISpell } from "../../interfaces/interfaces";
 import images from "../../images/images";
 import masteries from "../masteries/masteries";
 import abilities from "../abilities";
 
-const spell_multistrike: ISpell = {
-    name: 'Multistrike',
-    description: 'Spell to attack next enemy several times',
-    image: images.guildianLearnings.multistrike,
-    requiredMastery: masteries.mastery_swordsmanship
+function createSpell(
+    commonInfo: [
+        name: string,
+        description: string,
+        image: string
+    ],
+    abilityInfo: [
+        requiredMastery: IMastery | null,
+        requiresRod: boolean,
+        ability: IAbility | null
+    ]
+): ISpell {
+    return {
+        name: commonInfo[0],
+        description: commonInfo[1],
+        image: commonInfo[2],
+
+        requiredMastery: abilityInfo[0],
+        requiresRod: abilityInfo[1],
+        ability: abilityInfo[2]
+    }
 }
 
-const spell_titanSkin: ISpell = {
-    name: 'Titan skin',
-    description: 'Spell to make skin almost invincible',
-    image: images.guildianLearnings.titanSkinRitual,
-    requiredMastery: masteries.mastery_magisterDegree
-}
+const spell_multistrike = createSpell(
+    [
+        'Multistrike',
+        'Spell to attack next enemy several times',
+        images.guildianLearnings.multistrike
+    ],
+    [
+        masteries.mastery_swordsmanship,
+        false,
+        null
+    ]
+)
 
-const spell_defensiveCharms: ISpell = {
-    name: 'Defensive charms',
-    description: 'Spell to protect one of your buddies from usual attack. Casted via rod or staff',
-    image: images.wizardSpells.defensiveCharms,
-    requiredMastery: masteries.mastery_scholarship
-}
+const spell_titanSkin = createSpell(
+    [
+        'Titan skin',
+        'Spell to make skin almost invincible',
+        images.guildianLearnings.titanSkinRitual
+    ],
+    [
+        masteries.mastery_magisterDegree,
+        false,
+        null
+    ]
+)
 
-const spell_defensiveRunes: ISpell = {
-    name: 'Defensive runes',
-    description: 'Spell to protect one of your buddies from severe attack. Casted via rod or staff',
-    image: images.wizardSpells.defensiveRunes,
-    requiredMastery: masteries.mastery_magisterDegree
-}
+const spell_defensiveCharms = createSpell(
+    [
+        'Defensive charms',
+        'Spell to protect one of your buddies from usual attack. Casted via rod or staff',
+        images.wizardSpells.defensiveCharms
+    ],
+    [
+        masteries.mastery_scholarship,
+        true,
+        null
+    ]
+)
 
-const spell_fireball: ISpell = {
-    name: 'Fireball',
-    description: 'Spell to clash a group of enemies with fire. Casted via rod or staff',
-    image: images.wizardSpells.fireball,
-    requiredMastery: masteries.mastery_magisterDegree,
-    ability: abilities.battleAbilities.magic.battleAbility_fireball,
-    requiresRod: true
-}
+const spell_defensiveRunes = createSpell(
+    [
+        'Defensive runes',
+        'Spell to protect one of your buddies from severe attack. Casted via rod or staff',
+        images.wizardSpells.defensiveRunes
+    ],
+    [
+        masteries.mastery_magisterDegree,
+        true,
+        null
+    ]
+)
 
-const spell_flyingCharms: ISpell = {
-    name: 'Flying charms',
-    description: 'Spell to make anybody fly. Casted via rod or staff',
-    image: images.wizardSpells.flyingCharms,
-    requiredMastery: masteries.mastery_scholarship
-}
+const spell_fireball = createSpell(
+    [
+        'Fireball',
+        'Spell to clash a group of enemies with fire. Casted via rod or staff',
+        images.wizardSpells.fireball
+    ],
+    [
+        masteries.mastery_magisterDegree,
+        true,
+        abilities.battleAbilities.magic.battleAbility_fireball
+    ]
+)
 
-const spell_golem: ISpell = {
-    name: 'Golem',
-    description: 'Spell to make a bunch of stones alive. Casted via rod or staff',
-    image: images.wizardSpells.golem,
-    requiredMastery: masteries.mastery_magisterDegree
-}
+const spell_flyingCharms = createSpell(
+    [
+        'Flying charms',
+        'Spell to make anybody fly. Casted via rod or staff',
+        images.wizardSpells.flyingCharms
+    ],
+    [
+        masteries.mastery_scholarship,
+        true,
+        null
+    ]
+)
 
-const spell_magicBolt: ISpell = {
-    name: 'Magic bolt',
-    description: 'Spell to make one enemy hurt. Casted via rod or staff',
-    image: images.wizardSpells.magicBolt,
-    requiredMastery: masteries.mastery_scholarship,
-    ability: abilities.battleAbilities.magic.battleAbility_magicBolt,
-    requiresRod: true
-}
+const spell_golem = createSpell(
+    [
+        'Golem',
+        'Spell to make a bunch of stones alive. Casted via rod or staff',
+        images.wizardSpells.golem
+    ],
+    [
+        masteries.mastery_magisterDegree,
+        true,
+        null
+    ]
+)
 
-const spell_teleport: ISpell = {
-    name: 'Teleport',
-    description: 'Spell to be somewhere else. Casted via rod or staff',
-    image: images.wizardSpells.teleport,
-    requiredMastery: masteries.mastery_magisterDegree
-}
+const spell_magicBolt = createSpell(
+    [
+        'Magic bolt',
+        'Spell to make one enemy hurt. Casted via rod or staff',
+        images.wizardSpells.magicBolt
+    ],
+    [
+        masteries.mastery_scholarship,
+        true,
+        abilities.battleAbilities.magic.battleAbility_magicBolt
+    ]
+)
+
+const spell_teleport = createSpell(
+    [
+        'Teleport',
+        'Spell to be somewhere else. Casted via rod or staff',
+        images.wizardSpells.teleport
+    ],
+    [
+        masteries.mastery_magisterDegree,
+        true,
+        null
+    ]
+)
 
 const spells = {
     spell_multistrike,

@@ -1,4 +1,4 @@
-import { IMutationsForRaceCheck } from "../../types/interfaces";
+import { IMutationsForRaceCheck } from "../../interfaces/interfaces";
 
 function createRace(mutations: (keyof IMutationsForRaceCheck)[]): IMutationsForRaceCheck {
     const race = {

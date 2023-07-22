@@ -8,4 +8,4 @@ try {
 }
 
 // in case of adding new features or images
-// chrome.storage.local.clear()
+chrome.storage.local.clear()

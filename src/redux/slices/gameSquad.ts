@@ -1,6 +1,17 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { emptyCharacter, emptyInventory, noItem } from '../../general/characters/characters';
-import { IClassInfo, IGameSquad, IManageItemsProps, InventoryPlaces, UserParam, UserResource } from '../../types/interfaces';
+import createEmptyCharacter, 
+{ 
+    createEmptyInventory, 
+    createNoItem 
+} from '../../general/characters/createEmptyCharacter';
+import { 
+    IClassInfo, 
+    IGameSquad, 
+    IManageItemsProps, 
+    InventoryPlaces, 
+    UserParam, 
+    UserResource 
+} from '../../interfaces/interfaces';
 import mutations from '../../general/mutations';
 import masteries from '../../general/masteries/masteries';
 import checkRace from '../../general/races/checkRace';
@@ -20,7 +31,7 @@ export function placeAsKey(place: string) {
 const initialState: IGameSquad = {
     currentlyWatched: 2,
     squadMembers: {
-        2: emptyCharacter()
+        2: createEmptyCharacter()
     },
     squadBackpacks: {
         resources: {
@@ -99,7 +110,7 @@ const gameSquad = createSlice({
 
             const squad = {...state.squadMembers};
 
-            const user = emptyCharacter();
+            const user = createEmptyCharacter();
 
             user.params.maxParams[UserParam.health] = 3;
             user.params.maxParams[UserParam.stamina] = 3;
@@ -171,7 +182,7 @@ const gameSquad = createSlice({
             let backpacksItems = [...state.squadBackpacks.items];
 
             if (!squadMember.general.inventory) {
-                squadMember.general.inventory = emptyInventory();
+                squadMember.general.inventory = createEmptyInventory();
             }
 
             const itemIndex = action.payload.index;
@@ -182,48 +193,48 @@ const gameSquad = createSlice({
             if (
                 position === InventoryPlaces.bothHands
             ) {
-                const nothing = noItem();
-                const noItemName = nothing.name;
+                const nothing = createNoItem();
+                const createNoItemName = nothing.name;
                 const leftHandItem = {...squadMember.general.inventory[placeAsKey(InventoryPlaces.leftHand)]};
-                if (leftHandItem.name !== noItemName) {
+                if (leftHandItem.name !== createNoItemName) {
                     // @ts-expect-error
                     backpacksItems = [...putItemInBackpacks(members, backpacksItems, leftHandItem)]; 
                 }
-                squadMember.general.inventory[placeAsKey(InventoryPlaces.leftHand)] = noItem();
+                squadMember.general.inventory[placeAsKey(InventoryPlaces.leftHand)] = createNoItem();
 
                 const rightHandItem = {...squadMember.general.inventory[placeAsKey(InventoryPlaces.rightHand)]};
-                if (rightHandItem.name !== noItemName) {
+                if (rightHandItem.name !== createNoItemName) {
                     // @ts-expect-error
                     backpacksItems = [...putItemInBackpacks(members, backpacksItems, rightHandItem)]; 
                 }
-                squadMember.general.inventory[placeAsKey(InventoryPlaces.rightHand)] = noItem();
+                squadMember.general.inventory[placeAsKey(InventoryPlaces.rightHand)] = createNoItem();
 
                 const bothHandsItem = {...squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)]};
-                if (bothHandsItem.name !== noItemName) {
+                if (bothHandsItem.name !== createNoItemName) {
                     // @ts-expect-error
                     backpacksItems = [...putItemInBackpacks(members, backpacksItems, bothHandsItem)]; 
                 }
-                squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem();
+                squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)] = createNoItem();
             } else if (
                 position === InventoryPlaces.leftHand ||
                 position === InventoryPlaces.rightHand
             ) {
-                const nothing = noItem();
-                const noItemName = nothing.name;
+                const nothing = createNoItem();
+                const createNoItemName = nothing.name;
                 const bothHandsItem = {...squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)]};
-                if (bothHandsItem.name !== noItemName) {
+                if (bothHandsItem.name !== createNoItemName) {
                     // @ts-expect-error
                     backpacksItems = [...putItemInBackpacks(members, backpacksItems, bothHandsItem)]; 
                 }
-                squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem();
+                squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)] = createNoItem();
             }
             
             {
-                const nothing = noItem();
-                const noItemName = nothing.name;
+                const nothing = createNoItem();
+                const createNoItemName = nothing.name;
 
                 const thisPositionItem = {...squadMember.general.inventory[placeAsKey(position)]};
-                if (thisPositionItem.name !== noItemName) {
+                if (thisPositionItem.name !== createNoItemName) {
                     // @ts-expect-error
                     backpacksItems = [...putItemInBackpacks(members, backpacksItems, thisPositionItem)]; 
                 }
@@ -256,7 +267,7 @@ const gameSquad = createSlice({
             const squad = {...state.squadMembers};
             const squadMember = squad[index]!;
 
-            squadMember.general.spells.push(action.payload.data);
+            squadMember.general.mind.spells.push(action.payload.data);
 
             state.squadMembers = squad;
         },
@@ -265,7 +276,7 @@ const gameSquad = createSlice({
             const squad = {...state.squadMembers};
             const squadMember = squad[index]!;
 
-            squadMember.general.powers.push(action.payload.data);
+            squadMember.general.mind.powers.push(action.payload.data);
 
             state.squadMembers = squad;
         },
@@ -274,14 +285,14 @@ const gameSquad = createSlice({
             const squad = {...state.squadMembers};
             const squadMember = squad[index]!;
 
-            squadMember.general.masteries.push(action.payload.data);
+            squadMember.general.mind.masteries.push(action.payload.data);
 
-            const isStrong = squadMember.general.masteries
+            const isStrong = squadMember.general.mind.masteries
                 .map(data => data.name)
                 .includes(masteries.mastery_brutalForce.name);
 
             if (!squadMember.general.inventory) {
-                squadMember.general.inventory = emptyInventory();
+                squadMember.general.inventory = createEmptyInventory();
             }
                 
             squadMember.params.race = checkRace(squadMember.general.inventory, isStrong);
@@ -294,7 +305,7 @@ const gameSquad = createSlice({
             const squadMember = oldState.squadMembers[index]!;
             
             if (!squadMember.general.inventory) {
-                squadMember.general.inventory = emptyInventory();
+                squadMember.general.inventory = createEmptyInventory();
             }
 
             const position = action.payload.data.inventoryPlace;
@@ -306,7 +317,7 @@ const gameSquad = createSlice({
                     squadMember.general.inventory[placeAsKey(InventoryPlaces.rightHand)] = mutations.weapons.mutation_clawRight;
                 }
                 
-                squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem();                
+                squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)] = createNoItem();                
             }
 
             if (
@@ -316,7 +327,7 @@ const gameSquad = createSlice({
                     squadMember.general.inventory[placeAsKey(InventoryPlaces.leftHand)] = mutations.weapons.mutation_clawLeft;
                 }
 
-                squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)] = noItem();
+                squadMember.general.inventory[placeAsKey(InventoryPlaces.bothHands)] = createNoItem();
             }
 
             squadMember.general.inventory[placeAsKey(position)] = action.payload.data;
@@ -330,20 +341,20 @@ const gameSquad = createSlice({
             const squadMember = oldState.squadMembers[index]!;
 
             if (!squadMember.general.inventory) {
-                squadMember.general.inventory = emptyInventory();
+                squadMember.general.inventory = createEmptyInventory();
             }
 
             const position = action.payload.data.inventoryPlace;
 
             if (position === InventoryPlaces.bothHands) {
-                squadMember.general.inventory[placeAsKey(InventoryPlaces.leftHand)] = noItem();
-                squadMember.general.inventory[placeAsKey(InventoryPlaces.rightHand)] = noItem();
+                squadMember.general.inventory[placeAsKey(InventoryPlaces.leftHand)] = createNoItem();
+                squadMember.general.inventory[placeAsKey(InventoryPlaces.rightHand)] = createNoItem();
             }
 
             squadMember.general.inventory[placeAsKey(position)] = action.payload.data;
             oldState.squadBackpacks.resources[UserResource.gene] -= action.payload.data.cost;
 
-            const isStrong = squadMember.general.masteries
+            const isStrong = squadMember.general.mind.masteries
                 .map(data => data.name)
                 .includes(masteries.mastery_brutalForce.name);
                 

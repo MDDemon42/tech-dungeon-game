@@ -1,0 +1,20 @@
+.MindZoneScreen {
+    border: 1px solid black;
+    padding: 5px;
+    min-width: 65px;
+    min-height: 65px;
+}
+
+.MindZoneScreen__notVertical {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.MindZoneScreen__vertical {
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    justify-content: space-around;
+}

@@ -1,0 +1,25 @@
+.ProfileScreen {
+    display: flex;
+    flex-direction: row;
+}
+
+.ProfileScreen, .ProfileScreenContainer {
+    border: 1px solid black;
+    padding: 5px;
+    min-width: 65px;
+    min-height: 65px;
+}
+
+.ProfileScreenContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.ProfileScreen_inventory {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

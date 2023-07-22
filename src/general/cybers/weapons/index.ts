@@ -1,29 +1,61 @@
 import { createCyber } from ".."
 import images from "../../../images/images"
-import { InventoryPlaces } from "../../../types/interfaces"
+import { InventoryPlaces } from "../../../interfaces/interfaces"
 
 const cyber_energyWhip = createCyber(
-    'Energy whip', 'Cyber to deal pain and sufferings',
-    2, InventoryPlaces.rightHand,
-    images.cyborgDetails.energyWhip, 6
+    [
+        'Energy whip', 
+        'Cyber to deal pain and sufferings',
+        images.cyborgDetails.energyWhip
+    ],
+    [
+        2, InventoryPlaces.rightHand, 6
+    ],
+    [
+        null, null, null
+    ]
 )
 
 const cyber_laser = createCyber(
-    'Laser', 'Cyber to burn with focused light',
-    1, InventoryPlaces.leftHand,
-    images.cyborgDetails.laser, 5
+    [
+        'Laser', 
+        'Cyber to burn with focused light',
+        images.cyborgDetails.laser
+    ],
+    [
+        1, InventoryPlaces.leftHand, 5
+    ],
+    [
+        null, null, null
+    ]
 )
 
 const cyber_powerFist = createCyber(
-    'Power fist', 'Cyber to give ultimate punches',
-    1, InventoryPlaces.rightHand,
-    images.cyborgDetails.powerFist, 5
+    [
+        'Power fist', 
+        'Cyber to give ultimate punches',
+        images.cyborgDetails.powerFist
+    ],
+    [
+        1, InventoryPlaces.rightHand, 5
+    ],
+    [
+        null, null, null
+    ]
 )
 
 const cyber_rocket = createCyber(
-    'Rocket', 'Cyber to destroy everything in an area',
-    1, InventoryPlaces.shoulders,
-    images.cyborgDetails.rocket, 2
+    [
+        'Rocket', 
+        'Cyber to destroy everything in an area',
+        images.cyborgDetails.rocket
+    ],
+    [
+        1, InventoryPlaces.shoulders, 2
+    ],
+    [
+        null, null, null
+    ]
 )
 
 const weapons = {

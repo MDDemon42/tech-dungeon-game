@@ -1,0 +1,14 @@
+.GameScreen {
+    width: calc(95vw - 655px);
+    min-width: 400px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.GameScreen_buttonsBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

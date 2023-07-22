@@ -1,53 +1,53 @@
 import images from "../../../images/images";
-import { DamageTypes } from "../../../types/interfaces";
+import { DamageTypes } from "../../../interfaces/interfaces";
 import { createBattleAbility } from ".";
 
 const battleAbility_swordSlash = createBattleAbility(
-    'Sword slash', '', images.normalItems.sword, 
+    ['Sword slash', '', images.normalItems.sword], 
     {Stamina: 1}, 
-    1, DamageTypes.physicalSlashing, 1, 70
+    [1, DamageTypes.physicalSlashing, 1, 70]
 );
 
 const battleAbility_leftHandSwordSlash = createBattleAbility(
-    'Left hand sword slash', '', images.normalItems.sword, 
+    ['Left hand sword slash', '', images.normalItems.sword], 
     {Stamina: 1}, 
-    1, DamageTypes.physicalSlashing, 1, 70
+    [1, DamageTypes.physicalSlashing, 1, 70]
 );
 
 const battleAbility_masterSwordSlash = createBattleAbility(
-    'Master sword slash', '', images.normalItems.sword, 
+    ['Master sword slash', '', images.normalItems.sword], 
     {Stamina: 1}, 
-    1, DamageTypes.physicalSlashing, 1, 95
+    [1, DamageTypes.physicalSlashing, 1, 95]
 );
 
 const battleAbility_dualSwordsSlash = createBattleAbility(
-    'Dual swords slash', '', images.guildianLearnings.dualSwords, 
+    ['Dual swords slash', '', images.guildianLearnings.dualSwords], 
     {Stamina: 2}, 
-    3, DamageTypes.physicalSlashing, 1, 95
+    [3, DamageTypes.physicalSlashing, 1, 95]
 );
 
 const battleAbility_chakramSlash = createBattleAbility(
-    'Chakram slash', '', images.guildianLearnings.chakram, 
+    ['Chakram slash', '', images.guildianLearnings.chakram], 
     {Stamina: 1}, 
-    1, DamageTypes.physicalSlashing, 1, 70
+    [1, DamageTypes.physicalSlashing, 1, 70]
 );
 
 const battleAbility_masterChakramSlash = createBattleAbility(
-    'Master chakram slash', '', images.guildianLearnings.chakram, 
+    ['Master chakram slash', '', images.guildianLearnings.chakram], 
     {Stamina: 1}, 
-    1, DamageTypes.physicalSlashing, 1, 95
+    [1, DamageTypes.physicalSlashing, 1, 95]
 );
 
 const battleAbility_greataxeSlash = createBattleAbility(
-    'Greataxe slash', '', images.normalItems.greataxe, 
+    ['Greataxe slash', '', images.normalItems.greataxe], 
     {Stamina: 2}, 
-    2, DamageTypes.physicalSlashing, 1, 70
+    [2, DamageTypes.physicalSlashing, 1, 70]
 );
 
 const battleAbility_greatswordSlash = createBattleAbility(
-    'Greatsword slash', '', images.guildianLearnings.runicSword, 
+    ['Greatsword slash', '', images.guildianLearnings.runicSword], 
     {Stamina: 2}, 
-    2, DamageTypes.physicalSlashing, 1, 70
+    [2, DamageTypes.physicalSlashing, 1, 70]
 );
 
 const melee = {

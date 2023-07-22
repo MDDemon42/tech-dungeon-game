@@ -1,11 +1,19 @@
 import { createCyber } from "..";
 import images from "../../../images/images";
-import { InventoryPlaces } from "../../../types/interfaces";
+import { InventoryPlaces } from "../../../interfaces/interfaces";
 
 const cyber_reactiveFeet = createCyber(
-    'Reactive feet', 'Cyber to fly in short distances',
-    1, InventoryPlaces.legs,
-    images.cyborgDetails.reactiveFeet, 2
+    [
+        'Reactive feet', 
+        'Cyber to fly in short distances',
+        images.cyborgDetails.reactiveFeet
+    ],
+    [
+        1, InventoryPlaces.legs, 2
+    ],
+    [
+        null, null, null
+    ]
 )
 
 const other = {

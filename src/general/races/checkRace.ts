@@ -1,6 +1,6 @@
 import mutations from "../mutations";
 import races from "./races";
-import { IInventory, IMutationsForRaceCheck, Race } from "../../types/interfaces";
+import { IInventory, IMutationsForRaceCheck, Race } from "../../interfaces/interfaces";
 
 function checkRace(inventory: IInventory, isStrong: boolean) {
     const currentRace: IMutationsForRaceCheck = {
@@ -22,8 +22,8 @@ function checkRace(inventory: IInventory, isStrong: boolean) {
     const raceChecks: Record<Race, boolean> = {
         [Race.unknown]: false,
         [Race.human]: isRace(races.humanRace),
-        [Race.satyr]: isRace(races.satyrRace),
-        [Race.minotaur]: isRace(races.satyrRace) && isStrong,
+        [Race.satyr]: isRace(races.beastRace),
+        [Race.minotaur]: isRace(races.beastRace) && isStrong,
         [Race.orc]: isRace(races.orkRace) && isStrong,
         [Race.gnoll]: false,
         [Race.naga]: isRace(races.nagaRace),

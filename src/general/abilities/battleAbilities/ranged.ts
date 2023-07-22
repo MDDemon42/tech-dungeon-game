@@ -1,47 +1,47 @@
 import { createBattleAbility } from ".";
 import images from "../../../images/images";
-import { DamageTypes } from "../../../types/interfaces";
+import { DamageTypes } from "../../../interfaces/interfaces";
 
 const battleAbility_acidBombThrow = createBattleAbility(
-    'Acid bomb throw', '', images.normalItems.acidBomb, 
+    ['Acid bomb throw', '', images.normalItems.acidBomb], 
     {Blank: 0}, 
-    1, DamageTypes.acid, 1, 70
+    [1, DamageTypes.acid, 1, 70]
 );
 
 const battleAbility_masterAcidBombThrow = createBattleAbility(
-    'Master acid bomb throw', '', images.normalItems.acidBomb, 
+    ['Master acid bomb throw', '', images.normalItems.acidBomb], 
     {Blank: 0}, 
-    1, DamageTypes.acid, 1, 95
+    [1, DamageTypes.acid, 1, 95]
 );
 
 const battleAbility_oakBowShot = createBattleAbility(
-    'Oak bow shot', '', images.normalItems.bow, 
+    ['Oak bow shot', '', images.normalItems.bow], 
     {Stamina: 1}, 
-    1, DamageTypes.physicalPiercing, 1, 70
+    [1, DamageTypes.physicalPiercing, 1, 70]
 );
 
 const battleAbility_masterOakBowShot = createBattleAbility(
-    'Master oak bow shot', '', images.normalItems.bow, 
+    ['Master oak bow shot', '', images.normalItems.bow], 
     {Stamina: 1}, 
-    1, DamageTypes.physicalPiercing, 1, 95
+    [1, DamageTypes.physicalPiercing, 1, 95]
 );
 
 const battleAbility_crossbowShot = createBattleAbility(
-    'Crossbow shot', '', images.normalItems.crossbow, 
+    ['Crossbow shot', '', images.normalItems.crossbow], 
     {Blank: 0}, 
-    1, DamageTypes.physicalPiercing, 1, 60
+    [1, DamageTypes.physicalPiercing, 1, 60]
 );
 
 const battleAbility_masterCrossbowShot = createBattleAbility(
-    'Master crossbow shot', '', images.normalItems.crossbow, 
+    ['Master crossbow shot', '', images.normalItems.crossbow], 
     {Blank: 0}, 
-    1, DamageTypes.physicalPiercing, 1, 95
+    [1, DamageTypes.physicalPiercing, 1, 95]
 );
 
 const battleAbility_chakramThrow = createBattleAbility(
-    'Chakram throw', '', images.guildianLearnings.chakram, 
+    ['Chakram throw', '', images.guildianLearnings.chakram], 
     {Blank: 0}, 
-    1, DamageTypes.physicalSlashing, 2, 70
+    [1, DamageTypes.physicalSlashing, 2, 70]
 );
 
 const ranged = {

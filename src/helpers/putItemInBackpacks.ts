@@ -1,11 +1,11 @@
 import masteries from "../general/masteries/masteries";
-import { ICharacher, IItem } from "../types/interfaces";
+import { ICharacher, IItem } from "../interfaces/interfaces";
 
 export function backpacksCapability(members: Record<string, ICharacher>) {
     let result = 0;
     Object.keys(members).forEach(key => {
         if (!!members[key]) {
-            const memberMasteries = members[key].general.masteries.map(mastery => mastery.name);
+            const memberMasteries = members[key].general.mind.masteries.map(mastery => mastery.name);
             if (!!memberMasteries && memberMasteries.includes(masteries.mastery_brutalForce.name)) {
                 result += 6;
             } else {

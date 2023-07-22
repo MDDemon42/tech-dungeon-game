@@ -1,17 +1,33 @@
 import { createCyber } from ".."
 import images from "../../../images/images"
-import { InventoryPlaces } from "../../../types/interfaces"
+import { InventoryPlaces } from "../../../interfaces/interfaces"
 
 const cyber_nanoMatrix = createCyber(
-    'Nano matrix', 'Cyber to deflect almost any damage',
-    2, InventoryPlaces.skin,
-    images.cyborgDetails.nanoMatrix, 3
+    [
+        'Nano matrix', 
+        'Cyber to deflect almost any damage',
+        images.cyborgDetails.nanoMatrix
+    ],
+    [
+        2, InventoryPlaces.skin, 3
+    ],
+    [
+        null, null, null
+    ]
 )
 
 const cyber_nanoVest = createCyber(
-    'Nano vest', 'Cyber to boost your survival rate',
-    1, InventoryPlaces.skin,
-    images.cyborgDetails.nanoVest, 2
+    [
+        'Nano vest', 
+        'Cyber to boost your survival rate',
+        images.cyborgDetails.nanoVest
+    ],
+    [
+        1, InventoryPlaces.skin, 2
+    ],
+    [
+        null, null, null
+    ]
 )
 
 const armors = {

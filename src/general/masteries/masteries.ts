@@ -1,90 +1,130 @@
-import { IMastery } from "../../types/interfaces";
-
+import { IMastery } from "../../interfaces/interfaces";
 import images from "../../images/images";
 
-const mastery_archery: IMastery = {
-    name: 'Archery',
-    description: 'Mastery in not missing shooting with bow',
-    image: images.normalItems.bow,
-    requiredMastery: null
+function createMastery(
+    commonInfo: [
+        name: string,
+        description: string,
+        image: string
+    ],
+    requiredMastery: IMastery | null
+): IMastery {
+    return {
+        name: commonInfo[0],
+        description: commonInfo[1],
+        image: commonInfo[2],
+
+        requiredMastery
+    }
 }
 
-const mastery_marksmanship: IMastery = {
-    name: 'Marksmanship',
-    description: 'Mastery in not missing shooting with crossbow',
-    image: images.normalItems.crossbow,
-    requiredMastery: null
-}
+const mastery_archery = createMastery(
+    [
+        'Archery',
+        'Mastery in not missing shooting with bow',
+        images.normalItems.bow
+    ],
+    null
+)
 
-const mastery_swordsmanship: IMastery = {
-    name: 'Swordsmanship',
-    description: 'Mastery in slashing and stabbing with efficiency',
-    image: images.normalItems.sword,
-    requiredMastery: null
-}
+const mastery_marksmanship = createMastery(
+    [
+        'Marksmanship',
+        'Mastery in not missing shooting with crossbow',
+        images.normalItems.crossbow
+    ],
+    null
+)
 
-const mastery_dualSwords: IMastery = {
-    name: 'Dual swords',
-    description: 'Mastery in slashing and stabbing with swords in both hands',
-    image: images.guildianLearnings.dualSwords,
-    requiredMastery: mastery_swordsmanship
-}
+const mastery_swordsmanship = createMastery(
+    [
+        'Swordsmanship',
+        'Mastery in slashing and stabbing with efficiency',
+        images.normalItems.sword
+    ],
+    null
+)
 
-const mastery_brutalForce: IMastery = {
-    name: 'Brutal force',
-    description: 'Mastery in smashing and beheading your enemies',
-    image: images.guildianLearnings.brutalForce,
-    requiredMastery: null
-}
+const mastery_dualSwords = createMastery(
+    [
+        'Dual swords',
+        'Mastery in slashing and stabbing with swords in both hands',
+        images.guildianLearnings.dualSwords
+    ],
+    mastery_swordsmanship
+)
 
-const mastery_bombThrowing: IMastery = {
-    name: 'Bomb throwing',
-    description: 'Mastery in throwing bombs accurately',
-    image: images.normalItems.acidBomb,
-    requiredMastery: null
-}
+const mastery_brutalForce = createMastery(
+    [
+        'Brutal force',
+        'Mastery in smashing and beheading your enemies',
+        images.guildianLearnings.brutalForce
+    ],
+    null
+)
 
-const mastery_chakramThrowing: IMastery = {
-    name: 'Chakram throwing',
-    description: 'Mastery in throwing chakram at multiple enemies',
-    image: images.guildianLearnings.chakram,
-    requiredMastery: null
-}
+const mastery_bombThrowing = createMastery(
+    [
+        'Bomb throwing',
+        'Mastery in throwing bombs accurately',
+        images.normalItems.acidBomb
+    ],
+    null
+)
 
-const mastery_runicWeapons: IMastery = {
-    name: 'Runic weapons',
-    description: 'Mastery in activating runes on weapons',
-    image: images.guildianLearnings.runicSword,
-    requiredMastery: null
-}
+const mastery_chakramThrowing = createMastery(
+    [
+        'Chakram throwing',
+        'Mastery in throwing chakram at multiple enemies',
+        images.guildianLearnings.chakram
+    ],
+    null
+)
 
-const mastery_scholarship: IMastery = {
-    name: 'Scholarship',
-    description: 'Mastery to read really boring books',
-    image: images.wizardItems.apprenticeHat,
-    requiredMastery: null
-}
+const mastery_runicWeapons = createMastery(
+    [
+        'Runic weapons',
+        'Mastery in activating runes on weapons',
+        images.guildianLearnings.runicSword
+    ],
+    null
+)
 
-const mastery_magisterDegree: IMastery = {
-    name: 'Magister degree',
-    description: 'Mastery of knowing everything but living',
-    image: images.wizardItems.magisterHat,
-    requiredMastery: mastery_scholarship
-}
+const mastery_scholarship = createMastery(
+    [
+        'Scholarship',
+        'Mastery to read really boring books',
+        images.wizardItems.apprenticeHat
+    ],
+    null
+)
 
-const mastery_meditativeInsights: IMastery = {
-    name: 'Meditative insights',
-    description: 'Mastery to gain control over inner powers',
-    image: images.psionInsights.intuition,
-    requiredMastery: null
-}
+const mastery_magisterDegree = createMastery(
+    [
+        'Magister degree',
+        'Mastery of knowing everything but living',
+        images.wizardItems.magisterHat
+    ],
+    mastery_scholarship
+)
 
-const mastery_psiEnergy: IMastery = {
-    name: 'Psi-energy',
-    description: 'Mastery to gain control over psi-energy',
-    image: images.psionInsights.psiLightning,
-    requiredMastery: mastery_meditativeInsights
-}
+const mastery_meditativeInsights = createMastery(
+    [
+        'Meditative insights',
+        'Mastery to gain control over inner powers',
+        images.psionInsights.intuition
+    ],
+    null
+)
+
+const mastery_psiEnergy = createMastery(
+    [
+        'Psi-energy',
+        'Mastery to gain control over psi-energy',
+        images.psionInsights.psiLightning
+    ],
+    mastery_meditativeInsights
+)
 
 const masteries = {
     mastery_archery,

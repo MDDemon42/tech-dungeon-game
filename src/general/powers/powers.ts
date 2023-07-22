@@ -1,65 +1,112 @@
-import { IPower } from "../../types/interfaces";
+import { IAbility, IMastery, IPower } from "../../interfaces/interfaces";
 import images from "../../images/images";
 import masteries from "../masteries/masteries";
 import abilities from "../abilities";
 
-const power_telekinesis: IPower = {
-    name: 'Telekinesis',
-    description: 'Power that can do a lot of things',
-    passive: false,
-    image: images.psionInsights.telekinesis,
-    requiredMastery: masteries.mastery_meditativeInsights
+function createPower(
+    commonInfo: [
+        name: string,
+        description: string,
+        image: string
+    ],
+    abilityInfo: [
+        requiredMastery: IMastery | null,
+        ability: IAbility | null
+    ]
+): IPower {
+    return {
+        name: commonInfo[0],
+        description: commonInfo[1],
+        image: commonInfo[2],
+
+        requiredMastery: abilityInfo[0],
+        ability: abilityInfo[1]
+    }
 }
 
-const power_guardianAura: IPower = {
-    name: 'Guardian aura',
-    description: 'Power to weaken enemy`s attacks aimed at everyone in your squad',
-    passive: true,
-    image: images.psionInsights.guardianAura,
-    requiredMastery: masteries.mastery_meditativeInsights
-}
+const power_telekinesis = createPower(
+    [
+        'Telekinesis',
+        'Power that can do a lot of things',
+        images.psionInsights.telekinesis
+    ],
+    [
+        masteries.mastery_meditativeInsights,
+        null
+    ]
+)
 
-const power_guardianField: IPower = {
-    name: 'Guardian field',
-    description: 'Power to weaken enemy`s attacks aimed at you',
-    passive: true,
-    image: images.psionInsights.guardianField,
-    requiredMastery: masteries.mastery_meditativeInsights
-}
+const power_guardianAura = createPower(
+    [
+        'Guardian aura',
+        'Power to weaken enemy`s attacks aimed at everyone in your squad',
+        images.psionInsights.guardianAura
+    ], 
+    [
+        masteries.mastery_meditativeInsights,
+        null
+    ]
+)
 
-const power_intuition: IPower = {
-    name: 'Intuition',
-    description: 'Power to unintentionally avoid enemy attacks',
-    passive: true,
-    image: images.psionInsights.intuition,
-    requiredMastery: masteries.mastery_meditativeInsights
-}
+const power_guardianField = createPower(
+    [
+        'Guardian field',
+        'Power to weaken enemy`s attacks aimed at you',
+        images.psionInsights.guardianField
+    ], 
+    [
+        masteries.mastery_meditativeInsights,
+        null
+    ]
+)
 
-const power_levitation: IPower = {
-    name: 'Levitation',
-    description: 'Power to pass any obstacles on earth',
-    passive: false,
-    image: images.psionInsights.levitation,
-    requiredMastery: masteries.mastery_meditativeInsights
-}
+const power_intuition = createPower(
+    [
+        'Intuition',
+        'Power to unintentionally avoid enemy attacks',
+        images.psionInsights.intuition
+    ],
+    [
+        masteries.mastery_meditativeInsights,
+        null
+    ]
+)
 
-const power_psiBlade: IPower = {
-    name: 'Psi-blade',
-    description: 'Power to create (and use) blade with your mind',
-    passive: false,
-    image: images.psionInsights.psiBlade,
-    requiredMastery: masteries.mastery_psiEnergy,
-    ability: abilities.battleAbilities.power.battleAbility_psiBladeSlash
-}
+const power_levitation = createPower(
+    [
+        'Levitation',
+        'Power to pass any obstacles on earth',
+        images.psionInsights.levitation
+    ],
+    [
+        masteries.mastery_meditativeInsights,
+        null
+    ]
+)
 
-const power_psiLightning: IPower = {
-    name: 'Psi-lightning',
-    description: 'Power to create chain lightning with your mind',
-    passive: false,
-    image: images.psionInsights.psiLightning,
-    requiredMastery: masteries.mastery_psiEnergy,
-    ability: abilities.battleAbilities.power.battleAbility_psiLightning
-}
+const power_psiBlade = createPower(
+    [
+        'Psi-blade',
+        'Power to create (and use) blade with your mind',
+        images.psionInsights.psiBlade
+    ],
+    [
+        masteries.mastery_psiEnergy,
+        abilities.battleAbilities.power.battleAbility_psiBladeSlash
+    ]
+)
+
+const power_psiLightning = createPower(
+    [
+        'Psi-lightning',
+        'Power to create chain lightning with your mind',
+        images.psionInsights.psiLightning
+    ],
+    [
+        masteries.mastery_psiEnergy,
+        abilities.battleAbilities.power.battleAbility_psiLightning
+    ]
+)
 
 const powers = {
     power_telekinesis,

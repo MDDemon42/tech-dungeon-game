@@ -1,8 +1,8 @@
-import { UserParam } from "../../types/interfaces";
-import { emptyCharacter } from "./characters";
+import { UserParam } from "../../interfaces/interfaces";
+import createEmptyCharacter from "./createEmptyCharacter";
 
 const opponent_dummy = () => {
-    const opponent = emptyCharacter();
+    const opponent = createEmptyCharacter();
     opponent.params.name = 'Dummy';
     opponent.params.maxParams[UserParam.health] = 3;
     opponent.params.currentParams[UserParam.health] = 3;

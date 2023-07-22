@@ -1,0 +1,34 @@
+.SquadScreen {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.SquadScreen_squadMembers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    max-height: 250px;
+    width: 55px;
+    padding: 10px 0;
+    border: 1px solid black;
+} 
+
+.SquadScreen_squadMembers > img, svg {
+    width: 30px;
+    height: 30px;
+    margin: 5px 0; 
+    cursor: pointer;
+}
+
+.SquadScreen_squadMembers > img {
+    border: 1px solid black;
+}
+
+.SquadScreen_profileScreen {
+    display: flex;
+    flex-direction: column;
+}

@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux';
 import {HashRouter, Routes, Route} from "react-router-dom";
 
-import MainPage from './pages/MainPage';
-import SettingsPage from './pages/SettingsPage';
-import ErrorPage from './pages/ErrorPage';
-import GamePage from './pages/GamePage';
+import MainPage from './pages/PopupPages/MainPage';
+import SettingsPage from './pages/PopupPages/SettingsPage';
+import ErrorPage from './pages/PopupPages/ErrorPage';
+import GamePage from './pages/GamePage/GamePage';
 
 import store from './redux/store';
 

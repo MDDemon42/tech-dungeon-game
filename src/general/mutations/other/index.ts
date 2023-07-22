@@ -1,17 +1,33 @@
 import { createMutation } from ".."
 import images from "../../../images/images"
-import { InventoryPlaces } from "../../../types/interfaces"
+import { InventoryPlaces } from "../../../interfaces/interfaces"
 
 const mutation_wings = createMutation(
-    'Wings', 'Mutation to fly over battlefield',
-    1, InventoryPlaces.back,
-    images.mutantEvolvings.wings, 3
+    [
+        'Wings', 
+        'Mutation to fly over battlefield',
+        images.mutantEvolvings.wings
+    ],
+    [
+        1, InventoryPlaces.back, 3
+    ],
+    [
+        null, null, null
+    ]
 )
 
 const mutation_hooves = createMutation(
-    'Hooves', 'Mutation to make confident steps',
-    1, InventoryPlaces.legs,
-    images.mutantEvolvings.hooves, 1
+    [
+        'Hooves', 
+        'Mutation to make confident steps',
+        images.mutantEvolvings.hooves
+    ],
+    [
+        1, InventoryPlaces.legs, 1
+    ],
+    [
+        null, null, null
+    ]
 )
 
 const other = {
