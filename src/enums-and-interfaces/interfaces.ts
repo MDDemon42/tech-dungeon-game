@@ -40,8 +40,7 @@ export interface IEverything {
 
 export interface IGameScreen {
     screen: GameScreens,
-    shouldShowBackpacks: boolean,
-    shouldShowProfile: boolean
+    shouldShowBackpacks: boolean
 }
 
 export interface IGameSquad {

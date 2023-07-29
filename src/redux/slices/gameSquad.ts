@@ -33,7 +33,8 @@ export function placeAsKey(place: string) {
 const initialState: IGameSquad = {
     currentlyWatched: 2,
     squadMembers: {
-        2: createEmptyCharacter()
+        2: createEmptyCharacter(),
+        4: createEmptyCharacter()
     },
     squadBackpacks: {
         resources: {
@@ -126,6 +127,7 @@ const gameSquad = createSlice({
             user.params[startBonus[0]][startBonus[1]] += 1;
 
             squad[2] = user;
+            squad[4] = user;
 
             Object.keys(squad).forEach(key => {
                 if (!!squad[key]) {

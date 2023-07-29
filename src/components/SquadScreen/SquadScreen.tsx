@@ -19,16 +19,15 @@ function SquadScreen() {
     const dispatch = useDispatch();
 
     const gameScreen = useSelector((store: IStore) => store.gameScreen);
-    const {screen, shouldShowBackpacks, shouldShowProfile} = gameScreen;
-
-    const [showProfile, setShowProfile] = useState(false);
-
-    const showProfileHandler = (index: number) => {
-        dispatch(gameSquad.actions.changeSquadMember(index));
-        setShowProfile((state) => !state);
-    }
+    const {screen, shouldShowBackpacks} = gameScreen;
 
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
+
+    const showProfileHandler = (clickedIndex: number) => {
+        if (index !== clickedIndex) {
+            dispatch(gameSquad.actions.changeSquadMember(clickedIndex));
+        }
+    }
 
     const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
 
@@ -39,10 +38,6 @@ function SquadScreen() {
     const user = squad[index]!; 
 
     useEffect(() => {
-        if (shouldShowProfile) {
-            setShowProfile(true);
-        }
-
         if (shouldShowBackpacks) {
             setShowBackpacks(true);
         }
@@ -76,11 +71,7 @@ function SquadScreen() {
                 }                
             </div>
             <div className={styles.SquadScreen_profileScreen}>
-                {
-                    showProfile ?
-                        <ProfileScreen character={user}/> :
-                        null
-                }                
+                <ProfileScreen character={user}/>
                 {
                     showBackpacks ? 
                         <BackpacksScreen/> :

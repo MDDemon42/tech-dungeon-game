@@ -3,6 +3,7 @@ import styles from './BattleScreen.module.css';
 import { 
     IAbility, 
     IBattleAbility, 
+    ICharacher, 
     IStore
 } from '../../enums-and-interfaces/interfaces';
 import CommonIcon from '../Icons/CommonIcon';
@@ -31,6 +32,8 @@ const specialRaceAbilities: Record<Race, (IBattleAbility | null)> = {
 }
 
 function BattleScreen() {
+    const [battleTurn, setBattleTurn] = useState(1);
+
     const [selectedAbility, setSelectedAbility] = useState<IAbility|null>(null);
     const [selectedAbilityDiv, setSelectedAbilityDiv] = useState<HTMLElement|null>(null);
     const [opponents, setOpponents] = useState([
@@ -41,9 +44,8 @@ function BattleScreen() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
     const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
-    const squadMembers = Object.keys(squad)
-        .map(key => squad[key])
-        .filter(member => !!member);
+    const squadMembers: ICharacher[] = [];
+    Object.keys(squad).forEach(key => squadMembers[Number(key)] = squad[key]);
 
     const user = squad[index];
 
@@ -169,11 +171,18 @@ function BattleScreen() {
         }
     }
 
+    function selectSquadMember(memberIndex: number) {
+        dispatch(gameSquad.actions.changeSquadMember(memberIndex));
+    }
+
     return (
         <div className={styles.BattleScreen}>
             <h3 className={styles.BattleScreen_header}>
                 Battle Screen
             </h3>            
+            <div style={{position: 'absolute', right: 0, top: '20px'}}>
+                Turn {battleTurn}
+            </div>
             <div className={styles.BattleScreen_body}>
                 <BattleOrder squad={opponents} attacker={true} listener={processAbility}/>
                 <div className={styles.BattleScreen_body_abilities}>
@@ -201,7 +210,10 @@ function BattleScreen() {
                             Deselect ability
                         </button> : null
                 }
-                <BattleOrder squad={squadMembers} attacker={false} listener={processAbility}/> 
+                <BattleOrder squad={squadMembers} attacker={false} listener={selectSquadMember}/> 
+                <button onClick={() => setBattleTurn((value) => value + 1)}>
+                    Next turn
+                </button>
             </div>
         </div>
     )

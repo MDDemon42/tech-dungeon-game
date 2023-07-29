@@ -28,7 +28,13 @@ function BattleOrder(props: {
     return (
         <div className={styles.BattleOrder}>
             {
-                squad.map((member, index) => squadMember(member, index))
+                squad.map((member, index) => {
+                    if (!!member) {
+                        return squadMember(member, index)
+                    } else {
+                        return null
+                    }
+                })
             }            
         </div>
     )

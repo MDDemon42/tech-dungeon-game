@@ -62,9 +62,9 @@ function BackpacksScreen() {
         <div className={styles.BackpacksScreen_itemsLine}>
             {
                 items.map((item, index) => (
-                    <div className={styles.commonIconWithButton}>
+                    <div className={styles.BackpacksScreen_itemsLine_CommonIconWithButtons}>
                         <CommonIcon item={item} disableReason={disableReason}/>
-                        <div className={styles.commonIconWithButton_buttons}>
+                        <div className={styles.BackpacksScreen_itemsLine_CommonIconWithButtons_buttons}>
                             <div>
                                 {
                                     enableChecker(item) ?

@@ -1,4 +1,7 @@
 .BackpacksScreen {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
@@ -18,4 +21,26 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+
+.BackpacksScreen_itemsLine_CommonIconWithButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.BackpacksScreen_itemsLine_CommonIconWithButtons_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+}
+
+.BackpacksScreen_itemsLine_CommonIconWithButtons_buttons > div > img,
+.BackpacksScreen_itemsLine_CommonIconWithButtons_buttons > div > svg {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
 }

@@ -4,8 +4,7 @@ import { GameScreens } from '../../enums-and-interfaces/enums';
 
 const initialState: IGameScreen = {
     screen: GameScreens.battle,
-    shouldShowProfile: true,
-    shouldShowBackpacks: false
+    shouldShowBackpacks: true
 }
 
 const gameScreen = createSlice({
@@ -21,7 +20,6 @@ const gameScreen = createSlice({
                 case GameScreens.cyberLab:
                 case GameScreens.focusSite:
                 case GameScreens.spellShop:
-                    state.shouldShowProfile = true;
                     break;
                 case GameScreens.market:
                     state.shouldShowBackpacks = true;

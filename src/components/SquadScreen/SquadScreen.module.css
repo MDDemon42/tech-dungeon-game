@@ -17,7 +17,7 @@
     border: 1px solid black;
 } 
 
-.SquadScreen_squadMembers > img, svg {
+.SquadScreen_squadMembers > img, .SquadScreen_squadMembers > svg {
     width: 30px;
     height: 30px;
     margin: 5px 0; 
@@ -29,6 +29,7 @@
 }
 
 .SquadScreen_profileScreen {
+    position: relative;
     display: flex;
     flex-direction: column;
 }
