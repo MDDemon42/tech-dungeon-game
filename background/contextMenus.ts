@@ -72,6 +72,4 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
     }
 }
 
-createAllContextMenus();
-
-chrome.contextMenus.onClicked.addListener(contextMenusListeners)
+chrome.contextMenus.onClicked.addListener(contextMenusListeners);
