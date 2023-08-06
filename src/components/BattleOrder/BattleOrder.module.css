@@ -16,3 +16,10 @@
     width: 150px;
     height: 175px;
 }
+
+.BattleOrder_squadMember_with_Mana_and_Focus {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}

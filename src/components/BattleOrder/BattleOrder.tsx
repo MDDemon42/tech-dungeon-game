@@ -11,26 +11,57 @@ function BattleOrder(props: {
 }) {
     const {squad, attacker, listener} = props;
 
-    const squadMember = (character: ICharacher, index: number) => (
-        <div className={styles.BattleOrder_squadMember}>
-            <div>
-                {
-                    [...Array(character.params.currentParams[UserParam.health])]
-                        .map(icon => <ParamIcon param='health'/>)
-                }
-            </div>
-            <div onClick={() => listener(index)}>
+    function SquadMember(props: {
+        character: ICharacher, 
+        index: number
+    }) {
+        const {character, index} = props;
+        const {currentParams} = character.params;
+
+        return (<div className={styles.BattleOrder_squadMember}>
+            <SquadMemberParamLine 
+                paramAmount={currentParams[UserParam.health]}
+                paramName='health'
+            />
+            <div 
+                className={styles.BattleOrder_squadMember_with_Mana_and_Focus}
+                onClick={() => listener(index)}
+            >
+                <SquadMemberParamLine 
+                    paramAmount={currentParams[UserParam.mana]}
+                    paramName='mana'
+                />
                 <InventoryScreen character={character} battle={true}/>
-            </div>            
+                <SquadMemberParamLine 
+                    paramAmount={currentParams[UserParam.focus]}
+                    paramName='focus'
+                />
+            </div>
+            <SquadMemberParamLine 
+                paramAmount={currentParams[UserParam.stamina]}
+                paramName='stamina'
+            />            
         </div>
-    )
+    )}
+
+    function SquadMemberParamLine(props: {
+        paramAmount: number, paramName: keyof typeof UserParam
+    }) {
+        const {paramAmount, paramName} = props;
+        return <div>
+            {
+                [...Array(paramAmount)]
+                    .map(icon => <ParamIcon param={paramName}/>)
+            }
+        </div>
+    }
 
     return (
         <div className={styles.BattleOrder}>
             {
                 squad.map((member, index) => {
                     if (!!member) {
-                        return squadMember(member, index)
+                        return <SquadMember character={member} index={index}/>
                     } else {
                         return null
                     }
