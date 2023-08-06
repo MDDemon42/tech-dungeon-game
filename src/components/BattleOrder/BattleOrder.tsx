@@ -30,11 +30,13 @@ function BattleOrder(props: {
                 <SquadMemberParamLine 
                     paramAmount={currentParams[UserParam.mana]}
                     paramName='mana'
+                    vertical={true}
                 />
                 <InventoryScreen character={character} battle={true}/>
                 <SquadMemberParamLine 
                     paramAmount={currentParams[UserParam.focus]}
                     paramName='focus'
+                    vertical={true}
                 />
             </div>
             <SquadMemberParamLine 
@@ -45,10 +47,15 @@ function BattleOrder(props: {
     )}
 
     function SquadMemberParamLine(props: {
-        paramAmount: number, paramName: keyof typeof UserParam
+        paramAmount: number, 
+        paramName: keyof typeof UserParam,
+        vertical?: boolean
     }) {
-        const {paramAmount, paramName} = props;
-        return <div>
+        const {paramAmount, paramName, vertical} = props;
+        return <div style={{
+            display: 'flex', 
+            flexDirection: vertical ? 'column' : 'row'
+        }}>
             {
                 [...Array(paramAmount)]
                     .map(icon => <ParamIcon param={paramName}/>)

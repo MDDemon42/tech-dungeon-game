@@ -37,33 +37,10 @@ function contextMenusListeners(info: IContextMenuInfo, tab?: ITab) {
     switch (info.menuItemId) {
         case cheatContextMenuIds.strongStart:
             if (tab?.url?.endsWith('index.html#/game')) {
-                chrome.storage.local.get().then(result => {
-                    const squad = {...result['tech-dungeon-game'].gameSquad};
-
-                    for (let i in squad.squadMembers) {
-                        const user = squad.squadMembers[i];
-                        if (!!user) {
-                            user.general.mind.masteries = [];
-                            user.general.mind.spells = [];
-                            user.general.mind.powers = [];
-                            user.general.inventory = null;
-
-                            user.params.level = 12;
-                            user.params.currentParams = {...user.params.maxParams};
-                        }
-                    }
-
-                    squad.squadBackpacks.resources['Gems'] = 100;
-                    squad.squadBackpacks.resources['Mecha-cores'] = 45;
-                    squad.squadBackpacks.resources['Muta-genes'] = 45;
-                    squad.squadBackpacks.items = [];
-
-                    result['tech-dungeon-game'].gameSquad = squad;
-
-                    chrome.storage.local.set(result);
-
-                    chrome.tabs.reload(tab!.id!);
-                });
+                chrome.tabs.sendMessage(tab?.id!, {
+                    type: 'strong_start',
+                    token: '^_^'
+                })  
             }
             break;
 

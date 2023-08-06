@@ -3,9 +3,7 @@ function onMessage(
         type: string,
         data: any,
         token: string
-    },
-    sender,
-    callback
+    }
 ) {  
     console.log('Background got message', request)
 
@@ -20,9 +18,10 @@ function onMessage(
                     chrome.storage.local.get()
                         .then((data) => console.log('Chrome storage local has', data))
                 });
-            break
+            break;
+
         default:
-            break
+            break;
     }
 }
 

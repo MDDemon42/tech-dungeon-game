@@ -15,7 +15,8 @@ import {
     Race, 
     UserParam, 
     DamageType, 
-    InventoryPlace 
+    InventoryPlace, 
+    UserStartClass
 } from "../enums-and-interfaces/enums";
 
 export default function createEmptyCharacter(): ICharacher {
@@ -29,19 +30,21 @@ function createEmptyParams(): ICharacherParams {
     return {
         name: '',
         level: 0,
-        class: 'noIcon',
+        class: UserStartClass.noIcon,
         race: Race.human,
         currentParams: {
             [UserParam.health]: 0,
             [UserParam.mana]: 0,
             [UserParam.focus]: 0,
-            [UserParam.stamina]: 0
+            [UserParam.stamina]: 0,
+            [UserParam.blank]: 0
         },
         maxParams: {
             [UserParam.health]: 0,
             [UserParam.mana]: 0,
             [UserParam.focus]: 0,
-            [UserParam.stamina]: 0
+            [UserParam.stamina]: 0,
+            [UserParam.blank]: 0
         },
         resistances: {
             [DamageType.physicalSlashing]: 0,
@@ -56,14 +59,14 @@ function createEmptyParams(): ICharacherParams {
     }    
 }
 
-function createEmptyGeneral(): ICharacterGeneral {
+export function createEmptyGeneral(): ICharacterGeneral {
     return {
         mind: createEmptyMind(),
         inventory: createEmptyInventory()
     }    
 }
 
-function createEmptyMind(): IMind {
+export function createEmptyMind(): IMind {
     const mind = {
         masteries: [] as IMastery[],
         spells: [] as ISpell[],

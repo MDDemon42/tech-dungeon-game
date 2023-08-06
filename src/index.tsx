@@ -10,6 +10,8 @@ import GamePage from './pages/GamePage/GamePage';
 
 import store from './redux/store';
 
+import onMessageOnGamePage from './messaging';
+
 ReactDOM
   .createRoot(document.getElementById('root') as HTMLElement)
   .render(
@@ -31,3 +33,5 @@ export function chromeStorageSaver() {
     data: store.getState()
   })
 }
+
+chrome.runtime.onMessage.addListener(onMessageOnGamePage);

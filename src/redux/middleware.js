@@ -10,7 +10,7 @@ export const saver = store => next => action => {
     
     const storeData = store.getState();
 
-    localStorage[C.name] = JSON.stringify(storeData);
+    localStorage[C.extensionStorageName] = JSON.stringify(storeData);
     chromeStorageSaver()
 
     return result;

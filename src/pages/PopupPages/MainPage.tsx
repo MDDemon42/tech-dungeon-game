@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import C from '../../redux/constants';
 import { createEmptyInventory } from '../../helpers/emptyEssencesCreators';
 import gameSquad, { classInfo } from '../../redux/slices/gameSquad';
+import { iconToClass, classToIcon } from '../../helpers/classIconRelates';
+import { UserStartClass } from '../../enums-and-interfaces/enums';
 
 export function upperCaseFirstLetter(value: string) {
     return value.substring(0,1).toUpperCase() + value.substring(1)
@@ -16,7 +18,7 @@ export function upperCaseFirstLetter(value: string) {
 function MainPage() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
-    const icon = useSelector((store: IStore) => store.gameSquad.squadMembers[index].params.class);
+    const memberClass = useSelector((store: IStore) => store.gameSquad.squadMembers[index].params.class);
 
     const classes = Object.keys(images.classIcons);
 
@@ -27,10 +29,10 @@ function MainPage() {
     // loading storaged state
     useEffect(() => {
         chrome.storage.local.get().then(result => {
-            if (result[C.name]) {
-                dispatch(gameSquad.actions.setState(result[C.name].gameSquad));
+            if (result[C.extensionStorageName]) {
+                dispatch(gameSquad.actions.setState(result[C.extensionStorageName].gameSquad));
 
-                const user = result[C.name].gameSquad.squadMembers[index];
+                const user = result[C.extensionStorageName].gameSquad.squadMembers[index];
                 if (
                     user.params.level > 0 ||
                     !Object.is(user.general.inventory, createEmptyInventory())
@@ -41,17 +43,12 @@ function MainPage() {
         })
     }, [])
 
-    const classToClass = (value: string) => {
-        switch (value) {
-            case 'noIcon':
-                return '-not this one-'
-            default:
-                return upperCaseFirstLetter(value)
-        }
-    }
-
     const changeClass = (value: string) => {
-        dispatch(gameSquad.actions.refreshState(value));
+        let iconFromClass = iconToClass(value);
+        if (value === UserStartClass.noIcon) {
+            iconFromClass = value;
+        }
+        dispatch(gameSquad.actions.refreshState(iconFromClass));
         setStartButtonText('Start!');
     }
 
@@ -63,19 +60,21 @@ function MainPage() {
         <div className={styles.Popup}>
             <div className={styles.Popup_iconBlock}>
                 <img 
-                    src={images.classIcons[icon]} 
+                    src={images.classIcons[classToIcon(memberClass)]} 
                     alt='classIcon' 
-                    title={classInfo[icon as keyof IClassInfo].description}
+                    title={classInfo[memberClass].description}
                 />
                 <select 
-                    value={icon}
+                    value={memberClass}
                     onChange={(event) => changeClass(event.target.value)}
                 >
                     {
                         classes.map(item => {
                             return (
                                 <option value={item}>
-                                    {classToClass(item)}
+                                    {
+                                        iconToClass(item)
+                                    }
                                 </option>
                             )
                         })
@@ -84,7 +83,7 @@ function MainPage() {
             </div>
             <div className={styles.Popup_buttonsBlock}>
                 <button 
-                    disabled={icon === 'noIcon'}
+                    disabled={memberClass === UserStartClass.noIcon}
                     className={styles.border}
                     onClick={startButtonListener}
                 >

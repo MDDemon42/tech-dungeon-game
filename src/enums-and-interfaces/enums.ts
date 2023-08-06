@@ -15,6 +15,16 @@ export enum InventoryPlace {
     legs = 'Legs'
 }
 
+export enum UserStartClass {
+    mutant = 'Mutant',
+    cyborg = 'Cyborg',
+    normal = 'Normal',
+    wizard = 'Wizard',
+    psion = 'Psion',
+    guildian = 'Guildian',
+    noIcon = 'noIcon'
+}
+
 export enum Race {
     human = 'Human',
     unknown = 'Unknown',

@@ -7,7 +7,8 @@ import {
     MindOption, 
     Race, 
     UserParam, 
-    UserResource 
+    UserResource, 
+    UserStartClass
 } from "./enums"
 
 // game parts //
@@ -68,7 +69,7 @@ export interface ICharacterGeneral {
 }
 
 export interface ICharacherParams {
-    class: string,
+    class: UserStartClass,
     race: Race,
     stage?: number,
     level: number,
@@ -84,7 +85,8 @@ export interface ICharacherParams {
         [UserParam.health]: number,
         [UserParam.mana]: number,
         [UserParam.focus]: number,
-        [UserParam.stamina]: number
+        [UserParam.stamina]: number,
+        [UserParam.blank]?: number
     },
     resistances: {
         [DamageType.physicalSlashing]: number,
@@ -183,17 +185,17 @@ export interface IBattleAbility extends ICommon {
 
 // classes //
 export interface IClassInfo {
-    mutant: IClassInfoItem,
-    cyborg: IClassInfoItem,
-    normal: IClassInfoItem,
-    wizard: IClassInfoItem,
-    psion: IClassInfoItem,
-    guildian: IClassInfoItem,
-    noIcon: IClassInfoItem
+    [UserStartClass.mutant]: IClassInfoItem,
+    [UserStartClass.cyborg]: IClassInfoItem,
+    [UserStartClass.normal]: IClassInfoItem,
+    [UserStartClass.wizard]: IClassInfoItem,
+    [UserStartClass.psion]: IClassInfoItem,
+    [UserStartClass.guildian]: IClassInfoItem,
+    [UserStartClass.noIcon]: IClassInfoItem
 }
 
 interface IClassInfoItem {
-    startBonus: [keyof ICharacherParams, UserParam | UserResource | keyof ICharacherParams],
+    startBonus: UserParam,
     levelUpBonuses: UserParam[],
     description: string
 }

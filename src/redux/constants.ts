@@ -1,5 +1,5 @@
 const constants = {
-   name: 'tech-dungeon-game'
+   extensionStorageName: 'tech-dungeon-game'
 };
 
 export default constants;

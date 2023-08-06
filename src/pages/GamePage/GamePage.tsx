@@ -12,8 +12,8 @@ function GamePage() {
     // loading storaged state
     useEffect(() => {
         chrome.storage.local.get().then(result => {
-            if (result[C.name]) {
-                dispatch(gameSquad.actions.setState(result[C.name].gameSquad));
+            if (result[C.extensionStorageName]) {
+                dispatch(gameSquad.actions.setState(result[C.extensionStorageName].gameSquad));
             }
         })
     }, [])

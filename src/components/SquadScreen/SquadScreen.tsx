@@ -9,6 +9,7 @@ import { backpacksCapability } from '../../helpers/backpacksPutter';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
+import { classToIcon } from '../../helpers/classIconRelates';
 
 function SquadScreen() {
     const [showBackpacks, setShowBackpacks] = useState(false);
@@ -50,7 +51,7 @@ function SquadScreen() {
                     Array(5).fill(0).map((value, index: number) => {
                         if (!!squad[index]) {
                             return <img 
-                                src={images.classIcons[squad[index].params.class]}
+                                src={images.classIcons[classToIcon(squad[index].params.class)]}
                                 title={squad[index].params.name}
                                 onClick={() => showProfileHandler(index)}
                                 alt='squadMember'

@@ -16,7 +16,8 @@ import putItemInBackpacks from '../../helpers/backpacksPutter';
 import { 
     UserResource, 
     UserParam, 
-    InventoryPlace 
+    InventoryPlace, 
+    UserStartClass
 } from '../../enums-and-interfaces/enums';
 
 export function placeAsKey(place: string) {
@@ -58,38 +59,38 @@ function createLevelUpBonuses(params: UserParam[]) {
 }
 
 export const classInfo: IClassInfo = {
-    mutant: {
-        startBonus: ['maxParams', UserParam.health],
+    [UserStartClass.mutant]: {
+        startBonus: UserParam.health,
         levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.stamina]),
         description: 'Gets extra Health on start.\n\nOn level up has increased chance of getting Health or Stamina.\n\nBut there is a chance to get nothing too',
     },
-    cyborg: {
-        startBonus: ['maxParams', UserParam.health],
+    [UserStartClass.cyborg]: {
+        startBonus: UserParam.health,
         levelUpBonuses: createLevelUpBonuses([UserParam.blank, UserParam.stamina]),
         description: 'Gets extra Health on start.\n\nOn level up has increased chance of getting Stamina.\n\nBut there is a big chance to get nothing too'
     },
-    normal: {
-        startBonus: ['maxParams', UserParam.health],
+    [UserStartClass.normal]: {
+        startBonus: UserParam.health,
         levelUpBonuses: createLevelUpBonuses([UserParam.stamina, UserParam.stamina]),
         description: 'Gets extra Health on start.\n\nOn level up has super increased chance of getting Stamina.\n\nBut there is a chance to get nothing too'
     },
-    wizard: {
-        startBonus: ['maxParams', UserParam.mana],
+    [UserStartClass.wizard]: {
+        startBonus: UserParam.mana,
         levelUpBonuses: createLevelUpBonuses([UserParam.mana, UserParam.mana]),
         description: 'Gets extra Mana on start.\n\nOn level up has super increased chance of getting Mana.\n\nBut there is a chance to get nothing too'
     },
-    psion: {
-        startBonus: ['maxParams', UserParam.focus],
+    [UserStartClass.psion]: {
+        startBonus: UserParam.focus,
         levelUpBonuses: createLevelUpBonuses([UserParam.focus, UserParam.focus]),
         description: 'Gets extra Focus on start.\n\nOn level up has super increased chance of getting Focus.\n\nBut there is a chance to get nothing too'
     },
-    guildian: {
-        startBonus: ['maxParams', UserParam.stamina],
+    [UserStartClass.guildian]: {
+        startBonus: UserParam.stamina,
         levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.mana]),
         description: 'Gets extra Stamina on start.\n\nOn level up has increased chance of getting Health or Mana.\n\nBut there is a chance to get nothing too'
     },
-    noIcon: {
-        startBonus: ['currentParams', UserParam.blank],
+    [UserStartClass.noIcon]: {
+        startBonus: UserParam.blank,
         levelUpBonuses: [UserParam.blank],
         description: 'Choose one of classes to start playing'
     }
@@ -121,20 +122,15 @@ const gameSquad = createSlice({
             user.params.name = user.params.name || 'Adventurer';
             user.params.class = action.payload;
 
-            // @ts-ignore
-            const {startBonus} = classInfo[action.payload];
-            // @ts-ignore
-            user.params[startBonus[0]][startBonus[1]] += 1;
+            const {startBonus} = classInfo[action.payload as UserStartClass];
+            user.params.maxParams[startBonus] += 1;
 
             squad[2] = user;
             squad[4] = user;
 
             Object.keys(squad).forEach(key => {
                 if (!!squad[key]) {
-                    squad[key]!.params.currentParams.Focus = squad[key]!.params.maxParams.Focus;
-                    squad[key]!.params.currentParams.Mana = squad[key]!.params.maxParams.Mana;
-                    squad[key]!.params.currentParams.Stamina = squad[key]!.params.maxParams.Stamina;
-                    squad[key]!.params.currentParams[UserParam.health] = squad[key]!.params.maxParams[UserParam.health];
+                    squad[key].params.currentParams = squad[key].params.maxParams;
                 }
             });
 
@@ -145,11 +141,11 @@ const gameSquad = createSlice({
 
             const squad = {...state.squadMembers};
             const squadMember = squad[action.payload];
-            // @ts-ignore
+
             squadMember.params.level += 1;
             
-            // @ts-ignore
-            squadMember.params.maxParams[classInfo[squadMember.params.class].levelUpBonuses[rand]] += 1;
+            const levelUpParam = classInfo[squadMember.params.class].levelUpBonuses[rand];
+            squadMember.params.maxParams[levelUpParam] += 1;
 
             Object.keys(squad).forEach(key => {
                 if (!!squad[key]) {
