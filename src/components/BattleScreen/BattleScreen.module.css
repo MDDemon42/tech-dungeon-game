@@ -18,9 +18,27 @@
     align-items: center;
 }
 
-.BattleScreen_body_abilities {
+.BattleScreen_body_abilitiesBlock {
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.BattleScreen_body_abilitiesBlock_abilities {
+    left: 0;
+    width: calc(100% - 70px);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
+}
+
+.BattleScreen_body_abilitiesBlock_button {
+    position: relative;
+    right: 0;
+    width: 65px;
 }

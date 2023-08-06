@@ -2,6 +2,12 @@ import images from "../../../images/images";
 import { createBattleAbility } from ".";
 import { DamageType } from "../../../enums-and-interfaces/enums";
 
+const battleAbility_fistPunch = createBattleAbility(
+    ['Fist punch', '', images.misc.fistPunch], 
+    {Stamina: 1}, 
+    [1, DamageType.physicalSmashing, 1, 70]
+);
+
 const battleAbility_swordSlash = createBattleAbility(
     ['Sword slash', '', images.normalItems.sword], 
     {Stamina: 1}, 
@@ -51,6 +57,7 @@ const battleAbility_greatswordSlash = createBattleAbility(
 );
 
 const melee = {
+    battleAbility_fistPunch,
     battleAbility_swordSlash,
     battleAbility_leftHandSwordSlash,
     battleAbility_masterSwordSlash,

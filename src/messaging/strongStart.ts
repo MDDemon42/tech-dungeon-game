@@ -16,15 +16,17 @@ function actionInCaseStrongStart(tabId: number) {
             const memberClone = createEmptyCharacter();
 
             const memberClass = member.params.class;
+            const memberLevel = member.params.level;
+
             memberClone.params.class = memberClass
             memberClone.params.name = member.params.name;
 
             memberClone.params.maxParams[UserParam.health] = 3;
             memberClone.params.maxParams[UserParam.stamina] = 3;
-            memberClone.params.level = 1;
+            memberClone.params.level = memberLevel;
 
             const maxLevel = 12;
-            for (let i=1; i < maxLevel; i++) {
+            for (let i = memberLevel; i < maxLevel; i++) {
                 const rand = Math.floor(Math.random()*7);
                 const levelUpParam = classInfo[memberClass].levelUpBonuses[rand];
 

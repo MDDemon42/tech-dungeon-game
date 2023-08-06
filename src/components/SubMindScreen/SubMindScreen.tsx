@@ -53,17 +53,35 @@ function SubMindScreen(props: {
         }
     }
 
-    let disableReason = '';
-    function enableChecker(data: IMastery | IPower | ISpell) {
+    function SubMindScreenItem(props: {
+        data: IMastery | IPower | ISpell
+    }) {
+        const {data} = props;
+        const [enabled, disableReason] = enableChecker(data);
+
+        return <div className={styles.commonIconWithButton}>
+            <CommonIcon item={data} disableReason={disableReason}/>
+            {
+                <button
+                    disabled={!enabled}
+                    onClick={() => subMindMappings[dataName].listener(data)}
+                >
+                    {
+                        subMindMappings[dataName].button
+                    }
+                </button>
+            }
+        </div>
+    }
+
+    function enableChecker(data: IMastery | IPower | ISpell): [boolean, string] {
         if (subMindMappings[dataName].capacity === subMindMappings[dataName].posessed) {
-            disableReason = 'Your mind cannot contain any more ' + dataName;
-            return false
+            return [false, 'Your mind cannot contain any more ' + dataName]
         }
 
         const posessedCheck = memberMind.includes(data.name);
         if (posessedCheck) {
-            disableReason = 'Already posessed';
-            return false
+            return [false, 'Already posessed']
         }
         
         const requiredMasteryCheck = !!data.requiredMastery ? 
@@ -71,11 +89,10 @@ function SubMindScreen(props: {
             true;
             
         if (!requiredMasteryCheck) {
-            disableReason = 'Does not have required mastery';
-            return false
+            return [false, 'Does not have required mastery']
         }
 
-        return true 
+        return [true, '']
     }
 
     return (
@@ -89,19 +106,8 @@ function SubMindScreen(props: {
                 {
                     dataAllNames && dataAllNames.map(name => {
                         const data = dataAll[name];
-                        return <div className={styles.commonIconWithButton}>
-                            <CommonIcon item={data} disableReason={disableReason}/>
-                            {
-                                <button
-                                    disabled={!enableChecker(data)}
-                                    onClick={() => subMindMappings[dataName].listener(data)}
-                                >
-                                    {
-                                        subMindMappings[dataName].button
-                                    }
-                                </button>
-                            }
-                        </div>
+                        
+                        return <SubMindScreenItem data={data}/>
                     })
                 }
             </div>            

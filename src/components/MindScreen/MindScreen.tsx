@@ -16,11 +16,11 @@ function MindScreen(props: {
         state.gameSquad.squadMembers[index].general.mind[name as MindOption]);
 
     return (
-        <div className={styles.MindZoneScreen}>
+        <div className={styles.MindScreen}>
             <div className={
                 vertical ? 
-                    styles.MindZoneScreen__vertical : 
-                    styles.MindZoneScreen__notVertical
+                    styles.MindScreen__vertical : 
+                    styles.MindScreen__notVertical
             }>
                 {
                     common && Array.isArray(common) && common.length > 0 ?

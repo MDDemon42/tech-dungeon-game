@@ -9,6 +9,7 @@ import psionInsights from './psionInsights/psionInsights';
 import guildianLearnings from './guildianLearnings/guildianLearnings';
 import resourceIcons from './resourceIcons/resourceIcons';
 import paramIcons from './paramIcons/paramIcons';
+import misc from './misc/misc';
 
 const images = {
     bodyElements,
@@ -21,7 +22,8 @@ const images = {
     psionInsights,
     guildianLearnings,
     resourceIcons,
-    paramIcons
+    paramIcons,
+    misc
 };
 
 export default images;

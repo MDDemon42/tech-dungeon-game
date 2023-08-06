@@ -63,31 +63,6 @@ function SubInventoryScreen(props: {
         store.gameSquad.squadBackpacks.resources[subInventoryMappings[dataName].resource]);
 
 
-    let disableReason = '';
-    function enableChecker(data: IItem | IMutation | ICyber) {
-        const resourceCheck = resource >= data.cost;
-        if (!resourceCheck) {
-            disableReason = 'Not enough resouces';
-            return false
-        }
-
-        if (dataName === 'items') {
-            const backpacksCapabilityCheck = currentBackpacksItemsAmount < backpacksCapability(members);
-            if (!backpacksCapabilityCheck) {
-                disableReason = 'Not enough space in backpacks';
-                return false
-            }
-        } else {
-            const priorityCheck = priorityChecker(data);
-            if (!priorityCheck) {
-                disableReason = 'Better equipment in use';
-                return false
-            }
-        }
-
-        return true 
-    }
-
     const dataArray: IInventorySlot[] = [];
     Object.keys(dataAll)
         .forEach(key => {
@@ -132,23 +107,51 @@ function SubInventoryScreen(props: {
                 {keyToTitle(title)}
             </div>
             {
-                data && data.map(datum => (
-                    <div className={styles.commonIconWithButton}>
-                        <CommonIcon item={datum} disableReason={disableReason}/>
-                        {
-                            <button
-                                disabled={!enableChecker(datum)}
-                                onClick={() => subInventoryMappings[dataName].listener(datum)}
-                            >
-                                {
-                                    subInventoryMappings[dataName].button
-                                }
-                            </button>
-                        }
-                    </div>
-                ))
+                data && data.map(datum => <SubInventoryScreen datum={datum}/>)
             }
         </div>
+    }
+
+    function SubInventoryScreen(props: {
+        datum: IItem | IMutation | ICyber
+    }) {
+        const {datum} = props;
+        const [enabled, disableReason] = enableChecker(datum);
+
+        return <div className={styles.commonIconWithButton}>
+            <CommonIcon item={datum} disableReason={disableReason}/>
+            {
+                <button
+                    disabled={!enabled}
+                    onClick={() => subInventoryMappings[dataName].listener(datum)}
+                >
+                    {
+                        subInventoryMappings[dataName].button
+                    }
+                </button>
+            }
+        </div>
+    }
+
+    function enableChecker(data: IItem | IMutation | ICyber): [boolean, string] {
+        const resourceCheck = resource >= data.cost;
+        if (!resourceCheck) {
+            return [false, 'Not enough resouces']
+        }
+
+        if (dataName === 'items') {
+            const backpacksCapabilityCheck = currentBackpacksItemsAmount < backpacksCapability(members);
+            if (!backpacksCapabilityCheck) {
+                return [false, 'Not enough space in backpacks']
+            }
+        } else {
+            const priorityCheck = priorityChecker(data);
+            if (!priorityCheck) {
+                return [false, 'Better equipment in use']
+            }
+        }
+
+        return [true, ''] 
     }
 
     return (

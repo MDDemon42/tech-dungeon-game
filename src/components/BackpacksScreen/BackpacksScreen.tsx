@@ -27,24 +27,50 @@ function BackpacksScreen() {
     const masteriesUser = useSelector((store: IStore) => 
         store.gameSquad.squadMembers[index].general.mind.masteries.map(data => data.name));
 
-    let disableReason = '';
-    function enableChecker(item: IItem) {
+    function BackpacksScreenItem(props: {
+        item: IItem,
+        index: number
+    }) {
+        const {item, index} = props;
+        const [enabled, disableReason] = enableChecker(item);
+
+        return <div className={styles.BackpacksScreen_itemsLine_CommonIconWithButtons}>
+            <CommonIcon item={item} disableReason={disableReason}/>
+            <div className={styles.BackpacksScreen_itemsLine_CommonIconWithButtons_buttons}>
+                <div>
+                    {
+                        enabled ?
+                            <ArrowUpCircle 
+                                onClick={() => equipListener({index, item})}
+                                title='Equip'
+                            /> :
+                            <ArrowUpCircleFill
+                                title={disableReason}
+                            />
+                    }                                
+                </div>
+                <div onClick={() => sellListener({index, item})}>
+                    <ResourceIcon resource='gem'/>
+                </div>
+            </div>
+        </div>
+    }
+    
+    function enableChecker(item: IItem): [boolean, string] {
         const requiredMasteryCheck = !!item.requiredMastery ? 
             masteriesUser.includes(item.requiredMastery.name) :
             true;
 
         if (!requiredMasteryCheck) {
-            disableReason = 'Does not have required mastery';
-            return false
+            return [false, 'Does not have required mastery']
         }
 
         const priorityCheck = priorityChecker(item);
         if (!priorityCheck) {
-            disableReason = 'Better equipment in use';
-            return false
+            return [false, 'Better equipment in use']
         }
 
-        return true
+        return [true, '']
     }    
     
     return <div className={styles.BackpacksScreen}>
@@ -61,28 +87,9 @@ function BackpacksScreen() {
         </div>
         <div className={styles.BackpacksScreen_itemsLine}>
             {
-                items.map((item, index) => (
-                    <div className={styles.BackpacksScreen_itemsLine_CommonIconWithButtons}>
-                        <CommonIcon item={item} disableReason={disableReason}/>
-                        <div className={styles.BackpacksScreen_itemsLine_CommonIconWithButtons_buttons}>
-                            <div>
-                                {
-                                    enableChecker(item) ?
-                                        <ArrowUpCircle 
-                                            onClick={() => equipListener({index, item})}
-                                            title='Equip'
-                                        /> :
-                                        <ArrowUpCircleFill
-                                            title={disableReason}
-                                        />
-                                }                                
-                            </div>
-                            <div onClick={() => sellListener({index, item})}>
-                                <ResourceIcon resource='gem'/>
-                            </div>
-                        </div>
-                    </div>
-                ))
+                items.map((item, index) => 
+                    <BackpacksScreenItem item={item} index={index}/>
+                )
             }
         </div>
         

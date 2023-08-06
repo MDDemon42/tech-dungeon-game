@@ -7,6 +7,9 @@ const opponent_dummy = () => {
     opponent.params.maxParams[UserParam.health] = 3;
     opponent.params.currentParams[UserParam.health] = 3;
 
+    opponent.params.maxParams[UserParam.stamina] = 3;
+    opponent.params.currentParams[UserParam.stamina] = 3;
+
     return opponent
 }
 

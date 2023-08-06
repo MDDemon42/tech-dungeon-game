@@ -15,7 +15,7 @@ import characters from '../../general/characters';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
 import BattleOrder from '../BattleOrder/BattleOrder';
-import { createEmptyInventory } from '../../helpers/emptyEssencesCreators';
+import { createEmptyInventory, createNoItem } from '../../helpers/emptyEssencesCreators';
 import { Race, UserParam } from '../../enums-and-interfaces/enums';
 
 const specialRaceAbilities: Record<Race, (IBattleAbility | null)> = {
@@ -114,6 +114,15 @@ function BattleScreen() {
         abilitiesUser.push(abilities.battleAbilities.melee.battleAbility_dualSwordsSlash);
     }
 
+    // basic ability
+    const noItem = createNoItem();
+    if (
+        inventory.leftHand.name === noItem.name ||
+        inventory.rightHand.name === noItem.name
+    ) {
+        abilitiesUser.push(abilities.battleAbilities.melee.battleAbility_fistPunch)
+    }
+
     function selectAbility(ability: IAbility, id: string) {
         let enoughResources = true;
         const abilityDiv = document.querySelectorAll<HTMLElement>('#' + id)[0];
@@ -185,31 +194,34 @@ function BattleScreen() {
             </div>
             <div className={styles.BattleScreen_body}>
                 <BattleOrder squad={opponents} attacker={true} listener={processAbility}/>
-                <div className={styles.BattleScreen_body_abilities}>
-                    {
-                        abilitiesUser && abilitiesUser.map(ability => {
-                            const id = ability.name.split(' ').join('');
+                <div className={styles.BattleScreen_body_abilitiesBlock}>
+                    <div className={styles.BattleScreen_body_abilitiesBlock_abilities}>
+                        {
+                            abilitiesUser && abilitiesUser.map(ability => {
+                                const id = ability.name.split(' ').join('');
 
-                            if (!!ability) {
-                                return <div 
-                                    className={styles.commonIconWithButton}
-                                    id={id}
-                                    onClick={() => selectAbility(ability, id)}
-                                >
-                                    <CommonIcon item={ability}/>
-                                </div>
-                            }
+                                if (!!ability) {
+                                    return <div 
+                                        className={styles.commonIconWithButton}
+                                        id={id}
+                                        onClick={() => selectAbility(ability, id)}
+                                    >
+                                        <CommonIcon item={ability}/>
+                                    </div>
+                                }
 
-                            return null
-                        })
-                    }
-                </div>
-                {
-                    selectedAbility ?
-                        <button onClick={() => deselectAbility()}>
-                            Deselect ability
-                        </button> : null
-                }
+                                return null
+                            })
+                        }
+                    </div>
+                    <button 
+                        className={styles.BattleScreen_body_abilitiesBlock_button}
+                        onClick={() => deselectAbility()}
+                        disabled={!selectedAbility}
+                    >
+                        {`Deselect\n ability`}
+                    </button>
+                </div>                
                 <BattleOrder squad={squadMembers} attacker={false} listener={selectSquadMember}/> 
                 <button onClick={() => setBattleTurn((value) => value + 1)}>
                     Next turn
