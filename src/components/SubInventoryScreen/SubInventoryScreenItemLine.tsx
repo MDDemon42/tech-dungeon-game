@@ -1,8 +1,7 @@
-import { ICharacher, IInventorySlot } from "../../enums-and-interfaces/interfaces";
+import { IInventorySlot } from "../../enums-and-interfaces/interfaces";
 import { upperCaseFirstLetter } from "../../pages/PopupPages/MainPage";
 import SubInventoryScreenItem from "./SubInventoryScreenItem";
 import styles from './SubInventoryScreen.module.css';
-import { InventoryOption } from "../../enums-and-interfaces/enums";
 
 const keyToTitle = (key: string) => {
     let keyArray = key.split('_')
@@ -14,19 +13,9 @@ const keyToTitle = (key: string) => {
 
 function SubInventoryScreenItemLine(props: {
     data: IInventorySlot[],
-    title: string,
-    dataName: InventoryOption,
-    resource: number,
-    currentBackpacksItemsAmount: number,
-    members: Record<string, ICharacher>,
-    listener: any,
-    buttonText: string
+    title: string
 }) {
-    const {
-        data, title, dataName, resource,
-        currentBackpacksItemsAmount,
-        members, listener, buttonText
-    } = props;
+    const {data, title} = props;
 
     return <div className={styles.SubInventoryScreenItemLine}>
         <div className={styles.SubInventoryScreenItemLine_header}>
@@ -34,15 +23,7 @@ function SubInventoryScreenItemLine(props: {
         </div>
         {
             data && data.map(datum => 
-                <SubInventoryScreenItem 
-                    datum={datum}
-                    dataName={dataName}
-                    resource={resource}
-                    currentBackpacksItemsAmount={currentBackpacksItemsAmount}
-                    members={members}
-                    listener={listener}
-                    buttonText={buttonText}
-                />
+                <SubInventoryScreenItem datum={datum}/>
             )
         }
     </div>

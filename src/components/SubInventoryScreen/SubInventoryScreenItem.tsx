@@ -1,26 +1,23 @@
-import { InventoryOption } from "../../enums-and-interfaces/enums";
-import { IItem, IMutation, ICyber, ICharacher } from "../../enums-and-interfaces/interfaces";
+import { useContext } from "react";
+import { IItem, IMutation, ICyber } from "../../enums-and-interfaces/interfaces";
 import { subInventoryEnableChecker } from "../../helpers/enableCheckers";
 import CommonIcon from "../Icons/CommonIcon";
 import styles from './SubInventoryScreen.module.css';
+import { SubInventoryScreenItemContext } from "./SubInventoryScreen";
 
 function SubInventoryScreenItem(props: {
-    datum: IItem | IMutation | ICyber,
-    dataName: InventoryOption,
-    resource: number,
-    currentBackpacksItemsAmount: number,
-    members: Record<string, ICharacher>,
-    listener: any,
-    buttonText: string
+    datum: IItem | IMutation | ICyber
 }) {
+    const {datum} = props;
     const {
-        datum, dataName, resource,
-        currentBackpacksItemsAmount, members,
-        listener, buttonText
-    } = props;
+        dataName, resource, members, listener,
+        currentBackpacksItemsAmount, buttonText
+    } = useContext(SubInventoryScreenItemContext);
+    
     const [enabled, disableReason] = subInventoryEnableChecker(
         datum, dataName, resource,
-        currentBackpacksItemsAmount, members
+        currentBackpacksItemsAmount, 
+        members
     );
 
     return <div className={styles.SubInventoryScreenItem}>

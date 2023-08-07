@@ -7,9 +7,8 @@ import {
     IItem,  
     IInventorySlot, 
     ISubInventoryMapping,
+    ICharacher,
 } from '../../enums-and-interfaces/interfaces';
-import { upperCaseFirstLetter } from '../../pages/PopupPages/MainPage';
-import CommonIcon from '../Icons/CommonIcon';
 import gameSquad from '../../redux/slices/gameSquad';
 import { 
     InventoryOption, 
@@ -17,8 +16,17 @@ import {
     InventoryOptionPart, 
     InventoryPlace 
 } from '../../enums-and-interfaces/enums';
-import { subInventoryEnableChecker } from '../../helpers/enableCheckers';
 import SubInventoryScreenItemLine from './SubInventoryScreenItemLine';
+import { createContext } from 'react';
+
+export const SubInventoryScreenItemContext = createContext({
+    dataName: '' as InventoryOption,
+    resource: 0 as number,
+    currentBackpacksItemsAmount: 0 as number,
+    members: {} as Record<string, ICharacher>,
+    listener: (datum: IItem | IMutation | ICyber) => {},
+    buttonText: '' as string
+});
 
 function SubInventoryScreen(props: {
     dataName: InventoryOption
@@ -89,6 +97,15 @@ function SubInventoryScreen(props: {
         data_for_legs: dataArray.filter(item => item.inventoryPlace === InventoryPlace.legs)
     }
 
+    const SubInventoryScreenItemContextData = {
+        dataName,
+        resource,
+        currentBackpacksItemsAmount,
+        members,
+        listener: subInventoryMappings[dataName].listener,
+        buttonText: subInventoryMappings[dataName].button
+    }
+
     return (
         <div className={styles.SubInventoryScreen}>
             <h3 className={styles.SubInventoryScreen_header}>
@@ -103,16 +120,14 @@ function SubInventoryScreen(props: {
                             return null
                         }
 
-                        return <SubInventoryScreenItemLine 
-                            data={dataSpecified[key]}
-                            title={key}
-                            dataName={dataName}
-                            resource={resource}
-                            currentBackpacksItemsAmount={currentBackpacksItemsAmount}
-                            members={members}
-                            listener={subInventoryMappings[dataName].listener}
-                            buttonText={subInventoryMappings[dataName].button}
-                        />
+                        return <SubInventoryScreenItemContext.Provider
+                            value={SubInventoryScreenItemContextData}
+                        >
+                            <SubInventoryScreenItemLine 
+                                data={dataSpecified[key]}
+                                title={key}
+                            />
+                        </SubInventoryScreenItemContext.Provider>
                     })
                 }
             </div>
