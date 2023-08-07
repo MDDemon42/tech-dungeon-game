@@ -202,7 +202,7 @@ function BattleScreen() {
 
                                 if (!!ability) {
                                     return <div 
-                                        className={styles.commonIconWithButton}
+                                        className={styles.BattleScreen_body_abilitiesBlock_abilities_icon}
                                         id={id}
                                         onClick={() => selectAbility(ability, id)}
                                     >

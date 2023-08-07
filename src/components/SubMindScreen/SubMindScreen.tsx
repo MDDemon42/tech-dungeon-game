@@ -3,8 +3,8 @@ import styles from './SubMindScreen.module.css';
 import { IMastery, IPower, ISpell, IStore, ISubMindMapping } from '../../enums-and-interfaces/interfaces';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
-import CommonIcon from '../Icons/CommonIcon';
 import { MindOption, UserParam } from '../../enums-and-interfaces/enums';
+import SubMindScreenItem from './SubMindScreenItem';
 
 function SubMindScreen(props: {
     dataName: MindOption
@@ -53,48 +53,6 @@ function SubMindScreen(props: {
         }
     }
 
-    function SubMindScreenItem(props: {
-        data: IMastery | IPower | ISpell
-    }) {
-        const {data} = props;
-        const [enabled, disableReason] = enableChecker(data);
-
-        return <div className={styles.commonIconWithButton}>
-            <CommonIcon item={data} disableReason={disableReason}/>
-            {
-                <button
-                    disabled={!enabled}
-                    onClick={() => subMindMappings[dataName].listener(data)}
-                >
-                    {
-                        subMindMappings[dataName].button
-                    }
-                </button>
-            }
-        </div>
-    }
-
-    function enableChecker(data: IMastery | IPower | ISpell): [boolean, string] {
-        if (subMindMappings[dataName].capacity === subMindMappings[dataName].posessed) {
-            return [false, 'Your mind cannot contain any more ' + dataName]
-        }
-
-        const posessedCheck = memberMind.includes(data.name);
-        if (posessedCheck) {
-            return [false, 'Already posessed']
-        }
-        
-        const requiredMasteryCheck = !!data.requiredMastery ? 
-            memberMind.includes(data.requiredMastery.name) :
-            true;
-            
-        if (!requiredMasteryCheck) {
-            return [false, 'Does not have required mastery']
-        }
-
-        return [true, '']
-    }
-
     return (
         <div className={styles.SubMindScreen}>
             <h3 className={styles.SubMindScreen_header}>
@@ -107,7 +65,15 @@ function SubMindScreen(props: {
                     dataAllNames && dataAllNames.map(name => {
                         const data = dataAll[name];
                         
-                        return <SubMindScreenItem data={data}/>
+                        return <SubMindScreenItem 
+                            data={data}
+                            buttonText={subMindMappings[dataName].button}
+                            listener={subMindMappings[dataName].listener}
+                            dataName={dataName}
+                            memberMind={memberMind}
+                            capacity={subMindMappings[dataName].capacity}
+                            posessed={subMindMappings[dataName].posessed}
+                        />
                     })
                 }
             </div>            

@@ -11,14 +11,14 @@ import {
 import { upperCaseFirstLetter } from '../../pages/PopupPages/MainPage';
 import CommonIcon from '../Icons/CommonIcon';
 import gameSquad from '../../redux/slices/gameSquad';
-import { backpacksCapability } from '../../helpers/backpacksPutter';
-import priorityChecker from '../../helpers/priorityChecker';
 import { 
     InventoryOption, 
     UserResource, 
     InventoryOptionPart, 
     InventoryPlace 
 } from '../../enums-and-interfaces/enums';
+import { subInventoryEnableChecker } from '../../helpers/enableCheckers';
+import SubInventoryScreenItemLine from './SubInventoryScreenItemLine';
 
 function SubInventoryScreen(props: {
     dataName: InventoryOption
@@ -89,71 +89,6 @@ function SubInventoryScreen(props: {
         data_for_legs: dataArray.filter(item => item.inventoryPlace === InventoryPlace.legs)
     }
 
-    const keyToTitle = (key: string) => {
-        let keyArray = key.split('_')
-            .filter((value, index) => index !== 0)
-            .map(value => upperCaseFirstLetter(value));
-
-        return keyArray.join(' ')
-    }
-
-    const InventorySlotLine = (props: {
-        data: IInventorySlot[],
-        title: string
-    }) => {
-        const {data, title} = props;
-        return <div className={styles.inventorySlotLine}>
-            <div className={styles.inventorySlotLine_header}>
-                {keyToTitle(title)}
-            </div>
-            {
-                data && data.map(datum => <SubInventoryScreen datum={datum}/>)
-            }
-        </div>
-    }
-
-    function SubInventoryScreen(props: {
-        datum: IItem | IMutation | ICyber
-    }) {
-        const {datum} = props;
-        const [enabled, disableReason] = enableChecker(datum);
-
-        return <div className={styles.commonIconWithButton}>
-            <CommonIcon item={datum} disableReason={disableReason}/>
-            {
-                <button
-                    disabled={!enabled}
-                    onClick={() => subInventoryMappings[dataName].listener(datum)}
-                >
-                    {
-                        subInventoryMappings[dataName].button
-                    }
-                </button>
-            }
-        </div>
-    }
-
-    function enableChecker(data: IItem | IMutation | ICyber): [boolean, string] {
-        const resourceCheck = resource >= data.cost;
-        if (!resourceCheck) {
-            return [false, 'Not enough resouces']
-        }
-
-        if (dataName === 'items') {
-            const backpacksCapabilityCheck = currentBackpacksItemsAmount < backpacksCapability(members);
-            if (!backpacksCapabilityCheck) {
-                return [false, 'Not enough space in backpacks']
-            }
-        } else {
-            const priorityCheck = priorityChecker(data);
-            if (!priorityCheck) {
-                return [false, 'Better equipment in use']
-            }
-        }
-
-        return [true, ''] 
-    }
-
     return (
         <div className={styles.SubInventoryScreen}>
             <h3 className={styles.SubInventoryScreen_header}>
@@ -168,9 +103,15 @@ function SubInventoryScreen(props: {
                             return null
                         }
 
-                        return <InventorySlotLine 
+                        return <SubInventoryScreenItemLine 
                             data={dataSpecified[key]}
                             title={key}
+                            dataName={dataName}
+                            resource={resource}
+                            currentBackpacksItemsAmount={currentBackpacksItemsAmount}
+                            members={members}
+                            listener={subInventoryMappings[dataName].listener}
+                            buttonText={subInventoryMappings[dataName].button}
                         />
                     })
                 }

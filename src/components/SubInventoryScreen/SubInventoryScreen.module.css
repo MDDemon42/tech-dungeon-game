@@ -20,17 +20,24 @@
     max-height: 75vh;
 }
 
-.inventorySlotLine {
+.SubInventoryScreenItemLine {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 
-.inventorySlotLine_header {
+.SubInventoryScreenItemLine_header {
     min-width: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.SubInventoryScreenItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }

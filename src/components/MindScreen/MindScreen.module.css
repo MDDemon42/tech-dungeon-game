@@ -18,3 +18,10 @@
     /* flex-wrap: wrap; */
     justify-content: space-around;
 }
+
+.MindScreen_datum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}

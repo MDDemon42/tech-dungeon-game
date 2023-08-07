@@ -25,7 +25,7 @@ function MindScreen(props: {
                 {
                     common && Array.isArray(common) && common.length > 0 ?
                         common.map((item: ICommon) => (
-                            <div className={styles.commonIconWithButton}>
+                            <div className={styles.MindScreen_datum}>
                                 <CommonIcon item={item}/>
                             </div>
                         )) :

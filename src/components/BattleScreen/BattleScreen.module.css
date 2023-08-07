@@ -37,6 +37,13 @@
     justify-content: center;
 }
 
+.BattleScreen_body_abilitiesBlock_abilities_icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .BattleScreen_body_abilitiesBlock_button {
     position: relative;
     right: 0;
