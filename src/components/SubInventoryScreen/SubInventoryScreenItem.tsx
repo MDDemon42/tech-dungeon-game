@@ -10,14 +10,14 @@ function SubInventoryScreenItem(props: {
 }) {
     const {datum} = props;
     const {
-        dataName, resource, members, listener,
-        currentBackpacksItemsAmount, buttonText
+        dataName, resource, listener,
+        buttonText,
+        currentBackpacksItemsAmount, 
     } = useContext(SubInventoryScreenItemContext);
     
     const [enabled, disableReason] = subInventoryEnableChecker(
         datum, dataName, resource,
-        currentBackpacksItemsAmount, 
-        members
+        currentBackpacksItemsAmount
     );
 
     return <div className={styles.SubInventoryScreenItem}>

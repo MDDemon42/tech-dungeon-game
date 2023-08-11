@@ -3,11 +3,11 @@ import {
     ICharacher, 
     ICharacherParams, 
     ICharacterGeneral, 
+    ICyber, 
     IInventory, 
     IItem, 
     IMastery, 
     IMind, 
-    IMutation, 
     IPower, 
     ISpell
 } from "../enums-and-interfaces/interfaces";
@@ -98,7 +98,7 @@ export function createEmptyInventory(): IInventory {
     return inventory
 }
 
-export function createNoItem(): IMutation & IItem {
+export function createNoItem(): ICyber & IItem {
     return {
         name: 'Nothing yet',
         description: 'Nothing at all',
@@ -109,6 +109,7 @@ export function createNoItem(): IMutation & IItem {
         requiredMastery: null,
         ability: null,
         linkedMastery: null,
-        masterAbilities: null
+        masterAbilities: null,
+        requiredCyber: null
     }    
 }

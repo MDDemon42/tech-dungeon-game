@@ -1,7 +1,8 @@
 import { InventoryOption, MindOption } from "../enums-and-interfaces/enums";
-import { ICharacher, ICyber, IItem, IMastery, IMutation, IPower, ISpell } from "../enums-and-interfaces/interfaces";
-import { backpacksCapability } from "./backpacksPutter";
+import { ICyber, IItem, IMastery, IMutation, IPower, ISpell } from "../enums-and-interfaces/interfaces";
+import { getBackpacksCapability } from "./backpacksPutter";
 import priorityChecker from "./priorityChecker";
+import store from "../redux/store";
 
 export function subMindEnableChecker(
     data: IMastery | IPower | ISpell,
@@ -34,23 +35,43 @@ export function subInventoryEnableChecker(
     data: IItem | IMutation | ICyber,
     dataName: InventoryOption,
     resource: number,
-    currentBackpacksItemsAmount: number,
-    members: Record<string, ICharacher>
+    currentBackpacksItemsAmount: number
 ): [boolean, string] {
     const resourceCheck = resource >= data.cost;
     if (!resourceCheck) {
         return [false, 'Not enough resouces']
     }
 
+    const members = store.getState().gameSquad.squadMembers;
     if (dataName === InventoryOption.items) {
-        const backpacksCapabilityCheck = currentBackpacksItemsAmount < backpacksCapability(members);
-        if (!backpacksCapabilityCheck) {
+        const getBackpacksCapabilityCheck = currentBackpacksItemsAmount < getBackpacksCapability(members);
+        if (!getBackpacksCapabilityCheck) {
             return [false, 'Not enough space in backpacks']
         }
     } else {
         const priorityCheck = priorityChecker(data);
         if (!priorityCheck) {
             return [false, 'Better equipment in use']
+        }
+    }
+
+    if (dataName === InventoryOption.cybers) {
+        const index = store.getState().gameSquad.currentlyWatched;
+        const member = members[index];
+        const memberInventory = member.general.inventory;
+        const memberInventoryNames: string[] = [];
+        for (let data in memberInventory) {
+            memberInventoryNames.push(memberInventory[data].name)
+        };
+
+        // @ts-expect-error
+        const requiredCyberCheck = !!data.requiredCyber ?
+            // @ts-expect-error
+            memberInventoryNames.includes(data.requiredCyber.name) :
+            true;
+
+        if (!requiredCyberCheck) {
+            return [false, 'Does not have required cyber']
         }
     }
 

@@ -19,7 +19,8 @@ export function createCyber(
         ability: IAbility | null,
         linkedMastery: IMastery | null,
         masterAbilities: IAbility[] | null
-    ]
+    ],
+    requiredCyber: ICyber | null
 ): ICyber {
     return {
         name: commonInfo[0],
@@ -32,7 +33,9 @@ export function createCyber(
 
         ability: abilityInfo[0],
         linkedMastery: abilityInfo[1],
-        masterAbilities: abilityInfo[2]
+        masterAbilities: abilityInfo[2],
+
+        requiredCyber
     }
 }
 

@@ -12,7 +12,7 @@ import {
 import mutations from '../../general/mutations';
 import masteries from '../../general/masteries/masteries';
 import checkRace from '../../general/races/checkRace';
-import putItemInBackpacks from '../../helpers/backpacksPutter';
+import putItemInBackpacks, { getBackpacksCapability } from '../../helpers/backpacksPutter';
 import { 
     UserResource, 
     UserParam, 
@@ -164,10 +164,10 @@ const gameSquad = createSlice({
         buyItem(state, action) {
             const backpacks = {...state.squadBackpacks};
             const members = {...state.squadMembers};
-            
+            const maxItemsAmount = getBackpacksCapability(members);
             backpacks.resources[UserResource.gem] -= action.payload.cost;
 
-            backpacks.items = [...putItemInBackpacks(members, backpacks.items, action.payload)];           
+            backpacks.items = [...putItemInBackpacks(backpacks.items, action.payload, maxItemsAmount)];           
 
             state.squadBackpacks = backpacks;
         },
@@ -379,10 +379,7 @@ const gameSquad = createSlice({
 
             Object.keys(squad).forEach(key => {
                 if (!!squad[key]) {
-                    squad[key]!.params.currentParams.Focus = squad[key]!.params.maxParams.Focus;
-                    squad[key]!.params.currentParams.Mana = squad[key]!.params.maxParams.Mana;
-                    squad[key]!.params.currentParams.Stamina = squad[key]!.params.maxParams.Stamina;
-                    squad[key]!.params.currentParams[UserParam.health] = squad[key]!.params.maxParams[UserParam.health];
+                    squad[key]!.params.currentParams = {...squad[key]!.params.maxParams};
                 }
             });
 

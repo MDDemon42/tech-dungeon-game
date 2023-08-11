@@ -6,8 +6,7 @@ import {
     ICyber, 
     IItem,  
     IInventorySlot, 
-    ISubInventoryMapping,
-    ICharacher,
+    ISubInventoryMapping
 } from '../../enums-and-interfaces/interfaces';
 import gameSquad from '../../redux/slices/gameSquad';
 import { 
@@ -23,7 +22,6 @@ export const SubInventoryScreenItemContext = createContext({
     dataName: '' as InventoryOption,
     resource: 0 as number,
     currentBackpacksItemsAmount: 0 as number,
-    members: {} as Record<string, ICharacher>,
     listener: (datum: IItem | IMutation | ICyber) => {},
     buttonText: '' as string
 });
@@ -31,8 +29,8 @@ export const SubInventoryScreenItemContext = createContext({
 function SubInventoryScreen(props: {
     dataName: InventoryOption
 }) {
-    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
-    const members = useSelector((store: IStore) => store.gameSquad.squadMembers);
+    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);    
+
     const currentBackpacksItemsAmount = useSelector((store: IStore) => store.gameSquad.squadBackpacks.items.length);
 
     const {dataName} = props;
@@ -97,11 +95,11 @@ function SubInventoryScreen(props: {
         data_for_legs: dataArray.filter(item => item.inventoryPlace === InventoryPlace.legs)
     }
 
+
     const SubInventoryScreenItemContextData = {
         dataName,
         resource,
         currentBackpacksItemsAmount,
-        members,
         listener: subInventoryMappings[dataName].listener,
         buttonText: subInventoryMappings[dataName].button
     }

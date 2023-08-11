@@ -13,7 +13,8 @@ const cyber_reactiveFeet = createCyber(
     ],
     [
         null, null, null
-    ]
+    ],
+    null
 )
 
 const other = {

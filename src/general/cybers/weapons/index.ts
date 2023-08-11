@@ -2,6 +2,21 @@ import { createCyber } from "..";
 import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
 
+const cyber_powerFist = createCyber(
+    [
+        'Power fist', 
+        'Cyber to give ultimate punches',
+        images.cyborgDetails.powerFist
+    ],
+    [
+        1, InventoryPlace.rightHand, 5
+    ],
+    [
+        null, null, null
+    ], 
+    null
+)
+
 const cyber_energyWhip = createCyber(
     [
         'Energy whip', 
@@ -13,7 +28,8 @@ const cyber_energyWhip = createCyber(
     ],
     [
         null, null, null
-    ]
+    ],
+    cyber_powerFist
 )
 
 const cyber_laser = createCyber(
@@ -27,21 +43,8 @@ const cyber_laser = createCyber(
     ],
     [
         null, null, null
-    ]
-)
-
-const cyber_powerFist = createCyber(
-    [
-        'Power fist', 
-        'Cyber to give ultimate punches',
-        images.cyborgDetails.powerFist
     ],
-    [
-        1, InventoryPlace.rightHand, 5
-    ],
-    [
-        null, null, null
-    ]
+    null
 )
 
 const cyber_rocket = createCyber(
@@ -55,7 +58,8 @@ const cyber_rocket = createCyber(
     ],
     [
         null, null, null
-    ]
+    ],
+    null
 )
 
 const weapons = {

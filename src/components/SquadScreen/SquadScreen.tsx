@@ -5,7 +5,7 @@ import ProfileScreen from '../ProfileScreen/ProfileScreen';
 import BackpacksScreen from '../BackpacksScreen/BackpacksScreen';
 import images from '../../images/images';
 import {BoxSeam, BoxSeamFill} from 'react-bootstrap-icons';
-import { backpacksCapability } from '../../helpers/backpacksPutter';
+import { getBackpacksCapability } from '../../helpers/backpacksPutter';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
@@ -34,7 +34,7 @@ function SquadScreen() {
 
     const currentBackpacksItemsAmount = useSelector((store: IStore) => store.gameSquad.squadBackpacks.items.length);
 
-    const backpacksFullCheck = currentBackpacksItemsAmount < backpacksCapability(squad);
+    const backpacksFullCheck = currentBackpacksItemsAmount < getBackpacksCapability(squad);
     
     const user = squad[index]!; 
 

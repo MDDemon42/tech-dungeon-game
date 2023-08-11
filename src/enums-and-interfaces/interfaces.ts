@@ -140,6 +140,7 @@ export interface IInventory extends Record<string, IItem | ICyber | IMutation> {
 }
 
 export interface ICyber extends IMutation {
+    requiredCyber: ICyber | null
 }
 
 export interface IMutation extends IInventorySlot {
