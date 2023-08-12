@@ -12,9 +12,9 @@ const cyber_nanoVest = createCyber(
         1, InventoryPlace.skin, 2
     ],
     [
-        null, null, null
+        null, '', null
     ],
-    null
+    ''
 )
 
 const cyber_nanoMatrix = createCyber(
@@ -27,9 +27,9 @@ const cyber_nanoMatrix = createCyber(
         2, InventoryPlace.skin, 3
     ],
     [
-        null, null, null
+        null, '', null
     ],
-    cyber_nanoVest
+    cyber_nanoVest.name
 )
 
 const armors = {

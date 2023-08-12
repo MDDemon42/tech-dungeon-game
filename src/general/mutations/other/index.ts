@@ -12,7 +12,7 @@ const mutation_wings = createMutation(
         1, InventoryPlace.back, 3
     ],
     [
-        null, null, null
+        null, '', null
     ]
 )
 
@@ -26,7 +26,7 @@ const mutation_hooves = createMutation(
         1, InventoryPlace.legs, 1
     ],
     [
-        null, null, null
+        null, '', null
     ]
 )
 

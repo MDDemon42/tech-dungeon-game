@@ -108,16 +108,18 @@ export interface IMind {
     [MindOption.spells]: ISpell[]
 }
 
-export interface ISpell extends IPower {
+export interface ISpell extends IMastery {
+    ability: IAbility | null,
     requiresRod: boolean
 }
 
 export interface IPower extends IMastery {
-    ability: IAbility | null
+    ability: IAbility | null,
+    requiredPower: string
 }
 
 export interface IMastery extends ICommon {
-    requiredMastery: IMastery | null
+    requiredMastery: string
 }
 
 // inventory options //
@@ -140,14 +142,14 @@ export interface IInventory extends Record<string, IItem | ICyber | IMutation> {
 }
 
 export interface ICyber extends IMutation {
-    requiredCyber: ICyber | null
+    requiredCyber: string
 }
 
 export interface IMutation extends IInventorySlot {
 }
 
 export interface IItem extends IInventorySlot {
-    requiredMastery: IMastery | null
+    requiredMastery: string
 }
 
 export interface IInventorySlot extends ICommon {
@@ -156,7 +158,7 @@ export interface IInventorySlot extends ICommon {
     priority: number,
 
     ability: IAbility | null,
-    linkedMastery: IMastery | null,
+    linkedMastery: string,
     masterAbilities: IAbility[] | null
 }
 

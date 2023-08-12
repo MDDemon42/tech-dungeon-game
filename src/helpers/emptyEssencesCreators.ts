@@ -106,10 +106,10 @@ export function createNoItem(): ICyber & IItem {
         inventoryPlace: InventoryPlace.belt,
         image: images.classIcons.noIcon,
         priority: 0,
-        requiredMastery: null,
+        requiredMastery: '',
         ability: null,
-        linkedMastery: null,
+        linkedMastery: '',
         masterAbilities: null,
-        requiredCyber: null
+        requiredCyber: ''
     }    
 }

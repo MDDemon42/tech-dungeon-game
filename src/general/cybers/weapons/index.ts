@@ -12,9 +12,9 @@ const cyber_powerFist = createCyber(
         1, InventoryPlace.rightHand, 5
     ],
     [
-        null, null, null
+        null, '', null
     ], 
-    null
+    ''
 )
 
 const cyber_energyWhip = createCyber(
@@ -27,9 +27,9 @@ const cyber_energyWhip = createCyber(
         2, InventoryPlace.rightHand, 6
     ],
     [
-        null, null, null
+        null, '', null
     ],
-    cyber_powerFist
+    cyber_powerFist.name
 )
 
 const cyber_laser = createCyber(
@@ -42,9 +42,9 @@ const cyber_laser = createCyber(
         1, InventoryPlace.leftHand, 5
     ],
     [
-        null, null, null
+        null, '', null
     ],
-    null
+    ''
 )
 
 const cyber_rocket = createCyber(
@@ -57,9 +57,9 @@ const cyber_rocket = createCyber(
         1, InventoryPlace.shoulders, 2
     ],
     [
-        null, null, null
+        null, '', null
     ],
-    null
+    ''
 )
 
 const weapons = {

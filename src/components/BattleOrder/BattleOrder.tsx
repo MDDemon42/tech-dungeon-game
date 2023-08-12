@@ -57,8 +57,10 @@ function BattleOrder(props: {
             flexDirection: vertical ? 'column' : 'row'
         }}>
             {
-                [...Array(paramAmount)]
-                    .map(icon => <ParamIcon param={paramName}/>)
+                paramAmount ?
+                    [...Array(paramAmount)]
+                        .map(icon => <ParamIcon param={paramName}/>) :
+                    <ParamIcon param='blank'/>
             }
         </div>
     }

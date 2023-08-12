@@ -12,9 +12,9 @@ const cyber_reactiveFeet = createCyber(
         1, InventoryPlace.legs, 2
     ],
     [
-        null, null, null
+        null, '', null
     ],
-    null
+    ''
 )
 
 const other = {

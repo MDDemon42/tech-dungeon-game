@@ -21,11 +21,23 @@ export function subMindEnableChecker(
     }
     
     const requiredMasteryCheck = !!data.requiredMastery ? 
-        memberMind.includes(data.requiredMastery.name) :
+        memberMind.includes(data.requiredMastery) :
         true;
         
     if (!requiredMasteryCheck) {
         return [false, 'Does not have required mastery']
+    }
+
+    if (dataName === MindOption.powers) {
+        // @ts-expect-error
+        const requiredPowerCheck = !!data.requiredPower ?
+            // @ts-expect-error
+            memberMind.includes(data.requiredPower) :
+            true;
+
+        if (!requiredPowerCheck) {
+            return [false, 'Does not have required power']
+        }
     }
 
     return [true, '']
@@ -67,7 +79,7 @@ export function subInventoryEnableChecker(
         // @ts-expect-error
         const requiredCyberCheck = !!data.requiredCyber ?
             // @ts-expect-error
-            memberInventoryNames.includes(data.requiredCyber.name) :
+            memberInventoryNames.includes(data.requiredCyber) :
             true;
 
         if (!requiredCyberCheck) {

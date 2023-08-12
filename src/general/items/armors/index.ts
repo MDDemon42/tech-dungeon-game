@@ -13,8 +13,8 @@ const item_apprenticeHat = createItem(
         1, InventoryPlace.head, 1
     ],
     [
-        masteries.mastery_scholarship,
-        null, null, null
+        masteries.mastery_scholarship.name,
+        null, '', null
     ]
 )
 
@@ -28,7 +28,7 @@ const item_flyingCape = createItem(
         2, InventoryPlace.back, 2
     ],
     [
-        null, null, null, null
+        '', null, '', null
     ]
 )
 
@@ -42,8 +42,8 @@ const item_magisterHat = createItem(
         2, InventoryPlace.head, 2
     ],
     [
-        masteries.mastery_magisterDegree,
-        null, null, null
+        masteries.mastery_magisterDegree.name,
+        null, '', null
     ]
 )
 
@@ -57,8 +57,8 @@ const item_magisterRobe = createItem(
         2, InventoryPlace.armor, 2
     ],
     [
-        masteries.mastery_magisterDegree,
-        null, null, null
+        masteries.mastery_magisterDegree.name,
+        null, '', null
     ]
 )
 
@@ -72,7 +72,7 @@ const item_leatherArmor = createItem(
         1, InventoryPlace.armor, 1
     ],
     [
-        null, null, null, null
+        '', null, '', null
     ]
 )
 
@@ -86,8 +86,8 @@ const item_steelArmor = createItem(
         2, InventoryPlace.armor, 2
     ],
     [
-        masteries.mastery_brutalForce, 
-        null, null, null
+        masteries.mastery_brutalForce.name, 
+        null, '', null
     ]
 )
 
@@ -101,7 +101,7 @@ const item_steelShield = createItem(
         1, InventoryPlace.leftHand, 1
     ],
     [
-        null, null, null, null
+        '', null, '', null
     ]
 )
 

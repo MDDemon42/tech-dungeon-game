@@ -17,7 +17,7 @@ export function createMutation(
     ],
     abilityInfo: [
         ability: IAbility | null,
-        linkedMastery: IMastery | null,
+        linkedMastery: string,
         masterAbilities: IAbility[] | null
     ]
 ): IMutation {

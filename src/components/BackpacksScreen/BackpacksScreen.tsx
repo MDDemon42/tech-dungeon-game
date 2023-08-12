@@ -58,7 +58,7 @@ function BackpacksScreen() {
     
     function enableChecker(item: IItem): [boolean, string] {
         const requiredMasteryCheck = !!item.requiredMastery ? 
-            masteriesUser.includes(item.requiredMastery.name) :
+            masteriesUser.includes(item.requiredMastery) :
             true;
 
         if (!requiredMasteryCheck) {

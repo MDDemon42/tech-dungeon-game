@@ -10,7 +10,9 @@ function CommonIcon(props: {
         description: string,
         value?: number,
         cost?: number,
-        requiredMastery?: IMastery | null,
+        requiredMastery?: string,
+        requiredPower?: string,
+        requiredCyber?: string,
         passive?: boolean,
         inventoryPlace?: InventoryPlace
         costs?: {
@@ -51,7 +53,15 @@ function CommonIcon(props: {
     }
 
     if (item.requiredMastery) {
-        description += '\nRequired mastery: ' + item.requiredMastery.name;
+        description += '\nRequired mastery: ' + item.requiredMastery;
+    }
+
+    if (item.requiredPower) {
+        description += '\nRequired power: ' + item.requiredPower;
+    }
+
+    if (item.requiredCyber) {
+        description += '\nRequired cyber: ' + item.requiredCyber;
     }
 
     if (item.passive) {
@@ -77,6 +87,8 @@ function CommonIcon(props: {
     if (item.targetAmount) {
         description += '\nTarget amount: ' + item.targetAmount;
     }
+
+
 
     if (!!disableReason) {
         description += '\n\nNot allowed: ' + disableReason;

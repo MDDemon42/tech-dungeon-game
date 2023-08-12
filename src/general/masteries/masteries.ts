@@ -7,7 +7,7 @@ function createMastery(
         description: string,
         image: string
     ],
-    requiredMastery: IMastery | null
+    requiredMastery: string
 ): IMastery {
     return {
         name: commonInfo[0],
@@ -24,7 +24,7 @@ const mastery_archery = createMastery(
         'Mastery in not missing shooting with bow',
         images.normalItems.bow
     ],
-    null
+    ''
 )
 
 const mastery_marksmanship = createMastery(
@@ -33,7 +33,7 @@ const mastery_marksmanship = createMastery(
         'Mastery in not missing shooting with crossbow',
         images.normalItems.crossbow
     ],
-    null
+    ''
 )
 
 const mastery_swordsmanship = createMastery(
@@ -42,7 +42,7 @@ const mastery_swordsmanship = createMastery(
         'Mastery in slashing and stabbing with efficiency',
         images.normalItems.sword
     ],
-    null
+    ''
 )
 
 const mastery_dualSwords = createMastery(
@@ -51,7 +51,7 @@ const mastery_dualSwords = createMastery(
         'Mastery in slashing and stabbing with swords in both hands',
         images.guildianLearnings.dualSwords
     ],
-    mastery_swordsmanship
+    mastery_swordsmanship.name
 )
 
 const mastery_brutalForce = createMastery(
@@ -60,7 +60,7 @@ const mastery_brutalForce = createMastery(
         'Mastery in smashing and beheading your enemies',
         images.guildianLearnings.brutalForce
     ],
-    null
+    ''
 )
 
 const mastery_bombThrowing = createMastery(
@@ -69,7 +69,7 @@ const mastery_bombThrowing = createMastery(
         'Mastery in throwing bombs accurately',
         images.normalItems.acidBomb
     ],
-    null
+    ''
 )
 
 const mastery_chakramThrowing = createMastery(
@@ -78,7 +78,7 @@ const mastery_chakramThrowing = createMastery(
         'Mastery in throwing chakram at multiple enemies',
         images.guildianLearnings.chakram
     ],
-    null
+    ''
 )
 
 const mastery_runicWeapons = createMastery(
@@ -87,7 +87,7 @@ const mastery_runicWeapons = createMastery(
         'Mastery in activating runes on weapons',
         images.guildianLearnings.runicSword
     ],
-    null
+    ''
 )
 
 const mastery_scholarship = createMastery(
@@ -96,7 +96,7 @@ const mastery_scholarship = createMastery(
         'Mastery to read really boring books',
         images.wizardItems.apprenticeHat
     ],
-    null
+    ''
 )
 
 const mastery_magisterDegree = createMastery(
@@ -105,7 +105,7 @@ const mastery_magisterDegree = createMastery(
         'Mastery of knowing everything but living',
         images.wizardItems.magisterHat
     ],
-    mastery_scholarship
+    mastery_scholarship.name
 )
 
 const mastery_meditativeInsights = createMastery(
@@ -114,7 +114,7 @@ const mastery_meditativeInsights = createMastery(
         'Mastery to gain control over inner powers',
         images.psionInsights.intuition
     ],
-    null
+    ''
 )
 
 const mastery_psiEnergy = createMastery(
@@ -123,7 +123,7 @@ const mastery_psiEnergy = createMastery(
         'Mastery to gain control over psi-energy',
         images.psionInsights.psiLightning
     ],
-    mastery_meditativeInsights
+    mastery_meditativeInsights.name
 )
 
 const masteries = {

@@ -14,8 +14,8 @@ const item_apprenticeRod = createItem(
         1, InventoryPlace.bothHands, 2
     ],
     [
-        masteries.mastery_scholarship,
-        null, null, null
+        masteries.mastery_scholarship.name,
+        null, '', null
     ]
 )
 
@@ -29,8 +29,8 @@ const item_magisterScepter = createItem(
         2, InventoryPlace.bothHands, 3
     ],
     [
-        masteries.mastery_magisterDegree,
-        null, null, null
+        masteries.mastery_magisterDegree.name,
+        null, '', null
     ]
 )
 
@@ -44,8 +44,8 @@ const item_steelSwordRightHand = createItem(
         1, InventoryPlace.rightHand, 1
     ],
     [
-        null, abilities.battleAbilities.melee.battleAbility_swordSlash,
-        masteries.mastery_swordsmanship,
+        '', abilities.battleAbilities.melee.battleAbility_swordSlash,
+        masteries.mastery_swordsmanship.name,
         [abilities.battleAbilities.melee.battleAbility_masterSwordSlash]
     ]
 )
@@ -60,9 +60,9 @@ const item_steelSwordLeftHand = createItem(
         1, InventoryPlace.leftHand, 1
     ],
     [
-        masteries.mastery_dualSwords,
+        masteries.mastery_dualSwords.name,
         abilities.battleAbilities.melee.battleAbility_leftHandSwordSlash,
-        masteries.mastery_swordsmanship,
+        masteries.mastery_swordsmanship.name,
         [abilities.battleAbilities.melee.battleAbility_masterSwordSlash]
     ]
 )
@@ -77,9 +77,9 @@ const item_steelGreataxe = createItem(
         2, InventoryPlace.bothHands, 2
     ],
     [
-        masteries.mastery_brutalForce,
+        masteries.mastery_brutalForce.name,
         abilities.battleAbilities.melee.battleAbility_greataxeSlash,
-        null, null
+        '', null
     ]
 )
 
@@ -93,9 +93,9 @@ const item_runicGreatsword = createItem(
         2, InventoryPlace.bothHands, 2
     ],
     [
-        masteries.mastery_brutalForce,
+        masteries.mastery_brutalForce.name,
         abilities.battleAbilities.melee.battleAbility_greatswordSlash,
-        masteries.mastery_runicWeapons,
+        masteries.mastery_runicWeapons.name,
         [
             abilities.battleAbilities.melee.battleAbility_greatswordSlash,
             abilities.battleAbilities.magic.battleAbility_runicGreatswordSlash
@@ -113,8 +113,8 @@ const item_oakBow = createItem(
         1, InventoryPlace.bothHands, 2
     ],
     [
-        null, abilities.battleAbilities.ranged.battleAbility_oakBowShot,
-        masteries.mastery_archery,
+        '', abilities.battleAbilities.ranged.battleAbility_oakBowShot,
+        masteries.mastery_archery.name,
         [abilities.battleAbilities.ranged.battleAbility_masterOakBowShot]
     ]
 )
@@ -129,8 +129,8 @@ const item_oakCrossow = createItem(
         2, InventoryPlace.bothHands, 2
     ],
     [
-        null, abilities.battleAbilities.ranged.battleAbility_crossbowShot,
-        masteries.mastery_marksmanship,
+        '', abilities.battleAbilities.ranged.battleAbility_crossbowShot,
+        masteries.mastery_marksmanship.name,
         [abilities.battleAbilities.ranged.battleAbility_masterCrossbowShot]
     ]
 )
@@ -145,8 +145,8 @@ const item_steelChakram = createItem(
         2, InventoryPlace.leftHand, 1
     ],
     [
-        null, abilities.battleAbilities.melee.battleAbility_chakramSlash,
-        masteries.mastery_chakramThrowing,
+        '', abilities.battleAbilities.melee.battleAbility_chakramSlash,
+        masteries.mastery_chakramThrowing.name,
         [
             abilities.battleAbilities.melee.battleAbility_masterChakramSlash,
             abilities.battleAbilities.ranged.battleAbility_chakramThrow
@@ -164,8 +164,8 @@ const item_acidBomd = createItem(
         1, InventoryPlace.rightPocket, 1
     ],
     [
-        null, abilities.battleAbilities.ranged.battleAbility_acidBombThrow,
-        masteries.mastery_bombThrowing, 
+        '', abilities.battleAbilities.ranged.battleAbility_acidBombThrow,
+        masteries.mastery_bombThrowing.name, 
         [abilities.battleAbilities.ranged.battleAbility_masterAcidBombThrow]
     ]
 )

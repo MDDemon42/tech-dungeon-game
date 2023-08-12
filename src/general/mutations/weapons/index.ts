@@ -12,7 +12,7 @@ const mutation_acidSplit = createMutation(
         1, InventoryPlace.chin, 2
     ],
     [
-        null, null, null
+        null, '', null
     ]
 )
 
@@ -26,7 +26,7 @@ const mutation_lowerFangs = createMutation(
         1, InventoryPlace.chin, 1
     ],
     [
-        null, null, null
+        null, '', null
     ]
 )
 
@@ -40,7 +40,7 @@ const mutation_claws = createMutation(
         1, InventoryPlace.bothHands, 4
     ],
     [
-        null, null, null
+        null, '', null
     ]
 )
 
@@ -54,7 +54,7 @@ const mutation_clawLeft = createMutation(
         1, InventoryPlace.leftHand, 4
     ],
     [
-        null, null, null
+        null, '', null
     ]    
 )
 
@@ -68,7 +68,7 @@ const mutation_clawRight = createMutation(
         1, InventoryPlace.rightHand, 4
     ],
     [
-        null, null, null
+        null, '', null
     ]
 )
 
@@ -82,7 +82,7 @@ const mutation_horns = createMutation(
         1, InventoryPlace.head, 3
     ],
     [
-        null, null, null
+        null, '', null
     ]
 )
 
@@ -96,7 +96,7 @@ const mutation_tail = createMutation(
         1, InventoryPlace.tail, 1
     ],
     [
-        null, null, null
+        null, '', null
     ]
 )
 
@@ -110,7 +110,7 @@ const mutation_pincers = createMutation(
         1, InventoryPlace.shoulders, 1
     ],
     [
-        null, null, null
+        null, '', null
     ]
 )
 

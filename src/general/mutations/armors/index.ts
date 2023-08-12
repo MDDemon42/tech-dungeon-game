@@ -12,7 +12,7 @@ const mutation_scales = createMutation(
         1, InventoryPlace.skin, 1
     ],
     [
-        null, null, null
+        null, '', null
     ]
 )
 

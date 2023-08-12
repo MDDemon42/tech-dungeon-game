@@ -16,9 +16,9 @@ export function createItem(
         priority: number
     ],
     abilityInfo: [
-        requiredMastery: IMastery | null,
+        requiredMastery: string,
         ability: IAbility | null,
-        linkedMastery: IMastery | null,
+        linkedMastery: string,
         masterAbilities: IAbility[] | null
     ]
 ): IItem {

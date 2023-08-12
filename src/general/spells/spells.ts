@@ -10,7 +10,7 @@ function createSpell(
         image: string
     ],
     abilityInfo: [
-        requiredMastery: IMastery | null,
+        requiredMastery: string,
         requiresRod: boolean,
         ability: IAbility | null
     ]
@@ -33,7 +33,7 @@ const spell_multistrike = createSpell(
         images.guildianLearnings.multistrike
     ],
     [
-        masteries.mastery_swordsmanship,
+        masteries.mastery_swordsmanship.name,
         false,
         null
     ]
@@ -46,7 +46,7 @@ const spell_titanSkin = createSpell(
         images.guildianLearnings.titanSkinRitual
     ],
     [
-        masteries.mastery_magisterDegree,
+        masteries.mastery_magisterDegree.name,
         false,
         null
     ]
@@ -59,7 +59,7 @@ const spell_defensiveCharms = createSpell(
         images.wizardSpells.defensiveCharms
     ],
     [
-        masteries.mastery_scholarship,
+        masteries.mastery_scholarship.name,
         true,
         null
     ]
@@ -72,7 +72,7 @@ const spell_defensiveRunes = createSpell(
         images.wizardSpells.defensiveRunes
     ],
     [
-        masteries.mastery_magisterDegree,
+        masteries.mastery_magisterDegree.name,
         true,
         null
     ]
@@ -85,7 +85,7 @@ const spell_fireball = createSpell(
         images.wizardSpells.fireball
     ],
     [
-        masteries.mastery_magisterDegree,
+        masteries.mastery_magisterDegree.name,
         true,
         abilities.battleAbilities.magic.battleAbility_fireball
     ]
@@ -98,7 +98,7 @@ const spell_flyingCharms = createSpell(
         images.wizardSpells.flyingCharms
     ],
     [
-        masteries.mastery_scholarship,
+        masteries.mastery_scholarship.name,
         true,
         null
     ]
@@ -111,7 +111,7 @@ const spell_golem = createSpell(
         images.wizardSpells.golem
     ],
     [
-        masteries.mastery_magisterDegree,
+        masteries.mastery_magisterDegree.name,
         true,
         null
     ]
@@ -124,7 +124,7 @@ const spell_magicBolt = createSpell(
         images.wizardSpells.magicBolt
     ],
     [
-        masteries.mastery_scholarship,
+        masteries.mastery_scholarship.name,
         true,
         abilities.battleAbilities.magic.battleAbility_magicBolt
     ]
@@ -137,7 +137,7 @@ const spell_teleport = createSpell(
         images.wizardSpells.teleport
     ],
     [
-        masteries.mastery_magisterDegree,
+        masteries.mastery_magisterDegree.name,
         true,
         null
     ]

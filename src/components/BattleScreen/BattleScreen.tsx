@@ -66,7 +66,7 @@ function BattleScreen() {
     Object.keys(inventory).forEach(name => {
         if (inventory[name].ability) {
             if (inventory[name].linkedMastery) {
-                const masteryName = inventory[name].linkedMastery?.name;
+                const masteryName = inventory[name].linkedMastery;
                 if (masteryName && masteriesUser.includes(masteryName)) {
                     abilitiesUser.push(...inventory[name].masterAbilities!);
                 } else {

@@ -10,9 +10,10 @@ function createPower(
         image: string
     ],
     abilityInfo: [
-        requiredMastery: IMastery | null,
+        requiredMastery: string,
         ability: IAbility | null
-    ]
+    ],
+    requiredPower: string
 ): IPower {
     return {
         name: commonInfo[0],
@@ -20,7 +21,9 @@ function createPower(
         image: commonInfo[2],
 
         requiredMastery: abilityInfo[0],
-        ability: abilityInfo[1]
+        ability: abilityInfo[1],
+
+        requiredPower
     }
 }
 
@@ -31,21 +34,10 @@ const power_telekinesis = createPower(
         images.psionInsights.telekinesis
     ],
     [
-        masteries.mastery_meditativeInsights,
+        masteries.mastery_meditativeInsights.name,
         null
-    ]
-)
-
-const power_guardianAura = createPower(
-    [
-        'Guardian aura',
-        'Power to weaken enemy`s attacks aimed at everyone in your squad',
-        images.psionInsights.guardianAura
-    ], 
-    [
-        masteries.mastery_meditativeInsights,
-        null
-    ]
+    ],
+    ''
 )
 
 const power_guardianField = createPower(
@@ -55,9 +47,23 @@ const power_guardianField = createPower(
         images.psionInsights.guardianField
     ], 
     [
-        masteries.mastery_meditativeInsights,
+        masteries.mastery_meditativeInsights.name,
         null
-    ]
+    ],
+    ''
+)
+
+const power_guardianAura = createPower(
+    [
+        'Guardian aura',
+        'Power to weaken enemy`s attacks aimed at everyone in your squad',
+        images.psionInsights.guardianAura
+    ], 
+    [
+        masteries.mastery_meditativeInsights.name,
+        null
+    ],
+    power_guardianField.name
 )
 
 const power_intuition = createPower(
@@ -67,9 +73,10 @@ const power_intuition = createPower(
         images.psionInsights.intuition
     ],
     [
-        masteries.mastery_meditativeInsights,
+        masteries.mastery_meditativeInsights.name,
         null
-    ]
+    ],
+    ''
 )
 
 const power_levitation = createPower(
@@ -79,9 +86,10 @@ const power_levitation = createPower(
         images.psionInsights.levitation
     ],
     [
-        masteries.mastery_meditativeInsights,
+        masteries.mastery_meditativeInsights.name,
         null
-    ]
+    ],
+    ''
 )
 
 const power_psiBlade = createPower(
@@ -91,9 +99,10 @@ const power_psiBlade = createPower(
         images.psionInsights.psiBlade
     ],
     [
-        masteries.mastery_psiEnergy,
+        masteries.mastery_psiEnergy.name,
         abilities.battleAbilities.power.battleAbility_psiBladeSlash
-    ]
+    ],
+    ''
 )
 
 const power_psiLightning = createPower(
@@ -103,9 +112,10 @@ const power_psiLightning = createPower(
         images.psionInsights.psiLightning
     ],
     [
-        masteries.mastery_psiEnergy,
+        masteries.mastery_psiEnergy.name,
         abilities.battleAbilities.power.battleAbility_psiLightning
-    ]
+    ],
+    ''
 )
 
 const powers = {

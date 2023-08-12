@@ -12,7 +12,7 @@ const item_healingPotion = createItem(
         1, InventoryPlace.leftPocket, 1
     ],
     [
-        null, null, null, null
+        '', null, '', null
     ]
 )
 

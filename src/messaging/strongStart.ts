@@ -10,6 +10,8 @@ function actionInCaseStrongStart(tabId: number) {
     const squadBackpacks = {...gameSquad.squadBackpacks};
     const squadMembers = {...gameSquad.squadMembers};
 
+    const masteriesAmount = Object.keys(state.everything.masteries).length;
+
     for (let i in squadMembers) {
         const member = squadMembers[i];
         if (!!member) {
@@ -25,7 +27,7 @@ function actionInCaseStrongStart(tabId: number) {
             memberClone.params.maxParams[UserParam.stamina] = 3;
             memberClone.params.level = memberLevel;
 
-            const maxLevel = 12;
+            const maxLevel = masteriesAmount;
             for (let i = memberLevel; i < maxLevel; i++) {
                 const rand = Math.floor(Math.random()*7);
                 const levelUpParam = classInfo[memberClass].levelUpBonuses[rand];
