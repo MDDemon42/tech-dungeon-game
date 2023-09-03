@@ -1,4 +1,4 @@
-import { ICharacher } from "../../enums-and-interfaces/interfaces";
+import { ICharacher, IMemberStatus } from "../../enums-and-interfaces/interfaces";
 import styles from './BattleOrder.module.css';
 import InventoryScreen from "../InventoryScreen/InventoryScreen";
 import ParamIcon from "../Icons/ParamIcon";
@@ -6,19 +6,34 @@ import { UserParam } from "../../enums-and-interfaces/enums";
 
 function BattleOrder(props: {
     squad: ICharacher[],
+    squadStatus: IMemberStatus[],
     attacker: boolean,
     listener: any
 }) {
-    const {squad, attacker, listener} = props;
+    const {squad, squadStatus, attacker, listener} = props;
 
     function SquadMember(props: {
-        character: ICharacher, 
+        member: ICharacher,
+        memberStatus: IMemberStatus, 
         index: number
     }) {
-        const {character, index} = props;
-        const {currentParams} = character.params;
+        const {member, memberStatus, index} = props;
+        const {currentParams} = member.params;
 
-        return (<div className={styles.BattleOrder_squadMember}>
+        const squadMemberStyles = [styles.BattleOrder_squadMember];
+        if (memberStatus.selected) {
+            squadMemberStyles.push(styles.BattleOrder_squadMember__selected);
+        }
+
+        if (!memberStatus.hasTurn) {
+            squadMemberStyles.push(styles.BattleOrder_squadMember__hasNoTurn);
+        }
+
+        if (memberStatus.dead) {
+            squadMemberStyles.push(styles.BattleOrder_squadMember__dead);
+        }
+
+        return (<div className={squadMemberStyles.join(' ')}>
             <SquadMemberParamLine 
                 paramAmount={currentParams[UserParam.health]}
                 paramName='health'
@@ -32,7 +47,7 @@ function BattleOrder(props: {
                     paramName='mana'
                     vertical={true}
                 />
-                <InventoryScreen character={character} battle={true}/>
+                <InventoryScreen character={member} battle={true}/>
                 <SquadMemberParamLine 
                     paramAmount={currentParams[UserParam.focus]}
                     paramName='focus'
@@ -69,8 +84,12 @@ function BattleOrder(props: {
         <div className={styles.BattleOrder}>
             {
                 squad.map((member, index) => {
-                    if (!!member) {
-                        return <SquadMember character={member} index={index}/>
+                    if (!!member && squadStatus[index]) {
+                        return <SquadMember 
+                            member={member} 
+                            memberStatus={squadStatus[index]} 
+                            index={index}
+                        />
                     } else {
                         return null
                     }

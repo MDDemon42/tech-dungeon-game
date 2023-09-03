@@ -17,6 +17,20 @@
     height: 175px;
 }
 
+.BattleOrder_squadMember__selected {
+    outline: 3px lightgray dashed;
+    outline-offset: 10px;
+}
+
+.BattleOrder_squadMember__hasNoTurn {
+    opacity: 0.5;
+}
+
+.BattleOrder_squadMember__dead {
+    background-color: gray;
+    opacity: 0.5;
+}
+
 .BattleOrder_squadMember_with_Mana_and_Focus {
     display: flex;
     flex-direction: row;

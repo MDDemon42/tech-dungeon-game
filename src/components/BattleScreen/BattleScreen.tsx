@@ -4,19 +4,21 @@ import {
     IAbility, 
     IBattleAbility, 
     ICharacher, 
+    IMemberStatus, 
     IStore
 } from '../../enums-and-interfaces/interfaces';
 import CommonIcon from '../Icons/CommonIcon';
 import items from '../../general/items';
 import masteries from '../../general/masteries/masteries';
 import abilities from '../../general/abilities';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import characters from '../../general/characters';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
 import BattleOrder from '../BattleOrder/BattleOrder';
 import { createEmptyInventory, createNoItem } from '../../helpers/emptyEssencesCreators';
 import { Race, UserParam } from '../../enums-and-interfaces/enums';
+import store from '../../redux/store';
 
 const specialRaceAbilities: Record<Race, (IBattleAbility | null)> = {
     [Race.human]: null,
@@ -32,24 +34,70 @@ const specialRaceAbilities: Record<Race, (IBattleAbility | null)> = {
 }
 
 function BattleScreen() {
-    const [battleTurn, setBattleTurn] = useState(1);
+    const [battleTurn, setBattleTurn] = useState(0);
 
     const [selectedAbility, setSelectedAbility] = useState<IAbility|null>(null);
     const [selectedAbilityDiv, setSelectedAbilityDiv] = useState<HTMLElement|null>(null);
-    const [opponents, setOpponents] = useState([
-        characters.opponents.opponent_dummy(),
-        characters.opponents.opponent_dummy()
-    ]);
 
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
     const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
+
     const squadMembers: ICharacher[] = [];
     Object.keys(squad).forEach(key => squadMembers[Number(key)] = squad[key]);
 
-    const user = squad[index];
+    const [squadStatus, setSquadStatus] = useState<IMemberStatus[]>([]);
+
+    const [opponents, setOpponents] = useState([
+        characters.opponents.opponent_dummy(),
+        characters.opponents.opponent_dummy()
+    ]);
+    const [opponentsStatus, setOpponentsStatus] = useState<IMemberStatus[]>([]);
+
+    useEffect(() => {
+        const squadStatusBasis = [...squadStatus];
+        const opponentsStatusBasis = [...opponentsStatus];
+        const memberStatusBasis = {
+            selected: false,
+            hasTurn: false,
+            dead: false
+        };
+        
+        if (battleTurn === 0) {
+            squadMembers.forEach((member, index) => {
+                if (!!member) {
+                    squadStatusBasis[index] = {...memberStatusBasis};
+                }
+            });
+            setSquadStatus(squadStatusBasis);
+
+            opponents.forEach((_) => {
+                opponentsStatusBasis.push({...memberStatusBasis});
+            })
+            setOpponentsStatus(opponentsStatusBasis);
+
+            setBattleTurn(1);
+        }
+        
+
+        if (battleTurn % 2 === 1) {
+            squadStatusBasis.forEach((member) => {
+                if (!!member) {
+                    member.hasTurn = true;
+                }
+            });
+            setSquadStatus(squadStatusBasis);
+        } else {
+            opponentsStatusBasis.forEach((member) => {
+                member.hasTurn = true
+            })
+            setOpponentsStatus(opponentsStatusBasis);
+        }
+    }, [battleTurn])
 
     const dispatch = useDispatch();
+
+    const user = squad[index];
 
     const masteriesUser = user.general.mind.masteries.map(mastery => mastery.name);
     const spellsUser = user.general.mind.spells;
@@ -160,28 +208,53 @@ function BattleScreen() {
     }
 
     function processAbility(opponentIndex: number) {
+        let opp_status = [...opponentsStatus];
+        opp_status.forEach(opponent => opponent.selected = false);
+        opp_status[opponentIndex].selected = true;
+        setOpponentsStatus(opp_status);
+
         if (selectedAbility) {
             const allOpponents = [...opponents];
+            const thatOpponent = allOpponents[opponentIndex];
             
-            const damage = selectedAbility.damage - allOpponents[opponentIndex].params.resistances[selectedAbility.damageType];
+            const damage = selectedAbility.damage - thatOpponent.params.resistances[selectedAbility.damageType];
             const chance = Math.floor(Math.random()*100);
             if (selectedAbility.hitChance > chance) {
-                allOpponents[opponentIndex].params.currentParams[UserParam.health] -= damage;
-            }            
+                thatOpponent.params.currentParams[UserParam.health] -= damage;
+            }        
+            
+            setOpponents(allOpponents);
             
             dispatch(gameSquad.actions.processAbility({
                 index,
                 data: selectedAbility.costs
             }));
 
-            setOpponents(allOpponents);
+            opp_status[opponentIndex].selected = false;
+            setOpponentsStatus(opp_status);
+
+            let status = [...squadStatus];
+            status[index].hasTurn = false;
+            status[index].selected = false;
+            setSquadStatus(status);
 
             deselectAbility();
         }
     }
 
     function selectSquadMember(memberIndex: number) {
-        dispatch(gameSquad.actions.changeSquadMember(memberIndex));
+        let status = [...squadStatus];
+        if (status[memberIndex].hasTurn) {
+            dispatch(gameSquad.actions.changeSquadMember(memberIndex));
+
+            status.forEach(member => {
+                if (!!member) {
+                    member.selected = false;
+                }                
+            });
+            status[memberIndex].selected = true;
+            setSquadStatus(status);
+        }
     }
 
     return (
@@ -193,7 +266,12 @@ function BattleScreen() {
                 Turn {battleTurn}
             </div>
             <div className={styles.BattleScreen_body}>
-                <BattleOrder squad={opponents} attacker={true} listener={processAbility}/>
+                <BattleOrder 
+                    squad={opponents}
+                    squadStatus={opponentsStatus} 
+                    attacker={true} 
+                    listener={processAbility}
+                />
                 <div className={styles.BattleScreen_body_abilitiesBlock}>
                     <div className={styles.BattleScreen_body_abilitiesBlock_abilities}>
                         {
@@ -222,7 +300,12 @@ function BattleScreen() {
                         {`Deselect\n ability`}
                     </button>
                 </div>                
-                <BattleOrder squad={squadMembers} attacker={false} listener={selectSquadMember}/> 
+                <BattleOrder
+                    squad={squadMembers} 
+                    squadStatus={squadStatus} 
+                    attacker={false} 
+                    listener={selectSquadMember}
+                /> 
                 <button onClick={() => setBattleTurn((value) => value + 1)}>
                     Next turn
                 </button>

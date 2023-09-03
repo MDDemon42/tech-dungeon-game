@@ -237,3 +237,10 @@ export interface IManageItemsProps {
     index: number,
     item: IItem
 }
+
+// status //
+export interface IMemberStatus {
+    selected: boolean,
+    hasTurn: boolean,
+    dead: boolean
+}

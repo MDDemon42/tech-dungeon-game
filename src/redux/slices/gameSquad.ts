@@ -365,11 +365,10 @@ const gameSquad = createSlice({
         processAbility(state, action) {
             const {index, data} = action.payload;
             const squad = {...state.squadMembers};
-            const squadMember = squad[index]!;
+            const squadMember = squad[index];
 
             Object.keys(data).forEach(key => {
-                // @ts-ignore
-                squadMember.params.currentParams[key] -= data[key];
+                squadMember.params.currentParams[key as UserParam] -= data[key];
             });
 
             state.squadMembers = squad;
@@ -379,7 +378,7 @@ const gameSquad = createSlice({
 
             Object.keys(squad).forEach(key => {
                 if (!!squad[key]) {
-                    squad[key]!.params.currentParams = {...squad[key]!.params.maxParams};
+                    squad[key].params.currentParams = {...squad[key].params.maxParams};
                 }
             });
 
