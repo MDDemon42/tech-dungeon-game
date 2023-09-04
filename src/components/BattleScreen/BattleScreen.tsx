@@ -36,6 +36,8 @@ const specialRaceAbilities: Record<Race, (IBattleAbility | null)> = {
 function BattleScreen() {
     const [battleTurn, setBattleTurn] = useState(0);
 
+    const [selectedMember, setSelectedMember] = useState(-1);
+    const [selectedOpponent, setSelectedOpponent] = useState(-1);
     const [selectedAbility, setSelectedAbility] = useState<IAbility|null>(null);
     const [selectedAbilityDiv, setSelectedAbilityDiv] = useState<HTMLElement|null>(null);
 
@@ -185,7 +187,7 @@ function BattleScreen() {
         })
 
         if (enoughResources) {
-            abilityDiv.style.cssText = 'background-color: lightblue';
+            abilityDiv.style.cssText = 'outline: 3px lightgray dashed; outline-offset: 3px;';
 
             setSelectedAbility(ability);
             setSelectedAbilityDiv(abilityDiv);
@@ -207,11 +209,25 @@ function BattleScreen() {
         }
     }
 
-    function processAbility(opponentIndex: number) {
+    function selectOpponent(opponentIndex: number) {
         let opp_status = [...opponentsStatus];
         opp_status.forEach(opponent => opponent.selected = false);
         opp_status[opponentIndex].selected = true;
         setOpponentsStatus(opp_status);
+
+        setSelectedOpponent(opponentIndex);
+    }
+
+    function deselectOpponent() {
+        let opp_status = [...opponentsStatus];
+        opp_status.forEach(opponent => opponent.selected = false);
+        setOpponentsStatus(opp_status);
+
+        setSelectedOpponent(-1);
+    }
+
+    function processAbility(opponentIndex: number) {
+        selectOpponent(opponentIndex);
 
         if (selectedAbility) {
             const allOpponents = [...opponents];
@@ -230,8 +246,7 @@ function BattleScreen() {
                 data: selectedAbility.costs
             }));
 
-            opp_status[opponentIndex].selected = false;
-            setOpponentsStatus(opp_status);
+            deselectOpponent();
 
             let status = [...squadStatus];
             status[index].hasTurn = false;
@@ -254,7 +269,21 @@ function BattleScreen() {
             });
             status[memberIndex].selected = true;
             setSquadStatus(status);
+
+            setSelectedMember(memberIndex);
         }
+    }
+
+    function deselectSquadMember() {
+        let status = [...squadStatus];
+        status.forEach(member => {
+            if (!!member) {
+                member.selected = false;
+            }                
+        });
+        setSquadStatus(status);
+
+        setSelectedMember(-1);
     }
 
     return (
@@ -275,21 +304,29 @@ function BattleScreen() {
                 <div className={styles.BattleScreen_body_abilitiesBlock}>
                     <div className={styles.BattleScreen_body_abilitiesBlock_abilities}>
                         {
-                            abilitiesUser && abilitiesUser.map(ability => {
-                                const id = ability.name.split(' ').join('');
+                            (selectedMember >= 0 || selectedOpponent >= 0) ?
+                                abilitiesUser && abilitiesUser.map(ability => {
+                                    const id = ability.name.split(' ').join('');
 
-                                if (!!ability) {
-                                    return <div 
-                                        className={styles.BattleScreen_body_abilitiesBlock_abilities_icon}
-                                        id={id}
-                                        onClick={() => selectAbility(ability, id)}
-                                    >
-                                        <CommonIcon item={ability}/>
-                                    </div>
-                                }
+                                    if (!!ability) {
+                                        return <div 
+                                            className={styles.BattleScreen_body_abilitiesBlock_abilities_icon}
+                                            id={id}
+                                            onClick={() => selectAbility(ability, id)}
+                                        >
+                                            <CommonIcon item={ability}/>
+                                        </div>
+                                    }
 
-                                return null
-                            })
+                                    return null
+                                }) :
+                                battleTurn % 2 === 1 ? 
+                                    <p>
+                                        Choose squad member
+                                    </p> :
+                                    <p>
+                                        Opponent's turn
+                                    </p> 
                         }
                     </div>
                     <button 
