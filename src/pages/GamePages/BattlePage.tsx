@@ -1,39 +1,23 @@
 import { useSelector } from 'react-redux';
-import styles from './BattleScreen.module.css';
+import styles from './BattlePage.module.css';
 import { 
     IAbility, 
-    IBattleAbility, 
     ICharacher, 
     IMemberStatus, 
     IStore
 } from '../../enums-and-interfaces/interfaces';
-import CommonIcon from '../Icons/CommonIcon';
-import items from '../../general/items';
-import masteries from '../../general/masteries/masteries';
-import abilities from '../../general/abilities';
+import CommonIcon from '../../components/Icons/CommonIcon';
 import { useEffect, useState } from 'react';
 import characters from '../../general/characters';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
-import BattleOrder from '../BattleOrder/BattleOrder';
-import { createEmptyInventory, createNoItem } from '../../helpers/emptyEssencesCreators';
-import { Race, UserParam } from '../../enums-and-interfaces/enums';
-import store from '../../redux/store';
+import BattleOrder from '../../components/BattleOrder/BattleOrder';
+import { UserParam } from '../../enums-and-interfaces/enums';
+import { useNavigate } from 'react-router-dom';
+import shuffleArray from '../../helpers/shuffleArray';
+import characterAbilitiesGatherer from '../../helpers/characterAbilitiesGatherer';
 
-const specialRaceAbilities: Record<Race, (IBattleAbility | null)> = {
-    [Race.human]: null,
-    [Race.unknown]: null,
-    [Race.satyr]: null,
-    [Race.minotaur]: null,
-    [Race.orc]: null,
-    [Race.gnoll]: null,
-    [Race.naga]: null,
-    [Race.demon]: null,
-    [Race.dragon]: null,
-    [Race.chimera]: null
-}
-
-function BattleScreen() {
+function BattlePage() {
     const [battleTurn, setBattleTurn] = useState(0);
 
     const [selectedMember, setSelectedMember] = useState(-1);
@@ -79,10 +63,7 @@ function BattleScreen() {
             setOpponentsStatus(opponentsStatusBasis);
 
             setBattleTurn(1);
-        }
-        
-
-        if (battleTurn % 2 === 1) {
+        } else if (battleTurn % 2 === 1) {
             squadStatusBasis.forEach((member) => {
                 if (!!member) {
                     member.hasTurn = true;
@@ -94,84 +75,49 @@ function BattleScreen() {
                 member.hasTurn = true
             })
             setOpponentsStatus(opponentsStatusBasis);
+
+            opponentTurnHandler();
         }
     }, [battleTurn])
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const opponentTurnHandler = () => {
+        const status = [...opponentsStatus];
+
+        const indexes = status.map((_, index) => index);
+
+        shuffleArray(indexes);
+
+        indexes.forEach((index, orderIndex)=> {
+            setTimeout(() => {
+                status[index].selected = true;
+                setOpponentsStatus(status);
+
+                setSelectedOpponent(index);
+            }, (orderIndex) * 2000 + 500)
+
+            setTimeout(() => {
+                // use ability
+            }, (orderIndex) * 2000 + 1000)
+            
+            setTimeout(() => {
+                status[index].hasTurn = false;
+                status[index].selected = false;
+                setOpponentsStatus(status);
+
+                setSelectedOpponent(-1);
+            }, (orderIndex) * 2000 + 1500)
+        })
+
+        setTimeout(() => {
+            setBattleTurn(turn => turn + 1)
+        }, status.length*2000)
+    }
 
     const user = squad[index];
-
-    const masteriesUser = user.general.mind.masteries.map(mastery => mastery.name);
-    const spellsUser = user.general.mind.spells;
-    const powersUser = user.general.mind.powers;
-
-    const inventory = user.general.inventory ? user.general.inventory : createEmptyInventory();
-
-    const abilitiesUser: IAbility[] = [];
-
-    if (!!specialRaceAbilities[user.params.race]) {
-        abilitiesUser.push(specialRaceAbilities[user.params.race]!);
-    }
-    
-    Object.keys(inventory).forEach(name => {
-        if (inventory[name].ability) {
-            if (inventory[name].linkedMastery) {
-                const masteryName = inventory[name].linkedMastery;
-                if (masteryName && masteriesUser.includes(masteryName)) {
-                    abilitiesUser.push(...inventory[name].masterAbilities!);
-                } else {
-                    const {ability} = inventory[name];
-                    if (ability) {
-                        abilitiesUser.push(ability);
-                    }
-                }
-            } else {
-                const {ability} = inventory[name];
-                if (ability) {
-                    abilitiesUser.push(ability);
-                }
-            }
-        }
-    })
-
-    spellsUser.forEach(spell => {
-        if (!!spell.ability) {
-            if (!!spell.requiresRod) {
-                if (
-                    inventory.bothHands.name === items.weapons.item_apprenticeRod.name ||
-                    inventory.bothHands.name === items.weapons.item_magisterScepter.name
-                ) {
-                    abilitiesUser.push(spell.ability);
-                }
-            } else {
-                abilitiesUser.push(spell.ability);
-            }
-        }
-    })
-
-    powersUser.forEach(power => {
-        if (!!power.ability) {
-            abilitiesUser.push(power.ability);
-        }
-    })
-
-    // special abilities
-    if (
-        inventory.leftHand.name === items.weapons.item_steelSwordLeftHand.name &&
-        inventory.rightHand.name === items.weapons.item_steelSwordRightHand.name &&
-        masteriesUser.includes(masteries.mastery_dualSwords.name)
-    ) {
-        abilitiesUser.push(abilities.battleAbilities.melee.battleAbility_dualSwordsSlash);
-    }
-
-    // basic ability
-    const noItem = createNoItem();
-    if (
-        inventory.leftHand.name === noItem.name ||
-        inventory.rightHand.name === noItem.name
-    ) {
-        abilitiesUser.push(abilities.battleAbilities.melee.battleAbility_fistPunch)
-    }
+    const abilitiesUser = characterAbilitiesGatherer(user);    
 
     function selectAbility(ability: IAbility, id: string) {
         let enoughResources = true;
@@ -229,7 +175,7 @@ function BattleScreen() {
     function processAbility(opponentIndex: number) {
         selectOpponent(opponentIndex);
 
-        if (selectedAbility) {
+        if (selectedAbility && selectedMember > 0) {
             const allOpponents = [...opponents];
             const thatOpponent = allOpponents[opponentIndex];
             
@@ -242,7 +188,7 @@ function BattleScreen() {
             setOpponents(allOpponents);
             
             dispatch(gameSquad.actions.processAbility({
-                index,
+                index: selectedMember,
                 data: selectedAbility.costs
             }));
 
@@ -287,30 +233,30 @@ function BattleScreen() {
     }
 
     return (
-        <div className={styles.BattleScreen}>
-            <h3 className={styles.BattleScreen_header}>
+        <div className={styles.BattlePage}>
+            <h3 className={styles.BattlePage_header}>
                 Battle Screen
             </h3>            
-            <div style={{position: 'absolute', right: 0, top: '20px'}}>
+            <div style={{position: 'absolute', right: '10px', top: '20px'}}>
                 Turn {battleTurn}
             </div>
-            <div className={styles.BattleScreen_body}>
+            <div className={styles.BattlePage_body}>
                 <BattleOrder 
                     squad={opponents}
                     squadStatus={opponentsStatus} 
                     attacker={true} 
                     listener={processAbility}
                 />
-                <div className={styles.BattleScreen_body_abilitiesBlock}>
-                    <div className={styles.BattleScreen_body_abilitiesBlock_abilities}>
+                <div className={styles.BattlePage_body_abilitiesBlock}>
+                    <div className={styles.BattlePage_body_abilitiesBlock_abilities}>
                         {
-                            (selectedMember >= 0 || selectedOpponent >= 0) ?
+                            (selectedMember >= 0 && battleTurn % 2 === 1) ?
                                 abilitiesUser && abilitiesUser.map(ability => {
                                     const id = ability.name.split(' ').join('');
 
                                     if (!!ability) {
                                         return <div 
-                                            className={styles.BattleScreen_body_abilitiesBlock_abilities_icon}
+                                            className={styles.BattlePage_body_abilitiesBlock_abilities_icon}
                                             id={id}
                                             onClick={() => selectAbility(ability, id)}
                                         >
@@ -330,7 +276,7 @@ function BattleScreen() {
                         }
                     </div>
                     <button 
-                        className={styles.BattleScreen_body_abilitiesBlock_button}
+                        className={styles.BattlePage_body_abilitiesBlock_button}
                         onClick={() => deselectAbility()}
                         disabled={!selectedAbility}
                     >
@@ -347,8 +293,14 @@ function BattleScreen() {
                     Next turn
                 </button>
             </div>
+            <button onClick={() => navigate('/game')}>
+                Back to village
+            </button>
+            <button onClick={() => deselectSquadMember()}>
+                Deselect member
+            </button>
         </div>
     )
 }
 
-export default BattleScreen
+export default BattlePage

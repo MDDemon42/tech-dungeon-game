@@ -1,28 +1,28 @@
 import styles from './GameScreen.module.css';
-import BattleScreen from "../BattleScreen/BattleScreen";
-import SubMindScreen from '../SubMindScreen/SubMindScreen';
+import gameScreens from '../../redux/slices/gameScreen';
 import { useSelector, useDispatch } from 'react-redux';
 import { IStore } from '../../enums-and-interfaces/interfaces';
-import gameScreens from '../../redux/slices/gameScreen';
+import { GameScreens, MindOption, InventoryOption } from '../../enums-and-interfaces/enums';
 import SubInventoryScreen from '../SubInventoryScreen/SubInventoryScreen';
-import { MindOption, InventoryOption, GameScreens } from '../../enums-and-interfaces/enums';
+import SubMindScreen from '../SubMindScreen/SubMindScreen';
+import { useNavigate } from 'react-router-dom';
 
 function GameScreen() {
     const screen = useSelector((store: IStore) => store.gameScreen.screen);
     const dispatch = useDispatch();
-
-    function changeScreenButtonListener(item: string) {
-        dispatch(gameScreens.actions.changeScreen(item))
-    }
+    const navigate = useNavigate();
 
     const screens: Record<GameScreens, JSX.Element> = {
         [GameScreens.academy]: <SubMindScreen dataName={MindOption.masteries}/>,
-        [GameScreens.battle]: <BattleScreen />,
         [GameScreens.cyberLab]: <SubInventoryScreen dataName={InventoryOption.cybers}/>,
         [GameScreens.focusSite]: <SubMindScreen dataName={MindOption.powers}/>,
         [GameScreens.market]: <SubInventoryScreen dataName={InventoryOption.items}/>,
         [GameScreens.mutationLab]: <SubInventoryScreen dataName={InventoryOption.mutations}/>,
         [GameScreens.spellShop]: <SubMindScreen dataName={MindOption.spells}/>
+    }
+    
+    function changeScreenButtonListener(item: string) {
+        dispatch(gameScreens.actions.changeScreen(item));
     }
 
     function keyToButtonText(key: string) {
@@ -35,6 +35,9 @@ function GameScreen() {
                 screens[screen]
             }
             <div className={styles.GameScreen_buttonsBlock}>
+                <button onClick={() => navigate('/battle')}>
+                    To battle!
+                </button>
                 {
                     Object.keys(screens).map(item => (
                         <button onClick={() => changeScreenButtonListener(item)}>

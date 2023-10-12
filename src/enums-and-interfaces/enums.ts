@@ -82,7 +82,6 @@ export enum MindOption {
 }
 
 export enum GameScreens {
-    battle = 'Battle',
     market = 'Market',
     academy = 'Academy',
     spellShop = 'Spell_Shop',

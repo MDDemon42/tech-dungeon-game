@@ -6,11 +6,12 @@ import {HashRouter, Routes, Route} from "react-router-dom";
 import MainPage from './pages/PopupPages/MainPage';
 import SettingsPage from './pages/PopupPages/SettingsPage';
 import ErrorPage from './pages/PopupPages/ErrorPage';
-import GamePage from './pages/GamePage/GamePage';
+import GamePage from './pages/GamePages/GamePage';
 
 import store from './redux/store';
 
 import onMessageOnGamePage from './messaging';
+import BattlePage from './pages/GamePages/BattlePage';
 
 ReactDOM
   .createRoot(document.getElementById('root') as HTMLElement)
@@ -21,6 +22,7 @@ ReactDOM
           <Route path={'/'} element={<MainPage />} errorElement={<ErrorPage />}/>
           <Route path={'/settings'} element={<SettingsPage />}/>
           <Route path={'/game'} element={<GamePage />}/>
+          <Route path={'/battle'} element={<BattlePage />}/>
         </Routes>
       </Provider>
     </HashRouter>
