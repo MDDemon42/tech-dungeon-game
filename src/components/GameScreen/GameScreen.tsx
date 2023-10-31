@@ -36,7 +36,7 @@ function GameScreen() {
             }
             <div className={styles.GameScreen_buttonsBlock}>
                 <button onClick={() => navigate('/battle')}>
-                    To battle!
+                    {chrome.i18n.getMessage('to_battle_screen_button_text')}
                 </button>
                 {
                     Object.keys(screens).map(item => (

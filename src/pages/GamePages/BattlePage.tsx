@@ -235,10 +235,10 @@ function BattlePage() {
     return (
         <div className={styles.BattlePage}>
             <h3 className={styles.BattlePage_header}>
-                Battle Screen
+                {chrome.i18n.getMessage('battle_page_title')}
             </h3>            
             <div style={{position: 'absolute', right: '10px', top: '20px'}}>
-                Turn {battleTurn}
+                {chrome.i18n.getMessage('battle_page_turn', String(battleTurn))}
             </div>
             <div className={styles.BattlePage_body}>
                 <BattleOrder 
@@ -268,10 +268,10 @@ function BattlePage() {
                                 }) :
                                 battleTurn % 2 === 1 ? 
                                     <p>
-                                        Choose squad member
+                                        {chrome.i18n.getMessage('battle_page_your_turn')}
                                     </p> :
                                     <p>
-                                        Opponent's turn
+                                        {chrome.i18n.getMessage('battle_page_opponents_turn')}
                                     </p> 
                         }
                     </div>
@@ -280,7 +280,7 @@ function BattlePage() {
                         onClick={() => deselectAbility()}
                         disabled={!selectedAbility}
                     >
-                        {`Deselect\n ability`}
+                        {chrome.i18n.getMessage('battle_page_deselect_ability')}
                     </button>
                 </div>                
                 <BattleOrder
@@ -290,14 +290,14 @@ function BattlePage() {
                     listener={selectSquadMember}
                 /> 
                 <button onClick={() => setBattleTurn((value) => value + 1)}>
-                    Next turn
+                    {chrome.i18n.getMessage('battle_page_next_turn')}
                 </button>
             </div>
             <button onClick={() => navigate('/game')}>
-                Back to village
+                {chrome.i18n.getMessage('battle_page_back_to_village')}
             </button>
             <button onClick={() => deselectSquadMember()}>
-                Deselect member
+                {chrome.i18n.getMessage('battle_page_deselect_member')}
             </button>
         </div>
     )

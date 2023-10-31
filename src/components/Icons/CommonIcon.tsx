@@ -45,53 +45,51 @@ function CommonIcon(props: {
     }
 
     if (item.value) {
-        description += '\nValue: ' + item.value;
+        description += '\n' + chrome.i18n.getMessage('cid_value') + item.value;
     }
 
     if (item.cost) {
-        description += '\nCost: ' + item.cost;
+        description += '\n' + chrome.i18n.getMessage('cid_cost') + item.cost;
     }
 
     if (item.requiredMastery) {
-        description += '\nRequired mastery: ' + item.requiredMastery;
+        description += '\n' + chrome.i18n.getMessage('cid_required_mastery') + item.requiredMastery;
     }
 
     if (item.requiredPower) {
-        description += '\nRequired power: ' + item.requiredPower;
+        description += '\n' + chrome.i18n.getMessage('cid_required_power') + item.requiredPower;
     }
 
     if (item.requiredCyber) {
-        description += '\nRequired cyber: ' + item.requiredCyber;
+        description += '\n' + chrome.i18n.getMessage('cid_required_cyber') + item.requiredCyber;
     }
 
     if (item.passive) {
-        description += '\nPassive: ' + item.passive;
+        description += '\n' + chrome.i18n.getMessage('cid_passive') + item.passive;
     }
 
     if (item.inventoryPlace) {
-        description += '\nInventory place: ' + item.inventoryPlace;
+        description += '\n' + chrome.i18n.getMessage('cid_inventory_place') + item.inventoryPlace;
     }
 
     if (item.damage && item.damage > 0) {
-        description += '\nDamage: ' + item.damage;
+        description += '\n' + chrome.i18n.getMessage('cid_damage') + item.damage;
     }
 
     if (item.damageType) {
-        description += '\nDamage type: ' + item.damageType;
+        description += '\n' + chrome.i18n.getMessage('cid_damage_type') + item.damageType;
     }
 
     if (item.hitChance) {
-        description += '\nHit chance: ' + item.hitChance;
+        description += '\n' + chrome.i18n.getMessage('cid_hit_chance') + item.hitChance;
     }
 
     if (item.targetAmount) {
-        description += '\nTarget amount: ' + item.targetAmount;
+        description += '\n' + chrome.i18n.getMessage('cid_target_amount') + item.targetAmount;
     }
 
-
-
     if (!!disableReason) {
-        description += '\n\nNot allowed: ' + disableReason;
+        description += '\n\n' + chrome.i18n.getMessage('cid_not_allowed') + disableReason;
     }
 
     const damageColors = {

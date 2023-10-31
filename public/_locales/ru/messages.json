@@ -4,5 +4,170 @@
     },
     "appName": {
         "message": "Tech Dungeon Game"
+    },
+    "to_battle_screen_button_text": {
+        "message": "К бою!"
+    },
+    "cid_value": {
+        "message": "Значение: "
+    },
+    "cid_cost": {
+        "message": "Цена: "
+    },
+    "cid_required_mastery": {
+        "message": "Необходимое мастерство: "
+    },
+    "cid_required_power": {
+        "message": "Необходимая сила: "
+    },
+    "cid_required_cyber": {
+        "message": "Необходимая кибернизация: "
+    },
+    "cid_passive": {
+        "message": "Пассивно: "
+    },
+    "cid_inventory_place": {
+        "message": "Место в инвентаре: "
+    },
+    "cid_damage": {
+        "message": "Урон: "
+    },
+    "cid_damage_type": {
+        "message": "Тип урона: "
+    },
+    "cid_hit_chance": {
+        "message": "Шанс попадания: "
+    },
+    "cid_target_amount": {
+        "message": "Число целей: "
+    },
+    "cid_not_allowed": {
+        "message": "Запрещено: "
+    },
+    "mind_screen_empty_text": {
+        "message": "Ещё нет $mind_option$",
+        "placeholders": {
+            "mind_option": {
+                "content": "$1",
+                "example": ""
+              }
+        }
+    },
+    "cyber_lab_title": {
+        "message": "Вот моя Киберлаборатория!"
+    },
+    "cyber_lab_button": {
+        "message": "Внедрить!"
+    },
+    "mutation_lab_title": {
+        "message": "Это Мутолаборатория!"
+    },
+    "mutation_lab_button": {
+        "message": "Мутировать!"
+    },
+    "market_title": {
+        "message": "Добро пожаловать в мой Магазин!"
+    },
+    "market_button": {
+        "message": "Купить!"
+    },
+    "academy_title": {
+        "message": "Вы в Академии!"
+    },
+    "academy_button": {
+        "message": "Изучить!"
+    },
+    "focus_site_title": {
+        "message": "Это Место средоточия!"
+    },
+    "focus_site_button": {
+        "message": "Развить!"
+    },
+    "spell_shop_title": {
+        "message": "Проходите в Заклинальню!"
+    },
+    "spell_shop_button": {
+        "message": "Зазубрить!"
+    },
+    "no_item_name": {
+        "message": "Пока ничего"
+    },
+    "no_item_description": {
+        "message": "Вообще ничего"
+    },
+    "smec_capacity": {
+        "message": "Ваш разум не выдержит больше $dataName$",
+        "placeholders": {
+            "dataName": {
+                "content": "$1",
+                "example": ""
+              }
+        }
+    },
+    "smec_posessed": {
+        "message": "Уже есть"
+    },
+    "smec_mastery": {
+        "message": "Нет необходимого мастерства"
+    },
+    "smec_power": {
+        "message": "Нет необходимой силы"
+    },
+    "siec_resources": {
+        "message": "Недостаточно ресурсов"
+    },
+    "siec_backpacks_capability": {
+        "message": "Нет места в рюкзаках"
+    },
+    "siec_priority": {
+        "message": "Уже используется лучшее"
+    },
+    "siec_cyber": {
+        "message": "Нет необходимой кибернизации"
+    },
+    "battle_page_title": {
+        "message": "Экран боя"
+    },
+    "battle_page_turn": {
+        "message": "Ход $battleTurn$",
+        "placeholders": {
+            "battleTurn": {
+                "content": "$1",
+                "example": "0"
+              }
+        }
+    },
+    "battle_page_your_turn": {
+        "message": "Выберите члена отряда"
+    },
+    "battle_page_opponents_turn": {
+        "message": "Ход противника"
+    },
+    "battle_page_deselect_ability": {
+        "message": "Отменить\n выбор"
+    },
+    "battle_page_next_turn": {
+        "message": "Следующий ход"
+    },
+    "battle_page_back_to_village": {
+        "message": "Назад в деревню"
+    },
+    "battle_page_deselect_member": {
+        "message": "Выбрать другого"
+    },
+    "error_page_title": {
+        "message": "Ойк!"
+    },
+    "error_page_text": {
+        "message": "Прошу прощения, что-то пошло не так..."
+    },
+    "main_page_start": {
+        "message": "Начать!"
+    },
+    "main_page_continue": {
+        "message": "Продолжить!"
+    },
+    "settings_page_back_to_main_page": {
+        "message": "Назад на Главную"
     }
 }

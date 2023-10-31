@@ -41,24 +41,24 @@ function SubInventoryScreen(props: {
     const subInventoryMappings: Record<InventoryOption, ISubInventoryMapping> = {
         [InventoryOption.cybers]: {
             resource: UserResource.core,
-            title: 'Welcome to Cyber Lab!',
-            button: 'Implement!',
+            title: chrome.i18n.getMessage('cyber_lab_title'),
+            button: chrome.i18n.getMessage('cyber_lab_button'),
             listener: (data: ICyber) => {
                 dispatch(gameSquad.actions.implementCyber({index, data}));
             }
         },
         [InventoryOption.mutations]: {
             resource: UserResource.gene,
-            title: 'Welcome to Mutation Lab!',
-            button: 'Mutate!',
+            title: chrome.i18n.getMessage('mutation_lab_title'),
+            button: chrome.i18n.getMessage('mutation_lab_button'),
             listener: (data: IMutation) => {
                 dispatch(gameSquad.actions.mutateMutation({index, data}));
             }
         },
         [InventoryOption.items]: {
             resource: UserResource.gem,
-            title: 'Welcome to Market!',
-            button: 'Buy!',
+            title: chrome.i18n.getMessage('market_title'),
+            button: chrome.i18n.getMessage('market_button'),
             listener: (data: IItem) => {
                 dispatch(gameSquad.actions.buyItem(data));
             }

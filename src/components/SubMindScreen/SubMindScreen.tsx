@@ -27,8 +27,8 @@ function SubMindScreen(props: {
         [MindOption.masteries]: {
             capacity: member.params.level,
             posessed: member.general.mind.masteries.length,
-            title: 'Welcome to Academy!',
-            button: 'Learn!',
+            title: chrome.i18n.getMessage('academy_title'),
+            button: chrome.i18n.getMessage('academy_button'),
             listener: (data: IMastery) => {
                 dispatch(gameSquad.actions.learnMastery({index, data}));
             }
@@ -36,8 +36,8 @@ function SubMindScreen(props: {
         [MindOption.powers]: {
             capacity: member.params.maxParams[UserParam.focus],
             posessed: member.general.mind.powers.length,
-            title: 'Welcome to Focus Site!',
-            button: 'Develop!',
+            title: chrome.i18n.getMessage('focus_site_title'),
+            button: chrome.i18n.getMessage('focus_site_button'),
             listener: (data: IPower) => {
                 dispatch(gameSquad.actions.developPower({index, data}));
             }
@@ -45,8 +45,8 @@ function SubMindScreen(props: {
         [MindOption.spells]: {
             capacity: member.params.maxParams[UserParam.mana],
             posessed: member.general.mind.spells.length,
-            title: 'Welcome to Spell Shop!',
-            button: 'Study!',
+            title: chrome.i18n.getMessage('spell_shop_title'),
+            button: chrome.i18n.getMessage('spell_shop_button'),
             listener: (data: ISpell) => {
                 dispatch(gameSquad.actions.studySpell({index, data}));
             }

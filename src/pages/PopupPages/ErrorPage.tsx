@@ -9,8 +9,12 @@ export default function ErrorPage() {
 
   return (
     <div className={styles.Popup}>
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
+      <h1>
+        {chrome.i18n.getMessage('error_page_title')}
+      </h1>
+      <p>
+        {chrome.i18n.getMessage('error_page_text')}
+      </p>
       <p>
         <i>{error.statusText || error.message}</i>
       </p>

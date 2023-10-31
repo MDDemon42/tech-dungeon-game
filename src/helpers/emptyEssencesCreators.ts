@@ -100,8 +100,8 @@ export function createEmptyInventory(): IInventory {
 
 export function createNoItem(): ICyber & IItem {
     return {
-        name: 'Nothing yet',
-        description: 'Nothing at all',
+        name: chrome.i18n.getMessage('no_item_name'),
+        description: chrome.i18n.getMessage('no_item_description'),
         cost: 0,
         inventoryPlace: InventoryPlace.belt,
         image: images.classIcons.noIcon,

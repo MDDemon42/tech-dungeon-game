@@ -30,7 +30,7 @@ function MindScreen(props: {
                             </div>
                         )) :
                         <p>
-                            No {upperCaseFirstLetter(name)} yet
+                            {chrome.i18n.getMessage('mind_screen_empty_text', [upperCaseFirstLetter(name)])}
                         </p>
                 }
             </div>

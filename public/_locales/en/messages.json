@@ -4,5 +4,170 @@
     },
     "appName": {
         "message": "Tech Dungeon Game"
+    },
+    "to_battle_screen_button_text": {
+        "message": "To battle!"
+    },
+    "cid_value": {
+        "message": "Value: "
+    },
+    "cid_cost": {
+        "message": "Cost: "
+    },
+    "cid_required_mastery": {
+        "message": "Required mastery: "
+    },
+    "cid_required_power": {
+        "message": "Required power: "
+    },
+    "cid_required_cyber": {
+        "message": "Required cyber: "
+    },
+    "cid_passive": {
+        "message": "Passive: "
+    },
+    "cid_inventory_place": {
+        "message": "Inventory place: "
+    },
+    "cid_damage": {
+        "message": "Damage: "
+    },
+    "cid_damage_type": {
+        "message": "Damage type: "
+    },
+    "cid_hit_chance": {
+        "message": "Hit chance: "
+    },
+    "cid_target_amount": {
+        "message": "Target amount: "
+    },
+    "cid_not_allowed": {
+        "message": "Not allowed: "
+    },
+    "mind_screen_empty_text": {
+        "message": "No $mind_option$ yet",
+        "placeholders": {
+            "mind_option": {
+                "content": "$1",
+                "example": ""
+              }
+        }
+    },
+    "cyber_lab_title": {
+        "message": "Welcome to Cyber Lab!"
+    },
+    "cyber_lab_button": {
+        "message": "Implement!"
+    },
+    "mutation_lab_title": {
+        "message": "Welcome to Mutation Lab!"
+    },
+    "mutation_lab_button": {
+        "message": "Mutate!"
+    },
+    "market_title": {
+        "message": "Welcome to Market!"
+    },
+    "market_button": {
+        "message": "Buy!"
+    },
+    "academy_title": {
+        "message": "Welcome to Academy!"
+    },
+    "academy_button": {
+        "message": "Learn!"
+    },
+    "focus_site_title": {
+        "message": "Welcome to Focus Site!"
+    },
+    "focus_site_button": {
+        "message": "Develop!"
+    },
+    "spell_shop_title": {
+        "message": "Welcome to Spell Shop!"
+    },
+    "spell_shop_button": {
+        "message": "Study!"
+    },
+    "no_item_name": {
+        "message": "Nothing yet"
+    },
+    "no_item_description": {
+        "message": "Nothing at all"
+    },
+    "smec_capacity": {
+        "message": "Your mind cannot contain any more $dataName$",
+        "placeholders": {
+            "dataName": {
+                "content": "$1",
+                "example": ""
+              }
+        }
+    },
+    "smec_posessed": {
+        "message": "Already posessed"
+    },
+    "smec_mastery": {
+        "message": "Does not have required mastery"
+    },
+    "smec_power": {
+        "message": "Does not have required power"
+    },
+    "siec_resources": {
+        "message": "Not enough resouces"
+    },
+    "siec_backpacks_capability": {
+        "message": "Not enough space in backpacks"
+    },
+    "siec_priority": {
+        "message": "Better equipment in use"
+    },
+    "siec_cyber": {
+        "message": "Does not have required cyber"
+    },
+    "battle_page_title": {
+        "message": "Battle Screen"
+    },
+    "battle_page_turn": {
+        "message": "Turn $battleTurn$",
+        "placeholders": {
+            "battleTurn": {
+                "content": "$1",
+                "example": "0"
+              }
+        }
+    },
+    "battle_page_your_turn": {
+        "message": "Choose squad member"
+    },
+    "battle_page_opponents_turn": {
+        "message": "Opponent's turn"
+    },
+    "battle_page_deselect_ability": {
+        "message": "Deselect\n ability"
+    },
+    "battle_page_next_turn": {
+        "message": "Next turn"
+    },
+    "battle_page_back_to_village": {
+        "message": "Back to village"
+    },
+    "battle_page_deselect_member": {
+        "message": "Deselect member"
+    },
+    "error_page_title": {
+        "message": "Oops!"
+    },
+    "error_page_text": {
+        "message": "Sorry, an unexpected error has occurred..."
+    },
+    "main_page_start": {
+        "message": "Start!"
+    },
+    "main_page_continue": {
+        "message": "Continue!"
+    },
+    "settings_page_back_to_main_page": {
+        "message": "Back to Main page"
     }
 }

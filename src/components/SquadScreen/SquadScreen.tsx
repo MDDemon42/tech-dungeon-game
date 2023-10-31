@@ -48,7 +48,7 @@ function SquadScreen() {
         <div className={styles.SquadScreen}>
             <div className={styles.SquadScreen_squadMembers}>
                 {
-                    Array(5).fill(0).map((value, index: number) => {
+                    Array(5).fill(0).map((_, index: number) => {
                         if (!!squad[index]) {
                             return <img 
                                 src={images.classIcons[classToIcon(squad[index].params.class)]}

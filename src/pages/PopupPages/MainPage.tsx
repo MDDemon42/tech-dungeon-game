@@ -24,7 +24,8 @@ function MainPage() {
 
     const dispatch = useDispatch();
 
-    const [startButtonText, setStartButtonText] = useState('Start!')
+    const [startButtonText, setStartButtonText] = 
+        useState(chrome.i18n.getMessage('main_page_start'))
 
     // loading storaged state
     useEffect(() => {
@@ -37,7 +38,7 @@ function MainPage() {
                     user.params.level > 0 ||
                     !Object.is(user.general.inventory, createEmptyInventory())
                 ) {
-                    setStartButtonText('Continue!')
+                    setStartButtonText(chrome.i18n.getMessage('main_page_continue'))
                 }
             }
         })
@@ -49,7 +50,7 @@ function MainPage() {
             iconFromClass = value;
         }
         dispatch(gameSquad.actions.refreshState(iconFromClass));
-        setStartButtonText('Start!');
+        setStartButtonText(chrome.i18n.getMessage('main_page_start'));
     }
 
     const startButtonListener = () => {

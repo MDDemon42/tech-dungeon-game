@@ -15,7 +15,7 @@ function SettingsPage() {
                     className={styles.border}
                     onClick={backButtonListener}
                 >
-                    Back to Main Page
+                    {chrome.i18n.getMessage('settings_page_back_to_main_page')}
                 </button>
             </div>
         </div>

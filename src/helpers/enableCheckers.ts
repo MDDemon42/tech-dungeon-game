@@ -12,12 +12,12 @@ export function subMindEnableChecker(
     posessed: number
 ): [boolean, string] {
     if (capacity <= posessed) {
-        return [false, 'Your mind cannot contain any more ' + dataName]
+        return [false, chrome.i18n.getMessage('smec_capacity', dataName)]
     }
 
     const posessedCheck = memberMind.includes(data.name);
     if (posessedCheck) {
-        return [false, 'Already posessed']
+        return [false, chrome.i18n.getMessage('smec_posessed')]
     }
     
     const requiredMasteryCheck = !!data.requiredMastery ? 
@@ -25,7 +25,7 @@ export function subMindEnableChecker(
         true;
         
     if (!requiredMasteryCheck) {
-        return [false, 'Does not have required mastery']
+        return [false, chrome.i18n.getMessage('smec_mastery')]
     }
 
     if (dataName === MindOption.powers) {
@@ -36,7 +36,7 @@ export function subMindEnableChecker(
             true;
 
         if (!requiredPowerCheck) {
-            return [false, 'Does not have required power']
+            return [false, chrome.i18n.getMessage('smec_power')]
         }
     }
 
@@ -51,19 +51,19 @@ export function subInventoryEnableChecker(
 ): [boolean, string] {
     const resourceCheck = resource >= data.cost;
     if (!resourceCheck) {
-        return [false, 'Not enough resouces']
+        return [false, chrome.i18n.getMessage('siec_resources')]
     }
 
     const members = store.getState().gameSquad.squadMembers;
     if (dataName === InventoryOption.items) {
         const getBackpacksCapabilityCheck = currentBackpacksItemsAmount < getBackpacksCapability(members);
         if (!getBackpacksCapabilityCheck) {
-            return [false, 'Not enough space in backpacks']
+            return [false, chrome.i18n.getMessage('siec_backpacks_capability')]
         }
     } else {
         const priorityCheck = priorityChecker(data);
         if (!priorityCheck) {
-            return [false, 'Better equipment in use']
+            return [false, chrome.i18n.getMessage('siec_priority')]
         }
     }
 
@@ -83,7 +83,7 @@ export function subInventoryEnableChecker(
             true;
 
         if (!requiredCyberCheck) {
-            return [false, 'Does not have required cyber']
+            return [false, chrome.i18n.getMessage('siec_cyber')]
         }
     }
 
