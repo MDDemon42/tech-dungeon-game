@@ -20,6 +20,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  6) Mix `MASPIC` to get `elf` and `werewolf`(?)
  7) Add more `_locales`
  8) Check requirements on `masteries` and `cybers`
+ 9) Several generations of `MASPIC` masters
+ 10) More `villagers`
 
  # Items to classes (with special abilities) (?)
  1) No armor + Two axes => Berserk

@@ -53,11 +53,17 @@
               }
         }
     },
+    "cyber_lab_to": {
+        "message": "В Киберлабораторию!"
+    },
     "cyber_lab_title": {
         "message": "Вот моя Киберлаборатория!"
     },
     "cyber_lab_button": {
         "message": "Внедрить!"
+    },
+    "mutation_lab_to": {
+        "message": "В Мутолабораторию!"
     },
     "mutation_lab_title": {
         "message": "Это Мутолаборатория!"
@@ -65,11 +71,17 @@
     "mutation_lab_button": {
         "message": "Мутировать!"
     },
+    "market_to": {
+        "message": "В Магазин!"
+    },
     "market_title": {
         "message": "Добро пожаловать в мой Магазин!"
     },
     "market_button": {
         "message": "Купить!"
+    },
+    "academy_to": {
+        "message": "В Академию!"
     },
     "academy_title": {
         "message": "Вы в Академии!"
@@ -77,11 +89,17 @@
     "academy_button": {
         "message": "Изучить!"
     },
+    "focus_site_to": {
+        "message": "К Месту средоточия!"
+    },
     "focus_site_title": {
         "message": "Это Место средоточия!"
     },
     "focus_site_button": {
         "message": "Развить!"
+    },
+    "spell_shop_to": {
+        "message": "В Заклинальню!"
     },
     "spell_shop_title": {
         "message": "Проходите в Заклинальню!"

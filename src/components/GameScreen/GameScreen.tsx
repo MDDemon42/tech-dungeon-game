@@ -12,27 +12,44 @@ function GameScreen() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const screens: Record<GameScreens, JSX.Element> = {
-        [GameScreens.academy]: <SubMindScreen dataName={MindOption.masteries}/>,
-        [GameScreens.cyberLab]: <SubInventoryScreen dataName={InventoryOption.cybers}/>,
-        [GameScreens.focusSite]: <SubMindScreen dataName={MindOption.powers}/>,
-        [GameScreens.market]: <SubInventoryScreen dataName={InventoryOption.items}/>,
-        [GameScreens.mutationLab]: <SubInventoryScreen dataName={InventoryOption.mutations}/>,
-        [GameScreens.spellShop]: <SubMindScreen dataName={MindOption.spells}/>
+    const screens: Record<GameScreens, {
+        screen: JSX.Element,
+        text: string
+    }> = {
+        [GameScreens.academy]: {
+            screen: <SubMindScreen dataName={MindOption.masteries}/>,
+            text: chrome.i18n.getMessage('academy_to')
+        },
+        [GameScreens.cyberLab]: {
+            screen: <SubInventoryScreen dataName={InventoryOption.cybers}/>,
+            text: chrome.i18n.getMessage('cyber_lab_to')
+        },
+        [GameScreens.focusSite]: {
+            screen: <SubMindScreen dataName={MindOption.powers}/>,
+            text: chrome.i18n.getMessage('focus_site_to')
+        },
+        [GameScreens.market]: {
+            screen: <SubInventoryScreen dataName={InventoryOption.items}/>, 
+            text: chrome.i18n.getMessage('market_to')
+        },
+        [GameScreens.mutationLab]: {
+            screen: <SubInventoryScreen dataName={InventoryOption.mutations}/>,
+            text: chrome.i18n.getMessage('mutation_lab_to')
+        },
+        [GameScreens.spellShop]: {
+            screen: <SubMindScreen dataName={MindOption.spells}/>,
+            text: chrome.i18n.getMessage('spell_shop_to')
+        }
     }
     
     function changeScreenButtonListener(item: string) {
         dispatch(gameScreens.actions.changeScreen(item));
     }
 
-    function keyToButtonText(key: string) {
-        return 'To ' + key.replace('_', ' ') + '!';
-    }
-
     return (
         <div className={styles.GameScreen}>
             {
-                screens[screen]
+                screens[screen].screen
             }
             <div className={styles.GameScreen_buttonsBlock}>
                 <button onClick={() => navigate('/battle')}>
@@ -41,7 +58,7 @@ function GameScreen() {
                 {
                     Object.keys(screens).map(item => (
                         <button onClick={() => changeScreenButtonListener(item)}>
-                            {keyToButtonText(item)}
+                            {screens[item as GameScreens].text}
                         </button>
                     ))
                 }

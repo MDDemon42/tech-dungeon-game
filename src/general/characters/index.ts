@@ -1,7 +1,9 @@
 import opponents from "./opponents";
+import villagers from "./villagers";
 
 const characters = {
-    opponents
+    opponents,
+    villagers
 }
 
 export default characters

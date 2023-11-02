@@ -12,7 +12,7 @@ function InventoryScreen(props: {
     battle: boolean
 }) {
     const {character, battle} = props;
-    const {general} = character;
+    const {general, params} = character;
     const powersUserNames = general.mind.powers.map(power => power.name);
     const inventory = general.inventory ? general.inventory : createEmptyInventory();
 
@@ -20,7 +20,11 @@ function InventoryScreen(props: {
     const height = battle ? '160px' : '370px';
 
     return (
-        <div className={styles.InventoryScreen} style={{width, height}}>       
+        <div 
+            className={styles.InventoryScreen} 
+            style={{width, height}}
+            title={params.name}
+        >       
             {
                 inventory.bothHands.name === items.weapons.item_oakBow.name ?
                     <img src={images.bodyElements.oakBow} alt='oakBow' /> : null

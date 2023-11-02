@@ -17,15 +17,16 @@ export function upperCaseFirstLetter(value: string) {
 
 function MainPage() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
-
+    
     const memberClass = useSelector((store: IStore) => store.gameSquad.squadMembers[index].params.class);
-
-    const classes = Object.keys(images.classIcons);
-
-    const dispatch = useDispatch();
 
     const [startButtonText, setStartButtonText] = 
         useState(chrome.i18n.getMessage('main_page_start'))
+
+    const classes = Object.keys(images.classIcons)
+        .filter(icon => icon !== UserStartClass.noIcon);
+
+    const dispatch = useDispatch();
 
     // loading storaged state
     useEffect(() => {
@@ -50,6 +51,7 @@ function MainPage() {
             iconFromClass = value;
         }
         dispatch(gameSquad.actions.refreshState(iconFromClass));
+
         setStartButtonText(chrome.i18n.getMessage('main_page_start'));
     }
 
@@ -64,11 +66,9 @@ function MainPage() {
                     src={images.classIcons[classToIcon(memberClass)]} 
                     alt='classIcon' 
                     title={classInfo[memberClass].description}
-                />
-                <select 
-                    value={memberClass}
-                    onChange={(event) => changeClass(event.target.value)}
-                >
+                />      
+                <select onChange={(event) => changeClass(event.target.value)}>
+                    <option selected disabled hidden></option>
                     {
                         classes.map(item => {
                             return (

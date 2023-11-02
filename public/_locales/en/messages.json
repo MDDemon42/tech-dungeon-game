@@ -53,11 +53,17 @@
               }
         }
     },
+    "cyber_lab_to": {
+        "message": "To Cyber Lab!"
+    },
     "cyber_lab_title": {
         "message": "Welcome to Cyber Lab!"
     },
     "cyber_lab_button": {
         "message": "Implement!"
+    },
+    "mutation_lab_to": {
+        "message": "To Mutation Lab!"
     },
     "mutation_lab_title": {
         "message": "Welcome to Mutation Lab!"
@@ -65,11 +71,17 @@
     "mutation_lab_button": {
         "message": "Mutate!"
     },
+    "market_to": {
+        "message": "To Market!"
+    },
     "market_title": {
         "message": "Welcome to Market!"
     },
     "market_button": {
         "message": "Buy!"
+    },
+    "academy_to": {
+        "message": "To Academy!"
     },
     "academy_title": {
         "message": "Welcome to Academy!"
@@ -77,11 +89,17 @@
     "academy_button": {
         "message": "Learn!"
     },
+    "focus_site_to": {
+        "message": "To Focus Site!"
+    },
     "focus_site_title": {
         "message": "Welcome to Focus Site!"
     },
     "focus_site_button": {
         "message": "Develop!"
+    },
+    "spell_shop_to": {
+        "message": "To Spell Shop!"
     },
     "spell_shop_title": {
         "message": "Welcome to Spell Shop!"
