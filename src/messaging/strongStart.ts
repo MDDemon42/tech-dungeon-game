@@ -1,4 +1,4 @@
-import { UserParam, UserResource, UserStartClass } from "../enums-and-interfaces/enums";
+import { UserParam, UserResource } from "../enums-and-interfaces/enums";
 import C from '../redux/constants';
 import createEmptyCharacter from "../helpers/emptyEssencesCreators";
 import store from "../redux/store";

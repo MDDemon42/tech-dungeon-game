@@ -5,6 +5,7 @@ import createEmptyCharacter,
     createNoItem 
 } from '../../helpers/emptyEssencesCreators';
 import { 
+    IAbility,
     IClassInfo, 
     IGameSquad, 
     IManageItemsProps
@@ -373,6 +374,22 @@ const gameSquad = createSlice({
 
             state.squadMembers = squad;
         },
+        sufferAbility(state, action) {
+            const {index, ability} = action.payload;
+            const squad = {...state.squadMembers};
+            const squadMember = squad[index];
+
+            const {damage, damageType, hitChance} = ability as IAbility;
+            const resultDamage = damage - 
+                squadMember.params.resistances[damageType];
+
+            const chance = Math.floor(Math.random()*100);
+            if (hitChance > chance) {
+                squadMember.params.currentParams[UserParam.health] -= resultDamage;
+            }
+
+            state.squadMembers = squad;
+        },
         relaxate(state, action) {
             const squad = {...state.squadMembers};
 
@@ -383,6 +400,23 @@ const gameSquad = createSlice({
             });
 
             state.squadMembers = squad;
+        },
+        respite(state, action) {
+            const squad = {...state.squadMembers};
+
+            for (const index in squad) {
+                const squadMember = squad[index];
+                for (const param in squadMember.params.currentParams) {
+                    if (param !== UserParam.health && param !== UserParam.blank) {
+                        if (
+                            Number(squadMember.params.currentParams[param as UserParam]) < 
+                            Number(squadMember.params.maxParams[param as UserParam])
+                        ) {
+                            squadMember.params.currentParams[param as UserParam]++;
+                        }
+                    }
+                }
+            }
         }
     }
 })

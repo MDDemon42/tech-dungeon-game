@@ -1,4 +1,4 @@
-import { IAbility, IMastery, ISpell } from "../../enums-and-interfaces/interfaces";
+import { IAbility, ISpell } from "../../enums-and-interfaces/interfaces";
 import images from "../../images/images";
 import masteries from "../masteries/masteries";
 import abilities from "../abilities";

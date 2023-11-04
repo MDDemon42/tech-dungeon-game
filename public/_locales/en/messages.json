@@ -164,6 +164,9 @@
     "battle_page_deselect_ability": {
         "message": "Deselect\n ability"
     },
+    "battle_page_process_ability": {
+        "message": "Process\n ability"
+    },
     "battle_page_next_turn": {
         "message": "Next turn"
     },

@@ -1,5 +1,4 @@
 import styles from './Icons.module.css';
-import { IMastery } from '../../enums-and-interfaces/interfaces';
 import ParamIcon from './ParamIcon';
 import { DamageType, InventoryPlace, UserParam } from '../../enums-and-interfaces/enums';
 

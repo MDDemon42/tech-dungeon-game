@@ -87,8 +87,10 @@ function characterAbilitiesGatherer(character: ICharacher) {
     // basic ability
     const noItem = createNoItem();
     if (
-        inventory.leftHand.name === noItem.name ||
-        inventory.rightHand.name === noItem.name
+        (
+            inventory.leftHand.name === noItem.name ||
+            inventory.rightHand.name === noItem.name
+        ) && inventory.bothHands.name === noItem.name
     ) {
         result.push(abilities.battleAbilities.melee.battleAbility_fistPunch)
     }

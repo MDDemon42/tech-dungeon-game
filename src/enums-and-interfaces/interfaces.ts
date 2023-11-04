@@ -15,7 +15,8 @@ import {
 export interface IStore {
     everything: IEverything,
     gameScreen: IGameScreen,
-    gameSquad: IGameSquad
+    gameSquad: IGameSquad,
+    opponents: IOpponents
 }
 
 export interface IEverything {
@@ -55,6 +56,11 @@ export interface IGameSquad {
         },
         items: IItem[]
     }    
+}
+
+export interface IOpponents {
+    opponentMembers: ICharacher[],
+    opponentsOptionsIndex: number
 }
 
 // character parts //

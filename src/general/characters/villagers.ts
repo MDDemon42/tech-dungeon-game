@@ -14,7 +14,6 @@ const guard = () => {
     character.params.currentParams[UserParam.stamina] = 3;
 
     character.general.inventory.armor = items.armors.item_leatherArmor;
-    character.general.inventory.leftHand = items.armors.item_steelShield;
     character.general.inventory.rightHand = items.weapons.item_steelSwordRightHand;
 
     return character

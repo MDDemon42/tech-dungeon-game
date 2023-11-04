@@ -1,4 +1,4 @@
-import { ICyber, IAbility, IMastery } from "../../enums-and-interfaces/interfaces";
+import { ICyber, IAbility } from "../../enums-and-interfaces/interfaces";
 import armors from "./armors";
 import weapons from "./weapons";
 import other from "./other";

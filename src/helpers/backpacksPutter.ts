@@ -1,6 +1,5 @@
 import masteries from "../general/masteries/masteries";
 import { ICharacher, IItem } from "../enums-and-interfaces/interfaces";
-import store from "../redux/store";
 
 export default function putItemInBackpacks(
     items: IItem[], 

@@ -164,6 +164,9 @@
     "battle_page_deselect_ability": {
         "message": "Отменить\n выбор"
     },
+    "battle_page_process_ability": {
+        "message": "Применить\n способность"
+    },
     "battle_page_next_turn": {
         "message": "Следующий ход"
     },

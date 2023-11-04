@@ -72,7 +72,7 @@ function BattleOrder(props: {
             flexDirection: vertical ? 'column' : 'row'
         }}>
             {
-                paramAmount ?
+                paramAmount > 0 ?
                     [...Array(paramAmount)]
                         .map(icon => <ParamIcon param={paramName}/>) :
                     <ParamIcon param='blank'/>

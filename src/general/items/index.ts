@@ -1,4 +1,4 @@
-import { IAbility, IItem, IMastery } from "../../enums-and-interfaces/interfaces";
+import { IAbility, IItem } from "../../enums-and-interfaces/interfaces";
 import weapons from "./weapons";
 import armors from "./armors";
 import other from "./other";
