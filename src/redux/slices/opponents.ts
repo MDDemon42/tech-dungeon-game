@@ -6,15 +6,22 @@ import characters from '../../general/characters';
 const opponents_options = [
     [
         characters.opponents.opponent_dummy(),
+    ],
+    [
         characters.villagers.guard(),
         characters.villagers.barbarian(),
-        characters.villagers.knight()
+        characters.villagers.knight(),
+        characters.villagers.paladin()
+    ],
+    [
+        characters.villagers.apprentice(),
+        characters.villagers.magister()
     ]
 ]
 
 const initialState: IOpponents = {
-    opponentMembers: opponents_options[0],
-    opponentsOptionsIndex: 0
+    opponentMembers: opponents_options[2],
+    opponentsOptionsIndex: 2
 }
 
 const opponents = createSlice({
@@ -30,6 +37,7 @@ const opponents = createSlice({
         chooseOpponentsOption(state, action) {
             const {index} = action.payload;
 
+            state.opponentsOptionsIndex = index;
             state.opponentMembers = opponents_options[index];
         },
         processAbility(state, action) {

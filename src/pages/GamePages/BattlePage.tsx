@@ -49,8 +49,6 @@ function BattlePage() {
 
     useEffect(() => {        
         if (battlePageState.battleTurn === 0) {
-            dispatch(opponents.actions.chooseOpponentsOption({index: 0}));
-
             setBattlePageStatuses();
         } else if (battlePageState.battleTurn % 2 === 1) {
             checkDead();

@@ -98,8 +98,34 @@ function InventoryScreen(props: {
                 inventory.leftPocket.name === items.other.item_healingPotion.name ?
                     <img src={images.bodyElements.healingPotion} alt='healingPotion' /> : null
             }
-                                    
-                                    {
+
+            <img src={images.bodyElements.head} alt='head' />
+            {
+                powersUserNames.includes(powers.power_telekinesis.name) ?
+                    <img src={images.bodyElements.telekinesis} alt='telekinesis' /> : null
+            }
+            {
+                inventory.chin.name === mutations.weapons.mutation_acidSplit.name ?
+                    <img src={images.bodyElements.acidSplit} alt='acidSplit' /> :
+                    inventory.chin.name === mutations.weapons.mutation_lowerFangs.name ? 
+                        <img src={images.bodyElements.lowerFangs} alt='lowerFangs' /> : null
+            }
+            {
+                powersUserNames.includes(powers.power_intuition.name) ?
+                    <img src={images.bodyElements.intuition} alt='intuition' /> : null
+            }
+            {
+                inventory.head.name === mutations.weapons.mutation_horns.name ?
+                    <img src={images.bodyElements.horns} alt='horns' /> : null                    
+            }
+            {
+                inventory.hat.name === items.armors.item_magisterHat.name ?
+                    <img src={images.bodyElements.magisterHat} alt='magisterHat' /> :
+                    inventory.hat.name === items.armors.item_apprenticeHat.name ?
+                        <img src={images.bodyElements.apprenticeHat} alt='apprenticeHat' /> : null
+            }
+
+            {
                 inventory.leftHand.name === cybers.weapons.cyber_laser.name ?
                     <img src={images.bodyElements.laser} alt='laser' /> :
                     (
@@ -133,37 +159,16 @@ function InventoryScreen(props: {
                                 <img src={images.bodyElements.magisterScepter} alt='magisterScepter' /> :
                                 inventory.bothHands.name === items.weapons.item_runicGreatsword.name ?
                                     <img src={images.bodyElements.runicGreatsword} alt='runicGreatsword' /> :
-                                    inventory.bothHands.name === items.weapons.item_oakCrossow.name ?
-                                        <img src={images.bodyElements.oakCrossbow} alt='oakCrossbow' /> :
-                                        inventory.bothHands.name === items.weapons.item_apprenticeRod.name ?
-                                            <img src={images.bodyElements.apprenticeRod} alt='apprenticeRod' /> :
-                                            inventory.rightHand.name === items.weapons.item_steelSwordRightHand.name ?
-                                                <img src={images.bodyElements.steelSwordRightHand} alt='steelSwordRightHand' /> :
-                                                <img src={images.bodyElements.rightHand} alt='rightHand' />
-            }
-            <img src={images.bodyElements.head} alt='head' />
-            {
-                powersUserNames.includes(powers.power_telekinesis.name) ?
-                    <img src={images.bodyElements.telekinesis} alt='telekinesis' /> : null
-            }
-            {
-                inventory.chin.name === mutations.weapons.mutation_acidSplit.name ?
-                    <img src={images.bodyElements.acidSplit} alt='acidSplit' /> :
-                    inventory.chin.name === mutations.weapons.mutation_lowerFangs.name ? 
-                        <img src={images.bodyElements.lowerFangs} alt='lowerFangs' /> : null
-            }
-            {
-                powersUserNames.includes(powers.power_intuition.name) ?
-                    <img src={images.bodyElements.intuition} alt='intuition' /> : null
-            }
-            {
-                inventory.head.name === mutations.weapons.mutation_horns.name ?
-                    <img src={images.bodyElements.horns} alt='horns' /> :
-                    inventory.head.name === items.armors.item_magisterHat.name ?
-                        <img src={images.bodyElements.magisterHat} alt='magisterHat' /> :
-                        inventory.head.name === items.armors.item_apprenticeHat.name ?
-                            <img src={images.bodyElements.apprenticeHat} alt='apprenticeHat' /> : null
-            }
+                                    inventory.bothHands.name === items.weapons.item_steelGreatsword.name ?
+                                        <img src={images.bodyElements.runicGreatsword} alt='steelGreatsword' /> :
+                                        inventory.bothHands.name === items.weapons.item_oakCrossow.name ?
+                                            <img src={images.bodyElements.oakCrossbow} alt='oakCrossbow' /> :
+                                            inventory.bothHands.name === items.weapons.item_apprenticeRod.name ?
+                                                <img src={images.bodyElements.apprenticeRod} alt='apprenticeRod' /> :
+                                                inventory.rightHand.name === items.weapons.item_steelSwordRightHand.name ?
+                                                    <img src={images.bodyElements.steelSwordRightHand} alt='steelSwordRightHand' /> :
+                                                    <img src={images.bodyElements.rightHand} alt='rightHand' />
+            }            
         </div>
     )
 }

@@ -1,4 +1,5 @@
 export enum InventoryPlace {
+    hat = 'Hat',
     head = 'Head',
     chin = 'Chin',
     skin = 'Skin',

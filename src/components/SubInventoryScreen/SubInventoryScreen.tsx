@@ -79,6 +79,7 @@ function SubInventoryScreen(props: {
         })
     
     const dataSpecified: Record<string, IInventorySlot[]> = {
+        data_for_hat: dataArray.filter(item => item.inventoryPlace === InventoryPlace.hat),
         data_for_head: dataArray.filter(item => item.inventoryPlace === InventoryPlace.head),
         data_for_chin: dataArray.filter(item => item.inventoryPlace === InventoryPlace.chin),
         data_for_skin: dataArray.filter(item => item.inventoryPlace === InventoryPlace.skin),

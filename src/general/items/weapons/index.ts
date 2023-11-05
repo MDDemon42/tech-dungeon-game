@@ -83,6 +83,22 @@ const item_steelGreataxe = createItem(
     ]
 )
 
+const item_steelGreatsword = createItem(
+    [
+        'Steel greatsword', 
+        'Massive steel greatsword',
+        images.guildianLearnings.runicSword
+    ],
+    [
+        2, InventoryPlace.bothHands, 2
+    ],
+    [
+        masteries.mastery_brutalForce.name,
+        abilities.battleAbilities.melee.battleAbility_greatswordSlash,
+        '', null
+    ]
+)
+
 const item_runicGreatsword = createItem(
     [
         'Runic greatsword', 
@@ -176,6 +192,7 @@ const weapons = {
     item_steelSwordRightHand,
     item_steelSwordLeftHand,
     item_steelGreataxe,
+    item_steelGreatsword,
     item_runicGreatsword,
     item_oakBow,
     item_oakCrossow,

@@ -10,7 +10,7 @@ const item_apprenticeHat = createItem(
         images.wizardItems.apprenticeHat
     ], 
     [
-        1, InventoryPlace.head, 1
+        1, InventoryPlace.hat, 1
     ],
     [
         masteries.mastery_scholarship.name,
@@ -39,7 +39,7 @@ const item_magisterHat = createItem(
         images.wizardItems.magisterHat
     ],
     [
-        2, InventoryPlace.head, 2
+        2, InventoryPlace.hat, 2
     ],
     [
         masteries.mastery_magisterDegree.name,
