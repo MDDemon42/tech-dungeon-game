@@ -15,6 +15,14 @@ import { useNavigate } from 'react-router-dom';
 import shuffleArray from '../../helpers/shuffleArray';
 import characterAbilitiesGatherer from '../../helpers/characterAbilitiesGatherer';
 import opponents from '../../redux/slices/opponents';
+import {
+    HouseDoor, 
+    LayerBackward, 
+    SkipForward, 
+    ArrowCounterclockwise,
+    CheckCircle
+} from 'react-bootstrap-icons';
+import BattleTurnButtons from '../../components/BattleTurnButtons/BattleTurnButtons';
 
 function BattlePage() {
     const [battlePageState, setBattlePageState] = useState({
@@ -491,6 +499,16 @@ function BattlePage() {
         )
     }
 
+    const battleTurnButtonsListeners = {
+        navigateHome: () => navigate('/game'),
+        deselectMember: deselectSquadMember,
+        nextTurn: nextBattleTurn
+    }
+
+    const battleTurnButtonsDisableReasons = {
+        deselectMember: battlePageState.selectedMemberIndex < 0
+    }
+
     return (
         <div className={styles.BattlePage}>
             <h3 className={styles.BattlePage_header}>
@@ -508,14 +526,15 @@ function BattlePage() {
                 />
                 <div className={styles.BattlePage_body_abilitiesBlock}>
                     <button 
-                        className={styles.BattlePage_body_abilitiesBlock_button}
+                        className={styles.BattlePage_body_abilitiesBlock_button_deselect}
                         onClick={deselectAbility}
                         disabled={
                             !battlePageState.selectedAbility ||
                             battlePageState.battleTurn % 2 === 0
                         }
+                        title={chrome.i18n.getMessage('battle_page_deselect_ability')}
                     >
-                        {chrome.i18n.getMessage('battle_page_deselect_ability')}
+                        <ArrowCounterclockwise size={30}/>                        
                     </button>
                     <div className={styles.BattlePage_body_abilitiesBlock_abilities}>
                         {
@@ -537,7 +556,7 @@ function BattlePage() {
                         }
                     </div>
                     <button 
-                        className={styles.BattlePage_body_abilitiesBlock_button}
+                        className={styles.BattlePage_body_abilitiesBlock_button_process}
                         onClick={() => {
                             processAbilityOntoOpponent();
                             checkEndOfTurn();
@@ -547,8 +566,9 @@ function BattlePage() {
                             battlePageState.selectedMemberIndex < 0 ||
                             battlePageState.selectedOpponentIndex < 0
                         }
+                        title={chrome.i18n.getMessage('battle_page_process_ability')}
                     >
-                        {chrome.i18n.getMessage('battle_page_process_ability')}
+                        <CheckCircle size={30}/>                        
                     </button>
                 </div>                
                 <BattleOrder
@@ -558,18 +578,10 @@ function BattlePage() {
                     listener={(memb_index: number) => selectSquadMember(memb_index, false)}
                 /> 
             </div>
-            <button onClick={() => navigate('/game')}>
-                {chrome.i18n.getMessage('battle_page_back_to_village')}
-            </button>
-            <button 
-                disabled={battlePageState.selectedMemberIndex < 0}
-                onClick={deselectSquadMember}
-            >
-                {chrome.i18n.getMessage('battle_page_deselect_member')}
-            </button>
-            <button onClick={nextBattleTurn}>
-                {chrome.i18n.getMessage('battle_page_next_turn')}
-            </button>
+            <BattleTurnButtons 
+                listeners={battleTurnButtonsListeners}
+                disableReasons={battleTurnButtonsDisableReasons}
+            />
         </div>
     )
 }

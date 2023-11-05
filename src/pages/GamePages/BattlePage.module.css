@@ -45,7 +45,17 @@
     justify-content: space-around;
 }
 
-.BattlePage_body_abilitiesBlock_button {
+.BattlePage_body_abilitiesBlock_button_deselect, 
+.BattlePage_body_abilitiesBlock_button_process {
     position: relative;
     right: 0;
+    padding: 4px 13px 0;
+}
+
+.BattlePage_body_abilitiesBlock_button_deselect {
+    background-color: lightcoral;
+}
+
+.BattlePage_body_abilitiesBlock_button_process {
+    background-color: lightgreen;
 }
