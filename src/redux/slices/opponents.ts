@@ -5,17 +5,24 @@ import characters from '../../general/characters';
 
 const opponents_options = [
     [
-        characters.opponents.opponent_dummy(),
+        characters.mights.dummy(),
+        characters.mights.guard(),
+        characters.mights.barbarian(),
+        characters.mights.knight(),
+        characters.mights.paladin()
     ],
     [
-        characters.villagers.guard(),
-        characters.villagers.barbarian(),
-        characters.villagers.knight(),
-        characters.villagers.paladin()
+        characters.magicians.apprentice(),
+        characters.magicians.magister()
     ],
     [
-        characters.villagers.apprentice(),
-        characters.villagers.magister()
+        characters.mutants.satyr(),
+        characters.mutants.minotaur(),
+        characters.mutants.orc(),
+        characters.mutants.naga(),
+        characters.mutants.demon(),
+        characters.mutants.dragon(),
+        characters.mutants.ultimate_chimera()
     ]
 ]
 

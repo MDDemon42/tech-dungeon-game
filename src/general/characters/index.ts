@@ -1,9 +1,11 @@
-import opponents from "./opponents";
-import villagers from "./villagers";
+import magicians from "./magicians";
+import mights from "./mights";
+import mutants from "./mutants";
 
 const characters = {
-    opponents,
-    villagers
+    magicians,
+    mights,
+    mutants
 }
 
 export default characters

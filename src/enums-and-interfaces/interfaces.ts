@@ -133,7 +133,7 @@ export interface IInventory extends Record<string, IItem | ICyber | IMutation> {
     hat: IItem,
     head: IMutation,
     chin: IMutation,
-    armor: IItem,
+    armor: IItem | IMutation,
     skin: IMutation | ICyber,
     back: IMutation | IItem,
     shoulders: IMutation | ICyber,
@@ -141,7 +141,7 @@ export interface IInventory extends Record<string, IItem | ICyber | IMutation> {
     leftPocket: IItem,
     rightPocket: IItem,
     tail: IMutation,
-    legs: ICyber,
+    legs: ICyber | IMutation,
     leftHand: ICyber | IItem,
     rightHand: ICyber | IItem,
     bothHands: IMutation | IItem

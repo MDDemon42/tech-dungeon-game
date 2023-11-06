@@ -18,7 +18,7 @@ const specialRaceAbilities: Record<Race, (IBattleAbility | null)> = {
     [Race.chimera]: null
 }
 
-function characterAbilitiesGatherer(character: ICharacher) {
+function gatherCharacterAbilities(character: ICharacher) {
     const result: IAbility[] = [];
 
     const masteriesUser = character.general.mind.masteries.map(mastery => mastery.name);
@@ -98,4 +98,4 @@ function characterAbilitiesGatherer(character: ICharacher) {
     return result
 }
 
-export default characterAbilitiesGatherer
+export default gatherCharacterAbilities

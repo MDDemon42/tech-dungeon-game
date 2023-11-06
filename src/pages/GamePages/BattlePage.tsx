@@ -13,12 +13,9 @@ import gameSquad from '../../redux/slices/gameSquad';
 import BattleOrder from '../../components/BattleOrder/BattleOrder';
 import { useNavigate } from 'react-router-dom';
 import shuffleArray from '../../helpers/shuffleArray';
-import characterAbilitiesGatherer from '../../helpers/characterAbilitiesGatherer';
+import gatherCharacterAbilities from '../../helpers/gatherCharacterAbilities';
 import opponents from '../../redux/slices/opponents';
 import {
-    HouseDoor, 
-    LayerBackward, 
-    SkipForward, 
     ArrowCounterclockwise,
     CheckCircle
 } from 'react-bootstrap-icons';
@@ -132,6 +129,7 @@ function BattlePage() {
             }, (orderIndex) * 4000 + 2500)
             
             setTimeout(() => {
+                clearCharacterAbilitiesOnTurn();
                 deselectOpponent(index);
             }, (orderIndex) * 4000 + 3000)
         })
@@ -229,6 +227,16 @@ function BattlePage() {
         return indexes
     }
 
+    function clearCharacterAbilitiesOnTurn() {
+        setBattlePageState((prevState) => {
+            const state = {...prevState};
+
+            state.abilitiesOnTurn = [];
+
+            return state
+        })
+    }
+
     function selectAbility(
         ability: IAbility | null, 
         charachter: ICharacher
@@ -301,7 +309,7 @@ function BattlePage() {
             state.opponentsStatus = opp_status;
             state.selectedOpponentIndex = opponentIndex;
             if (opponentTurn) {
-                state.abilitiesOnTurn = characterAbilitiesGatherer(current_opponents[opponentIndex]);
+                state.abilitiesOnTurn = gatherCharacterAbilities(current_opponents[opponentIndex]);
             }            
 
             return state
@@ -420,7 +428,7 @@ function BattlePage() {
                     state.selectedMemberIndex = memberIndex;
 
                     dispatch(gameSquad.actions.changeSquadMember(memberIndex));
-                    state.abilitiesOnTurn = characterAbilitiesGatherer(squad[memberIndex]);
+                    state.abilitiesOnTurn = gatherCharacterAbilities(squad[memberIndex]);
                 }                
             } else {
                 status[memberIndex].selected = true;
