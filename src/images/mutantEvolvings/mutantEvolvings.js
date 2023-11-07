@@ -7,6 +7,7 @@ import acidSplit from './acidSplit.png';
 import twoExtraPincers from './twoExtraPincers.png';
 import hooves from './hooves.png';
 import lowerFangs from './lowerFangs.png';
+import ripApart from './ripApart.png';
 
 const mutantEvolvings = {
     claws,
@@ -17,7 +18,8 @@ const mutantEvolvings = {
     acidSplit,
     twoExtraPincers,
     hooves,
-    lowerFangs
+    lowerFangs,
+    ripApart
 };
 
 export default mutantEvolvings;

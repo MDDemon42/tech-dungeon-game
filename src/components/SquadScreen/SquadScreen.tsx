@@ -51,7 +51,7 @@ function SquadScreen() {
                     Array(5).fill(0).map((_, index: number) => {
                         if (!!squad[index]) {
                             return <img 
-                                src={images.classIcons[classToIcon(squad[index].params.class)]}
+                                src={images.classIcons[classToIcon(squad[index].params.class) as keyof typeof images.classIcons]}
                                 title={squad[index].params.name}
                                 onClick={() => showProfileHandler(index)}
                                 alt='squadMember'

@@ -57,6 +57,7 @@ export enum DamageType {
     physicalSlashing = 'Physical (Slashing)',
     physicalSmashing = 'Physical (Smashing)',
     physicalPiercing = 'Physical (Piercing)',
+    suffocation = 'Suffocation',
     fire = 'Fire',
     electrical = 'Electrical',
     psionic = 'Psionic',

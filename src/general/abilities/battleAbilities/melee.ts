@@ -50,10 +50,40 @@ const battleAbility_greataxeSlash = createBattleAbility(
     [2, DamageType.physicalSlashing, 1, 70]
 );
 
-const battleAbility_greatswordSlash = createBattleAbility(
+const battleAbility_steelGreatswordSlash = createBattleAbility(
+    ['Greatsword slash', '', images.classIcons.noIcon], 
+    {Stamina: 2}, 
+    [2, DamageType.physicalSlashing, 1, 70]
+);
+
+const battleAbility_runicGreatswordSlash = createBattleAbility(
     ['Greatsword slash', '', images.guildianLearnings.runicSword], 
     {Stamina: 2}, 
     [2, DamageType.physicalSlashing, 1, 70]
+);
+
+const battleAbility_ripApartMinor = createBattleAbility(
+    ['Rip Apart (minor)', '', images.mutantEvolvings.ripApart], 
+    {Stamina: 2}, 
+    [2, DamageType.physicalSlashing, 1, 70]
+);
+
+const battleAbility_ripApartMere = createBattleAbility(
+    ['Rip Apart (mere)', '', images.mutantEvolvings.ripApart], 
+    {Stamina: 3}, 
+    [3, DamageType.physicalSlashing, 1, 70]
+);
+
+const battleAbility_ripApartMajor = createBattleAbility(
+    ['Rip Apart (major)', '', images.mutantEvolvings.ripApart], 
+    {Stamina: 4}, 
+    [4, DamageType.physicalSlashing, 1, 70]
+);
+
+const battleAbility_ripApartMonstrous = createBattleAbility(
+    ['Rip Apart (monstrous)', '', images.mutantEvolvings.ripApart], 
+    {Stamina: 5}, 
+    [5, DamageType.physicalSlashing, 1, 70]
 );
 
 const melee = {
@@ -65,7 +95,12 @@ const melee = {
     battleAbility_chakramSlash,
     battleAbility_masterChakramSlash,
     battleAbility_greataxeSlash,
-    battleAbility_greatswordSlash
+    battleAbility_steelGreatswordSlash,
+    battleAbility_runicGreatswordSlash,
+    battleAbility_ripApartMinor,
+    battleAbility_ripApartMere,
+    battleAbility_ripApartMajor,
+    battleAbility_ripApartMonstrous
 }
 
 export default melee

@@ -50,6 +50,7 @@ function createEmptyParams(): ICharacherParams {
             [DamageType.physicalSlashing]: 0,
             [DamageType.physicalSmashing]: 0,
             [DamageType.physicalPiercing]: 0,
+            [DamageType.suffocation]: 0,
             [DamageType.fire]: 0,
             [DamageType.electrical]: 0,
             [DamageType.psionic]: 0,

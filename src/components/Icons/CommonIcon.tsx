@@ -95,6 +95,7 @@ function CommonIcon(props: {
         [DamageType.acid]: 'lightgreen',
         [DamageType.electrical]: 'yellow',
         [DamageType.fire]: 'orange',
+        [DamageType.suffocation]: 'lighyellow',
         [DamageType.physicalSlashing]: 'lightblue',
         [DamageType.physicalSmashing]: 'darkblue',
         [DamageType.physicalPiercing]: 'blue',

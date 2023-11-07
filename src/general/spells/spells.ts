@@ -12,6 +12,7 @@ function createSpell(
     abilityInfo: [
         requiredMastery: string,
         requiresRod: boolean,
+        requiresBothHands: boolean,
         ability: IAbility | null
     ]
 ): ISpell {
@@ -22,7 +23,8 @@ function createSpell(
 
         requiredMastery: abilityInfo[0],
         requiresRod: abilityInfo[1],
-        ability: abilityInfo[2]
+        requiresBothHands: abilityInfo[2],
+        ability: abilityInfo[3]
     }
 }
 
@@ -34,6 +36,7 @@ const spell_multistrike = createSpell(
     ],
     [
         masteries.mastery_swordsmanship.name,
+        false,
         false,
         null
     ]
@@ -48,6 +51,7 @@ const spell_titanSkin = createSpell(
     [
         masteries.mastery_magisterDegree.name,
         false,
+        false,
         null
     ]
 )
@@ -61,6 +65,7 @@ const spell_defensiveCharms = createSpell(
     [
         masteries.mastery_scholarship.name,
         true,
+        false,
         null
     ]
 )
@@ -74,20 +79,148 @@ const spell_defensiveRunes = createSpell(
     [
         masteries.mastery_magisterDegree.name,
         true,
+        false,
         null
+    ]
+)
+
+const spell_iceShard = createSpell(
+    [
+        'Ice Shard',
+        'Spell to pierce an enemy with ice shard',
+        images.wizardSpells.iceShard
+    ],
+    [
+        masteries.mastery_senseOfCold.name,
+        false,
+        true,
+        abilities.battleAbilities.magic.battleAbility_iceShard
+    ]
+)
+
+const spell_iceSpear = createSpell(
+    [
+        'Ice Spear',
+        'Spell to pierce an enemy with ice spear',
+        images.wizardSpells.iceSpear
+    ],
+    [
+        masteries.mastery_senseOfCold.name,
+        false,
+        true,
+        abilities.battleAbilities.magic.battleAbility_iceShard
+    ]
+)
+
+const spell_iceHail = createSpell(
+    [
+        'Ice Hail',
+        'Spell to pierce a group of enemies with ice shards',
+        images.wizardSpells.iceHail
+    ],
+    [
+        masteries.mastery_senseOfCold.name,
+        false,
+        true,
+        abilities.battleAbilities.magic.battleAbility_iceHail
+    ]
+)
+
+const spell_coldDeath = createSpell(
+    [
+        'Cold Death',
+        'Spell to turn an enemy dead and cold',
+        images.wizardSpells.coldDeath
+    ],
+    [
+        masteries.mastery_senseOfCold.name,
+        false,
+        true,
+        abilities.battleAbilities.magic.battleAbility_coldDeath
+    ]
+)
+
+const spell_flame = createSpell(
+    [
+        'Flame',
+        'Spell to roast an enemy with fire',
+        images.wizardSpells.flame
+    ],
+    [
+        masteries.mastery_senseOfFlame.name,
+        false,
+        true,
+        abilities.battleAbilities.magic.battleAbility_flame
     ]
 )
 
 const spell_fireball = createSpell(
     [
         'Fireball',
-        'Spell to clash a group of enemies with fire. Casted via rod or staff',
+        'Spell to clash a group of enemies with fire',
         images.wizardSpells.fireball
     ],
     [
-        masteries.mastery_magisterDegree.name,
+        masteries.mastery_senseOfFlame.name,
+        false,
         true,
         abilities.battleAbilities.magic.battleAbility_fireball
+    ]
+)
+
+const spell_fireWave = createSpell(
+    [
+        'Fire Wave',
+        'Spell to burn out a group of enemies',
+        images.wizardSpells.fireWave
+    ],
+    [
+        masteries.mastery_senseOfFlame.name,
+        false,
+        true,
+        abilities.battleAbilities.magic.battleAbility_fireWave
+    ]
+)
+
+const spell_windBlow = createSpell(
+    [
+        'Wind Blow',
+        'Spell to show an enemy devastating wind',
+        images.wizardSpells.windBlow
+    ],
+    [
+        masteries.mastery_senseOfWind.name,
+        false,
+        true,
+        abilities.battleAbilities.magic.battleAbility_windBlow
+    ]
+)
+
+const spell_thunderPunch = createSpell(
+    [
+        'Thunder Punch',
+        'Spell to smash an enemy up to thunder crambls',
+        images.wizardSpells.thunderPunch
+    ],
+    [
+        masteries.mastery_senseOfWind.name,
+        false,
+        true,
+        abilities.battleAbilities.magic.battleAbility_thunderPunch
+    ]
+)
+
+const spell_airDeprivation = createSpell(
+    [
+        'Air Deprivation',
+        'Spell to make an enemy airless and lifeless',
+        images.wizardSpells.airDeprivation
+    ],
+    [
+        masteries.mastery_senseOfWind.name,
+        false,
+        true,
+        abilities.battleAbilities.magic.battleAbility_airDeprivation
     ]
 )
 
@@ -100,6 +233,7 @@ const spell_flyingCharms = createSpell(
     [
         masteries.mastery_scholarship.name,
         true,
+        false,
         null
     ]
 )
@@ -113,6 +247,7 @@ const spell_golem = createSpell(
     [
         masteries.mastery_magisterDegree.name,
         true,
+        false,
         null
     ]
 )
@@ -126,6 +261,7 @@ const spell_magicBolt = createSpell(
     [
         masteries.mastery_scholarship.name,
         true,
+        false,
         abilities.battleAbilities.magic.battleAbility_magicBolt
     ]
 )
@@ -139,6 +275,7 @@ const spell_teleport = createSpell(
     [
         masteries.mastery_magisterDegree.name,
         true,
+        false,
         null
     ]
 )
@@ -148,7 +285,16 @@ const spells = {
     spell_titanSkin,
     spell_defensiveCharms,
     spell_defensiveRunes,
+    spell_iceShard,
+    spell_iceSpear,
+    spell_iceHail,
+    spell_coldDeath,
+    spell_flame,
     spell_fireball,
+    spell_fireWave,
+    spell_windBlow,
+    spell_thunderPunch,
+    spell_airDeprivation,
     spell_flyingCharms,
     spell_golem,
     spell_magicBolt,

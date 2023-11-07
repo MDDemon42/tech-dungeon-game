@@ -94,7 +94,7 @@ const item_steelGreatsword = createItem(
     ],
     [
         masteries.mastery_brutalForce.name,
-        abilities.battleAbilities.melee.battleAbility_greatswordSlash,
+        abilities.battleAbilities.melee.battleAbility_steelGreatswordSlash,
         '', null
     ]
 )
@@ -103,17 +103,17 @@ const item_runicGreatsword = createItem(
     [
         'Runic greatsword', 
         'Massive sword covered with runes',
-        images.guildianLearnings.runicSword
+        images.classIcons.noIcon
     ],
     [
         2, InventoryPlace.bothHands, 2
     ],
     [
         masteries.mastery_brutalForce.name,
-        abilities.battleAbilities.melee.battleAbility_greatswordSlash,
+        abilities.battleAbilities.melee.battleAbility_runicGreatswordSlash,
         masteries.mastery_runicWeapons.name,
         [
-            abilities.battleAbilities.melee.battleAbility_greatswordSlash,
+            abilities.battleAbilities.melee.battleAbility_runicGreatswordSlash,
             abilities.battleAbilities.magic.battleAbility_runicGreatswordSlash
         ]
     ]

@@ -13,7 +13,10 @@ const opponents_options = [
     ],
     [
         characters.magicians.apprentice(),
-        characters.magicians.magister()
+        characters.magicians.magister(),
+        characters.magicians.cryomancer(),
+        characters.magicians.pyrokinetic(),
+        characters.magicians.aerotheurg()
     ],
     [
         characters.mutants.satyr(),
@@ -27,8 +30,8 @@ const opponents_options = [
 ]
 
 const initialState: IOpponents = {
-    opponentMembers: opponents_options[2],
-    opponentsOptionsIndex: 2
+    opponentMembers: opponents_options[1],
+    opponentsOptionsIndex: 1
 }
 
 const opponents = createSlice({

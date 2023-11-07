@@ -63,7 +63,7 @@ function MainPage() {
         <div className={styles.Popup}>
             <div className={styles.Popup_iconBlock}>
                 <img 
-                    src={images.classIcons[classToIcon(memberClass)]} 
+                    src={images.classIcons[classToIcon(memberClass) as keyof typeof images.classIcons]} 
                     alt='classIcon' 
                     title={classInfo[memberClass].description}
                 />      

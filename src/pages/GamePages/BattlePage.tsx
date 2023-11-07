@@ -237,6 +237,10 @@ function BattlePage() {
         })
     }
 
+    function getIdOfTheAbility(ability: IAbility) {
+        return ability.name.split(' ').join('').replace('(', '').replace(')', '');
+    }
+
     function selectAbility(
         ability: IAbility | null, 
         charachter: ICharacher
@@ -255,7 +259,7 @@ function BattlePage() {
                 return state
             }
 
-            const id = abil.name.split(' ').join('');
+            const id = getIdOfTheAbility(abil);
 
             let enoughResources = true;
             const abilityDiv = document.querySelectorAll<HTMLElement>('#' + id)[0];
@@ -488,7 +492,7 @@ function BattlePage() {
         const state = {...battlePageState};
         return (
             state.abilitiesOnTurn && state.abilitiesOnTurn.map(ability => {
-                const id = ability.name.split(' ').join('');
+                const id = getIdOfTheAbility(ability);
 
                 if (!!ability) {
                     return <div 

@@ -6,7 +6,7 @@ import psion from './psion.jpg';
 import guildian from './guildian.jpg';
 import noIcon from './noIcon.jpg';
 
-const classIcons: Record<string, any> = {
+const classIcons = {
     mutant,
     cyborg,
     normal,

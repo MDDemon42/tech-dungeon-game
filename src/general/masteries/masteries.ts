@@ -126,6 +126,33 @@ const mastery_psiEnergy = createMastery(
     mastery_meditativeInsights.name
 )
 
+const mastery_senseOfCold = createMastery(
+    [
+        'Sense of cold',
+        'Mastery to gain control over ice',
+        images.wizardSpells.senseOfCold
+    ],
+    ''
+)
+
+const mastery_senseOfFlame = createMastery(
+    [
+        'Sense of flame',
+        'Mastery to gain control over fire',
+        images.wizardSpells.flame
+    ],
+    ''
+)
+
+const mastery_senseOfWind = createMastery(
+    [
+        'Sense of wind',
+        'Mastery to gain control over air flows',
+        images.wizardSpells.senseOfWind
+    ],
+    ''
+)
+
 const masteries = {
     mastery_archery,
     mastery_marksmanship,
@@ -138,7 +165,10 @@ const masteries = {
     mastery_scholarship,
     mastery_magisterDegree,
     mastery_meditativeInsights,
-    mastery_psiEnergy
+    mastery_psiEnergy,
+    mastery_senseOfCold,
+    mastery_senseOfFlame,
+    mastery_senseOfWind
 }
 
 export default masteries

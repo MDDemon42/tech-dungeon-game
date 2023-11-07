@@ -98,6 +98,7 @@ export interface ICharacherParams {
         [DamageType.physicalSlashing]: number,
         [DamageType.physicalSmashing]: number,
         [DamageType.physicalPiercing]: number,
+        [DamageType.suffocation]: number,
         [DamageType.fire]: number,
         [DamageType.electrical]: number,
         [DamageType.psionic]: number,
@@ -116,7 +117,8 @@ export interface IMind {
 
 export interface ISpell extends IMastery {
     ability: IAbility | null,
-    requiresRod: boolean
+    requiresRod: boolean,
+    requiresBothHands: boolean
 }
 
 export interface IPower extends IMastery {

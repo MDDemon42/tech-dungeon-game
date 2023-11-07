@@ -3,6 +3,7 @@ import { ICharacher, IAbility, IBattleAbility } from "../enums-and-interfaces/in
 import abilities from "../general/abilities";
 import items from "../general/items";
 import masteries from "../general/masteries/masteries";
+import checkRipApart from "../general/races/checkRipApart";
 import { createEmptyInventory, createNoItem } from "./emptyEssencesCreators";
 
 const specialRaceAbilities: Record<Race, (IBattleAbility | null)> = {
@@ -52,6 +53,11 @@ function gatherCharacterAbilities(character: ICharacher) {
                 }
             }
         }
+    }
+
+    const ripApart = checkRipApart(inventory);
+    if (ripApart) {
+        result.push(ripApart);
     }
 
     spellsUser.forEach(spell => {
