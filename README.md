@@ -11,6 +11,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  - Had to use both `chrome.storage` and `redux store` to store data
  - Most of images for Tech Dungeon Game is from `heromachine` service.
 
+ - Battle abilities must have either 1 or 3 or 5 targets
+
  # TODO:
  1) More `opponents`
  2) Add more abilities to use on `Battle Screen`

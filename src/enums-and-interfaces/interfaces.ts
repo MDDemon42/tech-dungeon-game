@@ -16,7 +16,7 @@ export interface IStore {
     everything: IEverything,
     gameScreen: IGameScreen,
     gameSquad: IGameSquad,
-    opponents: IOpponents
+    opponents: IOpponentSquad
 }
 
 export interface IEverything {
@@ -58,9 +58,9 @@ export interface IGameSquad {
     }    
 }
 
-export interface IOpponents {
-    opponentMembers: ICharacher[],
-    opponentsOptionsIndex: number
+export interface IOpponentSquad {
+    opponentsOptionsIndex: number,
+    opponentMembers: Record<string, ICharacher>
 }
 
 // character parts //
@@ -251,4 +251,17 @@ export interface IMemberStatus {
     selected: boolean,
     hasTurn: boolean,
     dead: boolean
+}
+
+// battle page state
+export interface IBattlePageState {
+    battleTurn: number;
+    selectedMemberIndex: number;
+    selectedOpponentIndex: number;
+    selectedAbility: IAbility | null;
+    selectedAbilityDiv: HTMLElement | null;
+    squadStatus: IMemberStatus[];
+    opponentsStatus: IMemberStatus[];
+    abilitiesOnTurn: IAbility[];
+    battleResult: string;
 }

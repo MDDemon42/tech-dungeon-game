@@ -41,7 +41,7 @@ const battleAbility_masterCrossbowShot = createBattleAbility(
 const battleAbility_chakramThrow = createBattleAbility(
     ['Chakram throw', '', images.guildianLearnings.chakram], 
     {Blank: 0}, 
-    [1, DamageType.physicalSlashing, 2, 70]
+    [1, DamageType.physicalSlashing, 3, 70]
 );
 
 const ranged = {

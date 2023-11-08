@@ -6,6 +6,7 @@ import createEmptyCharacter,
 } from '../../helpers/emptyEssencesCreators';
 import { 
     IAbility,
+    ICharacher,
     IClassInfo, 
     IGameSquad, 
     IManageItemsProps
@@ -375,18 +376,32 @@ const gameSquad = createSlice({
             state.squadMembers = squad;
         },
         sufferAbility(state, action) {
-            const {index, ability} = action.payload;
+            const {indexes, ability} = action.payload;
             const squad = {...state.squadMembers};
-            const squadMember = squad[index];
+            const squadMembers = {} as Record<string, ICharacher>;
+            indexes.forEach((index: number) => {
+                if (squad[index]) {
+                    squadMembers[index] = squad[index];
+                }
+            })
 
             const {damage, damageType, hitChance} = ability as IAbility;
-            const resultDamage = damage - 
-                squadMember.params.resistances[damageType];
+            for (const index in squadMembers) {
+                const squadMember = squadMembers[index];
+                const resultDamage = damage - 
+                    squadMember.params.resistances[damageType];
 
-            const chance = Math.floor(Math.random()*100);
-            if (hitChance > chance) {
-                squadMember.params.currentParams[UserParam.health] -= resultDamage;
-            }
+                const chance = Math.floor(Math.random()*100);
+                if (hitChance > chance) {
+                    squadMember.params.currentParams[UserParam.health] -= resultDamage;
+                }
+            }  
+            
+            indexes.forEach((index: number) => {
+                if (squad[index]) {
+                    squad[index] = squadMembers[index];
+                }
+            })
 
             state.squadMembers = squad;
         },

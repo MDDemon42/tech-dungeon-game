@@ -1,37 +1,43 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { UserParam } from '../../enums-and-interfaces/enums';
-import { IAbility, IOpponents } from '../../enums-and-interfaces/interfaces';
+import { IAbility, ICharacher, IOpponentSquad } from '../../enums-and-interfaces/interfaces';
 import characters from '../../general/characters';
 
-const opponents_options = [
-    [
-        characters.mights.dummy(),
-        characters.mights.guard(),
-        characters.mights.barbarian(),
-        characters.mights.knight(),
-        characters.mights.paladin()
-    ],
-    [
-        characters.magicians.apprentice(),
-        characters.magicians.magister(),
-        characters.magicians.cryomancer(),
-        characters.magicians.pyrokinetic(),
-        characters.magicians.aerotheurg()
-    ],
-    [
-        characters.mutants.satyr(),
-        characters.mutants.minotaur(),
-        characters.mutants.orc(),
-        characters.mutants.naga(),
-        characters.mutants.demon(),
-        characters.mutants.dragon(),
-        characters.mutants.ultimate_chimera()
-    ]
+const opponents_options: Record<string, ICharacher>[] = [
+    {
+        0: characters.mights.dummy(),
+        1: characters.mights.guard(),
+        2: characters.mights.barbarian(),
+        3: characters.mights.knight(),
+        4: characters.mights.paladin()
+    },
+    {
+        0: characters.magicians.apprentice(),
+        1: characters.magicians.magister(),
+        2: characters.magicians.cryomancer(),
+        3: characters.magicians.pyrokinetic(),
+        4: characters.magicians.aerotheurg()
+    },
+    {
+        0:characters.mutants.satyr(),
+        1: characters.mutants.minotaur(),
+        2: characters.mutants.orc(),
+        3: characters.mutants.naga()
+    },
+    {
+        0: characters.mutants.demon()
+    },
+    {
+        0: characters.mutants.dragon()
+    },
+    {
+        0: characters.mutants.ultimate_chimera()
+    }
 ]
 
-const initialState: IOpponents = {
-    opponentMembers: opponents_options[1],
-    opponentsOptionsIndex: 1
+const initialState: IOpponentSquad = {
+    opponentMembers: opponents_options[2],
+    opponentsOptionsIndex: 2
 }
 
 const opponents = createSlice({
@@ -52,7 +58,7 @@ const opponents = createSlice({
         },
         processAbility(state, action) {
             const {index, data} = action.payload;
-            const squad = [...state.opponentMembers];
+            const squad = {...state.opponentMembers};
             const squadMember = squad[index];
 
             Object.keys(data).forEach(key => {
@@ -62,25 +68,40 @@ const opponents = createSlice({
             state.opponentMembers = squad;
         },
         sufferAbility(state, action) {
-            const {index, ability} = action.payload;
-            const squad = [...state.opponentMembers];
-            const squadMember = squad[index];
+            const {indexes, ability} = action.payload;
+            const squad = {...state.opponentMembers};
+            const squadMembers = {} as Record<string, ICharacher>;
+            indexes.forEach((index: number) => {
+                if (squad[index]) {
+                    squadMembers[index] = squad[index];
+                }
+            })
 
             const {damage, damageType, hitChance} = ability as IAbility;
-            const resultDamage = damage - 
-                squadMember.params.resistances[damageType];
+            for (const index in squadMembers) {
+                const squadMember = squadMembers[index];
+                const resultDamage = damage - 
+                    squadMember.params.resistances[damageType];
 
-            const chance = Math.floor(Math.random()*100);
-            if (hitChance > chance) {
-                squadMember.params.currentParams[UserParam.health] -= resultDamage;
-            }
+                const chance = Math.floor(Math.random()*100);
+                if (hitChance > chance) {
+                    squadMember.params.currentParams[UserParam.health] -= resultDamage;
+                }
+            }  
+            
+            indexes.forEach((index: number) => {
+                if (squad[index]) {
+                    squad[index] = squadMembers[index];
+                }
+            })
 
             state.opponentMembers = squad;
         },
         respite(state, action) {
-            const squad = [...state.opponentMembers];
-
-            for (const squadMember of squad) {
+            const squad = {...state.opponentMembers};
+            
+            for (const index in squad) {
+                const squadMember = squad[index];
                 for (const param in squadMember.params.currentParams) {
                     if (param !== UserParam.health && param !== UserParam.blank) {
                         if (

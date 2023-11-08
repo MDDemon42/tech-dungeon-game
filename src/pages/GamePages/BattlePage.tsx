@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import styles from './BattlePage.module.css';
 import { 
     IAbility, 
+    IBattlePageState, 
     ICharacher, 
     IMemberStatus, 
     IStore
@@ -22,7 +23,7 @@ import {
 import BattleTurnButtons from '../../components/BattleTurnButtons/BattleTurnButtons';
 
 function BattlePage() {
-    const [battlePageState, setBattlePageState] = useState({
+    const [battlePageState, setBattlePageState] = useState<IBattlePageState>({
         battleTurn: 0,
         selectedMemberIndex: -1,
         selectedOpponentIndex: -1,
@@ -36,10 +37,13 @@ function BattlePage() {
 
     const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
 
-    const current_opponents = useSelector((store: IStore) => store.opponents.opponentMembers);
+    const opps = useSelector((store: IStore) => store.opponents.opponentMembers);
 
     const squadMembers: ICharacher[] = [];
     Object.keys(squad).forEach(key => squadMembers[Number(key)] = squad[key]);
+
+    const oppsMembers: ICharacher[] = [];
+    Object.keys(opps).forEach(key => oppsMembers[Number(key)] = opps[key]);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -86,8 +90,10 @@ function BattlePage() {
             });
             state.squadStatus = squadStatusBasis;
 
-            current_opponents.forEach((_) => {
-                opponentsStatusBasis.push({...memberStatusBasis});
+            oppsMembers.forEach((member, index) => {
+                if (!!member) {
+                    opponentsStatusBasis[index] = {...memberStatusBasis};
+                }
             })
             state.opponentsStatus = opponentsStatusBasis;
 
@@ -106,7 +112,7 @@ function BattlePage() {
             }, (orderIndex) * 4000 + 500)
 
             setTimeout(() => {
-                selectAbility(null, current_opponents[index]);
+                selectAbility(null, oppsMembers[index]);
             }, (orderIndex) * 4000 + 1000)
 
             const sufferMember = chooseSquadMemberIndex();
@@ -155,9 +161,11 @@ function BattlePage() {
             state.squadStatus = squadStatusBasis;
 
             opponentsStatusBasis.forEach((member, index) => {
-                if (current_opponents[index].params.currentParams.Health <= 0) {
-                    member.dead = true;
-                }               
+                if (!!member) {
+                    if (oppsMembers[index].params.currentParams.Health <= 0) {
+                        member.dead = true;
+                    }               
+                }
             })
             state.opponentsStatus = opponentsStatusBasis;
 
@@ -172,7 +180,7 @@ function BattlePage() {
             const opponentsStatusBasis = [...state.opponentsStatus];
 
             if (state.battleTurn % 2 === 1) {
-                squadStatusBasis.forEach((member, index) => {
+                squadStatusBasis.forEach((member) => {
                     if (!!member) {
                         if (!member.dead) {
                             member.hasTurn = true;
@@ -182,14 +190,18 @@ function BattlePage() {
                 state.squadStatus = squadStatusBasis;
 
                 opponentsStatusBasis.forEach((member) => {
-                    member.hasTurn = false
+                    if (!!member) {
+                        member.hasTurn = false;
+                    }
                 })
                 state.opponentsStatus = opponentsStatusBasis;
             } else {
                 opponentsStatusBasis.forEach((member) => {
-                    if (!member.dead) {
-                        member.hasTurn = true
-                    }                
+                    if (!!member) {
+                        if (!member.dead) {
+                            member.hasTurn = true;
+                        }           
+                    }     
                 })
                 state.opponentsStatus = opponentsStatusBasis;
     
@@ -313,7 +325,7 @@ function BattlePage() {
             state.opponentsStatus = opp_status;
             state.selectedOpponentIndex = opponentIndex;
             if (opponentTurn) {
-                state.abilitiesOnTurn = gatherCharacterAbilities(current_opponents[opponentIndex]);
+                state.abilitiesOnTurn = gatherCharacterAbilities(oppsMembers[opponentIndex]);
             }            
 
             return state
@@ -340,9 +352,11 @@ function BattlePage() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
 
+            const indexes = collectSufferIndexes(state, memberIndex);
+
             if (state.selectedAbility) {
                 dispatch(gameSquad.actions.sufferAbility({
-                    index: memberIndex,
+                    indexes,
                     ability: state.selectedAbility
                 }))
 
@@ -360,8 +374,10 @@ function BattlePage() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
 
+            const indexes = collectSufferIndexes(state, state.selectedOpponentIndex);
+
             dispatch(opponents.actions.sufferAbility({
-                index: state.selectedOpponentIndex,
+                indexes,
                 ability: state.selectedAbility
             }))
             
@@ -386,6 +402,33 @@ function BattlePage() {
 
             return state
         })
+    }
+
+    function collectSufferIndexes(state: IBattlePageState, targetIndex: number): number[] {
+        const indexes = [] as number[];
+        const processingSquad = state.battleTurn % 2 === 1 ? squadMembers : oppsMembers;
+        if (state.selectedAbility && state.selectedAbility.targetAmount > 1) {
+            const {targetAmount} = state.selectedAbility;
+            if (processingSquad[targetIndex - 1]) {
+                indexes.push(targetIndex - 1);
+            }
+
+            if (processingSquad[targetIndex + 1]) {
+                indexes.push(targetIndex + 1);
+            }
+
+            if (targetAmount === 5) {
+                for (const index in processingSquad) {
+                    if (processingSquad[index] && Number(index) !== targetIndex) {
+                        indexes.push(Number(index));
+                    }
+                }
+            }
+        } 
+            
+        indexes.push(targetIndex);            
+
+        return indexes
     }
 
     function chooseSquadMemberIndex() {
@@ -529,7 +572,7 @@ function BattlePage() {
             </div>
             <div className={styles.BattlePage_body}>
                 <BattleOrder 
-                    squad={current_opponents}
+                    squad={oppsMembers}
                     squadStatus={battlePageState.opponentsStatus} 
                     attacker={true} 
                     listener={(opp_index: number) => selectOpponent(opp_index, false)}
@@ -557,7 +600,7 @@ function BattlePage() {
                                             {chrome.i18n.getMessage('battle_page_your_turn')}
                                         </p> :
                                     battlePageState.abilitiesOnTurn ?
-                                        abilitiesOnTurnBlock(current_opponents[battlePageState.selectedOpponentIndex]) :
+                                        abilitiesOnTurnBlock(opps[battlePageState.selectedOpponentIndex]) :
                                         <p>
                                             {chrome.i18n.getMessage('battle_page_opponents_turn')}
                                         </p> 
