@@ -94,7 +94,7 @@ const spell_iceShard = createSpell(
         masteries.mastery_senseOfCold.name,
         false,
         true,
-        abilities.battleAbilities.magic.battleAbility_iceShard
+        abilities.battleAbilities.ranged.physicalPiercing.battleAbility_iceShard
     ]
 )
 
@@ -108,7 +108,7 @@ const spell_iceSpear = createSpell(
         masteries.mastery_senseOfCold.name,
         false,
         true,
-        abilities.battleAbilities.magic.battleAbility_iceShard
+        abilities.battleAbilities.ranged.physicalPiercing.battleAbility_iceShard
     ]
 )
 
@@ -122,7 +122,7 @@ const spell_iceHail = createSpell(
         masteries.mastery_senseOfCold.name,
         false,
         true,
-        abilities.battleAbilities.magic.battleAbility_iceHail
+        abilities.battleAbilities.ranged.physicalPiercing.battleAbility_iceHail
     ]
 )
 
@@ -136,7 +136,7 @@ const spell_coldDeath = createSpell(
         masteries.mastery_senseOfCold.name,
         false,
         true,
-        abilities.battleAbilities.magic.battleAbility_coldDeath
+        abilities.battleAbilities.ranged.cold.battleAbility_coldDeath
     ]
 )
 
@@ -150,7 +150,7 @@ const spell_flame = createSpell(
         masteries.mastery_senseOfFlame.name,
         false,
         true,
-        abilities.battleAbilities.magic.battleAbility_flame
+        abilities.battleAbilities.ranged.fire.battleAbility_flame
     ]
 )
 
@@ -164,7 +164,7 @@ const spell_fireball = createSpell(
         masteries.mastery_senseOfFlame.name,
         false,
         true,
-        abilities.battleAbilities.magic.battleAbility_fireball
+        abilities.battleAbilities.ranged.fire.battleAbility_fireball
     ]
 )
 
@@ -178,7 +178,7 @@ const spell_fireWave = createSpell(
         masteries.mastery_senseOfFlame.name,
         false,
         true,
-        abilities.battleAbilities.magic.battleAbility_fireWave
+        abilities.battleAbilities.ranged.fire.battleAbility_fireWave
     ]
 )
 
@@ -192,7 +192,7 @@ const spell_windBlow = createSpell(
         masteries.mastery_senseOfWind.name,
         false,
         true,
-        abilities.battleAbilities.magic.battleAbility_windBlow
+        abilities.battleAbilities.ranged.physicalSmashing.battleAbility_windBlow
     ]
 )
 
@@ -206,7 +206,7 @@ const spell_thunderPunch = createSpell(
         masteries.mastery_senseOfWind.name,
         false,
         true,
-        abilities.battleAbilities.magic.battleAbility_thunderPunch
+        abilities.battleAbilities.melee.physicalSmashing.battleAbility_thunderPunch
     ]
 )
 
@@ -220,7 +220,7 @@ const spell_airDeprivation = createSpell(
         masteries.mastery_senseOfWind.name,
         false,
         true,
-        abilities.battleAbilities.magic.battleAbility_airDeprivation
+        abilities.battleAbilities.ranged.suffocation.battleAbility_airDeprivation
     ]
 )
 
@@ -262,7 +262,7 @@ const spell_magicBolt = createSpell(
         masteries.mastery_scholarship.name,
         true,
         false,
-        abilities.battleAbilities.magic.battleAbility_magicBolt
+        abilities.battleAbilities.ranged.electrical.battleAbility_magicBolt
     ]
 )
 

@@ -100,7 +100,7 @@ const power_psiBlade = createPower(
     ],
     [
         masteries.mastery_psiEnergy.name,
-        abilities.battleAbilities.power.battleAbility_psiBladeSlash
+        abilities.battleAbilities.melee.psionic.battleAbility_psiBladeSlash
     ],
     ''
 )
@@ -113,7 +113,7 @@ const power_psiLightning = createPower(
     ],
     [
         masteries.mastery_psiEnergy.name,
-        abilities.battleAbilities.power.battleAbility_psiLightning
+        abilities.battleAbilities.ranged.psionic.battleAbility_psiLightning
     ],
     ''
 )

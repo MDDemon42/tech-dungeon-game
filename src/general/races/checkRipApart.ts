@@ -19,10 +19,10 @@ function checkRipApart(inventory: IInventory): IAbility | null {
     const ripApartMap: Record<string, IAbility | null> = {
         0: null,
         1: null,
-        2: abilities.battleAbilities.melee.battleAbility_ripApartMinor,
-        3: abilities.battleAbilities.melee.battleAbility_ripApartMere,
-        4: abilities.battleAbilities.melee.battleAbility_ripApartMajor,
-        5: abilities.battleAbilities.melee.battleAbility_ripApartMonstrous
+        2: abilities.battleAbilities.melee.physicalSlashing.battleAbility_ripApartMinor,
+        3: abilities.battleAbilities.melee.physicalSlashing.battleAbility_ripApartMere,
+        4: abilities.battleAbilities.melee.physicalSlashing.battleAbility_ripApartMajor,
+        5: abilities.battleAbilities.melee.physicalSlashing.battleAbility_ripApartMonstrous
     }
 
     return ripApartMap[String(counter)];

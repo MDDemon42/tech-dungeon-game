@@ -87,7 +87,7 @@ function gatherCharacterAbilities(character: ICharacher) {
         inventory.rightHand.name === items.weapons.item_steelSwordRightHand.name &&
         masteriesUser.includes(masteries.mastery_dualSwords.name)
     ) {
-        result.push(abilities.battleAbilities.melee.battleAbility_dualSwordsSlash);
+        result.push(abilities.battleAbilities.melee.physicalSlashing.battleAbility_dualSwordsSlash);
     }
 
     if (
@@ -95,9 +95,9 @@ function gatherCharacterAbilities(character: ICharacher) {
         inventory.rightHand.name === items.weapons.item_steelAxeRightHand.name
     ) {
         if (masteriesUser.includes(masteries.mastery_axeAffiliation.name)) {
-            result.push(abilities.battleAbilities.melee.battleAbility_affiliatedDoubleAxeSlash);
+            result.push(abilities.battleAbilities.melee.physicalSlashing.battleAbility_affiliatedDoubleAxeSlash);
         } else {
-            result.push(abilities.battleAbilities.melee.battleAbility_doubleAxeSlash);
+            result.push(abilities.battleAbilities.melee.physicalSlashing.battleAbility_doubleAxeSlash);
         }
     }
         
@@ -111,9 +111,9 @@ function gatherCharacterAbilities(character: ICharacher) {
         ) && inventory.bothHands.name === noItem.name
     ) {
         if (masteriesUser.includes(masteries.mastery_brutalForce.name)) {
-            result.push(abilities.battleAbilities.melee.battleAbility_fistSmash)
+            result.push(abilities.battleAbilities.melee.physicalSmashing.battleAbility_fistSmash)
         } else {
-            result.push(abilities.battleAbilities.melee.battleAbility_fistPunch)
+            result.push(abilities.battleAbilities.melee.physicalSmashing.battleAbility_fistPunch)
         }        
     }
 

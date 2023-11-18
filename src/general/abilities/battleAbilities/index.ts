@@ -1,8 +1,6 @@
 import { IBattleAbility } from "../../../enums-and-interfaces/interfaces";
-import magic from "./magic";
 import melee from "./melee";
 import ranged from "./ranged";
-import power from "./power";
 import { DamageType, UserParam } from "../../../enums-and-interfaces/enums";
 
 export function createBattleAbility(
@@ -41,9 +39,7 @@ export function createBattleAbility(
 
 const battleAbilities = {
     melee,
-    ranged,
-    magic,
-    power
+    ranged
 }
 
 export default battleAbilities

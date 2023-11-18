@@ -1,54 +1,6 @@
-import images from "../../../images/images";
-import { createBattleAbility } from ".";
-import { DamageType } from "../../../enums-and-interfaces/enums";
-
-const battleAbility_fistPunch = createBattleAbility(
-    ['Fist punch', '', images.misc.fistPunch], 
-    {Stamina: 1}, 
-    [1, DamageType.physicalSmashing, 1, 70]
-);
-
-const battleAbility_fistSmash = createBattleAbility(
-    ['Fist smash', '', images.misc.fistPunch], 
-    {Stamina: 1}, 
-    [2, DamageType.physicalSmashing, 1, 70]
-);
-
-const battleAbility_axeSlash = createBattleAbility(
-    ['Axe slash', '', images.normalItems.steelAxe], 
-    {Stamina: 1}, 
-    [1, DamageType.physicalSlashing, 1, 70]
-);
-
-const battleAbility_affiliatedAxeSlash = createBattleAbility(
-    ['Axe slash', '', images.normalItems.steelAxe], 
-    {Stamina: 1}, 
-    [2, DamageType.physicalSlashing, 1, 70]
-);
-
-const battleAbility_doubleAxeSlash = createBattleAbility(
-    ['Double axe slash', '', images.normalItems.doubleAxeSlash], 
-    {Stamina: 2}, 
-    [2, DamageType.physicalSlashing, 1, 70]
-); 
-
-const battleAbility_affiliatedDoubleAxeSlash = createBattleAbility(
-    ['Double axe slash', '', images.normalItems.doubleAxeSlash], 
-    {Stamina: 2}, 
-    [3, DamageType.physicalSlashing, 1, 70]
-); 
-
-const battleAbility_maceSmash = createBattleAbility(
-    ['Mace smash', '', images.normalItems.steelMace], 
-    {Stamina: 1}, 
-    [1, DamageType.physicalSmashing, 1, 70]
-);
-
-const battleAbility_affiliatedMaceSmash = createBattleAbility(
-    ['Mace smash', '', images.normalItems.steelMace], 
-    {Stamina: 1}, 
-    [2, DamageType.physicalSmashing, 1, 70]
-);
+import { createBattleAbility } from "..";
+import { DamageType } from "../../../../enums-and-interfaces/enums";
+import images from "../../../../images/images";
 
 const battleAbility_swordSlash = createBattleAbility(
     ['Sword slash', '', images.normalItems.steelSword], 
@@ -128,28 +80,48 @@ const battleAbility_ripApartMonstrous = createBattleAbility(
     [5, DamageType.physicalSlashing, 1, 70]
 );
 
-const melee = {
-    battleAbility_fistPunch,
-    battleAbility_fistSmash,
+const battleAbility_axeSlash = createBattleAbility(
+    ['Axe slash', '', images.normalItems.steelAxe], 
+    {Stamina: 1}, 
+    [1, DamageType.physicalSlashing, 1, 70]
+);
+
+const battleAbility_affiliatedAxeSlash = createBattleAbility(
+    ['Axe slash', '', images.normalItems.steelAxe], 
+    {Stamina: 1}, 
+    [2, DamageType.physicalSlashing, 1, 70]
+);
+
+const battleAbility_doubleAxeSlash = createBattleAbility(
+    ['Double axe slash', '', images.normalItems.doubleAxeSlash], 
+    {Stamina: 2}, 
+    [2, DamageType.physicalSlashing, 1, 70]
+); 
+
+const battleAbility_affiliatedDoubleAxeSlash = createBattleAbility(
+    ['Double axe slash', '', images.normalItems.doubleAxeSlash], 
+    {Stamina: 2}, 
+    [3, DamageType.physicalSlashing, 1, 70]
+); 
+
+const physicalSlashing = {
     battleAbility_axeSlash,
     battleAbility_affiliatedAxeSlash,
     battleAbility_doubleAxeSlash,
     battleAbility_affiliatedDoubleAxeSlash,
-    battleAbility_maceSmash,
-    battleAbility_affiliatedMaceSmash,
     battleAbility_swordSlash,
     battleAbility_masterSwordSlash,
     battleAbility_dualSwordsSlash,
     battleAbility_chakramSlash,
     battleAbility_masterChakramSlash,
+    battleAbility_ripApartMinor,
+    battleAbility_ripApartMere,
+    battleAbility_ripApartMajor,
+    battleAbility_ripApartMonstrous,
     battleAbility_steelGreataxeSlash,
     battleAbility_runicGreataxeSlash,
     battleAbility_steelGreatswordSlash,
     battleAbility_runicGreatswordSlash,
-    battleAbility_ripApartMinor,
-    battleAbility_ripApartMere,
-    battleAbility_ripApartMajor,
-    battleAbility_ripApartMonstrous
 }
 
-export default melee
+export default physicalSlashing

@@ -44,9 +44,9 @@ const item_steelAxeRightHand = createItem(
         1, InventoryPlace.rightHand, 1
     ],
     [
-        '', abilities.battleAbilities.melee.battleAbility_axeSlash,
+        '', abilities.battleAbilities.melee.physicalSlashing.battleAbility_axeSlash,
         masteries.mastery_axeAffiliation.name, 
-        [abilities.battleAbilities.melee.battleAbility_affiliatedAxeSlash]
+        [abilities.battleAbilities.melee.physicalSlashing.battleAbility_affiliatedAxeSlash]
     ]
 )
 
@@ -60,9 +60,9 @@ const item_steelAxeLeftHand = createItem(
         1, InventoryPlace.leftHand, 1
     ],
     [
-        '', abilities.battleAbilities.melee.battleAbility_axeSlash,
+        '', abilities.battleAbilities.melee.physicalSlashing.battleAbility_axeSlash,
         masteries.mastery_axeAffiliation.name, 
-        [abilities.battleAbilities.melee.battleAbility_affiliatedAxeSlash]
+        [abilities.battleAbilities.melee.physicalSlashing.battleAbility_affiliatedAxeSlash]
     ]
 )
 
@@ -76,9 +76,9 @@ const item_steelSwordRightHand = createItem(
         1, InventoryPlace.rightHand, 1
     ],
     [
-        '', abilities.battleAbilities.melee.battleAbility_swordSlash,
+        '', abilities.battleAbilities.melee.physicalSlashing.battleAbility_swordSlash,
         masteries.mastery_swordsmanship.name,
-        [abilities.battleAbilities.melee.battleAbility_masterSwordSlash]
+        [abilities.battleAbilities.melee.physicalSlashing.battleAbility_masterSwordSlash]
     ]
 )
 
@@ -93,9 +93,9 @@ const item_steelSwordLeftHand = createItem(
     ],
     [
         masteries.mastery_dualSwords.name,
-        abilities.battleAbilities.melee.battleAbility_swordSlash,
+        abilities.battleAbilities.melee.physicalSlashing.battleAbility_swordSlash,
         masteries.mastery_swordsmanship.name,
-        [abilities.battleAbilities.melee.battleAbility_masterSwordSlash]
+        [abilities.battleAbilities.melee.physicalSlashing.battleAbility_masterSwordSlash]
     ]
 )
 
@@ -109,9 +109,9 @@ const item_steelMace = createItem(
         1, InventoryPlace.rightHand, 1
     ],
     [
-        '', abilities.battleAbilities.melee.battleAbility_maceSmash,
+        '', abilities.battleAbilities.melee.physicalSmashing.battleAbility_maceSmash,
         masteries.mastery_maceAffiliation.name, 
-        [abilities.battleAbilities.melee.battleAbility_affiliatedMaceSmash]
+        [abilities.battleAbilities.melee.physicalSmashing.battleAbility_affiliatedMaceSmash]
     ]
 )
 
@@ -126,7 +126,7 @@ const item_steelGreataxe = createItem(
     ],
     [
         masteries.mastery_brutalForce.name,
-        abilities.battleAbilities.melee.battleAbility_steelGreataxeSlash,
+        abilities.battleAbilities.melee.physicalSlashing.battleAbility_steelGreataxeSlash,
         '', null
     ]
 )
@@ -142,11 +142,11 @@ const item_runicGreataxe = createItem(
     ],
     [
         masteries.mastery_brutalForce.name,
-        abilities.battleAbilities.melee.battleAbility_runicGreataxeSlash,
+        abilities.battleAbilities.melee.physicalSlashing.battleAbility_runicGreataxeSlash,
         masteries.mastery_runicWeapons.name,
         [
-            abilities.battleAbilities.melee.battleAbility_runicGreataxeSlash,
-            abilities.battleAbilities.magic.battleAbility_runicGreataxeSlash
+            abilities.battleAbilities.melee.physicalSlashing.battleAbility_runicGreataxeSlash,
+            abilities.battleAbilities.melee.cold.battleAbility_runicGreataxeSlash
         ]
     ]
 )
@@ -162,7 +162,7 @@ const item_steelGreatsword = createItem(
     ],
     [
         masteries.mastery_brutalForce.name,
-        abilities.battleAbilities.melee.battleAbility_steelGreatswordSlash,
+        abilities.battleAbilities.melee.physicalSlashing.battleAbility_steelGreatswordSlash,
         '', null
     ]
 )
@@ -178,11 +178,11 @@ const item_runicGreatsword = createItem(
     ],
     [
         masteries.mastery_brutalForce.name,
-        abilities.battleAbilities.melee.battleAbility_runicGreatswordSlash,
+        abilities.battleAbilities.melee.physicalSlashing.battleAbility_runicGreatswordSlash,
         masteries.mastery_runicWeapons.name,
         [
-            abilities.battleAbilities.melee.battleAbility_runicGreatswordSlash,
-            abilities.battleAbilities.magic.battleAbility_runicGreatswordSlash
+            abilities.battleAbilities.melee.physicalSlashing.battleAbility_runicGreatswordSlash,
+            abilities.battleAbilities.melee.fire.battleAbility_runicGreatswordSlash
         ]
     ]
 )
@@ -197,9 +197,9 @@ const item_oakBow = createItem(
         1, InventoryPlace.bothHands, 2
     ],
     [
-        '', abilities.battleAbilities.ranged.battleAbility_oakBowShot,
+        '', abilities.battleAbilities.ranged.physicalPiercing.battleAbility_oakBowShot,
         masteries.mastery_archery.name,
-        [abilities.battleAbilities.ranged.battleAbility_masterOakBowShot]
+        [abilities.battleAbilities.ranged.physicalPiercing.battleAbility_masterOakBowShot]
     ]
 )
 
@@ -213,9 +213,9 @@ const item_oakCrossow = createItem(
         2, InventoryPlace.bothHands, 2
     ],
     [
-        '', abilities.battleAbilities.ranged.battleAbility_crossbowShot,
+        '', abilities.battleAbilities.ranged.physicalPiercing.battleAbility_crossbowShot,
         masteries.mastery_marksmanship.name,
-        [abilities.battleAbilities.ranged.battleAbility_masterCrossbowShot]
+        [abilities.battleAbilities.ranged.physicalPiercing.battleAbility_masterCrossbowShot]
     ]
 )
 
@@ -229,11 +229,11 @@ const item_steelChakram = createItem(
         2, InventoryPlace.leftHand, 1
     ],
     [
-        '', abilities.battleAbilities.melee.battleAbility_chakramSlash,
+        '', abilities.battleAbilities.melee.physicalSlashing.battleAbility_chakramSlash,
         masteries.mastery_chakramThrowing.name,
         [
-            abilities.battleAbilities.melee.battleAbility_masterChakramSlash,
-            abilities.battleAbilities.ranged.battleAbility_chakramThrow
+            abilities.battleAbilities.melee.physicalSlashing.battleAbility_masterChakramSlash,
+            abilities.battleAbilities.ranged.physicalSlashing.battleAbility_chakramThrow
         ]
     ]
 )
@@ -248,9 +248,9 @@ const item_acidBomd = createItem(
         1, InventoryPlace.rightPocket, 1
     ],
     [
-        '', abilities.battleAbilities.ranged.battleAbility_acidBombThrow,
+        '', abilities.battleAbilities.ranged.acid.battleAbility_acidBombThrow,
         masteries.mastery_bombThrowing.name, 
-        [abilities.battleAbilities.ranged.battleAbility_masterAcidBombThrow]
+        [abilities.battleAbilities.ranged.acid.battleAbility_masterAcidBombThrow]
     ]
 )
 
