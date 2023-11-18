@@ -1,5 +1,6 @@
 import claws from "./claws.png";
 import horns from "./horns.png";
+import fur from './fur.png';
 import wings from './wings.png';
 import tailWithSting from './tailWithSting.png';
 import scales from './scales.png';
@@ -12,6 +13,7 @@ import ripApart from './ripApart.png';
 const mutantEvolvings = {
     claws,
     horns,
+    fur,
     wings,
     tailWithSting,
     scales,

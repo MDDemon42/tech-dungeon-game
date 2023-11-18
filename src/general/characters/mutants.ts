@@ -140,7 +140,7 @@ const ultimate_chimera = () => {
     character.params.maxParams[UserParam.stamina] = 8;
     character.params.currentParams[UserParam.stamina] = 8;
 
-    character.general.inventory.skin = mutations.armors.mutation_scales;
+    character.general.inventory.skin = mutations.armors.mutation_fur;
     character.general.inventory.tail = mutations.weapons.mutation_tail;
     character.general.inventory.head = mutations.weapons.mutation_horns;
     character.general.inventory.back = mutations.other.mutation_wings;

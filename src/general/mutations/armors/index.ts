@@ -16,8 +16,23 @@ const mutation_scales = createMutation(
     ]
 )
 
+const mutation_fur = createMutation(
+    [
+        'Fur', 
+        'Mutation to make your skin much hairer',
+        images.mutantEvolvings.fur
+    ],
+    [
+        1, InventoryPlace.skin, 1
+    ],
+    [
+        null, '', null
+    ]
+)
+
 const armors = {
-    mutation_scales
+    mutation_scales,
+    mutation_fur
 }
 
 export default armors

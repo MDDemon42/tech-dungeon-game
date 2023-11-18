@@ -94,7 +94,7 @@ function gatherCharacterAbilities(character: ICharacher) {
         inventory.leftHand.name === items.weapons.item_steelAxeLeftHand.name &&
         inventory.rightHand.name === items.weapons.item_steelAxeRightHand.name
     ) {
-        if (masteriesUser.includes(masteries.mastery_axeAfiiliation.name)) {
+        if (masteriesUser.includes(masteries.mastery_axeAffiliation.name)) {
             result.push(abilities.battleAbilities.melee.battleAbility_affiliatedDoubleAxeSlash);
         } else {
             result.push(abilities.battleAbilities.melee.battleAbility_doubleAxeSlash);

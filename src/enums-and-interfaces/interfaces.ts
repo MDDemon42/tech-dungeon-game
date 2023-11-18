@@ -217,6 +217,7 @@ export interface IMutationsForRaceCheck {
     hooves: boolean,
     lowerFangs: boolean,
     scales: boolean,
+    fur: boolean,
     tailWithSting: boolean,
     claws: boolean,
     acidSplit: boolean,

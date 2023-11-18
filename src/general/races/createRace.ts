@@ -6,6 +6,7 @@ function createRace(mutations: (keyof IMutationsForRaceCheck)[]): IMutationsForR
         hooves: false,
         lowerFangs: false,
         scales: false,
+        fur: false,
         tailWithSting: false,
         claws: false,
         acidSplit: false,

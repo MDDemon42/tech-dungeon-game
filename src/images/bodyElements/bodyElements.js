@@ -10,6 +10,7 @@ import clawRight from './clawRight.png';
 import guardianAura from './guardianAura.png';
 import guardianField from './guardianField.png';
 import energyWhip from './energyWhip.png';
+import furTorso from './furTorso.png';
 import head from './head.png';
 import healingPotion from './healingPotion.png';
 import hooves from './hooves.png';
@@ -45,6 +46,7 @@ import steelAxeRightHand from './steelAxeRightHand.png';
 import steelAxeLeftHand from './steelAxeLeftHand.png';
 import steelGreataxe from './steelGreataxe.png';
 import steelGreatsword from './steelGreatsword.png';
+import steelMace from './steelMace.png';
 import steelShield from './steelShield.png';
 import steelSwordLeftHand from './steelSwordLeftHand.png';
 import steelSwordRightHand from './steelSwordRightHand.png';
@@ -66,6 +68,7 @@ const bodyElements = {
     guardianAura,
     guardianField,
     energyWhip,
+    furTorso,
     head,
     healingPotion,
     hooves,
@@ -101,6 +104,7 @@ const bodyElements = {
     steelAxeLeftHand,
     steelGreataxe,
     steelGreatsword,
+    steelMace,
     steelShield,
     steelSwordLeftHand,
     steelSwordRightHand,

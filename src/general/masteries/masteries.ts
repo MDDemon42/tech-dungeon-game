@@ -40,7 +40,7 @@ const mastery_swordsmanship = createMastery(
     [
         'Swordsmanship',
         'Mastery in slashing and stabbing with efficiency',
-        images.normalItems.sword
+        images.normalItems.steelSword
     ],
     ''
 )
@@ -153,7 +153,7 @@ const mastery_senseOfWind = createMastery(
     ''
 )
 
-const mastery_axeAfiiliation = createMastery(
+const mastery_axeAffiliation = createMastery(
     [
         'Axe affiliation',
         'Mastery to gain full control over axes',
@@ -162,9 +162,27 @@ const mastery_axeAfiiliation = createMastery(
     ''
 )
 
+const mastery_maceAffiliation = createMastery(
+    [
+        'Mace affiliation',
+        'Mastery to gain full control over mace',
+        images.normalItems.steelMace
+    ],
+    ''
+)
+
+const mastery_sellmanship = createMastery(
+    [
+        'Sellmanship',
+        'Mastery to sell items for real price',
+        images.misc.sellmanship
+    ],
+    ''
+)
+
 const masteries = {
     mastery_archery,
-    mastery_axeAfiiliation,
+    mastery_axeAffiliation,
     mastery_marksmanship,
     mastery_swordsmanship,
     mastery_dualSwords,
@@ -174,8 +192,10 @@ const masteries = {
     mastery_runicWeapons,
     mastery_scholarship,
     mastery_magisterDegree,
+    mastery_maceAffiliation,
     mastery_meditativeInsights,
     mastery_psiEnergy,
+    mastery_sellmanship,
     mastery_senseOfCold,
     mastery_senseOfFlame,
     mastery_senseOfWind

@@ -45,7 +45,7 @@ const item_steelAxeRightHand = createItem(
     ],
     [
         '', abilities.battleAbilities.melee.battleAbility_axeSlash,
-        masteries.mastery_axeAfiiliation.name, 
+        masteries.mastery_axeAffiliation.name, 
         [abilities.battleAbilities.melee.battleAbility_affiliatedAxeSlash]
     ]
 )
@@ -61,7 +61,7 @@ const item_steelAxeLeftHand = createItem(
     ],
     [
         '', abilities.battleAbilities.melee.battleAbility_axeSlash,
-        masteries.mastery_axeAfiiliation.name, 
+        masteries.mastery_axeAffiliation.name, 
         [abilities.battleAbilities.melee.battleAbility_affiliatedAxeSlash]
     ]
 )
@@ -70,7 +70,7 @@ const item_steelSwordRightHand = createItem(
     [
         'Steel sword', 
         'Usual steel sword',
-        images.normalItems.sword
+        images.normalItems.steelSword
     ],
     [
         1, InventoryPlace.rightHand, 1
@@ -86,16 +86,32 @@ const item_steelSwordLeftHand = createItem(
     [
         'Left hand steel sword', 
         'Left hand steel sword',
-        images.normalItems.sword
+        images.normalItems.steelSword
     ],
     [
         1, InventoryPlace.leftHand, 1
     ],
     [
         masteries.mastery_dualSwords.name,
-        abilities.battleAbilities.melee.battleAbility_leftHandSwordSlash,
+        abilities.battleAbilities.melee.battleAbility_swordSlash,
         masteries.mastery_swordsmanship.name,
         [abilities.battleAbilities.melee.battleAbility_masterSwordSlash]
+    ]
+)
+
+const item_steelMace = createItem(
+    [
+        'Steel mace', 
+        'Usual steel mace',
+        images.normalItems.steelMace
+    ],
+    [
+        1, InventoryPlace.rightHand, 1
+    ],
+    [
+        '', abilities.battleAbilities.melee.battleAbility_maceSmash,
+        masteries.mastery_maceAffiliation.name, 
+        [abilities.battleAbilities.melee.battleAbility_affiliatedMaceSmash]
     ]
 )
 
@@ -243,10 +259,11 @@ const weapons = {
     item_magisterScepter,
     item_steelAxeRightHand,
     item_steelAxeLeftHand,
-    item_steelSwordRightHand,
-    item_steelSwordLeftHand,
     item_steelGreataxe,
     item_steelGreatsword,
+    item_steelMace,
+    item_steelSwordRightHand,
+    item_steelSwordLeftHand,
     item_runicGreataxe,
     item_runicGreatsword,
     item_oakBow,

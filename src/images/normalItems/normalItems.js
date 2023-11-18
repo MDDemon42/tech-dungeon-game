@@ -7,24 +7,26 @@ import steelArmor from './steelArmor.png';
 import steelAxe from './steelAxe.png';
 import steelGreataxe from './steelGreataxe.png';
 import steelGreatsword from './steelGreatsword.png';
-import sword from './sword.png';
+import steelMace from './steelMace.png';
+import steelSword from './steelSword.png';
 import shield from './shield.png';
 
 import doubleAxeSlash from './doubleAxeSlash.png';
 
 const normalItems = {
-    sword,
-    shield,
+    acidBomb,
     bow,
     crossbow,
     doubleAxeSlash,
+    healingPotion,
     leatherArmor,
+    shield,
     steelArmor,
     steelAxe,
     steelGreataxe,
     steelGreatsword,
-    acidBomb,
-    healingPotion    
+    steelMace,
+    steelSword    
 };
 
 export default normalItems;

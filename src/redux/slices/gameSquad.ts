@@ -102,7 +102,8 @@ export const classInfo: IClassInfo = {
 }
 
 const raceMasteries: Partial<Record<Race, IMastery>> = {
-    [Race.orc]: masteries.mastery_axeAfiiliation
+    [Race.orc]: masteries.mastery_axeAffiliation,
+    [Race.gnoll]: masteries.mastery_maceAffiliation
 }
 
 const gameSquad = createSlice({
@@ -257,15 +258,26 @@ const gameSquad = createSlice({
             type: string,
             payload: IManageItemsProps
         }) {
-            const backpacks = {...state.squadBackpacks};
+            const oldState = {...state};
+            const backpacks = oldState.squadBackpacks;
+            const members = oldState.squadMembers;
+            const member = members[oldState.currentlyWatched];
 
             const {index, item} = action.payload;
 
             backpacks.items.splice(index, 1);
-            // backpacks.resources.Gems += item.cost; <- with special mastery
-            backpacks.resources.Gems += 1;
 
-            state.squadBackpacks = backpacks;
+            if (
+                member.general.mind.masteries
+                    .map(mastery => mastery.name)
+                    .includes(masteries.mastery_sellmanship.name)
+            ) {
+                backpacks.resources.Gems += item.cost;
+            } else {
+                backpacks.resources.Gems += 1;
+            }            
+
+            state = oldState;
         },
         studySpell(state, action) {
             const {index} = action.payload;

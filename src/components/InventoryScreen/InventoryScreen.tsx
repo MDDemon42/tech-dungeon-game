@@ -63,17 +63,19 @@ function InventoryScreen(props: {
                         <img src={images.bodyElements.nanoVestTorso} alt='nanoVestTorso' /> :
                         inventory.skin.name === mutations.armors.mutation_scales.name ?
                             <img src={images.bodyElements.scalesTorso} alt='scalesTorso' /> :
-                            [
-                                <img src={images.bodyElements.torso} alt='torso' />,
-                                powersUserNames.includes(powers.power_guardianAura.name) ?
-                                    <img src={images.bodyElements.guardianAura} alt='guardianAura' /> :
-                                    powersUserNames.includes(powers.power_guardianField.name) ?
-                                        <img src={images.bodyElements.guardianField} alt='guardianField' /> : null,
-                                powersUserNames.includes(powers.power_psiBlade.name) ?
-                                    <img src={images.bodyElements.psiBlade} alt='psiBlade' /> : null,
-                                powersUserNames.includes(powers.power_psiLightning.name) ?
-                                    <img src={images.bodyElements.psiLightning} alt='psiLightning' /> : null,
-                            ]
+                            inventory.skin.name === mutations.armors.mutation_fur.name ?
+                                <img src={images.bodyElements.furTorso} alt='furTorso' /> :
+                                [
+                                    <img src={images.bodyElements.torso} alt='torso' />,
+                                    powersUserNames.includes(powers.power_guardianAura.name) ?
+                                        <img src={images.bodyElements.guardianAura} alt='guardianAura' /> :
+                                        powersUserNames.includes(powers.power_guardianField.name) ?
+                                            <img src={images.bodyElements.guardianField} alt='guardianField' /> : null,
+                                    powersUserNames.includes(powers.power_psiBlade.name) ?
+                                        <img src={images.bodyElements.psiBlade} alt='psiBlade' /> : null,
+                                    powersUserNames.includes(powers.power_psiLightning.name) ?
+                                        <img src={images.bodyElements.psiLightning} alt='psiLightning' /> : null,
+                                ]
             }
             <img src={images.bodyElements.belt} alt='belt' />
             {
@@ -173,7 +175,9 @@ function InventoryScreen(props: {
                                                     <img src={images.bodyElements.steelSwordRightHand} alt='steelSwordRightHand' /> :
                                                     inventory.rightHand.name === items.weapons.item_steelAxeRightHand.name ?
                                                         <img src={images.bodyElements.steelAxeRightHand} alt='steelAxeRightHand' /> :
-                                                        <img src={images.bodyElements.rightHand} alt='rightHand' />
+                                                        inventory.rightHand.name === items.weapons.item_steelMace.name ?
+                                                            <img src={images.bodyElements.steelMace} alt='steelMace' /> :
+                                                            <img src={images.bodyElements.rightHand} alt='rightHand' />
             }            
         </div>
     )

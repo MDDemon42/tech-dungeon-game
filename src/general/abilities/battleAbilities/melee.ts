@@ -38,20 +38,26 @@ const battleAbility_affiliatedDoubleAxeSlash = createBattleAbility(
     [3, DamageType.physicalSlashing, 1, 70]
 ); 
 
-const battleAbility_swordSlash = createBattleAbility(
-    ['Sword slash', '', images.normalItems.sword], 
+const battleAbility_maceSmash = createBattleAbility(
+    ['Mace smash', '', images.normalItems.steelMace], 
     {Stamina: 1}, 
-    [1, DamageType.physicalSlashing, 1, 70]
+    [1, DamageType.physicalSmashing, 1, 70]
 );
 
-const battleAbility_leftHandSwordSlash = createBattleAbility(
-    ['Left hand sword slash', '', images.normalItems.sword], 
+const battleAbility_affiliatedMaceSmash = createBattleAbility(
+    ['Mace smash', '', images.normalItems.steelMace], 
+    {Stamina: 1}, 
+    [2, DamageType.physicalSmashing, 1, 70]
+);
+
+const battleAbility_swordSlash = createBattleAbility(
+    ['Sword slash', '', images.normalItems.steelSword], 
     {Stamina: 1}, 
     [1, DamageType.physicalSlashing, 1, 70]
 );
 
 const battleAbility_masterSwordSlash = createBattleAbility(
-    ['Master sword slash', '', images.normalItems.sword], 
+    ['Master sword slash', '', images.normalItems.steelSword], 
     {Stamina: 1}, 
     [1, DamageType.physicalSlashing, 1, 95]
 );
@@ -129,8 +135,9 @@ const melee = {
     battleAbility_affiliatedAxeSlash,
     battleAbility_doubleAxeSlash,
     battleAbility_affiliatedDoubleAxeSlash,
+    battleAbility_maceSmash,
+    battleAbility_affiliatedMaceSmash,
     battleAbility_swordSlash,
-    battleAbility_leftHandSwordSlash,
     battleAbility_masterSwordSlash,
     battleAbility_dualSwordsSlash,
     battleAbility_chakramSlash,
