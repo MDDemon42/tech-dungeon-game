@@ -85,7 +85,7 @@ const mastery_runicWeapons = createMastery(
     [
         'Runic weapons',
         'Mastery in activating runes on weapons',
-        images.guildianLearnings.runicSword
+        images.guildianLearnings.runicGreatsword
     ],
     ''
 )
@@ -153,8 +153,18 @@ const mastery_senseOfWind = createMastery(
     ''
 )
 
+const mastery_axeAfiiliation = createMastery(
+    [
+        'Axe affiliation',
+        'Mastery to gain full control over axes',
+        images.normalItems.doubleAxeSlash
+    ],
+    ''
+)
+
 const masteries = {
     mastery_archery,
+    mastery_axeAfiiliation,
     mastery_marksmanship,
     mastery_swordsmanship,
     mastery_dualSwords,

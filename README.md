@@ -11,19 +11,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  - Had to use both `chrome.storage` and `redux store` to store data
  - Most of images for Tech Dungeon Game is from `heromachine` service.
 
+### Restricts
  - Battle abilities must have either 1 or 3 or 5 targets
 
  # TODO:
- 1) More `opponents`
+ 1) More `opponents`, `villagers`, `_locales`, `MASPIC` (Mace, Greathammer, Runic Greathammer, Spear, Fur, Musket, Rifle)
  2) Add more abilities to use on `Battle Screen`
- 3) Extra `MASPIC` (Axe, Mace, Greathammer, Runic Greathammer, Spear, Fur, Musket, Rifle)
- 4) Make mutual exclusions within `MASPIC`
- 5) More ~abilities~ to get more user resources (~battery capacity~ for cyborg)
- 6) Mix `MASPIC` to get `elf` and `werewolf`(?)
- 7) Add more `_locales`
- 8) Check requirements on `masteries` and `cybers`
- 9) Several generations of `MASPIC` masters
- 10) More `villagers`
+ 3) More ~abilities~ to get more user resources (~battery capacity~ for cyborg)
+ 4) Mix `MASPIC` to get `elf` and `werewolf`(?)
+ 5) Check requirements on `masteries` and `cybers`
+ 6) Several generations of `MASPIC` masters
 
  # Items to classes (with special abilities) (?)
  1) No armor + Two axes => Berserk

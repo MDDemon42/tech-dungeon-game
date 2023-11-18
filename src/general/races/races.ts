@@ -4,7 +4,7 @@ import createRace from "./createRace";
 Mutations to races (with special abilities)
 1) Horns + Hooves => Satyr (Rod + 1)
 2) Horns + Hooves + Brutal force => Minotaur (Bull's charge)
-3) Lower fangs + Brutal force => Orc (Greataxe + 1)
+3) Lower fangs + Brutal force => Orc (Axe + 1)
 4) Lower fangs + Brutal force + Fur* => Gnoll (Mace* + 1)
 5*) Lower fangs + Claws => Ghoul (Lifesteal)
 6*) Lower fangs + Claws + Wings => Vampire (Hypnosis, Lifesteal)

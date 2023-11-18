@@ -3,7 +3,7 @@ import races from "./races";
 import { IInventory, IMutationsForRaceCheck } from "../../enums-and-interfaces/interfaces";
 import { Race } from "../../enums-and-interfaces/enums";
 
-function checkRace(inventory: IInventory, isStrong: boolean) {
+function checkRace(inventory: IInventory, isStrong: boolean): Race {
     const currentRace: IMutationsForRaceCheck = {
         horns: inventory.head.name === mutations.weapons.mutation_horns.name,
         hooves: inventory.legs.name === mutations.other.mutation_hooves.name,

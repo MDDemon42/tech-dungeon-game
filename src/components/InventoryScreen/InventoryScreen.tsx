@@ -133,17 +133,21 @@ function InventoryScreen(props: {
                         inventory.leftHand.name === mutations.weapons.mutation_clawLeft.name
                     ) ?
                         <img src={images.bodyElements.clawLeft} alt='clawLeft' /> :
-                        inventory.bothHands.name === items.weapons.item_steelGreataxe.name ?
-                            <img src={images.bodyElements.steelGreataxe} alt='steelGreataxe' /> :
-                            inventory.leftHand.name === items.weapons.item_steelSwordLeftHand.name ?
-                                <img src={images.bodyElements.steelSwordLeftHand} alt='steelSwordLeftHand' /> :
-                                inventory.leftHand.name === items.armors.item_steelShield.name ?
-                                    <img src={images.bodyElements.steelShield} alt='steelShield' /> :
-                                    [
-                                        inventory.leftHand.name === items.weapons.item_steelChakram.name ?
-                                            <img src={images.bodyElements.chakram} alt='chakram' /> : null,
-                                        <img src={images.bodyElements.leftHand} alt='leftHand' />
-                                    ]
+                        inventory.bothHands.name === items.weapons.item_runicGreataxe.name ?
+                            <img src={images.bodyElements.runicGreataxe} alt='runicGreataxe' /> :
+                            inventory.bothHands.name === items.weapons.item_steelGreataxe.name ?
+                                <img src={images.bodyElements.steelGreataxe} alt='steelGreataxe' /> :
+                                inventory.leftHand.name === items.weapons.item_steelSwordLeftHand.name ?
+                                    <img src={images.bodyElements.steelSwordLeftHand} alt='steelSwordLeftHand' /> :
+                                    inventory.leftHand.name === items.weapons.item_steelAxeLeftHand.name ?
+                                        <img src={images.bodyElements.steelAxeLeftHand} alt='steelAxeLeftHand' /> :
+                                        inventory.leftHand.name === items.armors.item_steelShield.name ?
+                                            <img src={images.bodyElements.steelShield} alt='steelShield' /> :
+                                            [
+                                                inventory.leftHand.name === items.weapons.item_steelChakram.name ?
+                                                    <img src={images.bodyElements.chakram} alt='chakram' /> : null,
+                                                <img src={images.bodyElements.leftHand} alt='leftHand' />
+                                            ]
             }
             {
                 inventory.rightHand.name === cybers.weapons.cyber_energyWhip.name ?
@@ -160,14 +164,16 @@ function InventoryScreen(props: {
                                 inventory.bothHands.name === items.weapons.item_runicGreatsword.name ?
                                     <img src={images.bodyElements.runicGreatsword} alt='runicGreatsword' /> :
                                     inventory.bothHands.name === items.weapons.item_steelGreatsword.name ?
-                                        <img src={images.bodyElements.runicGreatsword} alt='steelGreatsword' /> :
+                                        <img src={images.bodyElements.steelGreatsword} alt='steelGreatsword' /> :
                                         inventory.bothHands.name === items.weapons.item_oakCrossow.name ?
                                             <img src={images.bodyElements.oakCrossbow} alt='oakCrossbow' /> :
                                             inventory.bothHands.name === items.weapons.item_apprenticeRod.name ?
                                                 <img src={images.bodyElements.apprenticeRod} alt='apprenticeRod' /> :
                                                 inventory.rightHand.name === items.weapons.item_steelSwordRightHand.name ?
                                                     <img src={images.bodyElements.steelSwordRightHand} alt='steelSwordRightHand' /> :
-                                                    <img src={images.bodyElements.rightHand} alt='rightHand' />
+                                                    inventory.rightHand.name === items.weapons.item_steelAxeRightHand.name ?
+                                                        <img src={images.bodyElements.steelAxeRightHand} alt='steelAxeRightHand' /> :
+                                                        <img src={images.bodyElements.rightHand} alt='rightHand' />
             }            
         </div>
     )

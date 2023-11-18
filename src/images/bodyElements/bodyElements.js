@@ -37,10 +37,14 @@ import psiLightning from './psiLightning.png';
 import reactiveFeet from './reactiveFeet.png';
 import rightHand from './rightHand.png';
 import rocket from './rocket.png';
+import runicGreataxe from './runicGreataxe.png';
 import runicGreatsword from './runicGreatsword.png';
 import scalesTorso from './scalesTorso.png';
 import steelArmor from './steelArmor.png';
+import steelAxeRightHand from './steelAxeRightHand.png';
+import steelAxeLeftHand from './steelAxeLeftHand.png';
 import steelGreataxe from './steelGreataxe.png';
+import steelGreatsword from './steelGreatsword.png';
 import steelShield from './steelShield.png';
 import steelSwordLeftHand from './steelSwordLeftHand.png';
 import steelSwordRightHand from './steelSwordRightHand.png';
@@ -89,10 +93,14 @@ const bodyElements = {
     reactiveFeet,
     rightHand,
     rocket,
+    runicGreataxe,
     runicGreatsword,
     scalesTorso,
     steelArmor,
+    steelAxeRightHand,
+    steelAxeLeftHand,
     steelGreataxe,
+    steelGreatsword,
     steelShield,
     steelSwordLeftHand,
     steelSwordRightHand,

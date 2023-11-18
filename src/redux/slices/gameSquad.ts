@@ -9,7 +9,9 @@ import {
     ICharacher,
     IClassInfo, 
     IGameSquad, 
-    IManageItemsProps
+    IItem, 
+    IManageItemsProps,
+    IMastery
 } from '../../enums-and-interfaces/interfaces';
 import mutations from '../../general/mutations';
 import masteries from '../../general/masteries/masteries';
@@ -19,7 +21,8 @@ import {
     UserResource, 
     UserParam, 
     InventoryPlace, 
-    UserStartClass
+    UserStartClass,
+    Race
 } from '../../enums-and-interfaces/enums';
 
 export function placeAsKey(place: string) {
@@ -96,6 +99,10 @@ export const classInfo: IClassInfo = {
         levelUpBonuses: [UserParam.blank],
         description: 'Choose one of classes to start playing'
     }
+}
+
+const raceMasteries: Partial<Record<Race, IMastery>> = {
+    [Race.orc]: masteries.mastery_axeAfiiliation
 }
 
 const gameSquad = createSlice({
@@ -191,54 +198,50 @@ const gameSquad = createSlice({
             const {item} = action.payload;
 
             const position: InventoryPlace = item.inventoryPlace;
+            const maxItemsAmount = getBackpacksCapability(members);
 
             if (
                 position === InventoryPlace.bothHands
             ) {
                 const nothing = createNoItem();
                 const createNoItemName = nothing.name;
-                const leftHandItem = {...squadMember.general.inventory[placeAsKey(InventoryPlace.leftHand)]};
+                const leftHandItem = {...squadMember.general.inventory.leftHand} as IItem;
                 if (leftHandItem.name !== createNoItemName) {
-                    // @ts-expect-error
-                    backpacksItems = [...putItemInBackpacks(members, backpacksItems, leftHandItem)]; 
+                    backpacksItems = [...putItemInBackpacks(backpacksItems, leftHandItem, maxItemsAmount)]; 
                 }
-                squadMember.general.inventory[placeAsKey(InventoryPlace.leftHand)] = createNoItem();
+                squadMember.general.inventory.leftHand = createNoItem();
 
-                const rightHandItem = {...squadMember.general.inventory[placeAsKey(InventoryPlace.rightHand)]};
+                const rightHandItem = {...squadMember.general.inventory.rightHand} as IItem;
                 if (rightHandItem.name !== createNoItemName) {
-                    // @ts-expect-error
-                    backpacksItems = [...putItemInBackpacks(members, backpacksItems, rightHandItem)]; 
+                    backpacksItems = [...putItemInBackpacks(backpacksItems, rightHandItem, maxItemsAmount)]; 
                 }
-                squadMember.general.inventory[placeAsKey(InventoryPlace.rightHand)] = createNoItem();
+                squadMember.general.inventory.rightHand = createNoItem();
 
-                const bothHandsItem = {...squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)]};
+                const bothHandsItem = {...squadMember.general.inventory.bothHands} as IItem;
                 if (bothHandsItem.name !== createNoItemName) {
-                    // @ts-expect-error
-                    backpacksItems = [...putItemInBackpacks(members, backpacksItems, bothHandsItem)]; 
+                    backpacksItems = [...putItemInBackpacks(backpacksItems, bothHandsItem, maxItemsAmount)]; 
                 }
-                squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)] = createNoItem();
+                squadMember.general.inventory.bothHands = createNoItem();
             } else if (
                 position === InventoryPlace.leftHand ||
                 position === InventoryPlace.rightHand
             ) {
                 const nothing = createNoItem();
                 const createNoItemName = nothing.name;
-                const bothHandsItem = {...squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)]};
+                const bothHandsItem = {...squadMember.general.inventory.bothHands} as IItem;
                 if (bothHandsItem.name !== createNoItemName) {
-                    // @ts-expect-error
-                    backpacksItems = [...putItemInBackpacks(members, backpacksItems, bothHandsItem)]; 
+                    backpacksItems = [...putItemInBackpacks(backpacksItems, bothHandsItem, maxItemsAmount)]; 
                 }
-                squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)] = createNoItem();
+                squadMember.general.inventory.bothHands = createNoItem();
             }
             
             {
                 const nothing = createNoItem();
                 const createNoItemName = nothing.name;
 
-                const thisPositionItem = {...squadMember.general.inventory[placeAsKey(position)]};
+                const thisPositionItem = {...squadMember.general.inventory[placeAsKey(position)]} as IItem;
                 if (thisPositionItem.name !== createNoItemName) {
-                    // @ts-expect-error
-                    backpacksItems = [...putItemInBackpacks(members, backpacksItems, thisPositionItem)]; 
+                    backpacksItems = [...putItemInBackpacks(backpacksItems, thisPositionItem, maxItemsAmount)]; 
                 }
             }
             
@@ -297,7 +300,24 @@ const gameSquad = createSlice({
                 squadMember.general.inventory = createEmptyInventory();
             }
                 
-            squadMember.params.race = checkRace(squadMember.general.inventory, isStrong);
+            const raceMasteriesNames = Object.values(raceMasteries)
+                .map(mastery => mastery.name);
+            squadMember.general.mind.masteries = squadMember.general.mind.masteries
+                .filter(mastery => {
+                    if (raceMasteriesNames.includes(mastery.name)) {
+                        return false
+                    }
+
+                    return true
+                })
+
+            const newRace = checkRace(squadMember.general.inventory, isStrong);
+            squadMember.params.race = newRace;
+
+            const newRaceMastery = raceMasteries[newRace];
+            if (newRaceMastery) {
+                squadMember.general.mind.masteries.push(newRaceMastery);
+            }
 
             state.squadMembers = squad;
         },
@@ -340,7 +360,7 @@ const gameSquad = createSlice({
         mutateMutation(state, action) {
             const {index} = action.payload;
             const oldState = {...state};
-            const squadMember = oldState.squadMembers[index]!;
+            const squadMember = oldState.squadMembers[index];
 
             if (!squadMember.general.inventory) {
                 squadMember.general.inventory = createEmptyInventory();
@@ -360,7 +380,24 @@ const gameSquad = createSlice({
                 .map(data => data.name)
                 .includes(masteries.mastery_brutalForce.name);
                 
-            squadMember.params.race = checkRace(squadMember.general.inventory, isStrong);
+            const raceMasteriesNames = Object.values(raceMasteries)
+                .map(mastery => mastery.name);
+            squadMember.general.mind.masteries = squadMember.general.mind.masteries
+                .filter(mastery => {
+                    if (raceMasteriesNames.includes(mastery.name)) {
+                        return false
+                    }
+
+                    return true
+                })
+
+            const newRace = checkRace(squadMember.general.inventory, isStrong);
+            squadMember.params.race = newRace;
+
+            const newRaceMastery = raceMasteries[newRace];
+            if (newRaceMastery) {
+                squadMember.general.mind.masteries.push(newRaceMastery);
+            }
 
             state = oldState;
         },

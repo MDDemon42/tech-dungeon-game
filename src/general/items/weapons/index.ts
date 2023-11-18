@@ -34,6 +34,38 @@ const item_magisterScepter = createItem(
     ]
 )
 
+const item_steelAxeRightHand = createItem(
+    [
+        'Steel axe', 
+        'Usual steel axe',
+        images.normalItems.steelAxe
+    ],
+    [
+        1, InventoryPlace.rightHand, 1
+    ],
+    [
+        '', abilities.battleAbilities.melee.battleAbility_axeSlash,
+        masteries.mastery_axeAfiiliation.name, 
+        [abilities.battleAbilities.melee.battleAbility_affiliatedAxeSlash]
+    ]
+)
+
+const item_steelAxeLeftHand = createItem(
+    [
+        'Steel axe', 
+        'Usual steel axe',
+        images.normalItems.steelAxe
+    ],
+    [
+        1, InventoryPlace.leftHand, 1
+    ],
+    [
+        '', abilities.battleAbilities.melee.battleAbility_axeSlash,
+        masteries.mastery_axeAfiiliation.name, 
+        [abilities.battleAbilities.melee.battleAbility_affiliatedAxeSlash]
+    ]
+)
+
 const item_steelSwordRightHand = createItem(
     [
         'Steel sword', 
@@ -71,15 +103,35 @@ const item_steelGreataxe = createItem(
     [
         'Steel greataxe', 
         'Massive steel greataxe',
-        images.normalItems.greataxe
+        images.normalItems.steelGreataxe
     ],
     [
         2, InventoryPlace.bothHands, 2
     ],
     [
         masteries.mastery_brutalForce.name,
-        abilities.battleAbilities.melee.battleAbility_greataxeSlash,
+        abilities.battleAbilities.melee.battleAbility_steelGreataxeSlash,
         '', null
+    ]
+)
+
+const item_runicGreataxe = createItem(
+    [
+        'Runic greataxe', 
+        'Massive greataxe covered with runes',
+        images.guildianLearnings.runicGreataxe
+    ],
+    [
+        2, InventoryPlace.bothHands, 2
+    ],
+    [
+        masteries.mastery_brutalForce.name,
+        abilities.battleAbilities.melee.battleAbility_runicGreataxeSlash,
+        masteries.mastery_runicWeapons.name,
+        [
+            abilities.battleAbilities.melee.battleAbility_runicGreataxeSlash,
+            abilities.battleAbilities.magic.battleAbility_runicGreataxeSlash
+        ]
     ]
 )
 
@@ -87,7 +139,7 @@ const item_steelGreatsword = createItem(
     [
         'Steel greatsword', 
         'Massive steel greatsword',
-        images.guildianLearnings.runicSword
+        images.normalItems.steelGreatsword
     ],
     [
         2, InventoryPlace.bothHands, 2
@@ -102,8 +154,8 @@ const item_steelGreatsword = createItem(
 const item_runicGreatsword = createItem(
     [
         'Runic greatsword', 
-        'Massive sword covered with runes',
-        images.classIcons.noIcon
+        'Massive greatsword covered with runes',
+        images.guildianLearnings.runicGreatsword
     ],
     [
         2, InventoryPlace.bothHands, 2
@@ -189,10 +241,13 @@ const item_acidBomd = createItem(
 const weapons = {
     item_apprenticeRod,
     item_magisterScepter,
+    item_steelAxeRightHand,
+    item_steelAxeLeftHand,
     item_steelSwordRightHand,
     item_steelSwordLeftHand,
     item_steelGreataxe,
     item_steelGreatsword,
+    item_runicGreataxe,
     item_runicGreatsword,
     item_oakBow,
     item_oakCrossow,

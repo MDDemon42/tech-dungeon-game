@@ -8,6 +8,36 @@ const battleAbility_fistPunch = createBattleAbility(
     [1, DamageType.physicalSmashing, 1, 70]
 );
 
+const battleAbility_fistSmash = createBattleAbility(
+    ['Fist smash', '', images.misc.fistPunch], 
+    {Stamina: 1}, 
+    [2, DamageType.physicalSmashing, 1, 70]
+);
+
+const battleAbility_axeSlash = createBattleAbility(
+    ['Axe slash', '', images.normalItems.steelAxe], 
+    {Stamina: 1}, 
+    [1, DamageType.physicalSlashing, 1, 70]
+);
+
+const battleAbility_affiliatedAxeSlash = createBattleAbility(
+    ['Axe slash', '', images.normalItems.steelAxe], 
+    {Stamina: 1}, 
+    [2, DamageType.physicalSlashing, 1, 70]
+);
+
+const battleAbility_doubleAxeSlash = createBattleAbility(
+    ['Double axe slash', '', images.normalItems.doubleAxeSlash], 
+    {Stamina: 2}, 
+    [2, DamageType.physicalSlashing, 1, 70]
+); 
+
+const battleAbility_affiliatedDoubleAxeSlash = createBattleAbility(
+    ['Double axe slash', '', images.normalItems.doubleAxeSlash], 
+    {Stamina: 2}, 
+    [3, DamageType.physicalSlashing, 1, 70]
+); 
+
 const battleAbility_swordSlash = createBattleAbility(
     ['Sword slash', '', images.normalItems.sword], 
     {Stamina: 1}, 
@@ -44,20 +74,26 @@ const battleAbility_masterChakramSlash = createBattleAbility(
     [1, DamageType.physicalSlashing, 1, 95]
 );
 
-const battleAbility_greataxeSlash = createBattleAbility(
-    ['Greataxe slash', '', images.normalItems.greataxe], 
+const battleAbility_steelGreataxeSlash = createBattleAbility(
+    ['Greataxe slash', '', images.normalItems.steelGreataxe], 
+    {Stamina: 2}, 
+    [2, DamageType.physicalSlashing, 1, 70]
+);
+
+const battleAbility_runicGreataxeSlash = createBattleAbility(
+    ['Greataxe slash', '', images.guildianLearnings.runicGreataxe], 
     {Stamina: 2}, 
     [2, DamageType.physicalSlashing, 1, 70]
 );
 
 const battleAbility_steelGreatswordSlash = createBattleAbility(
-    ['Greatsword slash', '', images.classIcons.noIcon], 
+    ['Greatsword slash', '', images.normalItems.steelGreatsword], 
     {Stamina: 2}, 
     [2, DamageType.physicalSlashing, 1, 70]
 );
 
 const battleAbility_runicGreatswordSlash = createBattleAbility(
-    ['Greatsword slash', '', images.guildianLearnings.runicSword], 
+    ['Greatsword slash', '', images.guildianLearnings.runicGreatsword], 
     {Stamina: 2}, 
     [2, DamageType.physicalSlashing, 1, 70]
 );
@@ -88,13 +124,19 @@ const battleAbility_ripApartMonstrous = createBattleAbility(
 
 const melee = {
     battleAbility_fistPunch,
+    battleAbility_fistSmash,
+    battleAbility_axeSlash,
+    battleAbility_affiliatedAxeSlash,
+    battleAbility_doubleAxeSlash,
+    battleAbility_affiliatedDoubleAxeSlash,
     battleAbility_swordSlash,
     battleAbility_leftHandSwordSlash,
     battleAbility_masterSwordSlash,
     battleAbility_dualSwordsSlash,
     battleAbility_chakramSlash,
     battleAbility_masterChakramSlash,
-    battleAbility_greataxeSlash,
+    battleAbility_steelGreataxeSlash,
+    battleAbility_runicGreataxeSlash,
     battleAbility_steelGreatswordSlash,
     battleAbility_runicGreatswordSlash,
     battleAbility_ripApartMinor,

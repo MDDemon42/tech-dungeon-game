@@ -1,6 +1,7 @@
 import chakram from './chakram.png';
 import multistrike from './multistrike.png';
-import runicSword from './runicSword.png';
+import runicGreataxe from './runicGreataxe.png';
+import runicGreatsword from './runicGreatsword.png';
 import titanSkinRitual from './titanSkinRitual.png';
 import dualSwords from './dualSwords.png';
 import brutalForce from './brutalForce.png';
@@ -9,7 +10,8 @@ const guildianLearnings = {
     brutalForce,
     chakram,
     multistrike,
-    runicSword,
+    runicGreataxe,
+    runicGreatsword,
     dualSwords,
     titanSkinRitual
 };

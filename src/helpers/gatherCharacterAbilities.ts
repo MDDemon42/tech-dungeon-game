@@ -90,6 +90,18 @@ function gatherCharacterAbilities(character: ICharacher) {
         result.push(abilities.battleAbilities.melee.battleAbility_dualSwordsSlash);
     }
 
+    if (
+        inventory.leftHand.name === items.weapons.item_steelAxeLeftHand.name &&
+        inventory.rightHand.name === items.weapons.item_steelAxeRightHand.name
+    ) {
+        if (masteriesUser.includes(masteries.mastery_axeAfiiliation.name)) {
+            result.push(abilities.battleAbilities.melee.battleAbility_affiliatedDoubleAxeSlash);
+        } else {
+            result.push(abilities.battleAbilities.melee.battleAbility_doubleAxeSlash);
+        }
+    }
+        
+
     // basic ability
     const noItem = createNoItem();
     if (
@@ -98,7 +110,11 @@ function gatherCharacterAbilities(character: ICharacher) {
             inventory.rightHand.name === noItem.name
         ) && inventory.bothHands.name === noItem.name
     ) {
-        result.push(abilities.battleAbilities.melee.battleAbility_fistPunch)
+        if (masteriesUser.includes(masteries.mastery_brutalForce.name)) {
+            result.push(abilities.battleAbilities.melee.battleAbility_fistSmash)
+        } else {
+            result.push(abilities.battleAbilities.melee.battleAbility_fistPunch)
+        }        
     }
 
     return result

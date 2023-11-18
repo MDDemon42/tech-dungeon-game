@@ -3,9 +3,15 @@ import { DamageType } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
 
 const battleAbility_runicGreatswordSlash = createBattleAbility(
-    ['Runic greatsword slash', '', images.guildianLearnings.runicSword], 
+    ['Fire greatsword slash', '', images.guildianLearnings.runicGreatsword], 
     {Mana: 1, Stamina: 2}, 
     [3, DamageType.fire, 1, 70]
+);
+
+const battleAbility_runicGreataxeSlash = createBattleAbility(
+    ['Cold greataxe slash', '', images.guildianLearnings.runicGreataxe], 
+    {Mana: 1, Stamina: 2}, 
+    [3, DamageType.cold, 1, 70]
 );
 
 const battleAbility_magicBolt = createBattleAbility(
@@ -76,6 +82,7 @@ const battleAbility_airDeprivation = createBattleAbility(
 
 const magic = {
     battleAbility_runicGreatswordSlash,
+    battleAbility_runicGreataxeSlash,
     battleAbility_magicBolt,
     battleAbility_iceShard,
     battleAbility_iceSpear,
