@@ -80,7 +80,7 @@ const passiveAbility_steelShield = createPassiveAbility(
 const passiveAbility_nanoVest = createPassiveAbility(
     [
         'Nano vest', 
-        'Upgrades wearer`s resistance to slashing damage by 1', 
+        'Upgrades owner`s resistance to slashing damage by 1', 
         images.cyborgDetails.nanoVest
     ],
     null,
@@ -92,7 +92,7 @@ const passiveAbility_nanoVest = createPassiveAbility(
 const passiveAbility_nanoMatrix = createPassiveAbility(
     [
         'Nano matrix', 
-        'Upgrades wearer`s resistance to slashing and piercing damage by 1', 
+        'Upgrades owner`s resistance to slashing and piercing damage by 1', 
         images.cyborgDetails.nanoMatrix
     ],
     null,
@@ -105,7 +105,7 @@ const passiveAbility_nanoMatrix = createPassiveAbility(
 const passiveAbility_scales = createPassiveAbility(
     [
         'Scales', 
-        'Upgrades wearer`s resistance to piercing damage by 1 and dodge by 15', 
+        'Upgrades owner`s resistance to piercing damage by 1 and dodge by 15', 
         images.mutantEvolvings.scales
     ],
     null,
@@ -118,7 +118,7 @@ const passiveAbility_scales = createPassiveAbility(
 const passiveAbility_fur = createPassiveAbility(
     [
         'Fur', 
-        'Upgrades wearer`s resistance to cold damage by 1', 
+        'Upgrades owner`s resistance to cold damage by 1', 
         images.mutantEvolvings.fur
     ],
     null,
@@ -130,7 +130,7 @@ const passiveAbility_fur = createPassiveAbility(
 const passiveAbility_tailWithSting = createPassiveAbility(
     [
         'Tail with sting', 
-        'Upgrades wearer`s dodge by 15', 
+        'Upgrades owner`s dodge by 15', 
         images.mutantEvolvings.tailWithSting
     ],
     null,
@@ -141,7 +141,7 @@ const passiveAbility_tailWithSting = createPassiveAbility(
 const passiveAbility_intuition = createPassiveAbility(
     [
         'Intuition', 
-        'Upgrades wearer`s dodge by 15', 
+        'Upgrades owner`s dodge by 15', 
         images.psionInsights.intuition
     ],
     null,
@@ -152,7 +152,7 @@ const passiveAbility_intuition = createPassiveAbility(
 const passiveAbility_guardianField = createPassiveAbility(
     [
         'Guardian field', 
-        'Upgrades every wearer`s elemental resistance by 1', 
+        'Upgrades every owner`s elemental resistance by 1', 
         images.psionInsights.guardianField
     ],
     null,

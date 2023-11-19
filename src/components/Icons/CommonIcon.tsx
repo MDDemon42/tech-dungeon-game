@@ -1,6 +1,7 @@
 import styles from './Icons.module.css';
 import ParamIcon from './ParamIcon';
 import { DamageType, InventoryPlace, UserParam } from '../../enums-and-interfaces/enums';
+import { IPassiveAbility } from '../../enums-and-interfaces/interfaces';
 
 function CommonIcon(props: {
     item: {
@@ -24,7 +25,8 @@ function CommonIcon(props: {
         damage?: number,
         damageType?: DamageType,
         hitChance?: number,
-        targetAmount?: number
+        targetAmount?: number,
+        passiveAbility?: IPassiveAbility | null
     },
     disableReason?: string
 }) {
@@ -34,6 +36,10 @@ function CommonIcon(props: {
     
     if (item.description.length > 0) {
         description += '\n' + item.description;
+    }
+
+    if (item.passiveAbility) {
+        description += '\n' + item.passiveAbility.description;
     }
     
     if (

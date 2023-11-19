@@ -19,8 +19,15 @@ function priorityChecker(slot: IInventorySlot) {
 
     if (position === InventoryPlace.bothHands) {
         return result &&
-            priority_new >= inventory[placeAsKey(InventoryPlace.leftHand)].priority &&
-            priority_new >= inventory[placeAsKey(InventoryPlace.rightHand)].priority
+            priority_new >= inventory.leftHand.priority &&
+            priority_new >= inventory.rightHand.priority
+    }
+
+    if (
+        position === InventoryPlace.leftHand ||
+        position === InventoryPlace.rightHand
+    ) {
+        return result && priority_new >= inventory.bothHands.priority
     }
     
     return result
