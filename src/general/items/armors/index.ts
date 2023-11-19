@@ -1,6 +1,7 @@
 import { createItem } from "..";
 import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
+import abilities from "../../abilities";
 import masteries from "../../masteries/masteries";
 
 const item_apprenticeHat = createItem(
@@ -15,7 +16,8 @@ const item_apprenticeHat = createItem(
     [
         masteries.mastery_scholarship.name,
         null, '', null
-    ]
+    ],
+    abilities.passiveAbilities.armor.passiveAbility_apprenticeHat
 )
 
 const item_flyingCape = createItem(
@@ -29,7 +31,8 @@ const item_flyingCape = createItem(
     ],
     [
         '', null, '', null
-    ]
+    ],
+    null
 )
 
 const item_magisterHat = createItem(
@@ -44,7 +47,8 @@ const item_magisterHat = createItem(
     [
         masteries.mastery_magisterDegree.name,
         null, '', null
-    ]
+    ],
+    abilities.passiveAbilities.armor.passiveAbility_magisterHat
 )
 
 const item_magisterRobe = createItem(
@@ -59,7 +63,8 @@ const item_magisterRobe = createItem(
     [
         masteries.mastery_magisterDegree.name,
         null, '', null
-    ]
+    ],
+    abilities.passiveAbilities.armor.passiveAbility_magisterRobe
 )
 
 const item_leatherArmor = createItem(
@@ -73,7 +78,8 @@ const item_leatherArmor = createItem(
     ],
     [
         '', null, '', null
-    ]
+    ],
+    abilities.passiveAbilities.armor.passiveAbility_leatherArmor
 )
 
 const item_steelArmor = createItem(
@@ -88,21 +94,23 @@ const item_steelArmor = createItem(
     [
         masteries.mastery_brutalForce.name, 
         null, '', null
-    ]
+    ],
+    abilities.passiveAbilities.armor.passiveAbility_steelArmor
 )
 
 const item_steelShield = createItem(
     [
         'Steel shield', 
         'Usual steel shield',
-        images.normalItems.shield
+        images.normalItems.steelShield
     ],
     [
         1, InventoryPlace.leftHand, 1
     ],
     [
         '', null, '', null
-    ]
+    ],
+    abilities.passiveAbilities.armor.passiveAbility_steelShield
 )
 
 const armors = {

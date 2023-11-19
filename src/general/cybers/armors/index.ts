@@ -1,6 +1,7 @@
 import { createCyber } from "..";
 import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
+import abilities from "../../abilities";
 
 const cyber_nanoVest = createCyber(
     [
@@ -14,7 +15,8 @@ const cyber_nanoVest = createCyber(
     [
         null, '', null
     ],
-    ''
+    '',
+    abilities.passiveAbilities.armor.passiveAbility_nanoVest
 )
 
 const cyber_nanoMatrix = createCyber(
@@ -29,7 +31,8 @@ const cyber_nanoMatrix = createCyber(
     [
         null, '', null
     ],
-    cyber_nanoVest.name
+    cyber_nanoVest.name,
+    abilities.passiveAbilities.armor.passiveAbility_nanoMatrix
 )
 
 const armors = {

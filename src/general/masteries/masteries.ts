@@ -36,10 +36,10 @@ const mastery_marksmanship = createMastery(
     ''
 )
 
-const mastery_swordsmanship = createMastery(
+const mastery_swordAffiliation = createMastery(
     [
-        'Swordsmanship',
-        'Mastery in slashing and stabbing with efficiency',
+        'Sword affiliation',
+        'Mastery in gain full control over sword',
         images.normalItems.steelSword
     ],
     ''
@@ -51,7 +51,7 @@ const mastery_dualSwords = createMastery(
         'Mastery in slashing and stabbing with swords in both hands',
         images.guildianLearnings.dualSwords
     ],
-    mastery_swordsmanship.name
+    mastery_swordAffiliation.name
 )
 
 const mastery_brutalForce = createMastery(
@@ -171,6 +171,15 @@ const mastery_maceAffiliation = createMastery(
     ''
 )
 
+const mastery_spearAffiliation = createMastery(
+    [
+        'Spear affiliation',
+        'Mastery to gain full control over spear',
+        images.normalItems.steelSpear
+    ],
+    ''
+)
+
 const mastery_sellmanship = createMastery(
     [
         'Sellmanship',
@@ -184,7 +193,6 @@ const masteries = {
     mastery_archery,
     mastery_axeAffiliation,
     mastery_marksmanship,
-    mastery_swordsmanship,
     mastery_dualSwords,
     mastery_brutalForce,
     mastery_bombThrowing,
@@ -198,7 +206,9 @@ const masteries = {
     mastery_sellmanship,
     mastery_senseOfCold,
     mastery_senseOfFlame,
-    mastery_senseOfWind
+    mastery_senseOfWind,
+    mastery_spearAffiliation,
+    mastery_swordAffiliation
 }
 
 export default masteries

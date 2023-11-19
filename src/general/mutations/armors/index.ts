@@ -1,6 +1,7 @@
 import { createMutation } from "..";
 import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
+import abilities from "../../abilities";
 
 const mutation_scales = createMutation(
     [
@@ -13,7 +14,8 @@ const mutation_scales = createMutation(
     ],
     [
         null, '', null
-    ]
+    ], 
+    abilities.passiveAbilities.armor.passiveAbility_scales
 )
 
 const mutation_fur = createMutation(
@@ -27,7 +29,8 @@ const mutation_fur = createMutation(
     ],
     [
         null, '', null
-    ]
+    ], 
+    abilities.passiveAbilities.armor.passiveAbility_fur
 )
 
 const armors = {

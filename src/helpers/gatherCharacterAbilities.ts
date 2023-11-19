@@ -1,26 +1,12 @@
-import { Race } from "../enums-and-interfaces/enums";
-import { ICharacher, IAbility, IBattleAbility } from "../enums-and-interfaces/interfaces";
+import { ICharacher, IBattleAbility } from "../enums-and-interfaces/interfaces";
 import abilities from "../general/abilities";
 import items from "../general/items";
 import masteries from "../general/masteries/masteries";
 import checkRipApart from "../general/races/checkRipApart";
 import { createEmptyInventory, createNoItem } from "./emptyEssencesCreators";
 
-const specialRaceAbilities: Record<Race, (IBattleAbility | null)> = {
-    [Race.human]: null,
-    [Race.unknown]: null,
-    [Race.satyr]: null,
-    [Race.minotaur]: null,
-    [Race.orc]: null,
-    [Race.gnoll]: null,
-    [Race.naga]: null,
-    [Race.demon]: null,
-    [Race.dragon]: null,
-    [Race.chimera]: null
-}
-
 function gatherCharacterAbilities(character: ICharacher) {
-    const result: IAbility[] = [];
+    const result: IBattleAbility[] = [];
 
     const masteriesUser = character.general.mind.masteries.map(mastery => mastery.name);
     const spellsUser = character.general.mind.spells;
@@ -29,10 +15,6 @@ function gatherCharacterAbilities(character: ICharacher) {
     const inventory = character.general.inventory ? 
         character.general.inventory : 
         createEmptyInventory();
-
-    if (!!specialRaceAbilities[character.params.race]) {
-        result.push(specialRaceAbilities[character.params.race] as IBattleAbility);
-    }
     
     for (const name in inventory) {
         if (inventory[name].ability) {

@@ -34,6 +34,7 @@ export enum Race {
     orc = 'Orc',
     gnoll = 'Gnoll',
     naga = 'Naga',
+    raptor = 'Raptor',
     demon = 'Demon',
     dragon = 'Dragon',
     chimera = 'Chimera'

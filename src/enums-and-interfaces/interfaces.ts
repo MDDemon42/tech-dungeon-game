@@ -105,7 +105,8 @@ export interface ICharacherParams {
         [DamageType.acid]: number,
         [DamageType.cold]: number,
     },
-    blank?: number
+    blank?: number,
+    dodge: number
 }
 
 // mind options //
@@ -122,7 +123,8 @@ export interface ISpell extends IMastery {
 }
 
 export interface IPower extends IMastery {
-    ability: IAbility | null,
+    ability: IBattleAbility | null,
+    passiveAbility: IPassiveAbility | null,
     requiredPower: string
 }
 
@@ -165,9 +167,11 @@ export interface IInventorySlot extends ICommon {
     inventoryPlace: InventoryPlace,
     priority: number,
 
-    ability: IAbility | null,
+    ability: IBattleAbility | null,
     linkedMastery: string,
-    masterAbilities: IAbility[] | null
+    masterAbilities: IAbility[] | null,
+
+    passiveAbility: IPassiveAbility | null
 }
 
 export interface ICommon {
@@ -192,6 +196,28 @@ export interface IBattleAbility extends ICommon {
     damageType: DamageType,
     hitChance: number,
     targetAmount: number
+}
+
+export interface IPassiveAbility extends ICommon {
+    bonusMaxParams: {
+        [UserParam.health]?: number,
+        [UserParam.mana]?: number,
+        [UserParam.focus]?: number,
+        [UserParam.stamina]?: number,
+        [UserParam.blank]?: number
+    } | null,
+    bonusResistances: {
+        [DamageType.physicalSlashing]?: number,
+        [DamageType.physicalSmashing]?: number,
+        [DamageType.physicalPiercing]?: number,
+        [DamageType.suffocation]?: number,
+        [DamageType.fire]?: number,
+        [DamageType.electrical]?: number,
+        [DamageType.psionic]?: number,
+        [DamageType.acid]?: number,
+        [DamageType.cold]?: number,
+    } | null,
+    bonusDodge?: number
 }
 
 // classes //
@@ -222,7 +248,8 @@ export interface IMutationsForRaceCheck {
     claws: boolean,
     acidSplit: boolean,
     wings: boolean,
-    pincers: boolean
+    pincers: boolean,
+    raptorLegs: boolean
 }
 
 // lookout pages //

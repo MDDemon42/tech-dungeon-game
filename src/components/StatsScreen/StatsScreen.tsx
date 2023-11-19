@@ -3,7 +3,8 @@ import styles from './StatsScreen.module.css';
 import { useSelector } from "react-redux";
 import { upperCaseFirstLetter } from "../../pages/PopupPages/MainPage";
 import ParamIcon from "../Icons/ParamIcon";
-import { UserParam } from "../../enums-and-interfaces/enums";
+import { DamageType, UserParam } from "../../enums-and-interfaces/enums";
+import ResistanceIcon from "../Icons/ResistanceIcon";
 
 function StatsScreen() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
@@ -17,35 +18,47 @@ function StatsScreen() {
                 </h3>
             </div>
             <div className={styles.StatsScreen_body}>
-                <div>
+                <div className={styles.StatsScreen_params}>
+                    <div>
+                        {
+                            [...Array(user.currentParams[UserParam.health])].map(icon => <ParamIcon param='health'/>)
+                        }
+                    </div>
                     {
-                        [...Array(user.currentParams[UserParam.health])].map(icon => <ParamIcon param='health'/>)
+                        user.maxParams.Mana > 0 ?
+                            <div>
+                                {
+                                    [...Array(user.currentParams.Mana)].map(icon => <ParamIcon param='mana'/>)
+                                }
+                            </div> : 
+                            null
+                    }
+                    {
+                        user.maxParams.Focus > 0 ?
+                            <div>
+                                {
+                                    [...Array(user.currentParams.Focus)].map(icon => <ParamIcon param='focus'/>)
+                                }
+                            </div> : 
+                            null
+                    }                
+                    <div>
+                        {
+                            [...Array(user.currentParams.Stamina)].map(icon => <ParamIcon param='stamina'/>)
+                        }
+                    </div>
+                </div>
+                <div className={styles.StatsScreen_resistances}>
+                    {
+                        Object.keys(user.resistances).map(resistance => 
+                            <ResistanceIcon 
+                                type={resistance as DamageType}
+                                value={user.resistances[resistance as DamageType]}
+                            />
+                        )
                     }
                 </div>
-                {
-                    user.maxParams.Mana > 0 ?
-                        <div>
-                            {
-                                [...Array(user.currentParams.Mana)].map(icon => <ParamIcon param='mana'/>)
-                            }
-                        </div> : 
-                        null
-                }
-                {
-                    user.maxParams.Focus > 0 ?
-                        <div>
-                            {
-                                [...Array(user.currentParams.Focus)].map(icon => <ParamIcon param='focus'/>)
-                            }
-                        </div> : 
-                        null
-                }                
-                <div>
-                    {
-                        [...Array(user.currentParams.Stamina)].map(icon => <ParamIcon param='stamina'/>)
-                    }
-                </div>
-            </div>
+            </div>            
         </div>
     )
 } 

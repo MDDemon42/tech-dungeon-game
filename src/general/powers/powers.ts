@@ -1,4 +1,4 @@
-import { IAbility, IPower } from "../../enums-and-interfaces/interfaces";
+import { IBattleAbility, IPassiveAbility, IPower } from "../../enums-and-interfaces/interfaces";
 import images from "../../images/images";
 import masteries from "../masteries/masteries";
 import abilities from "../abilities";
@@ -11,9 +11,10 @@ function createPower(
     ],
     abilityInfo: [
         requiredMastery: string,
-        ability: IAbility | null
+        ability: IBattleAbility | null
     ],
-    requiredPower: string
+    requiredPower: string,
+    passiveAbility: IPassiveAbility | null
 ): IPower {
     return {
         name: commonInfo[0],
@@ -23,7 +24,9 @@ function createPower(
         requiredMastery: abilityInfo[0],
         ability: abilityInfo[1],
 
-        requiredPower
+        requiredPower,
+
+        passiveAbility
     }
 }
 
@@ -37,33 +40,34 @@ const power_telekinesis = createPower(
         masteries.mastery_meditativeInsights.name,
         null
     ],
-    ''
+    '', null
 )
 
 const power_guardianField = createPower(
     [
         'Guardian field',
-        'Power to weaken enemy`s attacks aimed at you',
+        'Power to weaken enemys` elemental attacks aimed at you',
         images.psionInsights.guardianField
     ], 
     [
         masteries.mastery_meditativeInsights.name,
         null
     ],
-    ''
+    '',
+    abilities.passiveAbilities.armor.passiveAbility_guardianField
 )
 
 const power_guardianAura = createPower(
     [
         'Guardian aura',
-        'Power to weaken enemy`s attacks aimed at everyone in your squad',
+        'Power to weaken any enemy`s attack aimed at you',
         images.psionInsights.guardianAura
     ], 
     [
         masteries.mastery_meditativeInsights.name,
         null
     ],
-    power_guardianField.name
+    power_guardianField.name, null
 )
 
 const power_intuition = createPower(
@@ -76,7 +80,8 @@ const power_intuition = createPower(
         masteries.mastery_meditativeInsights.name,
         null
     ],
-    ''
+    '',
+    abilities.passiveAbilities.armor.passiveAbility_intuition
 )
 
 const power_levitation = createPower(
@@ -89,7 +94,7 @@ const power_levitation = createPower(
         masteries.mastery_meditativeInsights.name,
         null
     ],
-    ''
+    '', null
 )
 
 const power_psiBlade = createPower(
@@ -102,7 +107,7 @@ const power_psiBlade = createPower(
         masteries.mastery_psiEnergy.name,
         abilities.battleAbilities.melee.psionic.battleAbility_psiBladeSlash
     ],
-    ''
+    '', null
 )
 
 const power_psiLightning = createPower(
@@ -115,7 +120,7 @@ const power_psiLightning = createPower(
         masteries.mastery_psiEnergy.name,
         abilities.battleAbilities.ranged.psionic.battleAbility_psiLightning
     ],
-    ''
+    '', null
 )
 
 const powers = {

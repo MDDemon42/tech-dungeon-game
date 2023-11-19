@@ -14,7 +14,7 @@ const cyber_powerFist = createCyber(
     [
         null, '', null
     ], 
-    ''
+    '', null
 )
 
 const cyber_energyWhip = createCyber(
@@ -29,7 +29,7 @@ const cyber_energyWhip = createCyber(
     [
         null, '', null
     ],
-    cyber_powerFist.name
+    cyber_powerFist.name, null
 )
 
 const cyber_laser = createCyber(
@@ -44,7 +44,7 @@ const cyber_laser = createCyber(
     [
         null, '', null
     ],
-    ''
+    '', null
 )
 
 const cyber_rocket = createCyber(
@@ -59,7 +59,7 @@ const cyber_rocket = createCyber(
     [
         null, '', null
     ],
-    ''
+    '', null
 )
 
 const weapons = {

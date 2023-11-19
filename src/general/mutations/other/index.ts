@@ -13,7 +13,8 @@ const mutation_wings = createMutation(
     ],
     [
         null, '', null
-    ]
+    ], 
+    null
 )
 
 const mutation_hooves = createMutation(
@@ -27,7 +28,8 @@ const mutation_hooves = createMutation(
     ],
     [
         null, '', null
-    ]
+    ], 
+    null
 )
 
 const other = {

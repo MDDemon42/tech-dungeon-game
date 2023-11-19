@@ -6,7 +6,7 @@ function checkRipApart(inventory: IInventory): IAbility | null {
     const ripApartMutations: Record<string, boolean> = {
         horns: inventory.head.name === mutations.weapons.mutation_horns.name,
         lowerFangs: inventory.chin.name === mutations.weapons.mutation_lowerFangs.name,
-        tailWithSting: inventory.tail.name === mutations.weapons.mutation_tail.name,
+        tailWithSting: inventory.tail.name === mutations.weapons.mutation_tailWithSting.name,
         claws: inventory.bothHands.name === mutations.weapons.mutation_claws.name,
         pincers: inventory.shoulders.name === mutations.weapons.mutation_pincers.name
     }

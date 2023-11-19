@@ -8,8 +8,8 @@ const battleAbility_swordSlash = createBattleAbility(
     [1, DamageType.physicalSlashing, 1, 70]
 );
 
-const battleAbility_masterSwordSlash = createBattleAbility(
-    ['Master sword slash', '', images.normalItems.steelSword], 
+const battleAbility_affiliatedSwordSlash = createBattleAbility(
+    ['Sword slash', '', images.normalItems.steelSword], 
     {Stamina: 1}, 
     [1, DamageType.physicalSlashing, 1, 95]
 );
@@ -89,7 +89,7 @@ const battleAbility_axeSlash = createBattleAbility(
 const battleAbility_affiliatedAxeSlash = createBattleAbility(
     ['Axe slash', '', images.normalItems.steelAxe], 
     {Stamina: 1}, 
-    [2, DamageType.physicalSlashing, 1, 70]
+    [1, DamageType.physicalSlashing, 1, 95]
 );
 
 const battleAbility_doubleAxeSlash = createBattleAbility(
@@ -101,7 +101,7 @@ const battleAbility_doubleAxeSlash = createBattleAbility(
 const battleAbility_affiliatedDoubleAxeSlash = createBattleAbility(
     ['Double axe slash', '', images.normalItems.doubleAxeSlash], 
     {Stamina: 2}, 
-    [3, DamageType.physicalSlashing, 1, 70]
+    [2, DamageType.physicalSlashing, 1, 95]
 ); 
 
 const physicalSlashing = {
@@ -110,7 +110,7 @@ const physicalSlashing = {
     battleAbility_doubleAxeSlash,
     battleAbility_affiliatedDoubleAxeSlash,
     battleAbility_swordSlash,
-    battleAbility_masterSwordSlash,
+    battleAbility_affiliatedSwordSlash,
     battleAbility_dualSwordsSlash,
     battleAbility_chakramSlash,
     battleAbility_masterChakramSlash,

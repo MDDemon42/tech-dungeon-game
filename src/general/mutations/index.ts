@@ -1,4 +1,4 @@
-import { IAbility, IMutation } from "../../enums-and-interfaces/interfaces";
+import { IAbility, IBattleAbility, IMutation, IPassiveAbility } from "../../enums-and-interfaces/interfaces";
 import armors from "./armors";
 import weapons from "./weapons";
 import other from "./other";
@@ -16,10 +16,11 @@ export function createMutation(
         priority: number
     ],
     abilityInfo: [
-        ability: IAbility | null,
+        ability: IBattleAbility | null,
         linkedMastery: string,
         masterAbilities: IAbility[] | null
-    ]
+    ],
+    passiveAbility: IPassiveAbility | null
 ): IMutation {
     return {
         name: commonInfo[0],
@@ -32,7 +33,9 @@ export function createMutation(
 
         ability: abilityInfo[0],
         linkedMastery: abilityInfo[1],
-        masterAbilities: abilityInfo[2]
+        masterAbilities: abilityInfo[2],
+        
+        passiveAbility
     }
 }
 

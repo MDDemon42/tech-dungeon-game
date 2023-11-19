@@ -35,7 +35,7 @@ const spell_multistrike = createSpell(
         images.guildianLearnings.multistrike
     ],
     [
-        masteries.mastery_swordsmanship.name,
+        masteries.mastery_swordAffiliation.name,
         false,
         false,
         null

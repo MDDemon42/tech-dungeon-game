@@ -16,7 +16,8 @@ const item_apprenticeRod = createItem(
     [
         masteries.mastery_scholarship.name,
         null, '', null
-    ]
+    ],
+    null
 )
 
 const item_magisterScepter = createItem(
@@ -31,7 +32,8 @@ const item_magisterScepter = createItem(
     [
         masteries.mastery_magisterDegree.name,
         null, '', null
-    ]
+    ],
+    null
 )
 
 const item_steelAxeRightHand = createItem(
@@ -47,7 +49,8 @@ const item_steelAxeRightHand = createItem(
         '', abilities.battleAbilities.melee.physicalSlashing.battleAbility_axeSlash,
         masteries.mastery_axeAffiliation.name, 
         [abilities.battleAbilities.melee.physicalSlashing.battleAbility_affiliatedAxeSlash]
-    ]
+    ],
+    null
 )
 
 const item_steelAxeLeftHand = createItem(
@@ -63,7 +66,8 @@ const item_steelAxeLeftHand = createItem(
         '', abilities.battleAbilities.melee.physicalSlashing.battleAbility_axeSlash,
         masteries.mastery_axeAffiliation.name, 
         [abilities.battleAbilities.melee.physicalSlashing.battleAbility_affiliatedAxeSlash]
-    ]
+    ],
+    null
 )
 
 const item_steelSwordRightHand = createItem(
@@ -77,9 +81,10 @@ const item_steelSwordRightHand = createItem(
     ],
     [
         '', abilities.battleAbilities.melee.physicalSlashing.battleAbility_swordSlash,
-        masteries.mastery_swordsmanship.name,
-        [abilities.battleAbilities.melee.physicalSlashing.battleAbility_masterSwordSlash]
-    ]
+        masteries.mastery_swordAffiliation.name,
+        [abilities.battleAbilities.melee.physicalSlashing.battleAbility_affiliatedSwordSlash,]
+    ],
+    null
 )
 
 const item_steelSwordLeftHand = createItem(
@@ -94,9 +99,10 @@ const item_steelSwordLeftHand = createItem(
     [
         masteries.mastery_dualSwords.name,
         abilities.battleAbilities.melee.physicalSlashing.battleAbility_swordSlash,
-        masteries.mastery_swordsmanship.name,
-        [abilities.battleAbilities.melee.physicalSlashing.battleAbility_masterSwordSlash]
-    ]
+        masteries.mastery_swordAffiliation.name,
+        [abilities.battleAbilities.melee.physicalSlashing.battleAbility_affiliatedSwordSlash,]
+    ],
+    null
 )
 
 const item_steelMace = createItem(
@@ -112,7 +118,25 @@ const item_steelMace = createItem(
         '', abilities.battleAbilities.melee.physicalSmashing.battleAbility_maceSmash,
         masteries.mastery_maceAffiliation.name, 
         [abilities.battleAbilities.melee.physicalSmashing.battleAbility_affiliatedMaceSmash]
-    ]
+    ],
+    null
+)
+
+const item_steelSpear = createItem(
+    [
+        'Steel spear', 
+        'Usual steel spear',
+        images.normalItems.steelSpear
+    ],
+    [
+        1, InventoryPlace.rightHand, 1
+    ],
+    [
+        '', abilities.battleAbilities.melee.physicalPiercing.battleAbility_spearPierce,
+        masteries.mastery_spearAffiliation.name, 
+        [abilities.battleAbilities.melee.physicalPiercing.battleAbility_affiliatedSpearPierce]
+    ],
+    null
 )
 
 const item_steelGreataxe = createItem(
@@ -128,7 +152,8 @@ const item_steelGreataxe = createItem(
         masteries.mastery_brutalForce.name,
         abilities.battleAbilities.melee.physicalSlashing.battleAbility_steelGreataxeSlash,
         '', null
-    ]
+    ],
+    null
 )
 
 const item_runicGreataxe = createItem(
@@ -148,7 +173,8 @@ const item_runicGreataxe = createItem(
             abilities.battleAbilities.melee.physicalSlashing.battleAbility_runicGreataxeSlash,
             abilities.battleAbilities.melee.cold.battleAbility_runicGreataxeSlash
         ]
-    ]
+    ],
+    null
 )
 
 const item_steelGreatsword = createItem(
@@ -164,7 +190,8 @@ const item_steelGreatsword = createItem(
         masteries.mastery_brutalForce.name,
         abilities.battleAbilities.melee.physicalSlashing.battleAbility_steelGreatswordSlash,
         '', null
-    ]
+    ],
+    null
 )
 
 const item_runicGreatsword = createItem(
@@ -184,7 +211,8 @@ const item_runicGreatsword = createItem(
             abilities.battleAbilities.melee.physicalSlashing.battleAbility_runicGreatswordSlash,
             abilities.battleAbilities.melee.fire.battleAbility_runicGreatswordSlash
         ]
-    ]
+    ],
+    null
 )
 
 const item_oakBow = createItem(
@@ -200,7 +228,8 @@ const item_oakBow = createItem(
         '', abilities.battleAbilities.ranged.physicalPiercing.battleAbility_oakBowShot,
         masteries.mastery_archery.name,
         [abilities.battleAbilities.ranged.physicalPiercing.battleAbility_masterOakBowShot]
-    ]
+    ],
+    null
 )
 
 const item_oakCrossow = createItem(
@@ -216,7 +245,8 @@ const item_oakCrossow = createItem(
         '', abilities.battleAbilities.ranged.physicalPiercing.battleAbility_crossbowShot,
         masteries.mastery_marksmanship.name,
         [abilities.battleAbilities.ranged.physicalPiercing.battleAbility_masterCrossbowShot]
-    ]
+    ],
+    null
 )
 
 const item_steelChakram = createItem(
@@ -235,7 +265,8 @@ const item_steelChakram = createItem(
             abilities.battleAbilities.melee.physicalSlashing.battleAbility_masterChakramSlash,
             abilities.battleAbilities.ranged.physicalSlashing.battleAbility_chakramThrow
         ]
-    ]
+    ],
+    null
 )
 
 const item_acidBomd = createItem(
@@ -251,7 +282,8 @@ const item_acidBomd = createItem(
         '', abilities.battleAbilities.ranged.acid.battleAbility_acidBombThrow,
         masteries.mastery_bombThrowing.name, 
         [abilities.battleAbilities.ranged.acid.battleAbility_masterAcidBombThrow]
-    ]
+    ],
+    null
 )
 
 const weapons = {
@@ -262,6 +294,7 @@ const weapons = {
     item_steelGreataxe,
     item_steelGreatsword,
     item_steelMace,
+    item_steelSpear,
     item_steelSwordRightHand,
     item_steelSwordLeftHand,
     item_runicGreataxe,

@@ -73,7 +73,7 @@ const naga = () => {
     character.params.currentParams[UserParam.stamina] = 3;
 
     character.general.inventory.skin = mutations.armors.mutation_scales;
-    character.general.inventory.tail = mutations.weapons.mutation_tail;
+    character.general.inventory.tail = mutations.weapons.mutation_tailWithSting;
 
     return character
 }
@@ -93,8 +93,8 @@ const demon = () => {
     character.params.maxParams[UserParam.focus] = 6;
     character.params.currentParams[UserParam.focus] = 6;
 
-    character.general.inventory.skin = mutations.armors.mutation_scales;
-    character.general.inventory.tail = mutations.weapons.mutation_tail;
+    character.general.inventory.skin = mutations.armors.mutation_fur;
+    character.general.inventory.tail = mutations.weapons.mutation_tailWithSting;
     character.general.inventory.head = mutations.weapons.mutation_horns;
     character.general.inventory.legs = mutations.other.mutation_hooves;
     character.general.inventory.chin = mutations.weapons.mutation_lowerFangs;
@@ -119,7 +119,7 @@ const dragon = () => {
     character.params.currentParams[UserParam.mana] = 6;
 
     character.general.inventory.skin = mutations.armors.mutation_scales;
-    character.general.inventory.tail = mutations.weapons.mutation_tail;
+    character.general.inventory.tail = mutations.weapons.mutation_tailWithSting;
     character.general.inventory.head = mutations.weapons.mutation_horns;
     character.general.inventory.back = mutations.other.mutation_wings;
     character.general.inventory.chin = mutations.weapons.mutation_acidSplit;
@@ -141,7 +141,7 @@ const ultimate_chimera = () => {
     character.params.currentParams[UserParam.stamina] = 8;
 
     character.general.inventory.skin = mutations.armors.mutation_fur;
-    character.general.inventory.tail = mutations.weapons.mutation_tail;
+    character.general.inventory.tail = mutations.weapons.mutation_tailWithSting;
     character.general.inventory.head = mutations.weapons.mutation_horns;
     character.general.inventory.back = mutations.other.mutation_wings;
     character.general.inventory.chin = mutations.weapons.mutation_acidSplit;

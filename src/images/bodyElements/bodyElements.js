@@ -35,6 +35,7 @@ import pincers from './pincers.png';
 import powerFist from './powerFist.png';
 import psiBlade from './psiBlade.png';
 import psiLightning from './psiLightning.png';
+import raptorLegs from './raptorLegs.png';
 import reactiveFeet from './reactiveFeet.png';
 import rightHand from './rightHand.png';
 import rocket from './rocket.png';
@@ -48,6 +49,7 @@ import steelGreataxe from './steelGreataxe.png';
 import steelGreatsword from './steelGreatsword.png';
 import steelMace from './steelMace.png';
 import steelShield from './steelShield.png';
+import steelSpear from './steelSpear.png';
 import steelSwordLeftHand from './steelSwordLeftHand.png';
 import steelSwordRightHand from './steelSwordRightHand.png';
 import tail from './tail.png';
@@ -93,6 +95,7 @@ const bodyElements = {
     powerFist,
     psiBlade,
     psiLightning,
+    raptorLegs,
     reactiveFeet,
     rightHand,
     rocket,
@@ -106,6 +109,7 @@ const bodyElements = {
     steelGreatsword,
     steelMace,
     steelShield,
+    steelSpear,
     steelSwordLeftHand,
     steelSwordRightHand,
     tail,

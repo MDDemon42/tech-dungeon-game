@@ -9,19 +9,21 @@ import twoExtraPincers from './twoExtraPincers.png';
 import hooves from './hooves.png';
 import lowerFangs from './lowerFangs.png';
 import ripApart from './ripApart.png';
+import raptorLegs from './raptorLegs.png';
 
 const mutantEvolvings = {
-    claws,
-    horns,
-    fur,
-    wings,
-    tailWithSting,
-    scales,
     acidSplit,
-    twoExtraPincers,
+    claws,
+    fur,
     hooves,
+    horns,
     lowerFangs,
-    ripApart
+    raptorLegs,
+    ripApart,    
+    scales,
+    tailWithSting,
+    twoExtraPincers,
+    wings
 };
 
 export default mutantEvolvings;

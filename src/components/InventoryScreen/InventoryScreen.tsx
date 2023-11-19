@@ -36,21 +36,23 @@ function InventoryScreen(props: {
                         <img src={images.bodyElements.cape} alt='cape' /> : null
             }
             {
-                inventory.tail.name === mutations.weapons.mutation_tail.name ?
+                inventory.tail.name === mutations.weapons.mutation_tailWithSting.name ?
                     <img src={images.bodyElements.tail} alt='tail' /> : null
             }
             {
                 inventory.legs.name === mutations.other.mutation_hooves.name ?
                     <img src={images.bodyElements.hooves} alt='hooves' /> :
-                    [
-                        <img src={images.bodyElements.legs} alt='legs' />,
-                        powersUserNames.includes(powers.power_levitation.name) ?
-                            <img src={images.bodyElements.levitation} alt='levitation' /> : null,
-                        inventory.skin.name === cybers.armors.cyber_nanoMatrix.name ?
-                            <img src={images.bodyElements.nanoMatrixLegs} alt='nanoMatrixLegs' /> :
-                            inventory.skin.name === cybers.armors.cyber_nanoVest.name ?
-                                <img src={images.bodyElements.nanoVestLegs} alt='nanoVestLegs' /> : null
-                    ]                                
+                    inventory.legs.name === mutations.weapons.mutation_raptorLegs.name ?
+                        <img src={images.bodyElements.raptorLegs} alt='raptorLegs' /> :
+                        [
+                            <img src={images.bodyElements.legs} alt='legs' />,
+                            powersUserNames.includes(powers.power_levitation.name) ?
+                                <img src={images.bodyElements.levitation} alt='levitation' /> : null,
+                            inventory.skin.name === cybers.armors.cyber_nanoMatrix.name ?
+                                <img src={images.bodyElements.nanoMatrixLegs} alt='nanoMatrixLegs' /> :
+                                inventory.skin.name === cybers.armors.cyber_nanoVest.name ?
+                                    <img src={images.bodyElements.nanoVestLegs} alt='nanoVestLegs' /> : null
+                        ]                                
             }
             {
                 inventory.legs.name === cybers.other.cyber_reactiveFeet.name ?
@@ -177,7 +179,9 @@ function InventoryScreen(props: {
                                                         <img src={images.bodyElements.steelAxeRightHand} alt='steelAxeRightHand' /> :
                                                         inventory.rightHand.name === items.weapons.item_steelMace.name ?
                                                             <img src={images.bodyElements.steelMace} alt='steelMace' /> :
-                                                            <img src={images.bodyElements.rightHand} alt='rightHand' />
+                                                            inventory.rightHand.name === items.weapons.item_steelSpear.name ?
+                                                                <img src={images.bodyElements.steelSpear} alt='steelSpear' /> :
+                                                                <img src={images.bodyElements.rightHand} alt='rightHand' />
             }            
         </div>
     )

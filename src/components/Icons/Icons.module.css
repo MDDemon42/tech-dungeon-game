@@ -33,8 +33,16 @@
     width: 100%;
 }
 
-.ResourceIcon, .ParamIcon {
+.ResourceIcon, .ParamIcon, .ResistanceIcon {
     position: relative;
     width: 12px;
     height: 12px;
+}
+
+.ResistanceIcon {
+    border: 1px solid;
+    border-radius: 50%;
+    font-size: 8px;
+    font-weight: bold;
+    cursor: pointer;
 }

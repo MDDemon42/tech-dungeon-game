@@ -63,7 +63,7 @@ const knight = () => {
     character.params.maxParams[UserParam.stamina] = 5;
     character.params.currentParams[UserParam.stamina] = 5;
 
-    character.general.mind.masteries.push(masteries.mastery_swordsmanship);
+    character.general.mind.masteries.push(masteries.mastery_swordAffiliation);
 
     character.general.inventory.rightHand = items.weapons.item_steelSwordRightHand;
     character.general.inventory.armor = items.armors.item_steelArmor;

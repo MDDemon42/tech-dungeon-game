@@ -11,7 +11,8 @@ function createRace(mutations: (keyof IMutationsForRaceCheck)[]): IMutationsForR
         claws: false,
         acidSplit: false,
         wings: false,
-        pincers: false
+        pincers: false,
+        raptorLegs: false
     };
 
     mutations.forEach(mutation => {

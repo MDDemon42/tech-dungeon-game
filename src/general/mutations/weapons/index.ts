@@ -1,6 +1,7 @@
 import { createMutation } from "..";
 import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
+import abilities from "../../abilities";
 
 const mutation_acidSplit = createMutation(
     [
@@ -13,7 +14,8 @@ const mutation_acidSplit = createMutation(
     ],
     [
         null, '', null
-    ]
+    ], 
+    null
 )
 
 const mutation_lowerFangs = createMutation(
@@ -27,7 +29,8 @@ const mutation_lowerFangs = createMutation(
     ],
     [
         null, '', null
-    ]
+    ], 
+    null
 )
 
 const mutation_claws = createMutation(
@@ -41,7 +44,8 @@ const mutation_claws = createMutation(
     ],
     [
         null, '', null
-    ]
+    ], 
+    null
 )
 
 const mutation_clawLeft = createMutation(
@@ -55,7 +59,8 @@ const mutation_clawLeft = createMutation(
     ],
     [
         null, '', null
-    ]    
+    ], 
+    null
 )
 
 const mutation_clawRight = createMutation(
@@ -69,7 +74,8 @@ const mutation_clawRight = createMutation(
     ],
     [
         null, '', null
-    ]
+    ], 
+    null
 )
 
 const mutation_horns = createMutation(
@@ -83,10 +89,11 @@ const mutation_horns = createMutation(
     ],
     [
         null, '', null
-    ]
+    ], 
+    null
 )
 
-const mutation_tail = createMutation(
+const mutation_tailWithSting = createMutation(
     [
         'Tail with sting', 
         'Mutation to pierce your victims',
@@ -97,7 +104,8 @@ const mutation_tail = createMutation(
     ],
     [
         null, '', null
-    ]
+    ], 
+    abilities.passiveAbilities.armor.passiveAbility_tailWithSting
 )
 
 const mutation_pincers = createMutation(
@@ -111,7 +119,23 @@ const mutation_pincers = createMutation(
     ],
     [
         null, '', null
-    ]
+    ], 
+    null
+)
+
+const mutation_raptorLegs = createMutation(
+    [
+        'Raptor legs', 
+        'Mutation to make jump on your prey',
+        images.mutantEvolvings.raptorLegs
+    ],
+    [
+        1, InventoryPlace.legs, 1
+    ],
+    [
+        null, '', null
+    ], 
+    null
 )
 
 const weapons = {
@@ -122,7 +146,8 @@ const weapons = {
     mutation_horns,
     mutation_lowerFangs,
     mutation_pincers,
-    mutation_tail
+    mutation_raptorLegs,
+    mutation_tailWithSting
 }
 
 export default weapons

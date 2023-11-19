@@ -1,4 +1,4 @@
-import { IAbility, IItem } from "../../enums-and-interfaces/interfaces";
+import { IAbility, IBattleAbility, IItem, IPassiveAbility } from "../../enums-and-interfaces/interfaces";
 import weapons from "./weapons";
 import armors from "./armors";
 import other from "./other";
@@ -17,10 +17,11 @@ export function createItem(
     ],
     abilityInfo: [
         requiredMastery: string,
-        ability: IAbility | null,
+        ability: IBattleAbility | null,
         linkedMastery: string,
         masterAbilities: IAbility[] | null
-    ]
+    ],
+    passiveAbility: IPassiveAbility | null
 ): IItem {
     return {
         name: commonInfo[0],
@@ -34,7 +35,9 @@ export function createItem(
         requiredMastery: abilityInfo[0],
         ability: abilityInfo[1],
         linkedMastery: abilityInfo[2],
-        masterAbilities: abilityInfo[3]       
+        masterAbilities: abilityInfo[3],
+        
+        passiveAbility
     }
 }
 

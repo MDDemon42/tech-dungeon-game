@@ -56,7 +56,8 @@ function createEmptyParams(): ICharacherParams {
             [DamageType.psionic]: 0,
             [DamageType.acid]: 0,
             [DamageType.cold]: 0,
-        }
+        },
+        dodge: 0
     }    
 }
 
@@ -111,6 +112,7 @@ export function createNoItem(): ICyber & IItem {
         ability: null,
         linkedMastery: '',
         masterAbilities: null,
-        requiredCyber: ''
+        requiredCyber: '',
+        passiveAbility: null
     }    
 }

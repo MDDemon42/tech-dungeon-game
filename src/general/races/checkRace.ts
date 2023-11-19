@@ -10,11 +10,12 @@ function checkRace(inventory: IInventory, isStrong: boolean): Race {
         lowerFangs: inventory.chin.name === mutations.weapons.mutation_lowerFangs.name,
         scales: inventory.skin.name === mutations.armors.mutation_scales.name,
         fur: inventory.skin.name === mutations.armors.mutation_fur.name,
-        tailWithSting: inventory.tail.name === mutations.weapons.mutation_tail.name,
+        tailWithSting: inventory.tail.name === mutations.weapons.mutation_tailWithSting.name,
         claws: inventory.bothHands.name === mutations.weapons.mutation_claws.name,
         acidSplit: inventory.chin.name === mutations.weapons.mutation_acidSplit.name,
         wings: inventory.back.name === mutations.other.mutation_wings.name,
-        pincers: inventory.shoulders.name === mutations.weapons.mutation_pincers.name
+        pincers: inventory.shoulders.name === mutations.weapons.mutation_pincers.name,
+        raptorLegs: inventory.legs.name === mutations.weapons.mutation_raptorLegs.name
     }
 
     const isRace = (race: IMutationsForRaceCheck) => {
@@ -29,6 +30,7 @@ function checkRace(inventory: IInventory, isStrong: boolean): Race {
         [Race.orc]: isRace(races.orkRace) && isStrong,
         [Race.gnoll]: isRace(races.gnollRace) && isStrong,
         [Race.naga]: isRace(races.nagaRace),
+        [Race.raptor]: isRace(races.raptorRace),
         [Race.demon]: isRace(races.demonRace),
         [Race.dragon]: isRace(races.dragonRace),
         [Race.chimera]: isRace(races.chimeraRace)
