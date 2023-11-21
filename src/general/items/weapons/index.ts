@@ -6,8 +6,8 @@ import masteries from "../../masteries/masteries";
 
 const item_apprenticeRod = createItem(
     [
-        'Apprentice rod', 
-        'Rod to help concentrate magic',
+        chrome.i18n.getMessage('apprentice_rod'), 
+        chrome.i18n.getMessage('apprentice_rod_item_description'),
         images.wizardItems.apprenticeRod
     ],
     [
@@ -22,8 +22,8 @@ const item_apprenticeRod = createItem(
 
 const item_magisterScepter = createItem(
     [
-        'Magister scepter', 
-        'Scepter to lean on between casting spells',
+        chrome.i18n.getMessage('magister_scepter'), 
+        chrome.i18n.getMessage('magister_scepter_item_description'),
         images.wizardItems.magisterScepter
     ],
     [
@@ -38,8 +38,8 @@ const item_magisterScepter = createItem(
 
 const item_steelAxeRightHand = createItem(
     [
-        'Steel axe', 
-        'Usual steel axe',
+        chrome.i18n.getMessage('steel_axe'), 
+        chrome.i18n.getMessage('steel_axe_item_description'),
         images.normalItems.steelAxe
     ],
     [
@@ -55,8 +55,8 @@ const item_steelAxeRightHand = createItem(
 
 const item_steelAxeLeftHand = createItem(
     [
-        'Steel axe', 
-        'Usual steel axe',
+        chrome.i18n.getMessage('steel_axe'), 
+        chrome.i18n.getMessage('steel_axe_item_description'),
         images.normalItems.steelAxe
     ],
     [
@@ -72,8 +72,8 @@ const item_steelAxeLeftHand = createItem(
 
 const item_steelSwordRightHand = createItem(
     [
-        'Steel sword', 
-        'Usual steel sword',
+        chrome.i18n.getMessage('steel_sword'), 
+        chrome.i18n.getMessage('steel_sword_item_description'),
         images.normalItems.steelSword
     ],
     [
@@ -89,8 +89,8 @@ const item_steelSwordRightHand = createItem(
 
 const item_steelSwordLeftHand = createItem(
     [
-        'Left hand steel sword', 
-        'Left hand steel sword',
+        chrome.i18n.getMessage('steel_sword'), 
+        chrome.i18n.getMessage('steel_sword_item_description'),
         images.normalItems.steelSword
     ],
     [

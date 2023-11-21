@@ -4,8 +4,8 @@ import images from "../../../images/images";
 
 const item_healingPotion = createItem(
     [
-        'Healing potion', 
-        'Drink of herbs',
+        chrome.i18n.getMessage('healing_potion'), 
+        chrome.i18n.getMessage('healing_potion_item_description'),
         images.normalItems.healingPotion
     ], 
     [

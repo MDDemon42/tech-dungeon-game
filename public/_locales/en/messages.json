@@ -190,5 +190,146 @@
     },
     "settings_page_back_to_main_page": {
         "message": "Back to Main page"
+    },
+    "apprentice_hat": {
+        "message": "Apprentice hat"
+    },
+    "apprentice_hat_item_description": {
+        "message": "Hat to focus thoughts on studying."
+    },
+    "apprentice_rod": {
+        "message": "Apprentice rod"
+    },
+    "apprentice_rod_item_description": {
+        "message": "Rod to help concentrate magic."
+    },
+    "max_mana_1": {
+        "message": "Upgrades max Mana capacity by 1."
+    },
+    "flying_cape": {
+        "message": "Flying cape"
+    },
+    "flying_cape_item_description": {
+        "message": "Cape to make his owner fly"
+    },
+    "magister_hat": {
+        "message": "Magister hat"
+    },
+    "magister_hat_item_description": {
+        "message": "Hat to hide baldness."
+    },
+    "max_mana_2": {
+        "message": "Upgrades max Mana capacity by 2."
+    },
+    "magister_robe": {
+        "message": "Magister robe"
+    },
+    "magister_robe_item_description": {
+        "message": "Robe to hide thinness."
+    },
+    "magister_scepter": {
+        "message": "Magister scepter"
+    },
+    "magister_scepter_item_description": {
+        "message": "Scepter to lean on between casting spells."
+    },
+    "leather_armor": {
+        "message": "Leather armor"
+    },
+    "leather_armor_item_description": {
+        "message": "Armor of someone else`s skin."
+    },
+    "resistance_slashing_1": {
+        "message": "Upgrades resistance to Slashing damage by 1."
+    },
+    "steel_armor": {
+        "message": "Steel armor"
+    },
+    "steel_armor_item_description": {
+        "message": "Massive steel armor."
+    },
+    "resistance_all_physical_1": {
+        "message": "Upgrades resistance to All Physical damage by 1."
+    },
+    "steel_shield": {
+        "message": "Steel shield"
+    },
+    "steel_shield_item_description": {
+        "message": "Usual steel shield."
+    },
+    "resistance_piercing_and_slashing_1": {
+        "message": "Upgrades resistance to Piercing and Slashing damage by 1."
+    },
+    "nano_vest": {
+        "message": "Nano vest"
+    },
+    "nano_vest_item_description": {
+        "message": "Cyber to boost your survival rate."
+    },
+    "nano_matrix": {
+        "message": "Nano matrix"
+    },
+    "nano_matrix_item_description": {
+        "message": "Cyber to deflect almost any physical damage."
+    },
+    "scales": {
+        "message": "Scales"
+    },
+    "scales_item_description": {
+        "message": "Mutation to make your skin much tougher."
+    },
+    "resistance_piercing_1_and_dodge_15": {
+        "message": "Upgrades resistance to Piercing damage by 1 and Dodge by 15."
+    },
+    "fur": {
+        "message": "Fur"
+    },
+    "fur_item_description": {
+        "message": "Mutation to make your skin much hairer."
+    },
+    "resistance_cold_1": {
+        "message": "Upgrades resistance to Cold damage by 1."
+    },
+    "tail_with_sting": {
+        "message": "Tail with sting"
+    },
+    "tail_with_sting_item_description": {
+        "message": "Mutation to pierce your victims."
+    },
+    "dodge_15": {
+        "message": "Upgrades Dodge by 15."
+    },
+    "intuition": {
+        "message": "Intuition"
+    },
+    "intuition_item_description": {
+        "message": "Power to unintentionally avoid enemy attacks."
+    },
+    "guardian_field": {
+        "message": "Guardian field"
+    },
+    "guardian_field_item_description": {
+        "message": "Power to weaken enemies' elemental attacks aimed at you."
+    },
+    "resistance_all_elemental_1": {
+        "message": "Upgrades every Elemental resistance by 1."
+    },
+    "healing_potion": {
+        "message": "Healing potion"
+    },
+    "healing_potion_item_description": {
+        "message": "Drink of herbs."
+    },
+    "steel_axe": {
+        "message": "Steel axe"
+    },
+    "steel_axe_item_description": {
+        "message": "Usual steel axe."
+    },
+    "steel_sword": {
+        "message": "Steel sword"
+    },
+    "steel_sword_item_description": {
+        "message": "Usual steel sword."
     }
 }

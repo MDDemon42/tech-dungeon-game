@@ -57,6 +57,14 @@ function StatsScreen() {
                             />
                         )
                     }
+                    {
+                        user.dodge > 0 && <div 
+                            title={'Dodge'}
+                            className={styles.StatsScreen_dodge}
+                        >
+                            {user.dodge}
+                        </div>
+                    }
                 </div>
             </div>            
         </div>

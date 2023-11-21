@@ -45,8 +45,8 @@ const power_telekinesis = createPower(
 
 const power_guardianField = createPower(
     [
-        'Guardian field',
-        'Power to weaken enemys` elemental attacks aimed at you',
+        chrome.i18n.getMessage('guardian_field'),
+        chrome.i18n.getMessage('guardian_field_item_description'),
         images.psionInsights.guardianField
     ], 
     [
@@ -72,8 +72,8 @@ const power_guardianAura = createPower(
 
 const power_intuition = createPower(
     [
-        'Intuition',
-        'Power to unintentionally avoid enemy attacks',
+        chrome.i18n.getMessage('intuition'),
+        chrome.i18n.getMessage('intuition_item_description'),
         images.psionInsights.intuition
     ],
     [

@@ -6,8 +6,8 @@ import masteries from "../../masteries/masteries";
 
 const item_apprenticeHat = createItem(
     [
-        'Apprentice hat',
-        'Hat to focus thoughts on studying',
+        chrome.i18n.getMessage('apprentice_hat'),
+        chrome.i18n.getMessage('apprentice_hat_item_description'),
         images.wizardItems.apprenticeHat
     ], 
     [
@@ -22,8 +22,8 @@ const item_apprenticeHat = createItem(
 
 const item_flyingCape = createItem(
     [
-        'Flying cape', 
-        'Cape to make his owner fly',
+        chrome.i18n.getMessage('flying_cape'),
+        chrome.i18n.getMessage('flying_cape_item_description'),
         images.wizardItems.flyingCape
     ],
     [
@@ -37,8 +37,8 @@ const item_flyingCape = createItem(
 
 const item_magisterHat = createItem(
     [
-        'Magister hat', 
-        'Hat to hide baldness',
+        chrome.i18n.getMessage('magister_hat'),
+        chrome.i18n.getMessage('magister_hat_item_description'),
         images.wizardItems.magisterHat
     ],
     [
@@ -53,8 +53,8 @@ const item_magisterHat = createItem(
 
 const item_magisterRobe = createItem(
     [
-        'Magister robe', 
-        'Robe to hide thinness',
+        chrome.i18n.getMessage('magister_robe'),
+        chrome.i18n.getMessage('magister_robe_item_description'),
         images.wizardItems.magisterRobe
     ],
     [
@@ -69,8 +69,8 @@ const item_magisterRobe = createItem(
 
 const item_leatherArmor = createItem(
     [
-        'Leather armor', 
-        'Usual leather armor',
+        chrome.i18n.getMessage('leather_armor'),
+        chrome.i18n.getMessage('leather_armor_item_description'),
         images.normalItems.leatherArmor
     ],
     [
@@ -84,8 +84,8 @@ const item_leatherArmor = createItem(
 
 const item_steelArmor = createItem(
     [
-        'Steel armor', 
-        'Massive steel armor',
+        chrome.i18n.getMessage('steel_armor'),
+        chrome.i18n.getMessage('steel_armor_item_description'),
         images.normalItems.steelArmor
     ], 
     [
@@ -100,8 +100,8 @@ const item_steelArmor = createItem(
 
 const item_steelShield = createItem(
     [
-        'Steel shield', 
-        'Usual steel shield',
+        chrome.i18n.getMessage('steel_shield'),
+        chrome.i18n.getMessage('steel_shield_item_description'),
         images.normalItems.steelShield
     ],
     [

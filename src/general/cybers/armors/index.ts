@@ -5,8 +5,8 @@ import abilities from "../../abilities";
 
 const cyber_nanoVest = createCyber(
     [
-        'Nano vest', 
-        'Cyber to boost your survival rate',
+        chrome.i18n.getMessage('nano_vest'), 
+        chrome.i18n.getMessage('nano_vest_item_description'),
         images.cyborgDetails.nanoVest
     ],
     [
@@ -21,8 +21,8 @@ const cyber_nanoVest = createCyber(
 
 const cyber_nanoMatrix = createCyber(
     [
-        'Nano matrix', 
-        'Cyber to deflect almost any damage',
+        chrome.i18n.getMessage('nano_matrix'), 
+        chrome.i18n.getMessage('nano_matrix_item_description'),
         images.cyborgDetails.nanoMatrix
     ],
     [

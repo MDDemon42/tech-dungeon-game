@@ -95,8 +95,8 @@ const mutation_horns = createMutation(
 
 const mutation_tailWithSting = createMutation(
     [
-        'Tail with sting', 
-        'Mutation to pierce your victims',
+        chrome.i18n.getMessage('tail_with_sting'), 
+        chrome.i18n.getMessage('tail_with_sting_item_description'),
         images.mutantEvolvings.tailWithSting
     ],
     [

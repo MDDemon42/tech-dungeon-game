@@ -4,8 +4,8 @@ import images from "../../../../images/images"
 
 const passiveAbility_apprenticeHat = createPassiveAbility(
     [
-        'Apprentice hat', 
-        'Upgrades wearer`s max Mana capacity by 1', 
+        chrome.i18n.getMessage('apprentice_hat'), 
+        chrome.i18n.getMessage('max_mana_1'), 
         images.wizardItems.apprenticeHat
     ],
     {
@@ -16,8 +16,8 @@ const passiveAbility_apprenticeHat = createPassiveAbility(
 
 const passiveAbility_magisterHat = createPassiveAbility(
     [
-        'Magister hat', 
-        'Upgrades wearer`s max Mana capacity by 2', 
+        chrome.i18n.getMessage('magister_hat'),
+        chrome.i18n.getMessage('max_mana_2'), 
         images.wizardItems.magisterHat
     ],
     {
@@ -28,8 +28,8 @@ const passiveAbility_magisterHat = createPassiveAbility(
 
 const passiveAbility_magisterRobe = createPassiveAbility(
     [
-        'Magister robe', 
-        'Upgrades wearer`s max Mana capacity by 2', 
+        chrome.i18n.getMessage('magister_robe'),
+        chrome.i18n.getMessage('max_mana_2'),  
         images.wizardItems.magisterRobe
     ],
     {
@@ -40,8 +40,8 @@ const passiveAbility_magisterRobe = createPassiveAbility(
 
 const passiveAbility_leatherArmor = createPassiveAbility(
     [
-        'Leather armor', 
-        'Upgrades wearer`s resistance to slashing damage by 1', 
+        chrome.i18n.getMessage('leather_armor'),
+        chrome.i18n.getMessage('resistance_slashing_1'), 
         images.normalItems.leatherArmor
     ],
     null,
@@ -52,8 +52,8 @@ const passiveAbility_leatherArmor = createPassiveAbility(
 
 const passiveAbility_steelArmor = createPassiveAbility(
     [
-        'Steel armor', 
-        'Upgrades wearer`s resistance to all physical damage by 1', 
+        chrome.i18n.getMessage('steel_armor'),
+        chrome.i18n.getMessage('resistance_all_physical_1'),
         images.normalItems.steelArmor
     ],
     null,
@@ -66,8 +66,8 @@ const passiveAbility_steelArmor = createPassiveAbility(
 
 const passiveAbility_steelShield = createPassiveAbility(
     [
-        'Steel shield', 
-        'Upgrades wearer`s resistance to piercing and slashing damage by 1', 
+        chrome.i18n.getMessage('steel_shield'),
+        chrome.i18n.getMessage('resistance_piercing_and_slashing_1'), 
         images.normalItems.steelShield
     ],
     null,
@@ -79,8 +79,8 @@ const passiveAbility_steelShield = createPassiveAbility(
 
 const passiveAbility_nanoVest = createPassiveAbility(
     [
-        'Nano vest', 
-        'Upgrades owner`s resistance to slashing damage by 1', 
+        chrome.i18n.getMessage('nano_vest'), 
+        chrome.i18n.getMessage('resistance_slashing_1'),
         images.cyborgDetails.nanoVest
     ],
     null,
@@ -91,8 +91,8 @@ const passiveAbility_nanoVest = createPassiveAbility(
 
 const passiveAbility_nanoMatrix = createPassiveAbility(
     [
-        'Nano matrix', 
-        'Upgrades owner`s resistance to slashing and piercing damage by 1', 
+        chrome.i18n.getMessage('nano_matrix'), 
+        chrome.i18n.getMessage('resistance_piercing_and_slashing_1'), 
         images.cyborgDetails.nanoMatrix
     ],
     null,
@@ -104,8 +104,8 @@ const passiveAbility_nanoMatrix = createPassiveAbility(
 
 const passiveAbility_scales = createPassiveAbility(
     [
-        'Scales', 
-        'Upgrades owner`s resistance to piercing damage by 1 and dodge by 15', 
+        chrome.i18n.getMessage('scales'), 
+        chrome.i18n.getMessage('resistance_piercing_1_and_dodge_15'), 
         images.mutantEvolvings.scales
     ],
     null,
@@ -117,8 +117,8 @@ const passiveAbility_scales = createPassiveAbility(
 
 const passiveAbility_fur = createPassiveAbility(
     [
-        'Fur', 
-        'Upgrades owner`s resistance to cold damage by 1', 
+        chrome.i18n.getMessage('fur'), 
+        chrome.i18n.getMessage('resistance_cold_1'), 
         images.mutantEvolvings.fur
     ],
     null,
@@ -129,8 +129,8 @@ const passiveAbility_fur = createPassiveAbility(
 
 const passiveAbility_tailWithSting = createPassiveAbility(
     [
-        'Tail with sting', 
-        'Upgrades owner`s dodge by 15', 
+        chrome.i18n.getMessage('tail_with_sting'), 
+        chrome.i18n.getMessage('dodge_15'),  
         images.mutantEvolvings.tailWithSting
     ],
     null,
@@ -140,8 +140,8 @@ const passiveAbility_tailWithSting = createPassiveAbility(
 
 const passiveAbility_intuition = createPassiveAbility(
     [
-        'Intuition', 
-        'Upgrades owner`s dodge by 15', 
+        chrome.i18n.getMessage('intuition'), 
+        chrome.i18n.getMessage('dodge_15'), 
         images.psionInsights.intuition
     ],
     null,
@@ -151,12 +151,13 @@ const passiveAbility_intuition = createPassiveAbility(
 
 const passiveAbility_guardianField = createPassiveAbility(
     [
-        'Guardian field', 
-        'Upgrades every owner`s elemental resistance by 1', 
+        chrome.i18n.getMessage('guardian_field'),  
+        chrome.i18n.getMessage('resistance_all_elemental_1'), 
         images.psionInsights.guardianField
     ],
     null,
     {
+        [DamageType.acid]: 1,
         [DamageType.cold]: 1,
         [DamageType.electrical]: 1,
         [DamageType.fire]: 1,

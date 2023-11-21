@@ -30,3 +30,16 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.StatsScreen_dodge {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    border: 1px solid black;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: default;
+    background-color: black; 
+    color: white;
+    font-size: 8px;
+}

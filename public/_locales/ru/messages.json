@@ -190,5 +190,146 @@
     },
     "settings_page_back_to_main_page": {
         "message": "Назад на Главную"
+    },
+    "apprentice_hat": {
+        "message": "Ученическая шапка"
+    },
+    "apprentice_hat_item_description": {
+        "message": "Шапка для концентрации мыслей на учёбе."
+    },
+    "apprentice_rod": {
+        "message": "Ученический посох"
+    },
+    "apprentice_rod_item_description": {
+        "message": "Посох для улучшения магической концентрации."
+    },
+    "max_mana_1": {
+        "message": "Повышает максимальный запас Маны на 1."
+    },
+    "flying_cape": {
+        "message": "Летучий плащ"
+    },
+    "flying_cape_item_description": {
+        "message": "Плащ, используемый для полёта"
+    },
+    "magister_hat": {
+        "message": "Магистерская шляпа"
+    },
+    "magister_hat_item_description": {
+        "message": "Шляпа, закрывающая лысину заучки."
+    },
+    "max_mana_2": {
+        "message": "Повышает максимальный запас Маны на 2."
+    },
+    "magister_robe": {
+        "message": "Магистерская роба"
+    },
+    "magister_robe_item_description": {
+        "message": "Роба, скрывающая худобу заучки."
+    },
+    "magister_scepter": {
+        "message": "Магистерский скипетр"
+    },
+    "magister_scepter_item_description": {
+        "message": "Скипетр для опоры между заклинаниями."
+    },
+    "leather_armor": {
+        "message": "Кожаная броня"
+    },
+    "leather_armor_item_description": {
+        "message": "Броня из чьей-то чужой кожи."
+    },
+    "resistance_slashing_1": {
+        "message": "Повышает сопротивление Режущему урону на 1."
+    },
+    "steel_armor": {
+        "message": "Стальная броня"
+    },
+    "steel_armor_item_description": {
+        "message": "Массивная стальная броня."
+    },
+    "resistance_all_physical_1": {
+        "message": "Повышает сопротивление Всему Физическому урону на 1."
+    },
+    "steel_shield": {
+        "message": "Стальной щит"
+    },
+    "steel_shield_item_description": {
+        "message": "Обычный стальной щит."
+    },
+    "resistance_piercing_and_slashing_1": {
+        "message": "Повышает сопротивление Проникающему и Режущему урону на 1."
+    },
+    "nano_vest": {
+        "message": "Нано жилет"
+    },
+    "nano_vest_item_description": {
+        "message": "Кибер для повышения выживаемости."
+    },
+    "nano_matrix": {
+        "message": "Нано матрица"
+    },
+    "nano_matrix_item_description": {
+        "message": "Кибер для снижения входящего физического урона."
+    },
+    "scales": {
+        "message": "Чешуя"
+    },
+    "scales_item_description": {
+        "message": "Мутация, увеличивающая плотность кожи."
+    },
+    "resistance_piercing_1_and_dodge_15": {
+        "message": "Повышает сопротивление Проникающему урону на 1 и Уворот на 15."
+    },
+    "fur": {
+        "message": "Мех"
+    },
+    "fur_item_description": {
+        "message": "Мутация, увеличивающая густоту волос."
+    },
+    "resistance_cold_1": {
+        "message": "Повышает сопротивление Холоду на 1."
+    },
+    "tail_with_sting": {
+        "message": "Хвост с жалом"
+    },
+    "tail_with_sting_item_description": {
+        "message": "Мутация для протыкания жертв."
+    },
+    "dodge_15": {
+        "message": "Повышает Уворот на 15."
+    },
+    "intuition": {
+        "message": "Интуиция"
+    },
+    "intuition_item_description": {
+        "message": "Мощь для бессознательного избегания атак."
+    },
+    "guardian_field": {
+        "message": "Поле стража"
+    },
+    "guardian_field_item_description": {
+        "message": "Мощь для ослабления воздействия стихий на тело."
+    },
+    "resistance_all_elemental_1": {
+        "message": "Повышает сопротивление Всему Элементальному урона на 1."
+    },
+    "healing_potion": {
+        "message": "Лечебное зелье"
+    },
+    "healing_potion_item_description": {
+        "message": "Напиток из целебных трав."
+    },
+    "steel_axe": {
+        "message": "Стальной топор"
+    },
+    "steel_axe_item_description": {
+        "message": "Обычный стальной топор."
+    },
+    "steel_sword": {
+        "message": "Стальной меч"
+    },
+    "steel_sword_item_description": {
+        "message": "Обычный стальной меч."
     }
 }
