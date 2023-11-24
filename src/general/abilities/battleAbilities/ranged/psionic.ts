@@ -3,7 +3,11 @@ import { DamageType } from "../../../../enums-and-interfaces/enums";
 import images from "../../../../images/images";
 
 const battleAbility_psiLightning = createBattleAbility(
-    ['Psi-lightning', '', images.psionInsights.psiLightning], 
+    [
+        chrome.i18n.getMessage('psi_lightning'), 
+        '', 
+        images.psionInsights.psiLightning
+    ], 
     {Focus: 2}, 
     [1, DamageType.psionic, 5, 100]
 );

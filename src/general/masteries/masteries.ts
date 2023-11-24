@@ -18,10 +18,10 @@ function createMastery(
     }
 }
 
-const mastery_archery = createMastery(
+const mastery_bowAffiliation = createMastery(
     [
-        'Archery',
-        'Mastery in not missing shooting with bow',
+        chrome.i18n.getMessage('bow_affiliation'),
+        chrome.i18n.getMessage('bow_affiliation_mastery_description'),
         images.normalItems.bow
     ],
     ''
@@ -29,8 +29,8 @@ const mastery_archery = createMastery(
 
 const mastery_marksmanship = createMastery(
     [
-        'Marksmanship',
-        'Mastery in not missing shooting with crossbow',
+        chrome.i18n.getMessage('marksmanship'),
+        chrome.i18n.getMessage('marksmanship_mastery_description'),
         images.normalItems.crossbow
     ],
     ''
@@ -38,8 +38,8 @@ const mastery_marksmanship = createMastery(
 
 const mastery_swordAffiliation = createMastery(
     [
-        'Sword affiliation',
-        'Mastery in gain full control over sword',
+        chrome.i18n.getMessage('sword_affiliation'),
+        chrome.i18n.getMessage('sword_affiliation_mastery_description'),
         images.normalItems.steelSword
     ],
     ''
@@ -47,8 +47,8 @@ const mastery_swordAffiliation = createMastery(
 
 const mastery_dualSwords = createMastery(
     [
-        'Dual swords',
-        'Mastery in slashing and stabbing with swords in both hands',
+        chrome.i18n.getMessage('dual_swords'),
+        chrome.i18n.getMessage('dual_swords_mastery_description'),
         images.guildianLearnings.dualSwords
     ],
     mastery_swordAffiliation.name
@@ -56,8 +56,8 @@ const mastery_dualSwords = createMastery(
 
 const mastery_brutalForce = createMastery(
     [
-        'Brutal force',
-        'Mastery in smashing and beheading your enemies',
+        chrome.i18n.getMessage('brutal_force'),
+        chrome.i18n.getMessage('brutal_force_mastery_description'),
         images.guildianLearnings.brutalForce
     ],
     ''
@@ -65,26 +65,26 @@ const mastery_brutalForce = createMastery(
 
 const mastery_bombThrowing = createMastery(
     [
-        'Bomb throwing',
-        'Mastery in throwing bombs accurately',
+        chrome.i18n.getMessage('bomb_throwing'),
+        chrome.i18n.getMessage('bomb_throwing_mastery_description'),
         images.normalItems.acidBomb
     ],
     ''
 )
 
-const mastery_chakramThrowing = createMastery(
+const mastery_chakramAffiliation = createMastery(
     [
-        'Chakram throwing',
-        'Mastery in throwing chakram at multiple enemies',
+        chrome.i18n.getMessage('chakram_affiliation'),
+        chrome.i18n.getMessage('chakram_affiliation_mastery_description'),
         images.guildianLearnings.chakram
     ],
     ''
 )
 
-const mastery_runicWeapons = createMastery(
+const mastery_battleRunes = createMastery(
     [
-        'Runic weapons',
-        'Mastery in activating runes on weapons',
+        chrome.i18n.getMessage('battle_runes'),
+        chrome.i18n.getMessage('battle_runes_mastery_description'),
         images.guildianLearnings.runicGreatsword
     ],
     ''
@@ -92,8 +92,8 @@ const mastery_runicWeapons = createMastery(
 
 const mastery_scholarship = createMastery(
     [
-        'Scholarship',
-        'Mastery to read really boring books',
+        chrome.i18n.getMessage('scholarship'),
+        chrome.i18n.getMessage('scholarship_mastery_description'),
         images.wizardItems.apprenticeHat
     ],
     ''
@@ -101,8 +101,8 @@ const mastery_scholarship = createMastery(
 
 const mastery_magisterDegree = createMastery(
     [
-        'Magister degree',
-        'Mastery of knowing everything but living',
+        chrome.i18n.getMessage('magister_degree'),
+        chrome.i18n.getMessage('magister_degree_mastery_description'),
         images.wizardItems.magisterHat
     ],
     mastery_scholarship.name
@@ -110,8 +110,8 @@ const mastery_magisterDegree = createMastery(
 
 const mastery_meditativeInsights = createMastery(
     [
-        'Meditative insights',
-        'Mastery to gain control over inner powers',
+        chrome.i18n.getMessage('meditative_insights'),
+        chrome.i18n.getMessage('meditative_insights_mastery_description'),
         images.psionInsights.intuition
     ],
     ''
@@ -119,8 +119,8 @@ const mastery_meditativeInsights = createMastery(
 
 const mastery_psiEnergy = createMastery(
     [
-        'Psi-energy',
-        'Mastery to gain control over psi-energy',
+        chrome.i18n.getMessage('psi_energy'),
+        chrome.i18n.getMessage('psi_energy_mastery_description'),
         images.psionInsights.psiLightning
     ],
     mastery_meditativeInsights.name
@@ -128,8 +128,8 @@ const mastery_psiEnergy = createMastery(
 
 const mastery_senseOfCold = createMastery(
     [
-        'Sense of cold',
-        'Mastery to gain control over ice',
+        chrome.i18n.getMessage('cold_affiliation'),
+        chrome.i18n.getMessage('cold_affiliation_mastery_description'),
         images.wizardSpells.senseOfCold
     ],
     ''
@@ -137,8 +137,8 @@ const mastery_senseOfCold = createMastery(
 
 const mastery_senseOfFlame = createMastery(
     [
-        'Sense of flame',
-        'Mastery to gain control over fire',
+        chrome.i18n.getMessage('flame_affiliation'),
+        chrome.i18n.getMessage('flame_affiliation_mastery_description'),
         images.wizardSpells.flame
     ],
     ''
@@ -146,8 +146,8 @@ const mastery_senseOfFlame = createMastery(
 
 const mastery_senseOfWind = createMastery(
     [
-        'Sense of wind',
-        'Mastery to gain control over air flows',
+        chrome.i18n.getMessage('wind_affiliation'),
+        chrome.i18n.getMessage('wind_affiliation_mastery_description'),
         images.wizardSpells.senseOfWind
     ],
     ''
@@ -155,8 +155,8 @@ const mastery_senseOfWind = createMastery(
 
 const mastery_axeAffiliation = createMastery(
     [
-        'Axe affiliation',
-        'Mastery to gain full control over axes',
+        chrome.i18n.getMessage('axe_affiliation'),
+        chrome.i18n.getMessage('axe_affiliation_mastery_description'),
         images.normalItems.doubleAxeSlash
     ],
     ''
@@ -164,8 +164,8 @@ const mastery_axeAffiliation = createMastery(
 
 const mastery_maceAffiliation = createMastery(
     [
-        'Mace affiliation',
-        'Mastery to gain full control over mace',
+        chrome.i18n.getMessage('mace_affiliation'),
+        chrome.i18n.getMessage('mace_affiliation_mastery_description'),
         images.normalItems.steelMace
     ],
     ''
@@ -173,8 +173,8 @@ const mastery_maceAffiliation = createMastery(
 
 const mastery_spearAffiliation = createMastery(
     [
-        'Spear affiliation',
-        'Mastery to gain full control over spear',
+        chrome.i18n.getMessage('spear_affiliation'),
+        chrome.i18n.getMessage('spear_affiliation_mastery_description'),
         images.normalItems.steelSpear
     ],
     ''
@@ -182,22 +182,22 @@ const mastery_spearAffiliation = createMastery(
 
 const mastery_sellmanship = createMastery(
     [
-        'Sellmanship',
-        'Mastery to sell items for real price',
+        chrome.i18n.getMessage('sellmanship'),
+        chrome.i18n.getMessage('sellmanship_mastery_description'),
         images.misc.sellmanship
     ],
     ''
 )
 
 const masteries = {
-    mastery_archery,
+    mastery_bowAffiliation,
     mastery_axeAffiliation,
     mastery_marksmanship,
     mastery_dualSwords,
     mastery_brutalForce,
     mastery_bombThrowing,
-    mastery_chakramThrowing,
-    mastery_runicWeapons,
+    mastery_chakramAffiliation,
+    mastery_battleRunes,
     mastery_scholarship,
     mastery_magisterDegree,
     mastery_maceAffiliation,

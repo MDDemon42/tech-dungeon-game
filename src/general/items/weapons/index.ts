@@ -11,7 +11,7 @@ const item_apprenticeRod = createItem(
         images.wizardItems.apprenticeRod
     ],
     [
-        1, InventoryPlace.bothHands, 2
+        1, InventoryPlace.bothHands, 1
     ],
     [
         masteries.mastery_scholarship.name,
@@ -27,7 +27,7 @@ const item_magisterScepter = createItem(
         images.wizardItems.magisterScepter
     ],
     [
-        2, InventoryPlace.bothHands, 3
+        2, InventoryPlace.bothHands, 1
     ],
     [
         masteries.mastery_magisterDegree.name,
@@ -107,12 +107,12 @@ const item_steelSwordLeftHand = createItem(
 
 const item_steelMace = createItem(
     [
-        'Steel mace', 
-        'Usual steel mace',
+        chrome.i18n.getMessage('steel_mace'), 
+        chrome.i18n.getMessage('steel_mace_item_description'),
         images.normalItems.steelMace
     ],
     [
-        1, InventoryPlace.rightHand, 1
+        2, InventoryPlace.rightHand, 1
     ],
     [
         '', abilities.battleAbilities.melee.physicalSmashing.battleAbility_maceSmash,
@@ -124,8 +124,8 @@ const item_steelMace = createItem(
 
 const item_steelSpear = createItem(
     [
-        'Steel spear', 
-        'Usual steel spear',
+        chrome.i18n.getMessage('steel_spear'), 
+        chrome.i18n.getMessage('steel_spear_item_description'),
         images.normalItems.steelSpear
     ],
     [
@@ -141,12 +141,12 @@ const item_steelSpear = createItem(
 
 const item_steelGreataxe = createItem(
     [
-        'Steel greataxe', 
-        'Massive steel greataxe',
+        chrome.i18n.getMessage('steel_greataxe'), 
+        chrome.i18n.getMessage('steel_greataxe_item_description'),
         images.normalItems.steelGreataxe
     ],
     [
-        2, InventoryPlace.bothHands, 2
+        2, InventoryPlace.bothHands, 1
     ],
     [
         masteries.mastery_brutalForce.name,
@@ -158,17 +158,17 @@ const item_steelGreataxe = createItem(
 
 const item_runicGreataxe = createItem(
     [
-        'Runic greataxe', 
-        'Massive greataxe covered with runes',
+        chrome.i18n.getMessage('runic_greataxe'), 
+        chrome.i18n.getMessage('runic_greataxe_item_description'),
         images.guildianLearnings.runicGreataxe
     ],
     [
-        2, InventoryPlace.bothHands, 2
+        2, InventoryPlace.bothHands, 1
     ],
     [
         masteries.mastery_brutalForce.name,
         abilities.battleAbilities.melee.physicalSlashing.battleAbility_runicGreataxeSlash,
-        masteries.mastery_runicWeapons.name,
+        masteries.mastery_battleRunes.name,
         [
             abilities.battleAbilities.melee.physicalSlashing.battleAbility_runicGreataxeSlash,
             abilities.battleAbilities.melee.cold.battleAbility_runicGreataxeSlash
@@ -179,12 +179,12 @@ const item_runicGreataxe = createItem(
 
 const item_steelGreatsword = createItem(
     [
-        'Steel greatsword', 
-        'Massive steel greatsword',
+        chrome.i18n.getMessage('steel_greatsword'), 
+        chrome.i18n.getMessage('steel_greatsword_item_description'),
         images.normalItems.steelGreatsword
     ],
     [
-        2, InventoryPlace.bothHands, 2
+        2, InventoryPlace.bothHands, 1
     ],
     [
         masteries.mastery_brutalForce.name,
@@ -196,17 +196,17 @@ const item_steelGreatsword = createItem(
 
 const item_runicGreatsword = createItem(
     [
-        'Runic greatsword', 
-        'Massive greatsword covered with runes',
+        chrome.i18n.getMessage('runic_greatsword'), 
+        chrome.i18n.getMessage('runic_greatsword_item_description'),
         images.guildianLearnings.runicGreatsword
     ],
     [
-        2, InventoryPlace.bothHands, 2
+        2, InventoryPlace.bothHands, 1
     ],
     [
         masteries.mastery_brutalForce.name,
         abilities.battleAbilities.melee.physicalSlashing.battleAbility_runicGreatswordSlash,
-        masteries.mastery_runicWeapons.name,
+        masteries.mastery_battleRunes.name,
         [
             abilities.battleAbilities.melee.physicalSlashing.battleAbility_runicGreatswordSlash,
             abilities.battleAbilities.melee.fire.battleAbility_runicGreatswordSlash
@@ -217,29 +217,29 @@ const item_runicGreatsword = createItem(
 
 const item_oakBow = createItem(
     [
-        'Bow', 
-        'Usual oak bow',
+        chrome.i18n.getMessage('oak_bow'), 
+        chrome.i18n.getMessage('oak_bow_item_description'),
         images.normalItems.bow
     ], 
     [
-        1, InventoryPlace.bothHands, 2
+        1, InventoryPlace.bothHands, 1
     ],
     [
         '', abilities.battleAbilities.ranged.physicalPiercing.battleAbility_oakBowShot,
-        masteries.mastery_archery.name,
-        [abilities.battleAbilities.ranged.physicalPiercing.battleAbility_masterOakBowShot]
+        masteries.mastery_bowAffiliation.name,
+        [abilities.battleAbilities.ranged.physicalPiercing.battleAbility_affiliatedOakBowShot]
     ],
     null
 )
 
 const item_oakCrossow = createItem(
     [
-        'Crossbow', 
-        'Usual oak crossbow',
+        chrome.i18n.getMessage('oak_crossbow'), 
+        chrome.i18n.getMessage('oak_crossbow_item_description'),
         images.normalItems.crossbow
     ],
     [
-        2, InventoryPlace.bothHands, 2
+        2, InventoryPlace.bothHands, 1
     ],
     [
         '', abilities.battleAbilities.ranged.physicalPiercing.battleAbility_crossbowShot,
@@ -251,8 +251,8 @@ const item_oakCrossow = createItem(
 
 const item_steelChakram = createItem(
     [
-        'Steel chakram', 
-        'Spinning disk of death',
+        chrome.i18n.getMessage('steel_chakram'), 
+        chrome.i18n.getMessage('steel_chakram_item_description'),
         images.guildianLearnings.chakram
     ],
     [
@@ -260,9 +260,9 @@ const item_steelChakram = createItem(
     ],
     [
         '', abilities.battleAbilities.melee.physicalSlashing.battleAbility_chakramSlash,
-        masteries.mastery_chakramThrowing.name,
+        masteries.mastery_chakramAffiliation.name,
         [
-            abilities.battleAbilities.melee.physicalSlashing.battleAbility_masterChakramSlash,
+            abilities.battleAbilities.melee.physicalSlashing.battleAbility_affiliatedChakramSlash,
             abilities.battleAbilities.ranged.physicalSlashing.battleAbility_chakramThrow
         ]
     ],
@@ -271,8 +271,8 @@ const item_steelChakram = createItem(
 
 const item_acidBomd = createItem(
     [
-        'Acid bomb', 
-        'Burns without a fire',
+        chrome.i18n.getMessage('acid_bomb'), 
+        chrome.i18n.getMessage('acid_bomb_item_description'),
         images.normalItems.acidBomb
     ],
     [

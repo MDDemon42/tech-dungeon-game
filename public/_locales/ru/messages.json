@@ -263,19 +263,19 @@
     "nano_vest": {
         "message": "Нано жилет"
     },
-    "nano_vest_item_description": {
+    "nano_vest_cyber_description": {
         "message": "Кибер для повышения выживаемости."
     },
     "nano_matrix": {
         "message": "Нано матрица"
     },
-    "nano_matrix_item_description": {
+    "nano_matrix_cyber_description": {
         "message": "Кибер для снижения входящего физического урона."
     },
     "scales": {
         "message": "Чешуя"
     },
-    "scales_item_description": {
+    "scales_mutation_description": {
         "message": "Мутация, увеличивающая плотность кожи."
     },
     "resistance_piercing_1_and_dodge_15": {
@@ -284,7 +284,7 @@
     "fur": {
         "message": "Мех"
     },
-    "fur_item_description": {
+    "fur_mutation_description": {
         "message": "Мутация, увеличивающая густоту волос."
     },
     "resistance_cold_1": {
@@ -293,8 +293,11 @@
     "tail_with_sting": {
         "message": "Хвост с жалом"
     },
-    "tail_with_sting_item_description": {
+    "tail_with_sting_mutation_description": {
         "message": "Мутация для протыкания жертв."
+    },
+    "dodge": {
+        "message": "Уворот"
     },
     "dodge_15": {
         "message": "Повышает Уворот на 15."
@@ -302,14 +305,14 @@
     "intuition": {
         "message": "Интуиция"
     },
-    "intuition_item_description": {
+    "intuition_power_description": {
         "message": "Мощь для бессознательного избегания атак."
     },
     "guardian_field": {
         "message": "Поле стража"
     },
-    "guardian_field_item_description": {
-        "message": "Мощь для ослабления воздействия стихий на тело."
+    "guardian_field_power_description": {
+        "message": "Мощь, ослабления воздействие стихий на тело."
     },
     "resistance_all_elemental_1": {
         "message": "Повышает сопротивление Всему Элементальному урона на 1."
@@ -326,10 +329,469 @@
     "steel_axe_item_description": {
         "message": "Обычный стальной топор."
     },
+    "axe_slash": {
+        "message": "Удар топором"
+    },
+    "double_axe_slash": {
+        "message": "Удар двумя топорами"
+    },
     "steel_sword": {
         "message": "Стальной меч"
     },
     "steel_sword_item_description": {
         "message": "Обычный стальной меч."
+    },
+    "steel_mace": {
+        "message": "Стальная булава"
+    },
+    "steel_mace_item_description": {
+        "message": "Обычная стальная булава."
+    },
+    "mace_smash": {
+        "message": "Удар булавой"
+    },
+    "steel_spear": {
+        "message": "Стальное копьё"
+    },
+    "steel_spear_item_description": {
+        "message": "Обычное стальное копьё."
+    },
+    "spear_pierce": {
+        "message": "Выпад копьём"
+    },
+    "steel_greataxe": {
+        "message": "Стальная секира"
+    },
+    "steel_greataxe_item_description": {
+        "message": "Массивная стальная секира."
+    },
+    "greataxe_slash": {
+        "message": "Удар секирой"
+    },
+    "runic_greataxe": {
+        "message": "Рунная секира"
+    },
+    "runic_greataxe_item_description": {
+        "message": "Массивная секира, покрытая рунами."
+    },
+    "runic_greataxe_slash": {
+        "message": "Удар холодом секиры."
+    },
+    "steel_greatsword": {
+        "message": "Стальная клеймора"
+    },
+    "steel_greatsword_item_description": {
+        "message": "Массивная стальная клеймора."
+    },
+    "greatsword_slash": {
+        "message": "Удар клейморой"
+    },
+    "runic_greatsword": {
+        "message": "Рунная клеймора"
+    },
+    "runic_greatsword_item_description": {
+        "message": "Массивная клеймора, покрытая рунами."
+    },
+    "runic_greatsword_slash": {
+        "message": "Удар огнём клейморы."
+    },
+    "oak_bow": {
+        "message": "Дубовый лук"
+    },
+    "oak_bow_item_description": {
+        "message": "Обычный лук из дуба."
+    },
+    "oak_bow_shot": {
+        "message": "Выстрел из дубового лука"
+    },
+    "oak_crossbow": {
+        "message": "Дубовый арбалет"
+    },
+    "oak_crossbow_item_description": {
+        "message": "Обычный арбалет из дуба."
+    },
+    "oak_crossbow_shot": {
+        "message": "Выстрел из дубового арбалета"
+    },
+    "steel_chakram": {
+        "message": "Стальной чакрум"
+    },
+    "steel_chakram_item_description": {
+        "message": "Крутящийся диск смерти."
+    },
+    "chakram_slash": {
+        "message": "Удар чакрумом"
+    },
+    "chakram_throw": {
+        "message": "Бросок чакрума"
+    },
+    "acid_bomb": {
+        "message": "Кислотная бомба"
+    },
+    "acid_bomb_item_description": {
+        "message": "Прожигает без огня."
+    },
+    "acid_bomb_throw": {
+        "message": "Бросок кислотной бомбы"
+    },
+    "reactive_feet": {
+        "message": "Реактивные стопы"
+    },
+    "reactive_feet_cyber_description": {
+        "message": "Кибер для перелётов на небольшие дистанции."
+    },
+    "energy_fist": {
+        "message": "Энергетический кулак"
+    },
+    "energy_fist_cyber_description": {
+        "message": "Кибер для раздачи гипертумаков."
+    },
+    "energy_whip": {
+        "message": "Энергетический хлыст"
+    },
+    "energy_whip_cyber_description": {
+        "message": "Кибер для причинения боли и страданий."
+    },
+    "laser": {
+        "message": "Лазер"
+    },
+    "laser_cyber_description": {
+        "message": "Кибер для поджигания сфокусированным светом."
+    },
+    "rocket_launcher": {
+        "message": "Ракетная установка"
+    },
+    "rocket_launcher_cyber_description": {
+        "message": "Кибер для уничтожения всего и вся в зоне поражения."
+    },
+    "wings": {
+        "message": "Крылья"
+    },
+    "wings_mutation_description": {
+        "message": "Мутация для полёта над полем боя."
+    },
+    "hooves": {
+        "message": "Копыта"
+    },
+    "hooves_mutation_description": {
+        "message": "Мутация для уверенной походки."
+    },
+    "acid_split": {
+        "message": "Кислотный плевок"
+    },
+    "acid_split_mutation_description": {
+        "message": "Мутация для плевков кислотой в лицо врагу."
+    },
+    "lower_fangs": {
+        "message": "Нижние клыки"
+    },
+    "lower_fangs_mutation_description": {
+        "message": "Мутация для превращения челюсти в отрывательный аппарат."
+    },
+    "claws": {
+        "message": "Когти"
+    },
+    "claws_mutation_description": {
+        "message": "Мутация для разрывания жертв в клочья."
+    },
+    "horns": {
+        "message": "Рога"
+    },
+    "horns_mutation_description": {
+        "message": "Мутация для превращения головы в двойное копьё."
+    },
+    "pincers": {
+        "message": "Клешни"
+    },
+    "pincers_mutation_description": {
+        "message": "Мутация для проделывания дыр в соперниках."
+    },
+    "raptor_legs": {
+        "message": "Рапторские ноги"
+    },
+    "raptor_legs_mutation_description": {
+        "message": "Мутация для совершения прыжков на добычу."
+    },
+    "multistrike": {
+        "message": "Мультиудар"
+    },
+    "multistrike_spell_description": {
+        "message": "Заклинание для удара в следующий раз несколько раз."
+    },
+    "titan_skin": {
+        "message": "Титановая кожа"
+    },
+    "titan_skin_spell_description": {
+        "message": "Заклинание для почти неуязвимой кожи."
+    },
+    "defensive_charm": {
+        "message": "Защитные чары"
+    },
+    "defensive_charm_spell_description": {
+        "message": "Заклинание для уверенной защиты одного из союзников.\nДля применения нужен посох или скипетр."
+    },
+    "defensive_enchantment": {
+        "message": "Защитное зачарование"
+    },
+    "defensive_enchantment_spell_description": {
+        "message": "Заклинание для полной защиты одного из союзников.\nДля применения нужен посох или скипетр."
+    },
+    "ice_shard": {
+        "message": "Ледяной осколок"
+    },
+    "ice_shard_spell_description": {
+        "message": "Заклинание для протыкания врага осколком льда."
+    },
+    "ice_spear": {
+        "message": "Ледяное копьё"
+    },
+    "ice_spear_spell_description": {
+        "message": "Заклинание для протыкания врага большим осколком льда."
+    },
+    "ice_hail": {
+        "message": "Ледяная буря"
+    },
+    "ice_hail_spell_description": {
+        "message": "Заклинание для протыкания группы врагов осколками льда."
+    },
+    "cold_death": {
+        "message": "Холодная смерть"
+    },
+    "cold_death_spell_description": {
+        "message": "Заклинание для превращения врага в мёртвую ледышку."
+    },
+    "flame": {
+        "message": "Пламя"
+    },
+    "flame_spell_description": {
+        "message": "Заклинание для поджаривания врага."
+    },
+    "fire_ball": {
+        "message": "Огненный шар"
+    },
+    "fire_ball_spell_description": {
+        "message": "Заклинание для раскидывания врагов шаром из огня."
+    },
+    "fire_wave": {
+        "message": "Огненная волна"
+    },
+    "fire_wave_spell_description": {
+        "message": "Заклинание для испепеления группы врагов."
+    },
+    "wind_blow": {
+        "message": "Порыв ветра"
+    },
+    "wind_blow_spell_description": {
+        "message": "Заклинание для демонстрации разрушительности ветра."
+    },
+    "thunder_punch": {
+        "message": "Громовой удар"
+    },
+    "thunder_punch_spell_description": {
+        "message": "Заклинание для удара с раскатами грома."
+    },
+    "air_deprivation": {
+        "message": "Удушение"
+    },
+    "air_deprivation_spell_description": {
+        "message": "Заклинание для лишения врага воздуха и жизни."
+    },
+    "flying_charm": {
+        "message": "Чары полёта"
+    },
+    "flying_charm_spell_description": {
+        "message": "Заклинание для полёта.\nДля применения нужен посох или скипетр."
+    },
+    "stone_golem": {
+        "message": "Каменный голем"
+    },
+    "stone_golem_spell_description": {
+        "message": "Заклинание для оживления существа из кучи камней.\nДля применения нужен посох или скипетр."
+    },
+    "electrical_bolt": {
+        "message": "Электрический заряд"
+    },
+    "electrical_bolt_spell_description": {
+        "message": "Заклинание для причинения боли одному врагу.\nДля применения нужен посох или скипетр."
+    },
+    "teleport": {
+        "message": "Телепорт"
+    },
+    "teleport_spell_description": {
+        "message": "Заклинание для перемещения куда-угодно.\nДля применения нужен посох или скипетр."
+    },
+    "telekinesis": {
+        "message": "Телекинез"
+    },
+    "telekinesis_power_description": {
+        "message": "Мощь, открывающая бесконечные возможности."
+    },
+    "guardian_aura": {
+        "message": "Аура стража"
+    },
+    "guardian_aura_power_description": {
+        "message": "Мощь, ослабляющая любую вражескую атаку."
+    },
+    "levitation": {
+        "message": "Левитация"
+    },
+    "levitation_power_description": {
+        "message": "Мощь, позволяющая преодолевать любые препятствия на земле."
+    },
+    "psi_blade": {
+        "message": "Пси-клинок"
+    },
+    "psi_blade_power_description": {
+        "message": "Мощь для атак клинком, созданным твоим разумом."
+    },
+    "psi_blade_slash": {
+        "message": "Удар пси-клинком"
+    },
+    "psi_lightning": {
+        "message": "Пси-молния"
+    },
+    "psi_lightning_power_description": {
+        "message": "Мощь для поражения врагов цепной молнией, созданной твоим разумом."
+    },
+    "bow_affiliation": {
+        "message": "Родство с луком"
+    },
+    "bow_affiliation_mastery_description": {
+        "message": "Мастерство обращениия с луком."
+    },
+    "marksmanship": {
+        "message": "Меткость"
+    },
+    "marksmanship_mastery_description": {
+        "message": "Мастерство обращения с арбалетом."
+    },
+    "sword_affiliation": {
+        "message": "Родство с мечом"
+    },
+    "sword_affiliation_mastery_description": {
+        "message": "Мастерство обращения с мечом."
+    },
+    "dual_swords": {
+        "message": "Парные мечи"
+    },
+    "dual_swords_mastery_description": {
+        "message": "Мастерство обращения с мечами в обеих руках."
+    },
+    "dual_sword_slash": {
+        "message": "Удар парными мечами"
+    },
+    "brutal_force": {
+        "message": "Грубая сила"
+    },
+    "brutal_force_mastery_description": {
+        "message": "Мастерство обращения с массивными штуками."
+    },
+    "bomb_throwing": {
+        "message": "Бомбометание"
+    },
+    "bomb_throwing_mastery_description": {
+        "message": "Мастерство точного бросания бомб."
+    },
+    "chakram_throwing": {
+        "message": "Бросание чакрума"
+    },
+    "chakram_throwing_mastery_description": {
+        "message": "Мастерство метания чакрума по нескольким целям."
+    },
+    "battle_runes": {
+        "message": "Боевые руны"
+    },
+    "battle_runes_mastery_description": {
+        "message": "Мастерство активации рун на оружии."
+    },
+    "scholarship": {
+        "message": "Обучение"
+    },
+    "scholarship_mastery_description": {
+        "message": "Мастерство чтения реально скучных книг."
+    },
+    "magister_degree": {
+        "message": "Степень магистра"
+    },
+    "magister_degree_mastery_description": {
+        "message": "Мастерство знания всего на свете кроме реальной жизни."
+    },
+    "meditative_insights": {
+        "message": "Медитативные озарения"
+    },
+    "meditative_insights_mastery_description": {
+        "message": "Мастерство отключать сознание и пробуждать в себе Мощь."
+    },
+    "psi_energy": {
+        "message": "Пси-энергия"
+    },
+    "psi_energy_mastery_description": {
+        "message": "Мастерство управления потоками пси-энергии."
+    },
+    "cold_affiliation": {
+        "message": "Родство с холодом"
+    },
+    "cold_affiliation_mastery_description": {
+        "message": "Мастерство обращения со льдом."
+    },
+    "flame_affiliation": {
+        "message": "Родство с пламенем"
+    },
+    "flame_affiliation_mastery_description": {
+        "message": "Мастерство обращения с огнём."
+    },
+    "wind_affiliation": {
+        "message": "Родство с ветром"
+    },
+    "wind_affiliation_mastery_description": {
+        "message": "Мастерство обращения с потоками воздуха."
+    },
+    "axe_affiliation": {
+        "message": "Родство с топором"
+    },
+    "axe_affiliation_mastery_description": {
+        "message": "Мастерство обращения с топором."
+    },
+    "mace_affiliation": {
+        "message": "Родство с булавой"
+    },
+    "mace_affiliation_mastery_description": {
+        "message": "Мастерство обращения с булавой."
+    },
+    "spear_affiliation": {
+        "message": "Родство с копьём"
+    },
+    "spear_affiliation_mastery_description": {
+        "message": "Мастерство обращения с копьём."
+    },
+    "sellmanship": {
+        "message": "Продажник"
+    },
+    "sellmanship_mastery_description": {
+        "message": "Мастерство продавать вещи за их реальную цену."
+    },
+    "rip_apart_minor": {
+        "message": "Разорвать в клочья (слегка)"
+    },
+    "rip_apart_mere": {
+        "message": "Разорвать в клочья (как обычно)"
+    },
+    "rip_apart_major": {
+        "message": "Разорвать в клочья (ого как)"
+    },
+    "rip_apart_monstrous": {
+        "message": "Разорвать в клочья (до основания)"
+    },
+    "fist_punch": {
+        "message": "Удар кулаком"
+    },
+    "fist_smash": {
+        "message": "Ударище кулачищем"
+    },
+    "equip": {
+        "message": "Снарядить"
+    },
+    "resistance": {
+        "message": " сопротивление"
     }
 }

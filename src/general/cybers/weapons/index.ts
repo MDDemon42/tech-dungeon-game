@@ -2,11 +2,11 @@ import { createCyber } from "..";
 import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
 
-const cyber_powerFist = createCyber(
+const cyber_energyFist = createCyber(
     [
-        'Power fist', 
-        'Cyber to give ultimate punches',
-        images.cyborgDetails.powerFist
+        chrome.i18n.getMessage('energy_fist'), 
+        chrome.i18n.getMessage('energy_fist_cyber_description'),
+        images.cyborgDetails.energyFist
     ],
     [
         1, InventoryPlace.rightHand, 5
@@ -19,8 +19,8 @@ const cyber_powerFist = createCyber(
 
 const cyber_energyWhip = createCyber(
     [
-        'Energy whip', 
-        'Cyber to deal pain and sufferings',
+        chrome.i18n.getMessage('energy_whip'), 
+        chrome.i18n.getMessage('energy_whip_cyber_description'),
         images.cyborgDetails.energyWhip
     ],
     [
@@ -29,13 +29,13 @@ const cyber_energyWhip = createCyber(
     [
         null, '', null
     ],
-    cyber_powerFist.name, null
+    cyber_energyFist.name, null
 )
 
 const cyber_laser = createCyber(
     [
-        'Laser', 
-        'Cyber to burn with focused light',
+        chrome.i18n.getMessage('laser'), 
+        chrome.i18n.getMessage('laser_cyber_description'),
         images.cyborgDetails.laser
     ],
     [
@@ -47,11 +47,11 @@ const cyber_laser = createCyber(
     '', null
 )
 
-const cyber_rocket = createCyber(
+const cyber_rocketLauncher = createCyber(
     [
-        'Rocket', 
-        'Cyber to destroy everything in an area',
-        images.cyborgDetails.rocket
+        chrome.i18n.getMessage('rocket_launcher'), 
+        chrome.i18n.getMessage('rocket_launcher_cyber_description'),
+        images.cyborgDetails.rocketLauncher
     ],
     [
         1, InventoryPlace.shoulders, 2
@@ -65,8 +65,8 @@ const cyber_rocket = createCyber(
 const weapons = {
     cyber_energyWhip,
     cyber_laser,
-    cyber_powerFist,
-    cyber_rocket
+    cyber_energyFist,
+    cyber_rocketLauncher
 }
 
 export default weapons

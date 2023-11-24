@@ -3,7 +3,11 @@ import { DamageType } from "../../../../enums-and-interfaces/enums";
 import images from "../../../../images/images";
 
 const battleAbility_coldDeath = createBattleAbility(
-    ['Cold Death', '', images.wizardSpells.coldDeath], 
+    [
+        chrome.i18n.getMessage('cold_death'), 
+        '', 
+        images.wizardSpells.coldDeath
+    ], 
     {Mana: 3}, 
     [8, DamageType.cold, 1, 100]
 );

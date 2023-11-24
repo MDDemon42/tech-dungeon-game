@@ -3,7 +3,11 @@ import { DamageType } from "../../../../enums-and-interfaces/enums";
 import images from "../../../../images/images";
 
 const battleAbility_chakramThrow = createBattleAbility(
-    ['Chakram throw', '', images.guildianLearnings.chakram], 
+    [
+        chrome.i18n.getMessage('chakram_throw'), 
+        '', 
+        images.guildianLearnings.chakram
+    ], 
     {Blank: 0}, 
     [1, DamageType.physicalSlashing, 3, 70]
 );

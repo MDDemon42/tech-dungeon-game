@@ -4,8 +4,8 @@ import images from "../../../images/images";
 
 const cyber_reactiveFeet = createCyber(
     [
-        'Reactive feet', 
-        'Cyber to fly in short distances',
+        chrome.i18n.getMessage('reactive_feet'), 
+        chrome.i18n.getMessage('reactive_feet_cyber_description'),
         images.cyborgDetails.reactiveFeet
     ],
     [

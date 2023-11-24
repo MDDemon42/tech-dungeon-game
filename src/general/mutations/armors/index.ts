@@ -6,7 +6,7 @@ import abilities from "../../abilities";
 const mutation_scales = createMutation(
     [
         chrome.i18n.getMessage('scales'),
-        chrome.i18n.getMessage('scales_item_description'), 
+        chrome.i18n.getMessage('scales_mutation_description'), 
         images.mutantEvolvings.scales
     ],
     [
@@ -21,7 +21,7 @@ const mutation_scales = createMutation(
 const mutation_fur = createMutation(
     [
         chrome.i18n.getMessage('fur'), 
-        chrome.i18n.getMessage('fur_item_description'),
+        chrome.i18n.getMessage('fur_mutation_description'),
         images.mutantEvolvings.fur
     ],
     [

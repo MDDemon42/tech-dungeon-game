@@ -263,19 +263,19 @@
     "nano_vest": {
         "message": "Nano vest"
     },
-    "nano_vest_item_description": {
+    "nano_vest_cyber_description": {
         "message": "Cyber to boost your survival rate."
     },
     "nano_matrix": {
         "message": "Nano matrix"
     },
-    "nano_matrix_item_description": {
+    "nano_matrix_cyber_description": {
         "message": "Cyber to deflect almost any physical damage."
     },
     "scales": {
         "message": "Scales"
     },
-    "scales_item_description": {
+    "scales_mutation_description": {
         "message": "Mutation to make your skin much tougher."
     },
     "resistance_piercing_1_and_dodge_15": {
@@ -284,7 +284,7 @@
     "fur": {
         "message": "Fur"
     },
-    "fur_item_description": {
+    "fur_mutation_description": {
         "message": "Mutation to make your skin much hairer."
     },
     "resistance_cold_1": {
@@ -293,8 +293,11 @@
     "tail_with_sting": {
         "message": "Tail with sting"
     },
-    "tail_with_sting_item_description": {
+    "tail_with_sting_mutation_description": {
         "message": "Mutation to pierce your victims."
+    },
+    "dodge": {
+        "message": "Dodge"
     },
     "dodge_15": {
         "message": "Upgrades Dodge by 15."
@@ -302,13 +305,13 @@
     "intuition": {
         "message": "Intuition"
     },
-    "intuition_item_description": {
+    "intuition_power_description": {
         "message": "Power to unintentionally avoid enemy attacks."
     },
     "guardian_field": {
         "message": "Guardian field"
     },
-    "guardian_field_item_description": {
+    "guardian_field_power_description": {
         "message": "Power to weaken enemies' elemental attacks aimed at you."
     },
     "resistance_all_elemental_1": {
@@ -326,10 +329,472 @@
     "steel_axe_item_description": {
         "message": "Usual steel axe."
     },
+    "axe_slash": {
+        "message": "Axe slash"
+    },
+    "double_axe_slash": {
+        "message": "Double axe slash"
+    },
     "steel_sword": {
         "message": "Steel sword"
     },
     "steel_sword_item_description": {
         "message": "Usual steel sword."
+    },
+    "sword_slash": {
+        "message": "Sword slash"
+    },
+    "steel_mace": {
+        "message": "Steel mace"
+    },
+    "steel_mace_item_description": {
+        "message": "Usual steel mace."
+    },
+    "mace_smash": {
+        "message": "Mace smash"
+    },
+    "steel_spear": {
+        "message": "Steel spear"
+    },
+    "steel_spear_item_description": {
+        "message": "Usual steel spear."
+    },
+    "spear_pierce": {
+        "message": "Spear pierce"
+    },
+    "steel_greataxe": {
+        "message": "Steel greataxe"
+    },
+    "steel_greataxe_item_description": {
+        "message": "Massive steel greataxe."
+    },
+    "greataxe_slash": {
+        "message": "Greataxe slash"
+    },
+    "runic_greataxe": {
+        "message": "Runic greataxe"
+    },
+    "runic_greataxe_item_description": {
+        "message": "Massive greataxe covered with runes."
+    },
+    "runic_greataxe_slash": {
+        "message": "Cold greataxe slash."
+    },
+    "steel_greatsword": {
+        "message": "Steel greatsword"
+    },
+    "steel_greatsword_item_description": {
+        "message": "Massive steel greatsword."
+    },
+    "greatsword_slash": {
+        "message": "Greatsword slash"
+    },
+    "runic_greatsword": {
+        "message": "Runic greatsword"
+    },
+    "runic_greatsword_item_description": {
+        "message": "Massive greatsword covered with runes."
+    },
+    "runic_greatsword_slash": {
+        "message": "Fire greatsword slash."
+    },
+    "oak_bow": {
+        "message": "Oak bow"
+    },
+    "oak_bow_item_description": {
+        "message": "Usual oak bow."
+    },
+    "oak_bow_shot": {
+        "message": "Oak bow shot"
+    },
+    "oak_crossbow": {
+        "message": "Oak crossbow"
+    },
+    "oak_crossbow_item_description": {
+        "message": "Usual oak crossbow."
+    },
+    "oak_crossbow_shot": {
+        "message": "Oak crossbow shot"
+    },
+    "steel_chakram": {
+        "message": "Steel chakram"
+    },
+    "steel_chakram_item_description": {
+        "message": "Spinning disk of death."
+    },
+    "chakram_slash": {
+        "message": "Chakram slash"
+    },
+    "chakram_throw": {
+        "message": "Chakram throw"
+    },
+    "acid_bomb": {
+        "message": "Acid bomb"
+    },
+    "acid_bomb_item_description": {
+        "message": "Burns without a fire."
+    },
+    "acid_bomb_throw": {
+        "message": "Acid bomb throw"
+    },
+    "reactive_feet": {
+        "message": "Reactive feet"
+    },
+    "reactive_feet_cyber_description": {
+        "message": "Cyber to fly in short distances."
+    },
+    "energy_fist": {
+        "message": "Energy fist"
+    },
+    "energy_fist_cyber_description": {
+        "message": "Cyber to give ultimate punches."
+    },
+    "energy_whip": {
+        "message": "Energy whip"
+    },
+    "energy_whip_cyber_description": {
+        "message": "Cyber to deal pain and sufferings."
+    },
+    "laser": {
+        "message": "Laser"
+    },
+    "laser_cyber_description": {
+        "message": "Cyber to burn with focused light."
+    },
+    "rocket_launcher": {
+        "message": "Rocket launcher"
+    },
+    "rocket_launcher_cyber_description": {
+        "message": "Cyber to destroy everything in an area."
+    },
+    "wings": {
+        "message": "Wings"
+    },
+    "wings_mutation_description": {
+        "message": "Mutation to fly over battlefield."
+    },
+    "hooves": {
+        "message": "Hooves"
+    },
+    "hooves_mutation_description": {
+        "message": "Mutation to make confident steps."
+    },
+    "acid_split": {
+        "message": "Acid split"
+    },
+    "acid_split_mutation_description": {
+        "message": "Mutation to split acid in your enemy`s face."
+    },
+    "lower_fangs": {
+        "message": "Lower fangs"
+    },
+    "lower_fangs_mutation_description": {
+        "message": "Mutation to turn your chin to a cutting machine."
+    },
+    "claws": {
+        "message": "Claws"
+    },
+    "claws_mutation_description": {
+        "message": "Mutation to rip your opponents apart."
+    },
+    "horns": {
+        "message": "Horns"
+    },
+    "horns_mutation_description": {
+        "message": "Mutation to use your head as a double-spear."
+    },
+    "pincers": {
+        "message": "Pincers"
+    },
+    "pincers_mutation_description": {
+        "message": "Mutation to make holes in you rival."
+    },
+    "raptor_legs": {
+        "message": "Raptor legs"
+    },
+    "raptor_legs_mutation_description": {
+        "message": "Mutation to jump on a prey."
+    },
+    "multistrike": {
+        "message": "Multistrike"
+    },
+    "multistrike_spell_description": {
+        "message": "Spell to attack next time several times."
+    },
+    "titan_skin": {
+        "message": "Titan skin"
+    },
+    "titan_skin_spell_description": {
+        "message": "Spell to make skin almost invincible."
+    },
+    "defensive_charm": {
+        "message": "Defensive charm"
+    },
+    "defensive_charm_spell_description": {
+        "message": "Spell to protect one of your buddies from one Physical attack.\nCasted via rod or staff."
+    },
+    "defensive_enchantment": {
+        "message": "Defensive enchantment"
+    },
+    "defensive_enchantment_spell_description": {
+        "message": "Spell to protect one of your buddies from one Any attack.\nCasted via rod or staff."
+    },
+    "ice_shard": {
+        "message": "Ice shard"
+    },
+    "ice_shard_spell_description": {
+        "message": "Spell to pierce an enemy with ice shard."
+    },
+    "ice_spear": {
+        "message": "Ice spear"
+    },
+    "ice_spear_spell_description": {
+        "message": "Spell to pierce an enemy with ice spear."
+    },
+    "ice_hail": {
+        "message": "Ice hail"
+    },
+    "ice_hail_spell_description": {
+        "message": "Spell to pierce a group of enemies with ice shards."
+    },
+    "cold_death": {
+        "message": "Cold death"
+    },
+    "cold_death_spell_description": {
+        "message": "Spell to turn an enemy dead and cold."
+    },
+    "flame": {
+        "message": "Flame"
+    },
+    "flame_spell_description": {
+        "message": "Spell to roast an enemy with fire."
+    },
+    "fire_ball": {
+        "message": "Fire ball"
+    },
+    "fire_ball_spell_description": {
+        "message": "Spell to clash a group of enemies with fire."
+    },
+    "fire_wave": {
+        "message": "Fire wave"
+    },
+    "fire_wave_spell_description": {
+        "message": "Spell to burn out a group of enemies."
+    },
+    "wind_blow": {
+        "message": "Wind blow"
+    },
+    "wind_blow_spell_description": {
+        "message": "Spell to show an enemy devastating wind."
+    },
+    "thunder_punch": {
+        "message": "Thunder punch"
+    },
+    "thunder_punch_spell_description": {
+        "message": "Spell to smash an enemy up to thunder crambls."
+    },
+    "air_deprivation": {
+        "message": "Air deprivation"
+    },
+    "air_deprivation_spell_description": {
+        "message": "Spell to make an enemy airless and lifeless."
+    },
+    "flying_charm": {
+        "message": "Flying charm"
+    },
+    "flying_charm_spell_description": {
+        "message": "Spell to make anybody fly.\nCasted via rod or staff."
+    },
+    "stone_golem": {
+        "message": "Stone golem"
+    },
+    "stone_golem_spell_description": {
+        "message": "Spell to make a bunch of stones alive.\nCasted via rod or staff."
+    },
+    "electrical_bolt": {
+        "message": "Electrical bolt"
+    },
+    "electrical_bolt_spell_description": {
+        "message": "Spell to make one enemy hurt.\nCasted via rod or staff."
+    },
+    "teleport": {
+        "message": "Teleport"
+    },
+    "teleport_spell_description": {
+        "message": "Spell to be somewhere else.\nCasted via rod or staff."
+    },
+    "telekinesis": {
+        "message": "Telekinesis"
+    },
+    "telekinesis_power_description": {
+        "message": "Power that can do a lot of things."
+    },
+    "guardian_aura": {
+        "message": "Guardian aura"
+    },
+    "guardian_aura_power_description": {
+        "message": "Power to weaken Any enemy`s attack aimed at you."
+    },
+    "levitation": {
+        "message": "Levitation"
+    },
+    "levitation_power_description": {
+        "message": "Power to pass any obstacles on earth."
+    },
+    "psi_blade": {
+        "message": "Psi-blade"
+    },
+    "psi_blade_power_description": {
+        "message": "Power to attack with blade made by your mind."
+    },
+    "psi_blade_slash": {
+        "message": "Psi-blade slash"
+    },
+    "psi_lightning": {
+        "message": "Psi-lightning"
+    },
+    "psi_lightning_power_description": {
+        "message": "Power to attack with chain lightning made by your mind."
+    },
+    "bow_affiliation": {
+        "message": "Bow affiliation"
+    },
+    "bow_affiliation_mastery_description": {
+        "message": "Mastery of gaining control over bow."
+    },
+    "marksmanship": {
+        "message": "Marksmanship"
+    },
+    "marksmanship_mastery_description": {
+        "message": "Mastery of not missing shooting with crossbow."
+    },
+    "sword_affiliation": {
+        "message": "Sword affiliation"
+    },
+    "sword_affiliation_mastery_description": {
+        "message": "Mastery of gaining control over sword."
+    },
+    "dual_swords": {
+        "message": "Dual swords"
+    },
+    "dual_swords_mastery_description": {
+        "message": "Mastery of gaining control over sword by both hands."
+    },
+    "dual_sword_slash": {
+        "message": "Dual swords slash"
+    },
+    "brutal_force": {
+        "message": "Brutal force"
+    },
+    "brutal_force_mastery_description": {
+        "message": "Mastery of dealing with massive stuff."
+    },
+    "bomb_throwing": {
+        "message": "Bomb throwing"
+    },
+    "bomb_throwing_mastery_description": {
+        "message": "Mastery of throwing bombs accurately."
+    },
+    "chakram_affiliation": {
+        "message": "Chakram affiliation"
+    },
+    "chakram_affiliation_mastery_description": {
+        "message": "Mastery of throwing chakram at multiple enemies."
+    },
+    "battle_runes": {
+        "message": "Battle runes"
+    },
+    "battle_runes_mastery_description": {
+        "message": "Mastery of activating runes on weapons."
+    },
+    "scholarship": {
+        "message": "Scholarship"
+    },
+    "scholarship_mastery_description": {
+        "message": "Mastery of reading really boring books."
+    },
+    "magister_degree": {
+        "message": "Magister degree"
+    },
+    "magister_degree_mastery_description": {
+        "message": "Mastery of knowing everything but living."
+    },
+    "meditative_insights": {
+        "message": "Meditative insights"
+    },
+    "meditative_insights_mastery_description": {
+        "message": "Mastery of gaining control over inner powers."
+    },
+    "psi_energy": {
+        "message": "Psi-energy"
+    },
+    "psi_energy_mastery_description": {
+        "message": "Mastery of gaining control over psi-energy."
+    },
+    "cold_affiliation": {
+        "message": "Cold affiliation"
+    },
+    "cold_affiliation_mastery_description": {
+        "message": "Mastery of gaining control over ice."
+    },
+    "flame_affiliation": {
+        "message": "Flame affiliation"
+    },
+    "flame_affiliation_mastery_description": {
+        "message": "Mastery of gaining control over fire."
+    },
+    "wind_affiliation": {
+        "message": "Wind affiliation"
+    },
+    "wind_affiliation_mastery_description": {
+        "message": "Mastery of gaining control over air flows."
+    },
+    "axe_affiliation": {
+        "message": "Axe affiliation"
+    },
+    "axe_affiliation_mastery_description": {
+        "message": "Mastery of gaining control over axe."
+    },
+    "mace_affiliation": {
+        "message": "Mace affiliation"
+    },
+    "mace_affiliation_mastery_description": {
+        "message": "Mastery of gaining control over mace."
+    },
+    "spear_affiliation": {
+        "message": "Spear affiliation"
+    },
+    "spear_affiliation_mastery_description": {
+        "message": "Mastery of gaining control over spear."
+    },
+    "sellmanship": {
+        "message": "Sellmanship"
+    },
+    "sellmanship_mastery_description": {
+        "message": "Mastery of selling items for real price."
+    },
+    "rip_apart_minor": {
+        "message": "Rip Apart (minor)"
+    },
+    "rip_apart_mere": {
+        "message": "Rip Apart (mere)"
+    },
+    "rip_apart_major": {
+        "message": "Rip Apart (major)"
+    },
+    "rip_apart_monstrous": {
+        "message": "Rip Apart (monstrous)"
+    },
+    "fist_punch": {
+        "message": "Fist punch"
+    },
+    "fist_smash": {
+        "message": "Fist smash"
+    },
+    "equip": {
+        "message": "Equip"
+    },
+    "resistance": {
+        "message": " resistance"
     }
 }

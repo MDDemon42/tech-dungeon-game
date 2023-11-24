@@ -5,7 +5,7 @@ import fireball from './fireball.png';
 import fireWave from './fireWave.png';
 import magicBolt from './magicBolt.png';
 import flyingCharms from './flyingCharms.png';
-import golem from './golem.png';
+import stoneGolem from './stoneGolem.png';
 import teleport from './teleport.png';
 import iceShard from './iceShard.png';
 import iceSpear from './iceSpear.png';
@@ -25,7 +25,7 @@ const wizardSpells = {
     fireWave,
     magicBolt,
     flyingCharms,
-    golem,
+    stoneGolem,
     teleport,
     iceShard,
     iceSpear,

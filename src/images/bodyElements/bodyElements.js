@@ -3,13 +3,14 @@ import acidSplit from './acidSplit.png';
 import apprenticeHat from './apprenticeHat.png';
 import apprenticeRod from './apprenticeRod.png';
 import belt from './belt.png';
-import cape from './cape.png';
 import chakram from './chakram.png';
 import clawLeft from './clawLeft.png';
 import clawRight from './clawRight.png';
 import guardianAura from './guardianAura.png';
 import guardianField from './guardianField.png';
+import energyFist from './energyFist.png';
 import energyWhip from './energyWhip.png';
+import flyingCape from './flyingCape.png';
 import furTorso from './furTorso.png';
 import head from './head.png';
 import healingPotion from './healingPotion.png';
@@ -32,13 +33,12 @@ import nanoVestLegs from './nanoVestLegs.png';
 import oakBow from './oakBow.png';
 import oakCrossbow from './oakCrossbow.png';
 import pincers from './pincers.png';
-import powerFist from './powerFist.png';
 import psiBlade from './psiBlade.png';
 import psiLightning from './psiLightning.png';
 import raptorLegs from './raptorLegs.png';
 import reactiveFeet from './reactiveFeet.png';
 import rightHand from './rightHand.png';
-import rocket from './rocket.png';
+import rocketLauncher from './rocketLauncher.png';
 import runicGreataxe from './runicGreataxe.png';
 import runicGreatsword from './runicGreatsword.png';
 import scalesTorso from './scalesTorso.png';
@@ -52,7 +52,7 @@ import steelShield from './steelShield.png';
 import steelSpear from './steelSpear.png';
 import steelSwordLeftHand from './steelSwordLeftHand.png';
 import steelSwordRightHand from './steelSwordRightHand.png';
-import tail from './tail.png';
+import tailWithSting from './tailWithSting.png';
 import telekinesis from './telekinesis.png';
 import torso from './torso.png';
 import wings from './wings.png';
@@ -63,13 +63,14 @@ const bodyElements = {
     apprenticeHat,
     apprenticeRod,
     belt,
-    cape,
     chakram,
     clawLeft,
     clawRight,
     guardianAura,
     guardianField,
+    energyFist,
     energyWhip,
+    flyingCape,
     furTorso,
     head,
     healingPotion,
@@ -92,13 +93,12 @@ const bodyElements = {
     oakBow,
     oakCrossbow,
     pincers,
-    powerFist,
     psiBlade,
     psiLightning,
     raptorLegs,
     reactiveFeet,
     rightHand,
-    rocket,
+    rocketLauncher,
     runicGreataxe,
     runicGreatsword,
     scalesTorso,
@@ -112,7 +112,7 @@ const bodyElements = {
     steelSpear,
     steelSwordLeftHand,
     steelSwordRightHand,
-    tail,
+    tailWithSting,
     telekinesis,
     torso,
     wings

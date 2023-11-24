@@ -30,8 +30,8 @@ function createSpell(
 
 const spell_multistrike = createSpell(
     [
-        'Multistrike',
-        'Spell to attack next enemy several times',
+        chrome.i18n.getMessage('multistrike'),
+        chrome.i18n.getMessage('multistrike_spell_description'),
         images.guildianLearnings.multistrike
     ],
     [
@@ -44,8 +44,8 @@ const spell_multistrike = createSpell(
 
 const spell_titanSkin = createSpell(
     [
-        'Titan skin',
-        'Spell to make skin almost invincible',
+        chrome.i18n.getMessage('titan_skin'),
+        chrome.i18n.getMessage('titan_skin_spell_description'),
         images.guildianLearnings.titanSkinRitual
     ],
     [
@@ -58,8 +58,8 @@ const spell_titanSkin = createSpell(
 
 const spell_defensiveCharms = createSpell(
     [
-        'Defensive charms',
-        'Spell to protect one of your buddies from usual attack. Casted via rod or staff',
+        chrome.i18n.getMessage('defensive_charm'),
+        chrome.i18n.getMessage('defensive_charm_spell_description'),
         images.wizardSpells.defensiveCharms
     ],
     [
@@ -72,8 +72,8 @@ const spell_defensiveCharms = createSpell(
 
 const spell_defensiveRunes = createSpell(
     [
-        'Defensive runes',
-        'Spell to protect one of your buddies from severe attack. Casted via rod or staff',
+        chrome.i18n.getMessage('defensive_enchantment'),
+        chrome.i18n.getMessage('defensive_enchantment_spell_description'),
         images.wizardSpells.defensiveRunes
     ],
     [
@@ -86,8 +86,8 @@ const spell_defensiveRunes = createSpell(
 
 const spell_iceShard = createSpell(
     [
-        'Ice Shard',
-        'Spell to pierce an enemy with ice shard',
+        chrome.i18n.getMessage('ice_shard'),
+        chrome.i18n.getMessage('ice_shard_spell_description'),
         images.wizardSpells.iceShard
     ],
     [
@@ -100,8 +100,8 @@ const spell_iceShard = createSpell(
 
 const spell_iceSpear = createSpell(
     [
-        'Ice Spear',
-        'Spell to pierce an enemy with ice spear',
+        chrome.i18n.getMessage('ice_spear'),
+        chrome.i18n.getMessage('ice_spear_spell_description'),
         images.wizardSpells.iceSpear
     ],
     [
@@ -114,8 +114,8 @@ const spell_iceSpear = createSpell(
 
 const spell_iceHail = createSpell(
     [
-        'Ice Hail',
-        'Spell to pierce a group of enemies with ice shards',
+        chrome.i18n.getMessage('ice_hail'),
+        chrome.i18n.getMessage('ice_hail_spell_description'),
         images.wizardSpells.iceHail
     ],
     [
@@ -128,8 +128,8 @@ const spell_iceHail = createSpell(
 
 const spell_coldDeath = createSpell(
     [
-        'Cold Death',
-        'Spell to turn an enemy dead and cold',
+        chrome.i18n.getMessage('cold_death'),
+        chrome.i18n.getMessage('cold_death_spell_description'),
         images.wizardSpells.coldDeath
     ],
     [
@@ -142,8 +142,8 @@ const spell_coldDeath = createSpell(
 
 const spell_flame = createSpell(
     [
-        'Flame',
-        'Spell to roast an enemy with fire',
+        chrome.i18n.getMessage('flame'),
+        chrome.i18n.getMessage('flame_spell_description'),
         images.wizardSpells.flame
     ],
     [
@@ -156,8 +156,8 @@ const spell_flame = createSpell(
 
 const spell_fireball = createSpell(
     [
-        'Fireball',
-        'Spell to clash a group of enemies with fire',
+        chrome.i18n.getMessage('fire_ball'),
+        chrome.i18n.getMessage('fire_ball_spell_description'),
         images.wizardSpells.fireball
     ],
     [
@@ -170,8 +170,8 @@ const spell_fireball = createSpell(
 
 const spell_fireWave = createSpell(
     [
-        'Fire Wave',
-        'Spell to burn out a group of enemies',
+        chrome.i18n.getMessage('fire_wave'),
+        chrome.i18n.getMessage('fire_wave_spell_description'),
         images.wizardSpells.fireWave
     ],
     [
@@ -184,8 +184,8 @@ const spell_fireWave = createSpell(
 
 const spell_windBlow = createSpell(
     [
-        'Wind Blow',
-        'Spell to show an enemy devastating wind',
+        chrome.i18n.getMessage('wind_blow'),
+        chrome.i18n.getMessage('wind_blow_spell_description'),
         images.wizardSpells.windBlow
     ],
     [
@@ -198,8 +198,8 @@ const spell_windBlow = createSpell(
 
 const spell_thunderPunch = createSpell(
     [
-        'Thunder Punch',
-        'Spell to smash an enemy up to thunder crambls',
+        chrome.i18n.getMessage('thunder_punch'),
+        chrome.i18n.getMessage('thunder_punch_spell_description'),
         images.wizardSpells.thunderPunch
     ],
     [
@@ -212,8 +212,8 @@ const spell_thunderPunch = createSpell(
 
 const spell_airDeprivation = createSpell(
     [
-        'Air Deprivation',
-        'Spell to make an enemy airless and lifeless',
+        chrome.i18n.getMessage('air_deprivation'),
+        chrome.i18n.getMessage('air_deprivation_spell_description'),
         images.wizardSpells.airDeprivation
     ],
     [
@@ -226,8 +226,8 @@ const spell_airDeprivation = createSpell(
 
 const spell_flyingCharms = createSpell(
     [
-        'Flying charms',
-        'Spell to make anybody fly. Casted via rod or staff',
+        chrome.i18n.getMessage('flying_charm'),
+        chrome.i18n.getMessage('flying_charm_spell_description'),
         images.wizardSpells.flyingCharms
     ],
     [
@@ -238,11 +238,11 @@ const spell_flyingCharms = createSpell(
     ]
 )
 
-const spell_golem = createSpell(
+const spell_stoneGolem = createSpell(
     [
-        'Golem',
-        'Spell to make a bunch of stones alive. Casted via rod or staff',
-        images.wizardSpells.golem
+        chrome.i18n.getMessage('stone_golem'),
+        chrome.i18n.getMessage('stone_golem_spell_description'),
+        images.wizardSpells.stoneGolem
     ],
     [
         masteries.mastery_magisterDegree.name,
@@ -254,8 +254,8 @@ const spell_golem = createSpell(
 
 const spell_magicBolt = createSpell(
     [
-        'Magic bolt',
-        'Spell to make one enemy hurt. Casted via rod or staff',
+        chrome.i18n.getMessage('electrical_bolt'),
+        chrome.i18n.getMessage('electrical_bolt_spell_description'),
         images.wizardSpells.magicBolt
     ],
     [
@@ -268,8 +268,8 @@ const spell_magicBolt = createSpell(
 
 const spell_teleport = createSpell(
     [
-        'Teleport',
-        'Spell to be somewhere else. Casted via rod or staff',
+        chrome.i18n.getMessage('teleport'),
+        chrome.i18n.getMessage('teleport_spell_description'),
         images.wizardSpells.teleport
     ],
     [
@@ -296,7 +296,7 @@ const spells = {
     spell_thunderPunch,
     spell_airDeprivation,
     spell_flyingCharms,
-    spell_golem,
+    spell_stoneGolem,
     spell_magicBolt,
     spell_teleport
 }

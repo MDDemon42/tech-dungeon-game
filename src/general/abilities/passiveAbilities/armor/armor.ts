@@ -127,6 +127,18 @@ const passiveAbility_fur = createPassiveAbility(
     }
 )
 
+const passiveAbility_hooves = createPassiveAbility(
+    [
+        chrome.i18n.getMessage('hooves'), 
+        chrome.i18n.getMessage('resistance_cold_1'), 
+        images.mutantEvolvings.hooves
+    ],
+    null,
+    {
+        [DamageType.cold]: 1,
+    }
+)
+
 const passiveAbility_tailWithSting = createPassiveAbility(
     [
         chrome.i18n.getMessage('tail_with_sting'), 
@@ -176,6 +188,7 @@ const armor = {
     passiveAbility_nanoMatrix,
     passiveAbility_scales,
     passiveAbility_fur,
+    passiveAbility_hooves,
     passiveAbility_tailWithSting,
     passiveAbility_intuition,
     passiveAbility_guardianField

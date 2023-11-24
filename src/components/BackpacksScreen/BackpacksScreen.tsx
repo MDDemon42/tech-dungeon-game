@@ -42,7 +42,7 @@ function BackpacksScreen() {
                         enabled ?
                             <ArrowUpCircle 
                                 onClick={() => equipListener({index, item})}
-                                title='Equip'
+                                title={chrome.i18n.getMessage('equip')}
                             /> :
                             <ArrowUpCircleFill
                                 title={disableReason}
@@ -62,12 +62,12 @@ function BackpacksScreen() {
             true;
 
         if (!requiredMasteryCheck) {
-            return [false, 'Does not have required mastery']
+            return [false, chrome.i18n.getMessage('smec_mastery')]
         }
 
         const priorityCheck = priorityChecker(item);
         if (!priorityCheck) {
-            return [false, 'Better equipment in use']
+            return [false, chrome.i18n.getMessage('siec_priority')]
         }
 
         return [true, '']

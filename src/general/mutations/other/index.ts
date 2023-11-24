@@ -1,11 +1,12 @@
 import { createMutation } from "..";
 import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
+import abilities from "../../abilities";
 
 const mutation_wings = createMutation(
     [
-        'Wings', 
-        'Mutation to fly over battlefield',
+        chrome.i18n.getMessage('wings'), 
+        chrome.i18n.getMessage('wings_mutation_description'),
         images.mutantEvolvings.wings
     ],
     [
@@ -19,8 +20,8 @@ const mutation_wings = createMutation(
 
 const mutation_hooves = createMutation(
     [
-        'Hooves', 
-        'Mutation to make confident steps',
+        chrome.i18n.getMessage('hooves'), 
+        chrome.i18n.getMessage('hooves_mutation_description'),
         images.mutantEvolvings.hooves
     ],
     [
@@ -29,7 +30,7 @@ const mutation_hooves = createMutation(
     [
         null, '', null
     ], 
-    null
+    abilities.passiveAbilities.armor.passiveAbility_hooves
 )
 
 const other = {

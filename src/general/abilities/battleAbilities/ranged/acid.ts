@@ -3,13 +3,21 @@ import { DamageType } from "../../../../enums-and-interfaces/enums";
 import images from "../../../../images/images";
 
 const battleAbility_acidBombThrow = createBattleAbility(
-    ['Acid bomb throw', '', images.normalItems.acidBomb], 
+    [
+        chrome.i18n.getMessage('acid_bomb_throw'), 
+        '', 
+        images.normalItems.acidBomb
+    ], 
     {Blank: 0}, 
     [1, DamageType.acid, 1, 70]
 );
 
 const battleAbility_masterAcidBombThrow = createBattleAbility(
-    ['Master acid bomb throw', '', images.normalItems.acidBomb], 
+    [
+        chrome.i18n.getMessage('acid_bomb_throw'), 
+        '', 
+        images.normalItems.acidBomb
+    ], 
     {Blank: 0}, 
     [1, DamageType.acid, 1, 95]
 );

@@ -5,8 +5,8 @@ import abilities from "../../abilities";
 
 const mutation_acidSplit = createMutation(
     [
-        'Acid split', 
-        'Mutation to split acid in your enemy`s face',
+        chrome.i18n.getMessage('acid_split'), 
+        chrome.i18n.getMessage('acid_split_mutation_description'),
         images.mutantEvolvings.acidSplit
     ],
     [
@@ -20,8 +20,8 @@ const mutation_acidSplit = createMutation(
 
 const mutation_lowerFangs = createMutation(
     [
-        'Lower fangs', 
-        'Mutation to turn your chin to a cutting machine',
+        chrome.i18n.getMessage('lower_fangs'), 
+        chrome.i18n.getMessage('lower_fangs_mutation_description'),
         images.mutantEvolvings.lowerFangs
     ],
     [
@@ -35,8 +35,8 @@ const mutation_lowerFangs = createMutation(
 
 const mutation_claws = createMutation(
     [
-        'Claws', 
-        'Mutation to rip your opponents apart',
+        chrome.i18n.getMessage('claws'), 
+        chrome.i18n.getMessage('claws_mutation_description'),
         images.mutantEvolvings.claws
     ],
     [
@@ -50,8 +50,8 @@ const mutation_claws = createMutation(
 
 const mutation_clawLeft = createMutation(
     [
-        'Claws', 
-        'Mutation to rip your opponents apart',
+        chrome.i18n.getMessage('claws'), 
+        chrome.i18n.getMessage('claws_mutation_description'),
         images.mutantEvolvings.claws
     ],
     [
@@ -65,8 +65,8 @@ const mutation_clawLeft = createMutation(
 
 const mutation_clawRight = createMutation(
     [
-        'Claws', 
-        'Mutation to rip your opponents apart',
+        chrome.i18n.getMessage('claws'), 
+        chrome.i18n.getMessage('claws_mutation_description'),
         images.mutantEvolvings.claws
     ],
     [
@@ -80,8 +80,8 @@ const mutation_clawRight = createMutation(
 
 const mutation_horns = createMutation(
     [
-        'Horns', 
-        'Mutation to use your head as a double-spear',
+        chrome.i18n.getMessage('horns'), 
+        chrome.i18n.getMessage('horns_mutation_description'),
         images.mutantEvolvings.horns
     ],
     [
@@ -96,7 +96,7 @@ const mutation_horns = createMutation(
 const mutation_tailWithSting = createMutation(
     [
         chrome.i18n.getMessage('tail_with_sting'), 
-        chrome.i18n.getMessage('tail_with_sting_item_description'),
+        chrome.i18n.getMessage('tail_with_sting_mutation_description'),
         images.mutantEvolvings.tailWithSting
     ],
     [
@@ -110,8 +110,8 @@ const mutation_tailWithSting = createMutation(
 
 const mutation_pincers = createMutation(
     [
-        'Two extra pincers', 
-        'Mutation to make holes in you rival',
+        chrome.i18n.getMessage('pincers'), 
+        chrome.i18n.getMessage('pincers_mutation_description'),
         images.mutantEvolvings.twoExtraPincers
     ],
     [
@@ -125,8 +125,8 @@ const mutation_pincers = createMutation(
 
 const mutation_raptorLegs = createMutation(
     [
-        'Raptor legs', 
-        'Mutation to make jump on your prey',
+        chrome.i18n.getMessage('raptor_legs'), 
+        chrome.i18n.getMessage('raptor_legs_mutation_description'),
         images.mutantEvolvings.raptorLegs
     ],
     [

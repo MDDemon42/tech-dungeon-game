@@ -24,7 +24,7 @@ function ResistanceIcon(props: {
     }
 
     return <div 
-        title={type + ' resistance'}
+        title={type + chrome.i18n.getMessage('resistance')}
         className={styles.ResistanceIcon}
         style={{borderColor: damageColors[type]}}
     >

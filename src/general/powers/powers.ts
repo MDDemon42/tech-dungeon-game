@@ -32,8 +32,8 @@ function createPower(
 
 const power_telekinesis = createPower(
     [
-        'Telekinesis',
-        'Power that can do a lot of things',
+        chrome.i18n.getMessage('telekinesis'),
+        chrome.i18n.getMessage('telekinesis_power_description'),
         images.psionInsights.telekinesis
     ],
     [
@@ -46,7 +46,7 @@ const power_telekinesis = createPower(
 const power_guardianField = createPower(
     [
         chrome.i18n.getMessage('guardian_field'),
-        chrome.i18n.getMessage('guardian_field_item_description'),
+        chrome.i18n.getMessage('guardian_field_power_description'),
         images.psionInsights.guardianField
     ], 
     [
@@ -59,8 +59,8 @@ const power_guardianField = createPower(
 
 const power_guardianAura = createPower(
     [
-        'Guardian aura',
-        'Power to weaken any enemy`s attack aimed at you',
+        chrome.i18n.getMessage('guardian_aura'),
+        chrome.i18n.getMessage('guardian_aura_power_description'),
         images.psionInsights.guardianAura
     ], 
     [
@@ -73,7 +73,7 @@ const power_guardianAura = createPower(
 const power_intuition = createPower(
     [
         chrome.i18n.getMessage('intuition'),
-        chrome.i18n.getMessage('intuition_item_description'),
+        chrome.i18n.getMessage('intuition_power_description'),
         images.psionInsights.intuition
     ],
     [
@@ -86,8 +86,8 @@ const power_intuition = createPower(
 
 const power_levitation = createPower(
     [
-        'Levitation',
-        'Power to pass any obstacles on earth',
+        chrome.i18n.getMessage('levitation'),
+        chrome.i18n.getMessage('levitation_power_description'),
         images.psionInsights.levitation
     ],
     [
@@ -99,8 +99,8 @@ const power_levitation = createPower(
 
 const power_psiBlade = createPower(
     [
-        'Psi-blade',
-        'Power to create (and use) blade with your mind',
+        chrome.i18n.getMessage('psi_blade'),
+        chrome.i18n.getMessage('psi_blade_power_description'),
         images.psionInsights.psiBlade
     ],
     [
@@ -112,8 +112,8 @@ const power_psiBlade = createPower(
 
 const power_psiLightning = createPower(
     [
-        'Psi-lightning',
-        'Power to create chain lightning with your mind',
+        chrome.i18n.getMessage('psi_lightning'),
+        chrome.i18n.getMessage('psi_lightning_power_description'),
         images.psionInsights.psiLightning
     ],
     [

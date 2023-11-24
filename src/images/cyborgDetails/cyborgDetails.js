@@ -1,16 +1,16 @@
 import energyWhip from './energyWhip.png';
-import powerFist from './powerFist.png';
+import energyFist from './energyFist.png';
 import laser from './laser.png';
 import nanoMatrix from './nanoMatrix.png';
 import nanoVest from './nanoVest.png';
-import rocket from './rocket.png';
+import rocketLauncher from './rocketLauncher.png';
 import reactiveFeet from './reactiveFeet.png';
 
 const cyborgDetails = {
-    powerFist,
+    energyFist,
     energyWhip,
     laser,
-    rocket,
+    rocketLauncher,
     nanoVest,
     nanoMatrix,
     reactiveFeet
