@@ -1,8 +1,8 @@
 import { InventoryOption, MindOption } from "../enums-and-interfaces/enums";
-import { ICyber, IItem, IMastery, IMutation, IPower, ISpell } from "../enums-and-interfaces/interfaces";
+import { ICharacher, ICyber, IItem, IMastery, IMutation, IPower, ISpell } from "../enums-and-interfaces/interfaces";
 import { getBackpacksCapability } from "./backpacksPutter";
 import priorityChecker from "./priorityChecker";
-import store from "../redux/store";
+import { createNoItem } from "./emptyEssencesCreators";
 
 export function subMindEnableChecker(
     data: IMastery | IPower | ISpell,
@@ -44,33 +44,33 @@ export function subMindEnableChecker(
 }
 
 export function subInventoryEnableChecker(
-    data: IItem | IMutation | ICyber,
+    character: ICharacher,
+    datum: IItem | IMutation | ICyber,
     dataName: InventoryOption,
-    resource: number,
-    currentBackpacksItemsAmount: number
+    resource: number
 ): [boolean, string] {
-    const resourceCheck = resource >= data.cost;
+    const resourceCheck = resource >= datum.cost;
     if (!resourceCheck) {
         return [false, chrome.i18n.getMessage('siec_resources')]
     }
 
-    const members = store.getState().gameSquad.squadMembers;
     if (dataName === InventoryOption.items) {
-        const getBackpacksCapabilityCheck = currentBackpacksItemsAmount < getBackpacksCapability(members);
+        const nothing = createNoItem().name;
+        const currentBackpacksItemsAmount = character.general.backpacks
+            .filter((item) => item.name !== nothing).length;
+        const getBackpacksCapabilityCheck = currentBackpacksItemsAmount < getBackpacksCapability(character);
         if (!getBackpacksCapabilityCheck) {
             return [false, chrome.i18n.getMessage('siec_backpacks_capability')]
         }
     } else {
-        const priorityCheck = priorityChecker(data);
+        const priorityCheck = priorityChecker(datum);
         if (!priorityCheck) {
             return [false, chrome.i18n.getMessage('siec_priority')]
         }
     }
 
     if (dataName === InventoryOption.cybers) {
-        const index = store.getState().gameSquad.currentlyWatched;
-        const member = members[index];
-        const memberInventory = member.general.inventory;
+        const memberInventory = character.general.inventory;
         const memberInventoryNames: string[] = [];
         for (let data in memberInventory) {
             memberInventoryNames.push(memberInventory[data].name)

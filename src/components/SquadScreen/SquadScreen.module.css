@@ -27,9 +27,3 @@
 .SquadScreen_squadMembers > img {
     border: 1px solid black;
 }
-
-.SquadScreen_profileScreen {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}

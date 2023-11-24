@@ -7,7 +7,6 @@ import { classInfo } from "../redux/slices/gameSquad";
 function actionInCaseStrongStart(tabId: number) {
     const state = {...store.getState()}
     const gameSquad = {...state.gameSquad};
-    const squadBackpacks = {...gameSquad.squadBackpacks};
     const squadMembers = {...gameSquad.squadMembers};
 
     const masteriesAmount = Object.keys(state.everything.masteries).length;
@@ -43,16 +42,13 @@ function actionInCaseStrongStart(tabId: number) {
         }
     }
 
-    const resources = {
+    const fullResources = {
         [UserResource.gem]: 100,
         [UserResource.core]: 45,
         [UserResource.gene]: 45
     }
-    squadBackpacks.resources = resources;
 
-    squadBackpacks.items = [];
-
-    gameSquad.squadBackpacks = squadBackpacks;
+    gameSquad.resources = fullResources;
     gameSquad.squadMembers = squadMembers;
 
     state.gameSquad = gameSquad;

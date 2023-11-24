@@ -64,7 +64,13 @@ function createEmptyParams(): ICharacherParams {
 export function createEmptyGeneral(): ICharacterGeneral {
     return {
         mind: createEmptyMind(),
-        inventory: createEmptyInventory()
+        inventory: createEmptyInventory(),
+        backpacks: [
+            createNoItem(),
+            createNoItem(),
+            createNoItem(),
+            createNoItem()
+        ]
     }    
 }
 

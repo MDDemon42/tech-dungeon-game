@@ -21,7 +21,6 @@ import { createContext } from 'react';
 export const SubInventoryScreenItemContext = createContext({
     dataName: '' as InventoryOption,
     resource: 0 as number,
-    currentBackpacksItemsAmount: 0 as number,
     listener: (datum: IItem | IMutation | ICyber) => {},
     buttonText: '' as string
 });
@@ -30,8 +29,6 @@ function SubInventoryScreen(props: {
     dataName: InventoryOption
 }) {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);    
-
-    const currentBackpacksItemsAmount = useSelector((store: IStore) => store.gameSquad.squadBackpacks.items.length);
 
     const {dataName} = props;
     const dataAll = useSelector((store: IStore) => store.everything[dataName]);
@@ -66,7 +63,7 @@ function SubInventoryScreen(props: {
     }
 
     const resource = useSelector((store: IStore) => 
-        store.gameSquad.squadBackpacks.resources[subInventoryMappings[dataName].resource]);
+        store.gameSquad.resources[subInventoryMappings[dataName].resource]);
 
 
     const dataArray: IInventorySlot[] = [];
@@ -100,7 +97,6 @@ function SubInventoryScreen(props: {
     const SubInventoryScreenItemContextData = {
         dataName,
         resource,
-        currentBackpacksItemsAmount,
         listener: subInventoryMappings[dataName].listener,
         buttonText: subInventoryMappings[dataName].button
     }

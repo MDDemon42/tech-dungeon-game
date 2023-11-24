@@ -48,14 +48,11 @@ export interface IGameScreen {
 export interface IGameSquad {
     currentlyWatched: number,
     squadMembers: Record<string, ICharacher>,
-    squadBackpacks: {
-        resources: {
-            [UserResource.gene]: number,
-            [UserResource.gem]: number,
-            [UserResource.core]: number
-        },
-        items: IItem[]
-    }    
+    resources: {
+        [UserResource.gene]: number,
+        [UserResource.gem]: number,
+        [UserResource.core]: number
+    }  
 }
 
 export interface IOpponentSquad {
@@ -72,6 +69,7 @@ export interface ICharacher {
 export interface ICharacterGeneral {
     mind: IMind,
     inventory: IInventory,
+    backpacks: IItem[]
 }
 
 export interface ICharacherParams {
@@ -270,7 +268,7 @@ interface ISubMapping {
 
 // item props //
 export interface IManageItemsProps {
-    index: number,
+    itemIndex: number,
     item: IItem
 }
 

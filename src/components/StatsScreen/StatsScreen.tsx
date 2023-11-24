@@ -9,13 +9,12 @@ import ResistanceIcon from "../Icons/ResistanceIcon";
 function StatsScreen() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
-    const user = useSelector((state: IStore) => state.gameSquad.squadMembers[index]?.params!);
+    const user = useSelector((state: IStore) => state.gameSquad.squadMembers[index].params);
+
     return (
         <div className={styles.StatsScreen}>
             <div className={styles.StatsScreen_header}>
-                <h3>
-                    {user.name} the {user.race}, {upperCaseFirstLetter(user.class!)} level {user.level}
-                </h3>
+                {user.name} the {user.race}, {upperCaseFirstLetter(user.class!)} level {user.level}
             </div>
             <div className={styles.StatsScreen_body}>
                 <div className={styles.StatsScreen_params}>

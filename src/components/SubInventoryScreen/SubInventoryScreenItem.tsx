@@ -1,23 +1,24 @@
 import { useContext } from "react";
-import { IItem, IMutation, ICyber } from "../../enums-and-interfaces/interfaces";
+import { IItem, IMutation, ICyber, IStore } from "../../enums-and-interfaces/interfaces";
 import { subInventoryEnableChecker } from "../../helpers/enableCheckers";
 import CommonIcon from "../Icons/CommonIcon";
 import styles from './SubInventoryScreen.module.css';
 import { SubInventoryScreenItemContext } from "./SubInventoryScreen";
+import { useSelector } from "react-redux";
 
 function SubInventoryScreenItem(props: {
     datum: IItem | IMutation | ICyber
 }) {
+    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
+    const character = useSelector((store: IStore) => store.gameSquad.squadMembers[index]);
+
     const {datum} = props;
     const {
-        dataName, resource, listener,
-        buttonText,
-        currentBackpacksItemsAmount, 
+        dataName, resource, listener, buttonText, 
     } = useContext(SubInventoryScreenItemContext);
     
     const [enabled, disableReason] = subInventoryEnableChecker(
-        datum, dataName, resource,
-        currentBackpacksItemsAmount
+        character, datum, dataName, resource
     );
 
     return <div className={styles.SubInventoryScreenItem}>

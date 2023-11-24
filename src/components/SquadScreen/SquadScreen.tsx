@@ -12,15 +12,7 @@ import gameSquad from '../../redux/slices/gameSquad';
 import { classToIcon } from '../../helpers/classIconRelates';
 
 function SquadScreen() {
-    const [showBackpacks, setShowBackpacks] = useState(false);
-    const showBackpacksHandler = () => {
-        setShowBackpacks((state) => !state)
-    }
-
     const dispatch = useDispatch();
-
-    const gameScreen = useSelector((store: IStore) => store.gameScreen);
-    const {screen, shouldShowBackpacks} = gameScreen;
 
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
 
@@ -31,18 +23,8 @@ function SquadScreen() {
     }
 
     const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
-
-    const currentBackpacksItemsAmount = useSelector((store: IStore) => store.gameSquad.squadBackpacks.items.length);
-
-    const backpacksFullCheck = currentBackpacksItemsAmount < getBackpacksCapability(squad);
     
-    const user = squad[index]!; 
-
-    useEffect(() => {
-        if (shouldShowBackpacks) {
-            setShowBackpacks(true);
-        }
-    }, [screen]);
+    const user = squad[index]; 
 
     return (
         <div className={styles.SquadScreen}>
@@ -64,21 +46,9 @@ function SquadScreen() {
                             alt='emptySquadSlot'
                         />
                     })
-                }
-                {
-                    backpacksFullCheck ?
-                        <BoxSeam onClick={showBackpacksHandler} title='Backpacks'/> :
-                        <BoxSeamFill onClick={showBackpacksHandler} title='Backpacks'/>
-                }                
+                }              
             </div>
-            <div className={styles.SquadScreen_profileScreen}>
-                <ProfileScreen character={user}/>
-                {
-                    showBackpacks ? 
-                        <BackpacksScreen/> :
-                        null
-                } 
-            </div>                       
+            <ProfileScreen character={user}/>
         </div>        
     )   
 }

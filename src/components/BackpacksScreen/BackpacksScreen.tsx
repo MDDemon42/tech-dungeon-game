@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import styles from './BackpacksScreen.module.css';
-import { IItem, IManageItemsProps, IStore } from '../../enums-and-interfaces/interfaces';
+import { ICharacher, IItem, IManageItemsProps, IStore } from '../../enums-and-interfaces/interfaces';
 import CommonIcon from '../Icons/CommonIcon';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
@@ -9,9 +9,12 @@ import {ArrowUpCircle, ArrowUpCircleFill} from 'react-bootstrap-icons';
 import priorityChecker from '../../helpers/priorityChecker';
 import { UserResource } from '../../enums-and-interfaces/enums';
 
-function BackpacksScreen() {
-    const backpacks = useSelector((store: IStore) => store.gameSquad.squadBackpacks);
-    const {resources, items} = backpacks;
+function BackpacksScreen(props: {
+    character: ICharacher
+}) {
+    const { character } = props;
+
+    const resources = useSelector((store: IStore) => store.gameSquad.resources);
 
     const dispatch = useDispatch()
 
@@ -23,15 +26,14 @@ function BackpacksScreen() {
         dispatch(gameSquad.actions.sellItem(props));
     }
 
-    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
-    const masteriesUser = useSelector((store: IStore) => 
-        store.gameSquad.squadMembers[index].general.mind.masteries.map(data => data.name));
+    const masteriesUser = character.general.mind.masteries.map(data => data.name);
+    const backpacksUser = character.general.backpacks;
 
     function BackpacksScreenItem(props: {
         item: IItem,
-        index: number
+        itemIndex: number
     }) {
-        const {item, index} = props;
+        const {item} = props;
         const [enabled, disableReason] = enableChecker(item);
 
         return <div className={styles.BackpacksScreen_itemsLine_CommonIconWithButtons}>
@@ -41,7 +43,7 @@ function BackpacksScreen() {
                     {
                         enabled ?
                             <ArrowUpCircle 
-                                onClick={() => equipListener({index, item})}
+                                onClick={() => equipListener(props)}
                                 title={chrome.i18n.getMessage('equip')}
                             /> :
                             <ArrowUpCircleFill
@@ -49,8 +51,8 @@ function BackpacksScreen() {
                             />
                     }                                
                 </div>
-                <div onClick={() => sellListener({index, item})}>
-                    <ResourceIcon resource='gem'/>
+                <div onClick={() => sellListener(props)}>
+                    <ResourceIcon resource='gem' price={item.cost}/>
                 </div>
             </div>
         </div>
@@ -87,8 +89,8 @@ function BackpacksScreen() {
         </div>
         <div className={styles.BackpacksScreen_itemsLine}>
             {
-                items.map((item, index) => 
-                    <BackpacksScreenItem item={item} index={index}/>
+                backpacksUser.map((item, index) => 
+                    <BackpacksScreenItem item={item} itemIndex={index}/>
                 )
             }
         </div>
