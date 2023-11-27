@@ -4,11 +4,15 @@
     height: 90vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid black;
+    position: relative;
 }
 
-.GameScreen_buttonsBlock {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.GameScreen_villageButton {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 3px;
 }

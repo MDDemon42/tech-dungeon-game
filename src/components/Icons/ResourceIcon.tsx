@@ -1,21 +1,25 @@
+import { ReactElement } from "react";
+import { Capsule, Gem, Gear } from 'react-bootstrap-icons';
 import { UserResource } from "../../enums-and-interfaces/enums";
-import images from "../../images/images";
 import styles from './Icons.module.css';
 
 function ResourceIcon(props: {
-    resource: keyof typeof UserResource,
+    resource: UserResource,
     price?: number
 }) {
     const {price, resource} = props;
+    const resourceIcons: Record<UserResource, ReactElement> = {
+        [UserResource.gem]: <Gem/>,
+        [UserResource.core]: <Gear/>,
+        [UserResource.gene]: <Capsule/>
+    }
 
-    const source = images.resourceIcons[resource]
-
-    return <img 
-        src={source} 
-        alt={UserResource[resource]} 
-        title={(price ? Number(price) : '') + UserResource[resource]}
+    return <div 
+        title={(price ? Number(price) : '') + resource}
         className={styles.ResourceIcon}
-    />
+    >
+        {resourceIcons[resource]}
+    </div>
 }
 
 export default ResourceIcon

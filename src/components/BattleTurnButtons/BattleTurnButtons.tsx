@@ -20,7 +20,7 @@ function BattleTurnButtons(props: {
     return <div className={styles.BattleTurnButtons}>
         <button 
             onClick={listeners.navigateHome}
-            title={chrome.i18n.getMessage('battle_page_back_to_village')}
+            title={chrome.i18n.getMessage('back_to_village')}
         >
             <HouseDoor size={15}/>
         </button>

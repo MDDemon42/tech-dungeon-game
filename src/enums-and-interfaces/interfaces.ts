@@ -52,7 +52,7 @@ export interface IGameSquad {
         [UserResource.gene]: number,
         [UserResource.gem]: number,
         [UserResource.core]: number
-    }  
+    }
 }
 
 export interface IOpponentSquad {

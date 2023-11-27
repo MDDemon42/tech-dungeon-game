@@ -11,7 +11,7 @@ function priorityChecker(slot: IInventorySlot) {
     const priority_new = slot.priority;
 
     const index = store.getState().gameSquad.currentlyWatched;
-    const inventory = store.getState().gameSquad.squadMembers[index]?.general.inventory || createEmptyInventory();
+    const inventory = store.getState().gameSquad.squadMembers[index].general.inventory || createEmptyInventory();
     const name_old = inventory[placeAsKey(position)].name;
     const priority_old = inventory[placeAsKey(position)].priority;
 

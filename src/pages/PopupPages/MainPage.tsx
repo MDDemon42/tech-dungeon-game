@@ -3,10 +3,9 @@ import {Link} from "react-router-dom";
 import {Gear} from 'react-bootstrap-icons';
 import styles from './PopupPage.module.css';
 import images from '../../images/images';
-import { IStore } from '../../enums-and-interfaces/interfaces';
+import { ICharacher, IStore } from '../../enums-and-interfaces/interfaces';
 import { useEffect, useState } from 'react';
 import C from '../../redux/constants';
-import { createEmptyInventory } from '../../helpers/emptyEssencesCreators';
 import gameSquad, { classInfo } from '../../redux/slices/gameSquad';
 import { iconToClass, classToIcon } from '../../helpers/classIconRelates';
 import { UserStartClass } from '../../enums-and-interfaces/enums';
@@ -15,13 +14,21 @@ export function upperCaseFirstLetter(value: string) {
     return value.substring(0,1).toUpperCase() + value.substring(1)
 }
 
+function userEquality(oldUser: ICharacher, newUser: ICharacher) {
+    return oldUser.params.class === newUser.params.class &&
+        oldUser.params.name === newUser.params.name
+}
+
 function MainPage() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
-    
-    const memberClass = useSelector((store: IStore) => store.gameSquad.squadMembers[index].params.class);
+    const user = useSelector((store: IStore) => store.gameSquad.squadMembers[index], userEquality);
+
+    const userClass = user.params.class;
+    const userName = user.params.name;
+    const userLevel = user.params.level;
 
     const [startButtonText, setStartButtonText] = 
-        useState(chrome.i18n.getMessage('main_page_start'))
+        useState(chrome.i18n.getMessage('main_page_start'));
 
     const classes = Object.keys(images.classIcons)
         .filter(icon => icon !== UserStartClass.noIcon);
@@ -35,27 +42,30 @@ function MainPage() {
                 dispatch(gameSquad.actions.setState(result[C.extensionStorageName].gameSquad));
 
                 const user = result[C.extensionStorageName].gameSquad.squadMembers[index];
-                if (
-                    user.params.level > 0 ||
-                    !Object.is(user.general.inventory, createEmptyInventory())
-                ) {
+                if (user.params.level > 0) {
                     setStartButtonText(chrome.i18n.getMessage('main_page_continue'))
                 }
             }
-        })
+        });       
     }, [])
 
-    const changeClass = (value: string) => {
-        let iconFromClass = iconToClass(value);
-        if (value === UserStartClass.noIcon) {
-            iconFromClass = value;
-        }
-        dispatch(gameSquad.actions.refreshState(iconFromClass));
-
-        setStartButtonText(chrome.i18n.getMessage('main_page_start'));
+    const getUserName = () => {
+        return (document.getElementById('userName') as HTMLInputElement)?.value;
     }
 
+    const chooseAnotherName = () => {
+        dispatch(gameSquad.actions.changeName(getUserName()));
+    }
+
+    const chooseAnotherClass = (value: string) => {
+        dispatch(gameSquad.actions.changeClass((iconToClass(value))));
+
+        setStartButtonText(chrome.i18n.getMessage('main_page_start'));
+    } 
+
     const startButtonListener = () => {
+        dispatch(gameSquad.actions.startGame(getUserName()));
+
         window.open('#/game');
     }
 
@@ -63,16 +73,30 @@ function MainPage() {
         <div className={styles.Popup}>
             <div className={styles.Popup_iconBlock}>
                 <img 
-                    src={images.classIcons[classToIcon(memberClass) as keyof typeof images.classIcons]} 
+                    src={images.classIcons[classToIcon(userClass) as keyof typeof images.classIcons]} 
                     alt='classIcon' 
-                    title={classInfo[memberClass].description}
+                    title={classInfo[userClass].description}
                 />      
-                <select onChange={(event) => changeClass(event.target.value)}>
-                    <option selected disabled hidden></option>
+                {
+                    userClass !== UserStartClass.noIcon &&
+                    <input 
+                        id='userName'
+                        maxLength={15}
+                        onBlur={chooseAnotherName}
+                        disabled={userLevel > 0}
+                        defaultValue={userName}
+                    ></input>
+                }
+                <select onChange={(event) => chooseAnotherClass(event.target.value)}>
+                    <option selected={userClass === UserStartClass.noIcon}
+                        disabled hidden></option>
                     {
                         classes.map(item => {
                             return (
-                                <option value={item}>
+                                <option 
+                                    value={item} 
+                                    selected={iconToClass(item) === userClass}
+                                >
                                     {
                                         iconToClass(item)
                                     }
@@ -84,7 +108,7 @@ function MainPage() {
             </div>
             <div className={styles.Popup_buttonsBlock}>
                 <button 
-                    disabled={memberClass === UserStartClass.noIcon}
+                    disabled={userClass === UserStartClass.noIcon}
                     className={styles.border}
                     onClick={startButtonListener}
                 >

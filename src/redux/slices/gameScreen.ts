@@ -3,7 +3,7 @@ import { IGameScreen } from '../../enums-and-interfaces/interfaces';
 import { GameScreens } from '../../enums-and-interfaces/enums';
 
 const initialState: IGameScreen = {
-    screen: GameScreens.academy,
+    screen: GameScreens.villageMap,
     shouldShowBackpacks: true
 }
 

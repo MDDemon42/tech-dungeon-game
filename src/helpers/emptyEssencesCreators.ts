@@ -28,7 +28,7 @@ export default function createEmptyCharacter(): ICharacher {
 
 function createEmptyParams(): ICharacherParams {
     return {
-        name: '',
+        name: 'Adventurer',
         level: 0,
         class: UserStartClass.noIcon,
         race: Race.human,

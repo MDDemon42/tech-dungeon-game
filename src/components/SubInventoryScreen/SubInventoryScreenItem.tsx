@@ -10,7 +10,7 @@ function SubInventoryScreenItem(props: {
     datum: IItem | IMutation | ICyber
 }) {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
-    const character = useSelector((store: IStore) => store.gameSquad.squadMembers[index]);
+    const member = useSelector((store: IStore) => store.gameSquad.squadMembers[index]);
 
     const {datum} = props;
     const {
@@ -18,7 +18,7 @@ function SubInventoryScreenItem(props: {
     } = useContext(SubInventoryScreenItemContext);
     
     const [enabled, disableReason] = subInventoryEnableChecker(
-        character, datum, dataName, resource
+        member, datum, dataName, resource
     );
 
     return <div className={styles.SubInventoryScreenItem}>

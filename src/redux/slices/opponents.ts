@@ -36,8 +36,8 @@ const opponents_options: Record<string, ICharacher>[] = [
 ]
 
 const initialState: IOpponentSquad = {
-    opponentMembers: opponents_options[2],
-    opponentsOptionsIndex: 2
+    opponentMembers: opponents_options[0],
+    opponentsOptionsIndex: 0
 }
 
 const opponents = createSlice({
@@ -99,7 +99,7 @@ const opponents = createSlice({
         },
         respite(state, action) {
             const squad = {...state.opponentMembers};
-            
+
             for (const index in squad) {
                 const squadMember = squad[index];
                 for (const param in squadMember.params.currentParams) {
@@ -113,6 +113,8 @@ const opponents = createSlice({
                     }
                 }
             }
+
+            state.opponentMembers = squad;
         }
     }
 })

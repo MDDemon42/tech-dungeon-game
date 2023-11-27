@@ -8,60 +8,65 @@ import ResistanceIcon from "../Icons/ResistanceIcon";
 
 function StatsScreen() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
-
-    const user = useSelector((state: IStore) => state.gameSquad.squadMembers[index].params);
+    const member = useSelector((state: IStore) => state.gameSquad.squadMembers[index].params);
+    const {
+        name, race, level, 
+        currentParams,
+        maxParams,
+        resistances, dodge
+    } = member;
 
     return (
         <div className={styles.StatsScreen}>
             <div className={styles.StatsScreen_header}>
-                {user.name} the {user.race}, {upperCaseFirstLetter(user.class!)} level {user.level}
+                {name} the {race}, {upperCaseFirstLetter(member.class)} level {level}
             </div>
             <div className={styles.StatsScreen_body}>
                 <div className={styles.StatsScreen_params}>
                     <div>
                         {
-                            [...Array(user.currentParams[UserParam.health])].map(icon => <ParamIcon param='health'/>)
+                            [...Array(currentParams[UserParam.health])].map(icon => <ParamIcon param='health'/>)
                         }
                     </div>
                     {
-                        user.maxParams.Mana > 0 ?
+                        maxParams.Mana > 0 ?
                             <div>
                                 {
-                                    [...Array(user.currentParams.Mana)].map(icon => <ParamIcon param='mana'/>)
+                                    [...Array(currentParams.Mana)].map(icon => <ParamIcon param='mana'/>)
                                 }
                             </div> : 
                             null
                     }
                     {
-                        user.maxParams.Focus > 0 ?
+                        maxParams.Focus > 0 ?
                             <div>
                                 {
-                                    [...Array(user.currentParams.Focus)].map(icon => <ParamIcon param='focus'/>)
+                                    [...Array(currentParams.Focus)].map(icon => <ParamIcon param='focus'/>)
                                 }
                             </div> : 
                             null
                     }                
                     <div>
                         {
-                            [...Array(user.currentParams.Stamina)].map(icon => <ParamIcon param='stamina'/>)
+                            [...Array(currentParams.Stamina)].map(icon => <ParamIcon param='stamina'/>)
                         }
                     </div>
                 </div>
                 <div className={styles.StatsScreen_resistances}>
                     {
-                        Object.keys(user.resistances).map(resistance => 
+                        Object.keys(resistances).map(resistance => 
                             <ResistanceIcon 
                                 type={resistance as DamageType}
-                                value={user.resistances[resistance as DamageType]}
+                                value={resistances[resistance as DamageType]}
                             />
                         )
                     }
                     {
-                        user.dodge > 0 && <div 
+                        dodge > 0 && <div 
                             title={chrome.i18n.getMessage('dodge')}
                             className={styles.StatsScreen_dodge}
                         >
-                            {user.dodge}
+                            {dodge}
                         </div>
                     }
                 </div>

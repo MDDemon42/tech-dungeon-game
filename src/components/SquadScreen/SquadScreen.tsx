@@ -2,29 +2,22 @@ import { useSelector } from 'react-redux';
 import styles from './SquadScreen.module.css';
 import { IStore } from '../../enums-and-interfaces/interfaces';
 import ProfileScreen from '../ProfileScreen/ProfileScreen';
-import BackpacksScreen from '../BackpacksScreen/BackpacksScreen';
 import images from '../../images/images';
-import {BoxSeam, BoxSeamFill} from 'react-bootstrap-icons';
-import { getBackpacksCapability } from '../../helpers/backpacksPutter';
-import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
 import { classToIcon } from '../../helpers/classIconRelates';
 
 function SquadScreen() {
-    const dispatch = useDispatch();
-
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
+    const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
+    const user = squad[index]; 
 
+    const dispatch = useDispatch();
     const showProfileHandler = (clickedIndex: number) => {
         if (index !== clickedIndex) {
             dispatch(gameSquad.actions.changeSquadMember(clickedIndex));
         }
     }
-
-    const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
-    
-    const user = squad[index]; 
 
     return (
         <div className={styles.SquadScreen}>

@@ -58,15 +58,13 @@ function BattlePage() {
 
             if ((battlePageState.battleTurn + 1) % 4 === 0) {
                 dispatch(gameSquad.actions.respite({}));
+
+                dispatch(opponents.actions.respite({}));
             }
         } else {
             checkDead();
 
             giveTurns();
-
-            if (battlePageState.battleTurn % 4 === 0) {
-                dispatch(opponents.actions.respite({}));
-            }
 
             opponentTurnHandler();
         }

@@ -170,7 +170,7 @@
     "battle_page_next_turn": {
         "message": "Следующий ход"
     },
-    "battle_page_back_to_village": {
+    "back_to_village": {
         "message": "Назад в деревню"
     },
     "battle_page_deselect_member": {

@@ -1,14 +1,14 @@
 import { UserStartClass } from "../enums-and-interfaces/enums"
 
 export function iconToClass(value: string) {
-    const iconToClassMappings: Record<string, string> = {
+    const iconToClassMappings: Record<string, UserStartClass> = {
         mutant: UserStartClass.mutant,
         cyborg: UserStartClass.cyborg,
         normal: UserStartClass.normal,
         wizard: UserStartClass.wizard,
         psion: UserStartClass.psion,
         guildian: UserStartClass.guildian,
-        noIcon: '-not this one-'
+        noIcon: UserStartClass.noIcon
     }
 
     return iconToClassMappings[value]

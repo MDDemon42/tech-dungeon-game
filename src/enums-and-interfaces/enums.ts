@@ -90,5 +90,6 @@ export enum GameScreens {
     spellShop = 'Spell_Shop',
     focusSite = 'Focus_Site',
     cyberLab = 'Cyber_Lab',
-    mutationLab = 'Mutation_Lab'
+    mutationLab = 'Mutation_Lab',
+    villageMap = 'Village_Map'
 }

@@ -43,14 +43,13 @@ export function placeAsKey(place: string) {
 const initialState: IGameSquad = {
     currentlyWatched: 2,
     squadMembers: {
-        2: createEmptyCharacter(),
-        4: createEmptyCharacter()
+        2: createEmptyCharacter()
     },
     resources: {
         [UserResource.core]: 0,
         [UserResource.gem]: 0,
         [UserResource.gene]: 0
-    }   
+    }
 };
 
 function createLevelUpBonuses(params: UserParam[]) {
@@ -146,22 +145,43 @@ const gameSquad = createSlice({
                 // @ts-ignore
                 state[key] = initialState[key];
             })
+        },
+        changeName(state, action) {
+            const oldState = {...state};
+            const squad = {...oldState.squadMembers};
+            const squadMember = squad[oldState.currentlyWatched];
+
+            squadMember.params.name = action.payload;
+
+            state = oldState;
+        },
+        changeClass(state, action) {
+            Object.keys(state).forEach(key => {
+                // @ts-ignore
+                state[key] = initialState[key];
+            })
 
             const squad = {...state.squadMembers};
 
-            const user = createEmptyCharacter();
+            const squadMember = createEmptyCharacter();
+            squadMember.params.class = action.payload;
 
-            user.params.maxParams[UserParam.health] = 3;
-            user.params.maxParams[UserParam.stamina] = 3;
-            user.params.level = 1;
-            user.params.name = user.params.name || 'Adventurer';
-            user.params.class = action.payload;
+            squad[state.currentlyWatched] = squadMember;
 
-            const {startBonus} = classInfo[action.payload as UserStartClass];
-            user.params.maxParams[startBonus] += 1;
+            state.squadMembers = squad;
+        },
+        startGame(state, action) {
+            const oldState = {...state};
+            const squad = {...oldState.squadMembers};
+            const squadMember = squad[oldState.currentlyWatched];
 
-            squad[2] = user;
-            squad[4] = user;
+            squadMember.params.name = action.payload;
+            squadMember.params.maxParams[UserParam.health] = 3;
+            squadMember.params.maxParams[UserParam.stamina] = 3;
+            squadMember.params.level = 1;
+
+            const {startBonus} = classInfo[squadMember.params.class];
+            squadMember.params.maxParams[startBonus] += 1;
 
             Object.keys(squad).forEach(key => {
                 if (!!squad[key]) {
@@ -169,7 +189,7 @@ const gameSquad = createSlice({
                 }
             });
 
-            state.squadMembers = squad;
+            state = oldState;
         },
         levelUp(state, action) {
             const rand = Math.floor(Math.random()*7);
@@ -490,7 +510,6 @@ const gameSquad = createSlice({
                     squadMember.params.resistances[damageType];
 
                 const chance = Math.floor(Math.random()*100);
-                console.log('-hit-', hitChance, squadMember.params.dodge, chance)
                 if (hitChance - squadMember.params.dodge > chance) {
                     squadMember.params.currentParams[UserParam.health] -= resultDamage;
                 }
@@ -531,6 +550,8 @@ const gameSquad = createSlice({
                     }
                 }
             }
+
+            state.squadMembers = squad;
         }
     }
 })

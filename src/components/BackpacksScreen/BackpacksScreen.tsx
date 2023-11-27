@@ -52,7 +52,7 @@ function BackpacksScreen(props: {
                     }                                
                 </div>
                 <div onClick={() => sellListener(props)}>
-                    <ResourceIcon resource='gem' price={item.cost}/>
+                    <ResourceIcon resource={UserResource.gem} price={item.cost}/>
                 </div>
             </div>
         </div>
@@ -78,13 +78,13 @@ function BackpacksScreen(props: {
     return <div className={styles.BackpacksScreen}>
         <div className={styles.BackpacksScreen_squadResources}>
             <div>
-                <ResourceIcon resource='gem'/>: {resources[UserResource.gem]}
+                <ResourceIcon resource={UserResource.gem}/>: {resources[UserResource.gem]}
             </div>
             <div>
-                <ResourceIcon resource='core'/>: {resources[UserResource.core]}
+                <ResourceIcon resource={UserResource.core}/>: {resources[UserResource.core]}
             </div>
             <div>
-                <ResourceIcon resource='gene'/>: {resources[UserResource.gene]}
+                <ResourceIcon resource={UserResource.gene}/>: {resources[UserResource.gene]}
             </div>
         </div>
         <div className={styles.BackpacksScreen_itemsLine}>
