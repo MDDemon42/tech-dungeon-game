@@ -1,18 +1,53 @@
-import { InventoryOption, MindOption } from "../enums-and-interfaces/enums";
-import { ICharacher, ICyber, IItem, IMastery, IMutation, IPower, ISpell } from "../enums-and-interfaces/interfaces";
+import { BendingGameScreens, InventoryGameScreens, MindGameScreens } from "../enums-and-interfaces/enums";
+import { IBending, ICharacher, ICyber, IItem, IMastery, IMutation, IPower, ISpell } from "../enums-and-interfaces/interfaces";
 import { getBackpacksCapability } from "./backpacksPutter";
 import priorityChecker from "./priorityChecker";
 import { createNoItem } from "./emptyEssencesCreators";
 
-export function subMindEnableChecker(
-    data: IMastery | IPower | ISpell,
+export function bendingEnableChecker(
+    bending: IBending,
     memberMind: string[],
-    dataName: MindOption,
+    screenName: BendingGameScreens,
     capacity: number,
     posessed: number
 ): [boolean, string] {
     if (capacity <= posessed) {
-        return [false, chrome.i18n.getMessage('smec_capacity', dataName)]
+        return [false, chrome.i18n.getMessage('smec_capacity', screenName)]
+    }
+
+    const posessedCheck = memberMind.includes(bending.name);
+    if (posessedCheck) {
+        return [false, chrome.i18n.getMessage('smec_posessed')]
+    }
+    
+    const requiredMasteryCheck = !!bending.requiredMastery ? 
+        memberMind.includes(bending.requiredMastery) :
+        true;
+        
+    if (!requiredMasteryCheck) {
+        return [false, chrome.i18n.getMessage('smec_mastery')]
+    }
+
+    const requiredBendingCheck = !!bending.requiredBending ?
+        memberMind.includes(bending.requiredBending) :
+        true;
+
+    if (!requiredBendingCheck) {
+        return [false, chrome.i18n.getMessage('smec_bending')]
+    }
+
+    return [true, '']
+}
+
+export function subMindEnableChecker(
+    data: IMastery | IPower | ISpell,
+    memberMind: string[],
+    screenName: MindGameScreens,
+    capacity: number,
+    posessed: number
+): [boolean, string] {
+    if (capacity <= posessed) {
+        return [false, chrome.i18n.getMessage('smec_capacity', screenName)]
     }
 
     const posessedCheck = memberMind.includes(data.name);
@@ -28,7 +63,7 @@ export function subMindEnableChecker(
         return [false, chrome.i18n.getMessage('smec_mastery')]
     }
 
-    if (dataName === MindOption.powers) {
+    if (screenName === MindGameScreens.focusSite) {
         // @ts-expect-error
         const requiredPowerCheck = !!data.requiredPower ?
             // @ts-expect-error
@@ -46,7 +81,7 @@ export function subMindEnableChecker(
 export function subInventoryEnableChecker(
     character: ICharacher,
     datum: IItem | IMutation | ICyber,
-    dataName: InventoryOption,
+    screenName: InventoryGameScreens,
     resource: number
 ): [boolean, string] {
     const resourceCheck = resource >= datum.cost;
@@ -54,7 +89,7 @@ export function subInventoryEnableChecker(
         return [false, chrome.i18n.getMessage('siec_resources')]
     }
 
-    if (dataName === InventoryOption.items) {
+    if (screenName === InventoryGameScreens.market) {
         const nothing = createNoItem().name;
         const currentBackpacksItemsAmount = character.general.backpacks
             .filter((item) => item.name !== nothing).length;
@@ -69,7 +104,7 @@ export function subInventoryEnableChecker(
         }
     }
 
-    if (dataName === InventoryOption.cybers) {
+    if (screenName === InventoryGameScreens.cyberLab) {
         const memberInventory = character.general.inventory;
         const memberInventoryNames: string[] = [];
         for (let data in memberInventory) {
@@ -77,9 +112,9 @@ export function subInventoryEnableChecker(
         };
 
         // @ts-expect-error
-        const requiredCyberCheck = !!data.requiredCyber ?
+        const requiredCyberCheck = !!datum.requiredCyber ?
             // @ts-expect-error
-            memberInventoryNames.includes(data.requiredCyber) :
+            memberInventoryNames.includes(datum.requiredCyber) :
             true;
 
         if (!requiredCyberCheck) {

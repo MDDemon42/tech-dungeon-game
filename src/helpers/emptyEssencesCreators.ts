@@ -1,5 +1,6 @@
 import images from "../images/images";
 import { 
+    IBending,
     ICharacher, 
     ICharacherParams, 
     ICharacterGeneral, 
@@ -9,6 +10,7 @@ import {
     IMastery, 
     IMind, 
     IPower, 
+    IRitual, 
     ISpell
 } from "../enums-and-interfaces/interfaces";
 import { 
@@ -28,7 +30,7 @@ export default function createEmptyCharacter(): ICharacher {
 
 function createEmptyParams(): ICharacherParams {
     return {
-        name: 'Adventurer',
+        name: '',
         level: 0,
         class: UserStartClass.noIcon,
         race: Race.human,
@@ -76,9 +78,11 @@ export function createEmptyGeneral(): ICharacterGeneral {
 
 export function createEmptyMind(): IMind {
     const mind = {
+        bending: [] as IBending[],
         masteries: [] as IMastery[],
         spells: [] as ISpell[],
-        powers: [] as IPower[]
+        powers: [] as IPower[],
+        rituals: [] as IRitual[]
     };
     
     return mind

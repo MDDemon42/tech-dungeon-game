@@ -1,32 +1,34 @@
 import acidBomb from './acidBomb.png';
-import bow from './bow.png';
-import crossbow from './crossbow.png';
+import oakBow from './oakBow.png';
+import oakCrossbow from './oakCrossbow.png';
 import healingPotion from './healingPotion.png';
 import leatherArmor from './leatherArmor.png';
 import steelArmor from './steelArmor.png';
-import steelAxe from './steelAxe.png';
+import axe from './axe.png';
 import steelGreataxe from './steelGreataxe.png';
+import steelGreathammer from './steelGreathammer.png';
 import steelGreatsword from './steelGreatsword.png';
 import steelMace from './steelMace.png';
 import steelShield from './steelShield.png';
-import steelSpear from './steelSpear.png';
+import spear from './spear.png';
 import steelSword from './steelSword.png';
 
 import doubleAxeSlash from './doubleAxeSlash.png';
 
 const normalItems = {
     acidBomb,
-    bow,
-    crossbow,
+    oakBow,
+    oakCrossbow,
     doubleAxeSlash,
     healingPotion,
     leatherArmor,
     steelArmor,
-    steelAxe,
+    axe,
     steelGreataxe,
+    steelGreathammer,
     steelGreatsword,
     steelMace,
-    steelSpear,
+    spear,
     steelShield,
     steelSword,
 };

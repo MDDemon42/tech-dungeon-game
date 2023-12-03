@@ -6,7 +6,7 @@ const battleAbility_windBlow = createBattleAbility(
     [
         chrome.i18n.getMessage('wind_blow'), 
         '', 
-        images.wizardSpells.windBlow
+        images.elementBendings.windBlow
     ], 
     {Mana: 1}, 
     [1, DamageType.physicalSmashing, 1, 70]

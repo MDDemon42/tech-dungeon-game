@@ -1,4 +1,4 @@
-import { MindOption } from "../../enums-and-interfaces/enums";
+import { MindGameScreens } from "../../enums-and-interfaces/enums";
 import { IMastery, IPower, ISpell } from "../../enums-and-interfaces/interfaces";
 import { subMindEnableChecker } from "../../helpers/enableCheckers";
 import CommonIcon from "../Icons/CommonIcon";
@@ -6,7 +6,7 @@ import styles from './SubMindScreen.module.css';
 
 function SubMindScreenItem(props: {
     data: IMastery | IPower | ISpell,
-    dataName: MindOption,
+    screenName: MindGameScreens,
     memberMind: string[],
     buttonText: string,
     listener: any,
@@ -15,11 +15,11 @@ function SubMindScreenItem(props: {
 }) {
     const {
         data, buttonText, listener,
-        memberMind, dataName,
+        memberMind, screenName,
         capacity, posessed
     } = props;
     const [enabled, disableReason] = subMindEnableChecker(
-        data, memberMind, dataName, 
+        data, memberMind, screenName, 
         capacity, posessed
     );
 

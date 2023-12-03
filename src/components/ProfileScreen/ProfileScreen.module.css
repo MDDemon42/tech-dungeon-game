@@ -25,3 +25,14 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.ProfileScreen_spells_and_bending {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.ProfileScreen_spells_and_bending > div {
+    width: 47%;
+    margin-top: 3px;
+}

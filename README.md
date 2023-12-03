@@ -15,12 +15,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  - Battle abilities must have either 1 or 3 or 5 targets
 
  # TODO:
- 1) More `opponents`, `villagers`, `_locales`, `MASPIC` (Greathammer, Runic Greathammer, Spear, Musket, Rifle)
+ 1) More `opponents`, `villagers`, `_locales`, `MASPIC` (Musket, Rifle)
  2) Add more abilities to use on `Battle Screen`
  3) More ~abilities~ to get more user resources (~battery capacity~ for cyborg)
  4) Mix `MASPIC` to get `elf` and `werewolf`(?)
- 5) Check requirements on `masteries` and `cybers`
+ 5) Long hair of `fur` mutation
  6) Several generations of `MASPIC` masters (?)
+ 7) Rewrite upgrade stage buttons to `TaskScreen` options
+ 8) `Win` and `Lose` options on `BattleScreen`
 
  # Items to classes (with special abilities) (?)
  1) No armor + Two axes => Berserk

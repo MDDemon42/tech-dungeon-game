@@ -16,7 +16,6 @@ const opponents_options: Record<string, ICharacher>[] = [
         1: characters.magicians.magister(),
         2: characters.magicians.cryomancer(),
         3: characters.magicians.pyrokinetic(),
-        4: characters.magicians.aerotheurg()
     },
     {
         0:characters.mutants.satyr(),

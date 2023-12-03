@@ -1,18 +1,22 @@
-import mutant from './mutant.jpg';
-import cyborg from './cyborg.jpg';
-import normal from './normal.jpg';
-import wizard from './wizard.jpg';
-import psion from './psion.jpg';
-import guildian from './guildian.jpg';
+import vital from './vital.png';
+import tireless from './tireless.png';
+import creative from './creative.png';
+import dreamer from './dreamer.png';
+import geneKeeper from './geneKeeper.png';
+import coreKeeper from './coreKeeper.png';
+import richie from './richie.png';
+import ingenious from './ingenious.png';
 import noIcon from './noIcon.jpg';
 
 const classIcons = {
-    mutant,
-    cyborg,
-    normal,
-    wizard,
-    psion,
-    guildian,
+    vital,
+    tireless,
+    creative,
+    dreamer,
+    geneKeeper,
+    coreKeeper,
+    richie,
+    ingenious,
     noIcon
 };
 

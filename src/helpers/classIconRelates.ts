@@ -2,26 +2,30 @@ import { UserStartClass } from "../enums-and-interfaces/enums"
 
 export function iconToClass(value: string) {
     const iconToClassMappings: Record<string, UserStartClass> = {
-        mutant: UserStartClass.mutant,
-        cyborg: UserStartClass.cyborg,
-        normal: UserStartClass.normal,
-        wizard: UserStartClass.wizard,
-        psion: UserStartClass.psion,
-        guildian: UserStartClass.guildian,
+        vital: UserStartClass.vital,
+        tireless: UserStartClass.tireless,
+        creative: UserStartClass.creative,
+        dreamer: UserStartClass.dreamer,
+        geneKeeper: UserStartClass.geneKeeper,
+        coreKeeper: UserStartClass.coreKeeper,        
+        richie: UserStartClass.richie,
+        ingenious: UserStartClass.ingenious,
         noIcon: UserStartClass.noIcon
     }
 
     return iconToClassMappings[value]
 }
 
-export function classToIcon(value: string) {
-    const classToIconMappings: Record<string, string> = {
-        [UserStartClass.mutant]: 'mutant',
-        [UserStartClass.cyborg]: 'cyborg',
-        [UserStartClass.normal]: 'normal',
-        [UserStartClass.wizard]: 'wizard',
-        [UserStartClass.psion]: 'psion',
-        [UserStartClass.guildian]: 'guildian',
+export function classToIcon(value: UserStartClass) {
+    const classToIconMappings: Record<UserStartClass, string> = {
+        [UserStartClass.vital]: 'vital',
+        [UserStartClass.tireless]: 'tireless',
+        [UserStartClass.creative]: 'creative',
+        [UserStartClass.dreamer]: 'dreamer',
+        [UserStartClass.geneKeeper]: 'geneKeeper',
+        [UserStartClass.coreKeeper]: 'coreKeeper',
+        [UserStartClass.richie]: 'richie',
+        [UserStartClass.ingenious]: 'ingenious',
         [UserStartClass.noIcon]: 'noIcon' 
     }
 

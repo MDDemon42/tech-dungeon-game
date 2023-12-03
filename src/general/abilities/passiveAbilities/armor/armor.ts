@@ -177,6 +177,26 @@ const passiveAbility_guardianField = createPassiveAbility(
     }
 )
 
+const passiveAbility_titanSkin = createPassiveAbility(
+    [
+        chrome.i18n.getMessage('titan_skin'),  
+        chrome.i18n.getMessage('resistance_all_elemental_1'), 
+        images.psionInsights.guardianField
+    ],
+    {
+        [UserParam.health]: 2
+    },
+    {
+        [DamageType.physicalPiercing]: 2,
+        [DamageType.physicalSlashing]: 2,
+        [DamageType.physicalSmashing]: 2,
+        [DamageType.acid]: 2,
+        [DamageType.cold]: 2,
+        [DamageType.electrical]: 8,
+        [DamageType.fire]: 2
+    }
+)
+
 const armor = {
     passiveAbility_apprenticeHat,
     passiveAbility_magisterHat,
@@ -191,7 +211,8 @@ const armor = {
     passiveAbility_hooves,
     passiveAbility_tailWithSting,
     passiveAbility_intuition,
-    passiveAbility_guardianField
+    passiveAbility_guardianField,
+    passiveAbility_titanSkin
 }
 
 export default armor

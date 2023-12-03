@@ -10,6 +10,7 @@ function CommonIcon(props: {
         description: string,
         value?: number,
         cost?: number,
+        requiredBending?: string,
         requiredMastery?: string,
         requiredPower?: string,
         requiredCyber?: string,
@@ -55,6 +56,10 @@ function CommonIcon(props: {
 
     if (item.cost) {
         description += '\n' + chrome.i18n.getMessage('cid_cost') + item.cost;
+    }
+
+    if (item.requiredBending) {
+        description += '\n' + chrome.i18n.getMessage('cid_required_bending') + item.requiredBending;
     }
 
     if (item.requiredMastery) {

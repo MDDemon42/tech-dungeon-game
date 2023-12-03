@@ -3,8 +3,7 @@ import { IGameScreen } from '../../enums-and-interfaces/interfaces';
 import { GameScreens } from '../../enums-and-interfaces/enums';
 
 const initialState: IGameScreen = {
-    screen: GameScreens.villageMap,
-    shouldShowBackpacks: true
+    screen: GameScreens.villageMap
 }
 
 const gameScreen = createSlice({
@@ -13,18 +12,6 @@ const gameScreen = createSlice({
     reducers: {
         changeScreen(state, action) {
             state.screen = action.payload;
-
-            switch (action.payload) {
-                case GameScreens.academy:
-                case GameScreens.mutationLab:
-                case GameScreens.cyberLab:
-                case GameScreens.focusSite:
-                case GameScreens.spellShop:
-                    break;
-                case GameScreens.market:
-                    state.shouldShowBackpacks = true;
-                    break;
-            }
         }
     }
 })

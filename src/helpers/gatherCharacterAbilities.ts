@@ -1,8 +1,11 @@
+import { DamageType } from "../enums-and-interfaces/enums";
 import { ICharacher, IBattleAbility } from "../enums-and-interfaces/interfaces";
 import abilities from "../general/abilities";
 import items from "../general/items";
+import guildMasteries from "../general/masteries/guild";
 import masteries from "../general/masteries/masteries";
 import checkRipApart from "../general/races/checkRipApart";
+import wizardItems from "../general/wizardItems";
 import { createEmptyInventory, createNoItem } from "./emptyEssencesCreators";
 
 function gatherCharacterAbilities(character: ICharacher) {
@@ -18,10 +21,13 @@ function gatherCharacterAbilities(character: ICharacher) {
     
     for (const name in inventory) {
         if (inventory[name].ability) {
+            // @ts-expect-error
             if (inventory[name].linkedMastery) {
+                // @ts-expect-error
                 const masteryName = inventory[name].linkedMastery;
                 if (masteryName && masteriesUser.includes(masteryName)) {
-                    result.push(...inventory[name].masterAbilities!);
+                    // @ts-expect-error
+                    result.push(...inventory[name].masterAbilities);
                 } else {
                     const {ability} = inventory[name];
                     if (ability) {
@@ -46,8 +52,8 @@ function gatherCharacterAbilities(character: ICharacher) {
         if (!!spell.ability) {
             if (!!spell.requiresRod) {
                 if (
-                    inventory.bothHands.name === items.weapons.item_apprenticeRod.name ||
-                    inventory.bothHands.name === items.weapons.item_magisterScepter.name
+                    inventory.bothHands.name === wizardItems.weapons.wizardItem_apprenticeRod.name ||
+                    inventory.bothHands.name === wizardItems.weapons.wizardItem_magisterScepter.name
                 ) {
                     result.push(spell.ability);
                 }
@@ -73,8 +79,8 @@ function gatherCharacterAbilities(character: ICharacher) {
     }
 
     if (
-        inventory.leftHand.name === items.weapons.item_steelAxeLeftHand.name &&
-        inventory.rightHand.name === items.weapons.item_steelAxeRightHand.name
+        inventory.leftHand.name === items.weapons.item_axeLeftHand.name &&
+        inventory.rightHand.name === items.weapons.item_axeRightHand.name
     ) {
         if (masteriesUser.includes(masteries.mastery_axeAffiliation.name)) {
             result.push(abilities.battleAbilities.melee.physicalSlashing.battleAbility_affiliatedDoubleAxeSlash);
@@ -97,6 +103,28 @@ function gatherCharacterAbilities(character: ICharacher) {
         } else {
             result.push(abilities.battleAbilities.melee.physicalSmashing.battleAbility_fistPunch)
         }        
+    }
+
+    // empoweredAbilities
+    if (masteriesUser.includes(guildMasteries.mastery_empoweredStrikes.name)) {
+        const createEmpoweredAbility = (ability: IBattleAbility) => {
+            const empoweredAbility = {...ability};
+            empoweredAbility.damage += 1;
+            empoweredAbility.costs = {...ability.costs, Focus: 1};
+            empoweredAbility.name = 'Empowered ' + empoweredAbility.name.toLowerCase();
+            
+            return empoweredAbility
+        }
+        
+        result
+            .filter(ability => (
+                ability.damageType === DamageType.physicalPiercing ||
+                ability.damageType === DamageType.physicalSlashing ||
+                ability.damageType === DamageType.physicalSmashing
+            ))
+            .forEach(ability => {
+                result.push(createEmpoweredAbility(ability));
+            })
     }
 
     return result

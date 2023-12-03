@@ -77,19 +77,22 @@ function MainPage() {
                     alt='classIcon' 
                     title={classInfo[userClass].description}
                 />      
-                {
-                    userClass !== UserStartClass.noIcon &&
-                    <input 
-                        id='userName'
-                        maxLength={15}
-                        onBlur={chooseAnotherName}
-                        disabled={userLevel > 0}
-                        defaultValue={userName}
-                    ></input>
-                }
-                <select onChange={(event) => chooseAnotherClass(event.target.value)}>
-                    <option selected={userClass === UserStartClass.noIcon}
-                        disabled hidden></option>
+                <input 
+                    id='userName'
+                    maxLength={15}
+                    onBlur={chooseAnotherName}
+                    placeholder='Hero`s name'
+                    disabled={userLevel > 0 || userClass === UserStartClass.noIcon}
+                    defaultValue={userName}
+                ></input>
+                <select 
+                    onChange={(event) => chooseAnotherClass(event.target.value)}
+                    style={{textAlignLast: 'center'}}
+                >
+                    <option 
+                        selected={userClass === UserStartClass.noIcon}
+                        disabled hidden
+                    >Choose class</option>
                     {
                         classes.map(item => {
                             return (

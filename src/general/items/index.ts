@@ -1,8 +1,12 @@
-import { IAbility, IBattleAbility, IItem, IPassiveAbility } from "../../enums-and-interfaces/interfaces";
+import { 
+    IAbility, IBattleAbility, 
+    IItem, IPassiveAbility 
+} from "../../enums-and-interfaces/interfaces";
+import { InventoryPlace } from "../../enums-and-interfaces/enums";
 import weapons from "./weapons";
 import armors from "./armors";
 import other from "./other";
-import { InventoryPlace } from "../../enums-and-interfaces/enums";
+import bigResources from "./bigResources";
 
 export function createItem(
     commonInfo: [
@@ -19,9 +23,9 @@ export function createItem(
         requiredMastery: string,
         ability: IBattleAbility | null,
         linkedMastery: string,
-        masterAbilities: IAbility[] | null
-    ],
-    passiveAbility: IPassiveAbility | null
+        masterAbilities: IAbility[] | null,
+        passiveAbility: IPassiveAbility | null
+    ]    
 ): IItem {
     return {
         name: commonInfo[0],
@@ -36,15 +40,15 @@ export function createItem(
         ability: abilityInfo[1],
         linkedMastery: abilityInfo[2],
         masterAbilities: abilityInfo[3],
-        
-        passiveAbility
+        passiveAbility: abilityInfo[4]
     }
 }
 
 const items = {
-    weapons,
     armors,
-    other
+    other,
+    weapons,
+    bigResources
 }
 
 export default items

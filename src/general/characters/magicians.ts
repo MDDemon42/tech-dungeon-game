@@ -1,8 +1,10 @@
 import { UserParam } from "../../enums-and-interfaces/enums";
 import createEmptyCharacter from "../../helpers/emptyEssencesCreators";
-import items from "../items";
-import masteries from "../masteries/masteries";
+import bending from "../bending";
+import elementsMasteries from "../masteries/elements";
+import wizardMasteries from "../masteries/wizard";
 import spells from "../spells/spells";
+import wizardItems from "../wizardItems";
 
 const apprentice = () => {
     const character = createEmptyCharacter();
@@ -18,11 +20,11 @@ const apprentice = () => {
     character.params.maxParams[UserParam.mana] = 3;
     character.params.currentParams[UserParam.mana] = 3;
 
-    character.general.mind.masteries.push(masteries.mastery_scholarship);
+    character.general.mind.masteries.push(wizardMasteries.mastery_scholarship);
     character.general.mind.spells.push(spells.spell_magicBolt);
 
-    character.general.inventory.bothHands = items.weapons.item_apprenticeRod;
-    character.general.inventory.hat = items.armors.item_apprenticeHat;
+    character.general.inventory.bothHands = wizardItems.weapons.wizardItem_apprenticeRod;
+    character.general.inventory.hat = wizardItems.armors.wizardItem_apprenticeHat;
 
     return character
 }
@@ -41,13 +43,13 @@ const magister = () => {
     character.params.maxParams[UserParam.mana] = 6;
     character.params.currentParams[UserParam.mana] = 6;
 
-    character.general.mind.masteries.push(masteries.mastery_magisterDegree);
+    character.general.mind.masteries.push(wizardMasteries.mastery_magisterDegree);
     character.general.mind.spells.push(spells.spell_magicBolt);
-    character.general.mind.spells.push(spells.spell_fireball);
 
-    character.general.inventory.bothHands = items.weapons.item_magisterScepter;
-    character.general.inventory.hat = items.armors.item_magisterHat;
-    character.general.inventory.armor = items.armors.item_magisterRobe;
+    character.general.inventory.bothHands = wizardItems.weapons.wizardItem_magisterScepter;
+    character.general.inventory.hat = wizardItems.armors.wizardItem_magisterHat;
+    character.general.inventory.armor = wizardItems.armors.wizardItem_magisterRobe;
+    character.general.inventory.back = wizardItems.other.wizardItem_flyingCape;
 
     return character
 }
@@ -66,11 +68,11 @@ const cryomancer = () => {
     character.params.maxParams[UserParam.mana] = 6;
     character.params.currentParams[UserParam.mana] = 6;
 
-    character.general.mind.masteries.push(masteries.mastery_senseOfCold);
-    character.general.mind.spells.push(spells.spell_iceShard);
-    character.general.mind.spells.push(spells.spell_iceSpear);
-    character.general.mind.spells.push(spells.spell_iceHail);
-    character.general.mind.spells.push(spells.spell_coldDeath);
+    character.general.mind.masteries.push(elementsMasteries.mastery_senseOfCold);
+    character.general.mind.bending.push(bending.cryomancy.bending_iceShard);
+    character.general.mind.bending.push(bending.cryomancy.bending_iceSpear);
+    character.general.mind.bending.push(bending.cryomancy.bending_iceHail);
+    character.general.mind.bending.push(bending.cryomancy.bending_coldDeath);
 
     return character
 }
@@ -89,32 +91,10 @@ const pyrokinetic = () => {
     character.params.maxParams[UserParam.mana] = 6;
     character.params.currentParams[UserParam.mana] = 6;
 
-    character.general.mind.masteries.push(masteries.mastery_senseOfFlame);
-    character.general.mind.spells.push(spells.spell_flame);
-    character.general.mind.spells.push(spells.spell_fireball);
-    character.general.mind.spells.push(spells.spell_fireWave);
-
-    return character
-}
-
-const aerotheurg = () => {
-    const character = createEmptyCharacter();
-
-    character.params.name = 'Aerotheurg';
-
-    character.params.maxParams[UserParam.health] = 3;
-    character.params.currentParams[UserParam.health] = 3;
-
-    character.params.maxParams[UserParam.stamina] = 3;
-    character.params.currentParams[UserParam.stamina] = 3;
-
-    character.params.maxParams[UserParam.mana] = 6;
-    character.params.currentParams[UserParam.mana] = 6;
-
-    character.general.mind.masteries.push(masteries.mastery_senseOfWind);
-    character.general.mind.spells.push(spells.spell_windBlow);
-    character.general.mind.spells.push(spells.spell_thunderPunch);
-    character.general.mind.spells.push(spells.spell_airDeprivation);
+    character.general.mind.masteries.push(elementsMasteries.mastery_senseOfFlame);
+    character.general.mind.bending.push(bending.pyrokinesis.bending_flame);
+    character.general.mind.bending.push(bending.pyrokinesis.bending_fireball);
+    character.general.mind.bending.push(bending.pyrokinesis.bending_fireWave);
 
     return character
 }
@@ -123,8 +103,7 @@ const magicians = {
     apprentice,
     magister,
     cryomancer,
-    pyrokinetic,
-    aerotheurg
+    pyrokinetic
 }
 
 export default magicians

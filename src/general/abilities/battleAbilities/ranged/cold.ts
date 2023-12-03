@@ -6,7 +6,7 @@ const battleAbility_coldDeath = createBattleAbility(
     [
         chrome.i18n.getMessage('cold_death'), 
         '', 
-        images.wizardSpells.coldDeath
+        images.elementBendings.coldDeath
     ], 
     {Mana: 3}, 
     [8, DamageType.cold, 1, 100]

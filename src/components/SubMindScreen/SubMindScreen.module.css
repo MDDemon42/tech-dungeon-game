@@ -19,6 +19,15 @@
     justify-content: space-around;
 }
 
+.SubMindScreen_buttons {
+    border: 1px solid black;
+    padding: 5px;
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
 .SubMindScreenItem {
     display: flex;
     flex-direction: column;

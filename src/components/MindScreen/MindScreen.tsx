@@ -6,11 +6,11 @@ import { MindOption } from '../../enums-and-interfaces/enums';
 
 function MindScreen(props: {
     character: ICharacher,
-    name: string,
+    name: MindOption,
     vertical: boolean
 }) {
     const {character, name, vertical} = props;
-    const common = character.general.mind[name as MindOption];
+    const common = character.general.mind[name];
 
     return (
         <div className={styles.MindScreen}>

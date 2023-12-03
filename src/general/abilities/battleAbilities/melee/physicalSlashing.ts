@@ -136,7 +136,7 @@ const battleAbility_axeSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('axe_slash'), 
         '', 
-        images.normalItems.steelAxe
+        images.normalItems.axe
     ], 
     {Stamina: 1}, 
     [1, DamageType.physicalSlashing, 1, 70]
@@ -146,7 +146,7 @@ const battleAbility_affiliatedAxeSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('axe_slash'),  
         '', 
-        images.normalItems.steelAxe
+        images.normalItems.axe
     ], 
     {Stamina: 1}, 
     [1, DamageType.physicalSlashing, 1, 95]

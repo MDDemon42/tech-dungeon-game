@@ -32,6 +32,26 @@ const battleAbility_maceSmash = createBattleAbility(
     [2, DamageType.physicalSmashing, 1, 70]
 );
 
+const battleAbility_steelGreathammerSmash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('greathammer_smash'), 
+        '', 
+        images.normalItems.steelGreathammer
+    ], 
+    {Stamina: 2}, 
+    [2, DamageType.physicalSmashing, 1, 70]
+);
+
+const battleAbility_runicGreathammerSmash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('greathammer_smash'), 
+        '', 
+        images.guildianLearnings.runicGreathammer
+    ], 
+    {Stamina: 2}, 
+    [2, DamageType.physicalSmashing, 1, 70]
+);
+
 const battleAbility_affiliatedMaceSmash = createBattleAbility(
     [
         chrome.i18n.getMessage('mace_smash'),
@@ -46,17 +66,19 @@ const battleAbility_thunderPunch = createBattleAbility(
     [
         chrome.i18n.getMessage('thunder_punch'), 
         '', 
-        images.wizardSpells.thunderPunch
+        images.elementBendings.thunderPunch
     ], 
     {Mana: 1, Stamina: 1}, 
     [2, DamageType.physicalSmashing, 1, 70]
 );
 
 const physicalSmashing = {
+    battleAbility_affiliatedMaceSmash,
     battleAbility_fistPunch,
     battleAbility_fistSmash,
     battleAbility_maceSmash,
-    battleAbility_affiliatedMaceSmash,
+    battleAbility_runicGreathammerSmash,
+    battleAbility_steelGreathammerSmash,    
     battleAbility_thunderPunch,
 }
 

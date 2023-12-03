@@ -5,49 +5,158 @@
     position: relative;
 }
 
+.VillageMap > img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
 .VillageMap_icon_Academy,
 .VillageMap_icon_Cyber_Lab,
-.VillageMap_icon_Focus_Site,
+.VillageMap_icon_Focus_School,
 .VillageMap_icon_Market,
 .VillageMap_icon_Mutation_Lab,
-.VillageMap_icon_Spell_Shop,
-.VillageMap_icon_Battle {
+.VillageMap_icon_Wizard_School,
+.VillageMap_icon_Battle,
+.VillageMap_icon_Air_School,
+.VillageMap_icon_Fire_School,
+.VillageMap_icon_Ice_School,
+.VillageMap_icon_Guild_School,
+.VillageMap_icon_Woods,
+.VillageMap_icon_Mines {
     position: absolute;
     width: min-content;
-    padding: 3px;
+    padding: 3px 3px 0;
+    background: none;
+    cursor: alias
 }
 
 .VillageMap_icon_Academy {
-    left: 90px;
-    top: 190px;
+    left: 230px;
+    top: 180px;
+}
+
+.VillageMap_icon_Academy:hover {
+    color: darkorange;
+    border-color: darkorange;
 }
 
 .VillageMap_icon_Cyber_Lab {
-    left: 75px;
-    top: 144px;
+    left: 35px;
+    top: 274px;
 }
 
-.VillageMap_icon_Focus_Site {
-    left: 189px;
-    top: 153px;
+.VillageMap_icon_Cyber_Lab:hover {
+    color: darkgray;
+    border-color: darkgray;
+}
+
+.VillageMap_icon_Focus_School {
+    left: 183px;
+    top: 27px;
+}
+
+.VillageMap_icon_Focus_School:hover {
+    color: darkviolet;
+    border-color: darkviolet;
 }
 
 .VillageMap_icon_Mutation_Lab {
-    left: 168px;
-    top: 89px;
+    left: 75px;
+    top: 239px;
 }
 
-.VillageMap_icon_Spell_Shop {
-    left: 54px;
-    top: 195px;
+.VillageMap_icon_Mutation_Lab:hover {
+    color: greenyellow;
+    border-color: greenyellow;
+}
+
+.VillageMap_icon_Wizard_School {
+    left: 395px;
+    top: 395px;
+}
+
+.VillageMap_icon_Wizard_School:hover {
+    color: blue;
+    border-color: blue;
 }
 
 .VillageMap_icon_Market {
-    left: 61px;
-    top: 98px;
+    left: 159px;
+    top: 138px;
+}
+
+.VillageMap_icon_Market:hover {
+    color: gold;
+    border-color: gold;
 }
 
 .VillageMap_icon_Battle {
-    left: 411px;
-    top: 408px;
+    left: 51px;
+    top: 51px;
+}
+
+.VillageMap_icon_Battle:hover {
+    color: red;
+    border-color: red;
+}
+
+.VillageMap_icon_Air_School {
+    left: 50px;
+    top: 350px;
+}
+
+.VillageMap_icon_Air_School:hover {
+    color: lightblue;
+    border-color: lightblue;
+}
+
+.VillageMap_icon_Fire_School {
+    left: 10px;
+    top: 10px;
+}
+
+.VillageMap_icon_Fire_School:hover {
+    color: orange;
+    border-color: orange;
+}
+
+.VillageMap_icon_Ice_School {
+    left: 400px;
+    top: 10px;
+}
+
+.VillageMap_icon_Ice_School:hover {
+    color: white;
+    border-color: white;
+}
+
+.VillageMap_icon_Guild_School {
+    left: 170px;
+    top: 220px;
+}
+
+.VillageMap_icon_Guild_School:hover {
+    color: silver;
+    border-color: silver;
+}
+
+.VillageMap_icon_Woods {
+    left: 290px;
+    top: 20px;
+}
+
+.VillageMap_icon_Woods:hover {
+    color: brown;
+    border-color: brown;
+}
+
+.VillageMap_icon_Mines {
+    left: 80px;
+    top: 195px;
+}
+
+.VillageMap_icon_Mines:hover {
+    color: darkgoldenrod;
+    border-color: darkgoldenrod;
 }

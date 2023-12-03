@@ -7,7 +7,8 @@ import gameSquad from '../../redux/slices/gameSquad';
 import ResourceIcon from '../Icons/ResourceIcon';
 import {ArrowUpCircle, ArrowUpCircleFill} from 'react-bootstrap-icons';
 import priorityChecker from '../../helpers/priorityChecker';
-import { UserResource } from '../../enums-and-interfaces/enums';
+import { GameScreens, UserResource } from '../../enums-and-interfaces/enums';
+import { createNoItem } from '../../helpers/emptyEssencesCreators';
 
 function BackpacksScreen(props: {
     character: ICharacher
@@ -15,6 +16,7 @@ function BackpacksScreen(props: {
     const { character } = props;
 
     const resources = useSelector((store: IStore) => store.gameSquad.resources);
+    const gameScreen = useSelector((store: IStore) => store.gameScreen.screen);
 
     const dispatch = useDispatch()
 
@@ -26,6 +28,7 @@ function BackpacksScreen(props: {
         dispatch(gameSquad.actions.sellItem(props));
     }
 
+    const nothing = createNoItem().name;
     const masteriesUser = character.general.mind.masteries.map(data => data.name);
     const backpacksUser = character.general.backpacks;
 
@@ -51,9 +54,12 @@ function BackpacksScreen(props: {
                             />
                     }                                
                 </div>
-                <div onClick={() => sellListener(props)}>
+                <button 
+                    onClick={() => sellListener(props)}
+                    disabled={gameScreen !== GameScreens.market || item.name === nothing}
+                >
                     <ResourceIcon resource={UserResource.gem} price={item.cost}/>
-                </div>
+                </button>
             </div>
         </div>
     }
@@ -77,15 +83,13 @@ function BackpacksScreen(props: {
     
     return <div className={styles.BackpacksScreen}>
         <div className={styles.BackpacksScreen_squadResources}>
-            <div>
-                <ResourceIcon resource={UserResource.gem}/>: {resources[UserResource.gem]}
-            </div>
-            <div>
-                <ResourceIcon resource={UserResource.core}/>: {resources[UserResource.core]}
-            </div>
-            <div>
-                <ResourceIcon resource={UserResource.gene}/>: {resources[UserResource.gene]}
-            </div>
+            {
+                Object.keys(resources).map(key => (
+                    <div>
+                        <ResourceIcon resource={key as UserResource}/>: {resources[key as UserResource]}
+                    </div>
+                ))
+            }
         </div>
         <div className={styles.BackpacksScreen_itemsLine}>
             {

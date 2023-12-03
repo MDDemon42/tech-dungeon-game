@@ -2,6 +2,8 @@ import acidBomb from './acidBomb.png';
 import acidSplit from './acidSplit.png';
 import apprenticeHat from './apprenticeHat.png';
 import apprenticeRod from './apprenticeRod.png';
+import axeRightHand from './axeRightHand.png';
+import axeLeftHand from './axeLeftHand.png';
 import belt from './belt.png';
 import chakram from './chakram.png';
 import clawLeft from './clawLeft.png';
@@ -40,16 +42,16 @@ import reactiveFeet from './reactiveFeet.png';
 import rightHand from './rightHand.png';
 import rocketLauncher from './rocketLauncher.png';
 import runicGreataxe from './runicGreataxe.png';
+import runicGreathammer from './runicGreathammer.png';
 import runicGreatsword from './runicGreatsword.png';
 import scalesTorso from './scalesTorso.png';
+import spear from './spear.png';
 import steelArmor from './steelArmor.png';
-import steelAxeRightHand from './steelAxeRightHand.png';
-import steelAxeLeftHand from './steelAxeLeftHand.png';
 import steelGreataxe from './steelGreataxe.png';
+import steelGreathammer from './steelGreathammer.png';
 import steelGreatsword from './steelGreatsword.png';
 import steelMace from './steelMace.png';
 import steelShield from './steelShield.png';
-import steelSpear from './steelSpear.png';
 import steelSwordLeftHand from './steelSwordLeftHand.png';
 import steelSwordRightHand from './steelSwordRightHand.png';
 import tailWithSting from './tailWithSting.png';
@@ -62,6 +64,8 @@ const bodyElements = {
     acidSplit,
     apprenticeHat,
     apprenticeRod,
+    axeRightHand,
+    axeLeftHand,
     belt,
     chakram,
     clawLeft,
@@ -100,16 +104,16 @@ const bodyElements = {
     rightHand,
     rocketLauncher,
     runicGreataxe,
+    runicGreathammer,
     runicGreatsword,
+    spear,
     scalesTorso,
     steelArmor,
-    steelAxeRightHand,
-    steelAxeLeftHand,
     steelGreataxe,
+    steelGreathammer,
     steelGreatsword,
     steelMace,
     steelShield,
-    steelSpear,
     steelSwordLeftHand,
     steelSwordRightHand,
     tailWithSting,

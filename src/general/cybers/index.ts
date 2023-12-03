@@ -1,4 +1,4 @@
-import { ICyber, IAbility, IPassiveAbility, IBattleAbility } from "../../enums-and-interfaces/interfaces";
+import { ICyber, IPassiveAbility, IBattleAbility } from "../../enums-and-interfaces/interfaces";
 import armors from "./armors";
 import weapons from "./weapons";
 import other from "./other";
@@ -17,11 +17,9 @@ export function createCyber(
     ],
     abilityInfo: [
         ability: IBattleAbility | null,
-        linkedMastery: string,
-        masterAbilities: IAbility[] | null
+        passiveAbility: IPassiveAbility | null
     ],
-    requiredCyber: string,
-    passiveAbility: IPassiveAbility | null
+    requiredCyber: string    
 ): ICyber {
     return {
         name: commonInfo[0],
@@ -33,12 +31,9 @@ export function createCyber(
         priority: inventoryInfo[2],
 
         ability: abilityInfo[0],
-        linkedMastery: abilityInfo[1],
-        masterAbilities: abilityInfo[2],
+        passiveAbility: abilityInfo[1],
 
-        requiredCyber,
-
-        passiveAbility
+        requiredCyber        
     }
 }
 

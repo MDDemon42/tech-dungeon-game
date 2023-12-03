@@ -1,4 +1,5 @@
 import cold from "./cold";
+import electrical from "./electrical";
 import fire from "./fire";
 import physicalPiercing from "./physicalPiercing";
 import physicalSmashing from "./physicalSmashing";
@@ -7,6 +8,7 @@ import psionic from "./psionic";
 
 const melee = {    
     cold,
+    electrical,
     fire,
     physicalPiercing,
     physicalSmashing,

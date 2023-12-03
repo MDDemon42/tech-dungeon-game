@@ -9,7 +9,9 @@ function actionInCaseStrongStart(tabId: number) {
     const gameSquad = {...state.gameSquad};
     const squadMembers = {...gameSquad.squadMembers};
 
-    const masteriesAmount = Object.keys(state.everything.masteries).length;
+    const masteriesAmount = 
+        Object.keys(state.everything.masteries).length +
+        Object.keys(state.everything.bending).length;
 
     for (let i in squadMembers) {
         const member = squadMembers[i];

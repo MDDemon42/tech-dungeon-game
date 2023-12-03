@@ -6,7 +6,7 @@ const battleAbility_flame = createBattleAbility(
     [
         chrome.i18n.getMessage('flame'), 
         '', 
-        images.wizardSpells.flame
+        images.elementBendings.flame
     ], 
     {Mana: 1}, 
     [1, DamageType.fire, 1, 70]
@@ -16,7 +16,7 @@ const battleAbility_fireball = createBattleAbility(
     [
         chrome.i18n.getMessage('fire_ball'), 
         '', 
-        images.wizardSpells.fireball
+        images.elementBendings.fireball
     ], 
     {Mana: 2}, 
     [2, DamageType.fire, 3, 70]
@@ -26,7 +26,7 @@ const battleAbility_fireWave = createBattleAbility(
     [
         chrome.i18n.getMessage('fire_wave'), 
         '', 
-        images.wizardSpells.fireWave
+        images.elementBendings.fireWave
     ], 
     {Mana: 3}, 
     [2, DamageType.fire, 5, 85]

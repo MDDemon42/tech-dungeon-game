@@ -14,6 +14,9 @@
     "cid_cost": {
         "message": "Cost: "
     },
+    "cid_required_bending": {
+        "message": "Required bending: "
+    },
     "cid_required_mastery": {
         "message": "Required mastery: "
     },
@@ -59,7 +62,7 @@
     "cyber_lab_title": {
         "message": "Welcome to Cyber Lab!"
     },
-    "cyber_lab_button": {
+    "implement": {
         "message": "Implement!"
     },
     "mutation_lab_to": {
@@ -68,7 +71,7 @@
     "mutation_lab_title": {
         "message": "Welcome to Mutation Lab!"
     },
-    "mutation_lab_button": {
+    "mutate": {
         "message": "Mutate!"
     },
     "market_to": {
@@ -77,7 +80,7 @@
     "market_title": {
         "message": "Welcome to Market!"
     },
-    "market_button": {
+    "buy": {
         "message": "Buy!"
     },
     "academy_to": {
@@ -86,7 +89,7 @@
     "academy_title": {
         "message": "Welcome to Academy!"
     },
-    "academy_button": {
+    "learn": {
         "message": "Learn!"
     },
     "focus_site_to": {
@@ -95,8 +98,32 @@
     "focus_site_title": {
         "message": "Welcome to Focus Site!"
     },
-    "focus_site_button": {
+    "focus_school_title": {
+        "message": "Learn Power Masteries!"
+    },
+    "develop": {
         "message": "Develop!"
+    },
+    "wizard_shop_title": {
+        "message": "Welcome to Wizard Shop!"
+    },
+    "wizard_school_to": {
+        "message": "To Wizard School!"
+    },
+    "wizard_school_title": {
+        "message": "Learn Wizard Masteries!"
+    },
+    "guild_to": {
+        "message": "To Guild!"
+    },
+    "guild_shop_title": {
+        "message": "Welcome to Guild Shop!"
+    },
+    "guild_school_title": {
+        "message": "Learn Guild Masteries!"
+    },
+    "guild_rituals_title": {
+        "message": "Surpass Guild Rituals!"
     },
     "spell_shop_to": {
         "message": "To Spell Shop!"
@@ -104,7 +131,7 @@
     "spell_shop_title": {
         "message": "Welcome to Spell Shop!"
     },
-    "spell_shop_button": {
+    "study": {
         "message": "Study!"
     },
     "no_item_name": {
@@ -124,6 +151,9 @@
     },
     "smec_posessed": {
         "message": "Already posessed"
+    },
+    "smec_bending": {
+        "message": "Does not have required bending"
     },
     "smec_mastery": {
         "message": "Does not have required mastery"
@@ -323,11 +353,11 @@
     "healing_potion_item_description": {
         "message": "Drink of herbs."
     },
-    "steel_axe": {
-        "message": "Steel axe"
+    "axe": {
+        "message": "Axe"
     },
-    "steel_axe_item_description": {
-        "message": "Usual steel axe."
+    "axe_item_description": {
+        "message": "Usual axe."
     },
     "axe_slash": {
         "message": "Axe slash"
@@ -353,11 +383,11 @@
     "mace_smash": {
         "message": "Mace smash"
     },
-    "steel_spear": {
-        "message": "Steel spear"
+    "spear": {
+        "message": "Spear"
     },
-    "steel_spear_item_description": {
-        "message": "Usual steel spear."
+    "spear_item_description": {
+        "message": "Usual spear."
     },
     "spear_pierce": {
         "message": "Spear pierce"
@@ -379,6 +409,24 @@
     },
     "runic_greataxe_slash": {
         "message": "Cold greataxe slash."
+    },
+    "steel_greathammer": {
+        "message": "Steel greathammer"
+    },
+    "steel_greathammer_item_description": {
+        "message": "Massive steel greathammer."
+    },
+    "greathammer_smash": {
+        "message": "Greathammer smash"
+    },
+    "runic_greathammer": {
+        "message": "Runic greathammer"
+    },
+    "runic_greathammer_item_description": {
+        "message": "Massive greathammer covered with runes."
+    },
+    "runic_greathammer_smash": {
+        "message": "Electrical greathammer smash."
     },
     "steel_greatsword": {
         "message": "Steel greatsword"
@@ -524,13 +572,13 @@
     "titan_skin": {
         "message": "Titan skin"
     },
-    "titan_skin_spell_description": {
-        "message": "Spell to make skin almost invincible."
+    "titan_skin_ritual_description": {
+        "message": "Ritual to make skin almost invincible."
     },
-    "defensive_charm": {
+    "defensive_charms": {
         "message": "Defensive charm"
     },
-    "defensive_charm_spell_description": {
+    "defensive_charms_spell_description": {
         "message": "Spell to protect one of your buddies from one Physical attack.\nCasted via rod or staff."
     },
     "defensive_enchantment": {
@@ -539,64 +587,118 @@
     "defensive_enchantment_spell_description": {
         "message": "Spell to protect one of your buddies from one Any attack.\nCasted via rod or staff."
     },
+    "ice_site_to": {
+        "message": "To Ice Site!"
+    },
+    "ice_site_title": {
+        "message": "Welcome to Ice Site!"
+    },
+    "ice_school_title": {
+        "message": "Learn Ice Sense!"
+    },
     "ice_shard": {
         "message": "Ice shard"
     },
-    "ice_shard_spell_description": {
+    "ice_shard_bending_description": {
         "message": "Spell to pierce an enemy with ice shard."
     },
     "ice_spear": {
         "message": "Ice spear"
     },
-    "ice_spear_spell_description": {
+    "ice_spear_bending_description": {
         "message": "Spell to pierce an enemy with ice spear."
     },
     "ice_hail": {
         "message": "Ice hail"
     },
-    "ice_hail_spell_description": {
+    "ice_hail_bending_description": {
         "message": "Spell to pierce a group of enemies with ice shards."
     },
     "cold_death": {
         "message": "Cold death"
     },
-    "cold_death_spell_description": {
+    "cold_death_bending_description": {
         "message": "Spell to turn an enemy dead and cold."
+    },
+    "fire_site_to": {
+        "message": "To Fire Site!"
+    },
+    "fire_site_title": {
+        "message": "Welcome to Fire Site!"
+    },
+    "fire_school_title": {
+        "message": "Learn Fire Sense!"
     },
     "flame": {
         "message": "Flame"
     },
-    "flame_spell_description": {
+    "flame_bending_description": {
         "message": "Spell to roast an enemy with fire."
     },
     "fire_ball": {
         "message": "Fire ball"
     },
-    "fire_ball_spell_description": {
+    "fire_ball_bending_description": {
         "message": "Spell to clash a group of enemies with fire."
     },
     "fire_wave": {
         "message": "Fire wave"
     },
-    "fire_wave_spell_description": {
+    "fire_wave_bending_description": {
         "message": "Spell to burn out a group of enemies."
+    },
+    "air_site_to": {
+        "message": "To Air Site!"
+    },
+    "air_site_title": {
+        "message": "Welcome to Air Site!"
+    },
+    "air_school_title": {
+        "message": "Learn Air Sense!"
+    },
+    "dominate": {
+        "message": "Dominate!"
+    },
+    "wood": {
+        "message": "Wood"
+    },
+    "wood_item_description": {
+        "message": "To build houses from."
+    },
+    "woods_to": {
+        "message": "To Woods!"
+    },
+    "woods_title": {
+        "message": "Deep in the Woods..."
+    },
+    "ore": {
+        "message": "Ore"
+    },
+    "ore_item_description": {
+        "message": "To make steel from. Maybe."
+    },
+    "mines_to": {
+        "message": "To Mines!"
+    },
+    "mines_title": {
+        "message": "Deep in the Mines..."
     },
     "wind_blow": {
         "message": "Wind blow"
     },
-    "wind_blow_spell_description": {
+    "wind_blow_bending_description": {
         "message": "Spell to show an enemy devastating wind."
     },
     "thunder_punch": {
         "message": "Thunder punch"
     },
-    "thunder_punch_spell_description": {
+    "thunder_punch_bending_description": {
         "message": "Spell to smash an enemy up to thunder crambls."
     },
     "air_deprivation": {
         "message": "Air deprivation"
     },
-    "air_deprivation_spell_description": {
+    "air_deprivation_bending_description": {
         "message": "Spell to make an enemy airless and lifeless."
     },
     "flying_charm": {
@@ -706,6 +808,12 @@
     },
     "battle_runes_mastery_description": {
         "message": "Mastery of activating runes on weapons."
+    },
+    "empowered_strikes": {
+        "message": "Empowered strikes"
+    },
+    "empowered_strikes_mastery_description": {
+        "message": "Mastery of using Focus to make more Physical damage."
     },
     "scholarship": {
         "message": "Scholarship"

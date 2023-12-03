@@ -1,0 +1,36 @@
+.BendingScreen {
+    border: 1px solid black;
+    padding: 5px;
+    min-width: 65px;
+    min-height: 65px;
+    width: 95%;
+}
+
+.BendingScreen_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.BendingScreen_body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.BendingScreen_buttons {
+    border: 1px solid black;
+    padding: 5px;
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.BendingScreenItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}

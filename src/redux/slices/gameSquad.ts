@@ -63,39 +63,58 @@ function createLevelUpBonuses(params: UserParam[]) {
     return result
 }
 
+function getRandomStartName() {
+    const names = [
+        'Boris', 'Jackie', 'Stephan', 'Colin', 
+        'Mishelle', 'Hanz', 'Roderick', 'Albert'
+    ]
+
+    return names[Math.floor(Math.random() * names.length)]
+}
+
 export const classInfo: IClassInfo = {
-    [UserStartClass.mutant]: {
-        startBonus: UserParam.health,
-        levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.stamina]),
-        description: 'Gets extra Health on start.\n\nOn level up has increased chance of getting Health or Stamina.\n\nBut there is a chance to get nothing too',
+    [UserStartClass.vital]: {
+        bonusParam: UserParam.health,
+        levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.health]),
+        description: 'Gets extra Health on start.\n\nOn level up has super increased chance of getting Health.\n\nBut there is a chance to get nothing too',
     },
-    [UserStartClass.cyborg]: {
-        startBonus: UserParam.health,
-        levelUpBonuses: createLevelUpBonuses([UserParam.blank, UserParam.stamina]),
-        description: 'Gets extra Health on start.\n\nOn level up has increased chance of getting Stamina.\n\nBut there is a big chance to get nothing too'
-    },
-    [UserStartClass.normal]: {
-        startBonus: UserParam.health,
+    [UserStartClass.tireless]: {
+        bonusParam: UserParam.stamina,
         levelUpBonuses: createLevelUpBonuses([UserParam.stamina, UserParam.stamina]),
-        description: 'Gets extra Health on start.\n\nOn level up has super increased chance of getting Stamina.\n\nBut there is a chance to get nothing too'
+        description: 'Gets extra Stamina on start.\n\nOn level up has super increased chance of getting Stamina.\n\nBut there is a chance to get nothing too'
     },
-    [UserStartClass.wizard]: {
-        startBonus: UserParam.mana,
+    [UserStartClass.creative]: {
+        bonusParam: UserParam.mana,
         levelUpBonuses: createLevelUpBonuses([UserParam.mana, UserParam.mana]),
         description: 'Gets extra Mana on start.\n\nOn level up has super increased chance of getting Mana.\n\nBut there is a chance to get nothing too'
     },
-    [UserStartClass.psion]: {
-        startBonus: UserParam.focus,
+    [UserStartClass.dreamer]: {
+        bonusParam: UserParam.focus,
         levelUpBonuses: createLevelUpBonuses([UserParam.focus, UserParam.focus]),
         description: 'Gets extra Focus on start.\n\nOn level up has super increased chance of getting Focus.\n\nBut there is a chance to get nothing too'
     },
-    [UserStartClass.guildian]: {
-        startBonus: UserParam.stamina,
-        levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.mana]),
-        description: 'Gets extra Stamina on start.\n\nOn level up has increased chance of getting Health or Mana.\n\nBut there is a chance to get nothing too'
+    [UserStartClass.geneKeeper]: {
+        bonusResource: UserResource.gene,
+        levelUpBonuses: createLevelUpBonuses([UserParam.stamina, UserParam.blank]),
+        description: 'Gets extra Muta-gene on start.\n\nOn level up has increased chance of getting Stamina.\n\nBut there is a big chance to get nothing too',
+    },
+    [UserStartClass.coreKeeper]: {
+        bonusResource: UserResource.core,
+        levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.blank]),
+        description: 'Gets extra Mecha-core on start.\n\nOn level up has increased chance of getting Health.\n\nBut there is a big chance to get nothing too'
+    },
+    [UserStartClass.richie]: {
+        bonusResource: UserResource.gem,
+        levelUpBonuses: createLevelUpBonuses([UserParam.mana, UserParam.blank]),
+        description: 'Gets extra Gem on start.\n\nOn level up has increased chance of getting Mana.\n\nBut there is a big chance to get nothing too'
+    },
+    [UserStartClass.ingenious]: {
+        bonusLevel: true,
+        levelUpBonuses: createLevelUpBonuses([UserParam.mana, UserParam.focus]),
+        description: 'Gets extra Level on start.\n\nOn level up has increased chance of getting Mana or Focus.\n\nBut there is a chance to get nothing too'
     },
     [UserStartClass.noIcon]: {
-        startBonus: UserParam.blank,
+        bonusParam: UserParam.blank,
         levelUpBonuses: [UserParam.blank],
         description: 'Choose one of classes to start playing'
     }
@@ -165,6 +184,7 @@ const gameSquad = createSlice({
 
             const squadMember = createEmptyCharacter();
             squadMember.params.class = action.payload;
+            squadMember.params.name = getRandomStartName();
 
             squad[state.currentlyWatched] = squadMember;
 
@@ -180,8 +200,21 @@ const gameSquad = createSlice({
             squadMember.params.maxParams[UserParam.stamina] = 3;
             squadMember.params.level = 1;
 
-            const {startBonus} = classInfo[squadMember.params.class];
-            squadMember.params.maxParams[startBonus] += 1;
+            const {
+                bonusParam, 
+                bonusResource, 
+                bonusLevel
+            } = classInfo[squadMember.params.class];
+
+            if (bonusParam) {
+                squadMember.params.maxParams[bonusParam] += 1;
+            }
+            if (bonusResource) {
+                oldState.resources[bonusResource] += 1;
+            }
+            if (bonusLevel) {
+                squadMember.params.level += 1;
+            }
 
             Object.keys(squad).forEach(key => {
                 if (!!squad[key]) {
@@ -215,6 +248,38 @@ const gameSquad = createSlice({
         },
         changeSquadMember(state, action) {
             state.currentlyWatched = action.payload
+        },
+        getBigResource(state, action) {
+            const oldState = {...state};
+            const index = oldState.currentlyWatched;
+            const members = oldState.squadMembers;
+            const squadMember = members[index];
+            const backpacks = squadMember.general.backpacks;
+
+            const maxItemsAmount = getBackpacksCapability(squadMember);
+            putItemInBackpacks(backpacks, action.payload, maxItemsAmount);
+
+            state = oldState;
+        },
+        useBigResource(state, action) {
+            const oldState = {...state};
+            const members = oldState.squadMembers;
+            const squadMember = members[oldState.currentlyWatched];
+
+            let {amount, name} = action.payload;
+
+            const backpacks = squadMember.general.backpacks.map(item => {
+                if (item.name === name && amount > 0) {
+                    amount--;
+                    return createNoItem();
+                } else {
+                    return item
+                }
+            })
+
+            squadMember.general.backpacks = backpacks;
+
+            state = oldState;
         },
         buyItem(state, action) {
             const oldState = {...state};
@@ -346,12 +411,32 @@ const gameSquad = createSlice({
 
             state.squadMembers = squad;
         },
+        dominateBending(state, action) {
+            const {index, data} = action.payload;
+            const squad = {...state.squadMembers};
+            const squadMember = squad[index];
+
+            squadMember.general.mind.bending.push(data);
+
+            state.squadMembers = squad;
+        },
         developPower(state, action) {
             const {index, data} = action.payload;
             const squad = {...state.squadMembers};
-            const squadMember = squad[index]!;
+            const squadMember = squad[index];
 
             squadMember.general.mind.powers.push(data);
+
+            integratePassiveAbility(squadMember, data, +1);
+
+            state.squadMembers = squad;
+        },
+        surpassRitual(state, action) {
+            const {index, data} = action.payload;
+            const squad = {...state.squadMembers};
+            const squadMember = squad[index];
+
+            squadMember.general.mind.rituals.push(data);
 
             integratePassiveAbility(squadMember, data, +1);
 

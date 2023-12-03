@@ -7,6 +7,7 @@ import wizardSpells from './wizardSpells/wizardSpells';
 import mutantEvolvings from './mutantEvolvings/mutantEvolvings';
 import psionInsights from './psionInsights/psionInsights';
 import guildianLearnings from './guildianLearnings/guildianLearnings';
+import elementBendings from './elementBendings/elementBendings';
 import paramIcons from './paramIcons/paramIcons';
 import misc from './misc/misc';
 
@@ -20,6 +21,7 @@ const images = {
     mutantEvolvings,
     psionInsights,
     guildianLearnings,
+    elementBendings,
     paramIcons,
     misc
 };

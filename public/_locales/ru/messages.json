@@ -14,6 +14,9 @@
     "cid_cost": {
         "message": "Цена: "
     },
+    "cid_required_bending": {
+        "message": "Необходимое подчинение стихии: "
+    },
     "cid_required_mastery": {
         "message": "Необходимое мастерство: "
     },
@@ -59,7 +62,7 @@
     "cyber_lab_title": {
         "message": "Вот моя Киберлаборатория!"
     },
-    "cyber_lab_button": {
+    "implement": {
         "message": "Внедрить!"
     },
     "mutation_lab_to": {
@@ -68,7 +71,7 @@
     "mutation_lab_title": {
         "message": "Это Мутолаборатория!"
     },
-    "mutation_lab_button": {
+    "mutate": {
         "message": "Мутировать!"
     },
     "market_to": {
@@ -77,7 +80,7 @@
     "market_title": {
         "message": "Добро пожаловать в мой Магазин!"
     },
-    "market_button": {
+    "buy": {
         "message": "Купить!"
     },
     "academy_to": {
@@ -86,7 +89,7 @@
     "academy_title": {
         "message": "Вы в Академии!"
     },
-    "academy_button": {
+    "learn": {
         "message": "Изучить!"
     },
     "focus_site_to": {
@@ -95,8 +98,32 @@
     "focus_site_title": {
         "message": "Это Место средоточия!"
     },
-    "focus_site_button": {
+    "focus_school_title": {
+        "message": "Изучите Мастерства Сил!"
+    },
+    "develop": {
         "message": "Развить!"
+    },
+    "wizard_shop_title": {
+        "message": "Покупайте в магазине для Волшебников!"
+    },
+    "wizard_school_to": {
+        "message": "В Школу Волшебства!"
+    },
+    "wizard_school_title": {
+        "message": "Изучите Мастерства Волшебства!"
+    },
+    "guild_to": {
+        "message": "В Гильдию!"
+    },
+    "guild_shop_title": {
+        "message": "Покупайте в Гильдейском магазине!"
+    },
+    "guild_school_title": {
+        "message": "Изучите Гильдейские Мастерства!"
+    },
+    "guild_rituals_title": {
+        "message": "Переживите Гильдейские Ритуалы!"
     },
     "spell_shop_to": {
         "message": "В Заклинальню!"
@@ -104,7 +131,7 @@
     "spell_shop_title": {
         "message": "Проходите в Заклинальню!"
     },
-    "spell_shop_button": {
+    "study": {
         "message": "Зазубрить!"
     },
     "no_item_name": {
@@ -124,6 +151,9 @@
     },
     "smec_posessed": {
         "message": "Уже есть"
+    },
+    "smec_bending": {
+        "message": "Нет необходимого подчинения стихии"
     },
     "smec_mastery": {
         "message": "Нет необходимого мастерства"
@@ -323,11 +353,11 @@
     "healing_potion_item_description": {
         "message": "Напиток из целебных трав."
     },
-    "steel_axe": {
-        "message": "Стальной топор"
+    "axe": {
+        "message": "Топор"
     },
-    "steel_axe_item_description": {
-        "message": "Обычный стальной топор."
+    "axe_item_description": {
+        "message": "Обычный топор."
     },
     "axe_slash": {
         "message": "Удар топором"
@@ -350,11 +380,11 @@
     "mace_smash": {
         "message": "Удар булавой"
     },
-    "steel_spear": {
-        "message": "Стальное копьё"
+    "spear": {
+        "message": "Копьё"
     },
-    "steel_spear_item_description": {
-        "message": "Обычное стальное копьё."
+    "spear_item_description": {
+        "message": "Обычное копьё."
     },
     "spear_pierce": {
         "message": "Выпад копьём"
@@ -376,6 +406,24 @@
     },
     "runic_greataxe_slash": {
         "message": "Удар холодом секиры."
+    },
+    "steel_greathammer": {
+        "message": "Стальной молот"
+    },
+    "steel_greathammer_item_description": {
+        "message": "Массивный стальной молот."
+    },
+    "greathammer_smash": {
+        "message": "Удар молотом"
+    },
+    "runic_greathammer": {
+        "message": "Рунный молот"
+    },
+    "runic_greathammer_item_description": {
+        "message": "Массивный молот, покрытый рунами."
+    },
+    "runic_greathammer_smash": {
+        "message": "Удар электричеством молота."
     },
     "steel_greatsword": {
         "message": "Стальная клеймора"
@@ -521,13 +569,13 @@
     "titan_skin": {
         "message": "Титановая кожа"
     },
-    "titan_skin_spell_description": {
-        "message": "Заклинание для почти неуязвимой кожи."
+    "titan_skin_ritual_description": {
+        "message": "Ритуал для почти неуязвимой кожи."
     },
-    "defensive_charm": {
+    "defensive_charms": {
         "message": "Защитные чары"
     },
-    "defensive_charm_spell_description": {
+    "defensive_charms_spell_description": {
         "message": "Заклинание для уверенной защиты одного из союзников.\nДля применения нужен посох или скипетр."
     },
     "defensive_enchantment": {
@@ -536,64 +584,118 @@
     "defensive_enchantment_spell_description": {
         "message": "Заклинание для полной защиты одного из союзников.\nДля применения нужен посох или скипетр."
     },
+    "ice_site_to": {
+        "message": "К Леднику!"
+    },
+    "ice_site_title": {
+        "message": "Проходите к Леднику!"
+    },
+    "ice_school_title": {
+        "message": "Изучите Чувство Льда!"
+    },
     "ice_shard": {
         "message": "Ледяной осколок"
     },
-    "ice_shard_spell_description": {
+    "ice_shard_bending_description": {
         "message": "Заклинание для протыкания врага осколком льда."
     },
     "ice_spear": {
         "message": "Ледяное копьё"
     },
-    "ice_spear_spell_description": {
+    "ice_spear_bending_description": {
         "message": "Заклинание для протыкания врага большим осколком льда."
     },
     "ice_hail": {
         "message": "Ледяная буря"
     },
-    "ice_hail_spell_description": {
+    "ice_hail_bending_description": {
         "message": "Заклинание для протыкания группы врагов осколками льда."
     },
     "cold_death": {
         "message": "Холодная смерть"
     },
-    "cold_death_spell_description": {
+    "cold_death_bending_description": {
         "message": "Заклинание для превращения врага в мёртвую ледышку."
+    },
+    "fire_site_to": {
+        "message": "К Огнищу!"
+    },
+    "fire_site_title": {
+        "message": "Проходите к Огнищу!"
+    },
+    "fire_school_title": {
+        "message": "Изучите Чувство Огня!"
     },
     "flame": {
         "message": "Пламя"
     },
-    "flame_spell_description": {
+    "flame_bending_description": {
         "message": "Заклинание для поджаривания врага."
     },
     "fire_ball": {
         "message": "Огненный шар"
     },
-    "fire_ball_spell_description": {
+    "fire_ball_bending_description": {
         "message": "Заклинание для раскидывания врагов шаром из огня."
     },
     "fire_wave": {
         "message": "Огненная волна"
     },
-    "fire_wave_spell_description": {
+    "fire_wave_bending_description": {
         "message": "Заклинание для испепеления группы врагов."
+    },
+    "air_site_to": {
+        "message": "К Перепутью Ветров!"
+    },
+    "air_site_title": {
+        "message": "Проходите к Перепутью Ветров!"
+    },
+    "air_school_title": {
+        "message": "Изучите Чувство Воздуха!"
+    },
+    "dominate": {
+        "message": "Подчинить!"
+    },
+    "wood": {
+        "message": "Древесина"
+    },
+    "wood_item_description": {
+        "message": "Из неё строят дома."
+    },
+    "woods_to": {
+        "message": "В Леса!"
+    },
+    "woods_title": {
+        "message": "Глубоко в Лесах..."
+    },
+    "ore": {
+        "message": "Руда"
+    },
+    "ore_item_description": {
+        "message": "Из неё плавят сталь. Вроде бы."
+    },
+    "mines_to": {
+        "message": "В Шахты!"
+    },
+    "mines_title": {
+        "message": "Глубоко в Шахтах..."
     },
     "wind_blow": {
         "message": "Порыв ветра"
     },
-    "wind_blow_spell_description": {
+    "wind_blow_bending_description": {
         "message": "Заклинание для демонстрации разрушительности ветра."
     },
     "thunder_punch": {
         "message": "Громовой удар"
     },
-    "thunder_punch_spell_description": {
+    "thunder_punch_bending_description": {
         "message": "Заклинание для удара с раскатами грома."
     },
     "air_deprivation": {
         "message": "Удушение"
     },
-    "air_deprivation_spell_description": {
+    "air_deprivation_bending_description": {
         "message": "Заклинание для лишения врага воздуха и жизни."
     },
     "flying_charm": {
@@ -703,6 +805,12 @@
     },
     "battle_runes_mastery_description": {
         "message": "Мастерство активации рун на оружии."
+    },
+    "empowered_strikes": {
+        "message": "Усиленные удары"
+    },
+    "empowered_strikes_mastery_description": {
+        "message": "Мастерство использования Концентрации\nдля увеличения Физического урона."
     },
     "scholarship": {
         "message": "Обучение"

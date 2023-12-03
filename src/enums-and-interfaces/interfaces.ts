@@ -3,7 +3,7 @@ import {
     GameScreens, 
     InventoryOption, 
     InventoryOptionPart, 
-    InventoryPlace, 
+    InventoryPlace,
     MindOption, 
     Race, 
     UserParam, 
@@ -15,19 +15,34 @@ import {
 export interface IStore {
     everything: IEverything,
     gameScreen: IGameScreen,
+    gameStage: IGameStage,
     gameSquad: IGameSquad,
     opponents: IOpponentSquad
 }
 
 export interface IEverything {
+    [MindOption.bending]: Record<string, Record<string, IBending>>,
     [MindOption.masteries]: Record<string, IMastery>,
     [MindOption.spells]: Record<string, ISpell>,
-    [MindOption.powers]: Record<string, IPower>
+    [MindOption.rituals]: Record<string, IRitual>,
+    [MindOption.powers]: {
+        [InventoryOptionPart.armors]: Record<string, IPower>,
+        [InventoryOptionPart.weapons]: Record<string, IPower>,
+        [InventoryOptionPart.other]: Record<string, IPower>
+    }
     [InventoryOption.items]: {
         [InventoryOptionPart.armors]: Record<string, IItem>,
         [InventoryOptionPart.weapons]: Record<string, IItem>,
         [InventoryOptionPart.other]: Record<string, IItem>
     },    
+    [InventoryOption.wizardItems]: {
+        [InventoryOptionPart.armors]: Record<string, IWizardItem>,
+        [InventoryOptionPart.weapons]: Record<string, IWizardItem>,
+        [InventoryOptionPart.other]: Record<string, IWizardItem>
+    },
+    [InventoryOption.guildItems]: {
+        [InventoryOptionPart.weapons]: Record<string, IGuildItem>,
+    },
     [InventoryOption.cybers]: {
         [InventoryOptionPart.armors]: Record<string, ICyber>,
         [InventoryOptionPart.weapons]: Record<string, ICyber>,
@@ -41,8 +56,105 @@ export interface IEverything {
 }
 
 export interface IGameScreen {
+    screen: GameScreens
+}
+
+export interface IGameStage {
+    [GameScreens.market]: {
+        stage: number,
+        options: Record<string, IItem[]>
+    },
+    [GameScreens.academy]: {
+        stage: number,
+        options: Record<string, IMastery[]>
+    },
+    [GameScreens.cyberLab]: {
+        stage: number,
+        options: Record<string, ICyber[]>
+    },
+    [GameScreens.mutationLab]: {
+        stage: number,
+        options: Record<string, IMutation[]>
+    },
+    [GameScreens.focusSite]: {
+        stage: number,
+        options: Record<string, IPower[]>
+    },
+    [GameScreens.focusSchool]: {
+        stage: number,
+        options: Record<string, IMastery[]>
+    },
+    [GameScreens.spellSchool]: {
+        stage: number,
+        options: Record<string, ISpell[]>,
+    },
+    [GameScreens.wizardShop]: {
+        stage: number,
+        options: Record<string, IWizardItem[]>
+    },
+    [GameScreens.wizardSchool]: {
+        stage: number,
+        options: Record<string, IMastery[]>
+    },
+    [GameScreens.villageMap]: {
+        stage: number,
+        options: null
+    },
+    [GameScreens.fireSite]: {
+        stage: number,
+        options: Record<string, IBending[]>
+    },
+    [GameScreens.iceSite]: {
+        stage: number,
+        options: Record<string, IBending[]>
+    },
+    [GameScreens.airSite]: {
+        stage: number,
+        options: Record<string, IBending[]>
+    },
+    [GameScreens.fireSchool]: {
+        stage: number,
+        options: Record<string, IMastery[]>
+    },
+    [GameScreens.iceSchool]: {
+        stage: number,
+        options: Record<string, IMastery[]>
+    },
+    [GameScreens.airSchool]: {
+        stage: number,
+        options: Record<string, IMastery[]>
+    },
+    [GameScreens.guildRituals]: {
+        stage: number,
+        options: Record<string, IRitual[]>
+    },
+    [GameScreens.guildSchool]: {
+        stage: number,
+        options: Record<string, IMastery[]>
+    },
+    [GameScreens.guildShop]: {
+        stage: number,
+        options: Record<string, IGuildItem[]>
+    }
+}
+
+export interface ITaskScreenProps {
     screen: GameScreens,
-    shouldShowBackpacks: boolean
+    stage: number,
+    leaveListener: () => void
+}
+
+export interface IGameTasks extends Record<GameScreens, IScreenTasks> {}
+
+export interface IScreenTasks extends Record<string, ITask> {}
+
+export interface ITask {
+    bigResourceName: string,
+    bigResourceAmount: number,
+    stageTitle: string,
+    stageText: string,
+    doTaskText: string,
+    leaveText: string
 }
 
 export interface IGameSquad {
@@ -109,15 +221,22 @@ export interface ICharacherParams {
 
 // mind options //
 export interface IMind {
+    [MindOption.rituals]: IRitual[],
+    [MindOption.bending]: IBending[],
     [MindOption.masteries]: IMastery[],
     [MindOption.powers]: IPower[],
-    [MindOption.spells]: ISpell[]
+    [MindOption.spells]: ISpell[],
 }
 
 export interface ISpell extends IMastery {
-    ability: IAbility | null,
-    requiresRod: boolean,
-    requiresBothHands: boolean
+    ability: IBattleAbility | null,
+    requiresRod: boolean
+}
+
+export interface IBending extends IMastery {
+    ability: IBattleAbility | null,
+    requiresBothHands: boolean,
+    requiredBending: string
 }
 
 export interface IPower extends IMastery {
@@ -126,13 +245,19 @@ export interface IPower extends IMastery {
     requiredPower: string
 }
 
+export interface IRitual extends IMastery {
+    passiveAbility: IPassiveAbility
+}
+
 export interface IMastery extends ICommon {
     requiredMastery: string
 }
 
 // inventory options //
-export interface IInventory extends Record<string, IItem | ICyber | IMutation> {
-    hat: IItem,
+export interface IInventory extends Record<string, 
+    IItem | ICyber | IMutation | IWizardItem | IGuildItem
+> {
+    hat: IItem | IWizardItem,
     head: IMutation,
     chin: IMutation,
     armor: IItem | IMutation,
@@ -156,8 +281,22 @@ export interface ICyber extends IMutation {
 export interface IMutation extends IInventorySlot {
 }
 
+export interface IGuildItem extends IItem {
+}
+
 export interface IItem extends IInventorySlot {
-    requiredMastery: string
+    requiredMastery: string,
+    linkedMastery: string,
+    masterAbilities: IAbility[] | null,
+}
+
+export interface IWizardItem extends IInventorySlot {
+}
+
+export interface IBigResource extends ICommon {
+    cost: number,
+    inventoryPlace: InventoryPlace,
+    priority: number
 }
 
 export interface IInventorySlot extends ICommon {
@@ -166,9 +305,6 @@ export interface IInventorySlot extends ICommon {
     priority: number,
 
     ability: IBattleAbility | null,
-    linkedMastery: string,
-    masterAbilities: IAbility[] | null,
-
     passiveAbility: IPassiveAbility | null
 }
 
@@ -220,17 +356,21 @@ export interface IPassiveAbility extends ICommon {
 
 // classes //
 export interface IClassInfo {
-    [UserStartClass.mutant]: IClassInfoItem,
-    [UserStartClass.cyborg]: IClassInfoItem,
-    [UserStartClass.normal]: IClassInfoItem,
-    [UserStartClass.wizard]: IClassInfoItem,
-    [UserStartClass.psion]: IClassInfoItem,
-    [UserStartClass.guildian]: IClassInfoItem,
+    [UserStartClass.vital]: IClassInfoItem,
+    [UserStartClass.tireless]: IClassInfoItem,
+    [UserStartClass.creative]: IClassInfoItem,
+    [UserStartClass.dreamer]: IClassInfoItem,
+    [UserStartClass.geneKeeper]: IClassInfoItem,
+    [UserStartClass.coreKeeper]: IClassInfoItem,
+    [UserStartClass.richie]: IClassInfoItem,
+    [UserStartClass.ingenious]: IClassInfoItem,
     [UserStartClass.noIcon]: IClassInfoItem
 }
 
 interface IClassInfoItem {
-    startBonus: UserParam,
+    bonusLevel?: boolean,
+    bonusParam?: UserParam,
+    bonusResource?: UserResource,
     levelUpBonuses: UserParam[],
     description: string
 }
@@ -251,13 +391,31 @@ export interface IMutationsForRaceCheck {
 }
 
 // lookout pages //
+export interface IBendingMapping extends ISubMapping {
+    upgradeButtons: {
+        title: string,
+        stage: number,
+        disabled: boolean
+    }[]
+}
+
 export interface ISubInventoryMapping extends ISubMapping {
-    resource: UserResource
+    resource: UserResource,
+    upgradeButtons?: {
+        title: string,
+        stage: number,
+        disabled: boolean
+    }[]
 }
 
 export interface ISubMindMapping extends ISubMapping {
     capacity: number,
-    posessed: number
+    posessed: number,
+    upgradeButtons?: {
+        title: string,
+        stage: number,
+        disabled: boolean
+    }[]
 }
 
 interface ISubMapping {
