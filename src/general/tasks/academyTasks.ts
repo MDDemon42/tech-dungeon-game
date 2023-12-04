@@ -1,4 +1,6 @@
 import { createTask } from ".";
+import { TaskStatus } from "../../enums-and-interfaces/enums";
+import { IScreenTasks } from "../../enums-and-interfaces/interfaces";
 import items from "../items";
 
 const task_buildAcademy = createTask(
@@ -17,9 +19,15 @@ const task_modernizeAcademy = createTask(
     'Of course!', 'Not sure'
 )
 
-const academyTasks = {
-    1: task_buildAcademy,
-    2: task_modernizeAcademy
+const academyTasks: IScreenTasks = {
+    1: {
+        status: TaskStatus.notKnown,
+        task: task_buildAcademy
+    },
+    2: {
+        status: TaskStatus.notKnown,
+        task: task_modernizeAcademy
+    }
 }
 
 export default academyTasks

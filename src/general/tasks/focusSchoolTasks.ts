@@ -1,4 +1,5 @@
 import { createTask } from "."
+import { TaskStatus } from "../../enums-and-interfaces/enums"
 import { IScreenTasks } from "../../enums-and-interfaces/interfaces"
 import items from "../items"
 
@@ -19,8 +20,14 @@ const task_modernizeFocusSchool = createTask(
 )
 
 const focusSchoolTasks: IScreenTasks = {
-    1: task_buildFocusSchool,
-    3: task_modernizeFocusSchool
+    1: {
+        status: TaskStatus.notKnown,
+        task: task_buildFocusSchool
+    },
+    3: {
+        status: TaskStatus.notKnown,
+        task: task_modernizeFocusSchool
+    }
 }
 
 export default focusSchoolTasks

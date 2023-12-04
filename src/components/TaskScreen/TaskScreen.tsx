@@ -17,7 +17,7 @@ function TaskScreen(props: {
         screen, stage,
         leaveListener
     } = props;
-    const task = tasks[screen]?.[stage] as ITask;
+    const task = tasks[screen]?.[stage].task as ITask;
     const {
         bigResourceAmount,
         bigResourceName,

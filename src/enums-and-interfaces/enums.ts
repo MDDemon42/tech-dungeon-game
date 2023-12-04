@@ -97,25 +97,25 @@ export enum BendingOption {
 }
 
 export enum GameScreens {
-    market = 'Market',
     academy = 'Academy',
-    spellSchool = 'Spell_School',
-    wizardShop = 'Wizard_Shop',
-    wizardSchool = 'Wizard_School',
-    focusSite = 'Focus_Site',
-    focusSchool = 'Focus_School',
-    fireSite = 'Fire_Site',
-    iceSite = 'Ice_Site',
-    airSite = 'Air_Site',
-    fireSchool = 'Fire_School',
-    iceSchool = 'Ice_School',
     airSchool = 'Air_School',
+    airSite = 'Air_Site',
     cyberLab = 'Cyber_Lab',
-    mutationLab = 'Mutation_Lab',
-    villageMap = 'Village_Map',
-    guildShop = 'Guild_Shop',
+    fireSchool = 'Fire_School',
+    fireSite = 'Fire_Site',
+    focusSchool = 'Focus_School',
+    focusSite = 'Focus_Site',
+    guildRituals = 'Guild_Rituals',
     guildSchool = 'Guild_School',
-    guildRituals ='Guild_rituals'
+    guildShop = 'Guild_Shop',
+    iceSchool = 'Ice_School',
+    iceSite = 'Ice_Site',
+    market = 'Market',
+    mutationLab = 'Mutation_Lab',    
+    spellSchool = 'Spell_School',
+    villageMap = 'Village_Map', 
+    wizardSchool = 'Wizard_School',
+    wizardShop = 'Wizard_Shop',
 }
 
 export enum InventoryGameScreens {
@@ -136,11 +136,17 @@ export enum MindGameScreens {
     iceSchool = 'Ice_School',
     airSchool = 'Air_School',
     guildSchool = 'Guild_School',
-    guildRituals ='Guild_rituals'
+    guildRituals ='Guild_Rituals'
 }
 
 export enum BendingGameScreens {
     fireSite = 'Fire_Site',
     iceSite = 'Ice_Site',
     airSite = 'Air_Site'
+}
+
+export enum TaskStatus {
+    notKnown = 'Not_known',
+    known = 'Known',
+    completed = 'Completed'
 }

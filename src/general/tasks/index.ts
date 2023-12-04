@@ -29,18 +29,27 @@ export function createTask(
         leaveText
     }
 }
-
-const tasks: Partial<IGameTasks> = {
+   
+const tasks: IGameTasks = {
     [GameScreens.academy]: academyTasks,
     [GameScreens.airSchool]: airSchoolTasks,
+    [GameScreens.airSite]: null,
     [GameScreens.cyberLab]: cyberLabTasks,
     [GameScreens.fireSchool]: fireSchoolTasks,
+    [GameScreens.fireSite]: null,
     [GameScreens.focusSchool]: focusSchoolTasks,
+    [GameScreens.focusSite]: null,
+    [GameScreens.guildRituals]: null,
     [GameScreens.guildSchool]: guildSchoolTasks,
+    [GameScreens.guildShop]: null,
     [GameScreens.iceSchool]: iceSchoolTasks,
+    [GameScreens.iceSite]: null,
     [GameScreens.market]: marketTasks,
     [GameScreens.mutationLab]: mutationLabTasks,
-    [GameScreens.wizardSchool]: wizardSchoolTasks
+    [GameScreens.spellSchool]: null,
+    [GameScreens.villageMap]: null,
+    [GameScreens.wizardSchool]: wizardSchoolTasks,
+    [GameScreens.wizardShop]: null,
 }
 
 export default tasks

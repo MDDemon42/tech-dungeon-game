@@ -1,4 +1,5 @@
 import { createTask } from ".";
+import { TaskStatus } from "../../enums-and-interfaces/enums";
 import items from "../items";
 
 const task_buildWizardSchool = createTask(
@@ -18,8 +19,14 @@ const task_modernizeWizardSchool = createTask(
 )
 
 const wizardSchoolTasks = {
-    1: task_buildWizardSchool,
-    2: task_modernizeWizardSchool
+    1: {
+        status: TaskStatus.notKnown,
+        task: task_buildWizardSchool
+    },
+    2: {
+        status: TaskStatus.notKnown,
+        task: task_modernizeWizardSchool
+    }
 }
 
 export default wizardSchoolTasks

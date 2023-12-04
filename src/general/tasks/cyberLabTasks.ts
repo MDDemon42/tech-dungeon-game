@@ -1,4 +1,6 @@
 import { createTask } from ".";
+import { TaskStatus } from "../../enums-and-interfaces/enums";
+import { IScreenTasks } from "../../enums-and-interfaces/interfaces";
 import items from "../items";
 
 const task_buildCyberLab = createTask(
@@ -33,11 +35,23 @@ const task_ultimateCyberLab = createTask(
     'Of course!', 'Not sure'
 )
 
-const cyberLabTasks = {
-    1: task_buildCyberLab,
-    2: task_modernizeCyberLab,
-    3: task_upgradeCyberLab,
-    4: task_ultimateCyberLab
+const cyberLabTasks: IScreenTasks = {
+    1: {
+        status: TaskStatus.notKnown,
+        task: task_buildCyberLab
+    },
+    2: {
+        status: TaskStatus.notKnown,
+        task: task_modernizeCyberLab
+    },
+    3: {
+        status: TaskStatus.notKnown,
+        task: task_upgradeCyberLab
+    },
+    4: {
+        status: TaskStatus.notKnown,
+        task: task_ultimateCyberLab
+    }
 }
 
 export default cyberLabTasks

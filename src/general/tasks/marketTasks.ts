@@ -1,4 +1,5 @@
 import { createTask } from "."
+import { TaskStatus } from "../../enums-and-interfaces/enums"
 import { IScreenTasks } from "../../enums-and-interfaces/interfaces"
 import items from "../items"
 
@@ -11,7 +12,10 @@ const task_steelOptions = createTask(
 )
 
 const marketTasks: IScreenTasks = {
-    2: task_steelOptions
+    2: {
+        status: TaskStatus.notKnown,
+        task: task_steelOptions
+    }
 }
 
 export default marketTasks

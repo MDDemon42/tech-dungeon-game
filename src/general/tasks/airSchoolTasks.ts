@@ -1,4 +1,5 @@
 import { createTask } from "."
+import { TaskStatus } from "../../enums-and-interfaces/enums"
 import { IScreenTasks } from "../../enums-and-interfaces/interfaces"
 import items from "../items"
 
@@ -11,7 +12,10 @@ const task_buildAirSchool = createTask(
 )
 
 const airSchoolTasks: IScreenTasks = {
-    1: task_buildAirSchool
+    1: {
+        status: TaskStatus.notKnown,
+        task: task_buildAirSchool
+    }
 }
 
 export default airSchoolTasks

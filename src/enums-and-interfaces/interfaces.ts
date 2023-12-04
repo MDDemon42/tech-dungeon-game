@@ -6,6 +6,7 @@ import {
     InventoryPlace,
     MindOption, 
     Race, 
+    TaskStatus, 
     UserParam, 
     UserResource, 
     UserStartClass
@@ -59,84 +60,21 @@ export interface IGameScreen {
     screen: GameScreens
 }
 
-export interface IGameStage {
-    [GameScreens.market]: {
-        stage: number,
-        options: Record<string, IItem[]>
-    },
-    [GameScreens.academy]: {
-        stage: number,
-        options: Record<string, IMastery[]>
-    },
-    [GameScreens.cyberLab]: {
-        stage: number,
-        options: Record<string, ICyber[]>
-    },
-    [GameScreens.mutationLab]: {
-        stage: number,
-        options: Record<string, IMutation[]>
-    },
-    [GameScreens.focusSite]: {
-        stage: number,
-        options: Record<string, IPower[]>
-    },
-    [GameScreens.focusSchool]: {
-        stage: number,
-        options: Record<string, IMastery[]>
-    },
-    [GameScreens.spellSchool]: {
-        stage: number,
-        options: Record<string, ISpell[]>,
-    },
-    [GameScreens.wizardShop]: {
-        stage: number,
-        options: Record<string, IWizardItem[]>
-    },
-    [GameScreens.wizardSchool]: {
-        stage: number,
-        options: Record<string, IMastery[]>
-    },
-    [GameScreens.villageMap]: {
-        stage: number,
-        options: null
-    },
-    [GameScreens.fireSite]: {
-        stage: number,
-        options: Record<string, IBending[]>
-    },
-    [GameScreens.iceSite]: {
-        stage: number,
-        options: Record<string, IBending[]>
-    },
-    [GameScreens.airSite]: {
-        stage: number,
-        options: Record<string, IBending[]>
-    },
-    [GameScreens.fireSchool]: {
-        stage: number,
-        options: Record<string, IMastery[]>
-    },
-    [GameScreens.iceSchool]: {
-        stage: number,
-        options: Record<string, IMastery[]>
-    },
-    [GameScreens.airSchool]: {
-        stage: number,
-        options: Record<string, IMastery[]>
-    },
-    [GameScreens.guildRituals]: {
-        stage: number,
-        options: Record<string, IRitual[]>
-    },
-    [GameScreens.guildSchool]: {
-        stage: number,
-        options: Record<string, IMastery[]>
-    },
-    [GameScreens.guildShop]: {
-        stage: number,
-        options: Record<string, IGuildItem[]>
-    }
-}
+export interface IGameStage extends Record<GameScreens, {
+    stage: number,
+    options: IScreenStageOptions | null,
+    tasks: IScreenTasks | null
+}> {}
+
+export interface IGameStageOptions extends Record<GameScreens, IScreenStageOptions | null> {}
+
+export interface IScreenStageOptions extends Record<string, (
+    IMastery | IItem |
+    ICyber | IMutation |
+    IPower | ISpell |
+    IWizardItem | IBending |
+    IRitual | IGuildItem
+)[]> {}
 
 export interface ITaskScreenProps {
     screen: GameScreens,
@@ -144,9 +82,12 @@ export interface ITaskScreenProps {
     leaveListener: () => void
 }
 
-export interface IGameTasks extends Record<GameScreens, IScreenTasks> {}
+export interface IGameTasks extends Record<GameScreens, IScreenTasks | null> {}
 
-export interface IScreenTasks extends Record<string, ITask> {}
+export interface IScreenTasks extends Record<string, {
+    status: TaskStatus
+    task: ITask
+}> {}
 
 export interface ITask {
     bigResourceName: string,
