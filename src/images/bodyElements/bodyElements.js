@@ -5,6 +5,8 @@ import apprenticeRod from './apprenticeRod.png';
 import axeRightHand from './axeRightHand.png';
 import axeLeftHand from './axeLeftHand.png';
 import belt from './belt.png';
+import brutalLegs from './brutalLegs.png';
+import brutalTorso from './brutalTorso.png';
 import chakram from './chakram.png';
 import clawLeft from './clawLeft.png';
 import clawRight from './clawRight.png';
@@ -56,6 +58,8 @@ import steelSwordLeftHand from './steelSwordLeftHand.png';
 import steelSwordRightHand from './steelSwordRightHand.png';
 import tailWithSting from './tailWithSting.png';
 import telekinesis from './telekinesis.png';
+import titanLegs from './titanLegs.png';
+import titanTorso from './titanTorso.png';
 import torso from './torso.png';
 import wings from './wings.png';
 
@@ -67,6 +71,8 @@ const bodyElements = {
     axeRightHand,
     axeLeftHand,
     belt,
+    brutalLegs,
+    brutalTorso,
     chakram,
     clawLeft,
     clawRight,
@@ -118,6 +124,8 @@ const bodyElements = {
     steelSwordRightHand,
     tailWithSting,
     telekinesis,
+    titanLegs,
+    titanTorso,
     torso,
     wings
 }

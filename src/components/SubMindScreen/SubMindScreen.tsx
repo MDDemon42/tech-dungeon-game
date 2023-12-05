@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import styles from './SubMindScreen.module.css';
-import { IMastery, IPower, ISpell, IStore, ISubMindMapping } from '../../enums-and-interfaces/interfaces';
+import { IMastery, IPower, IRitual, ISpell, IStore, ISubMindMapping } from '../../enums-and-interfaces/interfaces';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
 import { MindGameScreens, UserParam } from '../../enums-and-interfaces/enums';
@@ -21,7 +21,8 @@ function SubMindScreen(props: {
 
     const {screenName} = props;
     const stage = useSelector((store: IStore) => store.gameStage[screenName].stage);
-    const dataAll = useSelector((store: IStore) => store.gameStage[screenName].options[stage]);
+    const dataAll = useSelector((store: IStore) => 
+        store.gameStage[screenName].options?.[stage]) as (IMastery | IPower | ISpell | IRitual)[];
 
     const dispatch = useDispatch();
 

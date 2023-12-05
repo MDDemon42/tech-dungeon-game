@@ -18,7 +18,7 @@ function BendingScreen(props: {
 
     const {screenName} = props;
     const stage = useSelector((store: IStore) => store.gameStage[screenName].stage);
-    const bendingOptions = useSelector((store: IStore) => store.gameStage[screenName].options[stage]);
+    const bendingOptions = useSelector((store: IStore) => store.gameStage[screenName].options?.[stage]);
 
     const dispatch = useDispatch();
 
@@ -96,9 +96,9 @@ function BendingScreen(props: {
             </h3>
             <div className={styles.BendingScreen_body}>
                 {
-                    bendingOptions.map(bending => 
+                    bendingOptions && bendingOptions.map(bending => 
                          <BendingScreenItem 
-                            bending={bending}
+                            bending={bending as IBending}
                             buttonText={bendingMappings[screenName].button}
                             listener={bendingMappings[screenName].listener}
                             screenName={screenName}

@@ -34,7 +34,8 @@ function SubInventoryScreen(props: {
 
     const {screenName} = props;
     const stage = useSelector((store: IStore) => store.gameStage[screenName].stage);
-    const data = useSelector((store: IStore) => store.gameStage[screenName].options[stage]);
+    const data = useSelector((store: IStore) => 
+        store.gameStage[screenName].options?.[stage]) as (IItem | ICyber | IMutation)[];
 
     const dispatch = useDispatch();
 

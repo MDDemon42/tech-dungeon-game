@@ -8,6 +8,8 @@ import { ICharacher } from '../../enums-and-interfaces/interfaces';
 import { createEmptyInventory, createNoItem } from '../../helpers/emptyEssencesCreators';
 import wizardItems from '../../general/wizardItems';
 import guildItems from '../../general/guildItems';
+import rituals from '../../general/rituals/rituals';
+import masteries from '../../general/masteries/masteries';
 
 function InventoryScreen(props: {
     character: ICharacher,
@@ -15,7 +17,9 @@ function InventoryScreen(props: {
 }) {
     const {character, battle} = props;
     const {general, params} = character;
+    const masteriesUserNames = general.mind.masteries.map(mastery => mastery.name);
     const powersUserNames = general.mind.powers.map(power => power.name);
+    const ritualsUserNames = general.mind.rituals.map(ritual => ritual.name);
     const inventory = general.inventory ? general.inventory : createEmptyInventory();
 
     const width = battle ? '150px' : '355px';
@@ -42,17 +46,21 @@ function InventoryScreen(props: {
             break;
     }
 
-    let inventoryLegs = null;
+    let inventoryLegs = [];
     switch (inventory.legs.name) {
         case mutations.other.mutation_hooves.name:
-            inventoryLegs = <img src={images.bodyElements.hooves} alt={chrome.i18n.getMessage('hooves')} />;
+            inventoryLegs.push(<img src={images.bodyElements.hooves} alt={chrome.i18n.getMessage('hooves')} />);
             break;
         case mutations.weapons.mutation_raptorLegs.name:
-            inventoryLegs = <img src={images.bodyElements.raptorLegs} alt={chrome.i18n.getMessage('raptor_legs')} />;
+            inventoryLegs.push(<img src={images.bodyElements.raptorLegs} alt={chrome.i18n.getMessage('raptor_legs')} />);
             break;
         default:
             inventoryLegs = [
-                <img src={images.bodyElements.legs} alt='legs' />,
+                ritualsUserNames.includes(rituals.ritual_titanSkin.name) ?
+                    <img src={images.bodyElements.titanLegs} alt='titanLegs' /> :
+                    masteriesUserNames.includes(masteries.mastery_brutalForce.name) ?
+                        <img src={images.bodyElements.brutalLegs} alt='brutalLegs' /> :
+                        <img src={images.bodyElements.legs} alt='legs' />,
                 powersUserNames.includes(powers.other.power_levitation.name) ?
                     <img src={images.bodyElements.levitation} alt={chrome.i18n.getMessage('levitation')} /> : null,
                 inventory.skin.name === cybers.armors.cyber_nanoMatrix.name ?
@@ -81,7 +89,11 @@ function InventoryScreen(props: {
             break;
         default:
             inventorySkin = [
-                <img src={images.bodyElements.torso} alt='torso' />,
+                ritualsUserNames.includes(rituals.ritual_titanSkin.name) ?
+                    <img src={images.bodyElements.titanTorso} alt='titanTorso' /> :
+                    masteriesUserNames.includes(masteries.mastery_brutalForce.name) ?
+                        <img src={images.bodyElements.brutalTorso} alt='brutalTorso' /> :
+                        <img src={images.bodyElements.torso} alt='torso' />,
                 powersUserNames.includes(powers.armors.power_guardianAura.name) ?
                     <img src={images.bodyElements.guardianAura} alt={chrome.i18n.getMessage('guardian_aura')} /> :
                     powersUserNames.includes(powers.armors.power_guardianField.name) ?
