@@ -8,7 +8,6 @@ const task_buildFocusSchool = createTask(
     1, 
     'Can you help me build a house?',
     'Some tattoed guy asks for 1 Wood',
-    'Yep!', 'Later'
 )
 
 const task_modernizeFocusSchool = createTask(
@@ -16,7 +15,6 @@ const task_modernizeFocusSchool = createTask(
     1, 
     'Can you help me modernize my house?',
     'That tattoed guy asks for 1 Wood',
-    'Sure!', 'Later'
 )
 
 const focusSchoolTasks: IScreenTasks = {

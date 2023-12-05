@@ -173,6 +173,9 @@
     "siec_cyber": {
         "message": "Does not have required cyber"
     },
+    "siec_titanSkin": {
+        "message": "Cannot modify through Titan skin"
+    },
     "battle_page_title": {
         "message": "Battle Screen"
     },
@@ -904,5 +907,11 @@
     },
     "resistance": {
         "message": " resistance"
+    },
+    "give": {
+        "message": "Give "
+    },
+    "not_now": {
+        "message": "Not now"
     }
 }

@@ -5,6 +5,7 @@ import {useDispatch} from 'react-redux';
 import GameScreen from '../../components/GameScreen/GameScreen';
 import gameSquad from '../../redux/slices/gameSquad';
 import SquadScreen from '../../components/SquadScreen/SquadScreen';
+import gameStage from '../../redux/slices/gameStage';
 
 function GamePage() { 
     const dispatch = useDispatch();
@@ -14,6 +15,8 @@ function GamePage() {
         chrome.storage.local.get().then(result => {
             if (result[C.extensionStorageName]) {
                 dispatch(gameSquad.actions.setState(result[C.extensionStorageName].gameSquad));
+
+                dispatch(gameStage.actions.setState(result[C.extensionStorageName].gameStage));
             }
         })
     }, [])

@@ -3,6 +3,7 @@ import C from '../redux/constants';
 import createEmptyCharacter from "../helpers/emptyEssencesCreators";
 import store from "../redux/store";
 import { classInfo } from "../redux/slices/gameSquad";
+import { createGameStage } from "../redux/slices/gameStage";
 
 function actionInCaseStrongStart(tabId: number) {
     const state = {...store.getState()}
@@ -54,10 +55,10 @@ function actionInCaseStrongStart(tabId: number) {
     gameSquad.squadMembers = squadMembers;
 
     state.gameSquad = gameSquad;
+    state.gameStage = createGameStage(true);
     chrome.storage.local.set({[C.extensionStorageName]: state});
 
-    chrome.tabs.reload(tabId!);
-
+    chrome.tabs.reload(tabId);
 }
 
 export default actionInCaseStrongStart

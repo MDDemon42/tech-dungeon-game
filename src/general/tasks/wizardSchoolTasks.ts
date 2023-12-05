@@ -7,7 +7,6 @@ const task_buildWizardSchool = createTask(
     4,
     '',
     '',
-    'Sure!', 'Not now'
 )
 
 const task_modernizeWizardSchool = createTask(
@@ -15,7 +14,6 @@ const task_modernizeWizardSchool = createTask(
     2,
     '',
     '',
-    'Of course!', 'Not sure'
 )
 
 const wizardSchoolTasks = {

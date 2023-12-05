@@ -8,7 +8,6 @@ const task_buildFireSchool = createTask(
     1, 
     'Can you help me build a house?',
     'Some bending fire guy asks for 1 Wood',
-    'Yep!', 'Later'
 )
 
 const fireSchoolTasks: IScreenTasks = {

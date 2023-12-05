@@ -7,7 +7,6 @@ const task_buildMutationLab = createTask(
     1, 
     '',
     '',
-    'Yep!', 'Later'
 )
 
 const task_beastOptions = createTask(
@@ -15,7 +14,6 @@ const task_beastOptions = createTask(
     1, 
     '',
     '',
-    'Yep!', 'Later'
 )
 
 const task_reptileOptions = createTask(
@@ -23,7 +21,6 @@ const task_reptileOptions = createTask(
     1, 
     '',
     '',
-    'Yep!', 'Later'
 )
 
 const task_insectoidOptions = createTask(
@@ -31,7 +28,6 @@ const task_insectoidOptions = createTask(
     1, 
     '',
     '',
-    'Yep!', 'Later'
 )
 
 const task_beastAndReptileOptions = createTask(
@@ -39,7 +35,6 @@ const task_beastAndReptileOptions = createTask(
     1, 
     '',
     '',
-    'Yep!', 'Later'
 )
 
 const task_beastAndInsectoidOptions = createTask(
@@ -47,7 +42,6 @@ const task_beastAndInsectoidOptions = createTask(
     1, 
     '',
     '',
-    'Yep!', 'Later'
 )
 
 const task_reptileAndInsectoidOptions = createTask(
@@ -55,7 +49,6 @@ const task_reptileAndInsectoidOptions = createTask(
     1, 
     '',
     '',
-    'Yep!', 'Later'
 )
 
 const task_AllOptions = createTask(
@@ -63,7 +56,6 @@ const task_AllOptions = createTask(
     1, 
     '',
     '',
-    'Yep!', 'Later'
 )
 
 const mutationLabTasks = {

@@ -16,17 +16,13 @@ export function createTask(
     bigResourceName: string,
     bigResourceAmount: number,
     stageTitle: string,
-    stageText: string,
-    doTaskText: string,
-    leaveText: string
+    stageText: string
 ): ITask {
     return {
         bigResourceName,
         bigResourceAmount,
         stageTitle,
-        stageText,
-        doTaskText,
-        leaveText
+        stageText
     }
 }
    

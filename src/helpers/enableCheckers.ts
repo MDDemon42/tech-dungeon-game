@@ -3,6 +3,7 @@ import { IBending, ICharacher, ICyber, IItem, IMastery, IMutation, IPower, ISpel
 import { getBackpacksCapability } from "./backpacksPutter";
 import priorityChecker from "./priorityChecker";
 import { createNoItem } from "./emptyEssencesCreators";
+import rituals from "../general/rituals/rituals";
 
 export function bendingEnableChecker(
     bending: IBending,
@@ -104,6 +105,18 @@ export function subInventoryEnableChecker(
         }
     }
 
+    if (
+        screenName === InventoryGameScreens.cyberLab ||
+        screenName === InventoryGameScreens.mutationLab
+    ) {
+        const memberRitualNames = character.general.mind.rituals.map(ritual => ritual.name);
+        const titanSkinCheck = memberRitualNames.includes(rituals.ritual_titanSkin.name);
+
+        if (titanSkinCheck) {
+            return [false, chrome.i18n.getMessage('siec_titanSkin')]
+        }
+    }
+
     if (screenName === InventoryGameScreens.cyberLab) {
         const memberInventory = character.general.inventory;
         const memberInventoryNames: string[] = [];
@@ -120,7 +133,7 @@ export function subInventoryEnableChecker(
         if (!requiredCyberCheck) {
             return [false, chrome.i18n.getMessage('siec_cyber')]
         }
-    }
+    }    
 
     return [true, ''] 
 }

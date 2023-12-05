@@ -4,11 +4,12 @@ import { GameScreens } from '../../enums-and-interfaces/enums';
 import stageOptions from '../../general/stageOptions';
 import tasks from '../../general/tasks';
 
-const createInitialState = () => {
+export const createGameStage = (strongStart: boolean) => {
     const result = {} as IGameStage;
     Object.keys(GameScreens).forEach(screen => {
         result[GameScreens[screen as keyof typeof GameScreens]] = {
-            stage: GameScreens[screen as keyof typeof GameScreens] === GameScreens.market ? 1 : 0,
+            stage: (GameScreens[screen as keyof typeof GameScreens] === GameScreens.market ||
+                strongStart) ? 1 : 0,
             options: stageOptions[GameScreens[screen as keyof typeof GameScreens]],
             tasks: tasks[GameScreens[screen as keyof typeof GameScreens]]
         }
@@ -19,8 +20,14 @@ const createInitialState = () => {
 
 const gameStage = createSlice({
     name: 'gameStage',
-    initialState: createInitialState(),
+    initialState: createGameStage(false),
     reducers: {
+        setState(state, action) {
+            Object.keys(state).forEach(key => {
+                // @ts-ignore
+                state[key] = action.payload[key];
+            })
+        },
         changeStage(state, action) {
             const oldState = {...state};
 

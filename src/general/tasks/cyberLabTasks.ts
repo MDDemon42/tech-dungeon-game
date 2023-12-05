@@ -8,7 +8,6 @@ const task_buildCyberLab = createTask(
     4,
     '',
     '',
-    'Sure!', 'Not now'
 )
 
 const task_modernizeCyberLab = createTask(
@@ -16,7 +15,6 @@ const task_modernizeCyberLab = createTask(
     4,
     '',
     '',
-    'Of course!', 'Not sure'
 )
 
 const task_upgradeCyberLab = createTask(
@@ -24,7 +22,6 @@ const task_upgradeCyberLab = createTask(
     4,
     '',
     '',
-    'Of course!', 'Not sure'
 )
 
 const task_ultimateCyberLab = createTask(
@@ -32,7 +29,6 @@ const task_ultimateCyberLab = createTask(
     4,
     '',
     '',
-    'Of course!', 'Not sure'
 )
 
 const cyberLabTasks: IScreenTasks = {

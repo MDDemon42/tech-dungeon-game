@@ -8,7 +8,6 @@ const task_buildAcademy = createTask(
     4,
     'Build academy!',
     'Skilled villagers ask for your help to build Academy.\nThey need 4 Wood for it.',
-    'Sure!', 'Not now'
 )
 
 const task_modernizeAcademy = createTask(
@@ -16,7 +15,6 @@ const task_modernizeAcademy = createTask(
     2,
     'Modernize academy!',
     'More skilled villagers want to teach in Academy.\nThey need 2 Wood for modernization.',
-    'Of course!', 'Not sure'
 )
 
 const academyTasks: IScreenTasks = {

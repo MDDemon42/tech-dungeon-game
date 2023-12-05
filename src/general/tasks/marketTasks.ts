@@ -8,7 +8,6 @@ const task_steelOptions = createTask(
     3, 
     'Can you get me some Ore?',
     'New blacksmith asks for 3 Ore to make a brand new line of Steel Weapons',
-    'Here!', 'Later'
 )
 
 const marketTasks: IScreenTasks = {

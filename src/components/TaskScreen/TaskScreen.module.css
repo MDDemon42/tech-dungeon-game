@@ -26,3 +26,8 @@
     align-items: center;
     width: 100%;
 }
+
+.TaskScreen_bigResourceIcon {
+    margin: 1px 0 0 2px;
+    display: inline-block;
+}

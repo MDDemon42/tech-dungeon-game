@@ -8,7 +8,6 @@ const task_buildIceSchool = createTask(
     1, 
     'Can you help me build a house?',
     'Some bending ice guy asks for 1 Wood',
-    'Yep!', 'Later'
 )
 
 const iceSchoolTasks: IScreenTasks = {

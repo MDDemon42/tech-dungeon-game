@@ -8,7 +8,6 @@ const task_buildAirSchool = createTask(
     1, 
     'Can you help me build a house?',
     'Some bending air guy asks for 1 Wood',
-    'Yep!', 'Later'
 )
 
 const airSchoolTasks: IScreenTasks = {

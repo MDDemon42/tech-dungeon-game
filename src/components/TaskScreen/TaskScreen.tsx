@@ -5,8 +5,17 @@ import gameSquad from "../../redux/slices/gameSquad";
 import gameStage from "../../redux/slices/gameStage";
 import { useDispatch } from "react-redux";
 import styles from './TaskScreen.module.css';
+import { 
+    Tree, MinecartLoaded,
+} from 'react-bootstrap-icons';
 
 import tasks from "../../general/tasks";
+import items from "../../general/items";
+
+const bigResourceNameMappings = {
+    [items.bigResources.wood.name]: <Tree size={10}/>,
+    [items.bigResources.ore.name]: <MinecartLoaded size={10}/>
+}
 
 function TaskScreen(props: {
     screen: GameScreens | InventoryGameScreens | MindGameScreens,
@@ -22,9 +31,7 @@ function TaskScreen(props: {
         bigResourceAmount,
         bigResourceName,
         stageText,
-        stageTitle,
-        doTaskText,
-        leaveText
+        stageTitle
     } = task;
 
     const backpacks = useSelector((store: IStore) => 
@@ -63,10 +70,16 @@ function TaskScreen(props: {
                     onClick={doTaskButtonListener}
                     disabled={doTaskButtonDisabled}
                 >
-                    {doTaskText}
+                    {chrome.i18n.getMessage('give') + bigResourceAmount}
+                    <div 
+                        className={styles.TaskScreen_bigResourceIcon}
+                        title={bigResourceName}
+                    >
+                        {bigResourceNameMappings[bigResourceName]}
+                    </div>                    
                 </button>
                 <button onClick={leaveListener}>
-                    {leaveText}
+                    {chrome.i18n.getMessage('not_now')}
                 </button>
             </div>
         </div>

@@ -173,6 +173,9 @@
     "siec_cyber": {
         "message": "Нет необходимой кибернизации"
     },
+    "siec_titanSkin": {
+        "message": "Нельзя изменить Титановую кожу"
+    },
     "battle_page_title": {
         "message": "Экран боя"
     },
@@ -901,5 +904,11 @@
     },
     "resistance": {
         "message": " сопротивление"
+    },
+    "give": {
+        "message": "Дать "
+    },
+    "not_now": {
+        "message": "Не сейчас"
     }
 }

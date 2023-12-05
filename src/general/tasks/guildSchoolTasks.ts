@@ -7,7 +7,6 @@ const task_buildGuildSchool = createTask(
     4,
     '',
     '',
-    'Sure!', 'Not now'
 )
 
 const task_modernizeGuildSchool = createTask(
@@ -15,7 +14,6 @@ const task_modernizeGuildSchool = createTask(
     2,
     '',
     '',
-    'Of course!', 'Not sure'
 )
 
 const guildSchoolTasks = {

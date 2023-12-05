@@ -93,9 +93,7 @@ export interface ITask {
     bigResourceName: string,
     bigResourceAmount: number,
     stageTitle: string,
-    stageText: string,
-    doTaskText: string,
-    leaveText: string
+    stageText: string
 }
 
 export interface IGameSquad {
