@@ -7,16 +7,21 @@
 .MindScreen__notVertical {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    overflow-x: scroll;
     justify-content: flex-start;
 }
 
+.MindScreen__notVertical > p {
+    height: 41px;
+}
+
 .MindScreen__vertical {
-    width: 65px;
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
-    justify-content: space-around;
+    justify-content: flex-start;
+    width: 80px;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .MindScreen_datum {

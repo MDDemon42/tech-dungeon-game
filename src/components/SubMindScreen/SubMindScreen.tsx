@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
 import { MindGameScreens, UserParam } from '../../enums-and-interfaces/enums';
 import SubMindScreenItem from './SubMindScreenItem';
-import TaskScreen from '../TaskScreen/TaskScreen';
-import { useState } from 'react';
 
 function SubMindScreen(props: {
     screenName: MindGameScreens
@@ -26,8 +24,6 @@ function SubMindScreen(props: {
 
     const dispatch = useDispatch();
 
-    const [taskScreenOpen, setTaskScreenOpen] = useState<[MindGameScreens, number]|null>(null);
-
     const subMindMappings: Record<MindGameScreens, ISubMindMapping> = {
         [MindGameScreens.academy]: {
             capacity: member.params.level,
@@ -36,14 +32,25 @@ function SubMindScreen(props: {
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
                 dispatch(gameSquad.actions.learnMastery({index, data}));
-            },
-            upgradeButtons: [
-                {
-                    title: 'Modernize Academy',
-                    stage: 2,
-                    disabled: stage !== 1 
-                }
-            ]
+            }
+        },
+        [MindGameScreens.airSchool]: {
+            capacity: member.params.level,
+            posessed: member.general.mind.masteries.length,
+            title: chrome.i18n.getMessage('air_school_title'),
+            button: chrome.i18n.getMessage('learn'),
+            listener: (data: IMastery) => {
+                dispatch(gameSquad.actions.learnMastery({index, data}));
+            }
+        },
+        [MindGameScreens.fireSchool]: {
+            capacity: member.params.level,
+            posessed: member.general.mind.masteries.length,
+            title: chrome.i18n.getMessage('fire_school_title'),
+            button: chrome.i18n.getMessage('learn'),
+            listener: (data: IMastery) => {
+                dispatch(gameSquad.actions.learnMastery({index, data}));
+            }
         },
         [MindGameScreens.focusSite]: {
             capacity: member.params.maxParams[UserParam.focus],
@@ -52,14 +59,7 @@ function SubMindScreen(props: {
             button: chrome.i18n.getMessage('develop'),
             listener: (data: IPower) => {
                 dispatch(gameSquad.actions.developPower({index, data}));
-            },
-            upgradeButtons: [
-                {
-                    title: 'Advanced',
-                    stage: stage * 2,
-                    disabled: stage % 2 === 0
-                }
-            ]
+            }
         },
         [MindGameScreens.focusSchool]: {
             capacity: member.params.level,
@@ -68,19 +68,34 @@ function SubMindScreen(props: {
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
                 dispatch(gameSquad.actions.learnMastery({index, data}));
-            },
-            upgradeButtons: [
-                {
-                    title: 'Basic',
-                    stage: 1,
-                    disabled: stage > 0
-                },
-                {
-                    title: 'Psi-energy',
-                    stage: stage * 3,
-                    disabled: stage % 3 === 0
-                }
-            ]
+            }
+        },
+        [MindGameScreens.guildRituals]: {
+            capacity: member.params.level,
+            posessed: member.general.mind.rituals.length,
+            title: chrome.i18n.getMessage('guild_rituals_title'),
+            button: chrome.i18n.getMessage('learn'),
+            listener: (data: IMastery) => {
+                dispatch(gameSquad.actions.surpassRitual({index, data}));
+            }
+        },       
+        [MindGameScreens.guildSchool]: {
+            capacity: member.params.level,
+            posessed: member.general.mind.masteries.length,
+            title: chrome.i18n.getMessage('guild_school_title'),
+            button: chrome.i18n.getMessage('learn'),
+            listener: (data: IMastery) => {
+                dispatch(gameSquad.actions.learnMastery({index, data}));
+            }
+        },
+        [MindGameScreens.iceSchool]: {
+            capacity: member.params.level,
+            posessed: member.general.mind.masteries.length,
+            title: chrome.i18n.getMessage('ice_school_title'),
+            button: chrome.i18n.getMessage('learn'),
+            listener: (data: IMastery) => {
+                dispatch(gameSquad.actions.learnMastery({index, data}));
+            }
         },
         [MindGameScreens.spellSchool]: {
             capacity: member.params.maxParams[UserParam.mana],
@@ -98,109 +113,12 @@ function SubMindScreen(props: {
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
                 dispatch(gameSquad.actions.learnMastery({index, data}));
-            },
-            upgradeButtons: [
-                {
-                    title: 'Scholarship',
-                    stage: 1,
-                    disabled: stage > 0
-                },
-                {
-                    title: 'Magister degree',
-                    stage: 2,
-                    disabled: stage !== 1
-                }
-            ]
-        },
-        [MindGameScreens.airSchool]: {
-            capacity: member.params.level,
-            posessed: member.general.mind.masteries.length,
-            title: chrome.i18n.getMessage('air_school_title'),
-            button: chrome.i18n.getMessage('learn'),
-            listener: (data: IMastery) => {
-                dispatch(gameSquad.actions.learnMastery({index, data}));
-            },
-            upgradeButtons: [
-                {
-                    title: 'Sense',
-                    stage: 1,
-                    disabled: stage > 0
-                }
-            ]
-        },
-        [MindGameScreens.fireSchool]: {
-            capacity: member.params.level,
-            posessed: member.general.mind.masteries.length,
-            title: chrome.i18n.getMessage('fire_school_title'),
-            button: chrome.i18n.getMessage('learn'),
-            listener: (data: IMastery) => {
-                dispatch(gameSquad.actions.learnMastery({index, data}));
-            },
-            upgradeButtons: [
-                {
-                    title: 'Sense',
-                    stage: 1,
-                    disabled: stage > 0
-                }
-            ]
-        },
-        [MindGameScreens.iceSchool]: {
-            capacity: member.params.level,
-            posessed: member.general.mind.masteries.length,
-            title: chrome.i18n.getMessage('ice_school_title'),
-            button: chrome.i18n.getMessage('learn'),
-            listener: (data: IMastery) => {
-                dispatch(gameSquad.actions.learnMastery({index, data}));
-            },
-            upgradeButtons: [
-                {
-                    title: 'Sense',
-                    stage: 1,
-                    disabled: stage > 0
-                }
-            ]
-        },
-        [MindGameScreens.guildSchool]: {
-            capacity: member.params.level,
-            posessed: member.general.mind.masteries.length,
-            title: chrome.i18n.getMessage('guild_school_title'),
-            button: chrome.i18n.getMessage('learn'),
-            listener: (data: IMastery) => {
-                dispatch(gameSquad.actions.learnMastery({index, data}));
-            },
-            upgradeButtons: [
-                {
-                    title: 'Basic options',
-                    stage: 1,
-                    disabled: stage > 0
-                },
-                {
-                    title: 'Runes and rituals',
-                    stage: 2,
-                    disabled: stage !== 1
-                }
-            ]
-        },
-        [MindGameScreens.guildRituals]: {
-            capacity: member.params.level,
-            posessed: member.general.mind.rituals.length,
-            title: chrome.i18n.getMessage('guild_rituals_title'),
-            button: chrome.i18n.getMessage('learn'),
-            listener: (data: IMastery) => {
-                dispatch(gameSquad.actions.surpassRitual({index, data}));
             }
-        }
+        }, 
     }
 
     return (
         <div className={styles.SubMindScreen}>
-            {
-                taskScreenOpen && <TaskScreen 
-                    screen={taskScreenOpen[0]}
-                    stage={taskScreenOpen[1]}
-                    leaveListener={() => setTaskScreenOpen(null)}
-                />
-            }
             <h3 className={styles.SubMindScreen_header}>
                 {
                     subMindMappings[screenName].title
@@ -220,23 +138,7 @@ function SubMindScreen(props: {
                         />
                     )
                 }
-            </div> 
-            {
-                subMindMappings[screenName].upgradeButtons ?
-                    <div className={styles.SubMindScreen_buttons}>
-                        {
-                            subMindMappings[screenName].upgradeButtons?.map(option => (
-                                <button 
-                                    onClick={() => setTaskScreenOpen([screenName, option.stage])}
-                                    disabled={option.disabled}
-                                >
-                                    {option.title}
-                                </button>
-                            ))
-                        } 
-                    </div> :
-                    null 
-            }                 
+            </div>                  
         </div>
     )
 }

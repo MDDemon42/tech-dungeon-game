@@ -62,7 +62,7 @@ function StatsScreen() {
                         )
                     }
                     {
-                        dodge > 0 && <div 
+                        <div 
                             title={chrome.i18n.getMessage('dodge')}
                             className={styles.StatsScreen_dodge}
                         >

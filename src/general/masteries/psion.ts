@@ -5,7 +5,7 @@ const mastery_meditativeInsights = createMastery(
     [
         chrome.i18n.getMessage('meditative_insights'),
         chrome.i18n.getMessage('meditative_insights_mastery_description'),
-        images.psionInsights.intuition
+        images.psionInsights.meditativeInsights
     ],
     ''
 )
@@ -14,7 +14,7 @@ const mastery_psiEnergy = createMastery(
     [
         chrome.i18n.getMessage('psi_energy'),
         chrome.i18n.getMessage('psi_energy_mastery_description'),
-        images.psionInsights.psiLightning
+        images.psionInsights.psiEnergy
     ],
     mastery_meditativeInsights.name
 )

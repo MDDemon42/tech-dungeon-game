@@ -56,19 +56,7 @@ function SubInventoryScreen(props: {
             button: chrome.i18n.getMessage('implement'),
             listener: (data: ICyber) => {
                 dispatch(gameSquad.actions.implementCyber({index, data}));
-            },
-            upgradeButtons: [
-                {
-                    title:
-                        (stage === 1 && 'Basic') ||
-                        (stage === 2 && 'Advanced') ||
-                        (stage === 3 && 'Expert') ||
-                        'Max stage'
-                    ,
-                    stage: stage + 1,
-                    disabled: stage === 4
-                }
-            ]
+            }
         },
         [InventoryGameScreens.mutationLab]: {
             resource: UserResource.gene,
@@ -76,24 +64,7 @@ function SubInventoryScreen(props: {
             button: chrome.i18n.getMessage('mutate'),
             listener: (data: IMutation) => {
                 dispatch(gameSquad.actions.mutateMutation({index, data}));
-            },
-            upgradeButtons: [
-                {
-                    title: 'Beast options',
-                    stage: stage * 2,
-                    disabled: stage % 2 === 0
-                },
-                {
-                    title: 'Reptile options',
-                    stage: stage * 3,
-                    disabled: stage % 3 === 0
-                },
-                {
-                    title: 'Insectoid options',
-                    stage: stage * 5,
-                    disabled: stage % 5 === 0
-                }
-            ]
+            }
         },
         [InventoryGameScreens.market]: {
             resource: UserResource.gem,
@@ -101,14 +72,7 @@ function SubInventoryScreen(props: {
             button: chrome.i18n.getMessage('buy'),
             listener: (data: IItem) => {
                 dispatch(gameSquad.actions.buyItem(data));
-            },
-            upgradeButtons: [
-                {
-                    title: 'Steel options',
-                    stage: 2,
-                    disabled: stage > 1
-                }
-            ]
+            }
         },
         [InventoryGameScreens.guildShop]: {
             resource: UserResource.gem,
@@ -182,23 +146,7 @@ function SubInventoryScreen(props: {
                         </SubInventoryScreenItemContext.Provider>
                     })
                 }
-            </div>
-            {
-                subInventoryMappings[screenName].upgradeButtons ? 
-                    <div className={styles.SubInventoryScreen_buttons}>
-                        {
-                            subInventoryMappings[screenName].upgradeButtons?.map(option => (
-                                <button 
-                                    onClick={() => setTaskScreenOpen([screenName, option.stage])}
-                                    disabled={option.disabled}
-                                >
-                                    {option.title}
-                                </button>
-                            ))
-                        } 
-                    </div> :
-                null
-            }          
+            </div>       
         </div>
     )
 }

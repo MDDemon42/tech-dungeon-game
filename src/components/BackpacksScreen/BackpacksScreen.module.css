@@ -2,30 +2,29 @@
     width: 98%;
     border: 1px solid black;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+}
+
+.BackpacksScreen_squadResources {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    gap: 5px;
+}
+
+.BackpacksScreen_squadResources > div {
+    display: flex;
 }
 
 .BackpacksScreen_itemsLine {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
-}
-
-.BackpacksScreen_squadResources {
-    width: 95%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    border: 1px solid black;
-    margin: 5px;
-    padding: 2px;
-}
-
-.BackpacksScreen_squadResources > div {
-    display: flex;
+    width: 88%;
 }
 
 .BackpacksScreen_itemsLine_CommonIconWithButtons {

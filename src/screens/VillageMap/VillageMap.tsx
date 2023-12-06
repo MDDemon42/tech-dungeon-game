@@ -19,7 +19,7 @@ import InteractiveItemOnMap from "./InteractiveObjectOnMap";
 import gameSquad from "../../redux/slices/gameSquad";
 import items from "../../general/items";
 
-import TaskScreen from "../TaskScreen/TaskScreen";
+import TaskScreen from "../../components/TaskScreen/TaskScreen";
 
 function VillageMap() {
     const gameStageScreens = useSelector((store: IStore) => store.gameStage);

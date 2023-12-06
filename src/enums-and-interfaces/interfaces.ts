@@ -330,31 +330,21 @@ export interface IMutationsForRaceCheck {
 }
 
 // lookout pages //
-export interface IBendingMapping extends ISubMapping {
-    upgradeButtons: {
-        title: string,
-        stage: number,
-        disabled: boolean
-    }[]
-}
+export interface IBendingMapping extends ISubMapping {}
 
 export interface ISubInventoryMapping extends ISubMapping {
     resource: UserResource,
-    upgradeButtons?: {
-        title: string,
-        stage: number,
-        disabled: boolean
-    }[]
 }
 
 export interface ISubMindMapping extends ISubMapping {
     capacity: number,
-    posessed: number,
-    upgradeButtons?: {
-        title: string,
-        stage: number,
-        disabled: boolean
-    }[]
+    posessed: number
+}
+
+export interface IUpgradeButton {
+    title: string,
+    stage: number,
+    disabled: boolean
 }
 
 interface ISubMapping {

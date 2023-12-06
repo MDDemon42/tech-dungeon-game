@@ -29,6 +29,7 @@
 .ProfileScreen_spells_and_bending {
     display: flex;
     flex-direction: row;
+    margin-bottom: 1px;
     justify-content: space-around;
 }
 

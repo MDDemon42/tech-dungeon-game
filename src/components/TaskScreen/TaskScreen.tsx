@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { GameScreens, InventoryGameScreens, MindGameScreens } from "../../enums-and-interfaces/enums"
+import { BendingGameScreens, GameScreens, InventoryGameScreens, MindGameScreens } from "../../enums-and-interfaces/enums"
 import { IStore, ITask } from "../../enums-and-interfaces/interfaces";
 import gameSquad from "../../redux/slices/gameSquad";
 import gameStage from "../../redux/slices/gameStage";
@@ -18,7 +18,7 @@ const bigResourceNameMappings = {
 }
 
 function TaskScreen(props: {
-    screen: GameScreens | InventoryGameScreens | MindGameScreens,
+    screen: GameScreens | InventoryGameScreens | MindGameScreens | BendingGameScreens,
     stage: number,
     leaveListener: () => void
 }) {

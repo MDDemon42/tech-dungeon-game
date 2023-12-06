@@ -2,6 +2,7 @@
     border: 1px solid black;
     width: 450px;
     height: 450px;
+    left: calc(50% - 225px);
     position: relative;
 }
 

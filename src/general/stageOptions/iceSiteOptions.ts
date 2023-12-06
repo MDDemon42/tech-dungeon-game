@@ -12,26 +12,26 @@ export const iceSiteOptions: Record<string, IBending[]> = {
         cryomancy.bending_iceShard,
         cryomancy.bending_iceHail
     ],
-    4: [
+    5: [
+        cryomancy.bending_iceShard,
+        cryomancy.bending_coldDeath
+    ],
+    6: [
         cryomancy.bending_iceShard,
         cryomancy.bending_iceSpear,
         cryomancy.bending_iceHail
-    ],
-    11: [
-        cryomancy.bending_iceShard,
-        cryomancy.bending_coldDeath
-    ],
-    12: [
+    ],    
+    10: [
         cryomancy.bending_iceShard,
         cryomancy.bending_iceSpear,
         cryomancy.bending_coldDeath
     ],
-    13: [
+    15: [
         cryomancy.bending_iceShard,
         cryomancy.bending_iceHail,
         cryomancy.bending_coldDeath
     ],
-    14: [
+    30: [
         cryomancy.bending_iceShard,
         cryomancy.bending_iceSpear,
         cryomancy.bending_iceHail,
