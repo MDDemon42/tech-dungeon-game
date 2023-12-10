@@ -18,11 +18,14 @@ function SubMindScreen(props: {
     member.general.mind.spells.map(data => memberMind.push(data.name));
 
     const {screenName} = props;
-    const stage = useSelector((store: IStore) => store.gameStage[screenName].stage);
     const dataAll = useSelector((store: IStore) => 
-        store.gameStage[screenName].options?.[stage]) as (IMastery | IPower | ISpell | IRitual)[];
+        store.gameStage[screenName].usableOptions) as (IMastery | IPower | ISpell | IRitual)[];
 
     const dispatch = useDispatch();
+
+    if (dataAll.length === 0) {
+        return null
+    }
 
     const subMindMappings: Record<MindGameScreens, ISubMindMapping> = {
         [MindGameScreens.academy]: {

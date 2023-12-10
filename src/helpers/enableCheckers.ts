@@ -107,7 +107,7 @@ export function subInventoryEnableChecker(
 
     if (
         screenName === InventoryGameScreens.cyberLab ||
-        screenName === InventoryGameScreens.mutationLab
+        screenName === InventoryGameScreens.mutaLab
     ) {
         const memberRitualNames = character.general.mind.rituals.map(ritual => ritual.name);
         const titanSkinCheck = memberRitualNames.includes(rituals.ritual_titanSkin.name);
@@ -136,4 +136,24 @@ export function subInventoryEnableChecker(
     }    
 
     return [true, ''] 
+}
+
+export function backpacksItemEnableChecker(
+    item: IItem,
+    memberMasteries: string[]
+): [boolean, string] {
+    const requiredMasteryCheck = !!item.requiredMastery ? 
+        memberMasteries.includes(item.requiredMastery) :
+        true;
+
+    if (!requiredMasteryCheck) {
+        return [false, chrome.i18n.getMessage('smec_mastery')]
+    }
+
+    const priorityCheck = priorityChecker(item);
+    if (!priorityCheck) {
+        return [false, chrome.i18n.getMessage('siec_priority')]
+    }
+
+    return [true, '']
 }

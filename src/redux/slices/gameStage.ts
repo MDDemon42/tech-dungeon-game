@@ -7,15 +7,39 @@ import tasks from '../../general/tasks';
 export const createGameStage = (strongStart: boolean) => {
     const result = {} as IGameStage;
     Object.keys(GameScreens).forEach(screen => {
+        const stage = (GameScreens[screen as keyof typeof GameScreens] === GameScreens.market ||
+                strongStart) ? 1 : 0;
         result[GameScreens[screen as keyof typeof GameScreens]] = {
-            stage: (GameScreens[screen as keyof typeof GameScreens] === GameScreens.market ||
-                strongStart) ? 1 : 0,
-            options: stageOptions[GameScreens[screen as keyof typeof GameScreens]],
-            tasks: tasks[GameScreens[screen as keyof typeof GameScreens]]
+            stage,
+            stageOptions: stageOptions[GameScreens[screen as keyof typeof GameScreens]],
+            tasks: tasks[GameScreens[screen as keyof typeof GameScreens]],
+            usableOptions: stageOptions[GameScreens[screen as keyof typeof GameScreens]]?.[stage]!
         }
     })
 
     return result
+}
+
+const relatedScreens: Record<GameScreens, GameScreens[]> = {
+    [GameScreens.academy]: [],
+    [GameScreens.airSchool]: [],
+    [GameScreens.airSite]: [GameScreens.airSchool],
+    [GameScreens.cyberLab]: [],
+    [GameScreens.fireSchool]: [],
+    [GameScreens.fireSite]: [GameScreens.fireSchool],
+    [GameScreens.focusSchool]: [],
+    [GameScreens.focusSite]: [GameScreens.focusSchool],
+    [GameScreens.guildRituals]: [],
+    [GameScreens.guildSchool]: [GameScreens.guildShop],
+    [GameScreens.guildShop]: [],
+    [GameScreens.iceSchool]: [],
+    [GameScreens.iceSite]: [GameScreens.iceSchool],
+    [GameScreens.market]: [],
+    [GameScreens.mutaLab]: [],
+    [GameScreens.spellSchool]: [],
+    [GameScreens.villageMap]: [],
+    [GameScreens.wizardSchool]: [GameScreens.wizardShop, GameScreens.spellSchool],
+    [GameScreens.wizardShop]: [],
 }
 
 const gameStage = createSlice({
@@ -31,45 +55,40 @@ const gameStage = createSlice({
         changeStage(state, action) {
             const oldState = {...state};
 
-            const {zone, stage} = action.payload;
-            oldState[zone as GameScreens].stage = stage;
+            const {zone, stage} = action.payload as {
+                zone: GameScreens,
+                stage: number
+            };
 
-            switch (zone) {
-                case GameScreens.wizardSchool:
-                    oldState[GameScreens.wizardShop].stage = stage;
-                    oldState[GameScreens.spellSchool].stage = stage;
-                    break;
+            let upgradedStage = 0;
+            if (stage === 1) {
+                upgradedStage = stage;
+            } else {
+                upgradedStage = oldState[zone].stage * stage;
+            }
 
-                case GameScreens.airSchool:
-                    oldState[GameScreens.airSite].stage = stage;
-                    break;
+            oldState[zone].stage = upgradedStage;
+            oldState[zone].usableOptions?.push(
+                ...oldState[zone].stageOptions?.[stage] as any[]
+            );
 
-                case GameScreens.fireSchool:
-                    oldState[GameScreens.fireSite].stage = stage;
-                    break;
+            if (relatedScreens[zone].length > 0) {
+                for (const relatedScreen of relatedScreens[zone]) {
+                    oldState[relatedScreen].stage = upgradedStage;
+                    const addOptions = oldState[relatedScreen].stageOptions?.[stage];
+                    if (addOptions) {
+                        oldState[relatedScreen].usableOptions.push(
+                            ...addOptions as any[]
+                        );
+                    }                    
+                }
+            }
 
-                case GameScreens.iceSchool:
-                    oldState[GameScreens.iceSite].stage = stage;
-                    break;
-
-                case GameScreens.focusSchool:
-                    if (stage === 1) {
-                        oldState[GameScreens.focusSite].stage = stage;
-                    } else {
-                        oldState[GameScreens.focusSite].stage = 
-                            oldState[GameScreens.focusSite].stage * stage;
-                    }
-                    break;
-
-                case GameScreens.guildSchool:
-                    oldState[GameScreens.guildShop].stage = stage;
-                    if (stage === 2) {
-                        oldState[GameScreens.guildRituals].stage = 1;
-                    }
-                    break;
-                
-                default:
-                    break;
+            if (stage === 2 && zone === GameScreens.guildSchool) {
+                oldState[GameScreens.guildRituals].stage = 1;
+                oldState[GameScreens.guildRituals].usableOptions.push(
+                    ...oldState[GameScreens.guildRituals].stageOptions?.[1] as any[]
+                );
             }
 
             state = oldState;

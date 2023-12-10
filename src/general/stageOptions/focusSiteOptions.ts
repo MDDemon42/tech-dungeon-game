@@ -20,7 +20,6 @@ const psiEnergyOptions = [
 export const focusSiteOptions: Record<string, IPower[]> = {
     0: [],
     1: [...basicOptions],
-    2: [...basicOptions, ...advancedOptions],
-    3: [...basicOptions, ...psiEnergyOptions],
-    6: [...basicOptions, ...advancedOptions, ...psiEnergyOptions] 
+    2: [...advancedOptions],
+    3: [...psiEnergyOptions],
 };

@@ -47,9 +47,45 @@ const wood = createBigResource(
     ]
 )
 
+const beastRemains = createBigResource(
+    [
+        chrome.i18n.getMessage('beast_remains'),
+        chrome.i18n.getMessage('beast_remains_item_description'),
+        images.misc.beastRemains
+    ],
+    [
+        1, InventoryPlace.belt, -1
+    ]
+)
+
+const insectoidRemains = createBigResource(
+    [
+        chrome.i18n.getMessage('insectoid_remains'),
+        chrome.i18n.getMessage('insectoid_remains_item_description'),
+        images.misc.insectoidRemains
+    ],
+    [
+        1, InventoryPlace.belt, -1
+    ]
+)
+
+const reptiloidRemains = createBigResource(
+    [
+        chrome.i18n.getMessage('reptiloid_remains'),
+        chrome.i18n.getMessage('reptiloid_remains_item_description'),
+        images.misc.reptiloidRemains
+    ],
+    [
+        1, InventoryPlace.belt, -1
+    ]
+)
+
 const bigResources = {
     ore,
-    wood
+    wood,
+    beastRemains,
+    insectoidRemains,
+    reptiloidRemains
 }
 
 export default bigResources

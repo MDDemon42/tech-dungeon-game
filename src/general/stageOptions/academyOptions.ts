@@ -17,5 +17,5 @@ const steelOptions = [
 export const academyOptions: Record<string, IMastery[]> = {
     0: [],
     1: [...basicOptions],
-    2: [...basicOptions, ...steelOptions]
+    2: [...steelOptions]
 };

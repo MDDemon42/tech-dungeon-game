@@ -16,10 +16,13 @@ function BendingScreen(props: {
     member.general.mind.bending.map(data => memberMind.push(data.name));
 
     const {screenName} = props;
-    const stage = useSelector((store: IStore) => store.gameStage[screenName].stage);
-    const bendingOptions = useSelector((store: IStore) => store.gameStage[screenName].options?.[stage]);
+    const bendingOptions = useSelector((store: IStore) => store.gameStage[screenName].usableOptions);
 
     const dispatch = useDispatch();
+
+    if (bendingOptions.length === 0) {
+        return null
+    }
 
     const bendingMappings: Record<BendingGameScreens, IBendingMapping> = {
         [BendingGameScreens.airSite]: {

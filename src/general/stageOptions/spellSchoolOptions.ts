@@ -16,5 +16,5 @@ const magisterSpells = [
 export const spellSchoolOptions: Record<string, ISpell[]> = {
     0: [],
     1: [...appreticeSpells],
-    2: [...appreticeSpells, ...magisterSpells] 
+    2: [...magisterSpells] 
 };

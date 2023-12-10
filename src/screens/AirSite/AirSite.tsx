@@ -15,14 +15,14 @@ function AirSite() {
 
     const upgradeButtons: IUpgradeButton[] = [
         {
-            title: 'Thunder punch',
+            title: chrome.i18n.getMessage('thunder_punch'),
             stage: 2,
-            disabled: stage !== 1
+            disabled: stage % 2 ===0 
         },
         {
-            title: 'Air deprivation',
+            title: chrome.i18n.getMessage('air_deprivation'),
             stage: 3,
-            disabled: stage !== 2
+            disabled: stage % 3 ===0 
         },
     ];
 

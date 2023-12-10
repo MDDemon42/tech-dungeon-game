@@ -21,11 +21,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  4) Mix `MASPIC` to get `elf` and `werewolf`(?)
  5) Long hair of `fur` mutation
  6) Several generations of `MASPIC` masters (?)
- 7) Rewrite upgrade stage buttons to `TaskScreen` options
- 8) `Win` and `Lose` options on `BattleScreen`
-
- # Items to classes (with special abilities) (?)
- 1) No armor + Two axes => Berserk
- 2) No armor + Greataxe => Barbarian
- 3) Steel armor + Steel sword + Steel shield => Knight
- 4) Steel armor + Mace* + Steel Shield => Paladin
+ 7) `Tropheys` after `win` on `BattleScreen`

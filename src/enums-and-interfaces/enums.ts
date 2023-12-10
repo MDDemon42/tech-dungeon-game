@@ -111,7 +111,7 @@ export enum GameScreens {
     iceSchool = 'Ice_School',
     iceSite = 'Ice_Site',
     market = 'Market',
-    mutationLab = 'Mutation_Lab',    
+    mutaLab = 'Mutation_Lab',    
     spellSchool = 'Spell_School',
     villageMap = 'Village_Map', 
     wizardSchool = 'Wizard_School',
@@ -121,7 +121,7 @@ export enum GameScreens {
 export enum InventoryGameScreens {
     market = 'Market',
     cyberLab = 'Cyber_Lab',
-    mutationLab = 'Mutation_Lab',
+    mutaLab = 'Mutation_Lab',
     wizardShop = 'Wizard_Shop',
     guildShop = 'Guild_Shop'
 }
@@ -146,7 +146,13 @@ export enum BendingGameScreens {
 }
 
 export enum TaskStatus {
-    notKnown = 'Not_known',
+    unknown = 'Unknown',
     known = 'Known',
     completed = 'Completed'
+}
+
+export enum BattleResult {
+    none = 'None',
+    win = 'Win',
+    lose = 'Lose'
 }

@@ -40,7 +40,8 @@ export function placeAsKey(place: string) {
     }).join('');
 }
 
-const initialState: IGameSquad = {
+export const createGameSquad: () => IGameSquad = () => {
+    return {
     currentlyWatched: 2,
     squadMembers: {
         2: createEmptyCharacter()
@@ -50,7 +51,9 @@ const initialState: IGameSquad = {
         [UserResource.gem]: 0,
         [UserResource.gene]: 0
     }
-};
+}};
+
+const initialState = createGameSquad();
 
 function createLevelUpBonuses(params: UserParam[]) {
     const standartLevelUpBonuses = [
@@ -64,12 +67,18 @@ function createLevelUpBonuses(params: UserParam[]) {
 }
 
 function getRandomStartName() {
-    const names = [
-        'Boris', 'Jackie', 'Stephan', 'Colin', 
-        'Mishelle', 'Hanz', 'Roderick', 'Albert'
+    const startNames = [
+        chrome.i18n.getMessage('start_name_boris'),
+        chrome.i18n.getMessage('start_name_jackline'),
+        chrome.i18n.getMessage('start_name_stephan'),
+        chrome.i18n.getMessage('start_name_colin'),
+        chrome.i18n.getMessage('start_name_mishelle'),
+        chrome.i18n.getMessage('start_name_hanz'),
+        chrome.i18n.getMessage('start_name_romul'),
+        chrome.i18n.getMessage('start_name_albert')
     ]
 
-    return names[Math.floor(Math.random() * names.length)]
+    return startNames[Math.floor(Math.random() * startNames.length)]
 }
 
 export const classInfo: IClassInfo = {
@@ -402,6 +411,21 @@ const gameSquad = createSlice({
 
             state = oldState;
         },
+        utilizeRemains(state, action: {
+            type: string,
+            payload: number
+        }) {
+            const oldState = {...state};
+            const resources = oldState.resources;
+            const members = oldState.squadMembers;
+            const squadMember = members[oldState.currentlyWatched];
+
+            squadMember.general.backpacks[action.payload] = createNoItem();
+            
+            resources['Muta-genes'] += 1;
+
+            state = oldState;
+        },
         studySpell(state, action) {
             const {index} = action.payload;
             const squad = {...state.squadMembers};
@@ -445,39 +469,20 @@ const gameSquad = createSlice({
         learnMastery(state, action) {
             const {index} = action.payload;
             const squad = {...state.squadMembers};
-            const squadMember = squad[index]!;
+            const squadMember = squad[index];
 
             squadMember.general.mind.masteries.push(action.payload.data);
 
             if (action.payload.data.name === masteries.mastery_brutalForce.name) {
                 squadMember.general.backpacks.push(createNoItem(), createNoItem());
-            }
 
-            const isStrong = squadMember.general.mind.masteries
-                .map(data => data.name)
-                .includes(masteries.mastery_brutalForce.name);
-
-            if (!squadMember.general.inventory) {
-                squadMember.general.inventory = createEmptyInventory();
-            }
-                
-            const raceMasteriesNames = Object.values(raceMasteries)
-                .map(mastery => mastery.name);
-            squadMember.general.mind.masteries = squadMember.general.mind.masteries
-                .filter(mastery => {
-                    if (raceMasteriesNames.includes(mastery.name)) {
-                        return false
-                    }
-
-                    return true
-                })
-
-            const newRace = checkRace(squadMember.general.inventory, isStrong);
-            squadMember.params.race = newRace;
-
-            const newRaceMastery = raceMasteries[newRace];
-            if (newRaceMastery) {
-                squadMember.general.mind.masteries.push(newRaceMastery);
+                const newRace = checkRace(squadMember.general.inventory, true);
+                squadMember.params.race = newRace;
+    
+                const newRaceMastery = raceMasteries[newRace];
+                if (newRaceMastery) {
+                    squadMember.general.mind.masteries.push(newRaceMastery);
+                }
             }
 
             state.squadMembers = squad;

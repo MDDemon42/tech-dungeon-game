@@ -10,7 +10,7 @@ import {
 import CommonIcon from '../../components/Icons/CommonIcon';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import gameSquad from '../../redux/slices/gameSquad';
+import gameSquad, { createGameSquad } from '../../redux/slices/gameSquad';
 import BattleOrder from '../../components/BattleOrder/BattleOrder';
 import { useNavigate } from 'react-router-dom';
 import shuffleArray from '../../helpers/shuffleArray';
@@ -21,6 +21,10 @@ import {
     CheckCircle
 } from 'react-bootstrap-icons';
 import BattleTurnButtons from '../../components/BattleTurnButtons/BattleTurnButtons';
+import BattleOverScreen from '../../screens/BattleOverScreen/BattleOverScreen';
+import { removeGameTabs } from '../../helpers/removeGameTabs';
+import { BattleResult, GameScreens } from '../../enums-and-interfaces/enums';
+import gameStage from '../../redux/slices/gameStage';
 
 function BattlePage() {
     const [battlePageState, setBattlePageState] = useState<IBattlePageState>({
@@ -32,8 +36,8 @@ function BattlePage() {
         squadStatus: [] as IMemberStatus[],
         opponentsStatus: [] as IMemberStatus[],
         abilitiesOnTurn: [] as IAbility[],
-        battleResult: 'none'
-    })
+        battleResult: BattleResult.none
+    });
 
     const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
 
@@ -51,6 +55,11 @@ function BattlePage() {
     useEffect(() => {        
         if (battlePageState.battleTurn === 0) {
             setBattlePageStatuses();
+            
+            dispatch(gameStage.actions.changeStage({
+                zone: GameScreens.villageMap,
+                stage: 0
+            }))
         } else if (battlePageState.battleTurn % 2 === 1) {
             checkDead();
 
@@ -149,22 +158,48 @@ function BattlePage() {
             const squadStatusBasis = [...state.squadStatus];
             const opponentsStatusBasis = [...state.opponentsStatus];
 
+            let allMembers = 0;
+            let deadMembers = 0;
             squadStatusBasis.forEach((member, index) => {
                 if (!!member) {
+                    allMembers++;
                     if (squadMembers[index].params.currentParams.Health <= 0) {
                         member.dead = true;
+                        deadMembers++;
                     }
                 }
             });
+            if (allMembers === deadMembers) {
+                setBattlePageState((prevState) => {
+                    const state = {...prevState};
+    
+                    state.battleResult = BattleResult.lose;
+    
+                    return state
+                })
+            }
             state.squadStatus = squadStatusBasis;
 
-            opponentsStatusBasis.forEach((member, index) => {
-                if (!!member) {
+            let allOpponents = 0;
+            let deadOpponents = 0;
+            opponentsStatusBasis.forEach((opponent, index) => {
+                if (!!opponent) {
+                    allOpponents++;
                     if (oppsMembers[index].params.currentParams.Health <= 0) {
-                        member.dead = true;
+                        opponent.dead = true;
+                        deadOpponents++;
                     }               
                 }
             })
+            if (allOpponents === deadOpponents) {
+                setBattlePageState((prevState) => {
+                    const state = {...prevState};
+    
+                    state.battleResult = BattleResult.win;
+    
+                    return state
+                })
+            }
             state.opponentsStatus = opponentsStatusBasis;
 
             return state
@@ -284,7 +319,7 @@ function BattlePage() {
             })
 
             if (enoughResources) {
-                abilityDiv.style.cssText = 'outline: 3px lightgray dashed; outline-offset: 3px;';
+                abilityDiv.style.cssText = 'outline: 3px orange solid; outline-offset: 3px;';
                 state.selectedAbility = abil;
                 state.selectedAbilityDiv = abilityDiv;
             } else {
@@ -438,21 +473,9 @@ function BattlePage() {
             return undefined
         }).filter(index => !!index);
 
-        const memberIndex = memberIndexes[Math.floor(Math.random() * memberIndexes.length)] as number;
+        const memberIndex = memberIndexes[Math.floor(Math.random() * memberIndexes.length)] as number ?? 0;
 
-        if (memberIndex === undefined) {
-            setBattlePageState((prevState) => {
-                const state = {...prevState};
-
-                state.battleResult = 'lost';
-
-                return state
-            })
-
-            return 0
-        } else {
-            return memberIndex
-        }
+        return memberIndex
     }
 
     function selectSquadMember(memberIndex: number, opponentTurn: boolean) {
@@ -550,8 +573,22 @@ function BattlePage() {
         )
     }
 
+    const setGameOver = () => {
+        dispatch(gameSquad.actions.setState(createGameSquad()));
+
+        removeGameTabs();
+    }
+
+    const navigateHomeHandler = () => {
+        navigate('/game');
+    }
+
+    const showTropheys = () => {
+
+    }
+
     const battleTurnButtonsListeners = {
-        navigateHome: () => navigate('/game'),
+        navigateHome: navigateHomeHandler,
         deselectMember: deselectSquadMember,
         nextTurn: nextBattleTurn
     }
@@ -562,6 +599,19 @@ function BattlePage() {
 
     return (
         <div className={styles.BattlePage}>
+            {
+                battlePageState.battleResult === BattleResult.lose ?
+                    <BattleOverScreen 
+                        result={battlePageState.battleResult} 
+                        listener={setGameOver}
+                    /> :
+                    battlePageState.battleResult === BattleResult.win ?
+                        <BattleOverScreen 
+                            result={battlePageState.battleResult} 
+                            listener={showTropheys}
+                        /> :
+                        null
+            }
             <h3 className={styles.BattlePage_header}>
                 {chrome.i18n.getMessage('battle_page_title')}
             </h3>            
@@ -589,7 +639,7 @@ function BattlePage() {
                     </button>
                     <div className={styles.BattlePage_body_abilitiesBlock_abilities}>
                         {
-                            battlePageState.battleResult === 'none' ?
+                            battlePageState.battleResult === BattleResult.none ?
                             (
                                 battlePageState.battleTurn % 2 === 1 ? 
                                     battlePageState.selectedMemberIndex >= 0 ?

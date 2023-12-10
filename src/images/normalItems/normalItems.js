@@ -12,6 +12,7 @@ import steelMace from './steelMace.png';
 import steelShield from './steelShield.png';
 import spear from './spear.png';
 import steelSword from './steelSword.png';
+import woodenShield from './woodenShield.png';
 
 import doubleAxeSlash from './doubleAxeSlash.png';
 
@@ -31,6 +32,7 @@ const normalItems = {
     spear,
     steelShield,
     steelSword,
+    woodenShield
 };
 
 export default normalItems;

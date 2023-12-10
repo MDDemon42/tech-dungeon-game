@@ -50,10 +50,26 @@ const item_steelShield = createItem(
     ]
 )
 
+const item_woodenShield = createItem(
+    [
+        chrome.i18n.getMessage('wooden_shield'),
+        chrome.i18n.getMessage('wooden_shield_item_description'),
+        images.normalItems.woodenShield
+    ],
+    [
+        1, InventoryPlace.leftHand, 1
+    ],
+    [
+        '', null, '', null,
+        abilities.passiveAbilities.armor.passiveAbility_woodenShield
+    ]
+)
+
 const armors = {
     item_leatherArmor,
     item_steelArmor,
-    item_steelShield
+    item_steelShield,
+    item_woodenShield
 }
 
 export default armors

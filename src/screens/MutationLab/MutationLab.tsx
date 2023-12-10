@@ -8,24 +8,24 @@ import { IStore, IUpgradeButton } from '../../enums-and-interfaces/interfaces';
 import styles from './MutationLab.module.css';
 
 function MutationLab() {
-    const screenName = InventoryGameScreens.mutationLab;
+    const screenName = InventoryGameScreens.mutaLab;
     const stage = useSelector((store: IStore) => store.gameStage[screenName].stage);
     const [taskScreenOpen, setTaskScreenOpen] = useState<[InventoryGameScreens, number]|null>(null);
 
     const upgradeButtons: IUpgradeButton[] = [
         {
-            title: 'Beast options',
-            stage: stage * 2,
+            title: chrome.i18n.getMessage('beast_genes_task_title'),
+            stage: 2,
             disabled: stage % 2 === 0
         },
         {
-            title: 'Reptile options',
-            stage: stage * 3,
+            title: chrome.i18n.getMessage('reptiloid_genes_task_title'),
+            stage: 3,
             disabled: stage % 3 === 0
         },
         {
-            title: 'Insectoid options',
-            stage: stage * 5,
+            title: chrome.i18n.getMessage('insectoid_genes_task_title'),
+            stage: 5,
             disabled: stage % 5 === 0
         }
     ];
@@ -43,7 +43,7 @@ function MutationLab() {
                 upgradeButtons={upgradeButtons} 
                 listener={(stage: number) => setTaskScreenOpen([screenName, stage])}
             />
-            <SubInventoryScreen screenName={InventoryGameScreens.mutationLab}/>
+            <SubInventoryScreen screenName={InventoryGameScreens.mutaLab}/>
         </div>
     )
 }

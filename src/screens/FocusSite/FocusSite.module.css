@@ -5,15 +5,3 @@
     align-items: center;
     gap: 20px;
 }
-
-.FocusSite_upgradeButtons {
-    display: flex;
-    flex-direction: row;
-    align-self: center;
-    width: 95%;
-    justify-content: space-around;
-}
-
-.FocusSite_upgradeButtons > div {
-    width: 47% !important;
-}

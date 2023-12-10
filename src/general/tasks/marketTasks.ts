@@ -1,18 +1,20 @@
-import { createTask } from "."
-import { TaskStatus } from "../../enums-and-interfaces/enums"
-import { IScreenTasks } from "../../enums-and-interfaces/interfaces"
-import items from "../items"
+import { createTask } from ".";
+import { TaskStatus } from "../../enums-and-interfaces/enums";
+import { IScreenTasks } from "../../enums-and-interfaces/interfaces";
+import items from "../items";
 
 const task_steelOptions = createTask(
     items.bigResources.ore.name,
     3, 
-    'Can you get me some Ore?',
-    'New blacksmith asks for 3 Ore to make a brand new line of Steel Weapons',
-)
+    chrome.i18n.getMessage('modernize_market_task_title'),
+    chrome.i18n.getMessage('modernize_market_task_text', 
+        ['3', items.bigResources.ore.name]
+    )
+);
 
 const marketTasks: IScreenTasks = {
     2: {
-        status: TaskStatus.notKnown,
+        status: TaskStatus.unknown,
         task: task_steelOptions
     }
 }

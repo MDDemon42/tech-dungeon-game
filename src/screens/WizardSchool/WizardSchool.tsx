@@ -15,7 +15,7 @@ function WizardSchool() {
 
     const upgradeButtons: IUpgradeButton[] = [
         {
-            title: 'Magister degree',
+            title: chrome.i18n.getMessage('librarium'),
             stage: 2,
             disabled: stage !== 1
         }

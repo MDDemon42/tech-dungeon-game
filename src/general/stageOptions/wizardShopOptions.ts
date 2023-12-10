@@ -16,5 +16,5 @@ const magisterStuff = [
 export const wizardShopOptions: Record<string, IWizardItem[]> = {
     0: [],
     1: [...apprenticeStuff],
-    2: [...apprenticeStuff, ...magisterStuff]
+    2: [...magisterStuff]
 }

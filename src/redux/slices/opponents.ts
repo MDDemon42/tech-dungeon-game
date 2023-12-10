@@ -6,6 +6,9 @@ import characters from '../../general/characters';
 const opponents_options: Record<string, ICharacher>[] = [
     {
         0: characters.mights.dummy(),
+    },
+    {
+        0: characters.mights.dummy(),
         1: characters.mights.guard(),
         2: characters.mights.barbarian(),
         3: characters.mights.knight(),

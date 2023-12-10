@@ -30,8 +30,8 @@ function TaskScreen(props: {
     const {
         bigResourceAmount,
         bigResourceName,
-        stageText,
-        stageTitle
+        taskTitle,
+        taskText
     } = task;
 
     const backpacks = useSelector((store: IStore) => 
@@ -60,10 +60,10 @@ function TaskScreen(props: {
     return (
         <div className={styles.TaskScreen}>
             <h3>
-                {stageTitle}
+                {taskTitle}
             </h3>
             <p className={styles.TaskScreen_text}>
-                {stageText}
+                {taskText}
             </p>
             <div className={styles.TaskScreen_buttons}>
                 <button 

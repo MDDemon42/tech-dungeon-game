@@ -9,14 +9,15 @@ import styles from './Academy.module.css';
 
 function Academy() {
     const screenName = MindGameScreens.academy;
-    const stage = useSelector((store: IStore) => store.gameStage[screenName].stage);
+    const academyStage = useSelector((store: IStore) => store.gameStage[screenName].stage);
+    const marketStage = useSelector((store: IStore) => store.gameStage.Market.stage);
     const [taskScreenOpen, setTaskScreenOpen] = useState<[MindGameScreens, number]|null>(null);
 
     const upgradeButtons: IUpgradeButton[] = [
         {
-            title: 'Modernize Academy',
+            title: chrome.i18n.getMessage('modernize_academy_task_title'),
             stage: 2,
-            disabled: stage !== 1 
+            disabled: academyStage % 2 === 0 && marketStage === 2
         }
     ];
 

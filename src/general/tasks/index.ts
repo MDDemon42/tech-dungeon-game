@@ -2,50 +2,46 @@ import { GameScreens } from "../../enums-and-interfaces/enums";
 import { IGameTasks, ITask } from "../../enums-and-interfaces/interfaces";
 
 import academyTasks from "./academyTasks";
-import airSchoolTasks from "./airSchoolTasks";
 import airSiteTasks from "./airSiteTasks";
 import cyberLabTasks from "./cyberLabTasks";
-import fireSchoolTasks from "./fireSchoolTasks";
 import fireSiteTasks from "./fireSiteTasks";
-import focusSchoolTasks from "./focusSchoolTasks";
 import focusSiteTasks from "./focusSiteTasks";
 import guildSchoolTasks from "./guildSchoolTasks";
-import iceSchoolTasks from "./iceSchoolTasks";
 import iceSiteTasks from "./iceSiteTasks";
 import marketTasks from "./marketTasks";
-import mutationLabTasks from "./mutationLabTasks";
+import mutaLabTasks from "./mutaLabTasks";
 import wizardSchoolTasks from "./wizardSchoolTasks";
 
 export function createTask(
     bigResourceName: string,
     bigResourceAmount: number,
-    stageTitle: string,
-    stageText: string
+    taskTitle: string,
+    taskText: string
 ): ITask {
     return {
         bigResourceName,
         bigResourceAmount,
-        stageTitle,
-        stageText
+        taskTitle,
+        taskText
     }
 }
    
 const tasks: IGameTasks = {
     [GameScreens.academy]: academyTasks,
-    [GameScreens.airSchool]: airSchoolTasks,
+    [GameScreens.airSchool]: null,
     [GameScreens.airSite]: airSiteTasks,
     [GameScreens.cyberLab]: cyberLabTasks,
-    [GameScreens.fireSchool]: fireSchoolTasks,
+    [GameScreens.fireSchool]: null,
     [GameScreens.fireSite]: fireSiteTasks,
-    [GameScreens.focusSchool]: focusSchoolTasks,
+    [GameScreens.focusSchool]: null,
     [GameScreens.focusSite]: focusSiteTasks,
     [GameScreens.guildRituals]: null,
     [GameScreens.guildSchool]: guildSchoolTasks,
     [GameScreens.guildShop]: null,
-    [GameScreens.iceSchool]: iceSchoolTasks,
+    [GameScreens.iceSchool]: null,
     [GameScreens.iceSite]: iceSiteTasks,
     [GameScreens.market]: marketTasks,
-    [GameScreens.mutationLab]: mutationLabTasks,
+    [GameScreens.mutaLab]: mutaLabTasks,
     [GameScreens.spellSchool]: null,
     [GameScreens.villageMap]: null,
     [GameScreens.wizardSchool]: wizardSchoolTasks,

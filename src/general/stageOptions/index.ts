@@ -14,7 +14,7 @@ import { guildShopOptions } from './guildShopOptions';
 import { iceSchoolOptions } from './iceSchoolOption';
 import { iceSiteOptions } from './iceSiteOptions';
 import { marketOptions } from './marketOptions';
-import { mutationLabOptions } from './mutationLabOptions';
+import { mutaLabOptions } from './mutaLabOptions';
 import { spellSchoolOptions } from './spellSchoolOptions';
 import { wizardSchoolOptions } from './wizardSchoolOptions';
 import { wizardShopOptions } from './wizardShopOptions';
@@ -34,7 +34,7 @@ const stageOptions: IGameStageOptions = {
     [GameScreens.iceSchool]: iceSchoolOptions,
     [GameScreens.iceSite]: iceSiteOptions,
     [GameScreens.market]: marketOptions,
-    [GameScreens.mutationLab]: mutationLabOptions,
+    [GameScreens.mutaLab]: mutaLabOptions,
     [GameScreens.spellSchool]: spellSchoolOptions,
     [GameScreens.villageMap]: null,
     [GameScreens.wizardSchool]: wizardSchoolOptions,

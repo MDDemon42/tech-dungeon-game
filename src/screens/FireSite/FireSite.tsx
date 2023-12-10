@@ -15,14 +15,14 @@ function FireSite() {
 
     const upgradeButtons: IUpgradeButton[] = [
         {
-            title: 'Fire ball',
+            title: chrome.i18n.getMessage('fire_ball'),
             stage: 2,
-            disabled: stage !== 1
+            disabled: stage % 2 === 0
         },
         {
-            title: 'Fire wave',
+            title: chrome.i18n.getMessage('fire_wave'),
             stage: 3,
-            disabled: stage !== 2
+            disabled: stage % 3 === 0
         },
     ];
 

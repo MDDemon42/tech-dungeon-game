@@ -15,7 +15,7 @@ function Guild() {
 
     const upgradeButtons: IUpgradeButton[] = [
         {
-            title: 'Runes and rituals',
+            title: chrome.i18n.getMessage('runes_and_rituals_task_title'),
             stage: 2,
             disabled: stage !== 1
         }

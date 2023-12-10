@@ -1,4 +1,5 @@
 import acidBomb from './acidBomb.png';
+import acidizer from './acidizer.png';
 import acidSplit from './acidSplit.png';
 import apprenticeHat from './apprenticeHat.png';
 import apprenticeRod from './apprenticeRod.png';
@@ -10,14 +11,19 @@ import brutalTorso from './brutalTorso.png';
 import chakram from './chakram.png';
 import clawLeft from './clawLeft.png';
 import clawRight from './clawRight.png';
+import cyberClaw from './cyberClaw.png';
 import guardianAura from './guardianAura.png';
 import guardianField from './guardianField.png';
-import energyFist from './energyFist.png';
+import energyFistRightHand from './energyFistRightHand.png';
+import energyFistLeftHand from './energyFistLeftHand.png';
+import energyShield from './energyShield.png';
 import energyWhip from './energyWhip.png';
 import flyingCape from './flyingCape.png';
+import freezer from './freezer.png';
 import furTorso from './furTorso.png';
 import head from './head.png';
 import healingPotion from './healingPotion.png';
+import heatSaber from './heatSaber.png';
 import hooves from './hooves.png';
 import horns from './horns.png';
 import intuition from './intuition.png';
@@ -47,6 +53,7 @@ import runicGreataxe from './runicGreataxe.png';
 import runicGreathammer from './runicGreathammer.png';
 import runicGreatsword from './runicGreatsword.png';
 import scalesTorso from './scalesTorso.png';
+import slasherator from './slasherator.png';
 import spear from './spear.png';
 import steelArmor from './steelArmor.png';
 import steelGreataxe from './steelGreataxe.png';
@@ -62,9 +69,11 @@ import titanLegs from './titanLegs.png';
 import titanTorso from './titanTorso.png';
 import torso from './torso.png';
 import wings from './wings.png';
+import woodenShield from './woodenShield.png';
 
 const bodyElements = {
     acidBomb,
+    acidizer,
     acidSplit,
     apprenticeHat,
     apprenticeRod,
@@ -76,14 +85,19 @@ const bodyElements = {
     chakram,
     clawLeft,
     clawRight,
+    cyberClaw,
     guardianAura,
     guardianField,
-    energyFist,
+    energyFistRightHand,
+    energyFistLeftHand,
+    energyShield,
     energyWhip,
     flyingCape,
+    freezer,
     furTorso,
     head,
     healingPotion,
+    heatSaber,
     hooves,
     horns,
     intuition,
@@ -112,8 +126,9 @@ const bodyElements = {
     runicGreataxe,
     runicGreathammer,
     runicGreatsword,
-    spear,
     scalesTorso,
+    slasherator,
+    spear,
     steelArmor,
     steelGreataxe,
     steelGreathammer,
@@ -127,7 +142,8 @@ const bodyElements = {
     titanLegs,
     titanTorso,
     torso,
-    wings
+    wings,
+    woodenShield
 }
 
 export default bodyElements

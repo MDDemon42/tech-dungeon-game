@@ -16,5 +16,5 @@ const runes = [
 export const guildShopOptions: Record<string, IItem[]> = {
     0: [],
     1: [...basicOptions],
-    2: [...basicOptions, ...runes]
+    2: [...runes]
 };

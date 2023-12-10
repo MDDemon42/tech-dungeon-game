@@ -20,9 +20,11 @@ import gameSquad from "../../redux/slices/gameSquad";
 import items from "../../general/items";
 
 import TaskScreen from "../../components/TaskScreen/TaskScreen";
+// import gameStage from "../../redux/slices/gameStage";
 
 function VillageMap() {
     const gameStageScreens = useSelector((store: IStore) => store.gameStage);
+    const villageMapStage = useSelector((store: IStore) => store.gameStage.Village_Map.stage);
     const [taskScreenOpen, setTaskScreenOpen] = useState<GameScreens|null>(null);
 
     const navigate = useNavigate();
@@ -35,27 +37,6 @@ function VillageMap() {
         requiredScreen: GameScreens,
         requiredStage: number
     }>> = {
-        [GameScreens.market]: {
-            requiredScreen: GameScreens.villageMap,
-            requiredStage: 0,
-            title: chrome.i18n.getMessage('market_to'),
-            icon: <Gem size={25}/>,
-            houses: [0, 1, 2, 3, 4, 5]
-        },
-        [GameScreens.cyberLab]: {
-            requiredScreen: GameScreens.villageMap,
-            requiredStage: 0,
-            title: chrome.i18n.getMessage('cyber_lab_to'),
-            icon: <Gear size={25}/>,
-            houses: [20]
-        },
-        [GameScreens.mutationLab]: {
-            requiredScreen: GameScreens.villageMap,
-            requiredStage: 0,
-            title: chrome.i18n.getMessage('mutation_lab_to'),
-            icon: <Capsule size={25}/>,
-            houses: [20]
-        },
         [GameScreens.academy]: {
             requiredScreen: GameScreens.market,
             requiredStage: 1,
@@ -63,12 +44,33 @@ function VillageMap() {
             icon: <MortarboardFill size={25}/>,
             houses: [10, 11, 12, 13]
         },
-        [GameScreens.wizardSchool]: {
-            requiredScreen: GameScreens.academy,
+        [GameScreens.airSite]: {
+            requiredScreen: GameScreens.guildSchool,
             requiredStage: 1,
-            title: chrome.i18n.getMessage('wizard_school_to'),
-            icon: <Magic size={25}/>,
-            houses: [18, 19]
+            title: chrome.i18n.getMessage('air_site_to'),
+            icon: <Wind size={25}/>,
+            houses: [7]
+        },
+        [GameScreens.cyberLab]: {
+            requiredScreen: GameScreens.villageMap,
+            requiredStage: 0,
+            title: chrome.i18n.getMessage('cyber_lab_to'),
+            icon: <Gear size={25}/>,
+            houses: [20]
+        },        
+        [GameScreens.fireSite]: {
+            requiredScreen: GameScreens.guildSchool,
+            requiredStage: 1,
+            title: chrome.i18n.getMessage('fire_site_to'),
+            icon: <Fire size={25}/>,
+            houses: [8]
+        },
+        [GameScreens.focusSite]: {
+            requiredScreen: GameScreens.guildSchool,
+            requiredStage: 1,
+            title: chrome.i18n.getMessage('focus_site_to'),
+            icon: <Eye size={25}/>,
+            houses: [9]
         },
         [GameScreens.guildSchool]: {
             requiredScreen: GameScreens.market,
@@ -77,34 +79,34 @@ function VillageMap() {
             icon: <Bank2 size={25}/>,
             houses: [14, 15, 16, 17]
         },
-        [GameScreens.focusSchool]: {
-            requiredScreen: GameScreens.guildSchool,
-            requiredStage: 1,
-            title: chrome.i18n.getMessage('focus_site_to'),
-            icon: <Eye size={25}/>,
-            houses: [9]
-        },        
-        [GameScreens.airSchool]: {
-            requiredScreen: GameScreens.guildSchool,
-            requiredStage: 1,
-            title: chrome.i18n.getMessage('air_site_to'),
-            icon: <Wind size={25}/>,
-            houses: [7]
-        },
-        [GameScreens.fireSchool]: {
-            requiredScreen: GameScreens.guildSchool,
-            requiredStage: 1,
-            title: chrome.i18n.getMessage('fire_site_to'),
-            icon: <Fire size={25}/>,
-            houses: [8]
-        },
-        [GameScreens.iceSchool]: {
+        [GameScreens.iceSite]: {
             requiredScreen: GameScreens.guildSchool,
             requiredStage: 1,
             title: chrome.i18n.getMessage('ice_site_to'),
             icon: <Snow2 size={25}/>,
             houses: [6]
-        }        
+        },
+        [GameScreens.market]: {
+            requiredScreen: GameScreens.villageMap,
+            requiredStage: 0,
+            title: chrome.i18n.getMessage('market_to'),
+            icon: <Gem size={25}/>,
+            houses: [0, 1, 2, 3, 4, 5]
+        },
+        [GameScreens.mutaLab]: {
+            requiredScreen: GameScreens.villageMap,
+            requiredStage: 0,
+            title: chrome.i18n.getMessage('muta_lab_to'),
+            icon: <Capsule size={25}/>,
+            houses: [20]
+        },        
+        [GameScreens.wizardSchool]: {
+            requiredScreen: GameScreens.academy,
+            requiredStage: 1,
+            title: chrome.i18n.getMessage('wizard_school_to'),
+            icon: <Magic size={25}/>,
+            houses: [18, 19]
+        },    
     }
 
     function goToListener(item: string) {
@@ -152,26 +154,40 @@ function VillageMap() {
                 })
             }
             <button 
-                onClick={() => dispatch(gameSquad.actions.getBigResource(items.bigResources.wood))}
+                onClick={() => {
+                    dispatch(gameSquad.actions.getBigResource(items.bigResources.wood));
+                    // dispatch(gameSquad.actions.getBigResource(items.bigResources.beastRemains));
+                    // dispatch(gameSquad.actions.getBigResource(items.bigResources.insectoidRemains));
+                    // dispatch(gameSquad.actions.getBigResource(items.bigResources.reptiloidRemains));
+                }}
                 className={styles.VillageMap_icon_Woods}
                 title={chrome.i18n.getMessage('woods_to')}
             >
                 <Tree size={25}/>
             </button>
             <button 
-                onClick={() => dispatch(gameSquad.actions.getBigResource(items.bigResources.ore))}
+                onClick={() => {
+                    dispatch(gameSquad.actions.getBigResource(items.bigResources.ore))
+                    // dispatch(gameStage.actions.changeStage({
+                    //     zone: GameScreens.villageMap,
+                    //     stage: 1
+                    // }))
+                }}
                 className={styles.VillageMap_icon_Mines}
                 title={chrome.i18n.getMessage('mines_to')}
             >
                 <MinecartLoaded size={25}/>
             </button>
-            <button 
-                onClick={() => navigate('/battle')}
-                className={styles.VillageMap_icon_Battle}
-                title={chrome.i18n.getMessage('to_battle_screen_button_title')}
-            >
-                <EmojiAngryFill size={25}/>
-            </button>
+            {
+                villageMapStage !== 0 && 
+                <button 
+                    onClick={() => navigate('/battle')}
+                    className={styles.VillageMap_icon_Battle}
+                    title={chrome.i18n.getMessage('to_battle_screen_button_title')}
+                >
+                    <EmojiAngryFill size={25}/>
+                </button>
+            }            
         </div>
     )
 }

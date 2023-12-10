@@ -62,14 +62,126 @@
     "cyber_lab_title": {
         "message": "Welcome to Cyber Lab!"
     },
+    "build_cyber_lab_task_title": {
+        "message": "Order 36: Build Cyber Lab"
+    },
+    "build_cyber_lab_task_text": {
+        "message": "Captain orders to get $count$ $resource$ to build Cyber Lab.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "high_energy_cybers_task_title": {
+        "message": "Modernize Cyber Lab"
+    },
+    "high_energy_cybers_task_text": {
+        "message": "Captain orders to get $count$ $resource$ to modernize Cyber Lab.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "nano_cybers_task_title": {
+        "message": "Upgrade Cyber Lab"
+    },
+    "nano_cybers_task_text": {
+        "message": "Captain orders to get $count$ $resource$ to upgrade Cyber Lab.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "implement": {
         "message": "Implement!"
     },
-    "mutation_lab_to": {
-        "message": "To Mutation Lab!"
+    "muta_lab_to": {
+        "message": "To Muta Lab!"
     },
-    "mutation_lab_title": {
-        "message": "Welcome to Mutation Lab!"
+    "muta_lab_title": {
+        "message": "Welcome to Muta Lab!"
+    },
+    "build_muta_lab_task_title": {
+        "message": "Order 47: Build Muta Lab"
+    },
+    "build_muta_lab_task_text": {
+        "message": "Captain orders to get $count$ $resource$ to build Muta Lab.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "beast_genes_task_title": {
+        "message": "Beast genes"
+    },
+    "beast_genes_task_text": {
+        "message": "Captain orders to get $count$ $resource$ to mutate with in future.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "reptiloid_genes_task_title": {
+        "message": "Reptiloid genes"
+    },
+    "reptiloid_genes_task_text": {
+        "message": "Captain orders to get $count$ $resource$ to mutate with in future.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "insectoid_genes_task_title": {
+        "message": "Insectoid genes"
+    },
+    "insectoid_genes_task_text": {
+        "message": "Captain orders to get $count$ $resource$ to mutate with in future.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "mutate": {
         "message": "Mutate!"
@@ -80,6 +192,22 @@
     "market_title": {
         "message": "Welcome to Market!"
     },
+    "modernize_market_task_title": {
+        "message": "Steel on Market"
+    },
+    "modernize_market_task_text": {
+        "message": "Local blacksmith asks for $count$ $resource$ to make a brand new line of Steel Weapons.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "buy": {
         "message": "Buy!"
     },
@@ -89,6 +217,38 @@
     "academy_title": {
         "message": "Welcome to Academy!"
     },
+    "build_academy_task_title": {
+        "message": "Let us build Academy!"
+    },
+    "build_academy_task_text": {
+        "message": "Skilled villagers ask for $count$ $resource$ to build Academy.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "modernize_academy_task_title": {
+        "message": "Steel in Academy"
+    },
+    "modernize_academy_task_text": {
+        "message": "More skilled villagers ask for $count$ $resource$ to modernize Academy.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "learn": {
         "message": "Learn!"
     },
@@ -97,6 +257,22 @@
     },
     "focus_site_title": {
         "message": "Welcome to Focus Site!"
+    },
+    "build_focus_site_task_title": {
+        "message": "Help me settle a Focus Site"
+    },
+    "build_focus_site_task_text": {
+        "message": "Some tattoed guy asks for $count$ $resource$ to settle a Focus Site.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "focus_school_title": {
         "message": "Learn Power Masteries!"
@@ -113,8 +289,59 @@
     "wizard_school_title": {
         "message": "Learn Wizard Masteries!"
     },
+    "build_wizard_school_task_title": {
+        "message": "Can you help with Wizard School building?"
+    },
+    "build_wizard_school_task_text": {
+        "message": "Several nerds ask for $count$ $resource$ to build a Wizard School.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "librarium": {
+        "message": "Librarium"
+    },
+    "construct_librarium_task_title": {
+        "message": "Can you help with Librarium constructing?"
+    },
+    "construct_librarium_task_text": {
+        "message": "Several nerds ask for $count$ $resource$ to construct a Librarium.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "guild_to": {
         "message": "To Guild!"
+    },
+    "build_guild_task_title": {
+        "message": "Help build Guild"
+    },
+    "build_guild_task_text": {
+        "message": "Group of foreigners asks for $count$ $resource$ to build some Guild.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "guild_shop_title": {
         "message": "Welcome to Guild Shop!"
@@ -124,6 +351,22 @@
     },
     "guild_rituals_title": {
         "message": "Surpass Guild Rituals!"
+    },
+    "runes_and_rituals_task_title": {
+        "message": "Runes and Rituals."
+    },
+    "runes_and_rituals_task_text": {
+        "message": "Group of foreigners asks for $count$ $resource$ for some meta-experiments.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "spell_shop_to": {
         "message": "To Spell Shop!"
@@ -283,6 +526,15 @@
     },
     "resistance_all_physical_1": {
         "message": "Upgrades resistance to All Physical damage by 1."
+    },
+    "wooden_shield": {
+        "message": "Wooden shield"
+    },
+    "wooden_shield_item_description": {
+        "message": "Common wooden shield."
+    },
+    "resistance_piercing_1": {
+        "message": "Upgrades resistance to Piercing damage by 1."
     },
     "steel_shield": {
         "message": "Steel shield"
@@ -488,23 +740,59 @@
     "acid_bomb_throw": {
         "message": "Acid bomb throw"
     },
+    "acidizer": {
+        "message": "Acidizer"
+    },
+    "acidizer_cyber_description": {
+        "message": "Cyber to spill acid directly."
+    },
     "reactive_feet": {
         "message": "Reactive feet"
     },
     "reactive_feet_cyber_description": {
         "message": "Cyber to fly in short distances."
     },
-    "energy_fist": {
-        "message": "Energy fist"
+    "cyber_claw": {
+        "message": "Cyber claw"
+    },
+    "cyber_claw_cyber_description": {
+        "message": "Cyber to rip apart enemies like a predatory animal."
+    },
+    "energy_fist_left_hand": {
+        "message": "Energy fist on left hand"
+    },
+    "energy_fist_right_hand": {
+        "message": "Energy fist on right hand"
     },
     "energy_fist_cyber_description": {
         "message": "Cyber to give ultimate punches."
+    },
+    "energy_shield": {
+        "message": "Energy shield"
+    },
+    "energy_shield_cyber_description": {
+        "message": "Cyber to deflect some physical damage."
+    },
+    "resistance_piercing_and_smashing_1": {
+        "message": "Upgrades resistance to Piercing and Smashing damage by 1."
     },
     "energy_whip": {
         "message": "Energy whip"
     },
     "energy_whip_cyber_description": {
         "message": "Cyber to deal pain and sufferings."
+    },
+    "freezer": {
+        "message": "Freezer"
+    },
+    "freezer_cyber_description": {
+        "message": "Cyber to cool anything down."
+    },
+    "heat_saber": {
+        "message": "Heat saber"
+    },
+    "heat_saber_cyber_description": {
+        "message": "Cyber to burn through armor and flesh."
     },
     "laser": {
         "message": "Laser"
@@ -517,6 +805,12 @@
     },
     "rocket_launcher_cyber_description": {
         "message": "Cyber to destroy everything in an area."
+    },    
+    "slasherator": {
+        "message": "Slasherator"
+    },
+    "slasherator_cyber_description": {
+        "message": "Cyber to cut down trees and bodies."
     },
     "wings": {
         "message": "Wings"
@@ -575,6 +869,9 @@
     "titan_skin": {
         "message": "Titan skin"
     },
+    "resistance_titan_invincibility": {
+        "message": "Upgrades resistance to All Physical, Acid, Cold and Fire damage by 2\nand to Electrical damage by 8."
+    },
     "titan_skin_ritual_description": {
         "message": "Ritual to make skin almost invincible."
     },
@@ -596,6 +893,22 @@
     "ice_site_title": {
         "message": "Welcome to Ice Site!"
     },
+    "build_ice_site_task_title": {
+        "message": "Can you help me with build an Ice Site, please?"
+    },
+    "build_ice_site_task_text": {
+        "message": "Some ice-bending girl asks for $count$ $resource$ to build an Ice Site.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "ice_school_title": {
         "message": "Learn Ice Sense!"
     },
@@ -611,11 +924,55 @@
     "ice_spear_bending_description": {
         "message": "Spell to pierce an enemy with ice spear."
     },
+    "ice_spear_task_title": {
+        "message": "Can you help me with $resource$, please?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "ice_spear_task_text": {
+        "message": "Ice girl asks for $count$ $resource$ to make some training dummies.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "ice_hail": {
         "message": "Ice hail"
     },
     "ice_hail_bending_description": {
         "message": "Spell to pierce a group of enemies with ice shards."
+    },
+    "ice_hail_task_title": {
+        "message": "Can you help me with more $resource$, please?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "ice_hail_task_text": {
+        "message": "Ice girl asks for $count$ $resource$ to make some more training dummies.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "cold_death": {
         "message": "Cold death"
@@ -623,15 +980,53 @@
     "cold_death_bending_description": {
         "message": "Spell to turn an enemy dead and cold."
     },
+    "cold_death_task_title": {
+        "message": "Can you help me with even more $resource$, please?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "cold_death_task_text": {
+        "message": "Ice girl asks for $count$ $resource$ to make a raft.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "fire_site_to": {
         "message": "To Fire Site!"
     },
     "fire_site_title": {
         "message": "Welcome to Fire Site!"
     },
+    "build_fire_site_task_title": {
+        "message": "Could you help me build a Fire Site?"
+    },
+    "build_fire_site_task_text": {
+        "message": "Some fire-bending girl asks for $count$ $resource$ to build a Fire Site.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "fire_school_title": {
         "message": "Learn Fire Sense!"
-    },
+    },    
     "flame": {
         "message": "Flame"
     },
@@ -644,17 +1039,77 @@
     "fire_ball_bending_description": {
         "message": "Spell to clash a group of enemies with fire."
     },
+    "fire_ball_task_title": {
+        "message": "Can you help with $resource$?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "fire_ball_task_text": {
+        "message": "Fire girl asks for $count$ $resource$ to make training dummies.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "fire_wave": {
         "message": "Fire wave"
     },
     "fire_wave_bending_description": {
         "message": "Spell to burn out a group of enemies."
     },
+    "fire_wave_task_title": {
+        "message": "Help me with $resource$ please",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "fire_wave_task_text": {
+        "message": "Fire girl asks for $count$ $resource$ to make bunker.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "air_site_to": {
         "message": "To Air Site!"
     },
     "air_site_title": {
         "message": "Welcome to Air Site!"
+    },
+    "build_air_site_task_title": {
+        "message": "Would you help me build an Air Site?"
+    },
+    "build_air_site_task_text": {
+        "message": "Some air-bending guy asks for $count$ $resource$ to build an Air Site.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "air_school_title": {
         "message": "Learn Air Sense!"
@@ -686,6 +1141,24 @@
     "mines_title": {
         "message": "Deep in the Mines..."
     },
+    "beast_remains": {
+        "message": "Beast remains"
+    },
+    "beast_remains_item_description": {
+        "message": "Brain, spinal and some bones of Beast"
+    },
+    "insectoid_remains": {
+        "message": "Insectoid remains"
+    },
+    "insectoid_remains_item_description": {
+        "message": "Brain, spinal and some bones of Insectoid"
+    },
+    "reptiloid_remains": {
+        "message": "Reptiloid remains"
+    },
+    "reptiloid_remains_item_description": {
+        "message": "Brain, spinal and some bones of Reptiloid"
+    },
     "wind_blow": {
         "message": "Wind blow"
     },
@@ -698,11 +1171,55 @@
     "thunder_punch_bending_description": {
         "message": "Spell to smash an enemy up to thunder crambls."
     },
+    "thunder_punch_task_title": {
+        "message": "I need more $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "thunder_punch_task_text": {
+        "message": "Air guy asks for $count$ $resource$ to make training dummies.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "air_deprivation": {
         "message": "Air deprivation"
     },
     "air_deprivation_bending_description": {
         "message": "Spell to make an enemy airless and lifeless."
+    },
+    "air_deprivation_task_title": {
+        "message": "I need even more $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "air_deprivation_task_text": {
+        "message": "Air guy asks for $count$ $resource$ to make high watch tower.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "flying_charm": {
         "message": "Flying charm"
@@ -836,11 +1353,58 @@
     "meditative_insights_mastery_description": {
         "message": "Mastery of gaining control over inner powers."
     },
+    "deepest_insights": {
+        "message": "Deepest insights"
+    },
+    "deepest_insights_task_title": {
+        "message": "Get $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "deepest_insights_task_text": {
+        "message": "Tattoed guy needs $count$ $resource$ to make silent room.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "psi_energy": {
         "message": "Psi-energy"
     },
     "psi_energy_mastery_description": {
         "message": "Mastery of gaining control over psi-energy."
+    },
+    "psi_energy_task_title": {
+        "message": "Get more $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "psi_energy_task_text": {
+        "message": "Tattoed guy needs $count$ $resource$ to make training dummies.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "cold_affiliation": {
         "message": "Cold affiliation"
@@ -913,5 +1477,35 @@
     },
     "not_now": {
         "message": "Not now"
+    },
+    "hero_name": {
+        "message": "Hero name"
+    },
+    "start_name_boris": {
+        "message": "Boris"
+    },
+    "start_name_jackline": {
+        "message": "Jackline"
+    },
+    "start_name_stephan": {
+        "message": "Stephan"
+    },
+    "start_name_colin": {
+        "message": "Colin"
+    },
+    "start_name_mishelle": {
+        "message": "Mishelle"
+    },
+    "start_name_hanz": {
+        "message": "Hanz"
+    },
+    "start_name_romul": {
+        "message": "Romul"
+    },
+    "start_name_albert": {
+        "message": "Albert"
+    },
+    "choose_class": {
+        "message": "Choose class"
     }
 }

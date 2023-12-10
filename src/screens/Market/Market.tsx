@@ -14,7 +14,7 @@ function Market() {
 
     const upgradeButtons: IUpgradeButton[] = [
         {
-            title: 'Steel options',
+            title: chrome.i18n.getMessage('modernize_market_task_title'),
             stage: 2,
             disabled: stage > 1
         }

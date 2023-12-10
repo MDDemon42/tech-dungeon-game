@@ -193,6 +193,21 @@ function InventoryScreen(props: {
                     
     let inventoryLeftHand = null;
     switch (inventory.leftHand.name) {
+        case cybers.weapons.cyber_acidizer.name:
+            inventoryLeftHand = <img src={images.bodyElements.acidizer} alt={chrome.i18n.getMessage('acidizer')} />;
+            break;
+        case cybers.armors.cyber_energyShield.name:
+            inventoryLeftHand = <img src={images.bodyElements.energyShield} alt={chrome.i18n.getMessage('energy_shield')} />;
+            break;
+        case cybers.weapons.cyber_freezer.name:
+            inventoryLeftHand = <img src={images.bodyElements.freezer} alt={chrome.i18n.getMessage('freezer')} />;
+            break;
+        case cybers.weapons.cyber_slasherator.name:
+            inventoryLeftHand = <img src={images.bodyElements.slasherator} alt={chrome.i18n.getMessage('slasherator')} />;
+            break;
+        case cybers.weapons.cyber_energyFistLeftHand.name:
+            inventoryLeftHand = <img src={images.bodyElements.energyFistLeftHand} alt={chrome.i18n.getMessage('energy_fist_left_hand')} />;
+            break;
         case cybers.weapons.cyber_laser.name:
             inventoryLeftHand = <img src={images.bodyElements.laser} alt={chrome.i18n.getMessage('laser')} />;
             break;
@@ -208,6 +223,9 @@ function InventoryScreen(props: {
         case items.armors.item_steelShield.name:
             inventoryLeftHand = <img src={images.bodyElements.steelShield} alt={chrome.i18n.getMessage('steel_shield')} />;
             break;
+        case items.armors.item_woodenShield.name:
+            inventoryLeftHand = <img src={images.bodyElements.woodenShield} alt={chrome.i18n.getMessage('wooden_shield')} />;
+            break;
         case guildItems.weapons.guildItem_steelChakram.name:
             inventoryLeftHand = <img src={images.bodyElements.chakram} alt={chrome.i18n.getMessage('steel_chakram')} />;
             break;
@@ -217,11 +235,17 @@ function InventoryScreen(props: {
 
     let inventoryRightHand = null;
     switch (inventory.rightHand.name) {
+        case cybers.weapons.cyber_cyberClaw.name:
+            inventoryRightHand = <img src={images.bodyElements.cyberClaw} alt={chrome.i18n.getMessage('cyber_claw')} />;
+            break;
+        case cybers.weapons.cyber_heatSaber.name:
+            inventoryRightHand = <img src={images.bodyElements.heatSaber} alt={chrome.i18n.getMessage('heat_saber')} />;
+            break;
         case cybers.weapons.cyber_energyWhip.name:
             inventoryRightHand = <img src={images.bodyElements.energyWhip} alt={chrome.i18n.getMessage('energy_whip')} />;
             break;
-        case cybers.weapons.cyber_energyFist.name:
-            inventoryRightHand = <img src={images.bodyElements.energyFist} alt={chrome.i18n.getMessage('energy_fist')} />;
+        case cybers.weapons.cyber_energyFistRightHand.name:
+            inventoryRightHand = <img src={images.bodyElements.energyFistRightHand} alt={chrome.i18n.getMessage('energy_fist_right_hand')} />;
             break;
         case mutations.weapons.mutation_clawRight.name:
             inventoryRightHand = <img src={images.bodyElements.clawRight} alt={chrome.i18n.getMessage('claws')} />;

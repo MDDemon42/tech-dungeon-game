@@ -1,4 +1,5 @@
 import { 
+    BattleResult,
     DamageType, 
     GameScreens, 
     InventoryOption, 
@@ -62,8 +63,15 @@ export interface IGameScreen {
 
 export interface IGameStage extends Record<GameScreens, {
     stage: number,
-    options: IScreenStageOptions | null,
-    tasks: IScreenTasks | null
+    stageOptions: IScreenStageOptions | null,
+    tasks: IScreenTasks | null,
+    usableOptions: (
+        IMastery | IItem |
+        ICyber | IMutation |
+        IPower | ISpell |
+        IWizardItem | IBending |
+        IRitual | IGuildItem
+    )[]
 }> {}
 
 export interface IGameStageOptions extends Record<GameScreens, IScreenStageOptions | null> {}
@@ -92,8 +100,8 @@ export interface IScreenTasks extends Record<string, {
 export interface ITask {
     bigResourceName: string,
     bigResourceAmount: number,
-    stageTitle: string,
-    stageText: string
+    taskTitle: string,
+    taskText: string
 }
 
 export interface IGameSquad {
@@ -376,5 +384,5 @@ export interface IBattlePageState {
     squadStatus: IMemberStatus[];
     opponentsStatus: IMemberStatus[];
     abilitiesOnTurn: IAbility[];
-    battleResult: string;
+    battleResult: BattleResult;
 }

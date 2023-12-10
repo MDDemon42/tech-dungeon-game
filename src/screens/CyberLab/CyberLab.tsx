@@ -14,20 +14,15 @@ function CyberLab() {
 
     const upgradeButtons: IUpgradeButton[] = [
         {
-            title: 'Basic',
+            title: chrome.i18n.getMessage('high_energy_cybers_task_title'),
             stage: 2,
-            disabled: stage !== 1
+            disabled: stage % 2 ===0 
         },
         {
-            title: 'Advanced',
+            title: chrome.i18n.getMessage('nano_cybers_task_title'),
             stage: 3,
-            disabled: stage !== 2
+            disabled: stage % 3 ===0 
         },
-        {
-            title: 'Expert',
-            stage: 4,
-            disabled: stage !== 3
-        }
     ];
 
     return (

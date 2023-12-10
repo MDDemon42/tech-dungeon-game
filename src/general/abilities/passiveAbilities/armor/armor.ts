@@ -64,6 +64,18 @@ const passiveAbility_steelArmor = createPassiveAbility(
     }
 )
 
+const passiveAbility_woodenShield = createPassiveAbility(
+    [
+        chrome.i18n.getMessage('wooden_shield'),
+        chrome.i18n.getMessage('resistance_piercing_1'), 
+        images.normalItems.woodenShield
+    ],
+    null,
+    {
+        [DamageType.physicalPiercing]: 1,
+    }
+);
+
 const passiveAbility_steelShield = createPassiveAbility(
     [
         chrome.i18n.getMessage('steel_shield'),
@@ -75,7 +87,20 @@ const passiveAbility_steelShield = createPassiveAbility(
         [DamageType.physicalSlashing]: 1,
         [DamageType.physicalPiercing]: 1,
     }
-)
+);
+
+const passiveAbility_energyShield = createPassiveAbility(
+    [
+        chrome.i18n.getMessage('energy_shield'), 
+        chrome.i18n.getMessage('resistance_piercing_and_smashing_1'),
+        images.cyborgDetails.energyShield
+    ],
+    null,
+    {
+        [DamageType.physicalSmashing]: 1,
+        [DamageType.physicalPiercing]: 1,
+    }
+);
 
 const passiveAbility_nanoVest = createPassiveAbility(
     [
@@ -180,7 +205,7 @@ const passiveAbility_guardianField = createPassiveAbility(
 const passiveAbility_titanSkin = createPassiveAbility(
     [
         chrome.i18n.getMessage('titan_skin'),  
-        chrome.i18n.getMessage('resistance_all_elemental_1'), 
+        chrome.i18n.getMessage('resistance_titan_invincibility'), 
         images.psionInsights.guardianField
     ],
     {
@@ -203,7 +228,9 @@ const armor = {
     passiveAbility_magisterRobe,
     passiveAbility_leatherArmor,
     passiveAbility_steelArmor,
+    passiveAbility_woodenShield,
     passiveAbility_steelShield,
+    passiveAbility_energyShield,
     passiveAbility_nanoVest,
     passiveAbility_nanoMatrix,
     passiveAbility_scales,

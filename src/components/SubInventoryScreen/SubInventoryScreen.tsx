@@ -33,9 +33,9 @@ function SubInventoryScreen(props: {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);    
 
     const {screenName} = props;
-    const stage = useSelector((store: IStore) => store.gameStage[screenName].stage);
     const data = useSelector((store: IStore) => 
-        store.gameStage[screenName].options?.[stage]) as (IItem | ICyber | IMutation)[];
+        store.gameStage[screenName].usableOptions) as (IItem | ICyber | IMutation)[];
+    
 
     const dispatch = useDispatch();
 
@@ -58,9 +58,9 @@ function SubInventoryScreen(props: {
                 dispatch(gameSquad.actions.implementCyber({index, data}));
             }
         },
-        [InventoryGameScreens.mutationLab]: {
+        [InventoryGameScreens.mutaLab]: {
             resource: UserResource.gene,
-            title: chrome.i18n.getMessage('mutation_lab_title'),
+            title: chrome.i18n.getMessage('muta_lab_title'),
             button: chrome.i18n.getMessage('mutate'),
             listener: (data: IMutation) => {
                 dispatch(gameSquad.actions.mutateMutation({index, data}));
@@ -87,6 +87,9 @@ function SubInventoryScreen(props: {
     const resource = useSelector((store: IStore) => 
         store.gameSquad.resources[subInventoryMappings[screenName].resource]);
 
+    if (data.length === 0) {
+        return null
+    }
     
     const dataSpecified: Record<string, IInventorySlot[]> = {
         data_for_hat: data.filter(item => item.inventoryPlace === InventoryPlace.hat),
@@ -98,9 +101,9 @@ function SubInventoryScreen(props: {
         data_for_shoulders: data.filter(item => item.inventoryPlace === InventoryPlace.shoulders),
         data_for_tail: data.filter(item => item.inventoryPlace === InventoryPlace.tail),
         data_for_left_hand: data.filter(item => item.inventoryPlace === InventoryPlace.leftHand 
-            && screenName !== InventoryGameScreens.mutationLab),
+            && screenName !== InventoryGameScreens.mutaLab),
         data_for_right_hand: data.filter(item => item.inventoryPlace === InventoryPlace.rightHand 
-            && screenName !== InventoryGameScreens.mutationLab),
+            && screenName !== InventoryGameScreens.mutaLab),
         data_for_both_hands: data.filter(item => item.inventoryPlace === InventoryPlace.bothHands),
         data_for_belt: data.filter(item => item.inventoryPlace === InventoryPlace.belt),
         data_for_left_pocket: data.filter(item => item.inventoryPlace === InventoryPlace.leftPocket),

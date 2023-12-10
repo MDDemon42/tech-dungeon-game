@@ -4,6 +4,7 @@ import items from "../items";
 const basicOptions = [
     items.other.item_healingPotion,
     items.armors.item_leatherArmor,
+    items.armors.item_woodenShield,
     items.weapons.item_oakBow,
     items.weapons.item_spear,
     items.weapons.item_axeLeftHand,
@@ -24,5 +25,5 @@ const steelOptions = [
 export const marketOptions: Record<string, IItem[]> = {
     0: [],
     1: [...basicOptions],
-    2: [...basicOptions, ...steelOptions]
+    2: [...steelOptions]
 };

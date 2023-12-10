@@ -18,7 +18,7 @@
 }
 
 .BattleOrder_squadMember__selected {
-    outline: 3px lightgray dashed;
+    outline: 3px orange solid;
     outline-offset: 10px;
 }
 

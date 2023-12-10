@@ -9,6 +9,8 @@ import C from '../../redux/constants';
 import gameSquad, { classInfo } from '../../redux/slices/gameSquad';
 import { iconToClass, classToIcon } from '../../helpers/classIconRelates';
 import { UserStartClass } from '../../enums-and-interfaces/enums';
+import { removeGameTabs } from '../../helpers/removeGameTabs';
+import gameStage from '../../redux/slices/gameStage';
 
 export function upperCaseFirstLetter(value: string) {
     return value.substring(0,1).toUpperCase() + value.substring(1)
@@ -41,6 +43,8 @@ function MainPage() {
             if (result[C.extensionStorageName]) {
                 dispatch(gameSquad.actions.setState(result[C.extensionStorageName].gameSquad));
 
+                dispatch(gameStage.actions.setState(result[C.extensionStorageName].gameStage));
+
                 const user = result[C.extensionStorageName].gameSquad.squadMembers[index];
                 if (user.params.level > 0) {
                     setStartButtonText(chrome.i18n.getMessage('main_page_continue'))
@@ -64,6 +68,8 @@ function MainPage() {
     } 
 
     const startButtonListener = () => {
+        removeGameTabs();
+
         dispatch(gameSquad.actions.startGame(getUserName()));
 
         window.open('#/game');
@@ -81,7 +87,7 @@ function MainPage() {
                     id='userName'
                     maxLength={15}
                     onBlur={chooseAnotherName}
-                    placeholder='Hero`s name'
+                    placeholder={chrome.i18n.getMessage('hero_name')}
                     disabled={userLevel > 0 || userClass === UserStartClass.noIcon}
                     defaultValue={userName}
                 ></input>
@@ -92,7 +98,9 @@ function MainPage() {
                     <option 
                         selected={userClass === UserStartClass.noIcon}
                         disabled hidden
-                    >Choose class</option>
+                    >
+                        {chrome.i18n.getMessage('choose_class')}
+                    </option>
                     {
                         classes.map(item => {
                             return (

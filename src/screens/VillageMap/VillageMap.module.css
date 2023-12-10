@@ -14,14 +14,14 @@
 
 .VillageMap_icon_Academy,
 .VillageMap_icon_Cyber_Lab,
-.VillageMap_icon_Focus_School,
+.VillageMap_icon_Focus_Site,
 .VillageMap_icon_Market,
 .VillageMap_icon_Mutation_Lab,
 .VillageMap_icon_Wizard_School,
 .VillageMap_icon_Battle,
-.VillageMap_icon_Air_School,
-.VillageMap_icon_Fire_School,
-.VillageMap_icon_Ice_School,
+.VillageMap_icon_Air_Site,
+.VillageMap_icon_Fire_Site,
+.VillageMap_icon_Ice_Site,
 .VillageMap_icon_Guild_School,
 .VillageMap_icon_Woods,
 .VillageMap_icon_Mines {
@@ -52,12 +52,12 @@
     border-color: darkgray;
 }
 
-.VillageMap_icon_Focus_School {
+.VillageMap_icon_Focus_Site {
     left: 183px;
     top: 27px;
 }
 
-.VillageMap_icon_Focus_School:hover {
+.VillageMap_icon_Focus_Site:hover {
     color: darkviolet;
     border-color: darkviolet;
 }
@@ -102,32 +102,32 @@
     border-color: red;
 }
 
-.VillageMap_icon_Air_School {
+.VillageMap_icon_Air_Site {
     left: 50px;
     top: 350px;
 }
 
-.VillageMap_icon_Air_School:hover {
+.VillageMap_icon_Air_Site:hover {
     color: lightblue;
     border-color: lightblue;
 }
 
-.VillageMap_icon_Fire_School {
+.VillageMap_icon_Fire_Site {
     left: 10px;
     top: 10px;
 }
 
-.VillageMap_icon_Fire_School:hover {
+.VillageMap_icon_Fire_Site:hover {
     color: orange;
     border-color: orange;
 }
 
-.VillageMap_icon_Ice_School {
+.VillageMap_icon_Ice_Site {
     left: 400px;
     top: 10px;
 }
 
-.VillageMap_icon_Ice_School:hover {
+.VillageMap_icon_Ice_Site:hover {
     color: white;
     border-color: white;
 }
