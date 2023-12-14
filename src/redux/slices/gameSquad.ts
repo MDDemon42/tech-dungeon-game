@@ -16,8 +16,8 @@ import {
     IMutation,
     IPower
 } from '../../enums-and-interfaces/interfaces';
-import mutations from '../../general/mutations';
-import masteries from '../../general/masteries/masteries';
+import mutations from '../../gameScreens/MutaLab/mutations';
+import academyMasteries from '../../gameScreens/Academy/masteries';
 import checkRace from '../../general/races/checkRace';
 import putItemInBackpacks, { getBackpacksCapability } from '../../helpers/backpacksPutter';
 import { 
@@ -130,9 +130,9 @@ export const classInfo: IClassInfo = {
 }
 
 const raceMasteries: Partial<Record<Race, IMastery>> = {
-    [Race.orc]: masteries.mastery_axeAffiliation,
-    [Race.gnoll]: masteries.mastery_maceAffiliation,
-    [Race.naga]: masteries.mastery_spearAffiliation
+    [Race.orc]: academyMasteries.mastery_axeAffiliation,
+    [Race.gnoll]: academyMasteries.mastery_maceAffiliation,
+    [Race.naga]: academyMasteries.mastery_spearAffiliation
 }
 
 function integratePassiveAbility(
@@ -140,21 +140,23 @@ function integratePassiveAbility(
     data: IItem | ICyber | IMutation | IPower, 
     sign: number
 ) {
-    if (data.passiveAbility) {
-        const {passiveAbility} = data;
-        const {bonusMaxParams, bonusResistances, bonusDodge} = passiveAbility;
-        for (const param in bonusMaxParams) {
-            squadMember.params.maxParams[param as UserParam] += 
-                ((bonusMaxParams[param as UserParam]  || 0) * sign);
-            squadMember.params.currentParams = {...squadMember.params.maxParams};
-        }
+    if (data.passiveAbilities) {
+        const {passiveAbilities} = data;
+        for (const passiveAbility of passiveAbilities) {
+            const {bonusMaxParams, bonusResistances, bonusDodge} = passiveAbility;
+            for (const param in bonusMaxParams) {
+                squadMember.params.maxParams[param as UserParam] += 
+                    ((bonusMaxParams[param as UserParam]  || 0) * sign);
+                squadMember.params.currentParams = {...squadMember.params.maxParams};
+            }
 
-        for (const resistance in bonusResistances) {
-            squadMember.params.resistances[resistance as DamageType] += 
-                ((bonusResistances[resistance as DamageType]  || 0) * sign);                         
-        }
+            for (const resistance in bonusResistances) {
+                squadMember.params.resistances[resistance as DamageType] += 
+                    ((bonusResistances[resistance as DamageType]  || 0) * sign);                         
+            }
 
-        squadMember.params.dodge += ((bonusDodge || 0) * sign);
+            squadMember.params.dodge += ((bonusDodge || 0) * sign);
+        }        
     }
 }
 
@@ -290,6 +292,18 @@ const gameSquad = createSlice({
 
             state = oldState;
         },
+        getItem(state, action) {
+            const oldState = {...state};
+            const index = oldState.currentlyWatched;
+            const members = oldState.squadMembers;
+            const squadMember = members[index];
+            const backpacks = squadMember.general.backpacks;
+
+            const maxItemsAmount = getBackpacksCapability(squadMember);
+            putItemInBackpacks(backpacks, action.payload, maxItemsAmount);           
+
+            state = oldState;
+        },
         buyItem(state, action) {
             const oldState = {...state};
             const resources = oldState.resources;
@@ -400,7 +414,7 @@ const gameSquad = createSlice({
             if (
                 squadMember.general.mind.masteries
                     .map(mastery => mastery.name)
-                    .includes(masteries.mastery_sellmanship.name)
+                    .includes(academyMasteries.mastery_sellmanship.name)
             ) {
                 profit = item.cost;
             } else if (item.name !== createNoItem().name) {
@@ -473,7 +487,7 @@ const gameSquad = createSlice({
 
             squadMember.general.mind.masteries.push(action.payload.data);
 
-            if (action.payload.data.name === masteries.mastery_brutalForce.name) {
+            if (action.payload.data.name === academyMasteries.mastery_brutalForce.name) {
                 squadMember.general.backpacks.push(createNoItem(), createNoItem());
 
                 const newRace = checkRace(squadMember.general.inventory, true);
@@ -490,19 +504,26 @@ const gameSquad = createSlice({
         implementCyber(state, action) {
             const {index} = action.payload;
             const oldState = {...state};
-            const squadMember = oldState.squadMembers[index]!;
+            const squadMember = oldState.squadMembers[index];
             
             if (!squadMember.general.inventory) {
                 squadMember.general.inventory = createEmptyInventory();
             }
 
-            const position = action.payload.data.inventoryPlace;
+            const cyber = action.payload.data
+            const position = cyber.inventoryPlace;
+
+            const nothing = createNoItem().name;
+            const oldCyber = {...squadMember.general.inventory[placeAsKey(position)]} as ICyber;
+            if (oldCyber.name !== nothing) {
+                integratePassiveAbility(squadMember, oldCyber, -1);
+            }            
 
             if (
                 position === InventoryPlace.leftHand
             ) {
-                if (squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)].name === mutations.weapons.mutation_claws.name) {
-                    squadMember.general.inventory[placeAsKey(InventoryPlace.rightHand)] = mutations.weapons.mutation_clawRight;
+                if (squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)].name === mutations.weapons.claws.name) {
+                    squadMember.general.inventory[placeAsKey(InventoryPlace.rightHand)] = mutations.weapons.clawRight;
                 }
                 
                 squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)] = createNoItem();                
@@ -511,15 +532,17 @@ const gameSquad = createSlice({
             if (
                 position === InventoryPlace.rightHand
             ) {
-                if (squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)].name === mutations.weapons.mutation_claws.name) {
-                    squadMember.general.inventory[placeAsKey(InventoryPlace.leftHand)] = mutations.weapons.mutation_clawLeft;
+                if (squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)].name === mutations.weapons.claws.name) {
+                    squadMember.general.inventory[placeAsKey(InventoryPlace.leftHand)] = mutations.weapons.clawLeft;
                 }
 
                 squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)] = createNoItem();
             }
 
-            squadMember.general.inventory[placeAsKey(position)] = action.payload.data;
-            oldState.resources[UserResource.core] -= action.payload.data.cost;
+            squadMember.general.inventory[placeAsKey(position)] = cyber;
+            oldState.resources[UserResource.core] -= cyber.cost;
+
+            integratePassiveAbility(squadMember, cyber, +1);
 
             state = oldState;
         },
@@ -547,7 +570,7 @@ const gameSquad = createSlice({
 
             const isStrong = squadMember.general.mind.masteries
                 .map(mastery => mastery.name)
-                .includes(masteries.mastery_brutalForce.name);
+                .includes(academyMasteries.mastery_brutalForce.name);
                 
             const raceMasteriesNames = Object.values(raceMasteries)
                 .map(mastery => mastery.name);
@@ -593,15 +616,17 @@ const gameSquad = createSlice({
                 }
             })
 
-            const {damage, damageType, hitChance} = ability as IAbility;
+            const {damage, hitChance} = ability as IAbility;
             for (const index in squadMembers) {
                 const squadMember = squadMembers[index];
-                const resultDamage = damage - 
-                    squadMember.params.resistances[damageType];
 
                 const chance = Math.floor(Math.random()*100);
                 if (hitChance - squadMember.params.dodge > chance) {
-                    squadMember.params.currentParams[UserParam.health] -= resultDamage;
+                    for (const key in damage) {
+                        const damageType = key as DamageType;
+                        const resultDamage = damage[damageType]! - squadMember.params.resistances[damageType];
+                        squadMember.params.currentParams[UserParam.health] -= resultDamage;
+                    }                    
                 }
             }  
             

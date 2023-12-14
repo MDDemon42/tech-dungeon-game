@@ -1,10 +1,11 @@
 import { UserParam } from "../../enums-and-interfaces/enums";
+import { senseOfFlame } from "../../gameScreens/FireSite/masteries";
+import { senseOfCold } from "../../gameScreens/IceSite/masteries";
 import createEmptyCharacter from "../../helpers/emptyEssencesCreators";
 import bending from "../bending";
-import elementsMasteries from "../masteries/elements";
-import wizardMasteries from "../masteries/wizard";
-import spells from "../spells/spells";
-import wizardItems from "../wizardItems";
+import wizardMasteries from "../../gameScreens/WizardSchool/masteries";
+import spells from "../../gameScreens/WizardSchool/spells";
+import wizardItems from "../../gameScreens/WizardSchool/wizardItems";
 
 const apprentice = () => {
     const character = createEmptyCharacter();
@@ -68,11 +69,11 @@ const cryomancer = () => {
     character.params.maxParams[UserParam.mana] = 6;
     character.params.currentParams[UserParam.mana] = 6;
 
-    character.general.mind.masteries.push(elementsMasteries.mastery_senseOfCold);
-    character.general.mind.bending.push(bending.cryomancy.bending_iceShard);
-    character.general.mind.bending.push(bending.cryomancy.bending_iceSpear);
-    character.general.mind.bending.push(bending.cryomancy.bending_iceHail);
-    character.general.mind.bending.push(bending.cryomancy.bending_coldDeath);
+    character.general.mind.masteries.push(senseOfCold);
+    character.general.mind.bending.push(bending.cryomancy.iceShard);
+    character.general.mind.bending.push(bending.cryomancy.iceSpear);
+    character.general.mind.bending.push(bending.cryomancy.iceHail);
+    character.general.mind.bending.push(bending.cryomancy.coldDeath);
 
     return character
 }
@@ -91,10 +92,10 @@ const pyrokinetic = () => {
     character.params.maxParams[UserParam.mana] = 6;
     character.params.currentParams[UserParam.mana] = 6;
 
-    character.general.mind.masteries.push(elementsMasteries.mastery_senseOfFlame);
-    character.general.mind.bending.push(bending.pyrokinesis.bending_flame);
-    character.general.mind.bending.push(bending.pyrokinesis.bending_fireball);
-    character.general.mind.bending.push(bending.pyrokinesis.bending_fireWave);
+    character.general.mind.masteries.push(senseOfFlame);
+    character.general.mind.bending.push(bending.pyrokinesis.flame);
+    character.general.mind.bending.push(bending.pyrokinesis.fireBall);
+    character.general.mind.bending.push(bending.pyrokinesis.fireWave);
 
     return character
 }

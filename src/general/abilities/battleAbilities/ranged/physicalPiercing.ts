@@ -2,84 +2,91 @@ import { createBattleAbility } from "..";
 import { DamageType } from "../../../../enums-and-interfaces/enums";
 import images from "../../../../images/images";
 
-const battleAbility_iceShard = createBattleAbility(
+const iceShard = createBattleAbility(
     [
         chrome.i18n.getMessage('ice_shard'), 
         '', 
         images.elementBendings.iceShard
     ], 
     {Mana: 1}, 
-    [1, DamageType.physicalPiercing, 1, 70]
+    {[DamageType.physicalPiercing]: 1},
+    [1, 70]
 );
 
-const battleAbility_iceSpear = createBattleAbility(
+const iceSpear = createBattleAbility(
     [
         chrome.i18n.getMessage('ice_spear'), 
         '', 
         images.elementBendings.iceSpear
     ], 
     {Mana: 2}, 
-    [2, DamageType.physicalPiercing, 1, 70]
+    {[DamageType.physicalPiercing]: 2},
+    [1, 70]
 );
 
-const battleAbility_iceHail = createBattleAbility(
+const iceHail = createBattleAbility(
     [
         chrome.i18n.getMessage('ice_hail'), 
         '', 
         images.elementBendings.iceHail
     ],
     {Mana: 2}, 
-    [1, DamageType.physicalPiercing, 3, 70]
+    {[DamageType.physicalPiercing]: 1},
+    [3, 70]
 );
 
-const battleAbility_oakBowShot = createBattleAbility(
+const oakBowShot = createBattleAbility(
     [
         chrome.i18n.getMessage('oak_bow_shot'),
         '', 
         images.normalItems.oakBow
     ], 
     {Stamina: 1}, 
-    [1, DamageType.physicalPiercing, 1, 70]
+    {[DamageType.physicalPiercing]: 1},
+    [1, 70]
 );
 
-const battleAbility_affiliatedOakBowShot = createBattleAbility(
+const affiliatedOakBowShot = createBattleAbility(
     [
         chrome.i18n.getMessage('oak_bow_shot'), 
         '', 
         images.normalItems.oakBow
     ], 
     {Stamina: 1}, 
-    [1, DamageType.physicalPiercing, 1, 95]
+    {[DamageType.physicalPiercing]: 1},
+    [1, 95]
 );
 
-const battleAbility_crossbowShot = createBattleAbility(
+const crossbowShot = createBattleAbility(
     [
         chrome.i18n.getMessage('oak_crossbow_shot'), 
         '', 
         images.normalItems.oakCrossbow
     ], 
     {Blank: 0}, 
-    [1, DamageType.physicalPiercing, 1, 60]
+    {[DamageType.physicalPiercing]: 1},
+    [1, 60]
 );
 
-const battleAbility_masterCrossbowShot = createBattleAbility(
+const masterCrossbowShot = createBattleAbility(
     [
         chrome.i18n.getMessage('oak_crossbow_shot'), 
         '', 
         images.normalItems.oakCrossbow
     ], 
     {Blank: 0}, 
-    [1, DamageType.physicalPiercing, 1, 95]
+    {[DamageType.physicalPiercing]: 1},
+    [1, 95]
 );
 
 const physicalPiercing = {
-    battleAbility_iceShard,
-    battleAbility_iceSpear,
-    battleAbility_iceHail,
-    battleAbility_oakBowShot,
-    battleAbility_affiliatedOakBowShot,
-    battleAbility_crossbowShot,
-    battleAbility_masterCrossbowShot,
+    iceShard,
+    iceSpear,
+    iceHail,
+    oakBowShot,
+    affiliatedOakBowShot,
+    crossbowShot,
+    masterCrossbowShot,
 }
 
 export default physicalPiercing

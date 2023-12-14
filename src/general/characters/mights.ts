@@ -1,7 +1,7 @@
 import { UserParam } from "../../enums-and-interfaces/enums";
 import createEmptyCharacter from "../../helpers/emptyEssencesCreators";
-import items from "../items";
-import masteries from "../masteries/masteries";
+import items from "../../gameScreens/Market/items";
+import academyMasteries from "../../gameScreens/Academy/masteries";
 
 const dummy = () => {
     const character = createEmptyCharacter();
@@ -45,7 +45,7 @@ const barbarian = () => {
     character.params.maxParams[UserParam.stamina] = 4;
     character.params.currentParams[UserParam.stamina] = 4;
 
-    character.general.mind.masteries.push(masteries.mastery_brutalForce);
+    character.general.mind.masteries.push(academyMasteries.mastery_brutalForce);
 
     character.general.inventory.bothHands = items.weapons.item_steelGreataxe;
 
@@ -63,7 +63,7 @@ const knight = () => {
     character.params.maxParams[UserParam.stamina] = 5;
     character.params.currentParams[UserParam.stamina] = 5;
 
-    character.general.mind.masteries.push(masteries.mastery_swordAffiliation);
+    character.general.mind.masteries.push(academyMasteries.mastery_swordAffiliation);
 
     character.general.inventory.rightHand = items.weapons.item_steelSwordRightHand;
     character.general.inventory.armor = items.armors.item_steelArmor;
@@ -83,7 +83,7 @@ const paladin = () => {
     character.params.maxParams[UserParam.stamina] = 5;
     character.params.currentParams[UserParam.stamina] = 5;
 
-    character.general.mind.masteries.push(masteries.mastery_brutalForce);
+    character.general.mind.masteries.push(academyMasteries.mastery_brutalForce);
 
     character.general.inventory.bothHands = items.weapons.item_steelGreatsword;
     character.general.inventory.armor = items.armors.item_steelArmor;

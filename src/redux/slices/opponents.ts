@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { UserParam } from '../../enums-and-interfaces/enums';
+import { DamageType, UserParam } from '../../enums-and-interfaces/enums';
 import { IAbility, ICharacher, IOpponentSquad } from '../../enums-and-interfaces/interfaces';
 import characters from '../../general/characters';
 
@@ -79,15 +79,17 @@ const opponents = createSlice({
                 }
             })
 
-            const {damage, damageType, hitChance} = ability as IAbility;
+            const {damage, hitChance} = ability as IAbility;
             for (const index in squadMembers) {
                 const squadMember = squadMembers[index];
-                const resultDamage = damage - 
-                    squadMember.params.resistances[damageType];
 
                 const chance = Math.floor(Math.random()*100);
                 if (hitChance > chance) {
-                    squadMember.params.currentParams[UserParam.health] -= resultDamage;
+                    for (const key in damage) {
+                        const damageType = key as DamageType;
+                        const resultDamage = damage[damageType]! - squadMember.params.resistances[damageType];
+                        squadMember.params.currentParams[UserParam.health] -= resultDamage;
+                    }
                 }
             }  
             

@@ -1,15 +1,15 @@
 import styles from './InventoryScreen.module.css';
 import images from "../../images/images";
-import mutations from "../../general/mutations";
-import cybers from "../../general/cybers";
-import items from "../../general/items";
-import powers from "../../general/powers";
+import mutations from "../../gameScreens/MutaLab/mutations";
+import cybers from "../../gameScreens/CyberLab/cybers";
+import items from "../../gameScreens/Market/items";
+import powers from "../../gameScreens/FocusSite/powers";
 import { ICharacher } from '../../enums-and-interfaces/interfaces';
 import { createEmptyInventory, createNoItem } from '../../helpers/emptyEssencesCreators';
-import wizardItems from '../../general/wizardItems';
-import guildItems from '../../general/guildItems';
-import rituals from '../../general/rituals/rituals';
-import masteries from '../../general/masteries/masteries';
+import wizardItems from '../../gameScreens/WizardSchool/wizardItems';
+import guildItems from '../../gameScreens/Guild/guildItems';
+import rituals from '../../gameScreens/Guild/rituals';
+import academyMasteries from '../../gameScreens/Academy/masteries';
 
 function InventoryScreen(props: {
     character: ICharacher,
@@ -39,7 +39,7 @@ function InventoryScreen(props: {
 
     let inventoryTail = null;
     switch (inventory.tail.name) {
-        case mutations.weapons.mutation_tailWithSting.name:
+        case mutations.weapons.tailWithSting.name:
             inventoryTail = <img src={images.bodyElements.tailWithSting} alt={chrome.i18n.getMessage('tail_with_sting')} />;
             break;
         default:
@@ -51,23 +51,23 @@ function InventoryScreen(props: {
         case mutations.other.mutation_hooves.name:
             inventoryLegs.push(<img src={images.bodyElements.hooves} alt={chrome.i18n.getMessage('hooves')} />);
             break;
-        case mutations.weapons.mutation_raptorLegs.name:
+        case mutations.weapons.raptorLegs.name:
             inventoryLegs.push(<img src={images.bodyElements.raptorLegs} alt={chrome.i18n.getMessage('raptor_legs')} />);
             break;
         default:
             inventoryLegs = [
                 ritualsUserNames.includes(rituals.ritual_titanSkin.name) ?
                     <img src={images.bodyElements.titanLegs} alt='titanLegs' /> :
-                    masteriesUserNames.includes(masteries.mastery_brutalForce.name) ?
+                    masteriesUserNames.includes(academyMasteries.mastery_brutalForce.name) ?
                         <img src={images.bodyElements.brutalLegs} alt='brutalLegs' /> :
                         <img src={images.bodyElements.legs} alt='legs' />,
                 powersUserNames.includes(powers.other.power_levitation.name) ?
                     <img src={images.bodyElements.levitation} alt={chrome.i18n.getMessage('levitation')} /> : null,
-                inventory.skin.name === cybers.armors.cyber_nanoMatrix.name ?
+                inventory.skin.name === cybers.armors.nanoMatrix.name ?
                     <img src={images.bodyElements.nanoMatrixLegs} alt='nanoMatrixLegs' /> :
-                    inventory.skin.name === cybers.armors.cyber_nanoVest.name ?
+                    inventory.skin.name === cybers.armors.nanoVest.name ?
                         <img src={images.bodyElements.nanoVestLegs} alt='nanoVestLegs' /> : null,
-                inventory.legs.name === cybers.other.cyber_reactiveFeet.name ?
+                inventory.legs.name === cybers.other.reactiveFeet.name ?
                     <img src={images.bodyElements.reactiveFeet} alt={chrome.i18n.getMessage('reactive_feet')} /> : null
             ]
             break;
@@ -75,23 +75,23 @@ function InventoryScreen(props: {
 
     let inventorySkin = [];
     switch (inventory.skin.name) {
-        case cybers.armors.cyber_nanoMatrix.name:
+        case cybers.armors.nanoMatrix.name:
             inventorySkin.push(<img src={images.bodyElements.nanoMatrixTorso} alt={chrome.i18n.getMessage('nano_matrix')} />);
             break;
-        case cybers.armors.cyber_nanoVest.name:
+        case cybers.armors.nanoVest.name:
             inventorySkin.push(<img src={images.bodyElements.nanoVestTorso} alt={chrome.i18n.getMessage('nano_vest')} />);
             break;
-        case mutations.armors.mutation_scales.name:
+        case mutations.armors.scales.name:
             inventorySkin.push(<img src={images.bodyElements.scalesTorso} alt={chrome.i18n.getMessage('scales')} />);
             break;
-        case mutations.armors.mutation_fur.name:
+        case mutations.armors.fur.name:
             inventorySkin.push(<img src={images.bodyElements.furTorso} alt={chrome.i18n.getMessage('fur')} />);
             break;
         default:
             inventorySkin = [
                 ritualsUserNames.includes(rituals.ritual_titanSkin.name) ?
                     <img src={images.bodyElements.titanTorso} alt='titanTorso' /> :
-                    masteriesUserNames.includes(masteries.mastery_brutalForce.name) ?
+                    masteriesUserNames.includes(academyMasteries.mastery_brutalForce.name) ?
                         <img src={images.bodyElements.brutalTorso} alt='brutalTorso' /> :
                         <img src={images.bodyElements.torso} alt='torso' />,
                 powersUserNames.includes(powers.armors.power_guardianAura.name) ?
@@ -109,10 +109,10 @@ function InventoryScreen(props: {
 
     let inventoryShoulders = null;
     switch (inventory.shoulders.name) {
-        case cybers.weapons.cyber_rocketLauncher.name:
+        case cybers.weapons.rocketLauncher.name:
             inventoryShoulders = <img src={images.bodyElements.rocketLauncher} alt={chrome.i18n.getMessage('rocket_launcher')} />;
             break;
-        case mutations.weapons.mutation_pincers.name:
+        case mutations.weapons.pincers.name:
             inventoryShoulders = <img src={images.bodyElements.pincers} alt={chrome.i18n.getMessage('pincers')} />;
             break;
         default:
@@ -159,10 +159,10 @@ function InventoryScreen(props: {
         inventoryHead.push(<img src={images.bodyElements.telekinesis} alt={chrome.i18n.getMessage('telekinesis')} />);
     }
     switch (inventory.chin.name) {
-        case mutations.weapons.mutation_acidSplit.name:
-            inventoryHead.push(<img src={images.bodyElements.acidSplit} alt={chrome.i18n.getMessage('acid_split')} />);
+        case mutations.weapons.acidSpit.name:
+            inventoryHead.push(<img src={images.bodyElements.acidSpit} alt={chrome.i18n.getMessage('acid_spit')} />);
             break;
-        case mutations.weapons.mutation_lowerFangs.name:
+        case mutations.weapons.lowerFangs.name:
             inventoryHead.push(<img src={images.bodyElements.lowerFangs} alt={chrome.i18n.getMessage('lower_fangs')} />);
             break;
         default:
@@ -172,7 +172,7 @@ function InventoryScreen(props: {
         inventoryHead.push(<img src={images.bodyElements.intuition} alt={chrome.i18n.getMessage('intuition')} />);
     }
     switch (inventory.head.name) {
-        case mutations.weapons.mutation_horns.name:
+        case mutations.weapons.horns.name:
             inventoryHead.push(<img src={images.bodyElements.horns} alt={chrome.i18n.getMessage('horns')} />);
             break;
         default:
@@ -193,25 +193,25 @@ function InventoryScreen(props: {
                     
     let inventoryLeftHand = null;
     switch (inventory.leftHand.name) {
-        case cybers.weapons.cyber_acidizer.name:
+        case cybers.weapons.acidizer.name:
             inventoryLeftHand = <img src={images.bodyElements.acidizer} alt={chrome.i18n.getMessage('acidizer')} />;
             break;
-        case cybers.armors.cyber_energyShield.name:
+        case cybers.armors.energyShield.name:
             inventoryLeftHand = <img src={images.bodyElements.energyShield} alt={chrome.i18n.getMessage('energy_shield')} />;
             break;
-        case cybers.weapons.cyber_freezer.name:
+        case cybers.weapons.freezer.name:
             inventoryLeftHand = <img src={images.bodyElements.freezer} alt={chrome.i18n.getMessage('freezer')} />;
             break;
-        case cybers.weapons.cyber_slasherator.name:
-            inventoryLeftHand = <img src={images.bodyElements.slasherator} alt={chrome.i18n.getMessage('slasherator')} />;
+        case cybers.weapons.treeCutter.name:
+            inventoryLeftHand = <img src={images.bodyElements.treeCutter} alt={chrome.i18n.getMessage('tree_cutter')} />;
             break;
-        case cybers.weapons.cyber_energyFistLeftHand.name:
-            inventoryLeftHand = <img src={images.bodyElements.energyFistLeftHand} alt={chrome.i18n.getMessage('energy_fist_left_hand')} />;
+        case cybers.weapons.cyberFistLeftHand.name:
+            inventoryLeftHand = <img src={images.bodyElements.cyberFistLeftHand} alt={chrome.i18n.getMessage('cyber_fist_left_hand')} />;
             break;
-        case cybers.weapons.cyber_laser.name:
+        case cybers.weapons.laser.name:
             inventoryLeftHand = <img src={images.bodyElements.laser} alt={chrome.i18n.getMessage('laser')} />;
             break;
-        case mutations.weapons.mutation_clawLeft.name:
+        case mutations.weapons.clawLeft.name:
             inventoryLeftHand = <img src={images.bodyElements.clawLeft} alt={chrome.i18n.getMessage('claws')} />;
             break;
         case items.weapons.item_steelSwordLeftHand.name:
@@ -235,19 +235,19 @@ function InventoryScreen(props: {
 
     let inventoryRightHand = null;
     switch (inventory.rightHand.name) {
-        case cybers.weapons.cyber_cyberClaw.name:
+        case cybers.weapons.cyberClaw.name:
             inventoryRightHand = <img src={images.bodyElements.cyberClaw} alt={chrome.i18n.getMessage('cyber_claw')} />;
             break;
-        case cybers.weapons.cyber_heatSaber.name:
+        case cybers.weapons.heatSaber.name:
             inventoryRightHand = <img src={images.bodyElements.heatSaber} alt={chrome.i18n.getMessage('heat_saber')} />;
             break;
-        case cybers.weapons.cyber_energyWhip.name:
-            inventoryRightHand = <img src={images.bodyElements.energyWhip} alt={chrome.i18n.getMessage('energy_whip')} />;
+        case cybers.weapons.taserWhip.name:
+            inventoryRightHand = <img src={images.bodyElements.taserWhip} alt={chrome.i18n.getMessage('taser_whip')} />;
             break;
-        case cybers.weapons.cyber_energyFistRightHand.name:
-            inventoryRightHand = <img src={images.bodyElements.energyFistRightHand} alt={chrome.i18n.getMessage('energy_fist_right_hand')} />;
+        case cybers.weapons.cyberFistRightHand.name:
+            inventoryRightHand = <img src={images.bodyElements.cyberFistRightHand} alt={chrome.i18n.getMessage('cyber_fist_right_hand')} />;
             break;
-        case mutations.weapons.mutation_clawRight.name:
+        case mutations.weapons.clawRight.name:
             inventoryRightHand = <img src={images.bodyElements.clawRight} alt={chrome.i18n.getMessage('claws')} />;
             break;
         case items.weapons.item_steelSwordRightHand.name:
@@ -262,13 +262,16 @@ function InventoryScreen(props: {
         case items.weapons.item_spear.name:
             inventoryRightHand = <img src={images.bodyElements.spear} alt={chrome.i18n.getMessage('spear')} />;
             break;
+        case items.weapons.pickaxe.name:
+            inventoryRightHand = <img src={images.bodyElements.pickaxe} alt={chrome.i18n.getMessage('pickaxe')} />;
+            break;
         default:
             break;
     }
 
     let inventoryBothHands = null;
     switch (inventory.bothHands.name) {
-        case mutations.weapons.mutation_claws.name: 
+        case mutations.weapons.claws.name: 
             inventoryBothHands = [
                 <img src={images.bodyElements.clawRight} alt={chrome.i18n.getMessage('claws')} />,
                 <img src={images.bodyElements.clawLeft} alt={chrome.i18n.getMessage('claws')} />

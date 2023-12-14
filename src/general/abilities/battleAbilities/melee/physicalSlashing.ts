@@ -2,194 +2,236 @@ import { createBattleAbility } from "..";
 import { DamageType } from "../../../../enums-and-interfaces/enums";
 import images from "../../../../images/images";
 
-const battleAbility_swordSlash = createBattleAbility(
+const swordSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('sword_slash'), 
+        '', 
+        images.normalItems.steelSword
+    ], 
+    {Stamina: 1},
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const affiliatedSwordSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('sword_slash'), 
         '', 
         images.normalItems.steelSword
     ], 
     {Stamina: 1}, 
-    [1, DamageType.physicalSlashing, 1, 70]
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
 );
 
-const battleAbility_affiliatedSwordSlash = createBattleAbility(
-    [
-        chrome.i18n.getMessage('sword_slash'), 
-        '', 
-        images.normalItems.steelSword
-    ], 
-    {Stamina: 1}, 
-    [1, DamageType.physicalSlashing, 1, 95]
-);
-
-const battleAbility_dualSwordsSlash = createBattleAbility(
+const dualSwordsSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('dual_sword_slash'), 
         '', 
         images.guildianLearnings.dualSwords
     ], 
     {Stamina: 2}, 
-    [3, DamageType.physicalSlashing, 1, 95]
+    {[DamageType.physicalSlashing]: 3},
+    [1, 95]
 );
 
-const battleAbility_chakramSlash = createBattleAbility(
+const chakramSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('chakram_slash'), 
         '', 
         images.guildianLearnings.chakram
     ], 
-    {Stamina: 1}, 
-    [1, DamageType.physicalSlashing, 1, 70]
+    {Stamina: 1},
+    {[DamageType.physicalSlashing]: 1}, 
+    [1, 70]
 );
 
-const battleAbility_affiliatedChakramSlash = createBattleAbility(
+const affiliatedChakramSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('chakram_slash'), 
         '', 
         images.guildianLearnings.chakram
     ],
     {Stamina: 1}, 
-    [1, DamageType.physicalSlashing, 1, 95]
+    {[DamageType.physicalSlashing]: 1}, 
+    [1, 95]
 );
 
-const battleAbility_steelGreataxeSlash = createBattleAbility(
+const steelGreataxeSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('greataxe_slash'), 
         '', 
         images.normalItems.steelGreataxe
     ], 
     {Stamina: 2}, 
-    [2, DamageType.physicalSlashing, 1, 70]
+    {[DamageType.physicalSlashing]: 2}, 
+    [1, 70]
 );
 
-const battleAbility_runicGreataxeSlash = createBattleAbility(
+const runicGreataxeSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('greataxe_slash'), 
         '', 
         images.guildianLearnings.runicGreataxe
     ], 
     {Stamina: 2}, 
-    [2, DamageType.physicalSlashing, 1, 70]
+    {[DamageType.physicalSlashing]: 2}, 
+    [1, 70]
 );
 
-const battleAbility_steelGreatswordSlash = createBattleAbility(
+const steelGreatswordSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('greatsword_slash'), 
         '', 
         images.normalItems.steelGreatsword
     ], 
     {Stamina: 2}, 
-    [2, DamageType.physicalSlashing, 1, 70]
+    {[DamageType.physicalSlashing]: 2}, 
+    [1, 70]
 );
 
-const battleAbility_runicGreatswordSlash = createBattleAbility(
+const runicGreatswordSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('greatsword_slash'),
         '', 
         images.guildianLearnings.runicGreatsword
     ], 
     {Stamina: 2}, 
-    [2, DamageType.physicalSlashing, 1, 70]
+    {[DamageType.physicalSlashing]: 2}, 
+    [1, 70]
 );
 
-const battleAbility_ripApartMinor = createBattleAbility(
-    [
-        chrome.i18n.getMessage('rip_apart_minor'), 
-        '', 
-        images.mutantEvolvings.ripApart
-    ], 
-    {Stamina: 2}, 
-    [2, DamageType.physicalSlashing, 1, 70]
-);
-
-const battleAbility_ripApartMere = createBattleAbility(
-    [
-        chrome.i18n.getMessage('rip_apart_mere'), 
-        '', 
-        images.mutantEvolvings.ripApart
-    ], 
-    {Stamina: 3}, 
-    [3, DamageType.physicalSlashing, 1, 70]
-);
-
-const battleAbility_ripApartMajor = createBattleAbility(
-    [
-        chrome.i18n.getMessage('rip_apart_major'), 
-        '', 
-        images.mutantEvolvings.ripApart
-    ], 
-    {Stamina: 4}, 
-    [4, DamageType.physicalSlashing, 1, 70]
-);
-
-const battleAbility_ripApartMonstrous = createBattleAbility(
-    [
-        chrome.i18n.getMessage('rip_apart_monstrous'), 
-        '', 
-        images.mutantEvolvings.ripApart
-    ], 
-    {Stamina: 5}, 
-    [5, DamageType.physicalSlashing, 1, 70]
-);
-
-const battleAbility_axeSlash = createBattleAbility(
+const axeSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('axe_slash'), 
         '', 
         images.normalItems.axe
     ], 
     {Stamina: 1}, 
-    [1, DamageType.physicalSlashing, 1, 70]
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
 );
 
-const battleAbility_affiliatedAxeSlash = createBattleAbility(
+const affiliatedAxeSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('axe_slash'),  
         '', 
         images.normalItems.axe
     ], 
     {Stamina: 1}, 
-    [1, DamageType.physicalSlashing, 1, 95]
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
 );
 
-const battleAbility_doubleAxeSlash = createBattleAbility(
+const doubleAxeSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('double_axe_slash'),   
         '', 
         images.normalItems.doubleAxeSlash
     ], 
     {Stamina: 2}, 
-    [2, DamageType.physicalSlashing, 1, 70]
+    {[DamageType.physicalSlashing]: 2},
+    [1, 70]
 ); 
 
-const battleAbility_affiliatedDoubleAxeSlash = createBattleAbility(
+const affiliatedDoubleAxeSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('double_axe_slash'),
         '', 
         images.normalItems.doubleAxeSlash
     ], 
     {Stamina: 2}, 
-    [2, DamageType.physicalSlashing, 1, 95]
+    {[DamageType.physicalSlashing]: 2},
+    [1, 95]
+); 
+
+const cyberClawSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('cyber_claw_slash'),
+        '', 
+        images.cyborgDetails.cyberClaw
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2},
+    [1, 70]
+); 
+
+const treeCutterSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('tree_cutter_slash'),
+        '', 
+        images.cyborgDetails.treeCutter
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 2},
+    [1, 70]
+); 
+
+const leftClawSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('left_claw_slash'),
+        '', 
+        images.mutantEvolvings.claws
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+); 
+
+const rightClawSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('right_claw_slash'),
+        '', 
+        images.mutantEvolvings.claws
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+); 
+
+const bothClawsSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('both_claws_slash'),
+        '', 
+        images.mutantEvolvings.claws
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2},
+    [1, 70]
+); 
+
+const raptorJump = createBattleAbility(
+    [
+        chrome.i18n.getMessage('raptor_jump'),
+        '', 
+        images.mutantEvolvings.raptorLegs
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2},
+    [1, 70]
 ); 
 
 const physicalSlashing = {
-    battleAbility_axeSlash,
-    battleAbility_affiliatedAxeSlash,
-    battleAbility_doubleAxeSlash,
-    battleAbility_affiliatedDoubleAxeSlash,
-    battleAbility_swordSlash,
-    battleAbility_affiliatedSwordSlash,
-    battleAbility_dualSwordsSlash,
-    battleAbility_chakramSlash,
-    battleAbility_affiliatedChakramSlash,
-    battleAbility_ripApartMinor,
-    battleAbility_ripApartMere,
-    battleAbility_ripApartMajor,
-    battleAbility_ripApartMonstrous,
-    battleAbility_steelGreataxeSlash,
-    battleAbility_runicGreataxeSlash,
-    battleAbility_steelGreatswordSlash,
-    battleAbility_runicGreatswordSlash,
+    axeSlash,
+    affiliatedAxeSlash,
+    doubleAxeSlash,
+    affiliatedDoubleAxeSlash,
+    swordSlash,
+    affiliatedSwordSlash,
+    dualSwordsSlash,
+    chakramSlash,
+    affiliatedChakramSlash,
+    steelGreataxeSlash,
+    runicGreataxeSlash,
+    steelGreatswordSlash,
+    runicGreatswordSlash,
+
+    cyberClawSlash,
+    treeCutterSlash,
+    leftClawSlash,
+    rightClawSlash,
+    bothClawsSlash,
+    raptorJump
 }
 
 export default physicalSlashing

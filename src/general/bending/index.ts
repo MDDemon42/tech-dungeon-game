@@ -1,7 +1,7 @@
 import { IBattleAbility, IBending } from "../../enums-and-interfaces/interfaces";
-import pyrokinesis from "./pyrokinesis";
-import cryomancy from "./cryomancy";
-import aerotheurgy from "./aerotheurgy";
+import { aerotheurgy } from "../../gameScreens/AirSite/bendings";
+import { cryomancy } from "../../gameScreens/IceSite/bendings";
+import { pyrokinesis } from "../../gameScreens/FireSite/bendings";
 
 export function createBending(
     commonInfo: [

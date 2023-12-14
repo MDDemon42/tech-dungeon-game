@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { UserResource, GameScreens } from "../../enums-and-interfaces/enums";
 import { IManageItemsProps, IStore } from "../../enums-and-interfaces/interfaces";
-import items from "../../general/items";
+import items from "../../gameScreens/Market/items";
 import { createNoItem } from "../../helpers/emptyEssencesCreators";
 import gameSquad from "../../redux/slices/gameSquad";
 import ResourceIcon from "../Icons/ResourceIcon";

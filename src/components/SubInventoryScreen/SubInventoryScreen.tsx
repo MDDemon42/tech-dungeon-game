@@ -47,7 +47,7 @@ function SubInventoryScreen(props: {
             title: chrome.i18n.getMessage('wizard_shop_title'),
             button: chrome.i18n.getMessage('buy'),
             listener: (data: IWizardItem) => {
-                dispatch(gameSquad.actions.buyItem({index, data}));
+                dispatch(gameSquad.actions.buyItem(data));
             }
         },
         [InventoryGameScreens.cyberLab]: {

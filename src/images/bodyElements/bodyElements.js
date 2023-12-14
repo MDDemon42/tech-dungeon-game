@@ -1,6 +1,6 @@
 import acidBomb from './acidBomb.png';
 import acidizer from './acidizer.png';
-import acidSplit from './acidSplit.png';
+import acidSpit from './acidSpit.png';
 import apprenticeHat from './apprenticeHat.png';
 import apprenticeRod from './apprenticeRod.png';
 import axeRightHand from './axeRightHand.png';
@@ -12,12 +12,11 @@ import chakram from './chakram.png';
 import clawLeft from './clawLeft.png';
 import clawRight from './clawRight.png';
 import cyberClaw from './cyberClaw.png';
+import cyberFistRightHand from './cyberFistRightHand.png';
+import cyberFistLeftHand from './cyberFistLeftHand.png';
 import guardianAura from './guardianAura.png';
 import guardianField from './guardianField.png';
-import energyFistRightHand from './energyFistRightHand.png';
-import energyFistLeftHand from './energyFistLeftHand.png';
 import energyShield from './energyShield.png';
-import energyWhip from './energyWhip.png';
 import flyingCape from './flyingCape.png';
 import freezer from './freezer.png';
 import furTorso from './furTorso.png';
@@ -42,6 +41,7 @@ import nanoVestTorso from './nanoVestTorso.png';
 import nanoVestLegs from './nanoVestLegs.png';
 import oakBow from './oakBow.png';
 import oakCrossbow from './oakCrossbow.png';
+import pickaxe from './pickaxe.png';
 import pincers from './pincers.png';
 import psiBlade from './psiBlade.png';
 import psiLightning from './psiLightning.png';
@@ -53,7 +53,6 @@ import runicGreataxe from './runicGreataxe.png';
 import runicGreathammer from './runicGreathammer.png';
 import runicGreatsword from './runicGreatsword.png';
 import scalesTorso from './scalesTorso.png';
-import slasherator from './slasherator.png';
 import spear from './spear.png';
 import steelArmor from './steelArmor.png';
 import steelGreataxe from './steelGreataxe.png';
@@ -64,17 +63,19 @@ import steelShield from './steelShield.png';
 import steelSwordLeftHand from './steelSwordLeftHand.png';
 import steelSwordRightHand from './steelSwordRightHand.png';
 import tailWithSting from './tailWithSting.png';
+import taserWhip from './taserWhip.png';
 import telekinesis from './telekinesis.png';
 import titanLegs from './titanLegs.png';
 import titanTorso from './titanTorso.png';
 import torso from './torso.png';
+import treeCutter from './treeCutter.png';
 import wings from './wings.png';
 import woodenShield from './woodenShield.png';
 
 const bodyElements = {
     acidBomb,
     acidizer,
-    acidSplit,
+    acidSpit,
     apprenticeHat,
     apprenticeRod,
     axeRightHand,
@@ -88,10 +89,10 @@ const bodyElements = {
     cyberClaw,
     guardianAura,
     guardianField,
-    energyFistRightHand,
-    energyFistLeftHand,
+    cyberFistRightHand,
+    cyberFistLeftHand,
     energyShield,
-    energyWhip,
+    taserWhip,
     flyingCape,
     freezer,
     furTorso,
@@ -116,6 +117,7 @@ const bodyElements = {
     nanoVestLegs,
     oakBow,
     oakCrossbow,
+    pickaxe,
     pincers,
     psiBlade,
     psiLightning,
@@ -127,7 +129,7 @@ const bodyElements = {
     runicGreathammer,
     runicGreatsword,
     scalesTorso,
-    slasherator,
+    treeCutter,
     spear,
     steelArmor,
     steelGreataxe,

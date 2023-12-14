@@ -9,8 +9,8 @@ import {
     Tree, MinecartLoaded,
 } from 'react-bootstrap-icons';
 
-import tasks from "../../general/tasks";
-import items from "../../general/items";
+import { tasks } from "../../redux/slices/gameStage";
+import items from "../../gameScreens/Market/items";
 
 const bigResourceNameMappings = {
     [items.bigResources.wood.name]: <Tree size={10}/>,
@@ -52,7 +52,7 @@ function TaskScreen(props: {
         dispatch(gameStage.actions.changeStage({
             zone: screen,
             stage: stage
-        }));
+        }));     
 
         leaveListener();
     }        

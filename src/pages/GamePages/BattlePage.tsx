@@ -21,7 +21,7 @@ import {
     CheckCircle
 } from 'react-bootstrap-icons';
 import BattleTurnButtons from '../../components/BattleTurnButtons/BattleTurnButtons';
-import BattleOverScreen from '../../screens/BattleOverScreen/BattleOverScreen';
+import BattleOverScreen from '../../components/BattleOverScreen/BattleOverScreen';
 import { removeGameTabs } from '../../helpers/removeGameTabs';
 import { BattleResult, GameScreens } from '../../enums-and-interfaces/enums';
 import gameStage from '../../redux/slices/gameStage';
@@ -304,11 +304,10 @@ function BattlePage() {
                 return state
             }
 
-            const id = getIdOfTheAbility(abil);
-
-            let enoughResources = true;
+            const id = getIdOfTheAbility(abil);            
             const abilityDiv = document.querySelectorAll<HTMLElement>('#' + id)[0];
 
+            let enoughResources = true;
             const {costs} = abil;
             Object.keys(costs).forEach(key => {
                 // @ts-ignore
@@ -317,6 +316,13 @@ function BattlePage() {
                     return;
                 }
             })
+
+            if (state.selectedAbilityDiv) {
+                state.selectedAbilityDiv.style.cssText = '';
+
+                state.selectedAbility = null;
+                state.selectedAbilityDiv = null;
+            }
 
             if (enoughResources) {
                 abilityDiv.style.cssText = 'outline: 3px orange solid; outline-offset: 3px;';
@@ -585,6 +591,8 @@ function BattlePage() {
 
     const showTropheys = () => {
 
+        // for now
+        navigate('/game');
     }
 
     const battleTurnButtonsListeners = {

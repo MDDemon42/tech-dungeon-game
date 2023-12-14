@@ -9,7 +9,7 @@ function createRace(mutations: (keyof IMutationsForRaceCheck)[]): IMutationsForR
         fur: false,
         tailWithSting: false,
         claws: false,
-        acidSplit: false,
+        acidSpit: false,
         wings: false,
         pincers: false,
         raptorLegs: false

@@ -14,13 +14,18 @@
     margin-left: 2%;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     position: absolute;
     top: -5px;
     font-weight: bold;
     font-size: 14px;
     text-shadow: grey 2px 1px;
+}
+
+.CommonIcon_damagesColumn {
+    display: flex;
+    flex-direction: column;
 }
 
 .CommonIcon_costs {

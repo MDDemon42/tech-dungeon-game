@@ -2,29 +2,115 @@ import { createBattleAbility } from "..";
 import { DamageType } from "../../../../enums-and-interfaces/enums";
 import images from "../../../../images/images";
 
-const battleAbility_spearPierce = createBattleAbility(
+const hornsCharge = createBattleAbility(
     [
-        chrome.i18n.getMessage('spear_pierce'), 
+        chrome.i18n.getMessage('horns_charge'), 
         '', 
-        images.normalItems.spear
+        images.mutantEvolvings.horns
     ], 
     {Stamina: 1}, 
-    [1, DamageType.physicalPiercing, 1, 70]
+    {[DamageType.physicalPiercing]: 1},
+    [1, 70]
 );
 
-const battleAbility_affiliatedSpearPierce = createBattleAbility(
+const tailPrick = createBattleAbility(
+    [
+        chrome.i18n.getMessage('tail_prick'), 
+        '', 
+        images.mutantEvolvings.tailWithSting
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalPiercing]: 1},
+    [1, 70]
+);
+
+const pincersStab = createBattleAbility(
+    [
+        chrome.i18n.getMessage('pincers_stab'), 
+        '', 
+        images.mutantEvolvings.pincers
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalPiercing]: 2},
+    [1, 70]
+);
+
+const fangsBite = createBattleAbility(
+    [
+        chrome.i18n.getMessage('fangs_bite'), 
+        '', 
+        images.mutantEvolvings.lowerFangs
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalPiercing]: 1},
+    [1, 85]
+);
+
+const spearPierce = createBattleAbility(
     [
         chrome.i18n.getMessage('spear_pierce'), 
         '', 
         images.normalItems.spear
     ], 
     {Stamina: 1}, 
-    [1, DamageType.physicalPiercing, 1, 95]
+    {[DamageType.physicalPiercing]: 1},
+    [1, 70]
+);
+
+const affiliatedSpearPierce = createBattleAbility(
+    [
+        chrome.i18n.getMessage('spear_pierce'), 
+        '', 
+        images.normalItems.spear
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalPiercing]: 1},
+    [1, 95]
+);
+
+const swordStab = createBattleAbility(
+    [
+        chrome.i18n.getMessage('sword_stab'), 
+        '', 
+        images.normalItems.steelSword
+    ], 
+    {Stamina: 1},
+    {[DamageType.physicalPiercing]: 1},
+    [1, 70]
+);
+
+const affiliatedSwordStab = createBattleAbility(
+    [
+        chrome.i18n.getMessage('sword_stab'), 
+        '', 
+        images.normalItems.steelSword
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalPiercing]: 1},
+    [1, 95]
+);
+
+const pickaxePick = createBattleAbility(
+    [
+        chrome.i18n.getMessage('pickaxe_pick'), 
+        '', 
+        images.misc.pickaxe
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalPiercing]: 1},
+    [1, 70]
 );
 
 const physicalPiercing = {
-    battleAbility_spearPierce,
-    battleAbility_affiliatedSpearPierce
+    hornsCharge,
+    fangsBite,
+    pincersStab,
+    tailPrick,
+    spearPierce,
+    affiliatedSpearPierce,
+    swordStab,
+    affiliatedSwordStab,
+    pickaxePick
 }
 
 export default physicalPiercing

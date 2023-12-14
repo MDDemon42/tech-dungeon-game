@@ -4,17 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IStore } from '../../enums-and-interfaces/interfaces';
 import { GameScreens } from '../../enums-and-interfaces/enums';
 import { HouseDoor } from 'react-bootstrap-icons';
-import Academy from '../../screens/../screens/Academy/Academy';
-import AirSite from '../../screens/../screens/AirSite/AirSite';
-import CyberLab from '../../screens/../screens/CyberLab/CyberLab';
-import FireSite from '../../screens/../screens/FireSite/FireSite';
-import FocusSite from '../../screens/../screens/FocusSite/FocusSite';
-import Guild from '../../screens/../screens/Guild/Guild';
-import IceSite from '../../screens/../screens/IceSite/IceSite';
-import Market from '../../screens/../screens/Market/Market';
-import MutationLab from '../../screens/../screens/MutationLab/MutationLab';
-import VillageMap from '../../screens/../screens/VillageMap/VillageMap';
-import WizardSchool from '../../screens/../screens/WizardSchool/WizardSchool';
+import Academy from '../../gameScreens/Academy';
+import AirSite from '../../gameScreens/AirSite/';
+import CyberLab from '../../gameScreens/CyberLab';
+import FireSite from '../../gameScreens/FireSite';
+import FocusSite from '../../gameScreens/FocusSite';
+import Guild from '../../gameScreens/Guild';
+import IceSite from '../../gameScreens/IceSite/';
+import Market from '../../gameScreens/Market';
+import MutaLab from '../../gameScreens/MutaLab';
+import VillageMap from '../../gameScreens/VillageMap';
+import WizardSchool from '../../gameScreens/WizardSchool';
 
 function GameScreen() {
     const screen = useSelector((store: IStore) => store.gameScreen.screen);
@@ -29,7 +29,7 @@ function GameScreen() {
         [GameScreens.guildSchool]: <Guild />,
         [GameScreens.iceSite]: <IceSite />,
         [GameScreens.market]: <Market />,
-        [GameScreens.mutaLab]: <MutationLab />,
+        [GameScreens.mutaLab]: <MutaLab />,
         [GameScreens.villageMap]: <VillageMap />,
         [GameScreens.wizardSchool]: <WizardSchool />,
     }

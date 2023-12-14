@@ -1,9 +1,7 @@
 import { 
     BattleResult,
     DamageType, 
-    GameScreens, 
-    InventoryOption, 
-    InventoryOptionPart, 
+    GameScreens,  
     InventoryPlace,
     MindOption, 
     Race, 
@@ -15,46 +13,10 @@ import {
 
 // game parts //
 export interface IStore {
-    everything: IEverything,
     gameScreen: IGameScreen,
     gameStage: IGameStage,
     gameSquad: IGameSquad,
     opponents: IOpponentSquad
-}
-
-export interface IEverything {
-    [MindOption.bending]: Record<string, Record<string, IBending>>,
-    [MindOption.masteries]: Record<string, IMastery>,
-    [MindOption.spells]: Record<string, ISpell>,
-    [MindOption.rituals]: Record<string, IRitual>,
-    [MindOption.powers]: {
-        [InventoryOptionPart.armors]: Record<string, IPower>,
-        [InventoryOptionPart.weapons]: Record<string, IPower>,
-        [InventoryOptionPart.other]: Record<string, IPower>
-    }
-    [InventoryOption.items]: {
-        [InventoryOptionPart.armors]: Record<string, IItem>,
-        [InventoryOptionPart.weapons]: Record<string, IItem>,
-        [InventoryOptionPart.other]: Record<string, IItem>
-    },    
-    [InventoryOption.wizardItems]: {
-        [InventoryOptionPart.armors]: Record<string, IWizardItem>,
-        [InventoryOptionPart.weapons]: Record<string, IWizardItem>,
-        [InventoryOptionPart.other]: Record<string, IWizardItem>
-    },
-    [InventoryOption.guildItems]: {
-        [InventoryOptionPart.weapons]: Record<string, IGuildItem>,
-    },
-    [InventoryOption.cybers]: {
-        [InventoryOptionPart.armors]: Record<string, ICyber>,
-        [InventoryOptionPart.weapons]: Record<string, ICyber>,
-        [InventoryOptionPart.other]: Record<string, ICyber>
-    },
-    [InventoryOption.mutations]: {
-        [InventoryOptionPart.armors]: Record<string, IMutation>,
-        [InventoryOptionPart.weapons]: Record<string, IMutation>,
-        [InventoryOptionPart.other]: Record<string, IMutation>
-    }
 }
 
 export interface IGameScreen {
@@ -188,12 +150,12 @@ export interface IBending extends IMastery {
 
 export interface IPower extends IMastery {
     ability: IBattleAbility | null,
-    passiveAbility: IPassiveAbility | null,
+    passiveAbilities: IPassiveAbility[] | null,
     requiredPower: string
 }
 
 export interface IRitual extends IMastery {
-    passiveAbility: IPassiveAbility
+    passiveAbilities: IPassiveAbility[]
 }
 
 export interface IMastery extends ICommon {
@@ -251,8 +213,8 @@ export interface IInventorySlot extends ICommon {
     inventoryPlace: InventoryPlace,
     priority: number,
 
-    ability: IBattleAbility | null,
-    passiveAbility: IPassiveAbility | null
+    abilities: IBattleAbility[] | null,
+    passiveAbilities: IPassiveAbility[] | null
 }
 
 export interface ICommon {
@@ -273,32 +235,25 @@ export interface IBattleAbility extends ICommon {
         [UserParam.stamina]?: number,
         [UserParam.blank]?: number        
     },
-    damage: number,
-    damageType: DamageType,
+    damage: {
+        [DamageType.acid]?: number,
+        [DamageType.cold]?: number,
+        [DamageType.electrical]?: number,
+        [DamageType.fire]?: number,
+        [DamageType.physicalPiercing]?: number,
+        [DamageType.physicalSlashing]?: number,
+        [DamageType.physicalSmashing]?: number,
+        [DamageType.psionic]?: number,
+        [DamageType.suffocation]?: number
+    },
     hitChance: number,
     targetAmount: number
 }
 
 export interface IPassiveAbility extends ICommon {
-    bonusMaxParams: {
-        [UserParam.health]?: number,
-        [UserParam.mana]?: number,
-        [UserParam.focus]?: number,
-        [UserParam.stamina]?: number,
-        [UserParam.blank]?: number
-    } | null,
-    bonusResistances: {
-        [DamageType.physicalSlashing]?: number,
-        [DamageType.physicalSmashing]?: number,
-        [DamageType.physicalPiercing]?: number,
-        [DamageType.suffocation]?: number,
-        [DamageType.fire]?: number,
-        [DamageType.electrical]?: number,
-        [DamageType.psionic]?: number,
-        [DamageType.acid]?: number,
-        [DamageType.cold]?: number,
-    } | null,
-    bonusDodge?: number
+    bonusMaxParams: Partial<Record<UserParam, number>> | null,
+    bonusResistances: Partial<Record<DamageType, number>> | null,
+    bonusDodge: number
 }
 
 // classes //
@@ -331,7 +286,7 @@ export interface IMutationsForRaceCheck {
     fur: boolean,
     tailWithSting: boolean,
     claws: boolean,
-    acidSplit: boolean,
+    acidSpit: boolean,
     wings: boolean,
     pincers: boolean,
     raptorLegs: boolean

@@ -68,20 +68,6 @@ export enum DamageType {
     cold = 'Cold'
 }
 
-export enum InventoryOption {
-    mutations = 'mutations',
-    cybers = 'cybers',
-    items = 'items',
-    wizardItems = 'wizardItems',
-    guildItems = 'guildItems'
-}
-
-export enum InventoryOptionPart {
-    armors = 'armors',
-    weapons = 'weapons',
-    other = 'other'
-}
-
 export enum MindOption {
     masteries = 'masteries',
     spells = 'spells',

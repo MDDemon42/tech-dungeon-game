@@ -16,9 +16,18 @@ export function createBattleAbility(
         [UserParam.stamina]?: number,
         [UserParam.blank]?: number        
     },
+    damage: {
+        [DamageType.acid]?: number,
+        [DamageType.cold]?: number,
+        [DamageType.electrical]?: number,
+        [DamageType.fire]?: number,
+        [DamageType.physicalPiercing]?: number,
+        [DamageType.physicalSlashing]?: number,
+        [DamageType.physicalSmashing]?: number,
+        [DamageType.psionic]?: number,
+        [DamageType.suffocation]?: number
+    },
     damageInfo: [
-        damage: number,
-        damageType: DamageType,
         targetAmount: number,
         hitChance: number
     ]        
@@ -30,10 +39,10 @@ export function createBattleAbility(
 
         costs,
 
-        damage: damageInfo[0], 
-        damageType: damageInfo[1], 
-        targetAmount: damageInfo[2],
-        hitChance: damageInfo[3]
+        damage,
+
+        targetAmount: damageInfo[0],
+        hitChance: damageInfo[1]
     }
 }
 

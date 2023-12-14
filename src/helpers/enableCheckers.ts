@@ -3,7 +3,7 @@ import { IBending, ICharacher, ICyber, IItem, IMastery, IMutation, IPower, ISpel
 import { getBackpacksCapability } from "./backpacksPutter";
 import priorityChecker from "./priorityChecker";
 import { createNoItem } from "./emptyEssencesCreators";
-import rituals from "../general/rituals/rituals";
+import rituals from "../gameScreens/Guild/rituals";
 
 export function bendingEnableChecker(
     bending: IBending,
@@ -90,7 +90,11 @@ export function subInventoryEnableChecker(
         return [false, chrome.i18n.getMessage('siec_resources')]
     }
 
-    if (screenName === InventoryGameScreens.market) {
+    if (
+        screenName === InventoryGameScreens.market ||
+        screenName === InventoryGameScreens.guildShop ||
+        screenName === InventoryGameScreens.wizardShop
+    ) {
         const nothing = createNoItem().name;
         const currentBackpacksItemsAmount = character.general.backpacks
             .filter((item) => item.name !== nothing).length;

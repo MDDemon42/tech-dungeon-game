@@ -1,8 +1,92 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { IGameStage } from '../../enums-and-interfaces/interfaces';
+import { IGameStage, IGameStageOptions, IGameTasks, ITask } from '../../enums-and-interfaces/interfaces';
 import { GameScreens } from '../../enums-and-interfaces/enums';
-import stageOptions from '../../general/stageOptions';
-import tasks from '../../general/tasks';
+import academyTasks from '../../gameScreens/Academy/tasks';
+import airSiteTasks from '../../gameScreens/AirSite/tasks';
+import cyberLabTasks from '../../gameScreens/CyberLab/tasks';
+import fireSiteTasks from '../../gameScreens/FireSite/tasks';
+import focusSiteTasks from '../../gameScreens/FocusSite/tasks';
+import guildTasks from '../../gameScreens/Guild/tasks';
+import iceSiteTasks from '../../gameScreens/IceSite/tasks';
+import marketTasks from '../../gameScreens/Market/tasks';
+import mutaLabTasks from '../../gameScreens/MutaLab/tasks';
+import wizardSchoolTasks from '../../gameScreens/WizardSchool/tasks';
+import { academyOptions } from '../../gameScreens/Academy/masteries';
+import { airSchoolOptions } from '../../gameScreens/AirSite/masteries';
+import { airSiteOptions } from '../../gameScreens/AirSite/bendings';
+import { cyberLabOptions } from '../../gameScreens/CyberLab/cybers';
+import { fireSchoolOptions } from '../../gameScreens/FireSite/masteries';
+import { fireSiteOptions } from '../../gameScreens/FireSite/bendings';
+import { focusSchoolOptions } from '../../gameScreens/FocusSite/masteries';
+import { focusSiteOptions } from '../../gameScreens/FocusSite/powers';
+import { guildRitualOptions } from '../../gameScreens/Guild/rituals';
+import { guildSchoolOptions } from '../../gameScreens/Guild/masteries';
+import { guildShopOptions } from '../../gameScreens/Guild/guildItems';
+import { iceSchoolOptions } from '../../gameScreens/IceSite/masteries';
+import { iceSiteOptions } from '../../gameScreens/IceSite/bendings';
+import { marketOptions } from '../../gameScreens/Market/items';
+import { mutaLabOptions } from '../../gameScreens/MutaLab/mutations';
+import { spellSchoolOptions } from '../../gameScreens/WizardSchool/spells';
+import { wizardSchoolOptions } from '../../gameScreens/WizardSchool/masteries';
+import { wizardShopOptions } from '../../gameScreens/WizardSchool/wizardItems';
+
+export function createTask(
+    bigResourceName: string,
+    bigResourceAmount: number,
+    taskTitle: string,
+    taskText: string
+): ITask {
+    return {
+        bigResourceName,
+        bigResourceAmount,
+        taskTitle,
+        taskText
+    }
+}
+   
+export const tasks: IGameTasks = {
+    [GameScreens.academy]: academyTasks,
+    [GameScreens.airSchool]: null,
+    [GameScreens.airSite]: airSiteTasks,
+    [GameScreens.cyberLab]: cyberLabTasks,
+    [GameScreens.fireSchool]: null,
+    [GameScreens.fireSite]: fireSiteTasks,
+    [GameScreens.focusSchool]: null,
+    [GameScreens.focusSite]: focusSiteTasks,
+    [GameScreens.guildRituals]: null,
+    [GameScreens.guildSchool]: guildTasks,
+    [GameScreens.guildShop]: null,
+    [GameScreens.iceSchool]: null,
+    [GameScreens.iceSite]: iceSiteTasks,
+    [GameScreens.market]: marketTasks,
+    [GameScreens.mutaLab]: mutaLabTasks,
+    [GameScreens.spellSchool]: null,
+    [GameScreens.villageMap]: null,
+    [GameScreens.wizardSchool]: wizardSchoolTasks,
+    [GameScreens.wizardShop]: null,
+}
+
+export const stageOptions: IGameStageOptions = {
+    [GameScreens.academy]: academyOptions,
+    [GameScreens.airSchool]: airSchoolOptions,
+    [GameScreens.airSite]: airSiteOptions,
+    [GameScreens.cyberLab]: cyberLabOptions,
+    [GameScreens.fireSchool]: fireSchoolOptions,
+    [GameScreens.fireSite]: fireSiteOptions,
+    [GameScreens.focusSchool]: focusSchoolOptions,
+    [GameScreens.focusSite]: focusSiteOptions,
+    [GameScreens.guildRituals]: guildRitualOptions,
+    [GameScreens.guildSchool]: guildSchoolOptions,
+    [GameScreens.guildShop]: guildShopOptions,
+    [GameScreens.iceSchool]: iceSchoolOptions,
+    [GameScreens.iceSite]: iceSiteOptions,
+    [GameScreens.market]: marketOptions,
+    [GameScreens.mutaLab]: mutaLabOptions,
+    [GameScreens.spellSchool]: spellSchoolOptions,
+    [GameScreens.villageMap]: null,
+    [GameScreens.wizardSchool]: wizardSchoolOptions,
+    [GameScreens.wizardShop]: wizardShopOptions
+}
 
 export const createGameStage = (strongStart: boolean) => {
     const result = {} as IGameStage;

@@ -6,6 +6,8 @@ import physicalSmashing from "./physicalSmashing";
 import physicalSlashing from "./physicalSlashing";
 import psionic from "./psionic";
 
+import mixed from "./mixed";
+
 const melee = {    
     cold,
     electrical,
@@ -13,7 +15,9 @@ const melee = {
     physicalPiercing,
     physicalSmashing,
     physicalSlashing,
-    psionic
+    psionic,
+
+    mixed
 }
 
 export default melee

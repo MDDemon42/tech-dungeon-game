@@ -1,3 +1,4 @@
+import academyMasteries from './academyMasteries/academyMasteries';
 import bodyElements from './bodyElements/bodyElements';
 import classIcons from './classIcons/classIcons';
 import normalItems from './normalItems/normalItems';
@@ -12,6 +13,7 @@ import paramIcons from './paramIcons/paramIcons';
 import misc from './misc/misc';
 
 const images = {
+    academyMasteries,
     bodyElements,
     classIcons,
     normalItems,

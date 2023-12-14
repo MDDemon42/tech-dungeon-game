@@ -23,11 +23,20 @@ function CommonIcon(props: {
             [UserParam.stamina]?: number,
             [UserParam.blank]?: number        
         },
-        damage?: number,
-        damageType?: DamageType,
+        damage?: {
+            [DamageType.acid]?: number,
+            [DamageType.cold]?: number,
+            [DamageType.electrical]?: number,
+            [DamageType.fire]?: number,
+            [DamageType.physicalPiercing]?: number,
+            [DamageType.physicalSlashing]?: number,
+            [DamageType.physicalSmashing]?: number,
+            [DamageType.psionic]?: number,
+            [DamageType.suffocation]?: number
+        },
         hitChance?: number,
         targetAmount?: number,
-        passiveAbility?: IPassiveAbility | null
+        passiveAbilities?: IPassiveAbility[] | null
     },
     disableReason?: string
 }) {
@@ -39,8 +48,10 @@ function CommonIcon(props: {
         description += '\n' + item.description;
     }
 
-    if (item.passiveAbility) {
-        description += '\n' + item.passiveAbility.description;
+    if (item.passiveAbilities) {
+        for (const passiveAbility of item.passiveAbilities) {
+            description += '\n' + passiveAbility.description;
+        }
     }
     
     if (
@@ -82,12 +93,13 @@ function CommonIcon(props: {
         description += '\n' + chrome.i18n.getMessage('cid_inventory_place') + item.inventoryPlace;
     }
 
-    if (item.damage && item.damage > 0) {
-        description += '\n' + chrome.i18n.getMessage('cid_damage') + item.damage;
-    }
-
-    if (item.damageType) {
-        description += '\n' + chrome.i18n.getMessage('cid_damage_type') + item.damageType;
+    if (item.damage) {
+        for (const key in item.damage) {
+            const damageType = key as DamageType;
+            description += '\n' + chrome.i18n.getMessage('cid_damage', 
+                [String(item.damage[damageType]), String(damageType)]
+            );
+        }
     }
 
     if (item.hitChance) {
@@ -122,13 +134,19 @@ function CommonIcon(props: {
     return(
         <div className={styles.CommonIcon}>
             {
-                item.damage! > 0 ?
+                !!item.damage ?
                     <div className={styles.CommonIcon_damage}>
-                        <span 
-                            style={{color: damageColors[item.damageType!]}}
-                        >
-                            {item.damage}
-                        </span> 
+                        <div className={styles.CommonIcon_damagesColumn}>
+                            {
+                                Object.keys(item.damage).map(key =>
+                                    <span 
+                                        style={{color: damageColors[key as DamageType]}}
+                                    >
+                                        {item.damage?.[key as DamageType]}
+                                    </span>
+                                )
+                            }                            
+                        </div>                         
                         <span style={{color: item.hitChance! >= 90 ? 'gold' : 'grey'}}>
                             {item.hitChance}
                         </span>

@@ -1,9 +1,9 @@
 import acidizer from './acidizer.png';
 import cyberClaw from './cyberClaw.png';
-import energyFistRightHand from './energyFistRightHand.png';
-import energyFistLeftHand from './energyFistLeftHand.png';
+import cyberFistRightHand from './cyberFistRightHand.png';
+import cyberFistLeftHand from './cyberFistLeftHand.png';
 import energyShield from './energyShield.png';
-import energyWhip from './energyWhip.png';
+import taserWhip from './taserWhip.png';
 import freezer from './freezer.png';
 import heatSaber from './heatSaber.png';
 import laser from './laser.png';
@@ -11,15 +11,15 @@ import nanoMatrix from './nanoMatrix.png';
 import nanoVest from './nanoVest.png';
 import rocketLauncher from './rocketLauncher.png';
 import reactiveFeet from './reactiveFeet.png';
-import slasherator from './slasherator.png';
+import treeCutter from './treeCutter.png';
 
 const cyborgDetails = {
     acidizer,
     cyberClaw,
-    energyFistRightHand,
-    energyFistLeftHand,
+    cyberFistRightHand,
+    cyberFistLeftHand,
     energyShield,
-    energyWhip,
+    taserWhip,
     freezer,
     heatSaber,
     laser,
@@ -27,7 +27,7 @@ const cyborgDetails = {
     nanoVest,
     nanoMatrix,
     reactiveFeet,
-    slasherator
+    treeCutter
 };
 
 export default cyborgDetails;

@@ -2,18 +2,19 @@ import { createBattleAbility } from "..";
 import { DamageType } from "../../../../enums-and-interfaces/enums";
 import images from "../../../../images/images";
 
-const battleAbility_runicGreatswordSlash = createBattleAbility(
+const heatSaberSlash = createBattleAbility(
     [
-        chrome.i18n.getMessage('runic_greatsword_slash'), 
+        chrome.i18n.getMessage('heat_saber_slash'), 
         '', 
-        images.guildianLearnings.runicGreatsword
+        images.cyborgDetails.heatSaber
     ], 
-    {Mana: 1, Stamina: 2}, 
-    [3, DamageType.fire, 1, 70]
+    {Stamina: 2}, 
+    {[DamageType.fire]: 2}, 
+    [1, 70]
 );
 
 const fire = {
-    battleAbility_runicGreatswordSlash
+    heatSaberSlash
 }
 
 export default fire

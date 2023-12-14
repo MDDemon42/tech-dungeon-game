@@ -2,18 +2,19 @@ import { createBattleAbility } from "..";
 import { DamageType } from "../../../../enums-and-interfaces/enums";
 import images from "../../../../images/images";
 
-const battleAbility_runicGreathammerSmash = createBattleAbility(
+const taserWhiplash = createBattleAbility(
     [
-        chrome.i18n.getMessage('runic_greathammer_smash'), 
+        chrome.i18n.getMessage('taser_whiplash'),
         '', 
-        images.guildianLearnings.runicGreathammer
+        images.cyborgDetails.taserWhip
     ], 
-    {Mana: 1, Stamina: 2}, 
-    [3, DamageType.electrical, 1, 70]
-);
+    {Stamina: 2}, 
+    {[DamageType.electrical]: 2},
+    [1, 70]
+); 
 
 const electrical = {
-    battleAbility_runicGreathammerSmash,
+    taserWhiplash
 }
 
 export default electrical

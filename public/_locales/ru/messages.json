@@ -33,10 +33,17 @@
         "message": "Место в инвентаре: "
     },
     "cid_damage": {
-        "message": "Урон: "
-    },
-    "cid_damage_type": {
-        "message": "Тип урона: "
+        "message": "Урон: $amount$ от $damageType$",
+        "placeholders": {
+            "amount": {
+                "content": "$1",
+                "example": "0"
+            },
+            "damageType": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "cid_hit_chance": {
         "message": "Шанс попадания: "
@@ -580,6 +587,9 @@
     },
     "tail_with_sting_mutation_description": {
         "message": "Мутация для протыкания жертв."
+    },    
+    "tail_prick": {
+        "message": "Укол хвостом"
     },
     "dodge": {
         "message": "Уворот"
@@ -625,6 +635,12 @@
     },
     "steel_sword_item_description": {
         "message": "Обычный стальной меч."
+    },    
+    "sword_slash": {
+        "message": "Удар мечом"
+    },
+    "sword_stab": {
+        "message": "Укол мечом"
     },
     "steel_mace": {
         "message": "Стальная булава"
@@ -644,6 +660,15 @@
     "spear_pierce": {
         "message": "Выпад копьём"
     },
+    "pickaxe": {
+        "message": "Кирка"
+    },
+    "pickaxe_item_description": {
+        "message": "Обычная кирка."
+    },
+    "pickaxe_pick": {
+        "message": "Удар киркой"
+    },
     "steel_greataxe": {
         "message": "Стальная секира"
     },
@@ -660,7 +685,7 @@
         "message": "Массивная секира, покрытая рунами."
     },
     "runic_greataxe_slash": {
-        "message": "Удар холодом секиры."
+        "message": "Удар холодом секиры"
     },
     "steel_greathammer": {
         "message": "Стальной молот"
@@ -678,7 +703,7 @@
         "message": "Массивный молот, покрытый рунами."
     },
     "runic_greathammer_smash": {
-        "message": "Удар электричеством молота."
+        "message": "Удар электричеством молота"
     },
     "steel_greatsword": {
         "message": "Стальная клеймора"
@@ -696,7 +721,7 @@
         "message": "Массивная клеймора, покрытая рунами."
     },
     "runic_greatsword_slash": {
-        "message": "Удар огнём клейморы."
+        "message": "Удар огнём клейморы"
     },
     "oak_bow": {
         "message": "Дубовый лук"
@@ -743,6 +768,9 @@
     "acidizer_cyber_description": {
         "message": "Кибер для непосредственного разлива кислоты."
     },
+    "acidizer_spill": {
+        "message": "Выплеск окислителя"
+    },
     "reactive_feet": {
         "message": "Реактивные стопы"
     },
@@ -755,14 +783,23 @@
     "cyber_claw_cyber_description": {
         "message": "Кибер для разрывания врагов как хищное животное."
     },
-    "energy_fist_left_hand": {
+    "cyber_claw_slash": {
+        "message": "Удар кибер когтем"
+    },
+    "cyber_fist_left_hand": {
         "message": "Энергетический кулак на левой руке"
     },
-    "energy_fist_right_hand": {
+    "cyber_fist_right_hand": {
         "message": "Энергетический кулак на правой руке"
     },
-    "energy_fist_cyber_description": {
+    "cyber_fist_cyber_description": {
         "message": "Кибер для раздачи гипертумаков."
+    },    
+    "cyber_fist_smash_right": {
+        "message": "Удар кибер кулаком (правым)"
+    },
+    "cyber_fist_smash_left": {
+        "message": "Удар кибер кулаком (левым)"
     },
     "energy_shield": {
         "message": "Энергетический щит"
@@ -773,17 +810,23 @@
     "resistance_piercing_and_smashing_1": {
         "message": "Повышает сопротивление Проникающему и Дробящему урона на 1."
     },
-    "energy_whip": {
-        "message": "Энергетический хлыст"
+    "taser_whip": {
+        "message": "Электрический хлыст"
     },
-    "energy_whip_cyber_description": {
+    "taser_whip_cyber_description": {
         "message": "Кибер для причинения боли и страданий."
+    },
+    "taser_whiplash": {
+        "message": "Удар электрическим хлыстом"
     },
     "freezer": {
         "message": "Охладитель"
     },
     "freezer_cyber_description": {
         "message": "Кибер для снижения температуры цели."
+    },   
+    "freezer_shot": {
+        "message": "Выстрел охладителя"
     },
     "heat_saber": {
         "message": "Нагревная сабля"
@@ -791,23 +834,35 @@
     "heat_saber_cyber_description": {
         "message": "Кибер для прожигания брони и плоти."
     },
+    "heat_saber_slash": {
+        "message": "Удар нагревной саблей"
+    },
     "laser": {
         "message": "Лазер"
     },
     "laser_cyber_description": {
         "message": "Кибер для поджигания сфокусированным светом."
     },
+    "laser_shot": {
+        "message": "Выстрел лазера"
+    },
     "rocket_launcher": {
         "message": "Ракетная установка"
     },
     "rocket_launcher_cyber_description": {
         "message": "Кибер для уничтожения всего и вся в зоне поражения."
-    },  
-    "slasherator": {
-        "message": "Измельчитель"
+    },      
+    "rocket_launch": {
+        "message": "Запуск ракет"
     },
-    "slasherator_cyber_description": {
+    "tree_cutter": {
+        "message": "Древопил"
+    },
+    "treeCutter_cyber_description": {
         "message": "Кибер для распиливания деревьев и тел."
+    },
+    "tree_cutter_slash": {
+        "message": "Размах древопилом"
     },
     "wings": {
         "message": "Крылья"
@@ -821,10 +876,10 @@
     "hooves_mutation_description": {
         "message": "Мутация для уверенной походки."
     },
-    "acid_split": {
+    "acid_spit": {
         "message": "Кислотный плевок"
     },
-    "acid_split_mutation_description": {
+    "acid_spit_mutation_description": {
         "message": "Мутация для плевков кислотой в лицо врагу."
     },
     "lower_fangs": {
@@ -832,6 +887,9 @@
     },
     "lower_fangs_mutation_description": {
         "message": "Мутация для превращения челюсти в отрывательный аппарат."
+    },    
+    "fangs_bite": {
+        "message": "Укус клыками"
     },
     "claws": {
         "message": "Когти"
@@ -839,11 +897,23 @@
     "claws_mutation_description": {
         "message": "Мутация для разрывания жертв в клочья."
     },
+    "left_claw_slash": {
+        "message": "Замах когтями слева"
+    },
+    "right_claw_slash": {
+        "message": "Замах когтями справа"
+    },
+    "both_claws_slash": {
+        "message": "Замах когтями везде"
+    },
     "horns": {
         "message": "Рога"
     },
     "horns_mutation_description": {
         "message": "Мутация для превращения головы в двойное копьё."
+    },
+    "horns_charge": {
+        "message": "Натиск рогов"
     },
     "pincers": {
         "message": "Клешни"
@@ -851,11 +921,17 @@
     "pincers_mutation_description": {
         "message": "Мутация для проделывания дыр в соперниках."
     },
+    "pincers_stab": {
+        "message": "Пробитие клешнями"
+    },
     "raptor_legs": {
         "message": "Рапторские ноги"
     },
     "raptor_legs_mutation_description": {
         "message": "Мутация для совершения прыжков на добычу."
+    },
+    "raptor_jump": {
+        "message": "Прыжок раптора"
     },
     "multistrike": {
         "message": "Мультиудар"
@@ -1308,6 +1384,12 @@
     "brutal_force_mastery_description": {
         "message": "Мастерство обращения с массивными штуками."
     },
+    "martial_arts": {
+        "message": "Боевые искусства"
+    },
+    "martial_arts_mastery_description": {
+        "message": "Мастерство нанесения увечий голыми руками."
+    },
     "bomb_throwing": {
         "message": "Бомбометание"
     },
@@ -1325,6 +1407,9 @@
     },
     "battle_runes_mastery_description": {
         "message": "Мастерство активации рун на оружии."
+    },
+    "empowered": {
+        "message": "Усиленный "
     },
     "empowered_strikes": {
         "message": "Усиленные удары"
@@ -1462,6 +1547,9 @@
     },
     "fist_smash": {
         "message": "Ударище кулачищем"
+    },
+    "martial_hit": {
+        "message": "Смертельный удар"
     },
     "equip": {
         "message": "Снарядить"

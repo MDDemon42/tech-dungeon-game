@@ -22,8 +22,8 @@ const gnollRace = createRace(['lowerFangs', 'fur']);
 const nagaRace = createRace(['scales', 'tailWithSting']);
 const raptorRace = createRace(['scales', 'raptorLegs', 'tailWithSting']);
 const demonRace = createRace(['horns', 'fur', 'claws', 'tailWithSting', 'lowerFangs', 'hooves']);
-const dragonRace = createRace(['horns', 'scales', 'claws', 'tailWithSting', 'acidSplit', 'raptorLegs', 'wings']);
-const chimeraRace = createRace(['horns', 'fur', 'claws', 'tailWithSting', 'acidSplit', 'wings', 'pincers', 'hooves'])
+const dragonRace = createRace(['horns', 'scales', 'claws', 'tailWithSting', 'acidSpit', 'raptorLegs', 'wings']);
+const chimeraRace = createRace(['horns', 'fur', 'claws', 'tailWithSting', 'acidSpit', 'wings', 'pincers', 'hooves'])
 
 const races = {
     humanRace,

@@ -33,10 +33,17 @@
         "message": "Inventory place: "
     },
     "cid_damage": {
-        "message": "Damage: "
-    },
-    "cid_damage_type": {
-        "message": "Damage type: "
+        "message": "Damage: $amount$ of $damageType$",
+        "placeholders": {
+            "amount": {
+                "content": "$1",
+                "example": "0"
+            },
+            "damageType": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "cid_hit_chance": {
         "message": "Hit chance: "
@@ -581,6 +588,9 @@
     "tail_with_sting_mutation_description": {
         "message": "Mutation to pierce your victims."
     },
+    "tail_prick": {
+        "message": "Tail prick"
+    },
     "dodge": {
         "message": "Dodge"
     },
@@ -629,6 +639,9 @@
     "sword_slash": {
         "message": "Sword slash"
     },
+    "sword_stab": {
+        "message": "Sword stab"
+    },
     "steel_mace": {
         "message": "Steel mace"
     },
@@ -647,6 +660,15 @@
     "spear_pierce": {
         "message": "Spear pierce"
     },
+    "pickaxe": {
+        "message": "Pickaxe"
+    },
+    "pickaxe_item_description": {
+        "message": "Usual pickaxe."
+    },
+    "pickaxe_pick": {
+        "message": "Pickaxe pick"
+    },
     "steel_greataxe": {
         "message": "Steel greataxe"
     },
@@ -663,7 +685,7 @@
         "message": "Massive greataxe covered with runes."
     },
     "runic_greataxe_slash": {
-        "message": "Cold greataxe slash."
+        "message": "Cold greataxe slash"
     },
     "steel_greathammer": {
         "message": "Steel greathammer"
@@ -681,7 +703,7 @@
         "message": "Massive greathammer covered with runes."
     },
     "runic_greathammer_smash": {
-        "message": "Electrical greathammer smash."
+        "message": "Electrical greathammer smash"
     },
     "steel_greatsword": {
         "message": "Steel greatsword"
@@ -699,7 +721,7 @@
         "message": "Massive greatsword covered with runes."
     },
     "runic_greatsword_slash": {
-        "message": "Fire greatsword slash."
+        "message": "Fire greatsword slash"
     },
     "oak_bow": {
         "message": "Oak bow"
@@ -746,6 +768,9 @@
     "acidizer_cyber_description": {
         "message": "Cyber to spill acid directly."
     },
+    "acidizer_spill": {
+        "message": "Acidizer spill"
+    },
     "reactive_feet": {
         "message": "Reactive feet"
     },
@@ -758,14 +783,23 @@
     "cyber_claw_cyber_description": {
         "message": "Cyber to rip apart enemies like a predatory animal."
     },
-    "energy_fist_left_hand": {
+    "cyber_claw_slash": {
+        "message": "Cyber claw slash"
+    },
+    "cyber_fist_left_hand": {
         "message": "Energy fist on left hand"
     },
-    "energy_fist_right_hand": {
+    "cyber_fist_right_hand": {
         "message": "Energy fist on right hand"
     },
-    "energy_fist_cyber_description": {
+    "cyber_fist_cyber_description": {
         "message": "Cyber to give ultimate punches."
+    },
+    "cyber_fist_smash_right": {
+        "message": "Cyber fist smash (right)"
+    },
+    "cyber_fist_smash_left": {
+        "message": "Cyber fist smash (left)"
     },
     "energy_shield": {
         "message": "Energy shield"
@@ -776,17 +810,23 @@
     "resistance_piercing_and_smashing_1": {
         "message": "Upgrades resistance to Piercing and Smashing damage by 1."
     },
-    "energy_whip": {
-        "message": "Energy whip"
+    "taser_whip": {
+        "message": "Taser whip"
     },
-    "energy_whip_cyber_description": {
+    "taser_whip_cyber_description": {
         "message": "Cyber to deal pain and sufferings."
+    },
+    "taser_whiplash": {
+        "message": "Taser whiplash"
     },
     "freezer": {
         "message": "Freezer"
     },
     "freezer_cyber_description": {
         "message": "Cyber to cool anything down."
+    },    
+    "freezer_shot": {
+        "message": "Freezer shot"
     },
     "heat_saber": {
         "message": "Heat saber"
@@ -794,23 +834,35 @@
     "heat_saber_cyber_description": {
         "message": "Cyber to burn through armor and flesh."
     },
+    "heat_saber_slash": {
+        "message": "Heat saber slash"
+    },
     "laser": {
         "message": "Laser"
     },
     "laser_cyber_description": {
         "message": "Cyber to burn with focused light."
     },
+    "laser_shot": {
+        "message": "Laser shot"
+    },
     "rocket_launcher": {
         "message": "Rocket launcher"
     },
     "rocket_launcher_cyber_description": {
         "message": "Cyber to destroy everything in an area."
-    },    
-    "slasherator": {
-        "message": "Slasherator"
+    }, 
+    "rocket_launch": {
+        "message": "Rocket launch"
+    },   
+    "tree_cutter": {
+        "message": "Tree cutter"
     },
-    "slasherator_cyber_description": {
+    "treeCutter_cyber_description": {
         "message": "Cyber to cut down trees and bodies."
+    },
+    "tree_cutter_slash": {
+        "message": "Tree cutter cut"
     },
     "wings": {
         "message": "Wings"
@@ -824,10 +876,10 @@
     "hooves_mutation_description": {
         "message": "Mutation to make confident steps."
     },
-    "acid_split": {
+    "acid_spit": {
         "message": "Acid split"
     },
-    "acid_split_mutation_description": {
+    "acid_spit_mutation_description": {
         "message": "Mutation to split acid in your enemy`s face."
     },
     "lower_fangs": {
@@ -836,11 +888,23 @@
     "lower_fangs_mutation_description": {
         "message": "Mutation to turn your chin to a cutting machine."
     },
+    "fangs_bite": {
+        "message": "Fangs bite"
+    },
     "claws": {
         "message": "Claws"
     },
     "claws_mutation_description": {
         "message": "Mutation to rip your opponents apart."
+    },
+    "left_claw_slash": {
+        "message": "Left claw slash"
+    },
+    "right_claw_slash": {
+        "message": "Right claw slash"
+    },
+    "both_claws_slash": {
+        "message": "Both claws slash"
     },
     "horns": {
         "message": "Horns"
@@ -848,17 +912,26 @@
     "horns_mutation_description": {
         "message": "Mutation to use your head as a double-spear."
     },
+    "horns_charge": {
+        "message": "Horns charge"
+    },
     "pincers": {
         "message": "Pincers"
     },
     "pincers_mutation_description": {
         "message": "Mutation to make holes in you rival."
     },
+    "pincers_stab": {
+        "message": "Pincers stab"
+    },
     "raptor_legs": {
         "message": "Raptor legs"
     },
     "raptor_legs_mutation_description": {
         "message": "Mutation to jump on a prey."
+    },
+    "raptor_jump": {
+        "message": "Raptor jump"
     },
     "multistrike": {
         "message": "Multistrike"
@@ -1311,6 +1384,12 @@
     "brutal_force_mastery_description": {
         "message": "Mastery of dealing with massive stuff."
     },
+    "martial_arts": {
+        "message": "Martial arts"
+    },
+    "martial_arts_mastery_description": {
+        "message": "Mastery of dealing damage with bare hands."
+    },
     "bomb_throwing": {
         "message": "Bomb throwing"
     },
@@ -1328,6 +1407,9 @@
     },
     "battle_runes_mastery_description": {
         "message": "Mastery of activating runes on weapons."
+    },
+    "empowered": {
+        "message": "Empowered "
     },
     "empowered_strikes": {
         "message": "Empowered strikes"
@@ -1465,6 +1547,9 @@
     },
     "fist_smash": {
         "message": "Fist smash"
+    },
+    "martial_hit": {
+        "message": "Martial hit"
     },
     "equip": {
         "message": "Equip"

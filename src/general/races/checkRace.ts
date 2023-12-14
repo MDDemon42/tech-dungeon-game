@@ -1,21 +1,21 @@
-import mutations from "../mutations";
+import mutations from "../../gameScreens/MutaLab/mutations";
 import races from "./races";
 import { IInventory, IMutationsForRaceCheck } from "../../enums-and-interfaces/interfaces";
 import { Race } from "../../enums-and-interfaces/enums";
 
 function checkRace(inventory: IInventory, isStrong: boolean): Race {
     const currentRace: IMutationsForRaceCheck = {
-        horns: inventory.head.name === mutations.weapons.mutation_horns.name,
+        horns: inventory.head.name === mutations.weapons.horns.name,
         hooves: inventory.legs.name === mutations.other.mutation_hooves.name,
-        lowerFangs: inventory.chin.name === mutations.weapons.mutation_lowerFangs.name,
-        scales: inventory.skin.name === mutations.armors.mutation_scales.name,
-        fur: inventory.skin.name === mutations.armors.mutation_fur.name,
-        tailWithSting: inventory.tail.name === mutations.weapons.mutation_tailWithSting.name,
-        claws: inventory.bothHands.name === mutations.weapons.mutation_claws.name,
-        acidSplit: inventory.chin.name === mutations.weapons.mutation_acidSplit.name,
+        lowerFangs: inventory.chin.name === mutations.weapons.lowerFangs.name,
+        scales: inventory.skin.name === mutations.armors.scales.name,
+        fur: inventory.skin.name === mutations.armors.fur.name,
+        tailWithSting: inventory.tail.name === mutations.weapons.tailWithSting.name,
+        claws: inventory.bothHands.name === mutations.weapons.claws.name,
+        acidSpit: inventory.chin.name === mutations.weapons.acidSpit.name,
         wings: inventory.back.name === mutations.other.mutation_wings.name,
-        pincers: inventory.shoulders.name === mutations.weapons.mutation_pincers.name,
-        raptorLegs: inventory.legs.name === mutations.weapons.mutation_raptorLegs.name
+        pincers: inventory.shoulders.name === mutations.weapons.pincers.name,
+        raptorLegs: inventory.legs.name === mutations.weapons.raptorLegs.name
     }
 
     const isRace = (race: IMutationsForRaceCheck) => {

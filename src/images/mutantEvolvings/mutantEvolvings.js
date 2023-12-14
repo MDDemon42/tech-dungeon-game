@@ -4,15 +4,15 @@ import fur from './fur.png';
 import wings from './wings.png';
 import tailWithSting from './tailWithSting.png';
 import scales from './scales.png';
-import acidSplit from './acidSplit.png';
-import twoExtraPincers from './twoExtraPincers.png';
+import acidSpit from './acidSpit.png';
+import pincers from './pincers.png';
 import hooves from './hooves.png';
 import lowerFangs from './lowerFangs.png';
 import ripApart from './ripApart.png';
 import raptorLegs from './raptorLegs.png';
 
 const mutantEvolvings = {
-    acidSplit,
+    acidSpit,
     claws,
     fur,
     hooves,
@@ -22,7 +22,7 @@ const mutantEvolvings = {
     ripApart,    
     scales,
     tailWithSting,
-    twoExtraPincers,
+    pincers,
     wings
 };
 
