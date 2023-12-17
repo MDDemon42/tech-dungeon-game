@@ -18,11 +18,15 @@ function BackpacksScreen(props: {
     return <div className={styles.BackpacksScreen}>
         <div className={styles.BackpacksScreen_squadResources}>
             {
-                Object.keys(resources).map(key => (
-                    <div>
-                        <ResourceIcon resource={key as UserResource}/>: {resources[key as UserResource]}
-                    </div>
-                ))
+                Object.keys(resources).map(key => {
+                    if (key === UserResource.none) {
+                        return null
+                    }
+                    return (
+                        <div>
+                            <ResourceIcon resource={key as UserResource}/>: {resources[key as UserResource]}
+                        </div>
+                )})
             }
         </div>
         <div className={styles.BackpacksScreen_itemsLine}>

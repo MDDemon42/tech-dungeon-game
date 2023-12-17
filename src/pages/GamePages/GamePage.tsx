@@ -2,9 +2,9 @@ import styles from './GamePage.module.css';
 import C from '../../redux/constants';
 import {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import GameScreen from '../../components/GameScreen/GameScreen';
+import GameScreen from '../../components/GameScreen';
 import gameSquad from '../../redux/slices/gameSquad';
-import SquadScreen from '../../components/SquadScreen/SquadScreen';
+import SquadScreen from '../../components/SquadScreen';
 import gameStage from '../../redux/slices/gameStage';
 
 function GamePage() { 

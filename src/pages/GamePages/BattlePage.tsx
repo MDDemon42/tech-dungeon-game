@@ -11,7 +11,7 @@ import CommonIcon from '../../components/Icons/CommonIcon';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import gameSquad, { createGameSquad } from '../../redux/slices/gameSquad';
-import BattleOrder from '../../components/BattleOrder/BattleOrder';
+import BattleOrder from '../../components/BattleOrder';
 import { useNavigate } from 'react-router-dom';
 import shuffleArray from '../../helpers/shuffleArray';
 import gatherCharacterAbilities from '../../helpers/gatherCharacterAbilities';
@@ -20,7 +20,7 @@ import {
     ArrowCounterclockwise,
     CheckCircle
 } from 'react-bootstrap-icons';
-import BattleTurnButtons from '../../components/BattleTurnButtons/BattleTurnButtons';
+import BattleTurnButtons from '../../components/BattleTurnButtons';
 import BattleOverScreen from '../../components/BattleOverScreen/BattleOverScreen';
 import { removeGameTabs } from '../../helpers/removeGameTabs';
 import { BattleResult, GameScreens } from '../../enums-and-interfaces/enums';
@@ -123,7 +123,7 @@ function BattlePage() {
             }, (orderIndex) * 4000 + 1000)
 
             const sufferMember = chooseSquadMemberIndex();
-            if (sufferMember === 0) {
+            if (sufferMember === -1) {
                 return
             }
 
@@ -472,14 +472,15 @@ function BattlePage() {
 
     function chooseSquadMemberIndex() {
         const squadStatus = [...battlePageState.squadStatus];
+
         const memberIndexes = squadMembers.map((member, index) => {
             if (member && !squadStatus[index].dead) {
                 return index
             }
             return undefined
-        }).filter(index => !!index);
+        }).filter(index => Number(index) > -1 );
 
-        const memberIndex = memberIndexes[Math.floor(Math.random() * memberIndexes.length)] as number ?? 0;
+        const memberIndex = memberIndexes[Math.floor(Math.random() * memberIndexes.length)] as number ?? -1;
 
         return memberIndex
     }

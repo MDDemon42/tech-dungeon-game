@@ -4,11 +4,10 @@ import { IStore, ITask } from "../../enums-and-interfaces/interfaces";
 import gameSquad from "../../redux/slices/gameSquad";
 import gameStage from "../../redux/slices/gameStage";
 import { useDispatch } from "react-redux";
-import styles from './TaskScreen.module.css';
+import styles from './index.module.css';
 import { 
     Tree, MinecartLoaded,
 } from 'react-bootstrap-icons';
-
 import { tasks } from "../../redux/slices/gameStage";
 import items from "../../gameScreens/Market/items";
 
@@ -28,8 +27,7 @@ function TaskScreen(props: {
     } = props;
     const task = tasks[screen]?.[stage].task as ITask;
     const {
-        bigResourceAmount,
-        bigResourceName,
+        resourceCost,
         taskTitle,
         taskText
     } = task;
@@ -37,17 +35,24 @@ function TaskScreen(props: {
     const backpacks = useSelector((store: IStore) => 
         store.gameSquad.squadMembers[store.gameSquad.currentlyWatched].general.backpacks);
 
-    const bigResourceStock = backpacks
-        .reduce((acc, cur) => acc + (cur.name === bigResourceName ? 1 : 0), 0);
-    const doTaskButtonDisabled = bigResourceStock < bigResourceAmount;
+    let doTaskButtonEnabled = true;
+    for (const resource of resourceCost) {
+        const resourceStock = backpacks
+            .reduce((acc, cur) => acc + (cur.name === resource.name ? 1 : 0), 0);
+        doTaskButtonEnabled = doTaskButtonEnabled && (resourceStock >= resource.amount);
+    }
 
     const dispatch = useDispatch();
     
     const doTaskButtonListener = () => {
-        dispatch(gameSquad.actions.useBigResource({
-            amount: bigResourceAmount, 
-            name: bigResourceName 
-        }));
+        for (const resource of resourceCost) {
+            dispatch(gameSquad.actions.useBigResource({
+                amount: resource.amount, 
+                name: resource.name 
+            }));
+        }
+
+        dispatch(gameSquad.actions.levelUp({}));
 
         dispatch(gameStage.actions.changeStage({
             zone: screen,
@@ -68,15 +73,19 @@ function TaskScreen(props: {
             <div className={styles.TaskScreen_buttons}>
                 <button 
                     onClick={doTaskButtonListener}
-                    disabled={doTaskButtonDisabled}
+                    disabled={!doTaskButtonEnabled}
                 >
-                    {chrome.i18n.getMessage('give') + bigResourceAmount}
-                    <div 
-                        className={styles.TaskScreen_bigResourceIcon}
-                        title={bigResourceName}
-                    >
-                        {bigResourceNameMappings[bigResourceName]}
-                    </div>                    
+                    {chrome.i18n.getMessage('give')}
+                    {
+                        Object.values(resourceCost).map(resource => (
+                            <div 
+                                className={styles.TaskScreen_bigResourceIcon}
+                                title={resource.name}
+                            >
+                                {resource.amount}{bigResourceNameMappings[resource.name]}{''}
+                            </div>
+                        ))
+                    }                                        
                 </button>
                 <button onClick={leaveListener}>
                     {chrome.i18n.getMessage('not_now')}

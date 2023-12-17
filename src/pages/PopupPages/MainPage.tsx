@@ -70,7 +70,9 @@ function MainPage() {
     const startButtonListener = () => {
         removeGameTabs();
 
-        dispatch(gameSquad.actions.startGame(getUserName()));
+        if (user.params.level === 0) {
+            dispatch(gameSquad.actions.startGame(getUserName()));
+        }       
 
         window.open('#/game');
     }

@@ -53,7 +53,8 @@ export enum UserParam {
 export enum UserResource {
     gem = 'Gems',
     core = 'Mecha-cores',
-    gene = 'Muta-genes'
+    gene = 'Muta-genes',
+    none = 'None'
 }
 
 export enum DamageType {
@@ -86,6 +87,7 @@ export enum GameScreens {
     academy = 'Academy',
     airSchool = 'Air_School',
     airSite = 'Air_Site',
+    armoury = 'Armoury',
     cyberLab = 'Cyber_Lab',
     fireSchool = 'Fire_School',
     fireSite = 'Fire_Site',
@@ -96,6 +98,7 @@ export enum GameScreens {
     guildShop = 'Guild_Shop',
     iceSchool = 'Ice_School',
     iceSite = 'Ice_Site',
+    mansion = 'Mansion',
     market = 'Market',
     mutaLab = 'Mutation_Lab',    
     spellSchool = 'Spell_School',
@@ -105,6 +108,7 @@ export enum GameScreens {
 }
 
 export enum InventoryGameScreens {
+    armoury = 'Armoury',
     market = 'Market',
     cyberLab = 'Cyber_Lab',
     mutaLab = 'Mutation_Lab',
@@ -129,6 +133,10 @@ export enum BendingGameScreens {
     fireSite = 'Fire_Site',
     iceSite = 'Ice_Site',
     airSite = 'Air_Site'
+}
+
+export enum MansionScreens {
+    livingRoom = 'Living_Room',
 }
 
 export enum TaskStatus {

@@ -3,8 +3,8 @@ import SubMindScreen from "../../components/SubMindScreen/SubMindScreen";
 import styles from './index.module.css';
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import TaskScreen from "../../components/TaskScreen/TaskScreen";
-import UpgradeButtons from "../../components/UpgradeButtons/UpgradeButtons";
+import TaskScreen from "../../components/TaskScreen";
+import UpgradeButtons from "../../components/UpgradeButtons";
 import { IStore, IUpgradeButton } from "../../enums-and-interfaces/interfaces";
 
 function FocusSite() {

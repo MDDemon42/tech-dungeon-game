@@ -120,6 +120,60 @@
     "implement": {
         "message": "Внедрить!"
     },
+    "mansion_to": {
+        "message": "В Поместье!"
+    },
+    "mansion_title": {
+        "message": "Вот и Поместье!"
+    },
+    "build_cabin_task_title": {
+        "message": "Построить Хижину"
+    },
+    "build_cabin_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и построить собственную Хижину.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "build_cottege_task_title": {
+        "message": "Построить Коттедж"
+    },
+    "build_cottege_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и построить собственный Коттедж.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "build_mansion_task_title": {
+        "message": "Достроить Поместье"
+    },
+    "build_mansion_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и достроить собственное Поместье.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "muta_lab_to": {
         "message": "В Мута Лабу!"
     },
@@ -228,14 +282,22 @@
         "message": "Давай построим Академию!"
     },
     "build_academy_task_text": {
-        "message": "Умелые жители деревни просят $count$ $resource$ для строительства Академии.",
+        "message": "Умелые жители деревни просят $count_1$ $resource_1$ и $count_2$ $resource_2$ для строительства Академии.",
         "placeholders": {
-            "count": {
+            "count_1": {
                 "content": "$1",
                 "example": ""
             },
-            "resource": {
+            "resource_1": {
                 "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
                 "example": ""
             }
         }
@@ -258,6 +320,31 @@
     },
     "learn": {
         "message": "Изучить!"
+    },
+    "armoury_to": {
+        "message": "В Оружейную!"
+    },
+    "armoury_title": {
+        "message": "Это наша Оружейная!"
+    },
+    "build_armoury_task_title": {
+        "message": "Построить Оружейную"
+    },
+    "build_armoury_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и построить Оружейную.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "craft": {
+        "message": "Создать!"
     },
     "focus_site_to": {
         "message": "К Месту Средоточия!"
@@ -617,6 +704,28 @@
     },
     "healing_potion_item_description": {
         "message": "Напиток из целебных трав."
+    },
+    "musket": {
+        "message": "Мушкет"
+    },
+    "musket_item_description": {
+        "message": "Фирменный мушкет."
+    },
+    "craft_musket": {
+        "message": "Создать мушкет"
+    },
+    "craft_musket_description": {
+        "message": "Использовать $count$ $resource$ для создания мушкета.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "axe": {
         "message": "Топор"
@@ -1592,5 +1701,20 @@
     },
     "choose_class": {
         "message": "Выберите класс"
+    },
+    "sleep_title": {
+        "message": "Поспать"
+    },
+    "sleep_description": {
+        "message": "Отдохнуть в кровати несколько часов"
+    },    
+    "train_title": {
+        "message": "Тренироваться"
+    },
+    "train_description": {
+        "message": "Использовать Выносливость на обретение Силы"
+    },
+    "living_room": {
+        "message": "Жилое помещение"
     }
 }

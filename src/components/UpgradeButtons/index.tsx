@@ -1,4 +1,4 @@
-import styles from './UpgradeButtons.module.css';
+import styles from './index.module.css';
 
 function UpgradeButtons(props: {
     upgradeButtons: {

@@ -6,24 +6,23 @@
     flex-direction: row;
 }
 
-.SquadScreen_squadMembers {
+.SquadBar {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
-    max-height: 250px;
     width: 55px;
     padding: 10px 0;
     border: 1px solid black;
 } 
 
-.SquadScreen_squadMembers > img, .SquadScreen_squadMembers > svg {
+.SquadBar > img, .SquadBar > svg {
     width: 30px;
     height: 30px;
     margin: 5px 0; 
     cursor: pointer;
 }
 
-.SquadScreen_squadMembers > img {
+.SquadBar > img {
     border: 1px solid black;
 }

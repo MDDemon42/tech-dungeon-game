@@ -35,6 +35,7 @@ import lowerFangs from './lowerFangs.png';
 import magisterHat from './magisterHat.png';
 import magisterRobe from './magisterRobe.png';
 import magisterScepter from './magisterScepter.png';
+import musket from './musket.png';
 import nanoMatrixTorso from './nanoMatrixTorso.png';
 import nanoMatrixLegs from './nanoMatrixLegs.png';
 import nanoVestTorso from './nanoVestTorso.png';
@@ -111,6 +112,7 @@ const bodyElements = {
     magisterHat,
     magisterRobe,
     magisterScepter,
+    musket,
     nanoMatrixTorso,
     nanoMatrixLegs,
     nanoVestTorso,

@@ -25,16 +25,14 @@ function SubMindScreenItem(props: {
 
     return <div className={styles.SubMindScreenItem}>
         <CommonIcon item={data} disableReason={disableReason}/>
-        {
-            <button
-                disabled={!enabled}
-                onClick={() => listener(data)}
-            >
-                {
-                    buttonText
-                }
-            </button>
-        }
+        <button
+            disabled={!enabled}
+            onClick={() => listener(data)}
+        >
+            {
+                buttonText
+            }
+        </button>
     </div>
 }
 

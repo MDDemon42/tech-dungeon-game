@@ -46,7 +46,8 @@ function actionInCaseStrongStart(tabId: number) {
     const fullResources = {
         [UserResource.gem]: 100,
         [UserResource.core]: 45,
-        [UserResource.gene]: 45
+        [UserResource.gene]: 45,
+        [UserResource.none]: 0
     }
 
     gameSquad.resources = fullResources;

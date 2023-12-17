@@ -4,8 +4,12 @@ import { IScreenTasks } from "../../../enums-and-interfaces/interfaces";
 import items from "../../Market/items";
 
 const task_buildFocusSchool = createTask(
-    items.bigResources.wood.name,
-    1, 
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ],
     chrome.i18n.getMessage('build_focus_site_task_title'),
     chrome.i18n.getMessage('build_focus_site_task_text', 
         ['1', items.bigResources.wood.name]
@@ -13,8 +17,12 @@ const task_buildFocusSchool = createTask(
 );
 
 const task_deepestInsights = createTask(
-    items.bigResources.wood.name,
-    1, 
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ],
     chrome.i18n.getMessage('deepest_insights_task_title', 
         [items.bigResources.wood.name]
     ),
@@ -24,8 +32,12 @@ const task_deepestInsights = createTask(
 );
 
 const task_psiEnergy = createTask(
-    items.bigResources.wood.name,
-    1, 
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ],
     chrome.i18n.getMessage('psi_energy_task_title',
         [items.bigResources.wood.name]
     ),

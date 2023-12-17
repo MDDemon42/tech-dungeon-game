@@ -59,9 +59,13 @@ export interface IScreenTasks extends Record<string, {
     task: ITask
 }> {}
 
+export interface ICraft extends ITask {}
+
 export interface ITask {
-    bigResourceName: string,
-    bigResourceAmount: number,
+    resourceCost: {
+        name: string,
+        amount: number
+    }[],
     taskTitle: string,
     taskText: string
 }
@@ -69,11 +73,7 @@ export interface ITask {
 export interface IGameSquad {
     currentlyWatched: number,
     squadMembers: Record<string, ICharacher>,
-    resources: {
-        [UserResource.gene]: number,
-        [UserResource.gem]: number,
-        [UserResource.core]: number
-    }
+    resources: Record<UserResource, number>
 }
 
 export interface IOpponentSquad {
@@ -98,6 +98,7 @@ export interface ICharacherParams {
     race: Race,
     stage?: number,
     level: number,
+    strength: number,
     name: string,
     currentParams: {
         [UserParam.health]: number,
@@ -191,6 +192,11 @@ export interface IMutation extends IInventorySlot {
 }
 
 export interface IGuildItem extends IItem {
+}
+
+export interface IArmouryItem extends IItem {
+    requiredStrength: number,
+    craft: ICraft
 }
 
 export interface IItem extends IInventorySlot {
@@ -293,15 +299,19 @@ export interface IMutationsForRaceCheck {
 }
 
 // lookout pages //
-export interface IBendingMapping extends ISubMapping {}
+export interface IBendingMapping extends ISubMapping {
+    listener: any 
+}
 
 export interface ISubInventoryMapping extends ISubMapping {
     resource: UserResource,
+    maxHeight: string
 }
 
 export interface ISubMindMapping extends ISubMapping {
     capacity: number,
-    posessed: number
+    posessed: number,
+    listener: any 
 }
 
 export interface IUpgradeButton {
@@ -312,8 +322,7 @@ export interface IUpgradeButton {
 
 interface ISubMapping {
     title: string,
-    button: string,
-    listener: any
+    button: string       
 }
 
 // item props //

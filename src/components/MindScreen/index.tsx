@@ -1,4 +1,4 @@
-import styles from './MindScreen.module.css';
+import styles from './index.module.css';
 import CommonIcon from '../Icons/CommonIcon';
 import { upperCaseFirstLetter } from '../../pages/PopupPages/MainPage';
 import { ICharacher, ICommon } from '../../enums-and-interfaces/interfaces';

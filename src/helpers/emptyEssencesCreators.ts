@@ -32,6 +32,7 @@ function createEmptyParams(): ICharacherParams {
     return {
         name: '',
         level: 0,
+        strength: 0,
         class: UserStartClass.noIcon,
         race: Race.human,
         currentParams: {

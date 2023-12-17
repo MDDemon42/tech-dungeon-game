@@ -42,14 +42,15 @@ export function placeAsKey(place: string) {
 
 export const createGameSquad: () => IGameSquad = () => {
     return {
-    currentlyWatched: 2,
+    currentlyWatched: 0,
     squadMembers: {
-        2: createEmptyCharacter()
+        0: createEmptyCharacter()
     },
     resources: {
         [UserResource.core]: 0,
         [UserResource.gem]: 0,
-        [UserResource.gene]: 0
+        [UserResource.gene]: 0,
+        [UserResource.none]: 0
     }
 }};
 
@@ -239,7 +240,7 @@ const gameSquad = createSlice({
             const rand = Math.floor(Math.random()*7);
 
             const squad = {...state.squadMembers};
-            const squadMember = squad[action.payload];
+            const squadMember = squad[state.currentlyWatched];
 
             squadMember.params.level += 1;
             
@@ -480,16 +481,43 @@ const gameSquad = createSlice({
 
             state.squadMembers = squad;
         },
+        raiseStrength(state, action) {
+            const squad = {...state.squadMembers};
+            const squadMember = squad[state.currentlyWatched];
+
+            squadMember.params.strength += action.payload;
+
+            if (
+                squadMember.params.strength > 1  &&
+                squadMember.general.backpacks.length < 5
+            ) {
+                squadMember.general.backpacks.push(createNoItem());
+            }
+
+            if (
+                squadMember.params.strength > 2  &&
+                squadMember.general.backpacks.length < 6
+            ) {
+                squadMember.general.backpacks.push(createNoItem());
+            }
+
+            if (
+                squadMember.params.strength > 4  &&
+                squadMember.general.backpacks.length < 7
+            ) {
+                squadMember.general.backpacks.push(createNoItem());
+            }
+
+            state.squadMembers = squad;
+        },
         learnMastery(state, action) {
-            const {index} = action.payload;
+            const {index, data} = action.payload;
             const squad = {...state.squadMembers};
             const squadMember = squad[index];
 
-            squadMember.general.mind.masteries.push(action.payload.data);
+            squadMember.general.mind.masteries.push(data);
 
-            if (action.payload.data.name === academyMasteries.mastery_brutalForce.name) {
-                squadMember.general.backpacks.push(createNoItem(), createNoItem());
-
+            if (data.name === academyMasteries.mastery_brutalForce.name) {
                 const newRace = checkRace(squadMember.general.inventory, true);
                 squadMember.params.race = newRace;
     
@@ -502,15 +530,14 @@ const gameSquad = createSlice({
             state.squadMembers = squad;
         },
         implementCyber(state, action) {
-            const {index} = action.payload;
             const oldState = {...state};
-            const squadMember = oldState.squadMembers[index];
+            const squadMember = oldState.squadMembers[oldState.currentlyWatched];
             
             if (!squadMember.general.inventory) {
                 squadMember.general.inventory = createEmptyInventory();
             }
 
-            const cyber = action.payload.data
+            const cyber = action.payload;
             const position = cyber.inventoryPlace;
 
             const nothing = createNoItem().name;
@@ -547,15 +574,15 @@ const gameSquad = createSlice({
             state = oldState;
         },
         mutateMutation(state, action) {
-            const {index, data} = action.payload;
             const oldState = {...state};
-            const squadMember = oldState.squadMembers[index];
+            const squadMember = oldState.squadMembers[oldState.currentlyWatched];
 
             if (!squadMember.general.inventory) {
                 squadMember.general.inventory = createEmptyInventory();
             }
 
-            const position = data.inventoryPlace;
+            const mutation = action.payload;
+            const position = mutation.inventoryPlace;
 
             if (position === InventoryPlace.bothHands) {
                 squadMember.general.inventory.leftHand = createNoItem();
@@ -565,8 +592,8 @@ const gameSquad = createSlice({
             const previousMutation = squadMember.general.inventory[placeAsKey(position)];
             integratePassiveAbility(squadMember, previousMutation, -1);
 
-            squadMember.general.inventory[placeAsKey(position)] = data;
-            oldState.resources[UserResource.gene] -= data.cost;
+            squadMember.general.inventory[placeAsKey(position)] = mutation;
+            oldState.resources[UserResource.gene] -= mutation.cost;
 
             const isStrong = squadMember.general.mind.masteries
                 .map(mastery => mastery.name)
@@ -591,7 +618,7 @@ const gameSquad = createSlice({
                 squadMember.general.mind.masteries.push(newRaceMastery);
             }
 
-            integratePassiveAbility(squadMember, data, +1);
+            integratePassiveAbility(squadMember, mutation, +1);
 
             state = oldState;
         },
@@ -638,14 +665,44 @@ const gameSquad = createSlice({
 
             state.squadMembers = squad;
         },
+        spendStamina(state, action) {
+            const squad = {...state.squadMembers};
+            const squadMember = squad[state.currentlyWatched];
+
+            squadMember.params.currentParams.Stamina -= action.payload;
+
+            state.squadMembers = squad;
+        },
+        regenerate(state, action) {
+            const squad = {...state.squadMembers};
+            const squadMember = squad[state.currentlyWatched];
+
+            if (
+                squadMember.params.currentParams.Health < 
+                squadMember.params.maxParams.Health
+            ) {
+                squadMember.params.currentParams.Health++;
+            }
+
+            state.squadMembers = squad;
+        },
         relaxate(state, action) {
             const squad = {...state.squadMembers};
 
-            Object.keys(squad).forEach(key => {
-                if (!!squad[key]) {
-                    squad[key].params.currentParams = {...squad[key].params.maxParams};
+            for (const index in squad) {
+                const squadMember = squad[index];
+                for (const param in squadMember.params.currentParams) {
+                    if (param !== UserParam.health && param !== UserParam.blank) {
+                        if (
+                            Number(squadMember.params.currentParams[param as UserParam]) < 
+                            Number(squadMember.params.maxParams[param as UserParam])
+                        ) {
+                            squadMember.params.currentParams[param as UserParam] = 
+                                Number(squadMember.params.maxParams[param as UserParam]);
+                        }
+                    }
                 }
-            });
+            }
 
             state.squadMembers = squad;
         },
@@ -667,7 +724,7 @@ const gameSquad = createSlice({
             }
 
             state.squadMembers = squad;
-        }
+        },
     }
 })
 

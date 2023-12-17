@@ -3,7 +3,7 @@ import {
     LayerBackward, 
     SkipForward 
 } from 'react-bootstrap-icons';
-import styles from './BattleTurnButtons.module.css';
+import styles from './index.module.css';
 
 function BattleTurnButtons(props: {
     listeners: {

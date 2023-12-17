@@ -1,4 +1,4 @@
-import styles from './InventoryScreen.module.css';
+import styles from './index.module.css';
 import images from "../../images/images";
 import mutations from "../../gameScreens/MutaLab/mutations";
 import cybers from "../../gameScreens/CyberLab/cybers";
@@ -9,7 +9,7 @@ import { createEmptyInventory, createNoItem } from '../../helpers/emptyEssencesC
 import wizardItems from '../../gameScreens/WizardSchool/wizardItems';
 import guildItems from '../../gameScreens/Guild/guildItems';
 import rituals from '../../gameScreens/Guild/rituals';
-import academyMasteries from '../../gameScreens/Academy/masteries';
+import armouryItems from '../../gameScreens/Mansion/armouryItems';
 
 function InventoryScreen(props: {
     character: ICharacher,
@@ -17,7 +17,7 @@ function InventoryScreen(props: {
 }) {
     const {character, battle} = props;
     const {general, params} = character;
-    const masteriesUserNames = general.mind.masteries.map(mastery => mastery.name);
+    const userStrength = params.strength;
     const powersUserNames = general.mind.powers.map(power => power.name);
     const ritualsUserNames = general.mind.rituals.map(ritual => ritual.name);
     const inventory = general.inventory ? general.inventory : createEmptyInventory();
@@ -56,9 +56,9 @@ function InventoryScreen(props: {
             break;
         default:
             inventoryLegs = [
-                ritualsUserNames.includes(rituals.ritual_titanSkin.name) ?
+                ritualsUserNames.includes(rituals.titanSkin.name) ?
                     <img src={images.bodyElements.titanLegs} alt='titanLegs' /> :
-                    masteriesUserNames.includes(academyMasteries.mastery_brutalForce.name) ?
+                    userStrength >= 3 ?
                         <img src={images.bodyElements.brutalLegs} alt='brutalLegs' /> :
                         <img src={images.bodyElements.legs} alt='legs' />,
                 powersUserNames.includes(powers.other.power_levitation.name) ?
@@ -89,9 +89,9 @@ function InventoryScreen(props: {
             break;
         default:
             inventorySkin = [
-                ritualsUserNames.includes(rituals.ritual_titanSkin.name) ?
+                ritualsUserNames.includes(rituals.titanSkin.name) ?
                     <img src={images.bodyElements.titanTorso} alt='titanTorso' /> :
-                    masteriesUserNames.includes(academyMasteries.mastery_brutalForce.name) ?
+                    userStrength >= 3 ?
                         <img src={images.bodyElements.brutalTorso} alt='brutalTorso' /> :
                         <img src={images.bodyElements.torso} alt='torso' />,
                 powersUserNames.includes(powers.armors.power_guardianAura.name) ?
@@ -331,6 +331,11 @@ function InventoryScreen(props: {
             inventoryBothHands = [
                 <img src={images.bodyElements.steelGreatsword} alt={chrome.i18n.getMessage('steel_greatsword')} />,
                 <img src={images.bodyElements.leftHand} alt='leftHand' />
+            ];
+            break;
+        case armouryItems.weapons.musket.name:
+            inventoryBothHands = [
+                <img src={images.bodyElements.musket} alt={chrome.i18n.getMessage('musket')} />
             ];
             break;
         default:

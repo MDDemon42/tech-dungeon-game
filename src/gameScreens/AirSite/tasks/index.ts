@@ -4,8 +4,12 @@ import items from "../../Market/items";
 import { createTask } from "../../../redux/slices/gameStage";
 
 const task_buildAirSite = createTask(
-    items.bigResources.wood.name,
-    1, 
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ], 
     chrome.i18n.getMessage('build_air_site_task_title'),
     chrome.i18n.getMessage('build_air_site_task_text', 
         ['1', items.bigResources.wood.name]
@@ -13,8 +17,12 @@ const task_buildAirSite = createTask(
 )
 
 const task_thunderPunch = createTask(
-    items.bigResources.wood.name,
-    1, 
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ],
     chrome.i18n.getMessage('thunder_punch_task_title', 
         [items.bigResources.wood.name]
     ),
@@ -24,8 +32,12 @@ const task_thunderPunch = createTask(
 );
 
 const task_airDeprivation = createTask(
-    items.bigResources.wood.name,
-    2, 
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 2
+        }
+    ],
     chrome.i18n.getMessage('air_deprivation_task_title', 
         [items.bigResources.wood.name]
     ),

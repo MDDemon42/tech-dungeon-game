@@ -4,8 +4,12 @@ import { IScreenTasks } from "../../../enums-and-interfaces/interfaces";
 import items from "../../Market/items";
 
 const task_buildFireSite = createTask(
-    items.bigResources.wood.name,
-    1, 
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ],
     chrome.i18n.getMessage('build_fire_site_task_title'),
     chrome.i18n.getMessage('build_fire_site_task_text', 
         ['1', items.bigResources.wood.name]
@@ -13,8 +17,12 @@ const task_buildFireSite = createTask(
 );
 
 const task_fireBall = createTask(
-    items.bigResources.wood.name,
-    1, 
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ],
     chrome.i18n.getMessage('fire_ball_task_title', 
         [items.bigResources.wood.name]
     ),
@@ -24,8 +32,12 @@ const task_fireBall = createTask(
 );
 
 const task_fireWave = createTask(
-    items.bigResources.wood.name,
-    2, 
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 2
+        }
+    ],
     chrome.i18n.getMessage('fire_wave_task_title', 
         [items.bigResources.wood.name]
     ),

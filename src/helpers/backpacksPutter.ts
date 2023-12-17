@@ -1,4 +1,3 @@
-import academyMasteries from "../gameScreens/Academy/masteries";
 import { ICharacher, IItem } from "../enums-and-interfaces/interfaces";
 import { createNoItem } from "./emptyEssencesCreators";
 
@@ -31,8 +30,7 @@ export default function putItemInBackpacks(
 }
 
 export function getBackpacksCapability(member: ICharacher) {
-    const memberMasteries = member.general.mind.masteries.map(mastery => mastery.name);
-    if (!!memberMasteries && memberMasteries.includes(academyMasteries.mastery_brutalForce.name)) {
+    if (member.params.strength >= 3) {
         return 6;
     } else {
         return 4;

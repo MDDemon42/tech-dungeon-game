@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import styles from './SquadScreen.module.css';
+import styles from './index.module.css';
 import { IStore } from '../../enums-and-interfaces/interfaces';
-import ProfileScreen from '../ProfileScreen/ProfileScreen';
+import ProfileScreen from '../ProfileScreen';
 import images from '../../images/images';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
@@ -12,6 +12,18 @@ function SquadScreen() {
     const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
     const user = squad[index]; 
 
+    const mansionStage = useSelector((store: IStore) => store.gameStage.Mansion.stage);
+    let squadSize = 1;
+    if (mansionStage > 0) {
+        if (mansionStage % 2 === 0) {
+            squadSize++;
+        }
+
+        if (mansionStage % 3 === 0) {
+            squadSize += 3;
+        }
+    }
+
     const dispatch = useDispatch();
     const showProfileHandler = (clickedIndex: number) => {
         if (index !== clickedIndex) {
@@ -21,9 +33,11 @@ function SquadScreen() {
 
     return (
         <div className={styles.SquadScreen}>
-            <div className={styles.SquadScreen_squadMembers}>
+            <div className={styles.SquadBar}
+                style={{height: (squadSize * 42) + 'px'}}
+            >
                 {
-                    Array(5).fill(0).map((_, index: number) => {
+                    Array(squadSize).fill(0).map((_, index: number) => {
                         if (!!squad[index]) {
                             return <img 
                                 src={images.classIcons[classToIcon(squad[index].params.class) as keyof typeof images.classIcons]}

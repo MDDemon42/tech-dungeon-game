@@ -21,11 +21,14 @@ function SubInventoryScreenItemLine(props: {
         <div className={styles.SubInventoryScreenItemLine_header}>
             {keyToTitle(title)}
         </div>
-        {
-            data && data.map(datum => 
-                <SubInventoryScreenItem datum={datum}/>
-            )
-        }
+        <div className={styles.SubInventoryScreenItemLine_body}>
+            {
+                data && data.map(datum => 
+                    <SubInventoryScreenItem datum={datum}/>
+                )
+            }
+        </div>
+        
     </div>
 }
 

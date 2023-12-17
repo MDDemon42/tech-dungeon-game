@@ -1,4 +1,4 @@
-.StatsScreen {
+.StatsBar {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,14 +10,14 @@
     margin: 2px;
 }
 
-.StatsScreen_header {
+.StatsBar_header {
     font-weight: bold;
     text-align: center;
     font-size: 1.17em;
     margin: 0.5em 0;
 }
 
-.StatsScreen_body {
+.StatsBar_body {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@
     justify-content: space-around;
 }
 
-.StatsScreen_params, .StatsScreen_resistances {
+.StatsBar_params, .StatsBar_resistances {
     margin-bottom: 5px;
     width: 100%;
     display: flex;
@@ -34,7 +34,7 @@
     align-items: center;
 }
 
-.StatsScreen_dodge {
+.StatsBar_dodge {
     position: relative;
     width: 12px;
     height: 12px;

@@ -15,6 +15,7 @@
 .VillageMap_icon_Academy,
 .VillageMap_icon_Cyber_Lab,
 .VillageMap_icon_Focus_Site,
+.VillageMap_icon_Mansion,
 .VillageMap_icon_Market,
 .VillageMap_icon_Mutation_Lab,
 .VillageMap_icon_Wizard_School,
@@ -80,6 +81,16 @@
 .VillageMap_icon_Wizard_School:hover {
     color: blue;
     border-color: blue;
+}
+
+.VillageMap_icon_Mansion {
+    left: 125px;
+    top: 298px;
+}
+
+.VillageMap_icon_Mansion:hover {
+    color: gold;
+    border-color: gold;
 }
 
 .VillageMap_icon_Market {

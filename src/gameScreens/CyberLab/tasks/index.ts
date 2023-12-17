@@ -4,8 +4,12 @@ import { IScreenTasks } from "../../../enums-and-interfaces/interfaces";
 import items from "../../Market/items";
 
 const task_buildCyberLab = createTask(
-    items.bigResources.ore.name,
-    4,
+    [
+        {
+            name: items.bigResources.ore.name,
+            amount: 4
+        }
+    ],
     chrome.i18n.getMessage('build_cyber_lab_task_title'),
     chrome.i18n.getMessage('build_cyber_lab_task_text', 
         ['4', items.bigResources.ore.name]
@@ -13,8 +17,12 @@ const task_buildCyberLab = createTask(
 )
 
 const task_highEnergyCybers = createTask(
-    items.bigResources.ore.name,
-    4,
+    [
+        {
+            name: items.bigResources.ore.name,
+            amount: 4
+        }
+    ],
     chrome.i18n.getMessage('high_energy_cybers_task_title'),
     chrome.i18n.getMessage('high_energy_cybers_task_text', 
         ['4', items.bigResources.ore.name]
@@ -22,8 +30,12 @@ const task_highEnergyCybers = createTask(
 )
 
 const task_nanoCybers = createTask(
-    items.bigResources.ore.name,
-    4,
+    [
+        {
+            name: items.bigResources.ore.name,
+            amount: 4
+        }
+    ],
     chrome.i18n.getMessage('nano_cybers_task_title'),
     chrome.i18n.getMessage('nano_cybers_task_text', 
         ['4', items.bigResources.ore.name]

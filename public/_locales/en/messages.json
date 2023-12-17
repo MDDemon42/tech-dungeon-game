@@ -120,6 +120,60 @@
     "implement": {
         "message": "Implement!"
     },
+    "mansion_to": {
+        "message": "To Mansion!"
+    },
+    "mansion_title": {
+        "message": "Welcome to Mnasion!"
+    },
+    "build_cabin_task_title": {
+        "message": "Build Cabin"
+    },
+    "build_cabin_task_text": {
+        "message": "You can use $count$ $resource$ to build your own Cabin.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "build_cottege_task_title": {
+        "message": "Build Cottege"
+    },
+    "build_cottege_task_text": {
+        "message": "You can use $count$ $resource$ to build your own Cottege.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "build_mansion_task_title": {
+        "message": "Build up Mansion"
+    },
+    "build_mansion_task_text": {
+        "message": "You can use $count$ $resource$ to build up your own Mansion.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "muta_lab_to": {
         "message": "To Muta Lab!"
     },
@@ -228,14 +282,22 @@
         "message": "Let us build Academy!"
     },
     "build_academy_task_text": {
-        "message": "Skilled villagers ask for $count$ $resource$ to build Academy.",
+        "message": "Skilled villagers ask for $count_1$ $resource_1$ and $count_2$ $resource_2$ to build Academy.",
         "placeholders": {
-            "count": {
+            "count_1": {
                 "content": "$1",
                 "example": ""
             },
-            "resource": {
+            "resource_1": {
                 "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
                 "example": ""
             }
         }
@@ -258,6 +320,31 @@
     },
     "learn": {
         "message": "Learn!"
+    },
+    "armoury_to": {
+        "message": "To Armoury!"
+    },
+    "armoury_title": {
+        "message": "This is our Armoury!"
+    },
+    "build_armoury_task_title": {
+        "message": "Let us build Academy"
+    },
+    "build_armoury_task_text": {
+        "message": "You can use $count$ $resource$ to build Armoury.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "craft": {
+        "message": "Craft!"
     },
     "focus_site_to": {
         "message": "To Focus Site!"
@@ -617,6 +704,28 @@
     },
     "healing_potion_item_description": {
         "message": "Drink of herbs."
+    },
+    "musket": {
+        "message": "Musket"
+    },
+    "musket_item_description": {
+        "message": "Brand musket."
+    },
+    "craft_musket": {
+        "message": "Craft musket"
+    },
+    "craft_musket_description": {
+        "message": "Use $count$ $resource$ to craft musket.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "axe": {
         "message": "Axe"
@@ -1592,5 +1701,20 @@
     },
     "choose_class": {
         "message": "Choose class"
+    },
+    "sleep_title": {
+        "message": "Sleep"
+    },
+    "sleep_description": {
+        "message": "Relaxate in bed for several hours"
+    },    
+    "train_title": {
+        "message": "Train"
+    },
+    "train_description": {
+        "message": "Exchange Stamina for Strength"
+    },
+    "living_room": {
+        "message": "Living room"
     }
 }

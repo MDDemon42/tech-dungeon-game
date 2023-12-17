@@ -8,6 +8,7 @@ import fireSiteTasks from '../../gameScreens/FireSite/tasks';
 import focusSiteTasks from '../../gameScreens/FocusSite/tasks';
 import guildTasks from '../../gameScreens/Guild/tasks';
 import iceSiteTasks from '../../gameScreens/IceSite/tasks';
+import mansionTasks from '../../gameScreens/Mansion/tasks';
 import marketTasks from '../../gameScreens/Market/tasks';
 import mutaLabTasks from '../../gameScreens/MutaLab/tasks';
 import wizardSchoolTasks from '../../gameScreens/WizardSchool/tasks';
@@ -29,16 +30,18 @@ import { mutaLabOptions } from '../../gameScreens/MutaLab/mutations';
 import { spellSchoolOptions } from '../../gameScreens/WizardSchool/spells';
 import { wizardSchoolOptions } from '../../gameScreens/WizardSchool/masteries';
 import { wizardShopOptions } from '../../gameScreens/WizardSchool/wizardItems';
+import { armouryOptions } from '../../gameScreens/Mansion/armouryItems';
 
 export function createTask(
-    bigResourceName: string,
-    bigResourceAmount: number,
+    resourceCost: {
+        name: string,
+        amount: number
+    }[],
     taskTitle: string,
     taskText: string
 ): ITask {
     return {
-        bigResourceName,
-        bigResourceAmount,
+        resourceCost,
         taskTitle,
         taskText
     }
@@ -48,6 +51,7 @@ export const tasks: IGameTasks = {
     [GameScreens.academy]: academyTasks,
     [GameScreens.airSchool]: null,
     [GameScreens.airSite]: airSiteTasks,
+    [GameScreens.armoury]: null,
     [GameScreens.cyberLab]: cyberLabTasks,
     [GameScreens.fireSchool]: null,
     [GameScreens.fireSite]: fireSiteTasks,
@@ -58,6 +62,7 @@ export const tasks: IGameTasks = {
     [GameScreens.guildShop]: null,
     [GameScreens.iceSchool]: null,
     [GameScreens.iceSite]: iceSiteTasks,
+    [GameScreens.mansion]: mansionTasks,
     [GameScreens.market]: marketTasks,
     [GameScreens.mutaLab]: mutaLabTasks,
     [GameScreens.spellSchool]: null,
@@ -70,6 +75,7 @@ export const stageOptions: IGameStageOptions = {
     [GameScreens.academy]: academyOptions,
     [GameScreens.airSchool]: airSchoolOptions,
     [GameScreens.airSite]: airSiteOptions,
+    [GameScreens.armoury]: armouryOptions,
     [GameScreens.cyberLab]: cyberLabOptions,
     [GameScreens.fireSchool]: fireSchoolOptions,
     [GameScreens.fireSite]: fireSiteOptions,
@@ -80,6 +86,7 @@ export const stageOptions: IGameStageOptions = {
     [GameScreens.guildShop]: guildShopOptions,
     [GameScreens.iceSchool]: iceSchoolOptions,
     [GameScreens.iceSite]: iceSiteOptions,
+    [GameScreens.mansion]: null,
     [GameScreens.market]: marketOptions,
     [GameScreens.mutaLab]: mutaLabOptions,
     [GameScreens.spellSchool]: spellSchoolOptions,
@@ -108,6 +115,7 @@ const relatedScreens: Record<GameScreens, GameScreens[]> = {
     [GameScreens.academy]: [],
     [GameScreens.airSchool]: [],
     [GameScreens.airSite]: [GameScreens.airSchool],
+    [GameScreens.armoury]: [],
     [GameScreens.cyberLab]: [],
     [GameScreens.fireSchool]: [],
     [GameScreens.fireSite]: [GameScreens.fireSchool],
@@ -118,6 +126,7 @@ const relatedScreens: Record<GameScreens, GameScreens[]> = {
     [GameScreens.guildShop]: [],
     [GameScreens.iceSchool]: [],
     [GameScreens.iceSite]: [GameScreens.iceSchool],
+    [GameScreens.mansion]: [GameScreens.armoury],
     [GameScreens.market]: [],
     [GameScreens.mutaLab]: [],
     [GameScreens.spellSchool]: [],

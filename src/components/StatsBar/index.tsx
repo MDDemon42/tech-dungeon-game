@@ -1,12 +1,12 @@
 import {IStore} from "../../enums-and-interfaces/interfaces";
-import styles from './StatsScreen.module.css';
+import styles from './index.module.css';
 import { useSelector } from "react-redux";
 import { upperCaseFirstLetter } from "../../pages/PopupPages/MainPage";
 import ParamIcon from "../Icons/ParamIcon";
 import { DamageType, UserParam } from "../../enums-and-interfaces/enums";
 import ResistanceIcon from "../Icons/ResistanceIcon";
 
-function StatsScreen() {
+function StatsBar() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
     const member = useSelector((state: IStore) => state.gameSquad.squadMembers[index].params);
     const {
@@ -17,12 +17,12 @@ function StatsScreen() {
     } = member;
 
     return (
-        <div className={styles.StatsScreen}>
-            <div className={styles.StatsScreen_header}>
+        <div className={styles.StatsBar}>
+            <div className={styles.StatsBar_header}>
                 {name} the {race}, {upperCaseFirstLetter(member.class)} level {level}
             </div>
-            <div className={styles.StatsScreen_body}>
-                <div className={styles.StatsScreen_params}>
+            <div className={styles.StatsBar_body}>
+                <div className={styles.StatsBar_params}>
                     <div>
                         {
                             [...Array(currentParams[UserParam.health])].map(icon => <ParamIcon param='health'/>)
@@ -52,7 +52,7 @@ function StatsScreen() {
                         }
                     </div>
                 </div>
-                <div className={styles.StatsScreen_resistances}>
+                <div className={styles.StatsBar_resistances}>
                     {
                         Object.keys(resistances).map(resistance => 
                             <ResistanceIcon 
@@ -64,7 +64,7 @@ function StatsScreen() {
                     {
                         <div 
                             title={chrome.i18n.getMessage('dodge')}
-                            className={styles.StatsScreen_dodge}
+                            className={styles.StatsBar_dodge}
                         >
                             {dodge}
                         </div>
@@ -75,4 +75,4 @@ function StatsScreen() {
     )
 } 
 
-export default StatsScreen
+export default StatsBar

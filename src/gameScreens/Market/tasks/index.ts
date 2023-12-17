@@ -4,8 +4,12 @@ import { IScreenTasks } from "../../../enums-and-interfaces/interfaces";
 import items from "../items";
 
 const task_steelOptions = createTask(
-    items.bigResources.ore.name,
-    3, 
+    [
+        {
+            name: items.bigResources.ore.name,
+            amount: 3
+        }
+    ], 
     chrome.i18n.getMessage('modernize_market_task_title'),
     chrome.i18n.getMessage('modernize_market_task_text', 
         ['3', items.bigResources.ore.name]

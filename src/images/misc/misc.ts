@@ -7,6 +7,8 @@ import beastRemains from './beastRemains.png';
 import insectoidRemains from './insectoidRemains.png';
 import reptiloidRemains from './reptiloidRemains.png';
 import pickaxe from './pickaxe.png';
+import sleep from './sleep.png';
+import training from './training.png';
 
 const misc = {
     fistPunch,
@@ -17,6 +19,8 @@ const misc = {
     insectoidRemains,
     reptiloidRemains,
     pickaxe,
+    sleep,
+    training,
 
     map
 }

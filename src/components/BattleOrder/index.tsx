@@ -1,6 +1,6 @@
 import { ICharacher, IMemberStatus } from "../../enums-and-interfaces/interfaces";
-import styles from './BattleOrder.module.css';
-import InventoryScreen from "../InventoryScreen/InventoryScreen";
+import styles from './index.module.css';
+import InventoryScreen from "../InventoryScreen";
 import ParamIcon from "../Icons/ParamIcon";
 import { UserParam } from "../../enums-and-interfaces/enums";
 

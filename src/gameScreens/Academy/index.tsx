@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import SubMindScreen from '../../components/SubMindScreen/SubMindScreen';
-import TaskScreen from '../../components/TaskScreen/TaskScreen';
-import UpgradeButtons from '../../components/UpgradeButtons/UpgradeButtons';
+import TaskScreen from '../../components/TaskScreen';
+import UpgradeButtons from '../../components/UpgradeButtons';
 import { MindGameScreens } from '../../enums-and-interfaces/enums';
 import { IStore, IUpgradeButton } from '../../enums-and-interfaces/interfaces';
 import styles from './index.module.css';

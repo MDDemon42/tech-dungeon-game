@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
 import { MindGameScreens, UserParam } from '../../enums-and-interfaces/enums';
 import SubMindScreenItem from './SubMindScreenItem';
+import academyMasteries from '../../gameScreens/Academy/masteries';
 
 function SubMindScreen(props: {
     screenName: MindGameScreens
@@ -34,6 +35,10 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('academy_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
+                if (data.name === academyMasteries.mastery_brutalForce.name) {
+                    dispatch(gameSquad.actions.raiseStrength(3))
+                }
+
                 dispatch(gameSquad.actions.learnMastery({index, data}));
             }
         },

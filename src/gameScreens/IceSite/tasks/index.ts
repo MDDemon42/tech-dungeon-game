@@ -4,8 +4,12 @@ import items from "../../Market/items";
 import { createTask } from "../../../redux/slices/gameStage";
 
 const task_buildIceSite = createTask(
-    items.bigResources.wood.name,
-    1, 
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ], 
     chrome.i18n.getMessage('build_ice_site_task_title'),
     chrome.i18n.getMessage('build_ice_site_task_text', 
         ['1', items.bigResources.wood.name]
@@ -13,8 +17,12 @@ const task_buildIceSite = createTask(
 );
 
 const task_iceSpear = createTask(
-    items.bigResources.wood.name,
-    1, 
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ], 
     chrome.i18n.getMessage('ice_spear_task_title', 
         [items.bigResources.wood.name]
     ),
@@ -24,8 +32,12 @@ const task_iceSpear = createTask(
 );
 
 const task_iceHail = createTask(
-    items.bigResources.wood.name,
-    1, 
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ], 
     chrome.i18n.getMessage('ice_hail_task_title', 
         [items.bigResources.wood.name]
     ),
@@ -35,8 +47,12 @@ const task_iceHail = createTask(
 );
 
 const task_coldDeath = createTask(
-    items.bigResources.wood.name,
-    2, 
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 2
+        }
+    ], 
     chrome.i18n.getMessage('cold_death_task_title', 
         [items.bigResources.wood.name]
     ),

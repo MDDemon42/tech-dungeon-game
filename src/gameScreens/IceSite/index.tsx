@@ -2,10 +2,10 @@ import { BendingGameScreens, MindGameScreens } from "../../enums-and-interfaces/
 import BendingScreen from "../../components/BendingScreen/BendingScreen";
 import SubMindScreen from "../../components/SubMindScreen/SubMindScreen";
 import styles from './index.module.css';
-import UpgradeButtons from "../../components/UpgradeButtons/UpgradeButtons";
+import UpgradeButtons from "../../components/UpgradeButtons";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import TaskScreen from "../../components/TaskScreen/TaskScreen";
+import TaskScreen from "../../components/TaskScreen";
 import { IStore, IUpgradeButton } from "../../enums-and-interfaces/interfaces";
 
 function IceSite() {

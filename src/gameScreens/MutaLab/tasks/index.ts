@@ -3,8 +3,12 @@ import { TaskStatus } from "../../../enums-and-interfaces/enums";
 import items from "../../Market/items";
 
 const task_buildMutationLab = createTask(
-    items.bigResources.ore.name,
-    4, 
+    [
+        {
+            name: items.bigResources.ore.name,
+            amount: 4
+        }
+    ], 
     chrome.i18n.getMessage('build_muta_lab_task_title'),
     chrome.i18n.getMessage('build_muta_lab_task_text', 
         ['4', items.bigResources.ore.name]
@@ -12,8 +16,12 @@ const task_buildMutationLab = createTask(
 )
 
 const task_beastGenes = createTask(
-    items.bigResources.beastRemains.name,
-    1, 
+    [
+        {
+            name: items.bigResources.beastRemains.name,
+            amount: 1
+        }
+    ],
     chrome.i18n.getMessage('beast_genes_task_title'),
     chrome.i18n.getMessage('beast_genes_task_text', 
         ['1', items.bigResources.beastRemains.name]
@@ -21,8 +29,12 @@ const task_beastGenes = createTask(
 )
 
 const task_reptiloiGenes = createTask(
-    items.bigResources.reptiloidRemains.name,
-    1, 
+    [
+        {
+            name: items.bigResources.reptiloidRemains.name,
+            amount: 1
+        }
+    ],
     chrome.i18n.getMessage('reptiloid_genes_task_title'),
     chrome.i18n.getMessage('reptiloid_genes_task_text', 
         ['1', items.bigResources.reptiloidRemains.name]
@@ -30,8 +42,12 @@ const task_reptiloiGenes = createTask(
 )
 
 const task_insectoidGenes = createTask(
-    items.bigResources.insectoidRemains.name,
-    1, 
+    [
+        {
+            name: items.bigResources.insectoidRemains.name,
+            amount: 1
+        }
+    ], 
     chrome.i18n.getMessage('insectoid_genes_task_title'),
     chrome.i18n.getMessage('insectoid_genes_task_text', 
         ['1', items.bigResources.insectoidRemains.name]

@@ -8,7 +8,8 @@ import {
     IInventorySlot, 
     ISubInventoryMapping,
     IWizardItem,
-    IGuildItem
+    IGuildItem,
+    IArmouryItem
 } from '../../enums-and-interfaces/interfaces';
 import gameSquad from '../../redux/slices/gameSquad';
 import { 
@@ -18,7 +19,7 @@ import {
 } from '../../enums-and-interfaces/enums';
 import SubInventoryScreenItemLine from './SubInventoryScreenItemLine';
 import { createContext, useState } from 'react';
-import TaskScreen from '../TaskScreen/TaskScreen';
+import CraftScreen from '../CraftScreen';
 
 export const SubInventoryScreenItemContext = createContext({
     screenName: '' as InventoryGameScreens,
@@ -27,61 +28,77 @@ export const SubInventoryScreenItemContext = createContext({
     buttonText: '' as string
 });
 
+const subInventoryMappings: Record<InventoryGameScreens, ISubInventoryMapping> = {
+    [InventoryGameScreens.armoury]: {
+        resource: UserResource.none,
+        title: chrome.i18n.getMessage('armoury_title'),
+        button: chrome.i18n.getMessage('craft'),
+        maxHeight: 'calc(95vh - 450px)'
+    },
+    [InventoryGameScreens.wizardShop]: {
+        resource: UserResource.gem,
+        title: chrome.i18n.getMessage('wizard_shop_title'),
+        button: chrome.i18n.getMessage('buy'),
+        maxHeight: 'calc(95vh - 450px)'
+    },
+    [InventoryGameScreens.cyberLab]: {
+        resource: UserResource.core,
+        title: chrome.i18n.getMessage('cyber_lab_title'),
+        button: chrome.i18n.getMessage('implement'),
+        maxHeight: 'calc(95vh - 350px)'
+    },
+    [InventoryGameScreens.mutaLab]: {
+        resource: UserResource.gene,
+        title: chrome.i18n.getMessage('muta_lab_title'),
+        button: chrome.i18n.getMessage('mutate'),
+        maxHeight: 'calc(95vh - 350px)'
+    },
+    [InventoryGameScreens.market]: {
+        resource: UserResource.gem,
+        title: chrome.i18n.getMessage('market_title'),
+        button: chrome.i18n.getMessage('buy'),
+        maxHeight: 'calc(95vh - 350px)'
+    },
+    [InventoryGameScreens.guildShop]: {
+        resource: UserResource.gem,
+        title: chrome.i18n.getMessage('guild_shop_title'),
+        button: chrome.i18n.getMessage('buy'),
+        maxHeight: 'calc(95vh - 450px)'
+    }
+}
+
 function SubInventoryScreen(props: {
     screenName: InventoryGameScreens
 }) {
-    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);    
-
     const {screenName} = props;
     const data = useSelector((store: IStore) => 
-        store.gameStage[screenName].usableOptions) as (IItem | ICyber | IMutation)[];
-    
+        store.gameStage[screenName].usableOptions) as 
+        (IItem | IMutation | ICyber | IWizardItem | IGuildItem | IArmouryItem)[];
 
     const dispatch = useDispatch();
 
-    const [taskScreenOpen, setTaskScreenOpen] = useState<[InventoryGameScreens, number]|null>(null);
+    const [craftOpen, setCraftOpen] = useState<IArmouryItem|null>(null);
 
-    const subInventoryMappings: Record<InventoryGameScreens, ISubInventoryMapping> = {
-        [InventoryGameScreens.wizardShop]: {
-            resource: UserResource.gem,
-            title: chrome.i18n.getMessage('wizard_shop_title'),
-            button: chrome.i18n.getMessage('buy'),
-            listener: (data: IWizardItem) => {
-                dispatch(gameSquad.actions.buyItem(data));
-            }
+    const subInventoryMappingListeners: Record<InventoryGameScreens, 
+        (data: IItem | IMutation | ICyber | IWizardItem | IGuildItem | IArmouryItem) => void> = {
+        [InventoryGameScreens.armoury]: (data) => {
+            setCraftOpen(data as IArmouryItem);
         },
-        [InventoryGameScreens.cyberLab]: {
-            resource: UserResource.core,
-            title: chrome.i18n.getMessage('cyber_lab_title'),
-            button: chrome.i18n.getMessage('implement'),
-            listener: (data: ICyber) => {
-                dispatch(gameSquad.actions.implementCyber({index, data}));
-            }
+        [InventoryGameScreens.wizardShop]: (data) => {
+            dispatch(gameSquad.actions.buyItem(data));
         },
-        [InventoryGameScreens.mutaLab]: {
-            resource: UserResource.gene,
-            title: chrome.i18n.getMessage('muta_lab_title'),
-            button: chrome.i18n.getMessage('mutate'),
-            listener: (data: IMutation) => {
-                dispatch(gameSquad.actions.mutateMutation({index, data}));
-            }
+        [InventoryGameScreens.cyberLab]: (data) => {
+            dispatch(gameSquad.actions.implementCyber(data));
         },
-        [InventoryGameScreens.market]: {
-            resource: UserResource.gem,
-            title: chrome.i18n.getMessage('market_title'),
-            button: chrome.i18n.getMessage('buy'),
-            listener: (data: IItem) => {
-                dispatch(gameSquad.actions.buyItem(data));
-            }
+        [InventoryGameScreens.mutaLab]: (data) => {
+            dispatch(gameSquad.actions.mutateMutation(data));
         },
-        [InventoryGameScreens.guildShop]: {
-            resource: UserResource.gem,
-            title: chrome.i18n.getMessage('guild_shop_title'),
-            button: chrome.i18n.getMessage('buy'),
-            listener: (data: IGuildItem) => {
-                dispatch(gameSquad.actions.buyItem(data));
-            }
-        }
+        [InventoryGameScreens.market]: (data) => {
+            dispatch(gameSquad.actions.buyItem(data));
+        },
+        [InventoryGameScreens.guildShop]: (data) => {
+            dispatch(gameSquad.actions.buyItem(data));
+        },
     }
 
     const resource = useSelector((store: IStore) => 
@@ -114,17 +131,16 @@ function SubInventoryScreen(props: {
     const SubInventoryScreenItemContextData = {
         screenName,
         resource,
-        listener: subInventoryMappings[screenName].listener,
+        listener: subInventoryMappingListeners[screenName],
         buttonText: subInventoryMappings[screenName].button
     }
 
     return (
         <div className={styles.SubInventoryScreen}>
             {
-                taskScreenOpen && <TaskScreen 
-                    screen={taskScreenOpen[0]}
-                    stage={taskScreenOpen[1]}
-                    leaveListener={() => setTaskScreenOpen(null)}
+                craftOpen && <CraftScreen 
+                    armouryItem={craftOpen}
+                    leaveListener={() => setCraftOpen(null)}
                 />
             }
             <h3 className={styles.SubInventoryScreen_header}>
@@ -132,7 +148,10 @@ function SubInventoryScreen(props: {
                     subInventoryMappings[screenName].title
                 }
             </h3>            
-            <div className={styles.SubInventoryScreen_body}>
+            <div 
+                className={styles.SubInventoryScreen_body}
+                style={{maxHeight: subInventoryMappings[screenName].maxHeight}}
+            >
                 {
                     Object.keys(dataSpecified).map(key => {
                         if (dataSpecified[key].length === 0) {

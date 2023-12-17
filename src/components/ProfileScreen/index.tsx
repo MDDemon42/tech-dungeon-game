@@ -1,7 +1,7 @@
-import styles from './ProfileScreen.module.css';
-import MindScreen from "../MindScreen/MindScreen";
-import StatsScreen from "../StatsScreen/StatsScreen";
-import InventoryScreen from "../InventoryScreen/InventoryScreen";
+import styles from './index.module.css';
+import MindScreen from "../MindScreen";
+import StatsBar from "../StatsBar";
+import InventoryScreen from "../InventoryScreen";
 import { ICharacher } from '../../enums-and-interfaces/interfaces';
 import BackpacksScreen from '../BackpacksScreen/BackpacksScreen';
 import { MindOption } from '../../enums-and-interfaces/enums';
@@ -21,7 +21,7 @@ function ProfileScreen(props: {
                         vertical={true}
                     /> 
                     <div className={styles.ProfileScreen_inventory}>
-                        <StatsScreen />
+                        <StatsBar />
                         <InventoryScreen 
                             character={character} 
                             battle={false}

@@ -1,10 +1,11 @@
 import { useDispatch } from "react-redux";
 import { 
-    MortarboardFill, Capsule, 
-    Gear, Eye, Gem, Magic, 
+    MortarboardFill, Virus, 
+    Tools, Eye, Magic, 
     EmojiAngryFill, Fire,
     Wind, Snow2, Bank2,
     Tree, MinecartLoaded,
+    HouseFill, ShopWindow,
     ExclamationCircle
 } from 'react-bootstrap-icons';
 import gameScreens from '../../redux/slices/gameScreen';
@@ -19,7 +20,7 @@ import InteractiveItemOnMap from "./InteractiveObjectOnMap";
 import gameSquad from "../../redux/slices/gameSquad";
 import items from "../Market/items";
 
-import TaskScreen from "../../components/TaskScreen/TaskScreen";
+import TaskScreen from "../../components/TaskScreen";
 import cybers from "../CyberLab/cybers";
 // import gameStage from "../../redux/slices/gameStage";
 
@@ -61,7 +62,7 @@ function VillageMap() {
             requiredScreen: GameScreens.villageMap,
             requiredStage: 0,
             title: chrome.i18n.getMessage('cyber_lab_to'),
-            icon: <Gear size={25}/>,
+            icon: <Tools size={25}/>,
             houses: [20]
         },        
         [GameScreens.fireSite]: {
@@ -92,18 +93,25 @@ function VillageMap() {
             icon: <Snow2 size={25}/>,
             houses: [6]
         },
+        [GameScreens.mansion]: {
+            requiredScreen: GameScreens.villageMap,
+            requiredStage: 0,
+            title: chrome.i18n.getMessage('mansion_to'),
+            icon: <HouseFill size={25}/>,
+            houses: []
+        },
         [GameScreens.market]: {
             requiredScreen: GameScreens.villageMap,
             requiredStage: 0,
             title: chrome.i18n.getMessage('market_to'),
-            icon: <Gem size={25}/>,
+            icon: <ShopWindow size={25}/>,
             houses: [0, 1, 2, 3, 4, 5]
         },
         [GameScreens.mutaLab]: {
             requiredScreen: GameScreens.villageMap,
             requiredStage: 0,
             title: chrome.i18n.getMessage('muta_lab_to'),
-            icon: <Capsule size={25}/>,
+            icon: <Virus size={25}/>,
             houses: [20]
         },        
         [GameScreens.wizardSchool]: {

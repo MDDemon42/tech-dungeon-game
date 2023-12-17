@@ -11,7 +11,8 @@ function ResourceIcon(props: {
     const resourceIcons: Record<UserResource, ReactElement> = {
         [UserResource.gem]: <Gem/>,
         [UserResource.core]: <Gear/>,
-        [UserResource.gene]: <Capsule/>
+        [UserResource.gene]: <Capsule/>,
+        [UserResource.none]: <></>
     }
 
     return <div 

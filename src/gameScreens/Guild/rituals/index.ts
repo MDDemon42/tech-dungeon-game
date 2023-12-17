@@ -24,7 +24,7 @@ function createRitual(
     }
 }
 
-const ritual_titanSkin = createRitual(
+const titanSkin = createRitual(
     [
         chrome.i18n.getMessage('titan_skin'),
         chrome.i18n.getMessage('titan_skin_ritual_description'),
@@ -37,12 +37,12 @@ const ritual_titanSkin = createRitual(
 )
 
 const rituals = {
-    ritual_titanSkin
+    titanSkin
 } 
 
 export const guildRitualOptions: Record<string, IRitual[]> = {
     0: [],
-    1: [rituals.ritual_titanSkin]
+    1: [rituals.titanSkin]
 };
 
 export default rituals

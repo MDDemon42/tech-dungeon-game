@@ -114,7 +114,7 @@ export function subInventoryEnableChecker(
         screenName === InventoryGameScreens.mutaLab
     ) {
         const memberRitualNames = character.general.mind.rituals.map(ritual => ritual.name);
-        const titanSkinCheck = memberRitualNames.includes(rituals.ritual_titanSkin.name);
+        const titanSkinCheck = memberRitualNames.includes(rituals.titanSkin.name);
 
         if (titanSkinCheck) {
             return [false, chrome.i18n.getMessage('siec_titanSkin')]
