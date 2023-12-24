@@ -1,5 +1,5 @@
 import { 
-    IAbility, IBattleAbility, 
+    IBattleAbility, 
     IItem, IPassiveAbility 
 } from "../../../enums-and-interfaces/interfaces";
 import { InventoryPlace } from "../../../enums-and-interfaces/enums";
@@ -19,13 +19,13 @@ export function createItem(
         inventoryPlace: InventoryPlace,
         priority: number
     ],
-    abilityInfo: [
-        requiredMastery: string,
-        abilities: IBattleAbility[] | null,
+    requiredMastery: string,
+    abilities: IBattleAbility[] | null,
+    passiveAbilities: IPassiveAbility[] | null,
+    linkedAbilities: {
         linkedMastery: string,
-        masterAbilities: IAbility[] | null,
-        passiveAbilities: IPassiveAbility[] | null
-    ]    
+        masterAbility: IBattleAbility,
+    }[] | null,     
 ): IItem {
     return {
         name: commonInfo[0],
@@ -36,11 +36,10 @@ export function createItem(
         inventoryPlace: inventoryInfo[1],
         priority: inventoryInfo[2],
 
-        requiredMastery: abilityInfo[0],
-        abilities: abilityInfo[1],
-        linkedMastery: abilityInfo[2],
-        masterAbilities: abilityInfo[3],
-        passiveAbilities: abilityInfo[4]
+        requiredMastery,
+        abilities,
+        passiveAbilities,
+        linkedAbilities
     }
 }
 
@@ -52,25 +51,24 @@ const items = {
 }
 
 const basicOptions = [
-    items.other.item_healingPotion,
-    items.armors.item_leatherArmor,
-    items.armors.item_woodenShield,
-    items.weapons.item_oakBow,
-    items.weapons.item_spear,
-    items.weapons.item_axeLeftHand,
-    items.weapons.item_axeRightHand,
+    items.other.healingPotion,
+    items.armors.leatherArmor,
+    items.armors.woodenShield,
+    items.weapons.oakBow,
+    items.weapons.spear,
+    items.weapons.axe,
     items.weapons.pickaxe
 ];
 
 const steelOptions = [
-    items.armors.item_steelArmor,
-    items.armors.item_steelShield,
-    items.weapons.item_steelMace,
-    items.weapons.item_steelSwordLeftHand,
-    items.weapons.item_steelSwordRightHand,
-    items.weapons.item_steelGreataxe,
-    items.weapons.item_steelGreathammer,
-    items.weapons.item_steelGreatsword
+    items.armors.steelArmor,
+    items.armors.steelShield,
+    items.weapons.steelMace,
+    items.weapons.steelSwordLeftHand,
+    items.weapons.steelSwordRightHand,
+    items.weapons.steelGreataxe,
+    items.weapons.steelGreathammer,
+    items.weapons.steelGreatsword
 ];
 
 export const marketOptions: Record<string, IItem[]> = {

@@ -112,11 +112,57 @@ const axeSlash = createBattleAbility(
     [1, 70]
 );
 
-const affiliatedAxeSlash = createBattleAbility(
+const battleAxeSlash = createBattleAbility(
     [
-        chrome.i18n.getMessage('axe_slash'),  
+        chrome.i18n.getMessage('battle_axe_slash'), 
         '', 
-        images.normalItems.axe
+        images.armouryItems.battleAxe
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const affiliatedBattleAxeSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_axe_slash'),  
+        '', 
+        images.armouryItems.battleAxe
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
+);
+
+const battleMageAxeSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_mage_axe_slash'), 
+        '', 
+        images.armouryItems.battleMageAxe
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const battleMageAxeWindSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_mage_axe_wind_slash'), 
+        '', 
+        images.armouryItems.battleMageAxe
+    ], 
+    {Mana: 2, Stamina: 1}, 
+    {
+        [DamageType.physicalSlashing]: 3
+    },
+    [1, 70]
+);
+
+const affiliatedBattleMageAxeSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_mage_axe_slash'),  
+        '', 
+        images.armouryItems.battleMageAxe
     ], 
     {Stamina: 1}, 
     {[DamageType.physicalSlashing]: 1},
@@ -211,9 +257,409 @@ const raptorJump = createBattleAbility(
     [1, 70]
 ); 
 
+const dragonBoneBladeSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('dragon_bone_blade_slash'), 
+        '', 
+        images.armouryItems.dragonBoneBlade
+    ], 
+    {Stamina: 1},
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const affiliatedDragonBoneBladeSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('dragon_bone_blade_slash'), 
+        '', 
+        images.armouryItems.dragonBoneBlade
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
+);
+
+const mageDragonBoneBladeSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_dragon_bone_blade_slash'), 
+        '', 
+        images.armouryItems.mageDragonBoneBlade
+    ], 
+    {Stamina: 1},
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const affiliatedMageDragonBoneBladeSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_dragon_bone_blade_slash'), 
+        '', 
+        images.armouryItems.mageDragonBoneBlade
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
+);
+
+const glaiveSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('glaive_slash'), 
+        '', 
+        images.armouryItems.glaive
+    ], 
+    {Stamina: 2},
+    {[DamageType.physicalSlashing]: 2},
+    [1, 70]
+);
+
+const affiliatedGlaiveSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('glaive_slash'), 
+        '', 
+        images.armouryItems.glaive
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2},
+    [1, 95]
+);
+
+const mageGlaiveSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_glaive_slash'), 
+        '', 
+        images.armouryItems.mageGlaive
+    ], 
+    {Stamina: 2},
+    {[DamageType.physicalSlashing]: 2},
+    [1, 70]
+);
+
+const mageGlaiveWindSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_glaive_wind_slash'), 
+        '', 
+        images.armouryItems.mageGlaive
+    ], 
+    {Stamina: 2, Mana: 2},
+    {[DamageType.physicalSlashing]: 4},
+    [1, 70]
+);
+
+const affiliatedMageGlaiveSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_glaive_slash'), 
+        '', 
+        images.armouryItems.glaive
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2},
+    [1, 95]
+);
+
+const halberdSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('halberd_slash'), 
+        '', 
+        images.armouryItems.halberd
+    ], 
+    {Stamina: 2},
+    {[DamageType.physicalSlashing]: 2},
+    [1, 70]
+);
+
+const affiliatedHalberdSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('halberd_slash'), 
+        '', 
+        images.armouryItems.halberd
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2},
+    [1, 95]
+);
+
+const mageHalberdSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_halberd_slash'), 
+        '', 
+        images.armouryItems.mageHalberd
+    ], 
+    {Stamina: 2},
+    {[DamageType.physicalSlashing]: 2},
+    [1, 70]
+);
+
+const affiliatedMageHalberdSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_halberd_slash'), 
+        '', 
+        images.armouryItems.mageHalberd
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2},
+    [1, 95]
+);
+
+const katanaSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('katana_slash'), 
+        '', 
+        images.armouryItems.katana
+    ], 
+    {Stamina: 1},
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const affiliatedKatanaSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('katana_slash'), 
+        '', 
+        images.armouryItems.katana
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
+);
+
+const khopeshSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('khopesh_slash'), 
+        '', 
+        images.armouryItems.khopesh
+    ], 
+    {Stamina: 1},
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const affiliatedKhopeshSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('khopesh_slash'), 
+        '', 
+        images.armouryItems.khopesh
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
+);
+
+const mageKhopeshSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_khopesh_slash'), 
+        '', 
+        images.armouryItems.mageKhopesh
+    ], 
+    {Stamina: 1},
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const affiliatedMageKhopeshSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_khopesh_slash'), 
+        '', 
+        images.armouryItems.mageKhopesh
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
+);
+
+const macuahuitlSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('macuahuitl_slash'), 
+        '', 
+        images.armouryItems.macuahuitl
+    ], 
+    {Stamina: 1},
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const affiliatedMacuahuitlSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('macuahuitl_slash'), 
+        '', 
+        images.armouryItems.macuahuitl
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
+);
+
+const mageMacuahuitlSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_macuahuitl_slash'), 
+        '', 
+        images.armouryItems.mageMacuahuitl
+    ], 
+    {Stamina: 1},
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const affiliatedMageMacuahuitlSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_macuahuitl_slash'), 
+        '', 
+        images.armouryItems.mageMacuahuitl
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
+);
+
+const rapierSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('rapier_slash'), 
+        '', 
+        images.armouryItems.rapier
+    ], 
+    {Stamina: 1},
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const affiliatedRapierSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('rapier_slash'), 
+        '', 
+        images.armouryItems.rapier
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
+);
+
+const sabreSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('sabre_slash'), 
+        '', 
+        images.armouryItems.sabre
+    ], 
+    {Stamina: 1},
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const affiliatedSabreSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('sabre_slash'), 
+        '', 
+        images.armouryItems.sabre
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
+);
+
+const battlePistolSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_pistol_slash'), 
+        '', 
+        images.armouryItems.battlePistol
+    ], 
+    {Stamina: 1},
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const affiliatedBattlePistolSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_pistol_slash'), 
+        '', 
+        images.armouryItems.battlePistol
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
+);
+
+const battleRevolverSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_revolver_slash'), 
+        '', 
+        images.armouryItems.battleRevolver
+    ], 
+    {Stamina: 1},
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
+const affiliatedBattleRevolverSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_revolver_slash'), 
+        '', 
+        images.armouryItems.battleRevolver
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
+);
+
+const battleRifleSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_rifle_slash'), 
+        '', 
+        images.armouryItems.battleRifle
+    ], 
+    {Stamina: 2},
+    {[DamageType.physicalSlashing]: 2},
+    [1, 70]
+);
+
+const affiliatedBattleRifleSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_rifle_slash'), 
+        '', 
+        images.armouryItems.battleRifle
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2},
+    [1, 95]
+);
+
+const battleMageRifleSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_mage_rifle_slash'), 
+        '', 
+        images.armouryItems.battleMageRifle
+    ], 
+    {Stamina: 2},
+    {[DamageType.physicalSlashing]: 2},
+    [1, 70]
+);
+
+const battleMageRifleWindSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_mage_rifle_wind_slash'), 
+        '', 
+        images.armouryItems.battleMageRifle
+    ], 
+    {Stamina: 2, Mana: 2},
+    {[DamageType.physicalSlashing]: 4},
+    [1, 70]
+);
+
+const affiliatedBattleMageRifleSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_mage_rifle_slash'), 
+        '', 
+        images.armouryItems.battleMageRifle
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2},
+    [1, 95]
+);
+
 const physicalSlashing = {
     axeSlash,
-    affiliatedAxeSlash,
+    battleAxeSlash,
+    affiliatedBattleAxeSlash,
+    battleMageAxeSlash,
+    battleMageAxeWindSlash,
+    affiliatedBattleMageAxeSlash,
     doubleAxeSlash,
     affiliatedDoubleAxeSlash,
     swordSlash,
@@ -231,7 +677,45 @@ const physicalSlashing = {
     leftClawSlash,
     rightClawSlash,
     bothClawsSlash,
-    raptorJump
+    raptorJump,
+
+    dragonBoneBladeSlash,
+    affiliatedDragonBoneBladeSlash,
+    mageDragonBoneBladeSlash,
+    affiliatedMageDragonBoneBladeSlash,
+    glaiveSlash,
+    affiliatedGlaiveSlash,
+    mageGlaiveSlash,
+    mageGlaiveWindSlash,
+    affiliatedMageGlaiveSlash,
+    halberdSlash,
+    affiliatedHalberdSlash,
+    mageHalberdSlash,
+    affiliatedMageHalberdSlash,
+    katanaSlash,
+    affiliatedKatanaSlash,
+    khopeshSlash,
+    affiliatedKhopeshSlash,
+    mageKhopeshSlash,
+    affiliatedMageKhopeshSlash,
+    macuahuitlSlash,
+    affiliatedMacuahuitlSlash,
+    mageMacuahuitlSlash,
+    affiliatedMageMacuahuitlSlash,
+    rapierSlash,
+    affiliatedRapierSlash,
+    sabreSlash,
+    affiliatedSabreSlash,
+
+    battlePistolSlash,
+    affiliatedBattlePistolSlash,
+    battleRevolverSlash,
+    affiliatedBattleRevolverSlash,
+    battleRifleSlash,
+    affiliatedBattleRifleSlash,
+    battleMageRifleSlash,
+    battleMageRifleWindSlash,
+    affiliatedBattleMageRifleSlash
 }
 
 export default physicalSlashing

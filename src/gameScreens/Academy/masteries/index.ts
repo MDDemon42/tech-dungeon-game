@@ -18,7 +18,7 @@ export function createMastery(
     }
 };
 
-const mastery_bowAffiliation = createMastery(
+const bowAffiliation = createMastery(
     [
         chrome.i18n.getMessage('bow_affiliation'),
         chrome.i18n.getMessage('bow_affiliation_mastery_description'),
@@ -27,7 +27,7 @@ const mastery_bowAffiliation = createMastery(
     ''
 );
 
-const mastery_swordAffiliation = createMastery(
+const swordAffiliation = createMastery(
     [
         chrome.i18n.getMessage('sword_affiliation'),
         chrome.i18n.getMessage('sword_affiliation_mastery_description'),
@@ -36,16 +36,16 @@ const mastery_swordAffiliation = createMastery(
     ''
 );
 
-const mastery_dualSwords = createMastery(
+const dualSwords = createMastery(
     [
         chrome.i18n.getMessage('dual_swords'),
         chrome.i18n.getMessage('dual_swords_mastery_description'),
         images.guildianLearnings.dualSwords
     ],
-    mastery_swordAffiliation.name
+    swordAffiliation.name
 );
 
-const mastery_brutalForce = createMastery(
+const brutalForce = createMastery(
     [
         chrome.i18n.getMessage('brutal_force'),
         chrome.i18n.getMessage('brutal_force_mastery_description'),
@@ -54,25 +54,16 @@ const mastery_brutalForce = createMastery(
     ''
 );
 
-const mastery_martialArts = createMastery(
+const martialArts = createMastery(
     [
         chrome.i18n.getMessage('martial_arts'),
         chrome.i18n.getMessage('martial_arts_mastery_description'),
         images.academyMasteries.martialArts
     ],
-    mastery_brutalForce.name
+    brutalForce.name
 );
 
-const mastery_axeAffiliation = createMastery(
-    [
-        chrome.i18n.getMessage('axe_affiliation'),
-        chrome.i18n.getMessage('axe_affiliation_mastery_description'),
-        images.normalItems.axe
-    ],
-    ''
-);
-
-const mastery_maceAffiliation = createMastery(
+const maceAffiliation = createMastery(
     [
         chrome.i18n.getMessage('mace_affiliation'),
         chrome.i18n.getMessage('mace_affiliation_mastery_description'),
@@ -81,7 +72,7 @@ const mastery_maceAffiliation = createMastery(
     ''
 );
 
-const mastery_spearAffiliation = createMastery(
+const spearAffiliation = createMastery(
     [
         chrome.i18n.getMessage('spear_affiliation'),
         chrome.i18n.getMessage('spear_affiliation_mastery_description'),
@@ -90,7 +81,7 @@ const mastery_spearAffiliation = createMastery(
     ''
 );
 
-const mastery_sellmanship = createMastery(
+const sellmanship = createMastery(
     [
         chrome.i18n.getMessage('sellmanship'),
         chrome.i18n.getMessage('sellmanship_mastery_description'),
@@ -100,30 +91,28 @@ const mastery_sellmanship = createMastery(
 );
 
 const academyMasteries = {
-    mastery_axeAffiliation,
-    mastery_bowAffiliation,
-    mastery_brutalForce,
-    mastery_dualSwords,
-    mastery_maceAffiliation,
-    mastery_martialArts,
-    mastery_sellmanship,
-    mastery_spearAffiliation,
-    mastery_swordAffiliation
+    bowAffiliation,
+    brutalForce,
+    dualSwords,
+    maceAffiliation,
+    martialArts,
+    sellmanship,
+    spearAffiliation,
+    swordAffiliation
 }
 
 const basicOptions = [
-    academyMasteries.mastery_axeAffiliation,
-    academyMasteries.mastery_bowAffiliation,
-    academyMasteries.mastery_brutalForce,
-    academyMasteries.mastery_martialArts,
-    academyMasteries.mastery_sellmanship,
-    academyMasteries.mastery_spearAffiliation
+    academyMasteries.bowAffiliation,
+    academyMasteries.brutalForce,
+    academyMasteries.sellmanship,
+    academyMasteries.spearAffiliation
 ];
 
 const steelOptions = [
-    academyMasteries.mastery_maceAffiliation,
-    academyMasteries.mastery_swordAffiliation,
-    academyMasteries.mastery_dualSwords
+    academyMasteries.martialArts,
+    academyMasteries.maceAffiliation,
+    academyMasteries.swordAffiliation,
+    academyMasteries.dualSwords
 ];
 
 export const academyOptions: Record<string, IMastery[]> = {

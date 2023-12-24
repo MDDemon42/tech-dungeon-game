@@ -346,6 +346,70 @@
     "craft": {
         "message": "Создать!"
     },
+    "musket_options_task_title": {
+        "message": "Чертежи мушкетов"
+    },
+    "musket_options_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и создать чертежи мушкетов.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "rifle_options_task_title": {
+        "message": "Чертежи ружей"
+    },
+    "rifle_options_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и создать чертежи ружей.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "battle_options_task_title": {
+        "message": "Чертежи клинков"
+    },
+    "battle_options_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и создать чертежи клинков.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_options_task_title": {
+        "message": "Чертежи мага"
+    },
+    "mage_options_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и создать чертежи мага.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "focus_site_to": {
         "message": "К Месту Средоточия!"
     },
@@ -711,6 +775,12 @@
     "musket_item_description": {
         "message": "Фирменный мушкет."
     },
+    "musket_shot": {
+        "message": "Выстрел из мушкета"
+    },
+    "musket_butt_hit": {
+        "message": "Удар прикладом мушкета"
+    },
     "craft_musket": {
         "message": "Создать мушкет"
     },
@@ -727,6 +797,352 @@
             }
         }
     },
+    "battle_musket": {
+        "message": "Боевой мушкет"
+    },
+    "battle_musket_item_description": {
+        "message": "Фирменный боевой мушкет."
+    },
+    "battle_musket_shot": {
+        "message": "Выстрел из боевого мушкета"
+    },
+    "battle_musket_butt_hit": {
+        "message": "Удар прикладом боевого мушкета"
+    },
+    "battle_musket_pierce": {
+        "message": "Удар штыком боевого мушкета"
+    },
+    "craft_battle_musket": {
+        "message": "Создать боевой мушкет"
+    },
+    "craft_battle_musket_description": {
+        "message": "Использовать $count$ $resource$ для создания боевого мушкета.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_musket": {
+        "message": "Мушкет мага"
+    },
+    "mage_musket_item_description": {
+        "message": "Фирменный мушкет мага."
+    },
+    "mage_musket_shot": {
+        "message": "Выстрел из мушкета мага"
+    },
+    "craft_mage_musket": {
+        "message": "Создать мушкет мага"
+    },
+    "craft_mage_musket_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания мушкета мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "battle_mage_musket": {
+        "message": "Боевой мушкет мага"
+    },
+    "battle_mage_musket_item_description": {
+        "message": "Фирменный боевой мушкет мага."
+    },
+    "battle_mage_musket_shot": {
+        "message": "Выстрел из боевого мушкета мага"
+    },
+    "battle_mage_musket_pierce": {
+        "message": "Удар штыком боевого мушкета мага"
+    },
+    "battle_mage_musket_cold_pierce": {
+        "message": "Удар ледяным штыком боевого мушкета мага"
+    },
+    "craft_battle_mage_musket": {
+        "message": "Создать боевой мушкет мага"
+    },
+    "craft_battle_mage_musket_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания боевого мушкета мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "pistol": {
+        "message": "Пистоль"
+    },
+    "pistol_item_description": {
+        "message": "Фирменный пистоль."
+    },
+    "pistol_shot": {
+        "message": "Выстрел из пистоля"
+    },
+    "craft_pistol": {
+        "message": "Создать пистоль"
+    },
+    "craft_pistol_description": {
+        "message": "Использовать $count$ $resource$ для создания пистоля.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "battle_pistol": {
+        "message": "Боевой пистоль"
+    },
+    "battle_pistol_item_description": {
+        "message": "Фирменный боевой пистоль."
+    },
+    "battle_pistol_shot": {
+        "message": "Выстрел из боевого пистоля"
+    },
+    "battle_pistol_slash": {
+        "message": "Удар боевым пистолем"
+    },
+    "craft_battle_pistol": {
+        "message": "Создать боевой пистоль"
+    },
+    "craft_battle_pistol_description": {
+        "message": "Использовать $count$ $resource$ для создания боевого пистоля.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "revolver": {
+        "message": "Револьвер"
+    },
+    "revolver_item_description": {
+        "message": "Фирменный револьвер."
+    },
+    "revolver_double_shot": {
+        "message": "Два выстрела из револьвера"
+    },
+    "craft_revolver": {
+        "message": "Создать револьвер"
+    },
+    "craft_revolver_description": {
+        "message": "Использовать $count$ $resource$ для создания револьвера.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "battle_revolver": {
+        "message": "Боевой револьвер"
+    },
+    "battle_revolver_item_description": {
+        "message": "Фирменный боевой револьвер."
+    },
+    "battle_revolver_double_shot": {
+        "message": "Два выстрела из боевого револьвера"
+    },
+    "battle_revolver_slash": {
+        "message": "Удар боевым револьвером"
+    },
+    "craft_battle_revolver": {
+        "message": "Создать боевой револьвер"
+    },
+    "craft_battle_revolver_description": {
+        "message": "Использовать $count$ $resource$ для создания боевого револьвера.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "rifle": {
+        "message": "Винтовка"
+    },
+    "rifle_item_description": {
+        "message": "Фирменная винтовка."
+    },
+    "rifle_double_shot": {
+        "message": "Два выстрела из винтовки"
+    },
+    "rifle_butt_hit": {
+        "message": "Удар прикладом винтовки"
+    },
+    "craft_rifle": {
+        "message": "Создать винтовку"
+    },
+    "craft_rifle_description": {
+        "message": "Использовать $count$ $resource$ для создания винтовки.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "battle_rifle": {
+        "message": "Боевая винтовка"
+    },
+    "battle_rifle_item_description": {
+        "message": "Фирменная боевая винтовка."
+    },
+    "battle_rifle_double_shot": {
+        "message": "Два выстрела из боевой винтовки"
+    },
+    "battle_rifle_slash": {
+        "message": "Удар боевой винтовкой"
+    },
+    "battle_rifle_butt_hit": {
+        "message": "Удар прикладом боевой винтовки"
+    },
+    "craft_battle_rifle": {
+        "message": "Создать боевую винтовку"
+    },
+    "craft_battle_rifle_description": {
+        "message": "Использовать $count$ $resource$ для создания боевой винтовки.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_rifle": {
+        "message": "Винтовка мага"
+    },
+    "mage_rifle_item_description": {
+        "message": "Фирменная винтовка мага."
+    },
+    "mage_rifle_double_shot": {
+        "message": "Два выстрела из винтовки мага"
+    },
+    "craft_mage_rifle": {
+        "message": "Создать винтовку мага"
+    },
+    "craft_mage_rifle_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания винтовки мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "battle_mage_rifle": {
+        "message": "Боевая винтовка мага"
+    },
+    "battle_mage_rifle_item_description": {
+        "message": "Фирменная боевая винтовка мага. Самое совершенное оружие всех времен."
+    },
+    "battle_mage_rifle_double_shot": {
+        "message": "Два выстрела из боевой винтовки мага"
+    },
+    "battle_mage_rifle_slash": {
+        "message": "Удар боевой винтовкой мага"
+    },
+    "battle_mage_rifle_cold_slash": {
+        "message": "Ледяной удар боевой винтовкой мага"
+    },
+    "battle_mage_rifle_fire_slash": {
+        "message": "Огненный удар боевой винтовкой мага"
+    },
+    "battle_mage_rifle_wind_slash": {
+        "message": "Ветреный удар боевой винтовкой мага"
+    },
+    "craft_battle_mage_rifle": {
+        "message": "Создать боевую винтовку мага"
+    },
+    "craft_battle_mage_rifle_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания боевой винтовки мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
     "axe": {
         "message": "Топор"
     },
@@ -736,8 +1152,480 @@
     "axe_slash": {
         "message": "Удар топором"
     },
+    "battle_axe": {
+        "message": "Боевой топор"
+    },
+    "battle_axe_item_description": {
+        "message": "Фирменный боевой топор."
+    },
+    "battle_axe_slash": {
+        "message": "Удар боевым топором"
+    },
     "double_axe_slash": {
         "message": "Удар двумя топорами"
+    },
+    "craft_battle_axe": {
+        "message": "Создать боевой топор"
+    },
+    "craft_battle_axe_description": {
+        "message": "Использовать $count$ $resource$ для создания боевого топора.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_weapon": {
+        "message": "Повышает максимальный запас Маны на 2."
+    },
+    "battle_mage_axe": {
+        "message": "Боевой топор мага"
+    },
+    "battle_mage_axe_item_description": {
+        "message": "Фирменный боевой топор мага."
+    },
+    "battle_mage_axe_slash": {
+        "message": "Удар боевым топором мага"
+    },
+    "battle_mage_axe_fire_slash": {
+        "message": "Удар огненным боевым топором мага"
+    },
+    "battle_mage_axe_cold_slash": {
+        "message": "Удар ледяным боевым топором мага"
+    },
+    "battle_mage_axe_wind_slash": {
+        "message": "Удар ветреным боевым топором мага"
+    },
+    "craft_battle_mage_axe": {
+        "message": "Создать боевой топор мага"
+    },
+    "craft_battle_mage_axe_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания боевого топора мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "dragon_bone_blade": {
+        "message": "Клинок из кости дракона"
+    },
+    "dragon_bone_blade_item_description": {
+        "message": "Фирменный клинок из кости дракона."
+    },
+    "dragon_bone_blade_slash": {
+        "message": "Удар клинком из кости дракона"
+    },
+    "craft_dragon_bone_blade": {
+        "message": "Создать клинок из кости дракона"
+    },
+    "craft_dragon_bone_blade_description": {
+        "message": "Использовать $count$ $resource$ для создания клинка из кости дракона.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_dragon_bone_blade": {
+        "message": "Клинок мага из кости дракона"
+    },
+    "mage_dragon_bone_blade_item_description": {
+        "message": "Фирменный клинок мага из кости дракона."
+    },
+    "mage_dragon_bone_blade_slash": {
+        "message": "Удар клинком мага из кости дракона"
+    },
+    "mage_dragon_bone_blade_fire_slash": {
+        "message": "Удар огненным клинком мага из кости дракона"
+    },
+    "craft_mage_dragon_bone_blade": {
+        "message": "Создать клинок мага из кости дракона"
+    },
+    "craft_mage_dragon_bone_blade_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания клинка мага из кости дракона.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "glaive": {
+        "message": "Глефа"
+    },
+    "glaive_item_description": {
+        "message": "Фирменная глефа."
+    },
+    "glaive_slash": {
+        "message": "Удар глефой"
+    },
+    "craft_glaive": {
+        "message": "Создать глефу"
+    },
+    "craft_glaive_description": {
+        "message": "Использовать $count$ $resource$ для создания глефы.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_glaive": {
+        "message": "Глефа мага"
+    },
+    "mage_glaive_item_description": {
+        "message": "Фирменная глефа мага."
+    },
+    "mage_glaive_slash": {
+        "message": "Удар глефой мага"
+    },
+    "mage_glaive_wind_slash": {
+        "message": "Удар ветреной глефой мага"
+    },
+    "craft_mage_glaive": {
+        "message": "Создать глефу мага"
+    },
+    "craft_mage_glaive_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания глефы мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "halberd": {
+        "message": "Алебарда"
+    },
+    "halberd_item_description": {
+        "message": "Фирменная алебарда."
+    },
+    "halberd_slash": {
+        "message": "Удар алебардой"
+    },
+    "craft_halberd": {
+        "message": "Создать алебарду"
+    },
+    "craft_halberd_description": {
+        "message": "Использовать $count$ $resource$ для создания алебарды.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_halberd": {
+        "message": "Алебарда мага"
+    },
+    "mage_halberd_item_description": {
+        "message": "Фирменная алебарда мага."
+    },
+    "mage_halberd_slash": {
+        "message": "Удар алебардой мага"
+    },
+    "mage_halberd_cold_slash": {
+        "message": "Удар ледяной алебардой мага"
+    },
+    "craft_mage_halberd": {
+        "message": "Создать алебарду мага"
+    },
+    "craft_mage_halberd_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания алебарды мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "katana": {
+        "message": "Катана"
+    },
+    "katana_item_description": {
+        "message": "Фирменная катана."
+    },
+    "katana_slash": {
+        "message": "Удар катаной"
+    },
+    "craft_katana": {
+        "message": "Создать катану"
+    },
+    "craft_katana_description": {
+        "message": "Использовать $count$ $resource$ для создания катаны.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "khopesh": {
+        "message": "Хопеш"
+    },
+    "khopesh_item_description": {
+        "message": "Фирменный хопеш."
+    },
+    "khopesh_slash": {
+        "message": "Удар хопешом"
+    },
+    "craft_khopesh": {
+        "message": "Создать хопеш"
+    },
+    "craft_khopesh_description": {
+        "message": "Использовать $count$ $resource$ для создания хопеша.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_khopesh": {
+        "message": "Хопеш мага"
+    },
+    "mage_khopesh_item_description": {
+        "message": "Фирменный хопеш мага."
+    },
+    "mage_khopesh_slash": {
+        "message": "Удар хопешом мага"
+    },
+    "mage_khopesh_fire_slash": {
+        "message": "Удар огненным хопешом мага"
+    },
+    "craft_mage_khopesh": {
+        "message": "Создать хопеш мага"
+    },
+    "craft_mage_khopesh_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания хопеша мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "macuahuitl": {
+        "message": "Макуаитль"
+    },
+    "macuahuitl_item_description": {
+        "message": "Фирменный макуаитль."
+    },
+    "macuahuitl_slash": {
+        "message": "Удар макуаитлем"
+    },
+    "craft_macuahuitl": {
+        "message": "Создать макуаитль"
+    },
+    "craft_macuahuitl_description": {
+        "message": "Использовать $count$ $resource$ для создания макуаитля.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_macuahuitl": {
+        "message": "Макуаитль мага"
+    },
+    "mage_macuahuitl_item_description": {
+        "message": "Фирменный макуаитль мага."
+    },
+    "mage_macuahuitl_slash": {
+        "message": "Удар макуаитлем мага"
+    },
+    "mage_macuahuitl_cold_slash": {
+        "message": "Удар ледяным макуаитлем мага"
+    },
+    "craft_mage_macuahuitl": {
+        "message": "Создать макуаитль мага"
+    },
+    "craft_mage_macuahuitl_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания макуаитля мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "rapier": {
+        "message": "Рапира"
+    },
+    "rapier_item_description": {
+        "message": "Фирменная рапира."
+    },
+    "rapier_slash": {
+        "message": "Удар рапирой"
+    },
+    "craft_rapier": {
+        "message": "Создать рапиру"
+    },
+    "craft_rapier_description": {
+        "message": "Использовать $count$ $resource$ для создания рапиры.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "sabre": {
+        "message": "Сабля"
+    },
+    "sabre_item_description": {
+        "message": "Фирменная сабля."
+    },
+    "sabre_slash": {
+        "message": "Удар саблей"
+    },
+    "craft_sabre": {
+        "message": "Создать саблю"
+    },
+    "craft_sabre_description": {
+        "message": "Использовать $count$ $resource$ для создания сабли.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_wand": {
+        "message": "Жезл мага"
+    },
+    "mage_wand_item_description": {
+        "message": "Фирменный жезл мага."
+    },
+    "craft_mage_wand": {
+        "message": "Создать жезл мага"
+    },
+    "craft_mage_wand_description": {
+        "message": "Использовать $count$ $resource$ для создания жезла мага.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "steel_sword": {
         "message": "Стальной меч"
@@ -1094,19 +1982,19 @@
     "ice_school_title": {
         "message": "Изучите Чувство Льда!"
     },
+    "frost": {
+        "message": "Холод"
+    },
+    "frost_bending_description": {
+        "message": "Заклинание для остужения пыла врага."
+    },
     "ice_shard": {
         "message": "Ледяной осколок"
     },
     "ice_shard_bending_description": {
         "message": "Заклинание для протыкания врага осколком льда."
     },
-    "ice_spear": {
-        "message": "Ледяное копьё"
-    },
-    "ice_spear_bending_description": {
-        "message": "Заклинание для протыкания врага большим осколком льда."
-    },
-    "ice_spear_task_title": {
+    "ice_shard_task_title": {
         "message": "Можешь помочь мне с $resource$, пожалуйста?",
         "placeholders": {
             "resource": {
@@ -1115,8 +2003,36 @@
             }
         }
     },
-    "ice_spear_task_text": {
+    "ice_shard_task_text": {
         "message": "Ледяная девушка просит $count$ $resource$ для создания чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "ice_spear": {
+        "message": "Ледяное копьё"
+    },
+    "ice_spear_bending_description": {
+        "message": "Заклинание для протыкания врага большим осколком льда."
+    },
+    "ice_spear_task_title": {
+        "message": "Можешь помочь мне с $resource$ снова, пожалуйста?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "ice_spear_task_text": {
+        "message": "Ледяная девушка снова просит $count$ $resource$ для создания чучел.",
         "placeholders": {
             "count": {
                 "content": "$1",
@@ -1173,6 +2089,37 @@
     },
     "cold_death_task_text": {
         "message": "Ледяная девушка просит $count$ $resource$ для постройки плота.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "freezing": {
+        "message": "Леденящий "
+    },
+    "freezing_strikes": {
+        "message": "Леденящие атаки"
+    },
+    "freezing_strikes_mastery_description": {
+        "message": "Мастерство использования Маны для\nдобавления урона Холодом к атакам."
+    },
+    "freezing_strikes_task_title": {
+        "message": "Можешь мне ещё раз помочь с $resource$, пожалуйста?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "freezing_strikes_task_text": {
+        "message": "Ледяная девушка просит $count$ $resource$ для тренировочных чучел.",
         "placeholders": {
             "count": {
                 "content": "$1",
@@ -1271,6 +2218,37 @@
             }
         }
     },
+    "enflamed": {
+        "message": "Обжигающий "
+    },
+    "enflamed_strikes": {
+        "message": "Обжигающие атаки"
+    },
+    "enflamed_strikes_mastery_description": {
+        "message": "Мастерство использования Маны для\nдобавления Огненного урона к атакам."
+    },
+    "enflamed_strikes_task_title": {
+        "message": "Помоги мне с $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "enflamed_strikes_task_text": {
+        "message": "Огненная девушка просит $count$ $resource$ для тренировочных чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "air_site_to": {
         "message": "К Перепутью Ветров!"
     },
@@ -1311,6 +2289,12 @@
     "woods_title": {
         "message": "Глубоко в Лесах..."
     },
+    "obsidian": {
+        "message": "Обсидиан"
+    },
+    "obsidian_item_description": {
+        "message": "Тёмное и острое вулканическое стекло."
+    },
     "ore": {
         "message": "Руда"
     },
@@ -1323,11 +2307,29 @@
     "mines_title": {
         "message": "Глубоко в Шахтах..."
     },
+    "crystal": {
+        "message": "Кристалл"
+    },
+    "crystal_item_description": {
+        "message": "Накапливает магию. Кажется."
+    },
+    "caves_to": {
+        "message": "В Пещеры!"
+    },
+    "caves_title": {
+        "message": "Глубоко в Пещерах..."
+    },
     "beast_remains": {
         "message": "Останки Зверя"
     },
     "beast_remains_item_description": {
         "message": "Оба мозга и немного костей Зверя"
+    },
+    "dragon_remains": {
+        "message": "Останки Дракона"
+    },
+    "dragon_remains_item_description": {
+        "message": "Оба мозга и немного костей Дракона"
     },
     "insectoid_remains": {
         "message": "Останки Инсектоида"
@@ -1403,6 +2405,37 @@
             }
         }
     },
+    "electrified": {
+        "message": "Электризованный "
+    },
+    "electrified_strikes": {
+        "message": "Электризованные удары"
+    },
+    "electrified_strikes_mastery_description": {
+        "message": "Мастерство использования Маны для\nдобавления Электрического урона к атакам."
+    },
+    "electrified_strikes_task_title": {
+        "message": "Мне нужно много больше $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "electrified_strikes_task_text": {
+        "message": "Воздушный парень просит $count$ $resource$ для тренировочных чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "flying_charm": {
         "message": "Чары полёта"
     },
@@ -1420,6 +2453,9 @@
     },
     "electrical_bolt_spell_description": {
         "message": "Заклинание для причинения боли одному врагу.\nДля применения нужен посох или скипетр."
+    },
+    "lightning_strike": {
+        "message": "Разряд молнии"
     },
     "teleport": {
         "message": "Телепорт"
@@ -1453,6 +2489,15 @@
     },
     "psi_blade_slash": {
         "message": "Удар пси-клинком"
+    },
+    "psi_javelin": {
+        "message": "Пси-копьё"
+    },
+    "psi_javelin_power_description": {
+        "message": "Мощь для метания копья, созданным твоим разумом."
+    },
+    "psi_javelin_throw": {
+        "message": "Бросок пси-копья"
     },
     "psi_lightning": {
         "message": "Пси-молния"
@@ -1517,15 +2562,6 @@
     "battle_runes_mastery_description": {
         "message": "Мастерство активации рун на оружии."
     },
-    "empowered": {
-        "message": "Усиленный "
-    },
-    "empowered_strikes": {
-        "message": "Усиленные удары"
-    },
-    "empowered_strikes_mastery_description": {
-        "message": "Мастерство использования Концентрации\nдля увеличения Физического урона."
-    },
     "scholarship": {
         "message": "Обучение"
     },
@@ -1586,6 +2622,68 @@
     },
     "psi_energy_task_text": {
         "message": "Татуированному парню нужно $count$ $resource$ для тренировочных чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "empowered": {
+        "message": "Усиленный "
+    },
+    "empowered_strikes": {
+        "message": "Усиленные удары"
+    },
+    "empowered_strikes_mastery_description": {
+        "message": "Мастерство использования Концентрации\nдля увеличения Физического урона."
+    },
+    "empowered_strikes_task_title": {
+        "message": "Помоги мне с $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "empowered_strikes_task_text": {
+        "message": "Татуированный парень просит $count$ $resource$ для создания ещё чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "psi_infused": {
+        "message": "Псионический "
+    },
+    "psi_infused_strikes": {
+        "message": "Псионические удары"
+    },
+    "psi_infused_strikes_mastery_description": {
+        "message": "Мастерство использования Концентрации для\nдобавления Псионического урона к атакам."
+    },
+    "psi_infused_strikes_task_title": {
+        "message": "Помоги мне ещё с $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "psi_infused_strikes_task_text": {
+        "message": "Татуированный парень просит ещё $count$ $resource$ для тренировочных чучел..",
         "placeholders": {
             "count": {
                 "content": "$1",

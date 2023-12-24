@@ -41,7 +41,8 @@ function Guild() {
         {
             title: chrome.i18n.getMessage('runes_and_rituals_task_title'),
             stage: 2,
-            disabled: stage !== 1
+            disabled: stage !== 1,
+            visible: true
         }
     ];
 

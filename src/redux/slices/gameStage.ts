@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { IGameStage, IGameStageOptions, IGameTasks, ITask } from '../../enums-and-interfaces/interfaces';
-import { GameScreens } from '../../enums-and-interfaces/enums';
+import { GameScreens, UserStartClass } from '../../enums-and-interfaces/enums';
 import academyTasks from '../../gameScreens/Academy/tasks';
 import airSiteTasks from '../../gameScreens/AirSite/tasks';
 import cyberLabTasks from '../../gameScreens/CyberLab/tasks';
@@ -30,7 +30,7 @@ import { mutaLabOptions } from '../../gameScreens/MutaLab/mutations';
 import { spellSchoolOptions } from '../../gameScreens/WizardSchool/spells';
 import { wizardSchoolOptions } from '../../gameScreens/WizardSchool/masteries';
 import { wizardShopOptions } from '../../gameScreens/WizardSchool/wizardItems';
-import { armouryOptions } from '../../gameScreens/Mansion/armouryItems';
+import { armouryOptions, startClassBattleMageOptions, startClassBattleOptions } from '../../gameScreens/Mansion/armouryItems';
 
 export function createTask(
     resourceCost: {
@@ -104,7 +104,7 @@ export const createGameStage = (strongStart: boolean) => {
             stage,
             stageOptions: stageOptions[GameScreens[screen as keyof typeof GameScreens]],
             tasks: tasks[GameScreens[screen as keyof typeof GameScreens]],
-            usableOptions: stageOptions[GameScreens[screen as keyof typeof GameScreens]]?.[stage]!
+            usableOptions: stageOptions[GameScreens[screen as keyof typeof GameScreens]]?.[stage] || []
         }
     })
 
@@ -145,6 +145,35 @@ const gameStage = createSlice({
                 state[key] = action.payload[key];
             })
         },
+        addStartClassWeapons(state, action) {
+            const oldState = {...state};
+            const armoury = {...oldState.Armoury};
+            const stageOptions = {...armoury.stageOptions};
+
+            const startClass: UserStartClass = action.payload;
+
+            if (stageOptions[11].length > 3) {
+                stageOptions[11].pop();
+            }
+            const battleOptionsNames = armouryOptions[11].map(option => option.name);
+            const startClassBattleOption = startClassBattleOptions[startClass];
+            if (startClassBattleOption && !battleOptionsNames.includes(startClassBattleOption.name)) {
+                stageOptions[11].push(startClassBattleOption);
+            }
+
+            if (stageOptions[143].length > 3) {
+                stageOptions[143].pop();
+            }
+            const battleMageOptionsNames = armouryOptions[143].map(option => option.name);
+            const startClassBattleMageOption = startClassBattleMageOptions[startClass];
+            if (startClassBattleMageOption && !battleMageOptionsNames.includes(startClassBattleMageOption.name)) {
+                stageOptions[143].push(startClassBattleMageOption);
+            }
+
+            armoury.stageOptions = stageOptions;
+            oldState.Armoury = armoury;
+            state = oldState;
+        },
         changeStage(state, action) {
             const oldState = {...state};
 
@@ -162,18 +191,37 @@ const gameStage = createSlice({
 
             oldState[zone].stage = upgradedStage;
             oldState[zone].usableOptions?.push(
-                ...oldState[zone].stageOptions?.[stage] as any[]
+                ...(oldState[zone].stageOptions?.[stage] || [])
             );
 
             if (relatedScreens[zone].length > 0) {
                 for (const relatedScreen of relatedScreens[zone]) {
+                    if (relatedScreen === GameScreens.armoury) {
+                        let bonusStage = 0;
+                        const bonusStages = [2431, 1001, 221, 187, 143, 91, 77];
+                        for (const checkStage of bonusStages) {
+                            if (upgradedStage % checkStage === 0) {
+                                if (checkStage % stage === 0) {
+                                    bonusStage = checkStage;
+
+                                    const bonusOptions = oldState[relatedScreen].stageOptions?.[bonusStage];
+                                    if (bonusOptions) {
+                                        oldState[relatedScreen].usableOptions.push(
+                                            ...bonusOptions as any[]
+                                        );
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     oldState[relatedScreen].stage = upgradedStage;
                     const addOptions = oldState[relatedScreen].stageOptions?.[stage];
                     if (addOptions) {
                         oldState[relatedScreen].usableOptions.push(
                             ...addOptions as any[]
                         );
-                    }                    
+                    } 
                 }
             }
 

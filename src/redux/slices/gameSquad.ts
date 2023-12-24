@@ -50,7 +50,7 @@ export const createGameSquad: () => IGameSquad = () => {
         [UserResource.core]: 0,
         [UserResource.gem]: 0,
         [UserResource.gene]: 0,
-        [UserResource.none]: 0
+        [UserResource.none]: 10
     }
 }};
 
@@ -131,9 +131,8 @@ export const classInfo: IClassInfo = {
 }
 
 const raceMasteries: Partial<Record<Race, IMastery>> = {
-    [Race.orc]: academyMasteries.mastery_axeAffiliation,
-    [Race.gnoll]: academyMasteries.mastery_maceAffiliation,
-    [Race.naga]: academyMasteries.mastery_spearAffiliation
+    [Race.gnoll]: academyMasteries.maceAffiliation,
+    [Race.naga]: academyMasteries.spearAffiliation
 }
 
 function integratePassiveAbility(
@@ -361,13 +360,6 @@ const gameSquad = createSlice({
                     integratePassiveAbility(squadMember, rightHandItem, -1);
                 }
                 squadMember.general.inventory.rightHand = createNoItem();
-
-                const bothHandsItem = {...squadMember.general.inventory.bothHands} as IItem;
-                if (bothHandsItem.name !== nothing) {
-                    putItemInBackpacks(backpacks, bothHandsItem, maxItemsAmount); 
-                
-                    integratePassiveAbility(squadMember, bothHandsItem, -1);
-                }
             } else if (
                 position === InventoryPlace.leftHand ||
                 position === InventoryPlace.rightHand
@@ -415,7 +407,7 @@ const gameSquad = createSlice({
             if (
                 squadMember.general.mind.masteries
                     .map(mastery => mastery.name)
-                    .includes(academyMasteries.mastery_sellmanship.name)
+                    .includes(academyMasteries.sellmanship.name)
             ) {
                 profit = item.cost;
             } else if (item.name !== createNoItem().name) {
@@ -485,39 +477,74 @@ const gameSquad = createSlice({
             const squad = {...state.squadMembers};
             const squadMember = squad[state.currentlyWatched];
 
-            squadMember.params.strength += action.payload;
+            if (action.payload === 1) {
+                switch (squadMember.params.strength + action.payload) {
+                    case 5:
+                        squadMember.general.backpacks.push(createNoItem());
+                        squadMember.params.strength = 5;
+                        break;
+                    case 4:
+                        squadMember.params.strength = 4;
+                        break;
+                    case 3:
+                        if (
+                            !squadMember.general.mind.masteries
+                                .map(mastery => mastery.name)
+                                .includes(academyMasteries.brutalForce.name)
+                        ) {
+                            squadMember.general.mind.masteries.push(academyMasteries.brutalForce)
+                        }
+                        squadMember.general.backpacks.push(createNoItem());
+                        squadMember.params.strength = 3;
+                        break;
+                    case 2: 
+                        squadMember.general.backpacks.push(createNoItem());
+                        squadMember.params.strength = 2;
+                        break;
+                    case 1:
+                        squadMember.params.strength = 1;
+                        break;
+                }
+            } 
 
-            if (
-                squadMember.params.strength > 1  &&
-                squadMember.general.backpacks.length < 5
-            ) {
-                squadMember.general.backpacks.push(createNoItem());
+            if (action.payload === 3) {
+                switch (squadMember.params.strength + action.payload) {
+                    case 7:
+                        squadMember.general.backpacks.push(createNoItem());
+                        squadMember.params.strength = 5;
+                        break;
+                    case 6:
+                        squadMember.general.backpacks.push(createNoItem());
+                        squadMember.params.strength = 5;
+                        break;
+                    case 5:
+                        squadMember.general.backpacks.push(createNoItem());
+                        squadMember.general.backpacks.push(createNoItem());
+                        squadMember.params.strength = 5;
+                        break;
+                    case 4:
+                        squadMember.general.backpacks.push(createNoItem());
+                        squadMember.general.backpacks.push(createNoItem());
+                        squadMember.params.strength = 4;
+                        break;
+                    case 3:
+                        squadMember.general.backpacks.push(createNoItem());
+                        squadMember.general.backpacks.push(createNoItem());
+                        squadMember.params.strength = 3;
+                        break;
+                }
             }
-
-            if (
-                squadMember.params.strength > 2  &&
-                squadMember.general.backpacks.length < 6
-            ) {
-                squadMember.general.backpacks.push(createNoItem());
-            }
-
-            if (
-                squadMember.params.strength > 4  &&
-                squadMember.general.backpacks.length < 7
-            ) {
-                squadMember.general.backpacks.push(createNoItem());
-            }
-
+            
             state.squadMembers = squad;
         },
         learnMastery(state, action) {
-            const {index, data} = action.payload;
             const squad = {...state.squadMembers};
-            const squadMember = squad[index];
+            const squadMember = squad[state.currentlyWatched];
 
-            squadMember.general.mind.masteries.push(data);
+            const mastery = action.payload;
+            squadMember.general.mind.masteries.push(mastery);
 
-            if (data.name === academyMasteries.mastery_brutalForce.name) {
+            if (mastery.name === academyMasteries.brutalForce.name) {
                 const newRace = checkRace(squadMember.general.inventory, true);
                 squadMember.params.race = newRace;
     
@@ -597,7 +624,7 @@ const gameSquad = createSlice({
 
             const isStrong = squadMember.general.mind.masteries
                 .map(mastery => mastery.name)
-                .includes(academyMasteries.mastery_brutalForce.name);
+                .includes(academyMasteries.brutalForce.name);
                 
             const raceMasteriesNames = Object.values(raceMasteries)
                 .map(mastery => mastery.name);

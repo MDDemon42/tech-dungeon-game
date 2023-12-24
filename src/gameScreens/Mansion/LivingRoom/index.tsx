@@ -4,19 +4,30 @@ import styles from './index.module.css';
 import LivingRoomOption from './LivingRoomOption';
 import gameSquad from '../../../redux/slices/gameSquad';
 import images from '../../../images/images';
+import mansionMasteries from '../masteries';
+import academyMasteries from '../../Academy/masteries';
+
+export interface ILivingRoomOption {
+    data: ICommon,
+    buttonText: string,
+    buttonDisabled: boolean,
+    visible: boolean,
+    listener: () => void
+}
 
 function LivingRoom() {
+    const mansionStage = useSelector((store: IStore) => store.gameStage.Mansion.stage);
+
+    const memberMasteriesNames = useSelector((store: IStore) => 
+        store.gameSquad.squadMembers[store.gameSquad.currentlyWatched]
+            .general.mind.masteries).map(mastery => mastery.name);
+
     const memberParams = useSelector((store: IStore) => 
         store.gameSquad.squadMembers[store.gameSquad.currentlyWatched].params);
      
     const dispatch = useDispatch();
 
-    const livingRoomOptions: {
-        data: ICommon,
-        buttonText: string,
-        buttonDisabled: boolean,
-        listener: () => void
-    }[] = [
+    const livingRoomOptions: ILivingRoomOption[] = [
         {
             data: {
                 name: chrome.i18n.getMessage('sleep_title'),
@@ -25,6 +36,7 @@ function LivingRoom() {
             },
             buttonText: chrome.i18n.getMessage('sleep_title'),
             buttonDisabled: false,
+            visible: true,
             listener: () => {
                 dispatch(gameSquad.actions.relaxate({}));
 
@@ -38,11 +50,32 @@ function LivingRoom() {
                 image: images.misc.training
             },
             buttonText: chrome.i18n.getMessage('train_title'),
-            buttonDisabled: memberParams.currentParams.Stamina < 3,
+            buttonDisabled: 
+                memberParams.currentParams.Stamina < 3 ||
+                memberParams.strength === 5,
+            visible: true,
             listener: () => {
                 dispatch(gameSquad.actions.raiseStrength(1));
 
                 dispatch(gameSquad.actions.spendStamina(3));
+            }
+        },
+        {
+            data: mansionMasteries.axeAffiliation,
+            buttonText: chrome.i18n.getMessage('learn'),
+            buttonDisabled: memberMasteriesNames.includes(mansionMasteries.axeAffiliation.name),
+            visible: mansionStage % 11 === 0,
+            listener: () => {
+                dispatch(gameSquad.actions.learnMastery(mansionMasteries.axeAffiliation))
+            }
+        },
+        {
+            data: academyMasteries.swordAffiliation,
+            buttonText: chrome.i18n.getMessage('learn'),
+            buttonDisabled: memberMasteriesNames.includes(academyMasteries.swordAffiliation.name),
+            visible: mansionStage % 11 === 0,
+            listener: () => {
+                dispatch(gameSquad.actions.learnMastery(academyMasteries.swordAffiliation))
             }
         }
     ]

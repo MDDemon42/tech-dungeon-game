@@ -2,7 +2,20 @@ import { IBending } from "../../../enums-and-interfaces/interfaces";
 import abilities from "../../../general/abilities";
 import { createBending } from "../../../general/bending";
 import images from "../../../images/images";
-import { senseOfCold } from "../masteries";
+import coldMasteries from "../masteries";
+
+const frost = createBending(
+    [
+        chrome.i18n.getMessage('frost'),
+        chrome.i18n.getMessage('frost_bending_description'),
+        images.elementBendings.coldAffiliation
+    ],
+    [
+        coldMasteries.coldAffiliation.name,
+        '', true,
+        abilities.battleAbilities.ranged.cold.frost
+    ]
+);
 
 const iceShard = createBending(
     [
@@ -11,8 +24,9 @@ const iceShard = createBending(
         images.elementBendings.iceShard
     ],
     [
-        senseOfCold.name,
-        '', true,
+        coldMasteries.coldAffiliation.name,
+        frost.name, 
+        true,
         abilities.battleAbilities.ranged.physicalPiercing.iceShard
     ]
 );
@@ -24,7 +38,7 @@ const iceSpear = createBending(
         images.elementBendings.iceSpear
     ],
     [
-        senseOfCold.name,
+        coldMasteries.coldAffiliation.name,
         iceShard.name,
         true,
         abilities.battleAbilities.ranged.physicalPiercing.iceShard
@@ -38,7 +52,7 @@ const iceHail = createBending(
         images.elementBendings.iceHail
     ],
     [
-        senseOfCold.name,
+        coldMasteries.coldAffiliation.name,
         iceShard.name,
         true,
         abilities.battleAbilities.ranged.physicalPiercing.iceHail
@@ -52,14 +66,15 @@ const coldDeath = createBending(
         images.elementBendings.coldDeath
     ],
     [
-        senseOfCold.name,
-        iceShard.name,
+        coldMasteries.coldAffiliation.name,
+        frost.name,
         true,
         abilities.battleAbilities.ranged.cold.coldDeath
     ]
 );
 
 export const cryomancy = {
+    frost,
     iceShard,
     iceSpear,
     iceHail,
@@ -68,8 +83,9 @@ export const cryomancy = {
 
 export const iceSiteOptions: Record<string, IBending[]> = {
     0: [],
-    1: [cryomancy.iceShard],
-    2: [cryomancy.iceSpear],
-    3: [cryomancy.iceHail],
-    5: [cryomancy.coldDeath]
+    1: [cryomancy.frost],
+    2: [cryomancy.iceShard],
+    3: [cryomancy.iceSpear],
+    5: [cryomancy.iceHail],
+    7: [cryomancy.coldDeath],
 }

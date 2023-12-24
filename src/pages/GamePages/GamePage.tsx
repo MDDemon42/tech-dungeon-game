@@ -17,8 +17,13 @@ function GamePage() {
                 dispatch(gameSquad.actions.setState(result[C.extensionStorageName].gameSquad));
 
                 dispatch(gameStage.actions.setState(result[C.extensionStorageName].gameStage));
+
+                const startClass = result[C.extensionStorageName].gameSquad.squadMembers[0].params.class;
+                dispatch(gameStage.actions.addStartClassWeapons(startClass));
             }
-        })
+        });
+
+        
     }, [])
 
     return (

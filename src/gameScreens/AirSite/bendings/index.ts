@@ -2,7 +2,7 @@ import { IBending } from "../../../enums-and-interfaces/interfaces";
 import abilities from "../../../general/abilities";
 import { createBending } from "../../../general/bending";
 import images from "../../../images/images";
-import { senseOfWind } from "../masteries";
+import airMasteries from "../masteries";
 
 const windBlow = createBending(
     [
@@ -11,7 +11,7 @@ const windBlow = createBending(
         images.elementBendings.windBlow
     ],
     [
-        senseOfWind.name,
+        airMasteries.windAffiliation.name,
         '', true,
         abilities.battleAbilities.ranged.physicalSmashing.windBlow
     ]
@@ -24,9 +24,8 @@ const thunderPunch = createBending(
         images.elementBendings.thunderPunch
     ],
     [
-        senseOfWind.name,
-        windBlow.name,
-        true,
+        airMasteries.windAffiliation.name,
+        '', true,
         abilities.battleAbilities.melee.physicalSmashing.thunderPunch
     ]
 );
@@ -38,8 +37,8 @@ const airDeprivation = createBending(
         images.elementBendings.airDeprivation
     ],
     [
-        senseOfWind.name,
-        thunderPunch.name,
+        airMasteries.windAffiliation.name,
+        windBlow.name,
         true,
         abilities.battleAbilities.ranged.suffocation.airDeprivation
     ]

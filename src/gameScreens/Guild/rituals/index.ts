@@ -31,7 +31,7 @@ const titanSkin = createRitual(
         images.guildianLearnings.titanSkinRitual
     ],
     [
-        academyMasteries.mastery_brutalForce.name,
+        academyMasteries.brutalForce.name,
         [abilities.passiveAbilities.armor.titanSkin]
     ]
 )

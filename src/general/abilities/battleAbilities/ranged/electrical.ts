@@ -13,8 +13,20 @@ const magicBolt = createBattleAbility(
     [1, 85]
 );
 
+const lightningStrike = createBattleAbility(
+    [
+        chrome.i18n.getMessage('lightning_strike'), 
+        '', 
+        images.wizardSpells.magicBolt
+    ], 
+    {Mana: 3}, 
+    {[DamageType.electrical]: 3},
+    [1, 85]
+);
+
 const electrical = {
     magicBolt,
+    lightningStrike
 }
 
 export default electrical

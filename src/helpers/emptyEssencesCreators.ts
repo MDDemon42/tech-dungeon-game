@@ -120,10 +120,9 @@ export function createNoItem(): ICyber & IItem {
         image: images.classIcons.noIcon,
         priority: 0,
         requiredMastery: '',
-        abilities: null,
-        linkedMastery: '',
-        masterAbilities: null,
         requiredCyber: '',
-        passiveAbilities: null
+        abilities: null,
+        passiveAbilities: null,
+        linkedAbilities: null,        
     }    
 }

@@ -2,6 +2,17 @@ import { createBattleAbility } from "..";
 import { DamageType } from "../../../../enums-and-interfaces/enums";
 import images from "../../../../images/images";
 
+const frost = createBattleAbility(
+    [
+        chrome.i18n.getMessage('frost'), 
+        '', 
+        images.elementBendings.coldAffiliation
+    ], 
+    {Mana: 1}, 
+    {[DamageType.cold]: 1},
+    [1, 70]
+);
+
 const coldDeath = createBattleAbility(
     [
         chrome.i18n.getMessage('cold_death'), 
@@ -25,6 +36,7 @@ const freezerShot = createBattleAbility(
 );
 
 const cold = {
+    frost,
     coldDeath,
     freezerShot
 }

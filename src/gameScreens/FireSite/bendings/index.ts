@@ -2,7 +2,7 @@ import { IBending } from "../../../enums-and-interfaces/interfaces";
 import abilities from "../../../general/abilities";
 import { createBending } from "../../../general/bending";
 import images from "../../../images/images";
-import { senseOfFlame } from "../masteries";
+import fireMasteries from "../masteries";
 
 const flame = createBending(
     [
@@ -11,7 +11,7 @@ const flame = createBending(
         images.elementBendings.flame
     ],
     [
-        senseOfFlame.name,
+        fireMasteries.fireAffiliation.name,
         '', true,
         abilities.battleAbilities.ranged.fire.flame
     ]
@@ -24,7 +24,7 @@ const fireBall = createBending(
         images.elementBendings.fireball
     ],
     [
-        senseOfFlame.name,
+        fireMasteries.fireAffiliation.name,
         flame.name,
         true,
         abilities.battleAbilities.ranged.fire.fireBall
@@ -38,8 +38,8 @@ const fireWave = createBending(
         images.elementBendings.fireWave
     ],
     [
-        senseOfFlame.name,
-        fireBall.name,
+        fireMasteries.fireAffiliation.name,
+        flame.name,
         true,
         abilities.battleAbilities.ranged.fire.fireWave
     ]

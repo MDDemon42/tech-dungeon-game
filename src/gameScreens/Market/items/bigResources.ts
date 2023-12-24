@@ -25,6 +25,28 @@ export function createBigResource(
     }
 }
 
+const crystal = createBigResource(
+    [
+        chrome.i18n.getMessage('crystal'),
+        chrome.i18n.getMessage('crystal_item_description'),
+        images.misc.crystal
+    ],
+    [
+        2, InventoryPlace.belt, -1
+    ]
+);
+
+const obsidian = createBigResource(
+    [
+        chrome.i18n.getMessage('obsidian'),
+        chrome.i18n.getMessage('obsidian_item_description'),
+        images.misc.obsidian
+    ],
+    [
+        2, InventoryPlace.belt, -1
+    ]
+);
+
 const ore = createBigResource(
     [
         chrome.i18n.getMessage('ore'),
@@ -32,9 +54,9 @@ const ore = createBigResource(
         images.misc.ore
     ],
     [
-        1, InventoryPlace.belt, -1
+        2, InventoryPlace.belt, -1
     ]
-)
+);
 
 const wood = createBigResource(
     [
@@ -43,9 +65,9 @@ const wood = createBigResource(
         images.misc.wood
     ],
     [
-        1, InventoryPlace.belt, -1
+        2, InventoryPlace.belt, -1
     ]
-)
+);
 
 const beastRemains = createBigResource(
     [
@@ -56,7 +78,18 @@ const beastRemains = createBigResource(
     [
         1, InventoryPlace.belt, -1
     ]
-)
+);
+
+const dragonRemains = createBigResource(
+    [
+        chrome.i18n.getMessage('dragon_remains'),
+        chrome.i18n.getMessage('dragon_remains_item_description'),
+        images.misc.dragonRemains
+    ],
+    [
+        2, InventoryPlace.belt, -1
+    ]
+);
 
 const insectoidRemains = createBigResource(
     [
@@ -67,7 +100,7 @@ const insectoidRemains = createBigResource(
     [
         1, InventoryPlace.belt, -1
     ]
-)
+);
 
 const reptiloidRemains = createBigResource(
     [
@@ -78,12 +111,15 @@ const reptiloidRemains = createBigResource(
     [
         1, InventoryPlace.belt, -1
     ]
-)
+);
 
 const bigResources = {
+    crystal,
+    obsidian,
     ore,
     wood,
     beastRemains,
+    dragonRemains,
     insectoidRemains,
     reptiloidRemains
 }

@@ -2,6 +2,7 @@ import { UserParam, DamageType } from "../../../enums-and-interfaces/enums";
 import { IPassiveAbility } from "../../../enums-and-interfaces/interfaces";
 import armor from "./armor/armor";
 import cyber from "./cyber";
+import weapons from "./weapons";
 
 export function createPassiveAbility(
     commonInfo: [
@@ -26,7 +27,8 @@ export function createPassiveAbility(
 
 const passiveAbilities = {
     armor,
-    cyber
+    cyber,
+    weapons
 }
 
 export default passiveAbilities

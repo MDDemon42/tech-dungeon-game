@@ -4,7 +4,7 @@ import images from "../../../images/images";
 import abilities from "../../../general/abilities";
 import academyMasteries from "../../Academy/masteries";
 
-const item_leatherArmor = createItem(
+const leatherArmor = createItem(
     [
         chrome.i18n.getMessage('leather_armor'),
         chrome.i18n.getMessage('leather_armor_item_description'),
@@ -13,13 +13,14 @@ const item_leatherArmor = createItem(
     [
         1, InventoryPlace.armor, 1
     ],
+    '', null,
     [
-        '', null, '', null,
-        [abilities.passiveAbilities.armor.leatherArmor]
-    ]
+        abilities.passiveAbilities.armor.leatherArmor
+    ],
+    null
 )
 
-const item_steelArmor = createItem(
+const steelArmor = createItem(
     [
         chrome.i18n.getMessage('steel_armor'),
         chrome.i18n.getMessage('steel_armor_item_description'),
@@ -28,14 +29,15 @@ const item_steelArmor = createItem(
     [
         2, InventoryPlace.armor, 2
     ],
+    academyMasteries.brutalForce.name,
+    null,
     [
-        academyMasteries.mastery_brutalForce.name, 
-        null, '', null,
-        [abilities.passiveAbilities.armor.steelArmor]
-    ]
+        abilities.passiveAbilities.armor.steelArmor
+    ],
+    null
 )
 
-const item_steelShield = createItem(
+const steelShield = createItem(
     [
         chrome.i18n.getMessage('steel_shield'),
         chrome.i18n.getMessage('steel_shield_item_description'),
@@ -44,13 +46,12 @@ const item_steelShield = createItem(
     [
         1, InventoryPlace.leftHand, 1
     ],
-    [
-        '', null, '', null,
-        [abilities.passiveAbilities.armor.steelShield]
-    ]
+    '', null,
+    [abilities.passiveAbilities.armor.steelShield],
+    null
 )
 
-const item_woodenShield = createItem(
+const woodenShield = createItem(
     [
         chrome.i18n.getMessage('wooden_shield'),
         chrome.i18n.getMessage('wooden_shield_item_description'),
@@ -59,17 +60,18 @@ const item_woodenShield = createItem(
     [
         1, InventoryPlace.leftHand, 1
     ],
+    '', null,
     [
-        '', null, '', null,
-        [abilities.passiveAbilities.armor.woodenShield]
-    ]
+        abilities.passiveAbilities.armor.woodenShield
+    ],
+    null
 )
 
 const armors = {
-    item_leatherArmor,
-    item_steelArmor,
-    item_steelShield,
-    item_woodenShield
+    leatherArmor,
+    steelArmor,
+    steelShield,
+    woodenShield
 }
 
 export default armors

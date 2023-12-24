@@ -4,6 +4,7 @@ import createEmptyCharacter from "../helpers/emptyEssencesCreators";
 import store from "../redux/store";
 import { classInfo } from "../redux/slices/gameSquad";
 import { createGameStage } from "../redux/slices/gameStage";
+import armouryItems from "../gameScreens/Mansion/armouryItems";
 
 function actionInCaseStrongStart(tabId: number) {
     const state = {...store.getState()}
@@ -39,6 +40,8 @@ function actionInCaseStrongStart(tabId: number) {
             
             memberClone.params.currentParams = {...memberClone.params.maxParams};
 
+            memberClone.general.backpacks[0] = armouryItems.mageWeapons.battleMageRifle;
+
             squadMembers[i] = memberClone;
         }
     }
@@ -47,7 +50,7 @@ function actionInCaseStrongStart(tabId: number) {
         [UserResource.gem]: 100,
         [UserResource.core]: 45,
         [UserResource.gene]: 45,
-        [UserResource.none]: 0
+        [UserResource.none]: 10
     }
 
     gameSquad.resources = fullResources;

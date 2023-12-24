@@ -42,7 +42,7 @@ const mutations = {
 
 const beastOptions = [
     mutations.armors.fur,
-    mutations.other.mutation_hooves,
+    mutations.other.hooves,
     mutations.weapons.horns,
     mutations.weapons.lowerFangs
 ];
@@ -57,7 +57,7 @@ const insectoidOptions = [
     mutations.weapons.acidSpit,
     mutations.weapons.claws,
     mutations.weapons.pincers,
-    mutations.other.mutation_wings
+    mutations.other.wings
 ];
 
 export const mutaLabOptions: Record<string, IMutation[]> = {

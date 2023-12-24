@@ -36,19 +36,20 @@ const powers = {
 };
 
 const basicOptions = [
-    powers.armors.power_guardianField,
-    powers.other.power_intuition
+    powers.armors.guardianField,
+    powers.other.intuition
 ];
 
 const advancedOptions = [
-    powers.armors.power_guardianAura,
-    powers.other.power_telekinesis,
-    powers.other.power_levitation
+    powers.armors.guardianAura,
+    powers.other.telekinesis,
+    powers.other.levitation
 ];
 
 const psiEnergyOptions = [
-    powers.weapons.power_psiBlade,
-    powers.weapons.power_psiLightning
+    powers.weapons.psiBlade,
+    powers.weapons.psiJavelin,
+    powers.weapons.psiLightning
 ];
 
 export const focusSiteOptions: Record<string, IPower[]> = {
@@ -56,6 +57,7 @@ export const focusSiteOptions: Record<string, IPower[]> = {
     1: [...basicOptions],
     2: [...advancedOptions],
     3: [...psiEnergyOptions],
+    5: []
 };
 
 export default powers

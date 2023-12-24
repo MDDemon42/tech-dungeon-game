@@ -38,7 +38,8 @@ function WizardSchool() {
         {
             title: chrome.i18n.getMessage('librarium'),
             stage: 2,
-            disabled: stage !== 1
+            disabled: stage !== 1,
+            visible: true
         }
     ];    
 

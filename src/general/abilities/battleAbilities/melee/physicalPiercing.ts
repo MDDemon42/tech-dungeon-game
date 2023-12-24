@@ -94,9 +94,31 @@ const pickaxePick = createBattleAbility(
     [
         chrome.i18n.getMessage('pickaxe_pick'), 
         '', 
-        images.misc.pickaxe
+        images.normalItems.pickaxe
     ], 
     {Stamina: 1}, 
+    {[DamageType.physicalPiercing]: 1},
+    [1, 70]
+);
+
+const battleMusketPierce = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_musket_pierce'), 
+        '', 
+        images.armouryItems.battleMusket
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalPiercing]: 1},
+    [1, 70]
+);
+
+const battleMageMusketPierce = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_mage_musket_pierce'), 
+        '', 
+        images.armouryItems.battleMageMusket
+    ], 
+    {Stamina: 2}, 
     {[DamageType.physicalPiercing]: 1},
     [1, 70]
 );
@@ -110,7 +132,9 @@ const physicalPiercing = {
     affiliatedSpearPierce,
     swordStab,
     affiliatedSwordStab,
-    pickaxePick
+    pickaxePick,
+    battleMusketPierce,
+    battleMageMusketPierce
 }
 
 export default physicalPiercing

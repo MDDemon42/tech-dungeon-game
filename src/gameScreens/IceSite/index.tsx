@@ -15,19 +15,34 @@ function IceSite() {
 
     const upgradeButtons: IUpgradeButton[] = [
         {
-            title: chrome.i18n.getMessage('ice_spear'),
+            title: chrome.i18n.getMessage('ice_shard'),
             stage: 2,
-            disabled: stage % 2 === 0
+            disabled: stage % 2 === 0,
+            visible: true
+        },
+        {
+            title: chrome.i18n.getMessage('ice_spear'),
+            stage: 3,
+            disabled: stage % 3 === 0,
+            visible: stage % 2 === 0
         },
         {
             title: chrome.i18n.getMessage('ice_hail'),
-            stage: 3,
-            disabled: stage % 3 === 0
+            stage: 5,
+            disabled: stage % 5 === 0,
+            visible: stage % 2 === 0
         },
         {
             title: chrome.i18n.getMessage('cold_death'),
-            stage: 5,
-            disabled: stage % 5 === 0
+            stage: 7,
+            disabled: stage % 7 === 0,
+            visible: true
+        },
+        {
+            title: chrome.i18n.getMessage('freezing_strikes'),
+            stage: 11,
+            disabled: stage % 11 === 0,
+            visible: true
         },
     ];
 

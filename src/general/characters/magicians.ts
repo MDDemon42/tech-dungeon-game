@@ -1,6 +1,6 @@
 import { UserParam } from "../../enums-and-interfaces/enums";
-import { senseOfFlame } from "../../gameScreens/FireSite/masteries";
-import { senseOfCold } from "../../gameScreens/IceSite/masteries";
+import fireMasteries from "../../gameScreens/FireSite/masteries";
+import coldMasteries from "../../gameScreens/IceSite/masteries";
 import createEmptyCharacter from "../../helpers/emptyEssencesCreators";
 import bending from "../bending";
 import wizardMasteries from "../../gameScreens/WizardSchool/masteries";
@@ -21,8 +21,8 @@ const apprentice = () => {
     character.params.maxParams[UserParam.mana] = 3;
     character.params.currentParams[UserParam.mana] = 3;
 
-    character.general.mind.masteries.push(wizardMasteries.mastery_scholarship);
-    character.general.mind.spells.push(spells.spell_magicBolt);
+    character.general.mind.masteries.push(wizardMasteries.scholarship);
+    character.general.mind.spells.push(spells.magicBolt);
 
     character.general.inventory.bothHands = wizardItems.weapons.wizardItem_apprenticeRod;
     character.general.inventory.hat = wizardItems.armors.wizardItem_apprenticeHat;
@@ -44,8 +44,8 @@ const magister = () => {
     character.params.maxParams[UserParam.mana] = 6;
     character.params.currentParams[UserParam.mana] = 6;
 
-    character.general.mind.masteries.push(wizardMasteries.mastery_magisterDegree);
-    character.general.mind.spells.push(spells.spell_magicBolt);
+    character.general.mind.masteries.push(wizardMasteries.magisterDegree);
+    character.general.mind.spells.push(spells.magicBolt);
 
     character.general.inventory.bothHands = wizardItems.weapons.wizardItem_magisterScepter;
     character.general.inventory.hat = wizardItems.armors.wizardItem_magisterHat;
@@ -69,7 +69,7 @@ const cryomancer = () => {
     character.params.maxParams[UserParam.mana] = 6;
     character.params.currentParams[UserParam.mana] = 6;
 
-    character.general.mind.masteries.push(senseOfCold);
+    character.general.mind.masteries.push(coldMasteries.coldAffiliation);
     character.general.mind.bending.push(bending.cryomancy.iceShard);
     character.general.mind.bending.push(bending.cryomancy.iceSpear);
     character.general.mind.bending.push(bending.cryomancy.iceHail);
@@ -92,7 +92,7 @@ const pyrokinetic = () => {
     character.params.maxParams[UserParam.mana] = 6;
     character.params.currentParams[UserParam.mana] = 6;
 
-    character.general.mind.masteries.push(senseOfFlame);
+    character.general.mind.masteries.push(fireMasteries.fireAffiliation);
     character.general.mind.bending.push(bending.pyrokinesis.flame);
     character.general.mind.bending.push(bending.pyrokinesis.fireBall);
     character.general.mind.bending.push(bending.pyrokinesis.fireWave);

@@ -24,6 +24,7 @@
 .VillageMap_icon_Fire_Site,
 .VillageMap_icon_Ice_Site,
 .VillageMap_icon_Guild_School,
+.VillageMap_icon_Caves,
 .VillageMap_icon_Woods,
 .VillageMap_icon_Mines {
     position: absolute;
@@ -153,14 +154,24 @@
     border-color: silver;
 }
 
+.VillageMap_icon_Caves {
+    left: 410px;
+    top: 300px;
+}
+
+.VillageMap_icon_Caves:hover {
+    color: white;
+    border-color: white;
+}
+
 .VillageMap_icon_Woods {
     left: 290px;
     top: 20px;
 }
 
 .VillageMap_icon_Woods:hover {
-    color: brown;
-    border-color: brown;
+    color: darkgreen;
+    border-color: darkgreen;
 }
 
 .VillageMap_icon_Mines {

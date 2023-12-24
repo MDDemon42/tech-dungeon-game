@@ -3,7 +3,7 @@ import { TaskStatus } from "../../../enums-and-interfaces/enums";
 import { IScreenTasks } from "../../../enums-and-interfaces/interfaces";
 import items from "../../Market/items";
 
-const task_buildFocusSchool = createTask(
+const buildFocusSite = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -16,7 +16,7 @@ const task_buildFocusSchool = createTask(
     ),
 );
 
-const task_deepestInsights = createTask(
+const deepestInsights = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -31,7 +31,7 @@ const task_deepestInsights = createTask(
     ),
 );
 
-const task_psiEnergy = createTask(
+const psiEnergy = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -46,18 +46,56 @@ const task_psiEnergy = createTask(
     ),
 );
 
+const empoweredStrikes = createTask(
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ],
+    chrome.i18n.getMessage('empowered_strikes_task_title',
+        [items.bigResources.wood.name]
+    ),
+    chrome.i18n.getMessage('empowered_strikes_task_text', 
+        ['1', items.bigResources.wood.name]
+    ),
+);
+
+const psiInfusedStrikes = createTask(
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ],
+    chrome.i18n.getMessage('psi_infused_strikes_task_title',
+        [items.bigResources.wood.name]
+    ),
+    chrome.i18n.getMessage('psi_infused_strikes_task_text', 
+        ['1', items.bigResources.wood.name]
+    ),
+);
+
 const focusSiteTasks: IScreenTasks = {
     1: {
         status: TaskStatus.unknown,
-        task: task_buildFocusSchool
+        task: buildFocusSite
     },
     2: {
         status: TaskStatus.unknown,
-        task: task_deepestInsights
+        task: deepestInsights
     },
     3: {
         status: TaskStatus.unknown,
-        task: task_psiEnergy
+        task: psiEnergy
+    },
+    5: {
+        status: TaskStatus.unknown,
+        task: empoweredStrikes
+    },
+    7: {
+        status: TaskStatus.unknown,
+        task: psiInfusedStrikes
     }
 }
 

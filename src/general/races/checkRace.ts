@@ -6,14 +6,14 @@ import { Race } from "../../enums-and-interfaces/enums";
 function checkRace(inventory: IInventory, isStrong: boolean): Race {
     const currentRace: IMutationsForRaceCheck = {
         horns: inventory.head.name === mutations.weapons.horns.name,
-        hooves: inventory.legs.name === mutations.other.mutation_hooves.name,
+        hooves: inventory.legs.name === mutations.other.hooves.name,
         lowerFangs: inventory.chin.name === mutations.weapons.lowerFangs.name,
         scales: inventory.skin.name === mutations.armors.scales.name,
         fur: inventory.skin.name === mutations.armors.fur.name,
         tailWithSting: inventory.tail.name === mutations.weapons.tailWithSting.name,
         claws: inventory.bothHands.name === mutations.weapons.claws.name,
         acidSpit: inventory.chin.name === mutations.weapons.acidSpit.name,
-        wings: inventory.back.name === mutations.other.mutation_wings.name,
+        wings: inventory.back.name === mutations.other.wings.name,
         pincers: inventory.shoulders.name === mutations.weapons.pincers.name,
         raptorLegs: inventory.legs.name === mutations.weapons.raptorLegs.name
     }

@@ -112,6 +112,50 @@ const cyberFistLeftHandSmash = createBattleAbility(
     [1, 70]
 );
 
+const musketButtHit = createBattleAbility(
+    [
+        chrome.i18n.getMessage('musket_butt_hit'), 
+        '', 
+        images.armouryItems.musket
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSmashing]: 1},
+    [1, 70]
+);
+
+const battleMusketButtHit = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_musket_butt_hit'), 
+        '', 
+        images.armouryItems.battleMusket
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSmashing]: 1},
+    [1, 70]
+);
+
+const rifleButtHit = createBattleAbility(
+    [
+        chrome.i18n.getMessage('rifle_butt_hit'), 
+        '', 
+        images.armouryItems.rifle
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSmashing]: 1},
+    [1, 70]
+);
+
+const battleRifleButtHit = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_rifle_butt_hit'), 
+        '', 
+        images.armouryItems.battleRifle
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSmashing]: 1},
+    [1, 70]
+);
+
 const physicalSmashing = {
     affiliatedMaceSmash,
     cyberFistLeftHandSmash,
@@ -120,7 +164,11 @@ const physicalSmashing = {
     fistSmash,
     maceSmash,
     martialHit,
+    musketButtHit,
+    battleMusketButtHit,
     runicGreathammerSmash,
+    rifleButtHit,
+    battleRifleButtHit,
     steelGreathammerSmash,    
     thunderPunch,    
 }

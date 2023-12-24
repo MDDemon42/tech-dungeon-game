@@ -3,8 +3,18 @@ import acidizer from './acidizer.png';
 import acidSpit from './acidSpit.png';
 import apprenticeHat from './apprenticeHat.png';
 import apprenticeRod from './apprenticeRod.png';
-import axeRightHand from './axeRightHand.png';
-import axeLeftHand from './axeLeftHand.png';
+import axe from './axe.png';
+import battleAxeRightHand from './battleAxeRightHand.png';
+import battleAxeLeftHand from './battleAxeLeftHand.png';
+import battleMageAxeLeftHand from './battleMageAxeLeftHand.png';
+import battleMageAxeRightHand from './battleMageAxeRightHand.png';
+import battleMageMusket from './battleMageMusket.png';
+import battleMageRifle from './battleMageRifle.png';
+import battleMusket from './battleMusket.png';
+import battlePistol from './battlePistol.png';
+import battleRevolverLeftHand from './battleRevolverLeftHand.png';
+import battleRevolverRightHand from './battleRevolverRightHand.png';
+import battleRifle from './battleRifle.png';
 import belt from './belt.png';
 import brutalLegs from './brutalLegs.png';
 import brutalTorso from './brutalTorso.png';
@@ -14,24 +24,39 @@ import clawRight from './clawRight.png';
 import cyberClaw from './cyberClaw.png';
 import cyberFistRightHand from './cyberFistRightHand.png';
 import cyberFistLeftHand from './cyberFistLeftHand.png';
-import guardianAura from './guardianAura.png';
-import guardianField from './guardianField.png';
+import dragonBoneBlade from './dragonBoneBlade.png';
 import energyShield from './energyShield.png';
 import flyingCape from './flyingCape.png';
 import freezer from './freezer.png';
 import furTorso from './furTorso.png';
+import glaive from './glaive.png';
+import guardianAura from './guardianAura.png';
+import guardianField from './guardianField.png';
+import halberd from './halberd.png';
 import head from './head.png';
 import healingPotion from './healingPotion.png';
 import heatSaber from './heatSaber.png';
 import hooves from './hooves.png';
 import horns from './horns.png';
 import intuition from './intuition.png';
+import katana from './katana.png';
+import khopesh from './khopesh.png';
 import laser from './laser.png';
 import leatherArmor from './leatherArmor.png';
 import leftHand from './leftHand.png';
 import legs from './legs.png';
 import levitation from './levitation.png';
 import lowerFangs from './lowerFangs.png';
+import macuahuitl from './macuahuitl.png';
+import mageDragonBoneBlade from './mageDragonBoneBlade.png';
+import mageGlaive from './mageGlaive.png';
+import mageHalberd from './mageHalberd.png';
+import mageKhopesh from './mageKhopesh.png';
+import mageMacuahuitl from './mageMacuahuitl.png';
+import mageMusket from './mageMusket.png';
+import mageRifle from './mageRifle.png';
+import mageWandLeftHand from './mageWandLeftHand.png';
+import mageWandRightHand from './mageWandRightHand.png';
 import magisterHat from './magisterHat.png';
 import magisterRobe from './magisterRobe.png';
 import magisterScepter from './magisterScepter.png';
@@ -44,15 +69,22 @@ import oakBow from './oakBow.png';
 import oakCrossbow from './oakCrossbow.png';
 import pickaxe from './pickaxe.png';
 import pincers from './pincers.png';
+import pistol from './pistol.png';
 import psiBlade from './psiBlade.png';
+import psiJavelin from './psiJavelin.png';
 import psiLightning from './psiLightning.png';
+import rapier from './rapier.png';
 import raptorLegs from './raptorLegs.png';
 import reactiveFeet from './reactiveFeet.png';
+import revolverLeftHand from './revolverLeftHand.png';
+import revolverRightHand from './revolverRightHand.png';
+import rifle from './rifle.png'
 import rightHand from './rightHand.png';
 import rocketLauncher from './rocketLauncher.png';
 import runicGreataxe from './runicGreataxe.png';
 import runicGreathammer from './runicGreathammer.png';
 import runicGreatsword from './runicGreatsword.png';
+import sabre from './sabre.png';
 import scalesTorso from './scalesTorso.png';
 import spear from './spear.png';
 import steelArmor from './steelArmor.png';
@@ -74,78 +106,76 @@ import wings from './wings.png';
 import woodenShield from './woodenShield.png';
 
 const bodyElements = {
-    acidBomb,
-    acidizer,
-    acidSpit,
-    apprenticeHat,
-    apprenticeRod,
-    axeRightHand,
-    axeLeftHand,
+    acidBomb, acidizer, acidSpit,
+    apprenticeHat, apprenticeRod,
+    axe,
+    battleAxeRightHand, battleAxeLeftHand,
+    battleMageAxeLeftHand, battleMageAxeRightHand,
+    battleMageMusket, battleMageRifle,
+    battleMusket, battlePistol,
+    battleRevolverLeftHand, battleRevolverRightHand,
+    battleRifle,
     belt,
-    brutalLegs,
-    brutalTorso,
+    brutalLegs, brutalTorso,
     chakram,
-    clawLeft,
-    clawRight,
+    clawLeft, clawRight,
     cyberClaw,
-    guardianAura,
-    guardianField,
-    cyberFistRightHand,
-    cyberFistLeftHand,
+    cyberFistRightHand, cyberFistLeftHand,
+    dragonBoneBlade,
     energyShield,
-    taserWhip,
     flyingCape,
     freezer,
     furTorso,
+    glaive,
+    guardianAura, guardianField,
+    halberd,
     head,
     healingPotion,
     heatSaber,
-    hooves,
-    horns,
+    hooves, horns,
     intuition,
+    katana, khopesh,
     laser,
     leatherArmor,
     leftHand,
     legs,
     levitation,
     lowerFangs,
-    magisterHat,
-    magisterRobe,
-    magisterScepter,
+    macuahuitl,
+    mageDragonBoneBlade, mageGlaive, mageHalberd,
+    mageKhopesh, mageMacuahuitl,
+    mageMusket, mageRifle,
+    mageWandLeftHand, mageWandRightHand,
+    magisterHat, magisterRobe, magisterScepter,
     musket,
-    nanoMatrixTorso,
-    nanoMatrixLegs,
-    nanoVestTorso,
-    nanoVestLegs,
-    oakBow,
-    oakCrossbow,
+    nanoMatrixTorso, nanoMatrixLegs,
+    nanoVestTorso, nanoVestLegs,
+    oakBow, oakCrossbow,
     pickaxe,
     pincers,
-    psiBlade,
-    psiLightning,
+    pistol,
+    psiBlade, psiJavelin, psiLightning,
+    rapier,
     raptorLegs,
     reactiveFeet,
+    revolverLeftHand, revolverRightHand, rifle,
     rightHand,
     rocketLauncher,
-    runicGreataxe,
-    runicGreathammer,
-    runicGreatsword,
+    runicGreataxe, runicGreathammer, runicGreatsword,
+    sabre,
     scalesTorso,
-    treeCutter,
     spear,
     steelArmor,
-    steelGreataxe,
-    steelGreathammer,
-    steelGreatsword,
+    steelGreataxe, steelGreathammer, steelGreatsword,
     steelMace,
     steelShield,
-    steelSwordLeftHand,
-    steelSwordRightHand,
+    steelSwordLeftHand, steelSwordRightHand,
     tailWithSting,
+    taserWhip,    
     telekinesis,
-    titanLegs,
-    titanTorso,
+    titanLegs, titanTorso,
     torso,
+    treeCutter,
     wings,
     woodenShield
 }

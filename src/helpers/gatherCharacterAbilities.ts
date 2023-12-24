@@ -2,11 +2,23 @@ import { DamageType } from "../enums-and-interfaces/enums";
 import { ICharacher, IBattleAbility } from "../enums-and-interfaces/interfaces";
 import abilities from "../general/abilities";
 import items from "../gameScreens/Market/items";
-import guildMasteries from "../gameScreens/Guild/masteries";
 import academyMasteries from "../gameScreens/Academy/masteries";
 import checkRipApart from "../general/races/checkRipApart";
 import wizardItems from "../gameScreens/WizardSchool/wizardItems";
 import { createEmptyInventory, createNoItem } from "./emptyEssencesCreators";
+import psionMasteries from "../gameScreens/FocusSite/masteries";
+import armouryItems from "../gameScreens/Mansion/armouryItems";
+import mansionMasteries from "../gameScreens/Mansion/masteries";
+import airMasteries from "../gameScreens/AirSite/masteries";
+import { 
+    createEmpoweredAbility, 
+    createElectrifiedAbility, 
+    createEnflamedAbility, 
+    createFreezingAbility, 
+    createPsiInfusedAbility
+} from "./elementInfusedAblitiesCreators";
+import fireMasteries from "../gameScreens/FireSite/masteries";
+import coldMasteries from "../gameScreens/IceSite/masteries";
 
 function gatherCharacterAbilities(character: ICharacher) {
     const result: IBattleAbility[] = [];
@@ -14,6 +26,7 @@ function gatherCharacterAbilities(character: ICharacher) {
     const masteriesUser = character.general.mind.masteries.map(mastery => mastery.name);
     const spellsUser = character.general.mind.spells;
     const powersUser = character.general.mind.powers;
+    const bendingUser = character.general.mind.bending;
 
     const inventory = character.general.inventory ? 
         character.general.inventory : 
@@ -22,18 +35,19 @@ function gatherCharacterAbilities(character: ICharacher) {
     for (const name in inventory) {
         if (inventory[name].abilities) {
             // @ts-expect-error
-            if (inventory[name].linkedMastery) {
+            if (inventory[name].linkedAbilities) {
                 // @ts-expect-error
-                const masteryName = inventory[name].linkedMastery;
-                if (masteryName && masteriesUser.includes(masteryName)) {
-                    // @ts-expect-error
-                    result.push(...inventory[name].masterAbilities);
-                } else {
-                    const {abilities} = inventory[name];
-                    if (abilities) {
-                        result.push(...abilities);
+                for (const linkedAbility of inventory[name].linkedAbilities) {
+                    const masteryName = linkedAbility.linkedMastery;
+                    if (masteriesUser.includes(masteryName)) {
+                        result.push(linkedAbility.masterAbility);
+                    } else {
+                        const {abilities} = inventory[name];
+                        if (abilities) {
+                            result.push(...abilities);
+                        }
                     }
-                }
+                }                
             } else {
                 const {abilities} = inventory[name];
                 if (abilities) {
@@ -47,6 +61,21 @@ function gatherCharacterAbilities(character: ICharacher) {
     if (ripApart) {
         result.push(ripApart);
     }
+
+    const noItem = createNoItem();
+    bendingUser.forEach(bending => {
+        if (bending.requiresBothHands) {
+            if (
+                inventory.bothHands.name === noItem.name &&
+                inventory.leftHand.name === noItem.name &&
+                inventory.rightHand.name === noItem.name
+            ) {
+                result.push(bending.ability);
+            }
+        } else {
+            result.push(bending.ability);
+        }
+    })
 
     spellsUser.forEach(spell => {
         if (!!spell.ability) {
@@ -71,18 +100,18 @@ function gatherCharacterAbilities(character: ICharacher) {
 
     // special abilities
     if (
-        inventory.leftHand.name === items.weapons.item_steelSwordLeftHand.name &&
-        inventory.rightHand.name === items.weapons.item_steelSwordRightHand.name &&
-        masteriesUser.includes(academyMasteries.mastery_dualSwords.name)
+        inventory.leftHand.name === items.weapons.steelSwordLeftHand.name &&
+        inventory.rightHand.name === items.weapons.steelSwordRightHand.name &&
+        masteriesUser.includes(academyMasteries.dualSwords.name)
     ) {
         result.push(abilities.battleAbilities.melee.physicalSlashing.dualSwordsSlash);
     }
 
     if (
-        inventory.leftHand.name === items.weapons.item_axeLeftHand.name &&
-        inventory.rightHand.name === items.weapons.item_axeRightHand.name
+        inventory.leftHand.name === armouryItems.battleWeapons.battleAxeLeftHand.name &&
+        inventory.rightHand.name === armouryItems.battleWeapons.battleAxeRightHand.name
     ) {
-        if (masteriesUser.includes(academyMasteries.mastery_axeAffiliation.name)) {
+        if (masteriesUser.includes(mansionMasteries.axeAffiliation.name)) {
             result.push(abilities.battleAbilities.melee.physicalSlashing.affiliatedDoubleAxeSlash);
         } else {
             result.push(abilities.battleAbilities.melee.physicalSlashing.doubleAxeSlash);
@@ -91,50 +120,52 @@ function gatherCharacterAbilities(character: ICharacher) {
         
 
     // basic ability
-    const noItem = createNoItem();
     if (
         (
             inventory.leftHand.name === noItem.name ||
             inventory.rightHand.name === noItem.name
         ) && inventory.bothHands.name === noItem.name
     ) {
-        if (masteriesUser.includes(academyMasteries.mastery_martialArts.name)) {
+        if (masteriesUser.includes(academyMasteries.martialArts.name)) {
             result.push(abilities.battleAbilities.melee.physicalSmashing.martialHit);
-        } else if (masteriesUser.includes(academyMasteries.mastery_brutalForce.name)) {
+        } else if (masteriesUser.includes(academyMasteries.brutalForce.name)) {
             result.push(abilities.battleAbilities.melee.physicalSmashing.fistSmash);
         } else {
             result.push(abilities.battleAbilities.melee.physicalSmashing.fistPunch);
         }        
     }
 
-    // empoweredAbilities
-    if (masteriesUser.includes(guildMasteries.mastery_empoweredStrikes.name)) {
-        const createEmpoweredAbility = (ability: IBattleAbility) => {
-            const empoweredAbility = {...ability};
-            const damageType = Object.keys(ability.damage)[0] as DamageType;
-            
-            empoweredAbility.damage = {[damageType]: ability.damage[damageType]! + 1}
-            empoweredAbility.costs = {...ability.costs, Focus: 1};
-            empoweredAbility.name = chrome.i18n.getMessage('empowered') + 
-                empoweredAbility.name.toLowerCase();
-            
-            return empoweredAbility
-        }
-        
-        result
-            .filter(ability => (
-                Object.keys(ability.damage).length === 1 && (
-                    ability.damage[DamageType.physicalPiercing] ||
-                    ability.damage[DamageType.physicalSlashing] ||
-                    ability.damage[DamageType.physicalSmashing]
-                )
-            ))
-            .forEach(ability => {
+    result
+        .filter(ability => (
+            Object.keys(ability.damage).length === 1 && (
+                ability.damage[DamageType.physicalPiercing] ||
+                ability.damage[DamageType.physicalSlashing] ||
+                ability.damage[DamageType.physicalSmashing]
+            )
+        ))
+        .forEach(ability => {
+            if (masteriesUser.includes(psionMasteries.empoweredStrikes.name)) {        
                 result.push(createEmpoweredAbility(ability));
-            })
-    }
+            }
 
-    return result
+            if (masteriesUser.includes(psionMasteries.psiInfusedStrikes.name)) {        
+                result.push(createPsiInfusedAbility(ability));
+            }
+
+            if (masteriesUser.includes(airMasteries.electrifiedStrikes.name)) {
+                result.push(createElectrifiedAbility(ability));
+            }
+
+            if (masteriesUser.includes(fireMasteries.enflamedStrikes.name)) {
+                result.push(createEnflamedAbility(ability));
+            }
+
+            if (masteriesUser.includes(coldMasteries.freezingStrikes.name)) {
+                result.push(createFreezingAbility(ability));
+            }
+        })
+
+    return Array.from(new Set(result))
 }
 
 export default gatherCharacterAbilities

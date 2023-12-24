@@ -35,11 +35,11 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('academy_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                if (data.name === academyMasteries.mastery_brutalForce.name) {
+                dispatch(gameSquad.actions.learnMastery(data));
+
+                if (data.name === academyMasteries.brutalForce.name) {
                     dispatch(gameSquad.actions.raiseStrength(3))
                 }
-
-                dispatch(gameSquad.actions.learnMastery({index, data}));
             }
         },
         [MindGameScreens.airSchool]: {
@@ -48,7 +48,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('air_school_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                dispatch(gameSquad.actions.learnMastery({index, data}));
+                dispatch(gameSquad.actions.learnMastery(data));
             }
         },
         [MindGameScreens.fireSchool]: {
@@ -57,7 +57,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('fire_school_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                dispatch(gameSquad.actions.learnMastery({index, data}));
+                dispatch(gameSquad.actions.learnMastery(data));
             }
         },
         [MindGameScreens.focusSite]: {
@@ -75,7 +75,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('focus_school_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                dispatch(gameSquad.actions.learnMastery({index, data}));
+                dispatch(gameSquad.actions.learnMastery(data));
             }
         },
         [MindGameScreens.guildRituals]: {
@@ -93,7 +93,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('guild_school_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                dispatch(gameSquad.actions.learnMastery({index, data}));
+                dispatch(gameSquad.actions.learnMastery(data));
             }
         },
         [MindGameScreens.iceSchool]: {
@@ -102,7 +102,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('ice_school_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                dispatch(gameSquad.actions.learnMastery({index, data}));
+                dispatch(gameSquad.actions.learnMastery(data));
             }
         },
         [MindGameScreens.spellSchool]: {
@@ -120,7 +120,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('wizard_school_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                dispatch(gameSquad.actions.learnMastery({index, data}));
+                dispatch(gameSquad.actions.learnMastery(data));
             }
         }, 
     }

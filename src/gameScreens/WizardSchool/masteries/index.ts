@@ -2,7 +2,7 @@ import { IMastery } from "../../../enums-and-interfaces/interfaces"
 import images from "../../../images/images"
 import { createMastery } from "../../Academy/masteries"
 
-const mastery_scholarship = createMastery(
+const scholarship = createMastery(
     [
         chrome.i18n.getMessage('scholarship'),
         chrome.i18n.getMessage('scholarship_mastery_description'),
@@ -11,24 +11,24 @@ const mastery_scholarship = createMastery(
     ''
 )
 
-const mastery_magisterDegree = createMastery(
+const magisterDegree = createMastery(
     [
         chrome.i18n.getMessage('magister_degree'),
         chrome.i18n.getMessage('magister_degree_mastery_description'),
         images.wizardItems.magisterHat
     ],
-    mastery_scholarship.name
+    scholarship.name
 )
 
 const wizardMasteries = {
-    mastery_scholarship,
-    mastery_magisterDegree
+    scholarship,
+    magisterDegree
 }
 
 export const wizardSchoolOptions: Record<string, IMastery[]> = {
     0: [],
-    1: [wizardMasteries.mastery_scholarship],
-    2: [wizardMasteries.mastery_magisterDegree]
+    1: [wizardMasteries.scholarship],
+    2: [wizardMasteries.magisterDegree]
 }
 
 export default wizardMasteries

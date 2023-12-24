@@ -6,12 +6,10 @@ import runicGreatsword from './runicGreatsword.png';
 import titanSkinRitual from './titanSkinRitual.png';
 import dualSwords from './dualSwords.png';
 import battleRunes from './battleRunes.png';
-import empoweredStrikes from './empoweredStrikes.png';
 
 const guildianLearnings = {
     battleRunes,
     chakram,
-    empoweredStrikes,
     multistrike,
     runicGreataxe,
     runicGreathammer,

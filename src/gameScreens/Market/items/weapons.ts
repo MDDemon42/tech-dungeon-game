@@ -4,43 +4,7 @@ import images from "../../../images/images";
 import abilities from "../../../general/abilities";
 import academyMasteries from "../../Academy/masteries";
 
-const item_axeRightHand = createItem(
-    [
-        chrome.i18n.getMessage('axe'), 
-        chrome.i18n.getMessage('axe_item_description'),
-        images.normalItems.axe
-    ],
-    [
-        1, InventoryPlace.rightHand, 1
-    ],
-    [
-        '', 
-        [abilities.battleAbilities.melee.physicalSlashing.axeSlash],
-        academyMasteries.mastery_axeAffiliation.name, 
-        [abilities.battleAbilities.melee.physicalSlashing.affiliatedAxeSlash],
-        null
-    ]
-)
-
-const item_axeLeftHand = createItem(
-    [
-        chrome.i18n.getMessage('axe'), 
-        chrome.i18n.getMessage('axe_item_description'),
-        images.normalItems.axe
-    ],
-    [
-        1, InventoryPlace.leftHand, 1
-    ],
-    [
-        '', 
-        [abilities.battleAbilities.melee.physicalSlashing.axeSlash],
-        academyMasteries.mastery_axeAffiliation.name, 
-        [abilities.battleAbilities.melee.physicalSlashing.affiliatedAxeSlash],
-        null
-    ]
-)
-
-const item_steelSwordRightHand = createItem(
+const steelSwordRightHand = createItem(
     [
         chrome.i18n.getMessage('steel_sword'), 
         chrome.i18n.getMessage('steel_sword_item_description'),
@@ -49,22 +13,25 @@ const item_steelSwordRightHand = createItem(
     [
         1, InventoryPlace.rightHand, 1
     ],
+    '', 
     [
-        '', 
-        [
-            abilities.battleAbilities.melee.physicalSlashing.swordSlash,
-            abilities.battleAbilities.melee.physicalPiercing.swordStab
-        ],
-        academyMasteries.mastery_swordAffiliation.name,
-        [
-            abilities.battleAbilities.melee.physicalSlashing.affiliatedSwordSlash,
-            abilities.battleAbilities.melee.physicalPiercing.affiliatedSwordStab
-        ],
-        null
+        abilities.battleAbilities.melee.physicalSlashing.swordSlash,
+        abilities.battleAbilities.melee.physicalPiercing.swordStab
+    ],
+    null,
+    [
+        {
+            linkedMastery: academyMasteries.swordAffiliation.name,
+            masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedSwordSlash
+        },
+        {
+            linkedMastery: academyMasteries.swordAffiliation.name,
+            masterAbility: abilities.battleAbilities.melee.physicalPiercing.affiliatedSwordStab
+        }
     ]
-)
+);
 
-const item_steelSwordLeftHand = createItem(
+const steelSwordLeftHand = createItem(
     [
         chrome.i18n.getMessage('steel_sword'), 
         chrome.i18n.getMessage('steel_sword_item_description'),
@@ -73,22 +40,25 @@ const item_steelSwordLeftHand = createItem(
     [
         1, InventoryPlace.leftHand, 1
     ],
+    academyMasteries.dualSwords.name,
     [
-        academyMasteries.mastery_dualSwords.name,
-        [
-            abilities.battleAbilities.melee.physicalSlashing.swordSlash,
-            abilities.battleAbilities.melee.physicalPiercing.swordStab
-        ],
-        academyMasteries.mastery_swordAffiliation.name,
-        [
-            abilities.battleAbilities.melee.physicalSlashing.affiliatedSwordSlash,
-            abilities.battleAbilities.melee.physicalPiercing.affiliatedSwordStab
-        ],
-        null
+        abilities.battleAbilities.melee.physicalSlashing.swordSlash,
+        abilities.battleAbilities.melee.physicalPiercing.swordStab
+    ],
+    null,
+    [
+        {
+            linkedMastery: academyMasteries.swordAffiliation.name,
+            masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedSwordSlash
+        },
+        {
+            linkedMastery: academyMasteries.swordAffiliation.name,
+            masterAbility: abilities.battleAbilities.melee.physicalPiercing.affiliatedSwordStab
+        }
     ]
-)
+);
 
-const item_steelMace = createItem(
+const steelMace = createItem(
     [
         chrome.i18n.getMessage('steel_mace'), 
         chrome.i18n.getMessage('steel_mace_item_description'),
@@ -97,16 +67,20 @@ const item_steelMace = createItem(
     [
         2, InventoryPlace.rightHand, 1
     ],
+    '',
     [
-        '',
-        [abilities.battleAbilities.melee.physicalSmashing.maceSmash],
-        academyMasteries.mastery_maceAffiliation.name, 
-        [abilities.battleAbilities.melee.physicalSmashing.affiliatedMaceSmash],
-        null
+        abilities.battleAbilities.melee.physicalSmashing.maceSmash
+    ],
+    null,
+    [
+        {
+            linkedMastery: academyMasteries.maceAffiliation.name,
+            masterAbility: abilities.battleAbilities.melee.physicalSmashing.affiliatedMaceSmash
+        }
     ]
-)
+);
 
-const item_spear = createItem(
+const spear = createItem(
     [
         chrome.i18n.getMessage('spear'), 
         chrome.i18n.getMessage('spear_item_description'),
@@ -115,16 +89,20 @@ const item_spear = createItem(
     [
         1, InventoryPlace.rightHand, 1
     ],
+    '', 
     [
-        '', 
-        [abilities.battleAbilities.melee.physicalPiercing.spearPierce],
-        academyMasteries.mastery_spearAffiliation.name, 
-        [abilities.battleAbilities.melee.physicalPiercing.affiliatedSpearPierce],
-        null
+        abilities.battleAbilities.melee.physicalPiercing.spearPierce
+    ],
+    null,
+    [
+        {
+            linkedMastery: academyMasteries.spearAffiliation.name, 
+            masterAbility: abilities.battleAbilities.melee.physicalPiercing.affiliatedSpearPierce
+        }
     ]
-)
+);
 
-const item_steelGreataxe = createItem(
+const steelGreataxe = createItem(
     [
         chrome.i18n.getMessage('steel_greataxe'), 
         chrome.i18n.getMessage('steel_greataxe_item_description'),
@@ -133,14 +111,14 @@ const item_steelGreataxe = createItem(
     [
         2, InventoryPlace.bothHands, 1
     ],
+    academyMasteries.brutalForce.name,
     [
-        academyMasteries.mastery_brutalForce.name,
-        [abilities.battleAbilities.melee.physicalSlashing.steelGreataxeSlash],
-        '', null, null
-    ]
-)
+        abilities.battleAbilities.melee.physicalSlashing.steelGreataxeSlash
+    ],
+    null, null
+);
 
-const item_steelGreathammer = createItem(
+const steelGreathammer = createItem(
     [
         chrome.i18n.getMessage('steel_greathammer'), 
         chrome.i18n.getMessage('steel_greathammer_item_description'),
@@ -149,14 +127,14 @@ const item_steelGreathammer = createItem(
     [
         2, InventoryPlace.bothHands, 1
     ],
+    academyMasteries.brutalForce.name,
     [
-        academyMasteries.mastery_brutalForce.name,
-        [abilities.battleAbilities.melee.physicalSmashing.steelGreathammerSmash],
-        '', null, null
-    ]
-)
+        abilities.battleAbilities.melee.physicalSmashing.steelGreathammerSmash
+    ],
+    null, null
+);
 
-const item_steelGreatsword = createItem(
+const steelGreatsword = createItem(
     [
         chrome.i18n.getMessage('steel_greatsword'), 
         chrome.i18n.getMessage('steel_greatsword_item_description'),
@@ -165,14 +143,14 @@ const item_steelGreatsword = createItem(
     [
         2, InventoryPlace.bothHands, 1
     ],
+    academyMasteries.brutalForce.name,
     [
-        academyMasteries.mastery_brutalForce.name,
-        [abilities.battleAbilities.melee.physicalSlashing.steelGreatswordSlash],
-        '', null, null
-    ]
-)
+        abilities.battleAbilities.melee.physicalSlashing.steelGreatswordSlash
+    ],
+    null, null
+);
 
-const item_oakBow = createItem(
+const oakBow = createItem(
     [
         chrome.i18n.getMessage('oak_bow'), 
         chrome.i18n.getMessage('oak_bow_item_description'),
@@ -181,42 +159,61 @@ const item_oakBow = createItem(
     [
         1, InventoryPlace.bothHands, 1
     ],
+    '', 
     [
-        '', 
-        [abilities.battleAbilities.ranged.physicalPiercing.oakBowShot],
-        academyMasteries.mastery_bowAffiliation.name,
-        [abilities.battleAbilities.ranged.physicalPiercing.affiliatedOakBowShot],
-        null
+        abilities.battleAbilities.ranged.physicalPiercing.oakBowShot
+    ],
+    null,
+    [
+        {
+            linkedMastery: academyMasteries.bowAffiliation.name,
+            masterAbility: abilities.battleAbilities.ranged.physicalPiercing.affiliatedOakBowShot
+        }
     ]
-)
+);
+
+const axe = createItem(
+    [
+        chrome.i18n.getMessage('axe'), 
+        chrome.i18n.getMessage('axe_item_description'),
+        images.normalItems.axe
+    ],
+    [
+        1, InventoryPlace.rightHand, 1
+    ],
+    '',
+    [
+        abilities.battleAbilities.melee.physicalSlashing.axeSlash
+    ],
+    null, null
+);
 
 const pickaxe = createItem(
     [
         chrome.i18n.getMessage('pickaxe'), 
         chrome.i18n.getMessage('pickaxe_item_description'),
-        images.misc.pickaxe
+        images.normalItems.pickaxe
     ],
     [
         1, InventoryPlace.rightHand, 1
     ],
+    '',
     [
-        '',
-        [abilities.battleAbilities.melee.physicalPiercing.pickaxePick],
-        '', null, null
-    ]
-)
+        abilities.battleAbilities.melee.physicalPiercing.pickaxePick
+    ],
+    null, null
+);
 
 const weapons = {
-    item_axeRightHand,
-    item_axeLeftHand,
-    item_steelGreataxe,
-    item_steelGreathammer,
-    item_steelGreatsword,
-    item_steelMace,
-    item_spear,
-    item_steelSwordRightHand,
-    item_steelSwordLeftHand,
-    item_oakBow,
+    steelGreataxe,
+    steelGreathammer,
+    steelGreatsword,
+    steelMace,
+    spear,
+    steelSwordRightHand,
+    steelSwordLeftHand,
+    oakBow,
+    axe,
     pickaxe
 }
 

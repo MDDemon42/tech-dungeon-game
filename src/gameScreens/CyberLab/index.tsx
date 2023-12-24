@@ -16,12 +16,14 @@ function CyberLab() {
         {
             title: chrome.i18n.getMessage('high_energy_cybers_task_title'),
             stage: 2,
-            disabled: stage % 2 ===0 
+            disabled: stage % 2 ===0,
+            visible: true
         },
         {
             title: chrome.i18n.getMessage('nano_cybers_task_title'),
             stage: 3,
-            disabled: stage % 3 ===0 
+            disabled: stage % 3 ===0,
+            visible: true
         },
     ];
 

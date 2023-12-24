@@ -3,7 +3,7 @@ import { IScreenTasks } from "../../../enums-and-interfaces/interfaces";
 import items from "../../Market/items";
 import { createTask } from "../../../redux/slices/gameStage";
 
-const task_buildIceSite = createTask(
+const buildIceSite = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -16,7 +16,22 @@ const task_buildIceSite = createTask(
     ),
 );
 
-const task_iceSpear = createTask(
+const iceShard = createTask(
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ], 
+    chrome.i18n.getMessage('ice_shard_task_title', 
+        [items.bigResources.wood.name]
+    ),
+    chrome.i18n.getMessage('ice_shard_task_text', 
+        ['1', items.bigResources.wood.name]
+    ),
+);
+
+const iceSpear = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -31,7 +46,7 @@ const task_iceSpear = createTask(
     ),
 );
 
-const task_iceHail = createTask(
+const iceHail = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -46,7 +61,7 @@ const task_iceHail = createTask(
     ),
 );
 
-const task_coldDeath = createTask(
+const coldDeath = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -61,22 +76,45 @@ const task_coldDeath = createTask(
     ),
 );
 
+const freezingStrikes = createTask(
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ], 
+    chrome.i18n.getMessage('freezing_strikes_task_title', 
+        [items.bigResources.wood.name]
+    ),
+    chrome.i18n.getMessage('freezing_strikes_task_text', 
+        ['1', items.bigResources.wood.name]
+    ),
+);
+
 const iceSiteTasks: IScreenTasks = {
     1: {
         status: TaskStatus.unknown,
-        task: task_buildIceSite
+        task: buildIceSite
     },
     2: {
         status: TaskStatus.unknown,
-        task: task_iceSpear
+        task: iceShard
     },
     3: {
         status: TaskStatus.unknown,
-        task: task_iceHail
+        task: iceSpear
     },
     5: {
         status: TaskStatus.unknown,
-        task: task_coldDeath
+        task: iceHail
+    },
+    7: {
+        status: TaskStatus.unknown,
+        task: coldDeath
+    },
+    11: {
+        status: TaskStatus.unknown,
+        task: freezingStrikes
     }
 }
 

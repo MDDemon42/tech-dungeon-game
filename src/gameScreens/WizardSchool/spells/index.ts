@@ -27,117 +27,117 @@ function createSpell(
     }
 }
 
-const spell_multistrike = createSpell(
+const multistrike = createSpell(
     [
         chrome.i18n.getMessage('multistrike'),
         chrome.i18n.getMessage('multistrike_spell_description'),
         images.guildianLearnings.multistrike
     ],
     [
-        academyMasteries.mastery_swordAffiliation.name,
+        academyMasteries.swordAffiliation.name,
         false,
         null
     ]
 )
 
-const spell_defensiveCharms = createSpell(
+const defensiveCharms = createSpell(
     [
         chrome.i18n.getMessage('defensive_charms'),
         chrome.i18n.getMessage('defensive_charms_spell_description'),
         images.wizardSpells.defensiveCharms
     ],
     [
-        wizardMasteries.mastery_scholarship.name,
+        wizardMasteries.scholarship.name,
         true,
         null
     ]
 )
 
-const spell_defensiveEnchantment = createSpell(
+const defensiveEnchantment = createSpell(
     [
         chrome.i18n.getMessage('defensive_enchantment'),
         chrome.i18n.getMessage('defensive_enchantment_spell_description'),
         images.wizardSpells.defensiveRunes
     ],
     [
-        wizardMasteries.mastery_magisterDegree.name,
+        wizardMasteries.magisterDegree.name,
         true,
         null
     ]
 )
 
-const spell_flyingCharms = createSpell(
+const flyingCharms = createSpell(
     [
         chrome.i18n.getMessage('flying_charm'),
         chrome.i18n.getMessage('flying_charm_spell_description'),
         images.wizardSpells.flyingCharms
     ],
     [
-        wizardMasteries.mastery_scholarship.name,
+        wizardMasteries.scholarship.name,
         true,
         null
     ]
 )
 
-const spell_stoneGolem = createSpell(
+const stoneGolem = createSpell(
     [
         chrome.i18n.getMessage('stone_golem'),
         chrome.i18n.getMessage('stone_golem_spell_description'),
         images.wizardSpells.stoneGolem
     ],
     [
-        wizardMasteries.mastery_magisterDegree.name,
+        wizardMasteries.magisterDegree.name,
         true,
         null
     ]
 )
 
-const spell_magicBolt = createSpell(
+const magicBolt = createSpell(
     [
         chrome.i18n.getMessage('electrical_bolt'),
         chrome.i18n.getMessage('electrical_bolt_spell_description'),
         images.wizardSpells.magicBolt
     ],
     [
-        wizardMasteries.mastery_scholarship.name,
+        wizardMasteries.scholarship.name,
         true,
         abilities.battleAbilities.ranged.electrical.magicBolt
     ]
 )
 
-const spell_teleport = createSpell(
+const teleport = createSpell(
     [
         chrome.i18n.getMessage('teleport'),
         chrome.i18n.getMessage('teleport_spell_description'),
         images.wizardSpells.teleport
     ],
     [
-        wizardMasteries.mastery_magisterDegree.name,
+        wizardMasteries.magisterDegree.name,
         true,
         null
     ]
 )
 
 const spells = {
-    spell_multistrike,
-    spell_defensiveCharms,
-    spell_defensiveEnchantment,
-    spell_flyingCharms,
-    spell_stoneGolem,
-    spell_magicBolt,
-    spell_teleport
+    multistrike,
+    defensiveCharms,
+    defensiveEnchantment,
+    flyingCharms,
+    stoneGolem,
+    magicBolt,
+    teleport
 }
 
 const appreticeSpells = [
-    spells.spell_magicBolt,
-    spells.spell_defensiveCharms,
-    spells.spell_flyingCharms,
+    spells.magicBolt,
+    spells.defensiveCharms,
+    spells.flyingCharms,
 ];
 
 const magisterSpells = [
-    spells.spell_stoneGolem,
-    spells.spell_teleport,
-    spells.spell_defensiveEnchantment,
+    spells.stoneGolem,
+    spells.teleport,
+    spells.defensiveEnchantment,
 ]
 
 export const spellSchoolOptions: Record<string, ISpell[]> = {

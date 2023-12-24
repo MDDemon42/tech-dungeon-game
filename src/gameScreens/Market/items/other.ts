@@ -2,7 +2,7 @@ import { createItem } from ".";
 import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
 
-const item_healingPotion = createItem(
+const healingPotion = createItem(
     [
         chrome.i18n.getMessage('healing_potion'), 
         chrome.i18n.getMessage('healing_potion_item_description'),
@@ -11,13 +11,11 @@ const item_healingPotion = createItem(
     [
         1, InventoryPlace.leftPocket, 1
     ],
-    [
-        '', null, '', null, null
-    ]    
+    '', null, null, null
 )
 
 const other = {
-    item_healingPotion
+    healingPotion
 }
 
 export default other

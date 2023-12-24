@@ -144,7 +144,7 @@ export interface ISpell extends IMastery {
 }
 
 export interface IBending extends IMastery {
-    ability: IBattleAbility | null,
+    ability: IBattleAbility,
     requiresBothHands: boolean,
     requiredBending: string
 }
@@ -201,8 +201,10 @@ export interface IArmouryItem extends IItem {
 
 export interface IItem extends IInventorySlot {
     requiredMastery: string,
-    linkedMastery: string,
-    masterAbilities: IAbility[] | null,
+    linkedAbilities: {
+        linkedMastery: string,
+        masterAbility: IBattleAbility,
+    }[] | null,    
 }
 
 export interface IWizardItem extends IInventorySlot {
@@ -317,7 +319,8 @@ export interface ISubMindMapping extends ISubMapping {
 export interface IUpgradeButton {
     title: string,
     stage: number,
-    disabled: boolean
+    disabled: boolean,
+    visible: boolean
 }
 
 interface ISubMapping {

@@ -93,7 +93,8 @@ export function subInventoryEnableChecker(
     if (
         screenName === InventoryGameScreens.market ||
         screenName === InventoryGameScreens.guildShop ||
-        screenName === InventoryGameScreens.wizardShop
+        screenName === InventoryGameScreens.wizardShop ||
+        screenName === InventoryGameScreens.armoury
     ) {
         const nothing = createNoItem().name;
         const currentBackpacksItemsAmount = character.general.backpacks

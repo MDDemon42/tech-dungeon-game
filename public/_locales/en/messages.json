@@ -328,7 +328,7 @@
         "message": "This is our Armoury!"
     },
     "build_armoury_task_title": {
-        "message": "Let us build Academy"
+        "message": "Let us build Armoury"
     },
     "build_armoury_task_text": {
         "message": "You can use $count$ $resource$ to build Armoury.",
@@ -345,6 +345,70 @@
     },
     "craft": {
         "message": "Craft!"
+    },
+    "musket_options_task_title": {
+        "message": "Musket blueprints"
+    },
+    "musket_options_task_text": {
+        "message": "You can use $count$ $resource$ to make musket blueprints.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "rifle_options_task_title": {
+        "message": "Rifle blueprints"
+    },
+    "rifle_options_task_text": {
+        "message": "You can use $count$ $resource$ to make rifle blueprints.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "battle_options_task_title": {
+        "message": "Battle blueprints"
+    },
+    "battle_options_task_text": {
+        "message": "You can use $count$ $resource$ to make battle blueprints.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_options_task_title": {
+        "message": "Mage blueprints"
+    },
+    "mage_options_task_text": {
+        "message": "You can use $count$ $resource$ to make mage blueprints.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "focus_site_to": {
         "message": "To Focus Site!"
@@ -711,6 +775,12 @@
     "musket_item_description": {
         "message": "Brand musket."
     },
+    "musket_shot": {
+        "message": "Musket shot"
+    },
+    "musket_butt_hit": {
+        "message": "Musket butt hit"
+    },
     "craft_musket": {
         "message": "Craft musket"
     },
@@ -727,6 +797,352 @@
             }
         }
     },
+    "battle_musket": {
+        "message": "Battle musket"
+    },
+    "battle_musket_item_description": {
+        "message": "Brand battle musket."
+    },
+    "battle_musket_shot": {
+        "message": "Battle musket shot"
+    },
+    "battle_musket_butt_hit": {
+        "message": "Battle musket butt hit"
+    },
+    "battle_musket_pierce": {
+        "message": "Battle musket pierce"
+    },
+    "craft_battle_musket": {
+        "message": "Craft battle musket"
+    },
+    "craft_battle_musket_description": {
+        "message": "Use $count$ $resource$ to craft battle musket.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_musket": {
+        "message": "Mage musket"
+    },
+    "mage_musket_item_description": {
+        "message": "Brand mage musket."
+    },
+    "mage_musket_shot": {
+        "message": "Mage musket shot"
+    },
+    "craft_mage_musket": {
+        "message": "Craft mage musket"
+    },
+    "craft_mage_musket_description": {
+        "message": "Use $count_1$ $resource_1$ and $count_2$ $resource_2$ to craft mage musket.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "battle_mage_musket": {
+        "message": "Battle mage musket"
+    },
+    "battle_mage_musket_item_description": {
+        "message": "Brand battle mage musket."
+    },
+    "battle_mage_musket_shot": {
+        "message": "Battle mage musket shot"
+    },
+    "battle_mage_musket_pierce": {
+        "message": "Battle mage musket pierce"
+    },
+    "battle_mage_musket_cold_pierce": {
+        "message": "Battle mage musket cold pierce"
+    },
+    "craft_battle_mage_musket": {
+        "message": "Craft battle mage musket"
+    },
+    "craft_battle_mage_musket_description": {
+        "message": "Use $count_1$ $resource_1$ and $count_2$ $resource_2$ to craft battle mage musket.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "pistol": {
+        "message": "Pistol"
+    },
+    "pistol_item_description": {
+        "message": "Brand pistol."
+    },
+    "pistol_shot": {
+        "message": "Pistol shot"
+    },
+    "craft_pistol": {
+        "message": "Craft pistol"
+    },
+    "craft_pistol_description": {
+        "message": "Use $count$ $resource$ to craft pistol.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "battle_pistol": {
+        "message": "Battle pistol"
+    },
+    "battle_pistol_item_description": {
+        "message": "Brand battle pistol."
+    },
+    "battle_pistol_shot": {
+        "message": "Battle pistol shot"
+    },
+    "battle_pistol_slash": {
+        "message": "Battle pistol slash"
+    },
+    "craft_battle_pistol": {
+        "message": "Craft battle pistol"
+    },
+    "craft_battle_pistol_description": {
+        "message": "Use $count$ $resource$ to craft battle pistol.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "revolver": {
+        "message": "Revolver"
+    },
+    "revolver_item_description": {
+        "message": "Brand revolver."
+    },
+    "revolver_double_shot": {
+        "message": "Two revolver shots"
+    },
+    "craft_revolver": {
+        "message": "Craft revolver"
+    },
+    "craft_revolver_description": {
+        "message": "Use $count$ $resource$ to craft revolver.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "battle_revolver": {
+        "message": "Battle revolver"
+    },
+    "battle_revolver_item_description": {
+        "message": "Brand battle revolver."
+    },
+    "battle_revolver_double_shot": {
+        "message": "Two battle revolver shots"
+    },
+    "battle_revolver_slash": {
+        "message": "Battle revolver slash"
+    },
+    "craft_battle_revolver": {
+        "message": "Craft battle revolver"
+    },
+    "craft_battle_revolver_description": {
+        "message": "Use $count$ $resource$ to craft battle revolver.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "rifle": {
+        "message": "Rifle"
+    },
+    "rifle_item_description": {
+        "message": "Brand rifle."
+    },
+    "rifle_double_shot": {
+        "message": "Two rifle shots"
+    },
+    "rifle_butt_hit": {
+        "message": "Rifle butt hit"
+    },
+    "craft_rifle": {
+        "message": "Craft rifle"
+    },
+    "craft_rifle_description": {
+        "message": "Use $count$ $resource$ to craft rifle.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "battle_rifle": {
+        "message": "Battle rifle"
+    },
+    "battle_rifle_item_description": {
+        "message": "Brand battle rifle."
+    },
+    "battle_rifle_double_shot": {
+        "message": "Two battle rifle shots"
+    },
+    "battle_rifle_slash": {
+        "message": "Battle rifle slash"
+    },
+    "battle_rifle_butt_hit": {
+        "message": "Battle rifle butt hit"
+    },
+    "craft_battle_rifle": {
+        "message": "Craft battle rifle"
+    },
+    "craft_battle_rifle_description": {
+        "message": "Use $count$ $resource$ to craft battle rifle.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_rifle": {
+        "message": "Mage rifle"
+    },
+    "mage_rifle_item_description": {
+        "message": "Brand mage rifle."
+    },
+    "mage_rifle_double_shot": {
+        "message": "Two mage rifle shots"
+    },
+    "craft_mage_rifle": {
+        "message": "Craft mage rifle"
+    },
+    "craft_mage_rifle_description": {
+        "message": "Use $count_1$ $resource_1$ and $count_2$ $resource_2$ to craft mage rifle.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "battle_mage_rifle": {
+        "message": "Battle mage rifle"
+    },
+    "battle_mage_rifle_item_description": {
+        "message": "Brand battle mage rifle. Ultimate weapon of all times."
+    },
+    "battle_mage_rifle_double_shot": {
+        "message": "Two battle mage rifle shots"
+    },
+    "battle_mage_rifle_slash": {
+        "message": "Battle mage rifle slash"
+    },
+    "battle_mage_rifle_cold_slash": {
+        "message": "Battle mage rifle cold slash"
+    },
+    "battle_mage_rifle_fire_slash": {
+        "message": "Battle mage rifle fire slash"
+    },
+    "battle_mage_rifle_wind_slash": {
+        "message": "Battle mage rifle wind slash"
+    },
+    "craft_battle_mage_rifle": {
+        "message": "Craft battle mage rifle"
+    },
+    "craft_battle_mage_rifle_description": {
+        "message": "Use $count_1$ $resource_1$ and $count_2$ $resource_2$ to craft battle mage rifle.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
     "axe": {
         "message": "Axe"
     },
@@ -736,8 +1152,488 @@
     "axe_slash": {
         "message": "Axe slash"
     },
+    "battle_axe": {
+        "message": "Battle axe"
+    },
+    "battle_axe_item_description": {
+        "message": "Brand battle axe."
+    },
+    "battle_axe_slash": {
+        "message": "Battle axe slash"
+    },
     "double_axe_slash": {
         "message": "Double axe slash"
+    },
+    "craft_battle_axe": {
+        "message": "Craft battle axe"
+    },
+    "craft_battle_axe_description": {
+        "message": "Use $count$ $resource$ to craft battle axe.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_weapon": {
+        "message": "Upgrades max Mana capacity by 2."
+    },
+    "battle_mage_axe": {
+        "message": "Battle mage axe"
+    },
+    "battle_mage_axe_item_description": {
+        "message": "Brand battle mage axe."
+    },
+    "battle_mage_axe_slash": {
+        "message": "Battle mage axe slash"
+    },
+    "battle_mage_axe_fire_slash": {
+        "message": "Battle mage axe fire slash"
+    },
+    "battle_mage_axe_cold_slash": {
+        "message": "Battle mage axe cold slash"
+    },
+    "battle_mage_axe_wind_slash": {
+        "message": "Battle mage axe wind slash"
+    },
+    "craft_battle_mage_axe": {
+        "message": "Craft battle mage axe"
+    },
+    "craft_battle_mage_axe_description": {
+        "message": "Use $count_1$ $resource_1$ and $count_2$ $resource_2$ to craft battle mage axe.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "dragon_bone_blade": {
+        "message": "Dragon bone blade"
+    },
+    "dragon_bone_blade_item_description": {
+        "message": "Brand dragon bone blade."
+    },
+    "dragon_bone_blade_slash": {
+        "message": "Dragon bone blade slash"
+    },
+    "craft_dragon_bone_blade": {
+        "message": "Craft dragon bone blade"
+    },
+    "craft_dragon_bone_blade_description": {
+        "message": "Use $count$ $resource$ to craft dragon bone blade.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_dragon_bone_blade": {
+        "message": "Mage dragon bone blade"
+    },
+    "mage_dragon_bone_blade_item_description": {
+        "message": "Brand mage dragon bone blade."
+    },
+    "mage_dragon_bone_blade_slash": {
+        "message": "Mage dragon bone blade slash"
+    },
+    "mage_dragon_bone_blade_fire_slash": {
+        "message": "Mage dragon bone blade fire slash"
+    },
+    "craft_mage_dragon_bone_blade": {
+        "message": "Craft mage dragon bone blade"
+    },
+    "craft_mage_dragon_bone_blade_description": {
+        "message": "Use $count_1$ $resource_1$ and $count_2$ $resource_2$ to craft mage dragon bone blade.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "glaive": {
+        "message": "Glaive"
+    },
+    "glaive_item_description": {
+        "message": "Brand glaive."
+    },
+    "glaive_slash": {
+        "message": "Glaive slash"
+    },
+    "craft_glaive": {
+        "message": "Craft glaive"
+    },
+    "craft_glaive_description": {
+        "message": "Use $count$ $resource$ to craft glaive.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_glaive": {
+        "message": "Mage glaive"
+    },
+    "mage_glaive_item_description": {
+        "message": "Brand mage glaive."
+    },
+    "mage_glaive_slash": {
+        "message": "Mage glaive slash"
+    },
+    "mage_glaive_wind_slash": {
+        "message": "Mage glaive wind slash"
+    },
+    "craft_mage_glaive": {
+        "message": "Craft mage glaive"
+    },
+    "craft_mage_glaive_description": {
+        "message": "Use $count_1$ $resource_1$ and $count_2$ $resource_2$ to craft mage glaive.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "halberd": {
+        "message": "Halberd"
+    },
+    "halberd_item_description": {
+        "message": "Brand halberd."
+    },
+    "halberd_slash": {
+        "message": "Halberd slash"
+    },
+    "craft_halberd": {
+        "message": "Craft halberd"
+    },
+    "craft_halberd_description": {
+        "message": "Use $count$ $resource$ to craft halberd.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_halberd": {
+        "message": "Mage halberd"
+    },
+    "mage_halberd_item_description": {
+        "message": "Brand mage halberd."
+    },
+    "mage_halberd_slash": {
+        "message": "Mage halberd slash"
+    },
+    "mage_halberd_cold_slash": {
+        "message": "Mage halberd cold slash"
+    },
+    "craft_mage_halberd": {
+        "message": "Craft mage halberd"
+    },
+    "craft_mage_halberd_description": {
+        "message": "Use $count_1$ $resource_1$ and $count_2$ $resource_2$ to craft mage halberd.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "katana": {
+        "message": "Katana"
+    },
+    "katana_item_description": {
+        "message": "Brand katana."
+    },
+    "katana_slash": {
+        "message": "Katana slash"
+    },
+    "craft_katana": {
+        "message": "Craft katana"
+    },
+    "craft_katana_description": {
+        "message": "Use $count$ $resource$ to craft katana.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "khopesh": {
+        "message": "Khopesh"
+    },
+    "khopesh_item_description": {
+        "message": "Brand khopesh."
+    },
+    "khopesh_slash": {
+        "message": "Khopesh slash"
+    },
+    "craft_khopesh": {
+        "message": "Craft khopesh"
+    },
+    "craft_khopesh_description": {
+        "message": "Use $count$ $resource$ to craft khopesh.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_khopesh": {
+        "message": "Mage khopesh"
+    },
+    "mage_khopesh_item_description": {
+        "message": "Brand mage khopesh."
+    },
+    "mage_khopesh_slash": {
+        "message": "Mage khopesh slash"
+    },
+    "mage_khopesh_fire_slash": {
+        "message": "Mage khopesh fire slash"
+    },
+    "craft_mage_khopesh": {
+        "message": "Craft mage khopesh"
+    },
+    "craft_mage_khopesh_description": {
+        "message": "Use $count_1$ $resource_1$ and $count_2$ $resource_2$ to craft mage khopesh.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "macuahuitl": {
+        "message": "Macuahuitl"
+    },
+    "macuahuitl_item_description": {
+        "message": "Brand macuahuitl."
+    },
+    "macuahuitl_slash": {
+        "message": "Macuahuitl slash"
+    },
+    "craft_macuahuitl": {
+        "message": "Craft macuahuitl"
+    },
+    "craft_macuahuitl_description": {
+        "message": "Use $count$ $resource$ to craft macuahuitl.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_macuahuitl": {
+        "message": "Mage macuahuitl"
+    },
+    "mage_macuahuitl_item_description": {
+        "message": "Brand mage macuahuitl."
+    },
+    "mage_macuahuitl_slash": {
+        "message": "Mage macuahuitl slash"
+    },
+    "mage_macuahuitl_cold_slash": {
+        "message": "Mage macuahuitl cold slash"
+    },
+    "craft_mage_macuahuitl": {
+        "message": "Craft mage macuahuitl"
+    },
+    "craft_mage_macuahuitl_description": {
+        "message": "Use $count_1$ $resource_1$ and $count_2$ $resource_2$ to craft mage macuahuitl.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "rapier": {
+        "message": "Rapier"
+    },
+    "rapier_item_description": {
+        "message": "Brand rapier."
+    },
+    "rapier_slash": {
+        "message": "Rapier slash"
+    },
+    "craft_rapier": {
+        "message": "Craft rapier"
+    },
+    "craft_rapier_description": {
+        "message": "Use $count$ $resource$ to craft rapier.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "sabre": {
+        "message": "Sabre"
+    },
+    "sabre_item_description": {
+        "message": "Brand sabre."
+    },
+    "sabre_slash": {
+        "message": "Sabre slash"
+    },
+    "craft_sabre": {
+        "message": "Craft sabre"
+    },
+    "craft_sabre_description": {
+        "message": "Use $count$ $resource$ to craft sabre.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_wand": {
+        "message": "Mage wand"
+    },
+    "mage_wand_item_description": {
+        "message": "Brand mage wand."
+    },
+    "craft_mage_wand": {
+        "message": "Craft mage wand"
+    },
+    "craft_mage_wand_description": {
+        "message": "Use $count_1$ $resource_1$ and $count_2$ $resource_2$ to craft mage wand.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
     },
     "steel_sword": {
         "message": "Steel sword"
@@ -1094,19 +1990,19 @@
     "ice_school_title": {
         "message": "Learn Ice Sense!"
     },
+    "frost": {
+        "message": "Frost"
+    },
+    "frost_bending_description": {
+        "message": "Spell to cool enemy a little bit."
+    },
     "ice_shard": {
         "message": "Ice shard"
     },
     "ice_shard_bending_description": {
         "message": "Spell to pierce an enemy with ice shard."
     },
-    "ice_spear": {
-        "message": "Ice spear"
-    },
-    "ice_spear_bending_description": {
-        "message": "Spell to pierce an enemy with ice spear."
-    },
-    "ice_spear_task_title": {
+    "ice_shard_task_title": {
         "message": "Can you help me with $resource$, please?",
         "placeholders": {
             "resource": {
@@ -1115,8 +2011,36 @@
             }
         }
     },
-    "ice_spear_task_text": {
+    "ice_shard_task_text": {
         "message": "Ice girl asks for $count$ $resource$ to make some training dummies.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "ice_spear": {
+        "message": "Ice spear"
+    },
+    "ice_spear_bending_description": {
+        "message": "Spell to pierce an enemy with ice spear."
+    },
+    "ice_spear_task_title": {
+        "message": "Can you help me with $resource$ again, please?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "ice_spear_task_text": {
+        "message": "Ice girl asks for $count$ $resource$ again to make some training dummies.",
         "placeholders": {
             "count": {
                 "content": "$1",
@@ -1173,6 +2097,37 @@
     },
     "cold_death_task_text": {
         "message": "Ice girl asks for $count$ $resource$ to make a raft.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "freezing": {
+        "message": "Freezing "
+    },
+    "freezing_strikes": {
+        "message": "Freezing strikes"
+    },
+    "freezing_strikes_mastery_description": {
+        "message": "Mastery of using Mana to add Cold damage to attacks."
+    },
+    "freezing_strikes_task_title": {
+        "message": "Can you help me with even more $resource$, please?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "freezing_strikes_task_text": {
+        "message": "Ice girl asks for $count$ $resource$ to make more training dummies.",
         "placeholders": {
             "count": {
                 "content": "$1",
@@ -1250,7 +2205,7 @@
         "message": "Spell to burn out a group of enemies."
     },
     "fire_wave_task_title": {
-        "message": "Help me with $resource$ please",
+        "message": "Help me with $resource$, please",
         "placeholders": {
             "resource": {
                 "content": "$1",
@@ -1260,6 +2215,37 @@
     },
     "fire_wave_task_text": {
         "message": "Fire girl asks for $count$ $resource$ to make bunker.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "enflamed": {
+        "message": "Enflamed "
+    },
+    "enflamed_strikes": {
+        "message": "Enflamed strikes"
+    },
+    "enflamed_strikes_mastery_description": {
+        "message": "Mastery of using Mana to add Fire damage to attacks."
+    },
+    "enflamed_strikes_task_title": {
+        "message": "Help me with $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "enflamed_strikes_task_text": {
+        "message": "Fire girl asks for $count$ $resource$ to make more training dummies.",
         "placeholders": {
             "count": {
                 "content": "$1",
@@ -1317,17 +2303,41 @@
     "ore_item_description": {
         "message": "To make steel from. Maybe."
     },
+    "obsidian": {
+        "message": "Obsidian"
+    },
+    "obsidian_item_description": {
+        "message": "Dark and sharp volcano glass."
+    },
     "mines_to": {
         "message": "To Mines!"
     },
     "mines_title": {
         "message": "Deep in the Mines..."
     },
+    "crystal": {
+        "message": "Crystal"
+    },
+    "crystal_item_description": {
+        "message": "To accumulate magic. Maybe."
+    },
+    "caves_to": {
+        "message": "To Caves!"
+    },
+    "caves_title": {
+        "message": "Deep in the Caves..."
+    },
     "beast_remains": {
         "message": "Beast remains"
     },
     "beast_remains_item_description": {
         "message": "Brain, spinal and some bones of Beast"
+    },
+    "dragon_remains": {
+        "message": "Dragon remains"
+    },
+    "dragon_remains_item_description": {
+        "message": "Brain, spinal and some bones of Dragon"
     },
     "insectoid_remains": {
         "message": "Insectoid remains"
@@ -1403,6 +2413,37 @@
             }
         }
     },
+    "electrified": {
+        "message": "Electrified "
+    },
+    "electrified_strikes": {
+        "message": "Electrified strikes"
+    },
+    "electrified_strikes_mastery_description": {
+        "message": "Mastery of using Mana to add Electrical damage to attacks."
+    },
+    "electrified_strikes_task_title": {
+        "message": "I need much more $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "electrified_strikes_task_text": {
+        "message": "Air guy asks for $count$ $resource$ to make more training dummies.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "flying_charm": {
         "message": "Flying charm"
     },
@@ -1420,6 +2461,9 @@
     },
     "electrical_bolt_spell_description": {
         "message": "Spell to make one enemy hurt.\nCasted via rod or staff."
+    },
+    "lightning_strike": {
+        "message": "Lightning strike"
     },
     "teleport": {
         "message": "Teleport"
@@ -1453,6 +2497,15 @@
     },
     "psi_blade_slash": {
         "message": "Psi-blade slash"
+    },
+    "psi_javelin": {
+        "message": "Psi-javelin"
+    },
+    "psi_javelin_power_description": {
+        "message": "Power to attack with javelin made by your mind."
+    },
+    "psi_javelin_throw": {
+        "message": "Psi-javelin throw"
     },
     "psi_lightning": {
         "message": "Psi-lightning"
@@ -1517,15 +2570,6 @@
     "battle_runes_mastery_description": {
         "message": "Mastery of activating runes on weapons."
     },
-    "empowered": {
-        "message": "Empowered "
-    },
-    "empowered_strikes": {
-        "message": "Empowered strikes"
-    },
-    "empowered_strikes_mastery_description": {
-        "message": "Mastery of using Focus to make more Physical damage."
-    },
     "scholarship": {
         "message": "Scholarship"
     },
@@ -1586,6 +2630,68 @@
     },
     "psi_energy_task_text": {
         "message": "Tattoed guy needs $count$ $resource$ to make training dummies.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "empowered": {
+        "message": "Empowered "
+    },
+    "empowered_strikes": {
+        "message": "Empowered strikes"
+    },
+    "empowered_strikes_mastery_description": {
+        "message": "Mastery of using Focus to make more Physical damage."
+    },
+    "empowered_strikes_task_title": {
+        "message": "Help me with $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "empowered_strikes_task_text": {
+        "message": "Tattoed guy asks for $count$ $resource$ to make training dummies.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "psi_infused": {
+        "message": "Psi-infused "
+    },
+    "psi_infused_strikes": {
+        "message": "Psi-infused strikes"
+    },
+    "psi_infused_strikes_mastery_description": {
+        "message": "Mastery of using Focus to add Psionic damage to attacks."
+    },
+    "psi_infused_strikes_task_title": {
+        "message": "Help me more with $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "psi_infused_strikes_task_text": {
+        "message": "Tattoed guy asks for $count$ $resource$ to make more training dummies.",
         "placeholders": {
             "count": {
                 "content": "$1",

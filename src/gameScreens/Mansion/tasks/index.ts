@@ -3,7 +3,7 @@ import { IScreenTasks } from "../../../enums-and-interfaces/interfaces";
 import items from "../../Market/items";
 import { createTask } from "../../../redux/slices/gameStage";
 
-const task_buildCabin = createTask(
+const buildCabin = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -16,7 +16,7 @@ const task_buildCabin = createTask(
     ),
 );
 
-const task_buildArmoury = createTask(
+const buildArmoury = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -29,20 +29,72 @@ const task_buildArmoury = createTask(
     ),
 );
 
-const task_buildCottege = createTask(
+const musketOptions = createTask(
+    [
+        {
+            name: items.bigResources.ore.name,
+            amount: 0
+        }
+    ],
+    chrome.i18n.getMessage('musket_options_task_title'),
+    chrome.i18n.getMessage('musket_options_task_text', 
+        ['0', items.bigResources.ore.name]
+    ),
+);
+
+const rifleOptions = createTask(
+    [
+        {
+            name: items.bigResources.ore.name,
+            amount: 2
+        }
+    ],
+    chrome.i18n.getMessage('rifle_options_task_title'),
+    chrome.i18n.getMessage('rifle_options_task_text', 
+        ['2', items.bigResources.ore.name]
+    ),
+);
+
+const battleOptions = createTask(
+    [
+        {
+            name: items.bigResources.ore.name,
+            amount: 0
+        }
+    ],
+    chrome.i18n.getMessage('battle_options_task_title'),
+    chrome.i18n.getMessage('battle_options_task_text', 
+        ['0', items.bigResources.ore.name]
+    ),
+);
+
+const mageOptions = createTask(
+    [
+        {
+            name: items.bigResources.ore.name,
+            amount: 0
+        }
+    ],
+    chrome.i18n.getMessage('mage_options_task_title'),
+    chrome.i18n.getMessage('mage_options_task_text', 
+        ['0', items.bigResources.ore.name]
+    ),
+);
+
+const buildCottege = createTask(
     [
         {
             name: items.bigResources.wood.name,
-            amount: 2
+            amount: 1
         }
     ], 
     chrome.i18n.getMessage('build_cottege_task_title'),
     chrome.i18n.getMessage('build_cottege_task_text', 
-        ['2', items.bigResources.wood.name]
+        ['1', items.bigResources.wood.name]
     ),
 );
 
-const task_buildMansion = createTask(
+const buildMansion = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -58,19 +110,35 @@ const task_buildMansion = createTask(
 const mansionTasks: IScreenTasks = {
     1: {
         status: TaskStatus.unknown,
-        task: task_buildCabin
+        task: buildCabin
     },
     2: {
         status: TaskStatus.unknown,
-        task: task_buildCottege
+        task: buildCottege
     },
     3: {
         status: TaskStatus.unknown,
-        task: task_buildMansion
+        task: buildMansion
     },
     5: {
         status: TaskStatus.unknown,
-        task: task_buildArmoury
+        task: buildArmoury
+    },
+    7: {
+        status: TaskStatus.unknown,
+        task: musketOptions
+    },
+    11: {
+        status: TaskStatus.unknown,
+        task: battleOptions
+    },
+    13: {
+        status: TaskStatus.unknown,
+        task: mageOptions
+    },
+    17: {
+        status: TaskStatus.unknown,
+        task: rifleOptions
     }
 }
 

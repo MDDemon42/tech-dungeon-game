@@ -5,6 +5,7 @@ import healingPotion from './healingPotion.png';
 import leatherArmor from './leatherArmor.png';
 import steelArmor from './steelArmor.png';
 import axe from './axe.png';
+import pickaxe from './pickaxe.png';
 import steelGreataxe from './steelGreataxe.png';
 import steelGreathammer from './steelGreathammer.png';
 import steelGreatsword from './steelGreatsword.png';
@@ -25,6 +26,7 @@ const normalItems = {
     leatherArmor,
     steelArmor,
     axe,
+    pickaxe,
     steelGreataxe,
     steelGreathammer,
     steelGreatsword,

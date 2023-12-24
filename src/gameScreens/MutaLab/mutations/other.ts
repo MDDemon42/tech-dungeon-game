@@ -3,7 +3,7 @@ import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
 import abilities from "../../../general/abilities";
 
-const mutation_wings = createMutation(
+const wings = createMutation(
     [
         chrome.i18n.getMessage('wings'), 
         chrome.i18n.getMessage('wings_mutation_description'),
@@ -17,7 +17,7 @@ const mutation_wings = createMutation(
     ]
 )
 
-const mutation_hooves = createMutation(
+const hooves = createMutation(
     [
         chrome.i18n.getMessage('hooves'), 
         chrome.i18n.getMessage('hooves_mutation_description'),
@@ -33,8 +33,8 @@ const mutation_hooves = createMutation(
 )
 
 const other = {
-    mutation_hooves,
-    mutation_wings
+    hooves,
+    wings
 }
 
 export default other

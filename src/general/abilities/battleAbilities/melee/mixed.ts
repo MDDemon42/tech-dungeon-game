@@ -72,57 +72,150 @@ const ripApartMonstrous = createBattleAbility(
     [1, 70]
 );
 
-const runicGreataxeSlash = createBattleAbility(
+const battleMageAxeFireSlash = createBattleAbility(
     [
-        chrome.i18n.getMessage('runic_greataxe_slash'), 
+        chrome.i18n.getMessage('battle_mage_axe_fire_slash'), 
         '', 
-        images.guildianLearnings.runicGreataxe
+        images.armouryItems.battleMageAxe
     ], 
-    {Mana: 1, Stamina: 2}, 
+    {Mana: 2, Stamina: 1}, 
     {
-        [DamageType.cold]: 1,
+        [DamageType.fire]: 2,
+        [DamageType.physicalSlashing]: 1
+    },
+    [1, 70]
+);
+
+const battleMageAxeColdSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_mage_axe_cold_slash'), 
+        '', 
+        images.armouryItems.battleMageAxe
+    ], 
+    {Mana: 2, Stamina: 1}, 
+    {
+        [DamageType.cold]: 2,
+        [DamageType.physicalSlashing]: 1
+    },
+    [1, 70]
+);
+
+const mageDragonBoneBladeFireSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_dragon_bone_blade_fire_slash'), 
+        '', 
+        images.armouryItems.mageDragonBoneBlade
+    ], 
+    {Mana: 2, Stamina: 1}, 
+    {
+        [DamageType.fire]: 2,
+        [DamageType.physicalSlashing]: 1
+    },
+    [1, 70]
+);
+
+
+const mageHalberdColdSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_halberd_cold_slash'), 
+        '', 
+        images.armouryItems.mageHalberd
+    ], 
+    {Stamina: 2, Mana: 2},
+    {
+        [DamageType.cold]: 2,
         [DamageType.physicalSlashing]: 2
     },
     [1, 70]
 );
 
-const runicGreathammerSmash = createBattleAbility(
+
+const mageKhopeshFireSlash = createBattleAbility(
     [
-        chrome.i18n.getMessage('runic_greathammer_smash'), 
+        chrome.i18n.getMessage('mage_khopesh_fire_slash'), 
         '', 
-        images.guildianLearnings.runicGreathammer
+        images.armouryItems.mageKhopesh
     ], 
-    {Mana: 1, Stamina: 2}, 
+    {Stamina: 1, Mana: 2},
     {
-        [DamageType.electrical]: 1,
-        [DamageType.physicalSmashing]: 2
+        [DamageType.fire]: 2,
+        [DamageType.physicalSlashing]: 1
     },
     [1, 70]
 );
 
-const runicGreatswordSlash = createBattleAbility(
+
+const mageMacuahuitlColdSlash = createBattleAbility(
     [
-        chrome.i18n.getMessage('runic_greatsword_slash'), 
+        chrome.i18n.getMessage('mage_macuahuitl_cold_slash'), 
         '', 
-        images.guildianLearnings.runicGreatsword
+        images.armouryItems.mageMacuahuitl
     ], 
-    {Mana: 1, Stamina: 2}, 
+    {Stamina: 1, Mana: 2},
     {
-        [DamageType.fire]: 1,
+        [DamageType.cold]: 2,
+        [DamageType.physicalSlashing]: 1
+    },
+    [1, 70]
+);
+
+const battleMageMusketColdPierce = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_mage_musket_cold_pierce'), 
+        '', 
+        images.armouryItems.battleMageMusket
+    ], 
+    {Stamina: 1, Mana: 2},
+    {
+        [DamageType.cold]: 2,
+        [DamageType.physicalPiercing]: 1
+    },
+    [1, 70]
+);
+
+const battleMageRifleColdSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_mage_rifle_cold_slash'), 
+        '', 
+        images.armouryItems.battleMageRifle
+    ], 
+    {Stamina: 2, Mana: 2},
+    {
+        [DamageType.cold]: 2,
+        [DamageType.physicalSlashing]: 2
+    },
+    [1, 70]
+);
+
+const battleMageRifleFireSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('battle_mage_rifle_fire_slash'), 
+        '', 
+        images.armouryItems.battleMageRifle
+    ], 
+    {Stamina: 2, Mana: 2},
+    {
+        [DamageType.fire]: 2,
         [DamageType.physicalSlashing]: 2
     },
     [1, 70]
 );
 
 const mixed = {
+    battleMageAxeColdSlash,
+    battleMageAxeFireSlash,
+    mageDragonBoneBladeFireSlash,
+    mageHalberdColdSlash,
+    mageKhopeshFireSlash,
+    mageMacuahuitlColdSlash,
+    battleMageMusketColdPierce,
+    battleMageRifleColdSlash,
+    battleMageRifleFireSlash,
     ripApartMinor,
     ripApartMere,
     ripApartMajor,
     ripApartMajorGrand,
-    ripApartMonstrous,
-    runicGreataxeSlash,
-    runicGreathammerSmash,
-    runicGreatswordSlash
+    ripApartMonstrous
 }
 
 export default mixed

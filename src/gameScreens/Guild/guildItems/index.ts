@@ -13,13 +13,13 @@ export function createGuildItem(
         inventoryPlace: InventoryPlace,
         priority: number
     ],
-    abilityInfo: [
-        requiredMastery: string,
-        abilities: IBattleAbility[] | null,
+    requiredMastery: string,
+    abilities: IBattleAbility[] | null,
+    passiveAbilities: IPassiveAbility[] | null,
+    linkedAbilities: {
         linkedMastery: string,
-        masterAbilities: IBattleAbility[] | null,
-        passiveAbilities: IPassiveAbility[] | null
-    ]       
+        masterAbility: IBattleAbility,
+    }[] | null,       
 ): IGuildItem {
     return {
         name: commonInfo[0],
@@ -30,11 +30,10 @@ export function createGuildItem(
         inventoryPlace: inventoryInfo[1],
         priority: inventoryInfo[2],
 
-        requiredMastery: abilityInfo[0],
-        abilities: abilityInfo[1],
-        linkedMastery: abilityInfo[2],
-        masterAbilities: abilityInfo[3],
-        passiveAbilities: abilityInfo[4]
+        requiredMastery,
+        abilities,
+        passiveAbilities,
+        linkedAbilities        
     }
 }
 
@@ -43,15 +42,15 @@ const guildItems = {
 }
 
 const basicOptions = [
-    guildItems.weapons.guildItem_acidBomd,
-    guildItems.weapons.guildItem_oakCrossow,
-    guildItems.weapons.guildItem_steelChakram
+    guildItems.weapons.acidBomd,
+    guildItems.weapons.oakCrossow,
+    guildItems.weapons.steelChakram
 ];
 
 const runes = [
-    guildItems.weapons.guildItem_runicGreataxe,
-    guildItems.weapons.guildItem_runicGreathammer,
-    guildItems.weapons.guildItem_runicGreatsword
+    guildItems.weapons.runicGreataxe,
+    guildItems.weapons.runicGreathammer,
+    guildItems.weapons.runicGreatsword
 ]
 
 export const guildShopOptions: Record<string, IGuildItem[]> = {

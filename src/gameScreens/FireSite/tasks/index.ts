@@ -3,7 +3,7 @@ import { TaskStatus } from "../../../enums-and-interfaces/enums";
 import { IScreenTasks } from "../../../enums-and-interfaces/interfaces";
 import items from "../../Market/items";
 
-const task_buildFireSite = createTask(
+const buildFireSite = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -16,7 +16,7 @@ const task_buildFireSite = createTask(
     ),
 );
 
-const task_fireBall = createTask(
+const fireBall = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -31,7 +31,7 @@ const task_fireBall = createTask(
     ),
 );
 
-const task_fireWave = createTask(
+const fireWave = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -46,18 +46,37 @@ const task_fireWave = createTask(
     ),
 );
 
+const enflamedStrikes = createTask(
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ],
+    chrome.i18n.getMessage('enflamed_strikes_task_title', 
+        [items.bigResources.wood.name]
+    ),
+    chrome.i18n.getMessage('enflamed_strikes_task_text', 
+        ['1', items.bigResources.wood.name]
+    ),
+);
+
 const fireSiteTasks: IScreenTasks = {
     1: {
         status: TaskStatus.unknown,
-        task: task_buildFireSite
+        task: buildFireSite
     },
     2: {
         status: TaskStatus.unknown,
-        task: task_fireBall
+        task: fireBall
     },
     3: {
         status: TaskStatus.unknown,
-        task: task_fireWave
+        task: fireWave
+    },
+    5: {
+        status: TaskStatus.unknown,
+        task: enflamedStrikes
     }
 }
 

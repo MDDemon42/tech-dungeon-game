@@ -4,13 +4,15 @@ import gameSquad from "../../redux/slices/gameSquad";
 import { useDispatch } from "react-redux";
 import styles from './index.module.css';
 import { 
-    Tree, MinecartLoaded, Question
+    Tree, MinecartLoaded, 
+    Question, HexagonHalf
 } from 'react-bootstrap-icons';
 import items from "../../gameScreens/Market/items";
 
 const bigResourceNameMappings = {
-    [items.bigResources.wood.name]: <Tree size={10}/>,
-    [items.bigResources.ore.name]: <MinecartLoaded size={10}/>
+    [items.bigResources.crystal.name]: <HexagonHalf size={10}/>,
+    [items.bigResources.ore.name]: <MinecartLoaded size={10}/>,
+    [items.bigResources.wood.name]: <Tree size={10}/>
 }
 
 function CraftScreen(props: {

@@ -32,11 +32,12 @@ function BackpacksScreenItemButton(props: IManageItemsProps) {
 
     if (item.name === items.bigResources.beastRemains.name ||
         item.name === items.bigResources.insectoidRemains.name ||
-        item.name === items.bigResources.reptiloidRemains.name
+        item.name === items.bigResources.reptiloidRemains.name ||
+        item.name === items.bigResources.dragonRemains.name
     ) {
         buttonProps.listener = () => utilizeListener(itemIndex);
         buttonProps.resource = UserResource.gene;
-        buttonProps.price = 1;
+        buttonProps.price = item.cost;
         buttonProps.disabled = gameScreen !== GameScreens.mutaLab
     }
 

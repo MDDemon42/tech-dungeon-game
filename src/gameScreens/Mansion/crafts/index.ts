@@ -1,5 +1,7 @@
 import { ICraft } from "../../../enums-and-interfaces/interfaces";
-import items from "../../Market/items";
+import mageWeapons from "./mageWeapons";
+import guns from "./guns";
+import battleWeapons from "./battleWeapons";
 
 export function createCraft(
     resourceCost: {
@@ -16,21 +18,10 @@ export function createCraft(
     }
 }
 
-const craftMusket = createCraft(
-    [
-        {
-            name: items.bigResources.ore.name,
-            amount: 1
-        }
-    ],
-    chrome.i18n.getMessage('craft_musket'),
-    chrome.i18n.getMessage('craft_musket_description', 
-        ['1', items.bigResources.ore.name]
-    ),
-);
-
 const crafts = {
-    craftMusket
+    battleWeapons,
+    guns,
+    mageWeapons,
 }
 
 export default crafts

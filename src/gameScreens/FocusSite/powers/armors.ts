@@ -1,38 +1,38 @@
 import images from "../../../images/images";
 import abilities from "../../../general/abilities";
 import { createPower } from ".";
-import { meditativeInsights } from "../masteries";
+import psionMasteries from "../masteries";
 
-const power_guardianField = createPower(
+const guardianField = createPower(
     [
         chrome.i18n.getMessage('guardian_field'),
         chrome.i18n.getMessage('guardian_field_power_description'),
         images.psionInsights.guardianField
     ], 
     [
-        meditativeInsights.name,
+        psionMasteries.meditativeInsights.name,
         null,
         [abilities.passiveAbilities.armor.guardianField]
     ],
     ''
 )
 
-const power_guardianAura = createPower(
+const guardianAura = createPower(
     [
         chrome.i18n.getMessage('guardian_aura'),
         chrome.i18n.getMessage('guardian_aura_power_description'),
         images.psionInsights.guardianAura
     ], 
     [
-        meditativeInsights.name,
+        psionMasteries.meditativeInsights.name,
         null, null
     ],
-    power_guardianField.name
+    guardianField.name
 )
 
 const armors = {
-    power_guardianField,
-    power_guardianAura
+    guardianField,
+    guardianAura
 }
 
 export default armors

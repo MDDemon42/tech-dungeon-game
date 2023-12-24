@@ -13,7 +13,7 @@ export function createBending(
         requiredMastery: string,
         requiredBending: string,
         requiresBothHands: boolean,
-        ability: IBattleAbility | null
+        ability: IBattleAbility
     ]
 ): IBending {
     return {

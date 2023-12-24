@@ -30,9 +30,5 @@ export default function putItemInBackpacks(
 }
 
 export function getBackpacksCapability(member: ICharacher) {
-    if (member.params.strength >= 3) {
-        return 6;
-    } else {
-        return 4;
-    }
+    return member.general.backpacks.length;
 }

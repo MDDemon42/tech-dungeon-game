@@ -46,6 +46,21 @@ const task_airDeprivation = createTask(
     ),
 );
 
+const electrifiedStrikes = createTask(
+    [
+        {
+            name: items.bigResources.wood.name,
+            amount: 1
+        }
+    ],
+    chrome.i18n.getMessage('electrified_strikes_task_title', 
+        [items.bigResources.wood.name]
+    ),
+    chrome.i18n.getMessage('electrified_strikes_task_text', 
+        ['1', items.bigResources.wood.name]
+    ),
+);
+
 const airSiteTasks: IScreenTasks = {
     1: {
         status: TaskStatus.unknown,
@@ -58,6 +73,10 @@ const airSiteTasks: IScreenTasks = {
     3: {
         status: TaskStatus.unknown,
         task: task_airDeprivation
+    },
+    5: {
+        status: TaskStatus.unknown,
+        task: electrifiedStrikes
     }
 }
 
