@@ -19,6 +19,7 @@ import {
 } from "./elementInfusedAblitiesCreators";
 import fireMasteries from "../gameScreens/FireSite/masteries";
 import coldMasteries from "../gameScreens/IceSite/masteries";
+import cybers from "../gameScreens/CyberLab/cybers";
 
 function gatherCharacterAbilities(character: ICharacher) {
     const result: IBattleAbility[] = [];
@@ -33,7 +34,7 @@ function gatherCharacterAbilities(character: ICharacher) {
         createEmptyInventory();
     
     for (const name in inventory) {
-        if (inventory[name].abilities) {
+        if (inventory[name]?.abilities) {
             // @ts-expect-error
             if (inventory[name].linkedAbilities) {
                 // @ts-expect-error
@@ -42,14 +43,14 @@ function gatherCharacterAbilities(character: ICharacher) {
                     if (masteriesUser.includes(masteryName)) {
                         result.push(linkedAbility.masterAbility);
                     } else {
-                        const {abilities} = inventory[name];
+                        const abilities = inventory[name]?.abilities;
                         if (abilities) {
                             result.push(...abilities);
                         }
                     }
                 }                
             } else {
-                const {abilities} = inventory[name];
+                const abilities = inventory[name]?.abilities;
                 if (abilities) {
                     result.push(...abilities);
                 }
@@ -57,9 +58,12 @@ function gatherCharacterAbilities(character: ICharacher) {
         }
     }
 
-    const ripApart = checkRipApart(inventory);
+    const [ripApart, clawSlash] = checkRipApart(inventory);
     if (ripApart) {
         result.push(ripApart);
+    }
+    if (clawSlash) {
+        result.push(clawSlash);
     }
 
     const noItem = createNoItem();
@@ -67,8 +71,8 @@ function gatherCharacterAbilities(character: ICharacher) {
         if (bending.requiresBothHands) {
             if (
                 inventory.bothHands.name === noItem.name &&
-                inventory.leftHand.name === noItem.name &&
-                inventory.rightHand.name === noItem.name
+                inventory.leftHand?.name === noItem.name &&
+                inventory.rightHand?.name === noItem.name
             ) {
                 result.push(bending.ability);
             }
@@ -81,8 +85,8 @@ function gatherCharacterAbilities(character: ICharacher) {
         if (!!spell.ability) {
             if (!!spell.requiresRod) {
                 if (
-                    inventory.bothHands.name === wizardItems.weapons.wizardItem_apprenticeRod.name ||
-                    inventory.bothHands.name === wizardItems.weapons.wizardItem_magisterScepter.name
+                    inventory.bothHands.name === wizardItems.weapons.apprenticeRod.name ||
+                    inventory.bothHands.name === wizardItems.weapons.magisterScepter.name
                 ) {
                     result.push(spell.ability);
                 }
@@ -100,16 +104,19 @@ function gatherCharacterAbilities(character: ICharacher) {
 
     // special abilities
     if (
-        inventory.leftHand.name === items.weapons.steelSwordLeftHand.name &&
-        inventory.rightHand.name === items.weapons.steelSwordRightHand.name &&
-        masteriesUser.includes(academyMasteries.dualSwords.name)
+        inventory.leftHand.name === items.weapons.steelSword.name &&
+        inventory.rightHand.name === items.weapons.steelSword.name
     ) {
-        result.push(abilities.battleAbilities.melee.physicalSlashing.dualSwordsSlash);
+        if (masteriesUser.includes(academyMasteries.swordAffiliation.name)) {
+            result.push(abilities.battleAbilities.melee.physicalSlashing.affiliatedDualSwordsSlash);
+        } else {
+            result.push(abilities.battleAbilities.melee.physicalSlashing.dualSwordsSlash);
+        }
     }
 
     if (
-        inventory.leftHand.name === armouryItems.battleWeapons.battleAxeLeftHand.name &&
-        inventory.rightHand.name === armouryItems.battleWeapons.battleAxeRightHand.name
+        inventory.leftHand.name === armouryItems.battleWeapons.battleAxe.name &&
+        inventory.rightHand.name === armouryItems.battleWeapons.battleAxe.name
     ) {
         if (masteriesUser.includes(mansionMasteries.axeAffiliation.name)) {
             result.push(abilities.battleAbilities.melee.physicalSlashing.affiliatedDoubleAxeSlash);
@@ -117,13 +124,19 @@ function gatherCharacterAbilities(character: ICharacher) {
             result.push(abilities.battleAbilities.melee.physicalSlashing.doubleAxeSlash);
         }
     }
-        
+
+    if (
+        inventory.leftHand.name === cybers.weapons.cyberFist.name &&
+        inventory.rightHand.name === cybers.weapons.cyberFist.name
+    ) {
+        result.push(abilities.battleAbilities.melee.physicalSmashing.doubleCyberFistSmash);
+    }        
 
     // basic ability
     if (
         (
-            inventory.leftHand.name === noItem.name ||
-            inventory.rightHand.name === noItem.name
+            inventory.leftHand?.name === noItem.name ||
+            inventory.rightHand?.name === noItem.name
         ) && inventory.bothHands.name === noItem.name
     ) {
         if (masteriesUser.includes(academyMasteries.martialArts.name)) {

@@ -9,7 +9,12 @@ const healingPotion = createItem(
         images.normalItems.healingPotion
     ], 
     [
-        1, InventoryPlace.leftPocket, 1
+        1, 
+        [
+            InventoryPlace.leftPocket, 
+            InventoryPlace.rightPocket
+        ], 
+        1
     ],
     '', null, null, null
 )

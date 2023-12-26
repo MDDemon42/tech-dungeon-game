@@ -109,23 +109,24 @@ function SubInventoryScreen(props: {
     }
     
     const dataSpecified: Record<string, IInventorySlot[]> = {
-        data_for_hat: data.filter(item => item.inventoryPlace === InventoryPlace.hat),
-        data_for_head: data.filter(item => item.inventoryPlace === InventoryPlace.head),
-        data_for_chin: data.filter(item => item.inventoryPlace === InventoryPlace.chin),
-        data_for_skin: data.filter(item => item.inventoryPlace === InventoryPlace.skin),
-        data_for_back: data.filter(item => item.inventoryPlace === InventoryPlace.back),
-        data_for_armor: data.filter(item => item.inventoryPlace === InventoryPlace.armor),
-        data_for_shoulders: data.filter(item => item.inventoryPlace === InventoryPlace.shoulders),
-        data_for_tail: data.filter(item => item.inventoryPlace === InventoryPlace.tail),
-        data_for_left_hand: data.filter(item => item.inventoryPlace === InventoryPlace.leftHand 
-            && screenName !== InventoryGameScreens.mutaLab),
-        data_for_right_hand: data.filter(item => item.inventoryPlace === InventoryPlace.rightHand 
-            && screenName !== InventoryGameScreens.mutaLab),
-        data_for_both_hands: data.filter(item => item.inventoryPlace === InventoryPlace.bothHands),
-        data_for_belt: data.filter(item => item.inventoryPlace === InventoryPlace.belt),
-        data_for_left_pocket: data.filter(item => item.inventoryPlace === InventoryPlace.leftPocket),
-        data_for_right_pocket: data.filter(item => item.inventoryPlace === InventoryPlace.rightPocket),
-        data_for_legs: data.filter(item => item.inventoryPlace === InventoryPlace.legs)
+        data_for_hat: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.hat),
+        data_for_head: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.head),
+        data_for_chin: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.chin),
+        data_for_skin: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.skin),
+        data_for_back: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.back),
+        data_for_armor: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.armor),
+        data_for_shoulders: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.shoulders),
+        data_for_tail: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.tail),
+        data_for_one_hand: data.filter(item => (
+            (item.inventoryPlaces.includes(InventoryPlace.rightHand) && screenName !== InventoryGameScreens.mutaLab) || 
+            (item.inventoryPlaces.includes(InventoryPlace.leftHand) && screenName !== InventoryGameScreens.mutaLab) || 
+            (item.inventoryPlaces.includes(InventoryPlace.extraLeftHand) && screenName !== InventoryGameScreens.mutaLab) || 
+            (item.inventoryPlaces.includes(InventoryPlace.extraRightHand) && screenName !== InventoryGameScreens.mutaLab)
+        )),
+        data_for_two_hands: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.bothHands),
+        data_for_belt: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.belt),
+        data_for_pockets: data.filter(item => item.inventoryPlaces.includes(InventoryPlace.leftPocket) || item.inventoryPlaces.includes(InventoryPlace.rightPocket)),
+        data_for_legs: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.legs)
     }
 
     const SubInventoryScreenItemContextData = {

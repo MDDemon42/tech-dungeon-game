@@ -1,6 +1,9 @@
 import { BendingGameScreens, InventoryGameScreens, MindGameScreens } from "../enums-and-interfaces/enums";
-import { IBending, ICharacher, ICyber, IItem, IMastery, IMutation, IPower, ISpell } from "../enums-and-interfaces/interfaces";
-import { getBackpacksCapability } from "./backpacksPutter";
+import { 
+    IBending, ICharacher, ICyber, 
+    IItem, IMastery, IMutation, 
+    IPower, ISpell 
+} from "../enums-and-interfaces/interfaces";
 import priorityChecker from "./priorityChecker";
 import { createNoItem } from "./emptyEssencesCreators";
 import rituals from "../gameScreens/Guild/rituals";
@@ -97,9 +100,10 @@ export function subInventoryEnableChecker(
         screenName === InventoryGameScreens.armoury
     ) {
         const nothing = createNoItem().name;
+        const maxBackpacksItemsAmount = character.general.backpacks.length;
         const currentBackpacksItemsAmount = character.general.backpacks
             .filter((item) => item.name !== nothing).length;
-        const getBackpacksCapabilityCheck = currentBackpacksItemsAmount < getBackpacksCapability(character);
+        const getBackpacksCapabilityCheck = currentBackpacksItemsAmount < maxBackpacksItemsAmount;
         if (!getBackpacksCapabilityCheck) {
             return [false, chrome.i18n.getMessage('siec_backpacks_capability')]
         }
@@ -126,7 +130,7 @@ export function subInventoryEnableChecker(
         const memberInventory = character.general.inventory;
         const memberInventoryNames: string[] = [];
         for (let data in memberInventory) {
-            memberInventoryNames.push(memberInventory[data].name)
+            memberInventoryNames.push(memberInventory[data]?.name || '')
         };
 
         // @ts-expect-error

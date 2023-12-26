@@ -165,7 +165,7 @@ export interface IMastery extends ICommon {
 
 // inventory options //
 export interface IInventory extends Record<string, 
-    IItem | ICyber | IMutation | IWizardItem | IGuildItem
+    IItem | ICyber | IMutation | IWizardItem | IGuildItem | null
 > {
     hat: IItem | IWizardItem,
     head: IMutation,
@@ -174,13 +174,15 @@ export interface IInventory extends Record<string,
     skin: IMutation | ICyber,
     back: IMutation | IItem,
     shoulders: IMutation | ICyber,
+    extraLeftHand: ICyber | IItem | IMutation | null,
+    extraRightHand: ICyber | IItem | IMutation | null,
     belt: IItem,
     leftPocket: IItem,
     rightPocket: IItem,
     tail: IMutation,
     legs: ICyber | IMutation,
-    leftHand: ICyber | IItem,
-    rightHand: ICyber | IItem,
+    leftHand: ICyber | IMutation | IItem,
+    rightHand: ICyber | IMutation | IItem,
     bothHands: IMutation | IItem
 }
 
@@ -212,13 +214,13 @@ export interface IWizardItem extends IInventorySlot {
 
 export interface IBigResource extends ICommon {
     cost: number,
-    inventoryPlace: InventoryPlace,
+    inventoryPlaces: InventoryPlace[],
     priority: number
 }
 
 export interface IInventorySlot extends ICommon {
     cost: number,
-    inventoryPlace: InventoryPlace,
+    inventoryPlaces: InventoryPlace[],
     priority: number,
 
     abilities: IBattleAbility[] | null,
@@ -293,6 +295,7 @@ export interface IMutationsForRaceCheck {
     scales: boolean,
     fur: boolean,
     tailWithSting: boolean,
+    extraArms: boolean,
     claws: boolean,
     acidSpit: boolean,
     wings: boolean,

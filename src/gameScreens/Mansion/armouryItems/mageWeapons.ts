@@ -10,53 +10,21 @@ import coldMasteries from "../../IceSite/masteries";
 import crafts from "../crafts";
 import mansionMasteries from "../masteries";
 
-const battleMageAxeRightHand = createArmouryItem(
+const battleMageAxe = createArmouryItem(
     [
         chrome.i18n.getMessage('battle_mage_axe'), 
         chrome.i18n.getMessage('battle_mage_axe_item_description'),
         images.armouryItems.battleMageAxe
     ],
     [
-        3, InventoryPlace.rightHand, 1
-    ],
-    [
-        '', 0,
-        crafts.mageWeapons.craftBattleMageAxe
-    ],
-    [
-        abilities.battleAbilities.melee.physicalSlashing.battleMageAxeSlash
-    ], 
-    [
-        abilities.passiveAbilities.weapons.mageWeapon
-    ], 
-    [
-        {
-            linkedMastery: mansionMasteries.axeAffiliation.name,
-            masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedBattleMageAxeSlash
-        },
-        {
-            linkedMastery: fireMasteries.fireAffiliation.name,
-            masterAbility: abilities.battleAbilities.melee.mixed.battleMageAxeFireSlash
-        },
-        {
-            linkedMastery: coldMasteries.coldAffiliation.name,
-            masterAbility: abilities.battleAbilities.melee.mixed.battleMageAxeColdSlash
-        },
-        {
-            linkedMastery: airMasteries.windAffiliation.name,
-            masterAbility: abilities.battleAbilities.melee.physicalSlashing.battleMageAxeWindSlash
-        }
-    ]
-);
-
-const battleMageAxeLeftHand = createArmouryItem(
-    [
-        chrome.i18n.getMessage('battle_mage_axe'), 
-        chrome.i18n.getMessage('battle_mage_axe_item_description'),
-        images.armouryItems.battleMageAxe
-    ],
-    [
-        3, InventoryPlace.leftHand, 1
+        3, 
+        [
+            InventoryPlace.rightHand,
+            InventoryPlace.leftHand,
+            InventoryPlace.extraLeftHand,
+            InventoryPlace.extraRightHand
+        ], 
+        1
     ],
     [
         '', 0,
@@ -95,7 +63,7 @@ const mageDragonBoneBlade = createArmouryItem(
         images.armouryItems.mageDragonBoneBlade
     ],
     [
-        3, InventoryPlace.rightHand, 1
+        3, [InventoryPlace.rightHand], 1
     ],
     [
         '', 0,
@@ -126,7 +94,7 @@ const mageGlaive = createArmouryItem(
         images.armouryItems.mageGlaive
     ],
     [
-        3, InventoryPlace.bothHands, 1
+        3, [InventoryPlace.bothHands], 1
     ],
     [
         '', 3,
@@ -157,7 +125,7 @@ const mageHalberd = createArmouryItem(
         images.armouryItems.mageHalberd
     ],
     [
-        3, InventoryPlace.bothHands, 1
+        3, [InventoryPlace.bothHands], 1
     ],
     [
         '', 3,
@@ -188,7 +156,7 @@ const mageKhopesh = createArmouryItem(
         images.armouryItems.mageKhopesh
     ],
     [
-        3, InventoryPlace.rightHand, 1
+        3, [InventoryPlace.rightHand], 1
     ],
     [
         '', 0,
@@ -219,7 +187,7 @@ const mageMacuahuitl = createArmouryItem(
         images.armouryItems.mageMacuahuitl
     ],
     [
-        3, InventoryPlace.rightHand, 1
+        3, [InventoryPlace.rightHand], 1
     ],
     [
         '', 0,
@@ -250,7 +218,7 @@ const mageMusket = createArmouryItem(
         images.armouryItems.mageMusket
     ],
     [
-        3, InventoryPlace.bothHands, 1
+        3, [InventoryPlace.bothHands], 1
     ],
     [
         '', 0,
@@ -281,7 +249,7 @@ const battleMageMusket = createArmouryItem(
         images.armouryItems.battleMageMusket
     ],
     [
-        4, InventoryPlace.bothHands, 1
+        4, [InventoryPlace.bothHands], 1
     ],
     [
         '', 0,
@@ -317,7 +285,7 @@ const mageRifle = createArmouryItem(
         images.armouryItems.mageRifle
     ],
     [
-        4, InventoryPlace.bothHands, 1
+        4, [InventoryPlace.bothHands], 1
     ],
     [
         '', 0,
@@ -356,7 +324,7 @@ const battleMageRifle = createArmouryItem(
         images.armouryItems.battleMageRifle
     ],
     [
-        5, InventoryPlace.bothHands, 1
+        5, [InventoryPlace.bothHands], 1
     ],
     [
         '', 0,
@@ -405,14 +373,19 @@ const battleMageRifle = createArmouryItem(
     ]
 );
 
-const mageWandRightHand = createArmouryItem(
+const mageWand = createArmouryItem(
     [
         chrome.i18n.getMessage('mage_wand'), 
         chrome.i18n.getMessage('mage_wand_item_description'),
         images.armouryItems.mageWand
     ],
     [
-        2, InventoryPlace.rightHand, 1
+        2, 
+        [
+            InventoryPlace.rightHand,
+            InventoryPlace.leftHand
+        ], 
+        1
     ],
     [
         fireMasteries.fireAffiliation.name, 0,
@@ -427,31 +400,8 @@ const mageWandRightHand = createArmouryItem(
     null
 );
 
-const mageWandLeftHand = createArmouryItem(
-    [
-        chrome.i18n.getMessage('mage_wand'), 
-        chrome.i18n.getMessage('mage_wand_item_description'),
-        images.armouryItems.mageWand
-    ],
-    [
-        2, InventoryPlace.leftHand, 1
-    ],
-    [
-        coldMasteries.coldAffiliation.name, 0,
-        crafts.mageWeapons.craftMageWand
-    ],
-    [
-        abilities.battleAbilities.ranged.cold.frost
-    ], 
-    [
-        abilities.passiveAbilities.weapons.mageWeapon
-    ],  
-    null
-);
-
 const mageWeapons = {
-    battleMageAxeRightHand,
-    battleMageAxeLeftHand,
+    battleMageAxe,
     mageDragonBoneBlade,
     mageGlaive,
     mageHalberd,
@@ -461,8 +411,7 @@ const mageWeapons = {
     battleMageMusket,
     mageRifle,
     battleMageRifle,
-    mageWandLeftHand,
-    mageWandRightHand
+    mageWand
 }
 
 export default mageWeapons

@@ -36,15 +36,6 @@ const swordAffiliation = createMastery(
     ''
 );
 
-const dualSwords = createMastery(
-    [
-        chrome.i18n.getMessage('dual_swords'),
-        chrome.i18n.getMessage('dual_swords_mastery_description'),
-        images.guildianLearnings.dualSwords
-    ],
-    swordAffiliation.name
-);
-
 const brutalForce = createMastery(
     [
         chrome.i18n.getMessage('brutal_force'),
@@ -93,7 +84,6 @@ const sellmanship = createMastery(
 const academyMasteries = {
     bowAffiliation,
     brutalForce,
-    dualSwords,
     maceAffiliation,
     martialArts,
     sellmanship,
@@ -111,8 +101,7 @@ const basicOptions = [
 const steelOptions = [
     academyMasteries.martialArts,
     academyMasteries.maceAffiliation,
-    academyMasteries.swordAffiliation,
-    academyMasteries.dualSwords
+    academyMasteries.swordAffiliation
 ];
 
 export const academyOptions: Record<string, IMastery[]> = {

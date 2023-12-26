@@ -12,7 +12,7 @@ const runicGreataxe = createGuildItem(
         images.guildianLearnings.runicGreataxe
     ],
     [
-        2, InventoryPlace.bothHands, 1
+        2, [InventoryPlace.bothHands], 1
     ],
     academyMasteries.brutalForce.name,
     [
@@ -34,7 +34,7 @@ const runicGreatsword = createGuildItem(
         images.guildianLearnings.runicGreatsword
     ],
     [
-        2, InventoryPlace.bothHands, 1
+        2, [InventoryPlace.bothHands], 1
     ],
     academyMasteries.brutalForce.name,
     [
@@ -56,7 +56,7 @@ const runicGreathammer = createGuildItem(
         images.guildianLearnings.runicGreathammer
     ],
     [
-        2, InventoryPlace.bothHands, 1
+        2, [InventoryPlace.bothHands], 1
     ],
     academyMasteries.brutalForce.name,
     [
@@ -78,7 +78,7 @@ const oakCrossow = createGuildItem(
         images.normalItems.oakCrossbow
     ],
     [
-        2, InventoryPlace.bothHands, 1
+        2, [InventoryPlace.bothHands], 1
     ],
     '',
     [
@@ -100,7 +100,7 @@ const steelChakram = createGuildItem(
         images.guildianLearnings.chakram
     ],
     [
-        2, InventoryPlace.leftHand, 1
+        2, [InventoryPlace.leftHand], 1
     ],
     '',
     [
@@ -126,7 +126,7 @@ const acidBomd = createGuildItem(
         images.normalItems.acidBomb
     ],
     [
-        1, InventoryPlace.rightPocket, 1
+        1, [InventoryPlace.rightPocket], 1
     ],
     '', 
     [

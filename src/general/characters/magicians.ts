@@ -24,8 +24,8 @@ const apprentice = () => {
     character.general.mind.masteries.push(wizardMasteries.scholarship);
     character.general.mind.spells.push(spells.magicBolt);
 
-    character.general.inventory.bothHands = wizardItems.weapons.wizardItem_apprenticeRod;
-    character.general.inventory.hat = wizardItems.armors.wizardItem_apprenticeHat;
+    character.general.inventory.bothHands = wizardItems.weapons.apprenticeRod;
+    character.general.inventory.hat = wizardItems.armors.apprenticeHat;
 
     return character
 }
@@ -47,9 +47,9 @@ const magister = () => {
     character.general.mind.masteries.push(wizardMasteries.magisterDegree);
     character.general.mind.spells.push(spells.magicBolt);
 
-    character.general.inventory.bothHands = wizardItems.weapons.wizardItem_magisterScepter;
-    character.general.inventory.hat = wizardItems.armors.wizardItem_magisterHat;
-    character.general.inventory.armor = wizardItems.armors.wizardItem_magisterRobe;
+    character.general.inventory.bothHands = wizardItems.weapons.magisterScepter;
+    character.general.inventory.hat = wizardItems.armors.magisterHat;
+    character.general.inventory.armor = wizardItems.armors.magisterRobe;
     character.general.inventory.back = wizardItems.other.wizardItem_flyingCape;
 
     return character

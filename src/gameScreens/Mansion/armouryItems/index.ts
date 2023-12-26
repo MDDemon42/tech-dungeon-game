@@ -12,7 +12,7 @@ export function createArmouryItem(
     ],
     inventoryInfo: [
         cost: number,
-        inventoryPlace: InventoryPlace,
+        inventoryPlaces: InventoryPlace[],
         priority: number
     ],
     requirements: [
@@ -33,7 +33,7 @@ export function createArmouryItem(
         image: commonInfo[2],
 
         cost: inventoryInfo[0],
-        inventoryPlace: inventoryInfo[1],
+        inventoryPlaces: inventoryInfo[1],
         priority: inventoryInfo[2],
 
         requiredMastery: requirements[0],
@@ -59,8 +59,7 @@ const musketOptions = [
 ];
 
 const rifleOptions = [
-    armouryItems.guns.revolverLeftHand,
-    armouryItems.guns.revolverRightHand,
+    armouryItems.guns.revolver,
     armouryItems.guns.rifle
 ];
 
@@ -77,8 +76,7 @@ export const startClassBattleOptions: Record<UserStartClass, IArmouryItem | null
 }
 
 const battleOptions = [
-    armouryItems.battleWeapons.battleAxeLeftHand,
-    armouryItems.battleWeapons.battleAxeRightHand,
+    armouryItems.battleWeapons.battleAxe,
     armouryItems.battleWeapons.dragonBoneBlade        
 ];
 
@@ -88,8 +86,7 @@ const battleMusketOptions = [
 ];
 
 const battleRifleOptions = [
-    armouryItems.guns.battleRevolverLeftHand,
-    armouryItems.guns.battleRevolverRightHand,
+    armouryItems.guns.battleRevolver,
     armouryItems.guns.battleRifle
 ];
 
@@ -106,8 +103,7 @@ export const startClassBattleMageOptions: Record<UserStartClass, IArmouryItem | 
 }
 
 const mageOptions = [
-    armouryItems.mageWeapons.mageWandLeftHand,
-    armouryItems.mageWeapons.mageWandRightHand
+    armouryItems.mageWeapons.mageWand
 ];
 
 const mageMusketOptions = [
@@ -119,8 +115,7 @@ const mageRifleOptions = [
 ];
 
 const battleMageOptions = [
-    armouryItems.mageWeapons.battleMageAxeLeftHand,
-    armouryItems.mageWeapons.battleMageAxeRightHand,
+    armouryItems.mageWeapons.battleMageAxe,
     armouryItems.mageWeapons.mageDragonBoneBlade,       
 ];
 

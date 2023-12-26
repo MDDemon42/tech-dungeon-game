@@ -12,7 +12,7 @@ export function createMutation(
     ],
     inventoryInfo: [
         cost: number,
-        inventoryPlace: InventoryPlace,
+        inventoryPlaces: InventoryPlace[],
         priority: number
     ],
     abilityInfo: [
@@ -26,7 +26,7 @@ export function createMutation(
         image: commonInfo[2],
 
         cost: inventoryInfo[0],
-        inventoryPlace: inventoryInfo[1],
+        inventoryPlaces: inventoryInfo[1],
         priority: inventoryInfo[2],
 
         abilities: abilityInfo[0],
@@ -51,6 +51,7 @@ const reptileOptions = [
     mutations.weapons.raptorLegs,
     mutations.armors.scales,
     mutations.weapons.tailWithSting,
+    mutations.other.extraArms
 ];
 
 const insectoidOptions = [

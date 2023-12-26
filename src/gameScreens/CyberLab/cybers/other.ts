@@ -9,7 +9,7 @@ const reactiveFeet = createCyber(
         images.cyborgDetails.reactiveFeet
     ],
     [
-        1, InventoryPlace.legs, 2
+        1, [InventoryPlace.legs], 2
     ],
     [
         null, null

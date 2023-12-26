@@ -5,10 +5,10 @@ function getHatImage(hatName: string) {
     let result = null;
     
     switch (hatName) {
-        case wizardItems.armors.wizardItem_magisterHat.name:
+        case wizardItems.armors.magisterHat.name:
             result = <img src={images.bodyElements.magisterHat} alt={chrome.i18n.getMessage('magister_hat')} />;
             break;
-        case wizardItems.armors.wizardItem_apprenticeHat.name:
+        case wizardItems.armors.apprenticeHat.name:
             result = <img src={images.bodyElements.apprenticeHat} alt={chrome.i18n.getMessage('apprentice_hat')} />;
             break;
         default:

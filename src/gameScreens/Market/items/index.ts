@@ -16,7 +16,7 @@ export function createItem(
     ],
     inventoryInfo: [
         cost: number,
-        inventoryPlace: InventoryPlace,
+        inventoryPlaces: InventoryPlace[],
         priority: number
     ],
     requiredMastery: string,
@@ -33,7 +33,7 @@ export function createItem(
         image: commonInfo[2],
 
         cost: inventoryInfo[0],
-        inventoryPlace: inventoryInfo[1],
+        inventoryPlaces: inventoryInfo[1],
         priority: inventoryInfo[2],
 
         requiredMastery,
@@ -64,8 +64,8 @@ const steelOptions = [
     items.armors.steelArmor,
     items.armors.steelShield,
     items.weapons.steelMace,
-    items.weapons.steelSwordLeftHand,
-    items.weapons.steelSwordRightHand,
+    items.weapons.steelMace,
+    items.weapons.steelSword,
     items.weapons.steelGreataxe,
     items.weapons.steelGreathammer,
     items.weapons.steelGreatsword

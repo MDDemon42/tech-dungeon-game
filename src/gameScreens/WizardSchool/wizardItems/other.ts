@@ -9,7 +9,7 @@ const wizardItem_flyingCape = createWizardItem(
         images.wizardItems.flyingCape
     ],
     [
-        2, InventoryPlace.back, 2
+        2, [InventoryPlace.back], 2
     ],
     [
         null, null

@@ -1800,11 +1800,11 @@
     "cyber_fist_cyber_description": {
         "message": "Cyber to give ultimate punches."
     },
-    "cyber_fist_smash_right": {
-        "message": "Cyber fist smash (right)"
+    "cyber_fist_smash": {
+        "message": "Cyber fist smash"
     },
-    "cyber_fist_smash_left": {
-        "message": "Cyber fist smash (left)"
+    "double_cyber_fist_smash": {
+        "message": "Double cyber fist smash"
     },
     "energy_shield": {
         "message": "Energy shield"
@@ -1900,16 +1900,19 @@
         "message": "Claws"
     },
     "claws_mutation_description": {
-        "message": "Mutation to rip your opponents apart."
+        "message": "Mutation to rip your opponents` faces apart."
     },
-    "left_claw_slash": {
-        "message": "Left claw slash"
+    "claw_slash": {
+        "message": "Claw slash"
     },
-    "right_claw_slash": {
-        "message": "Right claw slash"
+    "all_claws_slash": {
+        "message": "All claws slash"
     },
-    "both_claws_slash": {
-        "message": "Both claws slash"
+    "extra_arms": {
+        "message": "Extra arms"
+    },
+    "extra_arms_mutation_description": {
+        "message": "Mutation to use extra items with extra hands."
     },
     "horns": {
         "message": "Horns"
@@ -2745,17 +2748,8 @@
     "sellmanship_mastery_description": {
         "message": "Mastery of selling items for real price."
     },
-    "rip_apart_minor": {
-        "message": "Rip Apart (minor)"
-    },
-    "rip_apart_mere": {
-        "message": "Rip Apart (mere)"
-    },
-    "rip_apart_major": {
-        "message": "Rip Apart (major)"
-    },
-    "rip_apart_monstrous": {
-        "message": "Rip Apart (monstrous)"
+    "rip_apart": {
+        "message": "Rip Apart"
     },
     "fist_punch": {
         "message": "Fist punch"

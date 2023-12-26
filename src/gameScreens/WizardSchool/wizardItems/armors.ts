@@ -3,14 +3,14 @@ import images from "../../../images/images";
 import abilities from "../../../general/abilities";
 import { createWizardItem } from ".";
 
-const wizardItem_apprenticeHat = createWizardItem(
+const apprenticeHat = createWizardItem(
     [
         chrome.i18n.getMessage('apprentice_hat'),
         chrome.i18n.getMessage('apprentice_hat_item_description'),
         images.wizardItems.apprenticeHat
     ], 
     [
-        1, InventoryPlace.hat, 1
+        1, [InventoryPlace.hat], 1
     ],
     [
         null,
@@ -18,14 +18,14 @@ const wizardItem_apprenticeHat = createWizardItem(
     ]    
 )
 
-const wizardItem_magisterHat = createWizardItem(
+const magisterHat = createWizardItem(
     [
         chrome.i18n.getMessage('magister_hat'),
         chrome.i18n.getMessage('magister_hat_item_description'),
         images.wizardItems.magisterHat
     ],
     [
-        2, InventoryPlace.hat, 2
+        2, [InventoryPlace.hat], 2
     ],
     [
         null,
@@ -33,14 +33,14 @@ const wizardItem_magisterHat = createWizardItem(
     ]    
 )
 
-const wizardItem_magisterRobe = createWizardItem(
+const magisterRobe = createWizardItem(
     [
         chrome.i18n.getMessage('magister_robe'),
         chrome.i18n.getMessage('magister_robe_item_description'),
         images.wizardItems.magisterRobe
     ],
     [
-        2, InventoryPlace.armor, 2
+        2, [InventoryPlace.armor], 2
     ],
     [
         null,
@@ -49,9 +49,9 @@ const wizardItem_magisterRobe = createWizardItem(
 )
 
 const armors = {
-    wizardItem_apprenticeHat,
-    wizardItem_magisterHat,
-    wizardItem_magisterRobe
+    apprenticeHat,
+    magisterHat,
+    magisterRobe
 }
 
 export default armors

@@ -10,6 +10,7 @@ function checkRace(inventory: IInventory, isStrong: boolean): Race {
         lowerFangs: inventory.chin.name === mutations.weapons.lowerFangs.name,
         scales: inventory.skin.name === mutations.armors.scales.name,
         fur: inventory.skin.name === mutations.armors.fur.name,
+        extraArms: inventory.shoulders.name === mutations.other.extraArms.name,
         tailWithSting: inventory.tail.name === mutations.weapons.tailWithSting.name,
         claws: inventory.bothHands.name === mutations.weapons.claws.name,
         acidSpit: inventory.chin.name === mutations.weapons.acidSpit.name,

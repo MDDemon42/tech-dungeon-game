@@ -14,6 +14,8 @@ import getShouldersImage from './shoulders';
 import getArmorImage from './armor';
 import getLeftPocketImage from './leftPocket';
 import getRightPocketImage from './rightPocket';
+import getExtraLeftHandImage from './extraLeftHand';
+import getExtraRightHandImage from './extraRightHand';
 
 function InventoryScreen(props: {
     character: ICharacher,
@@ -50,6 +52,16 @@ function InventoryScreen(props: {
 
     const shoulders = getShouldersImage(inventory.shoulders.name);
 
+    const extraLeftHand = getExtraLeftHandImage(
+        inventory.extraLeftHand?.name || '',
+        inventory.shoulders.name
+    );
+
+    const extraRightHand = getExtraRightHandImage(
+        inventory.extraRightHand?.name || '',
+        inventory.shoulders.name
+    );
+
     const armor = getArmorImage(inventory.armor.name);
 
     const rightPocket = getRightPocketImage(inventory.rightPocket.name);
@@ -83,8 +95,10 @@ function InventoryScreen(props: {
             { back }
             { tail }
             { legs }
-            { skin }
             { shoulders }
+            { extraLeftHand }
+            { extraRightHand }
+            { skin }
             { armor }
             { rightPocket }
             { leftPocket }

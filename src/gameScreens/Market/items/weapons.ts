@@ -4,43 +4,23 @@ import images from "../../../images/images";
 import abilities from "../../../general/abilities";
 import academyMasteries from "../../Academy/masteries";
 
-const steelSwordRightHand = createItem(
+const steelSword = createItem(
     [
         chrome.i18n.getMessage('steel_sword'), 
         chrome.i18n.getMessage('steel_sword_item_description'),
         images.normalItems.steelSword
     ],
     [
-        1, InventoryPlace.rightHand, 1
+        1, 
+        [
+            InventoryPlace.rightHand,
+            InventoryPlace.leftHand,
+            InventoryPlace.extraLeftHand,
+            InventoryPlace.extraRightHand
+        ], 
+        1
     ],
     '', 
-    [
-        abilities.battleAbilities.melee.physicalSlashing.swordSlash,
-        abilities.battleAbilities.melee.physicalPiercing.swordStab
-    ],
-    null,
-    [
-        {
-            linkedMastery: academyMasteries.swordAffiliation.name,
-            masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedSwordSlash
-        },
-        {
-            linkedMastery: academyMasteries.swordAffiliation.name,
-            masterAbility: abilities.battleAbilities.melee.physicalPiercing.affiliatedSwordStab
-        }
-    ]
-);
-
-const steelSwordLeftHand = createItem(
-    [
-        chrome.i18n.getMessage('steel_sword'), 
-        chrome.i18n.getMessage('steel_sword_item_description'),
-        images.normalItems.steelSword
-    ],
-    [
-        1, InventoryPlace.leftHand, 1
-    ],
-    academyMasteries.dualSwords.name,
     [
         abilities.battleAbilities.melee.physicalSlashing.swordSlash,
         abilities.battleAbilities.melee.physicalPiercing.swordStab
@@ -65,7 +45,14 @@ const steelMace = createItem(
         images.normalItems.steelMace
     ],
     [
-        2, InventoryPlace.rightHand, 1
+        2, 
+        [
+            InventoryPlace.rightHand,
+            InventoryPlace.leftHand,
+            InventoryPlace.extraLeftHand,
+            InventoryPlace.extraRightHand
+        ], 
+        1
     ],
     '',
     [
@@ -87,7 +74,7 @@ const spear = createItem(
         images.normalItems.spear
     ],
     [
-        1, InventoryPlace.rightHand, 1
+        1, [InventoryPlace.rightHand], 1
     ],
     '', 
     [
@@ -109,7 +96,7 @@ const steelGreataxe = createItem(
         images.normalItems.steelGreataxe
     ],
     [
-        2, InventoryPlace.bothHands, 1
+        2, [InventoryPlace.bothHands], 1
     ],
     academyMasteries.brutalForce.name,
     [
@@ -125,7 +112,7 @@ const steelGreathammer = createItem(
         images.normalItems.steelGreathammer
     ],
     [
-        2, InventoryPlace.bothHands, 1
+        2, [InventoryPlace.bothHands], 1
     ],
     academyMasteries.brutalForce.name,
     [
@@ -141,7 +128,7 @@ const steelGreatsword = createItem(
         images.normalItems.steelGreatsword
     ],
     [
-        2, InventoryPlace.bothHands, 1
+        2, [InventoryPlace.bothHands], 1
     ],
     academyMasteries.brutalForce.name,
     [
@@ -157,7 +144,7 @@ const oakBow = createItem(
         images.normalItems.oakBow
     ], 
     [
-        1, InventoryPlace.bothHands, 1
+        1, [InventoryPlace.bothHands], 1
     ],
     '', 
     [
@@ -179,7 +166,12 @@ const axe = createItem(
         images.normalItems.axe
     ],
     [
-        1, InventoryPlace.rightHand, 1
+        1, 
+        [
+            InventoryPlace.rightHand,
+            InventoryPlace.leftHand
+        ], 
+        1
     ],
     '',
     [
@@ -195,7 +187,12 @@ const pickaxe = createItem(
         images.normalItems.pickaxe
     ],
     [
-        1, InventoryPlace.rightHand, 1
+        1, 
+        [
+            InventoryPlace.rightHand,
+            InventoryPlace.leftHand
+        ], 
+        1
     ],
     '',
     [
@@ -210,8 +207,7 @@ const weapons = {
     steelGreatsword,
     steelMace,
     spear,
-    steelSwordRightHand,
-    steelSwordLeftHand,
+    steelSword,
     oakBow,
     axe,
     pickaxe

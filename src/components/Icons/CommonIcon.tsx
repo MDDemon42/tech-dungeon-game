@@ -15,7 +15,7 @@ function CommonIcon(props: {
         requiredPower?: string,
         requiredCyber?: string,
         passive?: boolean,
-        inventoryPlace?: InventoryPlace
+        inventoryPlaces?: InventoryPlace[]
         costs?: {
             [UserParam.health]?: number,
             [UserParam.mana]?: number,
@@ -56,7 +56,7 @@ function CommonIcon(props: {
     
     if (
         item.value || item.cost || item.requiredMastery ||
-        item.passive || item.inventoryPlace || item.damage
+        item.passive || item.inventoryPlaces || item.damage
     ) {
         description += '\n';
     }
@@ -89,8 +89,8 @@ function CommonIcon(props: {
         description += '\n' + chrome.i18n.getMessage('cid_passive') + item.passive;
     }
 
-    if (item.inventoryPlace) {
-        description += '\n' + chrome.i18n.getMessage('cid_inventory_place') + item.inventoryPlace;
+    if (item.inventoryPlaces) {
+        description += '\n' + chrome.i18n.getMessage('cid_inventory_place') + item.inventoryPlaces.join(', ');
     }
 
     if (item.damage) {

@@ -10,7 +10,7 @@ export function createGuildItem(
     ],
     inventoryInfo: [
         cost: number,
-        inventoryPlace: InventoryPlace,
+        inventoryPlaces: InventoryPlace[],
         priority: number
     ],
     requiredMastery: string,
@@ -27,7 +27,7 @@ export function createGuildItem(
         image: commonInfo[2],
 
         cost: inventoryInfo[0],
-        inventoryPlace: inventoryInfo[1],
+        inventoryPlaces: inventoryInfo[1],
         priority: inventoryInfo[2],
 
         requiredMastery,

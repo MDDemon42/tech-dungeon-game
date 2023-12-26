@@ -1792,11 +1792,11 @@
     "cyber_fist_cyber_description": {
         "message": "Кибер для раздачи гипертумаков."
     },    
-    "cyber_fist_smash_right": {
-        "message": "Удар кибер кулаком (правым)"
+    "cyber_fist_smash": {
+        "message": "Удар кибер кулаком"
     },
-    "cyber_fist_smash_left": {
-        "message": "Удар кибер кулаком (левым)"
+    "double_cyber_fist_smash": {
+        "message": "Двойной удар кибер кулаком"
     },
     "energy_shield": {
         "message": "Энергетический щит"
@@ -1892,16 +1892,19 @@
         "message": "Когти"
     },
     "claws_mutation_description": {
-        "message": "Мутация для разрывания жертв в клочья."
+        "message": "Мутация для разрывания лиц своих жертв в клочья."
     },
-    "left_claw_slash": {
-        "message": "Замах когтями слева"
+    "claw_slash": {
+        "message": "Замах когтями"
     },
-    "right_claw_slash": {
-        "message": "Замах когтями справа"
+    "all_claws_slash": {
+        "message": "Замах когтями со всех рук"
     },
-    "both_claws_slash": {
-        "message": "Замах когтями везде"
+    "extra_arms": {
+        "message": "Вторые руки"
+    },
+    "extra_arms_mutation_description": {
+        "message": "Мутация для использования дополнительных предметов."
     },
     "horns": {
         "message": "Рога"
@@ -2737,17 +2740,8 @@
     "sellmanship_mastery_description": {
         "message": "Мастерство продавать вещи за их реальную цену."
     },
-    "rip_apart_minor": {
-        "message": "Разорвать в клочья (слегка)"
-    },
-    "rip_apart_mere": {
-        "message": "Разорвать в клочья (как обычно)"
-    },
-    "rip_apart_major": {
-        "message": "Разорвать в клочья (ого как)"
-    },
-    "rip_apart_monstrous": {
-        "message": "Разорвать в клочья (до основания)"
+    "rip_apart": {
+        "message": "Разорвать в клочья"
     },
     "fist_punch": {
         "message": "Удар кулаком"

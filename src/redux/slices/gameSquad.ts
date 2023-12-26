@@ -19,7 +19,7 @@ import {
 import mutations from '../../gameScreens/MutaLab/mutations';
 import academyMasteries from '../../gameScreens/Academy/masteries';
 import checkRace from '../../general/races/checkRace';
-import putItemInBackpacks, { getBackpacksCapability } from '../../helpers/backpacksPutter';
+import putItemInBackpacks from '../../helpers/backpacksPutter';
 import { 
     UserResource, 
     UserParam, 
@@ -267,8 +267,7 @@ const gameSquad = createSlice({
             const squadMember = members[index];
             const backpacks = squadMember.general.backpacks;
 
-            const maxItemsAmount = getBackpacksCapability(squadMember);
-            putItemInBackpacks(backpacks, action.payload, maxItemsAmount);
+            putItemInBackpacks(backpacks, action.payload);
 
             state = oldState;
         },
@@ -299,8 +298,7 @@ const gameSquad = createSlice({
             const squadMember = members[index];
             const backpacks = squadMember.general.backpacks;
 
-            const maxItemsAmount = getBackpacksCapability(squadMember);
-            putItemInBackpacks(backpacks, action.payload, maxItemsAmount);           
+            putItemInBackpacks(backpacks, action.payload);           
 
             state = oldState;
         },
@@ -314,8 +312,7 @@ const gameSquad = createSlice({
 
             resources[UserResource.gem] -= action.payload.cost;
 
-            const maxItemsAmount = getBackpacksCapability(squadMember);
-            putItemInBackpacks(backpacks, action.payload, maxItemsAmount);           
+            putItemInBackpacks(backpacks, action.payload);           
 
             state = oldState;
         },
@@ -327,11 +324,8 @@ const gameSquad = createSlice({
             const index = oldState.currentlyWatched;
             const members = oldState.squadMembers;
             const squadMember = members[index];
-            let backpacks = [...squadMember.general.backpacks];
-
-            if (!squadMember.general.inventory) {
-                squadMember.general.inventory = createEmptyInventory();
-            }
+            const backpacks = [...squadMember.general.backpacks];
+            const inventory = {...squadMember.general.inventory};
 
             const {item, itemIndex} = action.payload;
 
@@ -339,54 +333,112 @@ const gameSquad = createSlice({
 
             const nothing = createNoItem().name;
 
-            const position: InventoryPlace = item.inventoryPlace;
-            const maxItemsAmount = getBackpacksCapability(squadMember);
+            const possiblePositions = item.inventoryPlaces;
 
-            if (
-                position === InventoryPlace.bothHands
-            ) {
-                const leftHandItem = {...squadMember.general.inventory.leftHand} as IItem;
-                if (leftHandItem.name !== nothing) {
-                    putItemInBackpacks(backpacks, leftHandItem, maxItemsAmount); 
+            if (possiblePositions.length === 1) {
+                const position = possiblePositions[0];
 
-                    integratePassiveAbility(squadMember, leftHandItem, -1);
+                if (
+                    position === InventoryPlace.bothHands
+                ) {
+                    const leftHandItem = {...inventory.leftHand} as IItem;
+                    if (leftHandItem.name !== nothing) {
+                        putItemInBackpacks(backpacks, leftHandItem); 
+                        integratePassiveAbility(squadMember, leftHandItem, -1);
+                    }
+                    inventory.leftHand = createNoItem();
+    
+                    const rightHandItem = {...inventory.rightHand} as IItem;
+                    if (rightHandItem.name !== nothing) {
+                        putItemInBackpacks(backpacks, rightHandItem); 
+                        integratePassiveAbility(squadMember, rightHandItem, -1);
+                    }
+                    inventory.rightHand = createNoItem();
+                } else if (
+                    position === InventoryPlace.leftHand ||
+                    position === InventoryPlace.rightHand
+                ) {
+                    const bothHandsItem = {...inventory.bothHands} as IItem;
+                    if (bothHandsItem.name !== nothing) {
+                        putItemInBackpacks(backpacks, bothHandsItem); 
+                        integratePassiveAbility(squadMember, bothHandsItem, -1);
+                    }
+                    inventory.bothHands = createNoItem();
                 }
-                squadMember.general.inventory.leftHand = createNoItem();
 
-                const rightHandItem = {...squadMember.general.inventory.rightHand} as IItem;
-                if (rightHandItem.name !== nothing) {
-                    putItemInBackpacks(backpacks, rightHandItem, maxItemsAmount); 
+                {
+                    const thisPositionItem = {...inventory[placeAsKey(position)]} as IItem;
+                    if (thisPositionItem.name !== nothing) {
+                        putItemInBackpacks(backpacks, thisPositionItem);     
+                        integratePassiveAbility(squadMember, thisPositionItem, -1);
+                    }
+                }
                 
-                    integratePassiveAbility(squadMember, rightHandItem, -1);
-                }
-                squadMember.general.inventory.rightHand = createNoItem();
-            } else if (
-                position === InventoryPlace.leftHand ||
-                position === InventoryPlace.rightHand
-            ) {
-                const bothHandsItem = {...squadMember.general.inventory.bothHands} as IItem;
-                if (bothHandsItem.name !== nothing) {
-                    putItemInBackpacks(backpacks, bothHandsItem, maxItemsAmount); 
-                
-                    integratePassiveAbility(squadMember, bothHandsItem, -1);
-                }
-                squadMember.general.inventory.bothHands = createNoItem();
-            }
-            
-            {
-                const thisPositionItem = {...squadMember.general.inventory[placeAsKey(position)]} as IItem;
-                if (thisPositionItem.name !== nothing) {
-                    putItemInBackpacks(backpacks, thisPositionItem, maxItemsAmount); 
-                    
-                    integratePassiveAbility(squadMember, thisPositionItem, -1);
-                }
-            }
-            
-            squadMember.general.inventory[placeAsKey(position)] = item;
+                inventory[placeAsKey(position)] = item;
+            } else {
+                const handsOptions: (InventoryPlace.leftHand | InventoryPlace.extraLeftHand |
+                InventoryPlace.rightHand | InventoryPlace.extraRightHand)[] = [
+                    InventoryPlace.rightHand, InventoryPlace.leftHand,
+                    InventoryPlace.extraRightHand, InventoryPlace.extraLeftHand                    
+                ];
+    
+                let itemEquipped = false;
+        
+                for (const option of handsOptions) {
+                    if (possiblePositions.includes(option)) {
+                        const thisOptionItem = {...inventory[placeAsKey(option)]} as IItem | null;
+    
+                        if (!thisOptionItem) {
+                            continue;
+                        }
+    
+                        if (thisOptionItem.name === nothing) {
+                            const bothHandsItem = {...inventory.bothHands} as IItem;
+                            if (
+                                (
+                                    option === InventoryPlace.leftHand ||
+                                    option === InventoryPlace.rightHand
+                                ) && bothHandsItem.name !== nothing 
+                            ) {
+                                continue;
+                            }
 
+                            inventory[placeAsKey(option)] = item;
+                            itemEquipped = true;
+                            break;
+                        }
+                    }
+                }
+        
+                if (!itemEquipped) {
+                    const randomHandsOption = handsOptions[Math.floor(Math.random() * handsOptions.length)];
+    
+                    const randomHandsOptionItem = {...inventory[placeAsKey(randomHandsOption)]} as IItem;
+                    if (randomHandsOptionItem.name !== nothing) {
+                        putItemInBackpacks(backpacks, randomHandsOptionItem);  
+                        integratePassiveAbility(squadMember, randomHandsOptionItem, -1);
+                    }         
+
+                    const bothHandsItem = {...inventory.bothHands} as IItem;
+                    if (
+                        (
+                            randomHandsOption === InventoryPlace.leftHand ||
+                            randomHandsOption === InventoryPlace.rightHand
+                        ) && bothHandsItem.name !== nothing 
+                    ) {
+                        putItemInBackpacks(backpacks, bothHandsItem); 
+                        integratePassiveAbility(squadMember, bothHandsItem, -1);
+                        inventory.bothHands = createNoItem();
+                    }           
+    
+                    inventory[placeAsKey(randomHandsOption)] = item;
+                }
+            }
+           
             integratePassiveAbility(squadMember, item, +1);
 
             squadMember.general.backpacks = backpacks;
+            squadMember.general.inventory = inventory;
 
             state = oldState;
         },
@@ -564,39 +616,138 @@ const gameSquad = createSlice({
                 squadMember.general.inventory = createEmptyInventory();
             }
 
-            const cyber = action.payload;
-            const position = cyber.inventoryPlace;
-
             const nothing = createNoItem().name;
-            const oldCyber = {...squadMember.general.inventory[placeAsKey(position)]} as ICyber;
-            if (oldCyber.name !== nothing) {
-                integratePassiveAbility(squadMember, oldCyber, -1);
-            }            
+            const backpacks = [...squadMember.general.backpacks];
+            const inventory = {...squadMember.general.inventory};
 
-            if (
-                position === InventoryPlace.leftHand
-            ) {
-                if (squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)].name === mutations.weapons.claws.name) {
-                    squadMember.general.inventory[placeAsKey(InventoryPlace.rightHand)] = mutations.weapons.clawRight;
-                }
+            const cyber: ICyber = action.payload;
+
+            const possiblePositions = cyber.inventoryPlaces;
+            if (possiblePositions.length === 1) {
+                const position = cyber.inventoryPlaces[0];
                 
-                squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)] = createNoItem();                
-            }
+                const oldCyber = {...inventory[placeAsKey(position)]} as ICyber | IItem;
+                if (oldCyber.name !== nothing) {
+                    if (
+                        !oldCyber.description.includes('Cyber') && 
+                        !oldCyber.description.includes('Кибер') &&
+                        !oldCyber.description.includes('Mutation') && 
+                        !oldCyber.description.includes('Мутация')
+                    ) {
+                        putItemInBackpacks(backpacks, oldCyber as IItem); 
+                    }
 
-            if (
-                position === InventoryPlace.rightHand
-            ) {
-                if (squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)].name === mutations.weapons.claws.name) {
-                    squadMember.general.inventory[placeAsKey(InventoryPlace.leftHand)] = mutations.weapons.clawLeft;
+                    integratePassiveAbility(squadMember, oldCyber, -1);
                 }
 
-                squadMember.general.inventory[placeAsKey(InventoryPlace.bothHands)] = createNoItem();
-            }
+                if (
+                    position === InventoryPlace.leftHand ||
+                    position === InventoryPlace.rightHand
+                ) {
+                    const bothHandsItem = {...inventory.bothHands} as IItem;
+                    if (bothHandsItem.name !== nothing) {
+                        putItemInBackpacks(backpacks, bothHandsItem); 
+                    }
 
-            squadMember.general.inventory[placeAsKey(position)] = cyber;
+                    inventory.bothHands = createNoItem();                
+                }
+    
+                inventory[placeAsKey(position)] = cyber;
+            } else {
+                const handsOptions: 
+                (InventoryPlace.leftHand | InventoryPlace.rightHand |
+                    InventoryPlace.extraLeftHand | InventoryPlace.extraRightHand)[] = [
+                    InventoryPlace.rightHand, InventoryPlace.leftHand,
+                    InventoryPlace.extraLeftHand, InventoryPlace.extraRightHand
+                ];
+
+                let cyberImplemented = false;
+        
+                for (const option of handsOptions) {
+                    if (possiblePositions.includes(option)) {
+                        const thisOptionCyber = {...inventory[placeAsKey(option)]} as ICyber | IItem | null;
+                        if (!thisOptionCyber) {
+                            continue;
+                        }
+
+                        if (cyber.requiredCyber && thisOptionCyber.name === cyber.requiredCyber) {
+                            integratePassiveAbility(squadMember, thisOptionCyber, -1);
+                            inventory[placeAsKey(option)] = cyber;
+                            cyberImplemented = true;
+                            break;
+                        }
+    
+                        if (thisOptionCyber.name === nothing) {
+                            const bothHandsItem = {...inventory.bothHands} as IItem;
+                            if (
+                                (
+                                    option === InventoryPlace.leftHand ||
+                                    option === InventoryPlace.rightHand
+                                ) && bothHandsItem.name !== nothing 
+                            ) {
+                                continue;
+                            }
+                            
+                            inventory[placeAsKey(option)] = cyber;
+                            cyberImplemented = true;
+                            break;
+                        }
+
+                        if (
+                            thisOptionCyber.name !== cyber.name && 
+                            thisOptionCyber.priority <= cyber.priority
+                        ) {
+                            if (
+                                !thisOptionCyber.description.includes('Cyber') && 
+                                !thisOptionCyber.description.includes('Кибер') &&
+                                !thisOptionCyber.description.includes('Mutation') && 
+                                !thisOptionCyber.description.includes('Мутация')
+                            ) {
+                                putItemInBackpacks(backpacks, thisOptionCyber as IItem); 
+                            }
+
+                            integratePassiveAbility(squadMember, thisOptionCyber, -1); 
+
+                            inventory[placeAsKey(option)] = cyber;
+                            cyberImplemented = true;
+                            break;
+                        }                        
+                    }
+                }
+
+                if (!cyberImplemented) {
+                    const randomHandsOption = handsOptions[Math.floor(Math.random() * handsOptions.length)];
+    
+                    const randomHandsOptionItem = {...inventory[placeAsKey(randomHandsOption)]} as IItem;
+                    if (randomHandsOptionItem.name !== nothing) {
+                        putItemInBackpacks(backpacks, randomHandsOptionItem); 
+                        integratePassiveAbility(squadMember, randomHandsOptionItem, -1);
+                    }         
+
+                    const bothHandsItem = {...inventory.bothHands} as IItem;
+                    if (
+                        (
+                            randomHandsOption === InventoryPlace.leftHand ||
+                            randomHandsOption === InventoryPlace.rightHand
+                        ) && bothHandsItem.name !== nothing &&
+                        !bothHandsItem.description.includes('Mutation') && 
+                        !bothHandsItem.description.includes('Мутация')
+                    ) {
+                        putItemInBackpacks(backpacks, bothHandsItem); 
+                        integratePassiveAbility(squadMember, bothHandsItem, -1);
+                        inventory.bothHands = createNoItem();
+                    }           
+    
+                    inventory[placeAsKey(randomHandsOption)] = cyber;
+                }
+            }                      
+            
             oldState.resources[UserResource.core] -= cyber.cost;
 
             integratePassiveAbility(squadMember, cyber, +1);
+
+            squadMember.general.backpacks = backpacks;
+            squadMember.general.inventory = inventory;
 
             state = oldState;
         },
@@ -604,27 +755,73 @@ const gameSquad = createSlice({
             const oldState = {...state};
             const squadMember = oldState.squadMembers[oldState.currentlyWatched];
 
-            if (!squadMember.general.inventory) {
-                squadMember.general.inventory = createEmptyInventory();
+            const mutation: IMutation = action.payload;
+            const position = mutation.inventoryPlaces[0];
+            const nothing = createNoItem().name;
+            const backpacks = [...squadMember.general.backpacks];
+            const inventory = {...squadMember.general.inventory};
+
+            if (mutation.name === mutations.weapons.claws.name) {
+                const bothHandsItem = {...inventory.bothHands} as IItem;
+                if (bothHandsItem.name !== nothing) {
+                    putItemInBackpacks(backpacks, bothHandsItem); 
+                    integratePassiveAbility(squadMember, bothHandsItem, -1);
+                    inventory.bothHands = createNoItem();
+                }   
+
+                const leftHandItem = {...inventory.leftHand} as IItem;
+                if (leftHandItem.name !== nothing) {
+                    putItemInBackpacks(backpacks, leftHandItem); 
+                    integratePassiveAbility(squadMember, leftHandItem, -1);
+                }
+                inventory.leftHand = mutations.weapons.claw;
+
+                const rightHandItem = {...inventory.rightHand} as IItem;
+                if (rightHandItem.name !== nothing) {
+                    putItemInBackpacks(backpacks, rightHandItem); 
+                    integratePassiveAbility(squadMember, rightHandItem, -1);
+                }
+                inventory.rightHand = mutations.weapons.claw;
+
+                if (inventory.extraLeftHand) {
+                    const extraLeftHandItem = {...inventory.extraLeftHand} as IItem;
+                    if (extraLeftHandItem.name !== nothing) {
+                        putItemInBackpacks(backpacks, extraLeftHandItem); 
+                        integratePassiveAbility(squadMember, extraLeftHandItem, -1);
+                    }
+                    inventory.extraLeftHand = mutations.weapons.claw;
+                }
+                if (inventory.extraRightHand) {
+                    const extraRightHandItem = {...inventory.extraRightHand} as IItem;
+                    if (extraRightHandItem.name !== nothing) {
+                        putItemInBackpacks(backpacks, extraRightHandItem); 
+                        integratePassiveAbility(squadMember, extraRightHandItem, -1);
+                    }
+                    inventory.extraRightHand = mutations.weapons.claw;
+                }
+            } else {
+                const previousMutation = inventory[placeAsKey(position)];
+                integratePassiveAbility(squadMember, previousMutation as IMutation, -1);
+            }            
+
+            if (mutation.name === mutations.other.extraArms.name) {
+                if (
+                    inventory.bothHands.name === mutations.weapons.claws.name ||
+                    inventory.leftHand.name === mutations.weapons.claw.name ||
+                    inventory.rightHand.name === mutations.weapons.claw.name
+                ) {
+                    inventory.extraLeftHand = mutations.weapons.claw;
+                    inventory.extraRightHand = mutations.weapons.claw;
+                } else {
+                    inventory.extraLeftHand = createNoItem();
+                    inventory.extraRightHand = createNoItem();
+                }
             }
 
-            const mutation = action.payload;
-            const position = mutation.inventoryPlace;
-
-            if (position === InventoryPlace.bothHands) {
-                squadMember.general.inventory.leftHand = createNoItem();
-                squadMember.general.inventory.rightHand = createNoItem();
-            }
-
-            const previousMutation = squadMember.general.inventory[placeAsKey(position)];
-            integratePassiveAbility(squadMember, previousMutation, -1);
-
-            squadMember.general.inventory[placeAsKey(position)] = mutation;
+            inventory[placeAsKey(position)] = mutation;
             oldState.resources[UserResource.gene] -= mutation.cost;
 
-            const isStrong = squadMember.general.mind.masteries
-                .map(mastery => mastery.name)
-                .includes(academyMasteries.brutalForce.name);
+            const isStrong = squadMember.params.strength >= 3;
                 
             const raceMasteriesNames = Object.values(raceMasteries)
                 .map(mastery => mastery.name);
@@ -637,7 +834,7 @@ const gameSquad = createSlice({
                     return true
                 })
 
-            const newRace = checkRace(squadMember.general.inventory, isStrong);
+            const newRace = checkRace(inventory, isStrong);
             squadMember.params.race = newRace;
 
             const newRaceMastery = raceMasteries[newRace];
@@ -646,6 +843,9 @@ const gameSquad = createSlice({
             }
 
             integratePassiveAbility(squadMember, mutation, +1);
+
+            squadMember.general.backpacks = backpacks;
+            squadMember.general.inventory = inventory;
 
             state = oldState;
         },

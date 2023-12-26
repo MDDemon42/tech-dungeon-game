@@ -1,33 +1,78 @@
 import mutations from "../../gameScreens/MutaLab/mutations";
 import { IAbility, IInventory } from "../../enums-and-interfaces/interfaces";
-import abilities from "../abilities";
+import images from "../../images/images";
+import { DamageType } from "../../enums-and-interfaces/enums";
+import { createBattleAbility } from "../abilities/battleAbilities";
 
-function checkRipApart(inventory: IInventory): IAbility | null {
-    const ripApartMutations: Record<string, boolean> = {
+function checkRipApart(inventory: IInventory): (IAbility | null)[] {
+    const ripApartMutations = {
+        clawLeft: inventory.leftHand.name === mutations.weapons.claw.name,
+        clawRight: inventory.rightHand.name === mutations.weapons.claw.name,
+        clawExtraLeft: inventory.extraLeftHand?.name === mutations.weapons.claw.name,
+        clawExtraRight: inventory.extraRightHand?.name === mutations.weapons.claw.name,
         horns: inventory.head.name === mutations.weapons.horns.name,
         lowerFangs: inventory.chin.name === mutations.weapons.lowerFangs.name,
         tailWithSting: inventory.tail.name === mutations.weapons.tailWithSting.name,
-        claws: inventory.bothHands.name === mutations.weapons.claws.name,
         pincers: inventory.shoulders.name === mutations.weapons.pincers.name,
         raptorLegs: inventory.legs.name === mutations.weapons.raptorLegs.name
     }
 
-    let counter = 0;
-    for (const mutation in ripApartMutations) {
-        counter += ripApartMutations[mutation] ? 1 : 0;
+    let amountOfClaws = 0;
+    for (const ripApartMutation in ripApartMutations) {
+        if (
+            ripApartMutation.includes('claw') && 
+            ripApartMutations[ripApartMutation as keyof typeof ripApartMutations]
+        ) {
+            amountOfClaws++;
+        }
     }
 
-    const ripApartMap: Record<string, IAbility | null> = {
-        0: null,
-        1: null,
-        2: abilities.battleAbilities.melee.mixed.ripApartMinor,
-        3: abilities.battleAbilities.melee.mixed.ripApartMere,
-        4: abilities.battleAbilities.melee.mixed.ripApartMajor,
-        5: abilities.battleAbilities.melee.mixed.ripApartMajorGrand,
-        6: abilities.battleAbilities.melee.mixed.ripApartMonstrous
-    }
+    const staminaCost = 0 +
+        Math.round(Math.sqrt(amountOfClaws)) + 
+        (ripApartMutations.horns ? 1 : 0) +
+        (ripApartMutations.lowerFangs ? 1 : 0) +
+        (ripApartMutations.tailWithSting ? 1 : 0) +
+        (ripApartMutations.pincers ? 1 : 0) +
+        (ripApartMutations.raptorLegs ? 2 : 0);
+    const slashingDamage = 0 + amountOfClaws +
+        (ripApartMutations.raptorLegs ? 2 : 0);
+    const piercingDamage = 0 +
+        (ripApartMutations.horns ? 1 : 0) +
+        (ripApartMutations.lowerFangs ? 1 : 0) +
+        (ripApartMutations.tailWithSting ? 1 : 0) +
+        (ripApartMutations.pincers ? 2 : 0);
 
-    return ripApartMap[String(counter)];
+    const ripApart = createBattleAbility(
+        [
+            chrome.i18n.getMessage('rip_apart'), 
+            '', 
+            images.mutantEvolvings.ripApart
+        ], 
+        {Stamina: staminaCost}, 
+        {
+            [DamageType.physicalSlashing]: slashingDamage,
+            [DamageType.physicalPiercing]: piercingDamage
+        },
+        [1, 70]
+    );
+
+    const ripApartResult = staminaCost === 0 ? null :
+        piercingDamage === 0 ? null : ripApart;
+
+    const allClawsSlash = createBattleAbility(
+        [
+            chrome.i18n.getMessage('all_claws_slash'),
+            '', 
+            images.mutantEvolvings.claws
+        ], 
+        {Stamina: Math.round(Math.sqrt(amountOfClaws))}, 
+        {[DamageType.physicalSlashing]: amountOfClaws},
+        [1, 70]
+    );
+
+    const allClawsSlashResult = amountOfClaws === 0 ? null : allClawsSlash;
+
+    return [ripApartResult, allClawsSlashResult];
 }
 
 export default checkRipApart

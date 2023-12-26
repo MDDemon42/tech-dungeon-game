@@ -12,7 +12,7 @@ export function createCyber(
     ],
     inventoryInfo: [
         cost: number,
-        inventoryPlace: InventoryPlace,
+        inventoryPlaces: InventoryPlace[],
         priority: number
     ],
     abilityInfo: [
@@ -27,7 +27,7 @@ export function createCyber(
         image: commonInfo[2],
 
         cost: inventoryInfo[0],
-        inventoryPlace: inventoryInfo[1],
+        inventoryPlaces: inventoryInfo[1],
         priority: inventoryInfo[2],
 
         abilities: abilityInfo[0],
@@ -44,9 +44,8 @@ const cybers = {
 }
 
 const limbsOptions = [
-    cybers.weapons.cyberFistLeftHand,
+    cybers.weapons.cyberFist,
     cybers.weapons.treeCutter,
-    cybers.weapons.cyberFistRightHand,
     cybers.weapons.cyberClaw, 
     cybers.other.reactiveFeet
 ];

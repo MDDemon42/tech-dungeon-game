@@ -10,12 +10,12 @@ const wings = createMutation(
         images.mutantEvolvings.wings
     ],
     [
-        1, InventoryPlace.back, 3
+        1, [InventoryPlace.back], 3
     ],
     [
         null, null
     ]
-)
+);
 
 const hooves = createMutation(
     [
@@ -24,15 +24,31 @@ const hooves = createMutation(
         images.mutantEvolvings.hooves
     ],
     [
-        1, InventoryPlace.legs, 1
+        1, [InventoryPlace.legs], 1
     ],
     [
         null, 
         [abilities.passiveAbilities.armor.hooves]
     ]    
-)
+);
+
+const extraArms = createMutation(
+    [
+        chrome.i18n.getMessage('extra_arms'), 
+        chrome.i18n.getMessage('extra_arms_mutation_description'),
+        images.mutantEvolvings.extraArms
+    ],
+    [
+        1, [InventoryPlace.shoulders], 1
+    ],
+    [
+        null, 
+        null
+    ]    
+);
 
 const other = {
+    extraArms,
     hooves,
     wings
 }

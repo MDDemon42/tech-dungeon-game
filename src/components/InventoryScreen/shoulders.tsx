@@ -12,6 +12,9 @@ function getShouldersImage(shouldersName: string) {
         case mutations.weapons.pincers.name:
             result = <img src={images.bodyElements.pincers} alt={chrome.i18n.getMessage('pincers')} />;
             break;
+        case mutations.other.extraArms.name:
+            result = <img src={images.bodyElements.extraArms} alt={chrome.i18n.getMessage('extra_arms')} />;
+            break;  
         default:
             break;
     }

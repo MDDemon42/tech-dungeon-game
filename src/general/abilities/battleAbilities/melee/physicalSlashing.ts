@@ -32,6 +32,17 @@ const dualSwordsSlash = createBattleAbility(
     ], 
     {Stamina: 2}, 
     {[DamageType.physicalSlashing]: 3},
+    [1, 70]
+);
+
+const affiliatedDualSwordsSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('dual_sword_slash'), 
+        '', 
+        images.guildianLearnings.dualSwords
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 3},
     [1, 95]
 );
 
@@ -213,38 +224,16 @@ const treeCutterSlash = createBattleAbility(
     [1, 70]
 ); 
 
-const leftClawSlash = createBattleAbility(
+const clawSlash = createBattleAbility(
     [
-        chrome.i18n.getMessage('left_claw_slash'),
+        chrome.i18n.getMessage('claw_slash'),
         '', 
         images.mutantEvolvings.claws
     ], 
     {Stamina: 1}, 
     {[DamageType.physicalSlashing]: 1},
     [1, 70]
-); 
-
-const rightClawSlash = createBattleAbility(
-    [
-        chrome.i18n.getMessage('right_claw_slash'),
-        '', 
-        images.mutantEvolvings.claws
-    ], 
-    {Stamina: 1}, 
-    {[DamageType.physicalSlashing]: 1},
-    [1, 70]
-); 
-
-const bothClawsSlash = createBattleAbility(
-    [
-        chrome.i18n.getMessage('both_claws_slash'),
-        '', 
-        images.mutantEvolvings.claws
-    ], 
-    {Stamina: 2}, 
-    {[DamageType.physicalSlashing]: 2},
-    [1, 70]
-); 
+);
 
 const raptorJump = createBattleAbility(
     [
@@ -665,6 +654,7 @@ const physicalSlashing = {
     swordSlash,
     affiliatedSwordSlash,
     dualSwordsSlash,
+    affiliatedDualSwordsSlash,
     chakramSlash,
     affiliatedChakramSlash,
     steelGreataxeSlash,
@@ -674,9 +664,7 @@ const physicalSlashing = {
 
     cyberClawSlash,
     treeCutterSlash,
-    leftClawSlash,
-    rightClawSlash,
-    bothClawsSlash,
+    clawSlash,
     raptorJump,
 
     dragonBoneBladeSlash,

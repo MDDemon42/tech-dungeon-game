@@ -11,13 +11,13 @@ const energyShield = createCyber(
         images.cyborgDetails.energyShield
     ],
     [
-        1, InventoryPlace.leftHand, 5
+        1, [InventoryPlace.leftHand], 5
     ],
     [
         null, 
         [abilities.passiveAbilities.armor.energyShield]
     ],
-    weapons.cyberFistLeftHand.name    
+    weapons.cyberFist.name    
 )
 
 const nanoVest = createCyber(
@@ -27,7 +27,7 @@ const nanoVest = createCyber(
         images.cyborgDetails.nanoVest
     ],
     [
-        1, InventoryPlace.skin, 2
+        1, [InventoryPlace.skin], 2
     ],
     [
         null, 
@@ -43,7 +43,7 @@ const nanoMatrix = createCyber(
         images.cyborgDetails.nanoMatrix
     ],
     [
-        2, InventoryPlace.skin, 3
+        2, [InventoryPlace.skin], 3
     ],
     [
         null, 

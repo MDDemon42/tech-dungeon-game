@@ -1,6 +1,5 @@
 import guildItems from "../../gameScreens/Guild/guildItems";
 import items from "../../gameScreens/Market/items";
-import mutations from "../../gameScreens/MutaLab/mutations";
 import { createNoItem } from "../../helpers/emptyEssencesCreators";
 import armouryItems from "../../gameScreens/Mansion/armouryItems";
 import images from "../../images/images";
@@ -14,12 +13,6 @@ function getBothHandsImage(
     let result = null;
 
     switch (bothHandsName) {
-        case mutations.weapons.claws.name: 
-            result = [
-                <img src={images.bodyElements.clawRight} alt={chrome.i18n.getMessage('claws')} />,
-                <img src={images.bodyElements.clawLeft} alt={chrome.i18n.getMessage('claws')} />
-            ];
-            break;
         case guildItems.weapons.runicGreataxe.name:
             result = [
                 <img src={images.bodyElements.runicGreataxe} alt={chrome.i18n.getMessage('runic_greataxe')} />,
@@ -31,13 +24,13 @@ function getBothHandsImage(
                 <img src={images.bodyElements.rightHand} alt='rightHand' />
             ];
             break;
-        case wizardItems.weapons.wizardItem_magisterScepter.name:
+        case wizardItems.weapons.magisterScepter.name:
             result = [
                 <img src={images.bodyElements.magisterScepter} alt={chrome.i18n.getMessage('magister_scepter')} />,
                 <img src={images.bodyElements.leftHand} alt='leftHand' />
             ];
             break;
-        case wizardItems.weapons.wizardItem_apprenticeRod.name:
+        case wizardItems.weapons.apprenticeRod.name:
             result = [
                 <img src={images.bodyElements.apprenticeRod} alt={chrome.i18n.getMessage('apprentice_rod')} />,
                 <img src={images.bodyElements.leftHand} alt='leftHand' />

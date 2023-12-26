@@ -1,11 +1,11 @@
-import { ICharacher, IItem } from "../enums-and-interfaces/interfaces";
+import { IItem } from "../enums-and-interfaces/interfaces";
 import { createNoItem } from "./emptyEssencesCreators";
 
 export default function putItemInBackpacks(
     backpacks: IItem[], 
-    item: IItem,
-    maxItemsAmount: number
+    item: IItem
 ) {
+    console.log('-putItemInBackpacks-', item)
     const {length} = backpacks;
 
     let index = -1;
@@ -22,13 +22,9 @@ export default function putItemInBackpacks(
         }
     }
 
-    if (itemsAmount === maxItemsAmount) {
+    if (itemsAmount === length) {
         return
     }
     
     backpacks[index] = item;
-}
-
-export function getBackpacksCapability(member: ICharacher) {
-    return member.general.backpacks.length;
 }

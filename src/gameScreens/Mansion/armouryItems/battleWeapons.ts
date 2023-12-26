@@ -6,39 +6,21 @@ import academyMasteries from "../../Academy/masteries";
 import crafts from "../crafts";
 import mansionMasteries from "../masteries";
 
-const battleAxeRightHand = createArmouryItem(
+const battleAxe = createArmouryItem(
     [
         chrome.i18n.getMessage('battle_axe'), 
         chrome.i18n.getMessage('battle_axe_item_description'),
         images.armouryItems.battleAxe
     ],
     [
-        2, InventoryPlace.rightHand, 1
-    ],
-    [
-        '', 0,
-        crafts.battleWeapons.craftBattleAxe
-    ],
-    [
-        abilities.battleAbilities.melee.physicalSlashing.battleAxeSlash
-    ], 
-    null, 
-    [
-        {
-            linkedMastery: mansionMasteries.axeAffiliation.name,
-            masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedBattleAxeSlash
-        }
-    ]
-);
-
-const battleAxeLeftHand = createArmouryItem(
-    [
-        chrome.i18n.getMessage('battle_axe'), 
-        chrome.i18n.getMessage('battle_axe_item_description'),
-        images.armouryItems.battleAxe
-    ],
-    [
-        2, InventoryPlace.leftHand, 1
+        2, 
+        [
+            InventoryPlace.rightHand, 
+            InventoryPlace.leftHand,
+            InventoryPlace.extraLeftHand,
+            InventoryPlace.extraRightHand
+        ], 
+        1
     ],
     [
         '', 0,
@@ -63,7 +45,7 @@ const dragonBoneBlade = createArmouryItem(
         images.armouryItems.dragonBoneBlade
     ],
     [
-        2, InventoryPlace.rightHand, 1
+        2, [InventoryPlace.rightHand], 1
     ],
     [
         '', 0,
@@ -88,7 +70,7 @@ const glaive = createArmouryItem(
         images.armouryItems.glaive
     ],
     [
-        2, InventoryPlace.bothHands, 1
+        2, [InventoryPlace.bothHands], 1
     ],
     [
         '', 3,
@@ -113,7 +95,7 @@ const halberd = createArmouryItem(
         images.armouryItems.halberd
     ],
     [
-        2, InventoryPlace.bothHands, 1
+        2, [InventoryPlace.bothHands], 1
     ],
     [
         '', 3,
@@ -138,7 +120,14 @@ const katana = createArmouryItem(
         images.armouryItems.katana
     ],
     [
-        2, InventoryPlace.rightHand, 1
+        2, 
+        [
+            InventoryPlace.rightHand,
+            InventoryPlace.leftHand,
+            InventoryPlace.extraLeftHand,
+            InventoryPlace.extraRightHand
+        ], 
+        1
     ],
     [
         '', 0,
@@ -163,7 +152,7 @@ const khopesh = createArmouryItem(
         images.armouryItems.khopesh
     ],
     [
-        2, InventoryPlace.rightHand, 1
+        2, [InventoryPlace.rightHand], 1
     ],
     [
         '', 0,
@@ -188,7 +177,7 @@ const macuahuitl = createArmouryItem(
         images.armouryItems.macuahuitl
     ],
     [
-        2, InventoryPlace.rightHand, 1
+        2, [InventoryPlace.rightHand], 1
     ],
     [
         '', 0,
@@ -213,7 +202,7 @@ const rapier = createArmouryItem(
         images.armouryItems.rapier
     ],
     [
-        2, InventoryPlace.rightHand, 1
+        2, [InventoryPlace.rightHand], 1
     ],
     [
         '', 0,
@@ -238,7 +227,7 @@ const sabre = createArmouryItem(
         images.armouryItems.sabre
     ],
     [
-        2, InventoryPlace.rightHand, 1
+        2, [InventoryPlace.rightHand], 1
     ],
     [
         '', 0,
@@ -257,8 +246,7 @@ const sabre = createArmouryItem(
 );
 
 const battleWeapons = {
-    battleAxeLeftHand,
-    battleAxeRightHand,
+    battleAxe,
     dragonBoneBlade,
     glaive,
     halberd,

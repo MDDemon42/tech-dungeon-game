@@ -29,7 +29,7 @@ const guard = () => {
     character.params.currentParams[UserParam.stamina] = 4;
 
     character.general.inventory.armor = items.armors.leatherArmor;
-    character.general.inventory.rightHand = items.weapons.steelSwordRightHand;
+    character.general.inventory.rightHand = items.weapons.steelSword;
 
     return character
 }
@@ -65,7 +65,7 @@ const knight = () => {
 
     character.general.mind.masteries.push(academyMasteries.swordAffiliation);
 
-    character.general.inventory.rightHand = items.weapons.steelSwordRightHand;
+    character.general.inventory.rightHand = items.weapons.steelSword;
     character.general.inventory.armor = items.armors.steelArmor;
     character.general.inventory.leftHand = items.armors.steelShield;
 

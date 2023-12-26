@@ -4,7 +4,8 @@ import createEmptyCharacter from "../helpers/emptyEssencesCreators";
 import store from "../redux/store";
 import { classInfo } from "../redux/slices/gameSquad";
 import { createGameStage } from "../redux/slices/gameStage";
-import armouryItems from "../gameScreens/Mansion/armouryItems";
+import items from "../gameScreens/Market/items";
+import { IItem } from "../enums-and-interfaces/interfaces";
 
 function actionInCaseStrongStart(tabId: number) {
     const state = {...store.getState()}
@@ -40,7 +41,8 @@ function actionInCaseStrongStart(tabId: number) {
             
             memberClone.params.currentParams = {...memberClone.params.maxParams};
 
-            memberClone.general.backpacks[0] = armouryItems.mageWeapons.battleMageRifle;
+            memberClone.general.backpacks[0] = items.bigResources.insectoidRemains as IItem;
+            memberClone.general.backpacks[1] = items.bigResources.reptiloidRemains as IItem;
 
             squadMembers[i] = memberClone;
         }

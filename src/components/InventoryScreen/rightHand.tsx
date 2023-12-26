@@ -17,16 +17,16 @@ function getRightHandImage(rightHandName: string) {
         case cybers.weapons.taserWhip.name:
             result = <img src={images.bodyElements.taserWhip} alt={chrome.i18n.getMessage('taser_whip')} />;
             break;
-        case cybers.weapons.cyberFistRightHand.name:
+        case cybers.weapons.cyberFist.name:
             result = <img src={images.bodyElements.cyberFistRightHand} alt={chrome.i18n.getMessage('cyber_fist_right_hand')} />;
             break;
-        case mutations.weapons.clawRight.name:
+        case mutations.weapons.claw.name:
             result = <img src={images.bodyElements.clawRight} alt={chrome.i18n.getMessage('claws')} />;
             break;
-        case items.weapons.steelSwordRightHand.name:
+        case items.weapons.steelSword.name:
             result = <img src={images.bodyElements.steelSwordRightHand} alt={chrome.i18n.getMessage('steel_sword')} />;
             break;
-        case armouryItems.battleWeapons.battleAxeRightHand.name:
+        case armouryItems.battleWeapons.battleAxe.name:
             result = <img src={images.bodyElements.battleAxeRightHand} alt={chrome.i18n.getMessage('battle_axe')} />;
             break;
         case items.weapons.steelMace.name:
@@ -44,10 +44,10 @@ function getRightHandImage(rightHandName: string) {
         case armouryItems.guns.battlePistol.name:
             result = <img src={images.bodyElements.battlePistol} alt={chrome.i18n.getMessage('battle_pistol')} />;
             break;
-        case armouryItems.guns.revolverRightHand.name:
+        case armouryItems.guns.revolver.name:
             result = <img src={images.bodyElements.revolverRightHand} alt={chrome.i18n.getMessage('revolver')} />;
             break;
-        case armouryItems.guns.battleRevolverRightHand.name:
+        case armouryItems.guns.battleRevolver.name:
             result = <img src={images.bodyElements.battleRevolverRightHand} alt={chrome.i18n.getMessage('battle_revolver')} />;
             break;
         case items.weapons.axe.name:
@@ -57,7 +57,7 @@ function getRightHandImage(rightHandName: string) {
             result = <img src={images.bodyElements.dragonBoneBlade} alt={chrome.i18n.getMessage('dragon_bone_blade')} />;
             break;
         case armouryItems.battleWeapons.katana.name:
-            result = <img src={images.bodyElements.katana} alt={chrome.i18n.getMessage('katana')} />;
+            result = <img src={images.bodyElements.katanaRightHand} alt={chrome.i18n.getMessage('katana')} />;
             break;
         case armouryItems.battleWeapons.khopesh.name:
             result = <img src={images.bodyElements.khopesh} alt={chrome.i18n.getMessage('khopesh')} />;
@@ -71,7 +71,7 @@ function getRightHandImage(rightHandName: string) {
         case armouryItems.battleWeapons.sabre.name:
             result = <img src={images.bodyElements.sabre} alt={chrome.i18n.getMessage('sabre')} />;
             break;
-        case armouryItems.mageWeapons.battleMageAxeRightHand.name:
+        case armouryItems.mageWeapons.battleMageAxe.name:
             result = <img src={images.bodyElements.battleMageAxeRightHand} alt={chrome.i18n.getMessage('battle_mage_axe')} />;
             break;
         case armouryItems.mageWeapons.mageDragonBoneBlade.name:

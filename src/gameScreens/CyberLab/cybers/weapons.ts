@@ -3,17 +3,17 @@ import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
 import abilities from "../../../general/abilities";
 
-const cyberFistRightHand = createCyber(
+const cyberFist = createCyber(
     [
         chrome.i18n.getMessage('cyber_fist_right_hand'), 
         chrome.i18n.getMessage('cyber_fist_cyber_description'),
-        images.cyborgDetails.cyberFistRightHand
+        images.cyborgDetails.cyberFist
     ],
     [
-        1, InventoryPlace.rightHand, 5
+        1, [InventoryPlace.rightHand, InventoryPlace.leftHand], 5
     ],
     [
-        [abilities.battleAbilities.melee.physicalSmashing.cyberFistRightHandSmash],
+        [abilities.battleAbilities.melee.physicalSmashing.cyberFistSmash],
         [abilities.passiveAbilities.cyber.cyberFist]
     ], 
     ''
@@ -26,29 +26,13 @@ const cyberClaw = createCyber(
         images.cyborgDetails.cyberClaw
     ],
     [
-        1, InventoryPlace.rightHand, 5
+        1, [InventoryPlace.rightHand], 5
     ],
     [
         [abilities.battleAbilities.melee.physicalSlashing.cyberClawSlash],
         [abilities.passiveAbilities.cyber.cyberClaw]
     ], 
-    cyberFistRightHand.name
-);
-
-const cyberFistLeftHand = createCyber(
-    [
-        chrome.i18n.getMessage('cyber_fist_left_hand'), 
-        chrome.i18n.getMessage('cyber_fist_cyber_description'),
-        images.cyborgDetails.cyberFistLeftHand
-    ],
-    [
-        1, InventoryPlace.leftHand, 5
-    ],
-    [
-        [abilities.battleAbilities.melee.physicalSmashing.cyberFistLeftHandSmash], 
-        [abilities.passiveAbilities.cyber.cyberFist]
-    ], 
-    ''
+    cyberFist.name
 );
 
 const taserWhip = createCyber(
@@ -58,13 +42,13 @@ const taserWhip = createCyber(
         images.cyborgDetails.taserWhip
     ],
     [
-        1, InventoryPlace.rightHand, 5
+        1, [InventoryPlace.rightHand], 5
     ],
     [
         [abilities.battleAbilities.melee.electrical.taserWhiplash], 
         null
     ],
-    cyberFistRightHand.name
+    cyberFist.name
 );
 
 const heatSaber = createCyber(
@@ -74,13 +58,13 @@ const heatSaber = createCyber(
         images.cyborgDetails.heatSaber
     ],
     [
-        1, InventoryPlace.rightHand, 5
+        1, [InventoryPlace.rightHand], 5
     ],
     [
         [abilities.battleAbilities.melee.fire.heatSaberSlash], 
         null
     ],
-    cyberFistRightHand.name
+    cyberFist.name
 );
 
 const laser = createCyber(
@@ -90,7 +74,7 @@ const laser = createCyber(
         images.cyborgDetails.laser
     ],
     [
-        1, InventoryPlace.leftHand, 5
+        1, [InventoryPlace.leftHand], 5
     ],
     [
         [abilities.battleAbilities.ranged.fire.laserShot], 
@@ -106,7 +90,7 @@ const acidizer = createCyber(
         images.cyborgDetails.acidizer
     ],
     [
-        1, InventoryPlace.leftHand, 5
+        1, [InventoryPlace.leftHand], 5
     ],
     [
         [abilities.battleAbilities.ranged.acid.acidizerSpill], 
@@ -122,7 +106,7 @@ const freezer = createCyber(
         images.cyborgDetails.freezer
     ],
     [
-        1, InventoryPlace.leftHand, 5
+        1, [InventoryPlace.leftHand], 5
     ],
     [
         [abilities.battleAbilities.ranged.cold.freezerShot], 
@@ -138,7 +122,7 @@ const treeCutter = createCyber(
         images.cyborgDetails.treeCutter
     ],
     [
-        1, InventoryPlace.leftHand, 5
+        1, [InventoryPlace.leftHand], 5
     ],
     [
         [abilities.battleAbilities.melee.physicalSlashing.treeCutterSlash], 
@@ -154,7 +138,7 @@ const rocketLauncher = createCyber(
         images.cyborgDetails.rocketLauncher
     ],
     [
-        1, InventoryPlace.shoulders, 2
+        1, [InventoryPlace.shoulders], 2
     ],
     [
         [abilities.battleAbilities.ranged.fire.rocketLaunch], 
@@ -166,8 +150,7 @@ const rocketLauncher = createCyber(
 const weapons = {
     acidizer,
     cyberClaw,
-    cyberFistRightHand,
-    cyberFistLeftHand,
+    cyberFist,
     taserWhip,
     freezer,
     heatSaber,    

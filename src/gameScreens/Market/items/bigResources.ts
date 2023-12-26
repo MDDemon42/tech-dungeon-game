@@ -10,7 +10,7 @@ export function createBigResource(
     ],
     inventoryInfo: [
         cost: number,
-        inventoryPlace: InventoryPlace,
+        inventoryPlaces: InventoryPlace[],
         priority: number
     ]    
 ): IBigResource {
@@ -20,7 +20,7 @@ export function createBigResource(
         image: commonInfo[2],
 
         cost: inventoryInfo[0],
-        inventoryPlace: inventoryInfo[1],
+        inventoryPlaces: inventoryInfo[1],
         priority: inventoryInfo[2]
     }
 }
@@ -32,7 +32,7 @@ const crystal = createBigResource(
         images.misc.crystal
     ],
     [
-        2, InventoryPlace.belt, -1
+        2, [InventoryPlace.belt], -1
     ]
 );
 
@@ -43,7 +43,7 @@ const obsidian = createBigResource(
         images.misc.obsidian
     ],
     [
-        2, InventoryPlace.belt, -1
+        2, [InventoryPlace.belt], -1
     ]
 );
 
@@ -54,7 +54,7 @@ const ore = createBigResource(
         images.misc.ore
     ],
     [
-        2, InventoryPlace.belt, -1
+        2, [InventoryPlace.belt], -1
     ]
 );
 
@@ -65,7 +65,7 @@ const wood = createBigResource(
         images.misc.wood
     ],
     [
-        2, InventoryPlace.belt, -1
+        2, [InventoryPlace.belt], -1
     ]
 );
 
@@ -76,7 +76,7 @@ const beastRemains = createBigResource(
         images.misc.beastRemains
     ],
     [
-        1, InventoryPlace.belt, -1
+        1, [InventoryPlace.belt], -1
     ]
 );
 
@@ -87,7 +87,7 @@ const dragonRemains = createBigResource(
         images.misc.dragonRemains
     ],
     [
-        2, InventoryPlace.belt, -1
+        2, [InventoryPlace.belt], -1
     ]
 );
 
@@ -98,7 +98,7 @@ const insectoidRemains = createBigResource(
         images.misc.insectoidRemains
     ],
     [
-        1, InventoryPlace.belt, -1
+        1, [InventoryPlace.belt], -1
     ]
 );
 
@@ -109,7 +109,7 @@ const reptiloidRemains = createBigResource(
         images.misc.reptiloidRemains
     ],
     [
-        1, InventoryPlace.belt, -1
+        1, [InventoryPlace.belt], -1
     ]
 );
 

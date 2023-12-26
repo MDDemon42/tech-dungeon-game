@@ -7,6 +7,8 @@ export enum InventoryPlace {
     armor = 'Armor',
     shoulders = 'Shoulders',
     tail = 'Tail',
+    extraLeftHand = 'Extra left hand',
+    extraRightHand = 'Extra right hand',
     leftHand = 'Left hand',
     rightHand = 'Right hand',
     bothHands = 'Both hands',

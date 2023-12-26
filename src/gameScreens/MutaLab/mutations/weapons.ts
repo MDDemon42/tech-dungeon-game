@@ -10,13 +10,13 @@ const acidSpit = createMutation(
         images.mutantEvolvings.acidSpit
     ],
     [
-        1, InventoryPlace.chin, 2
+        1, [InventoryPlace.chin], 2
     ],
     [
         [abilities.battleAbilities.ranged.acid.acidSpit], 
         null
     ]
-)
+);
 
 const lowerFangs = createMutation(
     [
@@ -25,13 +25,13 @@ const lowerFangs = createMutation(
         images.mutantEvolvings.lowerFangs
     ],
     [
-        1, InventoryPlace.chin, 1
+        1, [InventoryPlace.chin], 1
     ],
     [
         [abilities.battleAbilities.melee.physicalPiercing.fangsBite], 
         null
     ]
-)
+);
 
 const claws = createMutation(
     [
@@ -40,43 +40,32 @@ const claws = createMutation(
         images.mutantEvolvings.claws
     ],
     [
-        1, InventoryPlace.bothHands, 4
+        1, [InventoryPlace.bothHands], 4
     ],
     [
-        [abilities.battleAbilities.melee.physicalSlashing.bothClawsSlash], 
-        null
+        null, null
     ]
-)
+);
 
-const clawLeft = createMutation(
+const claw = createMutation(
     [
         chrome.i18n.getMessage('claws'), 
         chrome.i18n.getMessage('claws_mutation_description'),
         images.mutantEvolvings.claws
     ],
     [
-        1, InventoryPlace.leftHand, 4
+        1, 
+        [
+            InventoryPlace.leftHand,
+            InventoryPlace.rightHand
+        ], 
+        4
     ],
     [
-        [abilities.battleAbilities.melee.physicalSlashing.leftClawSlash], 
+        [abilities.battleAbilities.melee.physicalSlashing.clawSlash], 
         null
     ]
-)
-
-const clawRight = createMutation(
-    [
-        chrome.i18n.getMessage('claws'), 
-        chrome.i18n.getMessage('claws_mutation_description'),
-        images.mutantEvolvings.claws
-    ],
-    [
-        1, InventoryPlace.rightHand, 4
-    ],
-    [
-        [abilities.battleAbilities.melee.physicalSlashing.rightClawSlash], 
-        null
-    ]
-)
+);
 
 const horns = createMutation(
     [
@@ -85,7 +74,7 @@ const horns = createMutation(
         images.mutantEvolvings.horns
     ],
     [
-        1, InventoryPlace.head, 3
+        1, [InventoryPlace.head], 3
     ],
     [
         [abilities.battleAbilities.melee.physicalPiercing.hornsCharge], 
@@ -100,7 +89,7 @@ const tailWithSting = createMutation(
         images.mutantEvolvings.tailWithSting
     ],
     [
-        2, InventoryPlace.tail, 1
+        2, [InventoryPlace.tail], 1
     ],
     [
         [abilities.battleAbilities.melee.physicalPiercing.tailPrick], 
@@ -115,7 +104,7 @@ const pincers = createMutation(
         images.mutantEvolvings.pincers
     ],
     [
-        2, InventoryPlace.shoulders, 1
+        2, [InventoryPlace.shoulders], 1
     ],
     [
         [abilities.battleAbilities.melee.physicalPiercing.pincersStab], 
@@ -130,7 +119,7 @@ const raptorLegs = createMutation(
         images.mutantEvolvings.raptorLegs
     ],
     [
-        1, InventoryPlace.legs, 1
+        1, [InventoryPlace.legs], 1
     ],
     [
         [abilities.battleAbilities.melee.physicalSlashing.raptorJump], 
@@ -140,8 +129,7 @@ const raptorLegs = createMutation(
 
 const weapons = {
     acidSpit,
-    clawLeft,
-    clawRight,
+    claw,
     claws,
     horns,
     lowerFangs,

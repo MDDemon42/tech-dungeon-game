@@ -12,7 +12,7 @@ export function createWizardItem(
     ],
     inventoryInfo: [
         cost: number,
-        inventoryPlace: InventoryPlace,
+        inventoryPlaces: InventoryPlace[],
         priority: number
     ],
     abilityInfo: [
@@ -26,7 +26,7 @@ export function createWizardItem(
         image: commonInfo[2],
 
         cost: inventoryInfo[0],
-        inventoryPlace: inventoryInfo[1],
+        inventoryPlaces: inventoryInfo[1],
         priority: inventoryInfo[2],
 
         abilities: abilityInfo[0],
@@ -41,14 +41,14 @@ const wizardItems = {
 }
 
 const apprenticeStuff = [
-    wizardItems.weapons.wizardItem_apprenticeRod,
-    wizardItems.armors.wizardItem_apprenticeHat
+    wizardItems.weapons.apprenticeRod,
+    wizardItems.armors.apprenticeHat
 ]
 
 const magisterStuff = [
-    wizardItems.weapons.wizardItem_magisterScepter,
-    wizardItems.armors.wizardItem_magisterHat,
-    wizardItems.armors.wizardItem_magisterRobe,
+    wizardItems.weapons.magisterScepter,
+    wizardItems.armors.magisterHat,
+    wizardItems.armors.magisterRobe,
     wizardItems.other.wizardItem_flyingCape
 ]
 

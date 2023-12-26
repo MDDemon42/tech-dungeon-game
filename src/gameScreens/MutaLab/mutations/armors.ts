@@ -10,7 +10,7 @@ const scales = createMutation(
         images.mutantEvolvings.scales
     ],
     [
-        1, InventoryPlace.skin, 1
+        1, [InventoryPlace.skin], 1
     ],
     [
         null, 
@@ -25,7 +25,7 @@ const fur = createMutation(
         images.mutantEvolvings.fur
     ],
     [
-        1, InventoryPlace.skin, 1
+        1, [InventoryPlace.skin], 1
     ],
     [
         null, 

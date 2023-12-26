@@ -4,8 +4,12 @@ import acidSpit from './acidSpit.png';
 import apprenticeHat from './apprenticeHat.png';
 import apprenticeRod from './apprenticeRod.png';
 import axe from './axe.png';
+import battleAxeExtraRightHand from './battleAxeExtraRightHand.png';
+import battleAxeExtraLeftHand from './battleAxeExtraLeftHand.png';
 import battleAxeRightHand from './battleAxeRightHand.png';
 import battleAxeLeftHand from './battleAxeLeftHand.png';
+import battleMageAxeExtraRightHand from './battleMageAxeExtraRightHand.png';
+import battleMageAxeExtraLeftHand from './battleMageAxeExtraLeftHand.png';
 import battleMageAxeLeftHand from './battleMageAxeLeftHand.png';
 import battleMageAxeRightHand from './battleMageAxeRightHand.png';
 import battleMageMusket from './battleMageMusket.png';
@@ -19,6 +23,8 @@ import belt from './belt.png';
 import brutalLegs from './brutalLegs.png';
 import brutalTorso from './brutalTorso.png';
 import chakram from './chakram.png';
+import clawExtraLeft from './clawExtraLeft.png';
+import clawExtraRight from './clawExtraRight.png';
 import clawLeft from './clawLeft.png';
 import clawRight from './clawRight.png';
 import cyberClaw from './cyberClaw.png';
@@ -26,6 +32,9 @@ import cyberFistRightHand from './cyberFistRightHand.png';
 import cyberFistLeftHand from './cyberFistLeftHand.png';
 import dragonBoneBlade from './dragonBoneBlade.png';
 import energyShield from './energyShield.png';
+import extraArms from './extraArms.png';
+import extraLeftHand from './extraLeftHand.png';
+import extraRightHand from './extraRightHand.png';
 import flyingCape from './flyingCape.png';
 import freezer from './freezer.png';
 import furTorso from './furTorso.png';
@@ -39,7 +48,10 @@ import heatSaber from './heatSaber.png';
 import hooves from './hooves.png';
 import horns from './horns.png';
 import intuition from './intuition.png';
-import katana from './katana.png';
+import katanaLeftHand from './katanaLeftHand.png';
+import katanaRightHand from './katanaRightHand.png';
+import katanaExtraLeftHand from './katanaExtraLeftHand.png';
+import katanaExtraRightHand from './katanaExtraRightHand.png';
 import khopesh from './khopesh.png';
 import laser from './laser.png';
 import leatherArmor from './leatherArmor.png';
@@ -92,7 +104,11 @@ import steelGreataxe from './steelGreataxe.png';
 import steelGreathammer from './steelGreathammer.png';
 import steelGreatsword from './steelGreatsword.png';
 import steelMace from './steelMace.png';
+import steelMaceExtraLeftHand from './steelMaceExtraLeftHand.png';
+import steelMaceExtraRightHand from './steelMaceExtraRightHand.png';
 import steelShield from './steelShield.png';
+import steelSwordExtraLeftHand from './steelSwordExtraLeftHand.png';
+import steelSwordExtraRightHand from './steelSwordExtraRightHand.png';
 import steelSwordLeftHand from './steelSwordLeftHand.png';
 import steelSwordRightHand from './steelSwordRightHand.png';
 import tailWithSting from './tailWithSting.png';
@@ -109,7 +125,9 @@ const bodyElements = {
     acidBomb, acidizer, acidSpit,
     apprenticeHat, apprenticeRod,
     axe,
+    battleAxeExtraLeftHand, battleAxeExtraRightHand,
     battleAxeRightHand, battleAxeLeftHand,
+    battleMageAxeExtraLeftHand, battleMageAxeExtraRightHand,
     battleMageAxeLeftHand, battleMageAxeRightHand,
     battleMageMusket, battleMageRifle,
     battleMusket, battlePistol,
@@ -118,11 +136,13 @@ const bodyElements = {
     belt,
     brutalLegs, brutalTorso,
     chakram,
+    clawExtraLeft, clawExtraRight,
     clawLeft, clawRight,
     cyberClaw,
     cyberFistRightHand, cyberFistLeftHand,
     dragonBoneBlade,
     energyShield,
+    extraArms, extraLeftHand, extraRightHand,
     flyingCape,
     freezer,
     furTorso,
@@ -134,7 +154,9 @@ const bodyElements = {
     heatSaber,
     hooves, horns,
     intuition,
-    katana, khopesh,
+    katanaRightHand, katanaLeftHand,
+    katanaExtraLeftHand, katanaExtraRightHand,
+    khopesh,
     laser,
     leatherArmor,
     leftHand,
@@ -167,9 +189,10 @@ const bodyElements = {
     spear,
     steelArmor,
     steelGreataxe, steelGreathammer, steelGreatsword,
-    steelMace,
+    steelMace, steelMaceExtraLeftHand, steelMaceExtraRightHand,
     steelShield,
     steelSwordLeftHand, steelSwordRightHand,
+    steelSwordExtraLeftHand, steelSwordExtraRightHand,
     tailWithSting,
     taserWhip,    
     telekinesis,

@@ -6,7 +6,7 @@ function getArmorImage(armorName: string) {
     let result = null;
 
     switch (armorName) {
-        case wizardItems.armors.wizardItem_magisterRobe.name:
+        case wizardItems.armors.magisterRobe.name:
             result = <img src={images.bodyElements.magisterRobe} alt={chrome.i18n.getMessage('magister_robe')} />;
             break;
         case items.armors.steelArmor.name:

@@ -14,7 +14,7 @@ const musket = createArmouryItem(
         images.armouryItems.musket
     ],
     [
-        2, InventoryPlace.bothHands, 1
+        2, [InventoryPlace.bothHands], 1
     ],
     [
         '', 0,
@@ -40,7 +40,7 @@ const battleMusket = createArmouryItem(
         images.armouryItems.battleMusket
     ],
     [
-        3, InventoryPlace.bothHands, 1
+        3, [InventoryPlace.bothHands], 1
     ],
     [
         '', 0,
@@ -67,7 +67,7 @@ const pistol = createArmouryItem(
         images.armouryItems.pistol
     ],
     [
-        2, InventoryPlace.rightHand, 1
+        2, [InventoryPlace.rightHand], 1
     ],
     [
         '', 0,
@@ -92,7 +92,7 @@ const battlePistol = createArmouryItem(
         images.armouryItems.battlePistol
     ],
     [
-        3, InventoryPlace.rightHand, 1
+        3, [InventoryPlace.rightHand], 1
     ],
     [
         '', 0,
@@ -110,14 +110,19 @@ const battlePistol = createArmouryItem(
     ]
 );
 
-const revolverRightHand = createArmouryItem(
+const revolver = createArmouryItem(
     [
         chrome.i18n.getMessage('revolver'),
         chrome.i18n.getMessage('revolver_item_description'),
         images.armouryItems.revolver
     ],
     [
-        3, InventoryPlace.rightHand, 1
+        3, 
+        [
+            InventoryPlace.rightHand, 
+            InventoryPlace.leftHand
+        ], 
+        1
     ],
     [
         '', 0,
@@ -135,69 +140,19 @@ const revolverRightHand = createArmouryItem(
     ]
 );
 
-const revolverLeftHand = createArmouryItem(
-    [
-        chrome.i18n.getMessage('revolver'),
-        chrome.i18n.getMessage('revolver_item_description'),
-        images.armouryItems.revolver
-    ],
-    [
-        3, InventoryPlace.leftHand, 1
-    ],
-    [
-        '', 0,
-        crafts.guns.craftRevolver
-    ],
-    [
-        abilities.battleAbilities.ranged.physicalPiercing.revolverDoubleShot
-    ], 
-    null, 
-    [
-        {
-            linkedMastery: guildMasteries.marksmanship.name,
-            masterAbility: abilities.battleAbilities.ranged.physicalPiercing.masterRevolverDoubleShot
-        }
-    ]
-);
-
-const battleRevolverRightHand = createArmouryItem(
+const battleRevolver = createArmouryItem(
     [
         chrome.i18n.getMessage('battle_revolver'),
         chrome.i18n.getMessage('battle_revolver_item_description'),
         images.armouryItems.battleRevolver
     ],
     [
-        4, InventoryPlace.rightHand, 1
-    ],
-    [
-        '', 0,
-        crafts.guns.craftBattleRevolver
-    ],
-    [
-        abilities.battleAbilities.ranged.physicalPiercing.battleRevolverDoubleShot,
-        abilities.battleAbilities.melee.physicalSlashing.battleRevolverSlash
-    ], 
-    null, 
-    [
-        {
-            linkedMastery: guildMasteries.marksmanship.name,
-            masterAbility: abilities.battleAbilities.ranged.physicalPiercing.masterBattleRevolverDoubleShot
-        },
-        {
-            linkedMastery: academyMasteries.swordAffiliation.name,
-            masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedBattleRevolverSlash
-        }
-    ]
-);
-
-const battleRevolverLeftHand = createArmouryItem(
-    [
-        chrome.i18n.getMessage('battle_revolver'),
-        chrome.i18n.getMessage('battle_revolver_item_description'),
-        images.armouryItems.battleRevolver
-    ],
-    [
-        4, InventoryPlace.leftHand, 1
+        4, 
+        [
+            InventoryPlace.rightHand, 
+            InventoryPlace.leftHand
+        ], 
+        1
     ],
     [
         '', 0,
@@ -227,7 +182,7 @@ const rifle = createArmouryItem(
         images.armouryItems.rifle
     ],
     [
-        3, InventoryPlace.bothHands, 1
+        3, [InventoryPlace.bothHands], 1
     ],
     [
         '', 0,
@@ -253,7 +208,7 @@ const battleRifle = createArmouryItem(
         images.armouryItems.battleRifle
     ],
     [
-        4, InventoryPlace.bothHands, 1
+        4, [InventoryPlace.bothHands], 1
     ],
     [
         '', 0,
@@ -282,10 +237,8 @@ const guns = {
     battleMusket,
     pistol,
     battlePistol,
-    revolverRightHand,
-    revolverLeftHand,
-    battleRevolverRightHand,
-    battleRevolverLeftHand,
+    revolver,
+    battleRevolver,
     rifle,
     battleRifle
 }

@@ -90,25 +90,25 @@ const thunderPunch = createBattleAbility(
     [1, 70]
 );
 
-const cyberFistRightHandSmash = createBattleAbility(
+const cyberFistSmash = createBattleAbility(
     [
-        chrome.i18n.getMessage('cyber_fist_smash_right'), 
+        chrome.i18n.getMessage('cyber_fist_smash'), 
         '', 
-        images.cyborgDetails.cyberFistRightHand
+        images.cyborgDetails.cyberFist
     ], 
     {Stamina: 1}, 
     {[DamageType.physicalSmashing]: 2},
     [1, 70]
 );
 
-const cyberFistLeftHandSmash = createBattleAbility(
+const doubleCyberFistSmash = createBattleAbility(
     [
-        chrome.i18n.getMessage('cyber_fist_smash_left'), 
+        chrome.i18n.getMessage('double_cyber_fist_smash'), 
         '', 
-        images.cyborgDetails.cyberFistLeftHand
+        images.cyborgDetails.doubleCyberFistSmash
     ], 
-    {Stamina: 1}, 
-    {[DamageType.physicalSmashing]: 2},
+    {Stamina: 2}, 
+    {[DamageType.physicalSmashing]: 3},
     [1, 70]
 );
 
@@ -158,8 +158,8 @@ const battleRifleButtHit = createBattleAbility(
 
 const physicalSmashing = {
     affiliatedMaceSmash,
-    cyberFistLeftHandSmash,
-    cyberFistRightHandSmash,
+    cyberFistSmash,
+    doubleCyberFistSmash,
     fistPunch,
     fistSmash,
     maceSmash,
