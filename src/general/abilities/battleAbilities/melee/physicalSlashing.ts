@@ -24,25 +24,25 @@ const affiliatedSwordSlash = createBattleAbility(
     [1, 95]
 );
 
-const dualSwordsSlash = createBattleAbility(
+const doubleSwordsSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('dual_sword_slash'), 
         '', 
-        images.guildianLearnings.dualSwords
+        images.normalItems.doubleSwordSlash
     ], 
     {Stamina: 2}, 
-    {[DamageType.physicalSlashing]: 3},
+    {[DamageType.physicalSlashing]: 2},
     [1, 70]
 );
 
-const affiliatedDualSwordsSlash = createBattleAbility(
+const affiliatedDoubleSwordsSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('dual_sword_slash'), 
         '', 
-        images.guildianLearnings.dualSwords
+        images.normalItems.doubleSwordSlash
     ], 
     {Stamina: 2}, 
-    {[DamageType.physicalSlashing]: 3},
+    {[DamageType.physicalSlashing]: 2},
     [1, 95]
 );
 
@@ -79,6 +79,17 @@ const steelGreataxeSlash = createBattleAbility(
     [1, 70]
 );
 
+const affiliatedSteelGreataxeSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('greataxe_slash'), 
+        '', 
+        images.normalItems.steelGreataxe
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2}, 
+    [1, 95]
+);
+
 const runicGreataxeSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('greataxe_slash'), 
@@ -88,6 +99,17 @@ const runicGreataxeSlash = createBattleAbility(
     {Stamina: 2}, 
     {[DamageType.physicalSlashing]: 2}, 
     [1, 70]
+);
+
+const affiliatedRunicGreataxeSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('greataxe_slash'), 
+        '', 
+        images.guildianLearnings.runicGreataxe
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2}, 
+    [1, 95]
 );
 
 const steelGreatswordSlash = createBattleAbility(
@@ -101,6 +123,17 @@ const steelGreatswordSlash = createBattleAbility(
     [1, 70]
 );
 
+const affiliatedSteelGreatswordSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('greataxe_slash'), 
+        '', 
+        images.normalItems.steelGreatsword
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2}, 
+    [1, 95]
+);
+
 const runicGreatswordSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('greatsword_slash'),
@@ -112,6 +145,17 @@ const runicGreatswordSlash = createBattleAbility(
     [1, 70]
 );
 
+const affiliatedRunicGreatswordSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('greataxe_slash'), 
+        '', 
+        images.guildianLearnings.runicGreatsword
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2}, 
+    [1, 95]
+);
+
 const axeSlash = createBattleAbility(
     [
         chrome.i18n.getMessage('axe_slash'), 
@@ -121,6 +165,17 @@ const axeSlash = createBattleAbility(
     {Stamina: 1}, 
     {[DamageType.physicalSlashing]: 1},
     [1, 70]
+);
+
+const affiliatedAxeSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('axe_slash'), 
+        '', 
+        images.normalItems.axe
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 95]
 );
 
 const battleAxeSlash = createBattleAbility(
@@ -252,8 +307,8 @@ const dragonBoneBladeSlash = createBattleAbility(
         '', 
         images.armouryItems.dragonBoneBlade
     ], 
-    {Stamina: 1},
-    {[DamageType.physicalSlashing]: 1},
+    {Stamina: 2},
+    {[DamageType.physicalSlashing]: 2},
     [1, 70]
 );
 
@@ -263,8 +318,8 @@ const affiliatedDragonBoneBladeSlash = createBattleAbility(
         '', 
         images.armouryItems.dragonBoneBlade
     ], 
-    {Stamina: 1}, 
-    {[DamageType.physicalSlashing]: 1},
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2},
     [1, 95]
 );
 
@@ -274,8 +329,8 @@ const mageDragonBoneBladeSlash = createBattleAbility(
         '', 
         images.armouryItems.mageDragonBoneBlade
     ], 
-    {Stamina: 1},
-    {[DamageType.physicalSlashing]: 1},
+    {Stamina: 2},
+    {[DamageType.physicalSlashing]: 2},
     [1, 70]
 );
 
@@ -285,8 +340,8 @@ const affiliatedMageDragonBoneBladeSlash = createBattleAbility(
         '', 
         images.armouryItems.mageDragonBoneBlade
     ], 
-    {Stamina: 1}, 
-    {[DamageType.physicalSlashing]: 1},
+    {Stamina: 2}, 
+    {[DamageType.physicalSlashing]: 2},
     [1, 95]
 );
 
@@ -644,23 +699,32 @@ const affiliatedBattleMageRifleSlash = createBattleAbility(
 
 const physicalSlashing = {
     axeSlash,
+    affiliatedAxeSlash,
+
     battleAxeSlash,
     affiliatedBattleAxeSlash,
-    battleMageAxeSlash,
-    battleMageAxeWindSlash,
-    affiliatedBattleMageAxeSlash,
     doubleAxeSlash,
     affiliatedDoubleAxeSlash,
+
+    battleMageAxeSlash,
+    battleMageAxeWindSlash,
+    affiliatedBattleMageAxeSlash,    
+
     swordSlash,
     affiliatedSwordSlash,
-    dualSwordsSlash,
-    affiliatedDualSwordsSlash,
+    doubleSwordsSlash,
+    affiliatedDoubleSwordsSlash,
+
     chakramSlash,
     affiliatedChakramSlash,
     steelGreataxeSlash,
+    affiliatedSteelGreataxeSlash,
     runicGreataxeSlash,
+    affiliatedRunicGreataxeSlash,
     steelGreatswordSlash,
+    affiliatedSteelGreatswordSlash,
     runicGreatswordSlash,
+    affiliatedRunicGreatswordSlash,
 
     cyberClawSlash,
     treeCutterSlash,

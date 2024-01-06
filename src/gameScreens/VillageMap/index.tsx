@@ -23,6 +23,7 @@ import items from "../Market/items";
 import TaskScreen from "../../components/TaskScreen";
 import cybers from "../CyberLab/cybers";
 import gameStage from "../../redux/slices/gameStage";
+import { getWeaponAmount } from "../../helpers/gatherMultipleWeaponsAbilities";
 
 const screenMappings: Partial<Record<GameScreens, {
     title: string,
@@ -113,9 +114,9 @@ const screenMappings: Partial<Record<GameScreens, {
 function VillageMap() {
     const squadMemberInventory = useSelector((store: IStore) => 
         store.gameSquad.squadMembers[store.gameSquad.currentlyWatched].general.inventory);
-    const hasTreeCutter = squadMemberInventory.leftHand.name === cybers.weapons.treeCutter.name;
-    const hasAxe = squadMemberInventory.rightHand.name === items.weapons.axe.name;
-    const hasPickaxe = squadMemberInventory.rightHand.name === items.weapons.pickaxe.name;
+    const treeCutterAmount = getWeaponAmount(squadMemberInventory, [cybers.weapons.treeCutter.name]);
+    const axeAmount = getWeaponAmount(squadMemberInventory, [items.weapons.axe.name]);
+    const pickaxeAmount = getWeaponAmount(squadMemberInventory, [items.weapons.pickaxe.name]);
 
     const gameStageScreens = useSelector((store: IStore) => store.gameStage);
     const villageMapStage = useSelector((store: IStore) => store.gameStage.Village_Map.stage);
@@ -170,16 +171,10 @@ function VillageMap() {
             }
             <button 
                 onClick={() => {
-                    if (hasTreeCutter) {
+                    const woodAmount = 0 + treeCutterAmount * 2 + axeAmount;
+                    for (let wood = 0; wood < woodAmount; wood++) {
                         dispatch(gameSquad.actions.getBigResource(items.bigResources.wood));
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.wood));
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.wood));
-                    } else if (hasAxe) {
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.wood));
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.wood));
-                    } else {
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.wood));
-                    }    
+                    }
 
                     if (Math.floor(Math.random()*20) <= 1) {
                         dispatch(gameSquad.actions.getBigResource(items.bigResources.beastRemains));
@@ -193,10 +188,8 @@ function VillageMap() {
             </button>
             <button 
                 onClick={() => {
-                    if (hasPickaxe) {
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.ore));
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.ore));
-                    } else {
+                    const oreAmount = 0 + pickaxeAmount;
+                    for (let ore = 0; ore < oreAmount; ore++) {
                         dispatch(gameSquad.actions.getBigResource(items.bigResources.ore));
                     }
 
@@ -217,14 +210,10 @@ function VillageMap() {
             </button>
             <button 
                 onClick={() => {
-                    // if (hasPickaxe) {
-                    //     dispatch(gameSquad.actions.getBigResource(items.bigResources.ore));
-                    //     dispatch(gameSquad.actions.getBigResource(items.bigResources.ore));
-                    // } else {
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.crystal));
-                    // }
+                    dispatch(gameSquad.actions.getBigResource(items.bigResources.crystal));
 
-                    if (hasPickaxe) {
+                    const obsidianAmount = 0 + pickaxeAmount;
+                    for (let obsidian = 0; obsidian < obsidianAmount; obsidian++) {
                         dispatch(gameSquad.actions.getBigResource(items.bigResources.obsidian));
                     }
                 }}

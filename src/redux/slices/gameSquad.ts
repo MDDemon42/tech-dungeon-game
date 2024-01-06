@@ -1,9 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import createEmptyCharacter, 
-{ 
-    createEmptyInventory, 
-    createNoItem 
-} from '../../helpers/emptyEssencesCreators';
+{ createNoItem } from '../../helpers/emptyEssencesCreators';
 import { 
     IAbility,
     ICharacher,
@@ -14,7 +11,8 @@ import {
     IManageItemsProps,
     IMastery,
     IMutation,
-    IPower
+    IPower,
+    IRitual
 } from '../../enums-and-interfaces/interfaces';
 import mutations from '../../gameScreens/MutaLab/mutations';
 import academyMasteries from '../../gameScreens/Academy/masteries';
@@ -28,6 +26,7 @@ import {
     Race,
     DamageType
 } from '../../enums-and-interfaces/enums';
+import powers from '../../gameScreens/FocusSite/powers';
 
 export function placeAsKey(place: string) {
     return place.split(' ').map((part, index) => {
@@ -137,7 +136,7 @@ const raceMasteries: Partial<Record<Race, IMastery>> = {
 
 function integratePassiveAbility(
     squadMember: ICharacher,
-    data: IItem | ICyber | IMutation | IPower, 
+    data: IItem | ICyber | IMutation | IPower | IRitual, 
     sign: number
 ) {
     if (data.passiveAbilities) {
@@ -287,6 +286,20 @@ const gameSquad = createSlice({
                 }
             })
 
+            const nothing = createNoItem().name;
+
+            backpacks.sort((a, b) => {
+                if (a.name === nothing) {
+                    return 1
+                }
+                
+                if (b.name === nothing) {
+                    return -1
+                }
+
+                return 0
+            })
+
             squadMember.general.backpacks = backpacks;
 
             state = oldState;
@@ -328,8 +341,7 @@ const gameSquad = createSlice({
             const inventory = {...squadMember.general.inventory};
 
             const {item, itemIndex} = action.payload;
-
-            backpacks[itemIndex] = createNoItem();
+            let itemsToPut: IItem[] = [];
 
             const nothing = createNoItem().name;
 
@@ -343,15 +355,13 @@ const gameSquad = createSlice({
                 ) {
                     const leftHandItem = {...inventory.leftHand} as IItem;
                     if (leftHandItem.name !== nothing) {
-                        putItemInBackpacks(backpacks, leftHandItem); 
-                        integratePassiveAbility(squadMember, leftHandItem, -1);
+                        itemsToPut.push(leftHandItem);
                     }
                     inventory.leftHand = createNoItem();
     
                     const rightHandItem = {...inventory.rightHand} as IItem;
                     if (rightHandItem.name !== nothing) {
-                        putItemInBackpacks(backpacks, rightHandItem); 
-                        integratePassiveAbility(squadMember, rightHandItem, -1);
+                        itemsToPut.push(rightHandItem);
                     }
                     inventory.rightHand = createNoItem();
                 } else if (
@@ -360,8 +370,7 @@ const gameSquad = createSlice({
                 ) {
                     const bothHandsItem = {...inventory.bothHands} as IItem;
                     if (bothHandsItem.name !== nothing) {
-                        putItemInBackpacks(backpacks, bothHandsItem); 
-                        integratePassiveAbility(squadMember, bothHandsItem, -1);
+                        itemsToPut.push(bothHandsItem);
                     }
                     inventory.bothHands = createNoItem();
                 }
@@ -369,20 +378,25 @@ const gameSquad = createSlice({
                 {
                     const thisPositionItem = {...inventory[placeAsKey(position)]} as IItem;
                     if (thisPositionItem.name !== nothing) {
-                        putItemInBackpacks(backpacks, thisPositionItem);     
-                        integratePassiveAbility(squadMember, thisPositionItem, -1);
+                        itemsToPut.push(thisPositionItem);
                     }
                 }
                 
                 inventory[placeAsKey(position)] = item;
             } else {
                 const handsOptions: (InventoryPlace.leftHand | InventoryPlace.extraLeftHand |
-                InventoryPlace.rightHand | InventoryPlace.extraRightHand)[] = [
+                    InventoryPlace.telekinesisLeftHand | InventoryPlace.telekinesisRightHand |
+                    InventoryPlace.rightHand | InventoryPlace.extraRightHand)[] = 
+                [
                     InventoryPlace.rightHand, InventoryPlace.leftHand,
-                    InventoryPlace.extraRightHand, InventoryPlace.extraLeftHand                    
+                    InventoryPlace.extraRightHand, InventoryPlace.extraLeftHand,
+                    InventoryPlace.telekinesisLeftHand, InventoryPlace.telekinesisRightHand                  
                 ];
     
                 let itemEquipped = false;
+                let exchangeOptions: null | (InventoryPlace.leftHand | InventoryPlace.extraLeftHand |
+                    InventoryPlace.telekinesisLeftHand | InventoryPlace.telekinesisRightHand |
+                    InventoryPlace.rightHand | InventoryPlace.extraRightHand)[] = null;
         
                 for (const option of handsOptions) {
                     if (possiblePositions.includes(option)) {
@@ -406,17 +420,23 @@ const gameSquad = createSlice({
                             inventory[placeAsKey(option)] = item;
                             itemEquipped = true;
                             break;
+                        } else if (thisOptionItem.name !== item.name) {
+                            if (!exchangeOptions) {
+                                exchangeOptions = [option];
+                            } else {
+                                exchangeOptions.push(option);
+                            }                            
                         }
                     }
                 }
         
                 if (!itemEquipped) {
-                    const randomHandsOption = handsOptions[Math.floor(Math.random() * handsOptions.length)];
+                    const randomOptions = exchangeOptions ? exchangeOptions : handsOptions;
+                    const randomHandsOption = randomOptions[Math.floor(Math.random() * randomOptions.length)];
     
                     const randomHandsOptionItem = {...inventory[placeAsKey(randomHandsOption)]} as IItem;
                     if (randomHandsOptionItem.name !== nothing) {
-                        putItemInBackpacks(backpacks, randomHandsOptionItem);  
-                        integratePassiveAbility(squadMember, randomHandsOptionItem, -1);
+                        itemsToPut.push(randomHandsOptionItem);
                     }         
 
                     const bothHandsItem = {...inventory.bothHands} as IItem;
@@ -426,8 +446,7 @@ const gameSquad = createSlice({
                             randomHandsOption === InventoryPlace.rightHand
                         ) && bothHandsItem.name !== nothing 
                     ) {
-                        putItemInBackpacks(backpacks, bothHandsItem); 
-                        integratePassiveAbility(squadMember, bothHandsItem, -1);
+                        itemsToPut.push(bothHandsItem);
                         inventory.bothHands = createNoItem();
                     }           
     
@@ -436,6 +455,25 @@ const gameSquad = createSlice({
             }
            
             integratePassiveAbility(squadMember, item, +1);
+
+            backpacks[itemIndex] = createNoItem();
+
+            backpacks.sort((a, b) => {
+                if (a.name === nothing) {
+                    return 1
+                }
+                
+                if (b.name === nothing) {
+                    return -1
+                }
+
+                return 0
+            })
+
+            for (const itemToPut of itemsToPut) {
+                putItemInBackpacks(backpacks, itemToPut);
+                integratePassiveAbility(squadMember, itemToPut, -1);
+            }
 
             squadMember.general.backpacks = backpacks;
             squadMember.general.inventory = inventory;
@@ -450,10 +488,12 @@ const gameSquad = createSlice({
             const resources = oldState.resources;
             const members = oldState.squadMembers;
             const squadMember = members[oldState.currentlyWatched];
+            const backpacks = [...squadMember.general.backpacks];
 
             const {item, itemIndex} = action.payload;
 
-            squadMember.general.backpacks[itemIndex] = createNoItem();
+            backpacks[itemIndex] = createNoItem();
+            const nothing = createNoItem().name;
 
             let profit = 0;
             if (
@@ -462,10 +502,23 @@ const gameSquad = createSlice({
                     .includes(academyMasteries.sellmanship.name)
             ) {
                 profit = item.cost;
-            } else if (item.name !== createNoItem().name) {
+            } else if (item.name !== nothing) {
                 profit = 1;
             } 
+
+            backpacks.sort((a, b) => {
+                if (a.name === nothing) {
+                    return 1
+                }
+
+                if (b.name === nothing) {
+                    return -1
+                }
+
+                return 0
+            })
             
+            squadMember.general.backpacks = backpacks;
             resources.Gems += profit;
 
             state = oldState;
@@ -503,27 +556,34 @@ const gameSquad = createSlice({
 
             state.squadMembers = squad;
         },
-        developPower(state, action) {
-            const {index, data} = action.payload;
-            const squad = {...state.squadMembers};
-            const squadMember = squad[index];
+        developPower(state, action) { 
+            const oldState = {...state};           
+            const squadMember = oldState.squadMembers[oldState.currentlyWatched];
 
-            squadMember.general.mind.powers.push(data);
+            const power: IPower = action.payload;
 
-            integratePassiveAbility(squadMember, data, +1);
+            if (power.name === powers.other.telekinesis.name) {
+                squadMember.general.inventory.telekinesisLeftHand = createNoItem();
+                squadMember.general.inventory.telekinesisRightHand = createNoItem();
+            }
 
-            state.squadMembers = squad;
+            squadMember.general.mind.powers.push(power);            
+
+            integratePassiveAbility(squadMember, power, +1);
+
+            state = oldState;
         },
         surpassRitual(state, action) {
-            const {index, data} = action.payload;
-            const squad = {...state.squadMembers};
-            const squadMember = squad[index];
+            const oldState = {...state};           
+            const squadMember = oldState.squadMembers[oldState.currentlyWatched];
 
-            squadMember.general.mind.rituals.push(data);
+            const ritual: IRitual = action.payload;
 
-            integratePassiveAbility(squadMember, data, +1);
+            squadMember.general.mind.rituals.push(ritual);
 
-            state.squadMembers = squad;
+            integratePassiveAbility(squadMember, ritual, +1);
+
+            state = oldState;
         },
         raiseStrength(state, action) {
             const squad = {...state.squadMembers};
@@ -611,10 +671,6 @@ const gameSquad = createSlice({
         implementCyber(state, action) {
             const oldState = {...state};
             const squadMember = oldState.squadMembers[oldState.currentlyWatched];
-            
-            if (!squadMember.general.inventory) {
-                squadMember.general.inventory = createEmptyInventory();
-            }
 
             const nothing = createNoItem().name;
             const backpacks = [...squadMember.general.backpacks];

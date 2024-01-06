@@ -17,19 +17,19 @@ function MutationLab() {
             title: chrome.i18n.getMessage('beast_genes_task_title'),
             stage: 2,
             disabled: stage % 2 === 0,
-            visible: true
+            visible: stage % 2 !== 0
         },
         {
             title: chrome.i18n.getMessage('reptiloid_genes_task_title'),
             stage: 3,
             disabled: stage % 3 === 0,
-            visible: true
+            visible: stage % 3 !== 0
         },
         {
             title: chrome.i18n.getMessage('insectoid_genes_task_title'),
             stage: 5,
             disabled: stage % 5 === 0,
-            visible: true
+            visible: stage % 5 !== 0
         }
     ];
 

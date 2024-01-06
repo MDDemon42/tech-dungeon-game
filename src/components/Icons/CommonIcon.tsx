@@ -135,7 +135,7 @@ function CommonIcon(props: {
         <div className={styles.CommonIcon}>
             {
                 !!item.damage ?
-                    <div className={styles.CommonIcon_damage}>
+                    <>
                         <div className={styles.CommonIcon_damagesColumn}>
                             {
                                 Object.keys(item.damage).map(key =>
@@ -146,11 +146,13 @@ function CommonIcon(props: {
                                     </span>
                                 )
                             }                            
-                        </div>                         
-                        <span style={{color: item.hitChance! >= 90 ? 'gold' : 'grey'}}>
+                        </div>
+                        <span className={styles.CommonIcon_hitChance}
+                            style={{color: item.hitChance! >= 90 ? 'gold' : 'grey'}}
+                        >
                             {item.hitChance}
                         </span>
-                    </div> : 
+                    </> : 
                     null
             }
             <img 

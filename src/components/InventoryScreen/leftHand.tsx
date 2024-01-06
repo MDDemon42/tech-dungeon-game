@@ -30,11 +30,20 @@ function getLeftHandImage(leftHandName: string) {
         case mutations.weapons.claw.name:
             result = <img src={images.bodyElements.clawLeft} alt={chrome.i18n.getMessage('claws')} />;
             break;
+        case items.weapons.axe.name:
+            result = <img src={images.bodyElements.axe.leftHand} alt={chrome.i18n.getMessage('axe')} />;
+            break;
+        case items.weapons.pickaxe.name:
+            result = <img src={images.bodyElements.pickaxe.leftHand} alt={chrome.i18n.getMessage('pickaxe')} />;
+            break;
         case items.weapons.steelSword.name:
-            result = <img src={images.bodyElements.steelSwordLeftHand} alt={chrome.i18n.getMessage('steel_sword')} />;
+            result = <img src={images.bodyElements.steelSword.leftHand} alt={chrome.i18n.getMessage('steel_sword')} />;
+            break;
+        case items.weapons.steelMace.name:
+            result = <img src={images.bodyElements.steelMace.leftHand} alt={chrome.i18n.getMessage('steel_mace')} />;
             break;
         case armouryItems.battleWeapons.battleAxe.name:
-            result = <img src={images.bodyElements.battleAxeLeftHand} alt={chrome.i18n.getMessage('battle_axe')} />;
+            result = <img src={images.bodyElements.battleAxe.leftHand} alt={chrome.i18n.getMessage('battle_axe')} />;
             break;
         case items.armors.steelShield.name:
             result = <img src={images.bodyElements.steelShield} alt={chrome.i18n.getMessage('steel_shield')} />;
@@ -46,10 +55,19 @@ function getLeftHandImage(leftHandName: string) {
             result = <img src={images.bodyElements.chakram} alt={chrome.i18n.getMessage('steel_chakram')} />;
             break;
         case armouryItems.mageWeapons.battleMageAxe.name:
-            result = <img src={images.bodyElements.battleMageAxeLeftHand} alt={chrome.i18n.getMessage('battle_mage_axe')} />;
+            result = <img src={images.bodyElements.battleMageAxe.leftHand} alt={chrome.i18n.getMessage('battle_mage_axe')} />;
             break;
         case armouryItems.battleWeapons.katana.name:
-            result = <img src={images.bodyElements.katanaLeftHand} alt={chrome.i18n.getMessage('katana')} />;
+            result = <img src={images.bodyElements.katana.leftHand} alt={chrome.i18n.getMessage('katana')} />;
+            break;
+        case armouryItems.battleWeapons.macuahuitl.name:
+            result = <img src={images.bodyElements.macuahuitl.leftHand} alt={chrome.i18n.getMessage('macuahuitl')} />;
+            break;
+        case armouryItems.battleWeapons.rapier.name:
+            result = <img src={images.bodyElements.rapier.leftHand} alt={chrome.i18n.getMessage('rapier')} />;
+            break;
+        case armouryItems.battleWeapons.sabre.name:
+            result = <img src={images.bodyElements.sabre.leftHand} alt={chrome.i18n.getMessage('sabre')} />;
             break;
         case armouryItems.guns.revolver.name:
             result = <img src={images.bodyElements.revolverLeftHand} alt={chrome.i18n.getMessage('revolver')} />;

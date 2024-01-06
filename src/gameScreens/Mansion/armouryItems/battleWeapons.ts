@@ -4,7 +4,6 @@ import abilities from "../../../general/abilities";
 import images from "../../../images/images";
 import academyMasteries from "../../Academy/masteries";
 import crafts from "../crafts";
-import mansionMasteries from "../masteries";
 
 const battleAxe = createArmouryItem(
     [
@@ -18,7 +17,9 @@ const battleAxe = createArmouryItem(
             InventoryPlace.rightHand, 
             InventoryPlace.leftHand,
             InventoryPlace.extraLeftHand,
-            InventoryPlace.extraRightHand
+            InventoryPlace.extraRightHand,
+            InventoryPlace.telekinesisLeftHand,
+            InventoryPlace.telekinesisRightHand
         ], 
         1
     ],
@@ -32,7 +33,7 @@ const battleAxe = createArmouryItem(
     null, 
     [
         {
-            linkedMastery: mansionMasteries.axeAffiliation.name,
+            linkedMastery: academyMasteries.axeAffiliation.name,
             masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedBattleAxeSlash
         }
     ]
@@ -45,10 +46,10 @@ const dragonBoneBlade = createArmouryItem(
         images.armouryItems.dragonBoneBlade
     ],
     [
-        2, [InventoryPlace.rightHand], 1
+        2, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 0,
+        '', 3,
         crafts.battleWeapons.craftDragonBoneBlade
     ],
     [
@@ -77,13 +78,18 @@ const glaive = createArmouryItem(
         crafts.battleWeapons.craftGlaive
     ],
     [
-        abilities.battleAbilities.melee.physicalSlashing.glaiveSlash
+        abilities.battleAbilities.melee.physicalSlashing.glaiveSlash,
+        abilities.battleAbilities.melee.physicalPiercing.glaivePierce,
     ], 
     null, 
     [
         {
             linkedMastery: academyMasteries.spearAffiliation.name,
             masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedGlaiveSlash
+        },
+        {
+            linkedMastery: academyMasteries.spearAffiliation.name,
+            masterAbility: abilities.battleAbilities.melee.physicalPiercing.affiliatedGlaivePierce
         }
     ]
 );
@@ -107,7 +113,7 @@ const halberd = createArmouryItem(
     null, 
     [
         {
-            linkedMastery: academyMasteries.spearAffiliation.name,
+            linkedMastery: academyMasteries.axeAffiliation.name,
             masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedHalberdSlash
         }
     ]
@@ -125,7 +131,9 @@ const katana = createArmouryItem(
             InventoryPlace.rightHand,
             InventoryPlace.leftHand,
             InventoryPlace.extraLeftHand,
-            InventoryPlace.extraRightHand
+            InventoryPlace.extraRightHand,
+            InventoryPlace.telekinesisLeftHand,
+            InventoryPlace.telekinesisRightHand
         ], 
         1
     ],
@@ -177,7 +185,13 @@ const macuahuitl = createArmouryItem(
         images.armouryItems.macuahuitl
     ],
     [
-        2, [InventoryPlace.rightHand], 1
+        2, 
+        [
+            InventoryPlace.extraLeftHand, InventoryPlace.extraRightHand,
+            InventoryPlace.rightHand, InventoryPlace.leftHand,
+            InventoryPlace.telekinesisLeftHand, InventoryPlace.telekinesisRightHand
+        ], 
+        1
     ],
     [
         '', 0,
@@ -202,7 +216,13 @@ const rapier = createArmouryItem(
         images.armouryItems.rapier
     ],
     [
-        2, [InventoryPlace.rightHand], 1
+        2, 
+        [
+            InventoryPlace.extraLeftHand, InventoryPlace.extraRightHand,
+            InventoryPlace.rightHand, InventoryPlace.leftHand,
+            InventoryPlace.telekinesisLeftHand, InventoryPlace.telekinesisRightHand
+        ], 
+        1
     ],
     [
         '', 0,
@@ -227,7 +247,13 @@ const sabre = createArmouryItem(
         images.armouryItems.sabre
     ],
     [
-        2, [InventoryPlace.rightHand], 1
+        2, 
+        [
+            InventoryPlace.extraLeftHand, InventoryPlace.extraRightHand,
+            InventoryPlace.rightHand, InventoryPlace.leftHand,
+            InventoryPlace.telekinesisLeftHand, InventoryPlace.telekinesisRightHand
+        ], 
+        1
     ],
     [
         '', 0,

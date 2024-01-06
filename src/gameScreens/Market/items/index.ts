@@ -51,20 +51,20 @@ const items = {
 }
 
 const basicOptions = [
+    items.weapons.axe,
     items.other.healingPotion,
     items.armors.leatherArmor,
-    items.armors.woodenShield,
     items.weapons.oakBow,
-    items.weapons.spear,
-    items.weapons.axe,
-    items.weapons.pickaxe
+    items.weapons.pickaxe,
+    items.weapons.pierceStick,
+    items.armors.woodenShield,
 ];
 
 const steelOptions = [
     items.armors.steelArmor,
     items.armors.steelShield,
     items.weapons.steelMace,
-    items.weapons.steelMace,
+    items.weapons.steelSpear,
     items.weapons.steelSword,
     items.weapons.steelGreataxe,
     items.weapons.steelGreathammer,

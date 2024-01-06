@@ -13,6 +13,16 @@ function getBothHandsImage(
     let result = null;
 
     switch (bothHandsName) {
+        case items.weapons.pierceStick.name:
+            result = [
+                <img src={images.bodyElements.pierceStick} alt={chrome.i18n.getMessage('pierce_stick')} />
+            ]
+            break;
+        case items.weapons.steelSpear.name:
+            result = [
+                <img src={images.bodyElements.steelSpear} alt={chrome.i18n.getMessage('steel_spear')} />
+            ]
+            break;
         case guildItems.weapons.runicGreataxe.name:
             result = [
                 <img src={images.bodyElements.runicGreataxe} alt={chrome.i18n.getMessage('runic_greataxe')} />,
@@ -127,6 +137,18 @@ function getBothHandsImage(
         case armouryItems.mageWeapons.battleMageRifle.name:
             result = [
                 <img src={images.bodyElements.battleMageRifle} alt={chrome.i18n.getMessage('battle_mage_rifle')} />
+            ];
+            break;
+        case armouryItems.battleWeapons.dragonBoneBlade.name:
+            result = [
+                <img src={images.bodyElements.dragonBoneBlade} alt={chrome.i18n.getMessage('dragon_bone_blade')} />,
+                <img src={images.bodyElements.leftHand} alt='leftHand' />
+            ];
+            break;
+        case armouryItems.mageWeapons.mageDragonBoneBlade.name:
+            result = [
+                <img src={images.bodyElements.mageDragonBoneBlade} alt={chrome.i18n.getMessage('mage_dragon_bone_blade')} />,
+                <img src={images.bodyElements.leftHand} alt='leftHand' />
             ];
             break;
         default:

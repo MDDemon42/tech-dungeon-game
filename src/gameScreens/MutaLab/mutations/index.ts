@@ -47,15 +47,15 @@ const beastOptions = [
     mutations.weapons.lowerFangs
 ];
 
-const reptileOptions = [
+const reptiloidOptions = [
+    mutations.weapons.acidSpit,
+    mutations.other.extraArms,
     mutations.weapons.raptorLegs,
     mutations.armors.scales,
     mutations.weapons.tailWithSting,
-    mutations.other.extraArms
 ];
 
 const insectoidOptions = [
-    mutations.weapons.acidSpit,
     mutations.weapons.claws,
     mutations.weapons.pincers,
     mutations.other.wings
@@ -65,7 +65,7 @@ export const mutaLabOptions: Record<string, IMutation[]> = {
     0: [],
     1: [],
     2: [...beastOptions],
-    3: [...reptileOptions],
+    3: [...reptiloidOptions],
     5: [...insectoidOptions]
 };
 

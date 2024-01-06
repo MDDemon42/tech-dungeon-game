@@ -1143,11 +1143,24 @@
             }
         }
     },
+    "all_weapons_massacre": {
+        "message": "All weapons massacre"
+    },
     "axe": {
         "message": "Axe"
     },
     "axe_item_description": {
-        "message": "Usual axe."
+        "message": "Every axe allows to get $count$ $resource$ from Woods.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "axe_slash": {
         "message": "Axe slash"
@@ -1295,6 +1308,9 @@
     "glaive_slash": {
         "message": "Glaive slash"
     },
+    "glaive_pierce": {
+        "message": "Glaive pierce"
+    },
     "craft_glaive": {
         "message": "Craft glaive"
     },
@@ -1319,6 +1335,9 @@
     },
     "mage_glaive_slash": {
         "message": "Mage glaive slash"
+    },
+    "mage_glaive_pierce": {
+        "message": "Mage glaive pierce"
     },
     "mage_glaive_wind_slash": {
         "message": "Mage glaive wind slash"
@@ -1656,11 +1675,23 @@
     "mace_smash": {
         "message": "Mace smash"
     },
-    "spear": {
-        "message": "Spear"
+    "double_mace_smash": {
+        "message": "Double mace smash"
     },
-    "spear_item_description": {
-        "message": "Usual spear."
+    "pierce_stick": {
+        "message": "Pierce stick"
+    },
+    "pierce_stick_item_description": {
+        "message": "Usual pierce stick."
+    },
+    "stick_pierce": {
+        "message": "Stick pierce"
+    },
+    "steel_spear": {
+        "message": "Steel spear"
+    },
+    "steel_spear_item_description": {
+        "message": "Usual steel spear."
     },
     "spear_pierce": {
         "message": "Spear pierce"
@@ -1669,7 +1700,17 @@
         "message": "Pickaxe"
     },
     "pickaxe_item_description": {
-        "message": "Usual pickaxe."
+        "message": "Every pickaxe allows to get $count$ $resource$ from Mines.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "pickaxe_pick": {
         "message": "Pickaxe pick"
@@ -2467,6 +2508,9 @@
     },
     "lightning_strike": {
         "message": "Lightning strike"
+    },
+    "lightning_strike_bending_description": {
+        "message": "Direct strike of voltage differencials"
     },
     "teleport": {
         "message": "Teleport"

@@ -5,7 +5,6 @@ import images from "../../../images/images";
 import academyMasteries from "../../Academy/masteries";
 import guildMasteries from "../../Guild/masteries";
 import crafts from "../crafts";
-import mansionMasteries from "../masteries";
 
 const musket = createArmouryItem(
     [
@@ -226,7 +225,7 @@ const battleRifle = createArmouryItem(
             masterAbility: abilities.battleAbilities.ranged.physicalPiercing.masterBattleRifleDoubleShot
         },
         {
-            linkedMastery: mansionMasteries.axeAffiliation.name,
+            linkedMastery: academyMasteries.axeAffiliation.name,
             masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedBattleRifleSlash
         }
     ]

@@ -1,7 +1,7 @@
 import { createEmptyInventory } from "./emptyEssencesCreators";
 import { placeAsKey } from "../redux/slices/gameSquad";
 import store from "../redux/store";
-import { IInventorySlot } from "../enums-and-interfaces/interfaces";
+import { IInventorySlot, IItem } from "../enums-and-interfaces/interfaces";
 import { InventoryPlace } from "../enums-and-interfaces/enums";
 
 function priorityChecker(slot: IInventorySlot) {
@@ -33,18 +33,23 @@ function priorityChecker(slot: IInventorySlot) {
         }
     } else {
         const handsOptions: (InventoryPlace.leftHand | InventoryPlace.extraLeftHand |
-        InventoryPlace.rightHand | InventoryPlace.extraRightHand)[] = [
+            InventoryPlace.telekinesisLeftHand | InventoryPlace.telekinesisRightHand |
+            InventoryPlace.rightHand | InventoryPlace.extraRightHand)[] = 
+        [
             InventoryPlace.leftHand, InventoryPlace.extraLeftHand,
-            InventoryPlace.rightHand, InventoryPlace.extraRightHand
+            InventoryPlace.rightHand, InventoryPlace.extraRightHand,
+            InventoryPlace.telekinesisLeftHand, InventoryPlace.telekinesisRightHand
         ];
 
         for (const option of handsOptions) {
             if (possiblePositions.includes(option)) {
-                const name_option = inventory[placeAsKey(option)]?.name || '';
-                const priority_option = inventory[placeAsKey(option)]?.priority || 0;
-
-                result = result || (name_option !== name_new && 
-                    priority_option <= priority_new);
+                const thisOptionItem = {...inventory[placeAsKey(option)]} as IItem | null;
+                if (!thisOptionItem) {
+                    continue;
+                }
+                
+                result = result || (thisOptionItem.name !== name_new && 
+                    thisOptionItem.priority <= priority_new);
 
                 if (
                     option === InventoryPlace.leftHand ||

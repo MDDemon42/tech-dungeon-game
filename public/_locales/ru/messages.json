@@ -1143,11 +1143,24 @@
             }
         }
     },
+    "all_weapons_massacre": {
+        "message": "Тотальная резня"
+    },
     "axe": {
         "message": "Топор"
     },
     "axe_item_description": {
-        "message": "Обычный топор."
+        "message": "Каждый топор позволяет добыть $count$ $resource$ в Лесах.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "axe_slash": {
         "message": "Удар топором"
@@ -1295,6 +1308,9 @@
     "glaive_slash": {
         "message": "Удар глефой"
     },
+    "glaive_pierce": {
+        "message": "Выпад глефой"
+    },
     "craft_glaive": {
         "message": "Создать глефу"
     },
@@ -1319,6 +1335,9 @@
     },
     "mage_glaive_slash": {
         "message": "Удар глефой мага"
+    },
+    "mage_glaive_pierce": {
+        "message": "Выпад глефой мага"
     },
     "mage_glaive_wind_slash": {
         "message": "Удар ветреной глефой мага"
@@ -1648,11 +1667,23 @@
     "mace_smash": {
         "message": "Удар булавой"
     },
-    "spear": {
-        "message": "Копьё"
+    "double_mace_smash": {
+        "message": "Удар двумя булавами"
     },
-    "spear_item_description": {
-        "message": "Обычное копьё."
+    "pierce_stick": {
+        "message": "Протыкалка"
+    },
+    "pierce_stick_item_description": {
+        "message": "Обычная палка-протыкалка."
+    },
+    "stick_pierce": {
+        "message": "Тык палкой"
+    },
+    "steel_spear": {
+        "message": "Стальное копьё"
+    },
+    "steel_spear_item_description": {
+        "message": "Обычное стальное копьё."
     },
     "spear_pierce": {
         "message": "Выпад копьём"
@@ -1661,7 +1692,17 @@
         "message": "Кирка"
     },
     "pickaxe_item_description": {
-        "message": "Обычная кирка."
+        "message": "Каждая кирка позволяет добыть $count$ $resource$ в Шахтах.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "pickaxe_pick": {
         "message": "Удар киркой"
@@ -2459,6 +2500,9 @@
     },
     "lightning_strike": {
         "message": "Разряд молнии"
+    },
+    "lightning_strike_bending_description": {
+        "message": "Направленный удар разности потенциалов"
     },
     "teleport": {
         "message": "Телепорт"

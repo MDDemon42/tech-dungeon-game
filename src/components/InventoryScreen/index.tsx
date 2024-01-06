@@ -16,6 +16,9 @@ import getLeftPocketImage from './leftPocket';
 import getRightPocketImage from './rightPocket';
 import getExtraLeftHandImage from './extraLeftHand';
 import getExtraRightHandImage from './extraRightHand';
+import getTelekinesisLeftHandImage from './telekinesisLeftHand';
+import getTelekinesisRightHandImage from './telekinesisRightHand';
+import powers from '../../gameScreens/FocusSite/powers';
 
 function InventoryScreen(props: {
     character: ICharacher,
@@ -86,6 +89,16 @@ function InventoryScreen(props: {
         inventory.leftHand.name
     );
 
+    const telekinesisLeftHand = getTelekinesisLeftHandImage(
+        inventory.telekinesisLeftHand?.name || '',
+        powersUserNames.includes(powers.other.telekinesis.name)
+    );
+
+    const telekinesisRightHand = getTelekinesisRightHandImage(
+        inventory.telekinesisRightHand?.name || '',
+        powersUserNames.includes(powers.other.telekinesis.name)
+    );
+
     return (
         <div 
             className={styles.InventoryScreen} 
@@ -106,7 +119,9 @@ function InventoryScreen(props: {
             { hat }
             { leftHand }
             { rightHand }  
-            { bothHands }          
+            { bothHands }   
+            { telekinesisLeftHand }
+            { telekinesisRightHand }       
         </div>
     )
 }

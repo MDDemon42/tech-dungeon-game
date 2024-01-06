@@ -23,7 +23,7 @@
     margin: 5px;
     padding: 5px;
     position: relative;
-    min-height: 65px;
+    min-height: 75px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -31,6 +31,7 @@
 
 .BattlePage_body_abilitiesBlock_abilities {
     left: 0;
+    gap: 10px;
     width: calc(100% - 70px);
     display: flex;
     flex-direction: row;

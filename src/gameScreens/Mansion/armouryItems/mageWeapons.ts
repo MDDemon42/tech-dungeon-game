@@ -8,7 +8,6 @@ import fireMasteries from "../../FireSite/masteries";
 import guildMasteries from "../../Guild/masteries";
 import coldMasteries from "../../IceSite/masteries";
 import crafts from "../crafts";
-import mansionMasteries from "../masteries";
 
 const battleMageAxe = createArmouryItem(
     [
@@ -22,7 +21,9 @@ const battleMageAxe = createArmouryItem(
             InventoryPlace.rightHand,
             InventoryPlace.leftHand,
             InventoryPlace.extraLeftHand,
-            InventoryPlace.extraRightHand
+            InventoryPlace.extraRightHand,
+            InventoryPlace.telekinesisLeftHand,
+            InventoryPlace.telekinesisRightHand
         ], 
         1
     ],
@@ -38,7 +39,7 @@ const battleMageAxe = createArmouryItem(
     ], 
     [
         {
-            linkedMastery: mansionMasteries.axeAffiliation.name,
+            linkedMastery: academyMasteries.axeAffiliation.name,
             masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedBattleMageAxeSlash
         },
         {
@@ -63,10 +64,10 @@ const mageDragonBoneBlade = createArmouryItem(
         images.armouryItems.mageDragonBoneBlade
     ],
     [
-        3, [InventoryPlace.rightHand], 1
+        3, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 0,
+        '', 3,
         crafts.mageWeapons.craftMageDragonBoneBlade
     ],
     [
@@ -101,7 +102,8 @@ const mageGlaive = createArmouryItem(
         crafts.mageWeapons.craftMageGlaive
     ],
     [
-        abilities.battleAbilities.melee.physicalSlashing.mageGlaiveSlash
+        abilities.battleAbilities.melee.physicalSlashing.mageGlaiveSlash,
+        abilities.battleAbilities.melee.physicalPiercing.mageGlaivePierce
     ], 
     [
         abilities.passiveAbilities.weapons.mageWeapon
@@ -110,6 +112,10 @@ const mageGlaive = createArmouryItem(
         {
             linkedMastery: academyMasteries.spearAffiliation.name,
             masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedMageGlaiveSlash
+        },
+        {
+            linkedMastery: academyMasteries.spearAffiliation.name,
+            masterAbility: abilities.battleAbilities.melee.physicalPiercing.affiliatedMageGlaivePierce
         },
         {
             linkedMastery: airMasteries.windAffiliation.name,
@@ -139,7 +145,7 @@ const mageHalberd = createArmouryItem(
     ],  
     [
         {
-            linkedMastery: academyMasteries.spearAffiliation.name,
+            linkedMastery: academyMasteries.axeAffiliation.name,
             masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedMageHalberdSlash
         },
         {
@@ -343,7 +349,7 @@ const battleMageRifle = createArmouryItem(
             masterAbility: abilities.battleAbilities.ranged.physicalPiercing.masterBattleMageMusketShot
         },
         {
-            linkedMastery: mansionMasteries.axeAffiliation.name,
+            linkedMastery: academyMasteries.axeAffiliation.name,
             masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedBattleMageRifleSlash
         },
         {

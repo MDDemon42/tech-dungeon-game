@@ -57,6 +57,28 @@ const affiliatedMaceSmash = createBattleAbility(
     [1, 95]
 );
 
+const doubleMaceSmash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('double_mace_smash'), 
+        '', 
+        images.normalItems.doubleMaceSmash
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSmashing]: 4},
+    [1, 70]
+);
+
+const affiliatedDoubleMaceSmash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('double_mace_smash'),
+        '', 
+        ''
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSmashing]: 4},
+    [1, 95]
+);
+
 const steelGreathammerSmash = createBattleAbility(
     [
         chrome.i18n.getMessage('greathammer_smash'), 
@@ -64,8 +86,19 @@ const steelGreathammerSmash = createBattleAbility(
         images.normalItems.steelGreathammer
     ], 
     {Stamina: 2},
-    {[DamageType.physicalSmashing]: 2}, 
+    {[DamageType.physicalSmashing]: 3}, 
     [1, 70]
+);
+
+const affiliatedSteelGreathammerSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('greathammer_smash'), 
+        '', 
+        images.normalItems.steelGreathammer
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSmashing]: 3}, 
+    [1, 95]
 );
 
 const runicGreathammerSmash = createBattleAbility(
@@ -75,8 +108,19 @@ const runicGreathammerSmash = createBattleAbility(
         images.guildianLearnings.runicGreathammer
     ], 
     {Stamina: 2}, 
-    {[DamageType.physicalSmashing]: 2},
+    {[DamageType.physicalSmashing]: 3},
     [1, 70]
+);
+
+const affiliatedRunicGreathammerSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('greathammer_smash'), 
+        '', 
+        images.guildianLearnings.runicGreathammer
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalSmashing]: 3}, 
+    [1, 95]
 );
 
 const thunderPunch = createBattleAbility(
@@ -157,19 +201,24 @@ const battleRifleButtHit = createBattleAbility(
 );
 
 const physicalSmashing = {
+    maceSmash,
     affiliatedMaceSmash,
+    doubleMaceSmash,
+    affiliatedDoubleMaceSmash,
+
     cyberFistSmash,
     doubleCyberFistSmash,
     fistPunch,
     fistSmash,
-    maceSmash,
     martialHit,
     musketButtHit,
     battleMusketButtHit,
-    runicGreathammerSmash,
     rifleButtHit,
     battleRifleButtHit,
-    steelGreathammerSmash,    
+    steelGreathammerSmash,
+    affiliatedSteelGreathammerSlash,
+    runicGreathammerSmash,    
+    affiliatedRunicGreathammerSlash,
     thunderPunch,    
 }
 

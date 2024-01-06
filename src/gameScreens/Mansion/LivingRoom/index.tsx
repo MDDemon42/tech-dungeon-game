@@ -4,7 +4,6 @@ import styles from './index.module.css';
 import LivingRoomOption from './LivingRoomOption';
 import gameSquad from '../../../redux/slices/gameSquad';
 import images from '../../../images/images';
-import mansionMasteries from '../masteries';
 import academyMasteries from '../../Academy/masteries';
 
 export interface ILivingRoomOption {
@@ -61,12 +60,12 @@ function LivingRoom() {
             }
         },
         {
-            data: mansionMasteries.axeAffiliation,
+            data: academyMasteries.axeAffiliation,
             buttonText: chrome.i18n.getMessage('learn'),
-            buttonDisabled: memberMasteriesNames.includes(mansionMasteries.axeAffiliation.name),
+            buttonDisabled: memberMasteriesNames.includes(academyMasteries.axeAffiliation.name),
             visible: mansionStage % 11 === 0,
             listener: () => {
-                dispatch(gameSquad.actions.learnMastery(mansionMasteries.axeAffiliation))
+                dispatch(gameSquad.actions.learnMastery(academyMasteries.axeAffiliation))
             }
         },
         {

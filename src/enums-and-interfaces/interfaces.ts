@@ -183,6 +183,8 @@ export interface IInventory extends Record<string,
     legs: ICyber | IMutation,
     leftHand: ICyber | IMutation | IItem,
     rightHand: ICyber | IMutation | IItem,
+    telekinesisLeftHand: IItem | null,
+    telekinesisRightHand: IItem | null,
     bothHands: IMutation | IItem
 }
 

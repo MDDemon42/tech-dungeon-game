@@ -24,19 +24,16 @@ function getRightHandImage(rightHandName: string) {
             result = <img src={images.bodyElements.clawRight} alt={chrome.i18n.getMessage('claws')} />;
             break;
         case items.weapons.steelSword.name:
-            result = <img src={images.bodyElements.steelSwordRightHand} alt={chrome.i18n.getMessage('steel_sword')} />;
+            result = <img src={images.bodyElements.steelSword.rightHand} alt={chrome.i18n.getMessage('steel_sword')} />;
             break;
         case armouryItems.battleWeapons.battleAxe.name:
-            result = <img src={images.bodyElements.battleAxeRightHand} alt={chrome.i18n.getMessage('battle_axe')} />;
+            result = <img src={images.bodyElements.battleAxe.rightHand} alt={chrome.i18n.getMessage('battle_axe')} />;
             break;
         case items.weapons.steelMace.name:
-            result = <img src={images.bodyElements.steelMace} alt={chrome.i18n.getMessage('steel_mace')} />;
-            break;
-        case items.weapons.spear.name:
-            result = <img src={images.bodyElements.spear} alt={chrome.i18n.getMessage('spear')} />;
+            result = <img src={images.bodyElements.steelMace.rightHand} alt={chrome.i18n.getMessage('steel_mace')} />;
             break;
         case items.weapons.pickaxe.name:
-            result = <img src={images.bodyElements.pickaxe} alt={chrome.i18n.getMessage('pickaxe')} />;
+            result = <img src={images.bodyElements.pickaxe.rightHand} alt={chrome.i18n.getMessage('pickaxe')} />;
             break;
         case armouryItems.guns.pistol.name:
             result = <img src={images.bodyElements.pistol} alt={chrome.i18n.getMessage('pistol')} />;
@@ -51,31 +48,25 @@ function getRightHandImage(rightHandName: string) {
             result = <img src={images.bodyElements.battleRevolverRightHand} alt={chrome.i18n.getMessage('battle_revolver')} />;
             break;
         case items.weapons.axe.name:
-            result = <img src={images.bodyElements.axe} alt={chrome.i18n.getMessage('axe')} />;
-            break;
-        case armouryItems.battleWeapons.dragonBoneBlade.name:
-            result = <img src={images.bodyElements.dragonBoneBlade} alt={chrome.i18n.getMessage('dragon_bone_blade')} />;
+            result = <img src={images.bodyElements.axe.rightHand} alt={chrome.i18n.getMessage('axe')} />;
             break;
         case armouryItems.battleWeapons.katana.name:
-            result = <img src={images.bodyElements.katanaRightHand} alt={chrome.i18n.getMessage('katana')} />;
+            result = <img src={images.bodyElements.katana.rightHand} alt={chrome.i18n.getMessage('katana')} />;
             break;
         case armouryItems.battleWeapons.khopesh.name:
             result = <img src={images.bodyElements.khopesh} alt={chrome.i18n.getMessage('khopesh')} />;
             break;
         case armouryItems.battleWeapons.macuahuitl.name:
-            result = <img src={images.bodyElements.macuahuitl} alt={chrome.i18n.getMessage('macuahuitl')} />;
+            result = <img src={images.bodyElements.macuahuitl.rightHand} alt={chrome.i18n.getMessage('macuahuitl')} />;
             break;
         case armouryItems.battleWeapons.rapier.name:
-            result = <img src={images.bodyElements.rapier} alt={chrome.i18n.getMessage('rapier')} />;
+            result = <img src={images.bodyElements.rapier.rightHand} alt={chrome.i18n.getMessage('rapier')} />;
             break;
         case armouryItems.battleWeapons.sabre.name:
-            result = <img src={images.bodyElements.sabre} alt={chrome.i18n.getMessage('sabre')} />;
+            result = <img src={images.bodyElements.sabre.rightHand} alt={chrome.i18n.getMessage('sabre')} />;
             break;
         case armouryItems.mageWeapons.battleMageAxe.name:
-            result = <img src={images.bodyElements.battleMageAxeRightHand} alt={chrome.i18n.getMessage('battle_mage_axe')} />;
-            break;
-        case armouryItems.mageWeapons.mageDragonBoneBlade.name:
-            result = <img src={images.bodyElements.mageDragonBoneBlade} alt={chrome.i18n.getMessage('mage_dragon_bone_blade')} />;
+            result = <img src={images.bodyElements.battleMageAxe.rightHand} alt={chrome.i18n.getMessage('battle_mage_axe')} />;
             break;
         default:
             break;

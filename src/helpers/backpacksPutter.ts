@@ -5,7 +5,6 @@ export default function putItemInBackpacks(
     backpacks: IItem[], 
     item: IItem
 ) {
-    console.log('-putItemInBackpacks-', item)
     const {length} = backpacks;
 
     let index = -1;

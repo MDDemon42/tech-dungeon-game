@@ -1,14 +1,9 @@
 import { DamageType } from "../enums-and-interfaces/enums";
 import { ICharacher, IBattleAbility } from "../enums-and-interfaces/interfaces";
-import abilities from "../general/abilities";
-import items from "../gameScreens/Market/items";
-import academyMasteries from "../gameScreens/Academy/masteries";
 import checkRipApart from "../general/races/checkRipApart";
 import wizardItems from "../gameScreens/WizardSchool/wizardItems";
 import { createEmptyInventory, createNoItem } from "./emptyEssencesCreators";
 import psionMasteries from "../gameScreens/FocusSite/masteries";
-import armouryItems from "../gameScreens/Mansion/armouryItems";
-import mansionMasteries from "../gameScreens/Mansion/masteries";
 import airMasteries from "../gameScreens/AirSite/masteries";
 import { 
     createEmpoweredAbility, 
@@ -19,7 +14,7 @@ import {
 } from "./elementInfusedAblitiesCreators";
 import fireMasteries from "../gameScreens/FireSite/masteries";
 import coldMasteries from "../gameScreens/IceSite/masteries";
-import cybers from "../gameScreens/CyberLab/cybers";
+import gatherMultipleWeaponsAbilities from "./gatherMultipleWeaponsAbilities";
 
 function gatherCharacterAbilities(character: ICharacher) {
     const result: IBattleAbility[] = [];
@@ -102,51 +97,7 @@ function gatherCharacterAbilities(character: ICharacher) {
         }
     })
 
-    // special abilities
-    if (
-        inventory.leftHand.name === items.weapons.steelSword.name &&
-        inventory.rightHand.name === items.weapons.steelSword.name
-    ) {
-        if (masteriesUser.includes(academyMasteries.swordAffiliation.name)) {
-            result.push(abilities.battleAbilities.melee.physicalSlashing.affiliatedDualSwordsSlash);
-        } else {
-            result.push(abilities.battleAbilities.melee.physicalSlashing.dualSwordsSlash);
-        }
-    }
-
-    if (
-        inventory.leftHand.name === armouryItems.battleWeapons.battleAxe.name &&
-        inventory.rightHand.name === armouryItems.battleWeapons.battleAxe.name
-    ) {
-        if (masteriesUser.includes(mansionMasteries.axeAffiliation.name)) {
-            result.push(abilities.battleAbilities.melee.physicalSlashing.affiliatedDoubleAxeSlash);
-        } else {
-            result.push(abilities.battleAbilities.melee.physicalSlashing.doubleAxeSlash);
-        }
-    }
-
-    if (
-        inventory.leftHand.name === cybers.weapons.cyberFist.name &&
-        inventory.rightHand.name === cybers.weapons.cyberFist.name
-    ) {
-        result.push(abilities.battleAbilities.melee.physicalSmashing.doubleCyberFistSmash);
-    }        
-
-    // basic ability
-    if (
-        (
-            inventory.leftHand?.name === noItem.name ||
-            inventory.rightHand?.name === noItem.name
-        ) && inventory.bothHands.name === noItem.name
-    ) {
-        if (masteriesUser.includes(academyMasteries.martialArts.name)) {
-            result.push(abilities.battleAbilities.melee.physicalSmashing.martialHit);
-        } else if (masteriesUser.includes(academyMasteries.brutalForce.name)) {
-            result.push(abilities.battleAbilities.melee.physicalSmashing.fistSmash);
-        } else {
-            result.push(abilities.battleAbilities.melee.physicalSmashing.fistPunch);
-        }        
-    }
+    result.push(...gatherMultipleWeaponsAbilities(inventory, masteriesUser));    
 
     result
         .filter(ability => (

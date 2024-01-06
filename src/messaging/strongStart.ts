@@ -1,11 +1,11 @@
 import { UserParam, UserResource } from "../enums-and-interfaces/enums";
 import C from '../redux/constants';
-import createEmptyCharacter from "../helpers/emptyEssencesCreators";
+import createEmptyCharacter, { createNoItem } from "../helpers/emptyEssencesCreators";
 import store from "../redux/store";
 import { classInfo } from "../redux/slices/gameSquad";
 import { createGameStage } from "../redux/slices/gameStage";
-import items from "../gameScreens/Market/items";
-import { IItem } from "../enums-and-interfaces/interfaces";
+import powers from "../gameScreens/FocusSite/powers";
+import mutations from "../gameScreens/MutaLab/mutations";
 
 function actionInCaseStrongStart(tabId: number) {
     const state = {...store.getState()}
@@ -40,9 +40,17 @@ function actionInCaseStrongStart(tabId: number) {
             }
             
             memberClone.params.currentParams = {...memberClone.params.maxParams};
+            memberClone.params.strength = 5;
+            memberClone.general.backpacks.length = 7;
+            memberClone.general.backpacks.fill(createNoItem());
 
-            memberClone.general.backpacks[0] = items.bigResources.insectoidRemains as IItem;
-            memberClone.general.backpacks[1] = items.bigResources.reptiloidRemains as IItem;
+            memberClone.general.mind.powers.push(powers.other.telekinesis);
+            memberClone.general.inventory.telekinesisLeftHand = createNoItem();
+            memberClone.general.inventory.telekinesisRightHand = createNoItem();
+
+            memberClone.general.inventory.shoulders = mutations.other.extraArms;
+            memberClone.general.inventory.extraLeftHand = createNoItem();
+            memberClone.general.inventory.extraRightHand = createNoItem();
 
             squadMembers[i] = memberClone;
         }

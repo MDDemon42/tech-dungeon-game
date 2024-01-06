@@ -18,7 +18,7 @@ function Academy() {
             title: chrome.i18n.getMessage('modernize_academy_task_title'),
             stage: 2,
             disabled: academyStage % 2 === 0 && marketStage === 2,
-            visible: true
+            visible: academyStage % 2 !== 0
         }
     ];
 

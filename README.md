@@ -21,5 +21,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  4) Mix `MASPIC` to get `elf` and `werewolf`(?)
  5) Long hair of `fur` mutation
  6) Several generations of `MASPIC` masters (?)
- 7) `Tropheys` after `win` on `BattleScreen`,
- 8) Items for `extra arms` and `telekinesis`
+ 7) `Tropheys` after `win` on `Battle Screen`
+ 8) More items for `extra arms` and `telekinesis`
+ 9) `Mercenaries` on different screens
+ 10) `Old Fashion Inventory` on `Inventory Screen`
+ 11) `Strength` cost equipping items

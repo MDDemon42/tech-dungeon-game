@@ -17,25 +17,25 @@ function FocusSite() {
             title: chrome.i18n.getMessage('deepest_insights'),
             stage: 2,
             disabled: stage % 2 === 0,
-            visible: true
+            visible: stage % 2 !== 0
         },
         {
             title: chrome.i18n.getMessage('psi_energy'),
             stage: 3,
             disabled: stage % 3 === 0,
-            visible: true
+            visible: stage % 3 !== 0
         },
         {
             title: chrome.i18n.getMessage('empowered_strikes'),
             stage: 5,
             disabled: stage % 5 === 0,
-            visible: true
+            visible: stage % 5 !== 0
         },
         {
             title: chrome.i18n.getMessage('psi_infused_strikes'),
             stage: 7,
             disabled: stage % 7 === 0,
-            visible: stage % 3 ===0
+            visible: stage % 3 === 0 && stage % 7 !== 0
         }
     ];
 

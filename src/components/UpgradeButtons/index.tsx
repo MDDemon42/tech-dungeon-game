@@ -7,14 +7,16 @@ function UpgradeButtons(props: {
 }) {
     const {upgradeButtons, listener} = props;
 
+    const visibleUpgradeButtons = upgradeButtons.filter(button => button.visible);
+
+    if (visibleUpgradeButtons.length === 0) {
+        return null
+    }
+
     return (
         <div className={styles.UpgradeButtons}>
             {
-                upgradeButtons.map(option => {
-                    if (!option.visible) {
-                        return null
-                    }
-
+                visibleUpgradeButtons.map(option => {
                     return (
                         <button 
                             onClick={() => listener(option.stage)}

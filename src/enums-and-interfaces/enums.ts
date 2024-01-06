@@ -11,11 +11,25 @@ export enum InventoryPlace {
     extraRightHand = 'Extra right hand',
     leftHand = 'Left hand',
     rightHand = 'Right hand',
+    telekinesisLeftHand = 'Telekinesis left hand',
+    telekinesisRightHand = 'Telekinesis right hand',
     bothHands = 'Both hands',
     belt = 'Belt',
     leftPocket = 'Left pocket',
     rightPocket = 'Right pocket',
     legs = 'Legs'
+}
+
+export enum WeaponTypes {
+    axes = 'Axes',
+    greatAxes = 'Greataxes',
+    greatHammers = 'Grreathammers',
+    greatSwords = 'Greatswords',
+    mace = 'Maces',
+    picaxe = 'Pickaxe',
+    piercestick = 'Piercestick',
+    spear = 'Spears',
+    swords = 'Swords'
 }
 
 export enum UserStartClass {

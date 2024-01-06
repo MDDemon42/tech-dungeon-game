@@ -67,7 +67,16 @@ const spearAffiliation = createMastery(
     [
         chrome.i18n.getMessage('spear_affiliation'),
         chrome.i18n.getMessage('spear_affiliation_mastery_description'),
-        images.normalItems.spear
+        images.normalItems.pierceStick
+    ],
+    ''
+);
+
+const axeAffiliation = createMastery(
+    [
+        chrome.i18n.getMessage('axe_affiliation'),
+        chrome.i18n.getMessage('axe_affiliation_mastery_description'),
+        images.normalItems.axe
     ],
     ''
 );
@@ -82,6 +91,7 @@ const sellmanship = createMastery(
 );
 
 const academyMasteries = {
+    axeAffiliation,
     bowAffiliation,
     brutalForce,
     maceAffiliation,
@@ -92,6 +102,7 @@ const academyMasteries = {
 }
 
 const basicOptions = [
+    academyMasteries.axeAffiliation,
     academyMasteries.bowAffiliation,
     academyMasteries.brutalForce,
     academyMasteries.sellmanship,

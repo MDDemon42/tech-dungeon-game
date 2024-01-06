@@ -17,7 +17,7 @@ function Market() {
             title: chrome.i18n.getMessage('modernize_market_task_title'),
             stage: 2,
             disabled: stage > 1,
-            visible: true
+            visible: stage % 2 !== 0
         }
     ];
 

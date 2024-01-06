@@ -18,19 +18,19 @@ function FireSite() {
             title: chrome.i18n.getMessage('fire_ball'),
             stage: 2,
             disabled: stage % 2 === 0,
-            visible: true
+            visible: stage % 2 !== 0
         },
         {
             title: chrome.i18n.getMessage('fire_wave'),
             stage: 3,
             disabled: stage % 3 === 0,
-            visible: true
+            visible: stage % 3 !== 0
         },
         {
             title: chrome.i18n.getMessage('enflamed_strikes'),
             stage: 5,
             disabled: stage % 5 === 0,
-            visible: true
+            visible: stage % 5 !== 0
         },
     ];
 

@@ -16,7 +16,9 @@ const steelSword = createItem(
             InventoryPlace.rightHand,
             InventoryPlace.leftHand,
             InventoryPlace.extraLeftHand,
-            InventoryPlace.extraRightHand
+            InventoryPlace.extraRightHand,
+            InventoryPlace.telekinesisLeftHand,
+            InventoryPlace.telekinesisRightHand
         ], 
         1
     ],
@@ -50,7 +52,9 @@ const steelMace = createItem(
             InventoryPlace.rightHand,
             InventoryPlace.leftHand,
             InventoryPlace.extraLeftHand,
-            InventoryPlace.extraRightHand
+            InventoryPlace.extraRightHand,
+            InventoryPlace.telekinesisLeftHand,
+            InventoryPlace.telekinesisRightHand
         ], 
         1
     ],
@@ -67,14 +71,36 @@ const steelMace = createItem(
     ]
 );
 
-const spear = createItem(
+const pierceStick = createItem(
     [
-        chrome.i18n.getMessage('spear'), 
-        chrome.i18n.getMessage('spear_item_description'),
-        images.normalItems.spear
+        chrome.i18n.getMessage('pierce_stick'), 
+        chrome.i18n.getMessage('pierce_stick_item_description'),
+        images.normalItems.pierceStick
     ],
     [
-        1, [InventoryPlace.rightHand], 1
+        1, [InventoryPlace.bothHands], 1
+    ],
+    '', 
+    [
+        abilities.battleAbilities.melee.physicalPiercing.stickPierce
+    ],
+    null,
+    [
+        {
+            linkedMastery: academyMasteries.spearAffiliation.name, 
+            masterAbility: abilities.battleAbilities.melee.physicalPiercing.affiliatedStickPierce
+        }
+    ]
+);
+
+const steelSpear = createItem(
+    [
+        chrome.i18n.getMessage('steel_spear'), 
+        chrome.i18n.getMessage('steel_spear_item_description'),
+        images.normalItems.steelSpear
+    ],
+    [
+        1, [InventoryPlace.bothHands], 1
     ],
     '', 
     [
@@ -102,7 +128,13 @@ const steelGreataxe = createItem(
     [
         abilities.battleAbilities.melee.physicalSlashing.steelGreataxeSlash
     ],
-    null, null
+    null,
+    [
+        {
+            linkedMastery: academyMasteries.axeAffiliation.name, 
+            masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedSteelGreataxeSlash
+        }
+    ]
 );
 
 const steelGreathammer = createItem(
@@ -118,7 +150,13 @@ const steelGreathammer = createItem(
     [
         abilities.battleAbilities.melee.physicalSmashing.steelGreathammerSmash
     ],
-    null, null
+    null, 
+    [
+        {
+            linkedMastery: academyMasteries.maceAffiliation.name, 
+            masterAbility: abilities.battleAbilities.melee.physicalSmashing.affiliatedSteelGreathammerSlash
+        }
+    ]
 );
 
 const steelGreatsword = createItem(
@@ -134,7 +172,13 @@ const steelGreatsword = createItem(
     [
         abilities.battleAbilities.melee.physicalSlashing.steelGreatswordSlash
     ],
-    null, null
+    null,
+    [
+        {
+            linkedMastery: academyMasteries.swordAffiliation.name, 
+            masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedSteelGreatswordSlash
+        }
+    ]
 );
 
 const oakBow = createItem(
@@ -162,14 +206,17 @@ const oakBow = createItem(
 const axe = createItem(
     [
         chrome.i18n.getMessage('axe'), 
-        chrome.i18n.getMessage('axe_item_description'),
+        chrome.i18n.getMessage('axe_item_description', 
+            ['1', chrome.i18n.getMessage('wood')]
+        ),
         images.normalItems.axe
     ],
     [
         1, 
         [
-            InventoryPlace.rightHand,
-            InventoryPlace.leftHand
+            InventoryPlace.extraLeftHand, InventoryPlace.extraRightHand,
+            InventoryPlace.rightHand, InventoryPlace.leftHand,
+            InventoryPlace.telekinesisLeftHand, InventoryPlace.telekinesisRightHand
         ], 
         1
     ],
@@ -177,21 +224,30 @@ const axe = createItem(
     [
         abilities.battleAbilities.melee.physicalSlashing.axeSlash
     ],
-    null, null
+    null, 
+    [
+        {
+            linkedMastery: academyMasteries.axeAffiliation.name,
+            masterAbility: abilities.battleAbilities.melee.physicalSlashing.affiliatedAxeSlash
+        }
+    ]    
 );
 
 const pickaxe = createItem(
     [
         chrome.i18n.getMessage('pickaxe'), 
-        chrome.i18n.getMessage('pickaxe_item_description'),
+        chrome.i18n.getMessage('pickaxe_item_description',
+            ['1', chrome.i18n.getMessage('ore')]
+        ),
         images.normalItems.pickaxe
     ],
     [
         1, 
         [
-            InventoryPlace.rightHand,
-            InventoryPlace.leftHand
-        ], 
+            InventoryPlace.extraLeftHand, InventoryPlace.extraRightHand,
+            InventoryPlace.rightHand, InventoryPlace.leftHand,
+            InventoryPlace.telekinesisLeftHand, InventoryPlace.telekinesisRightHand
+        ],  
         1
     ],
     '',
@@ -202,15 +258,16 @@ const pickaxe = createItem(
 );
 
 const weapons = {
+    axe,
+    oakBow,
+    pickaxe,
+    pierceStick,
     steelGreataxe,
     steelGreathammer,
     steelGreatsword,
     steelMace,
-    spear,
-    steelSword,
-    oakBow,
-    axe,
-    pickaxe
+    steelSpear,
+    steelSword    
 }
 
 export default weapons

@@ -2,7 +2,7 @@ import { createTask } from "../../../redux/slices/gameStage";
 import { TaskStatus } from "../../../enums-and-interfaces/enums";
 import items from "../../Market/items";
 
-const task_buildMutationLab = createTask(
+const buildMutationLab = createTask(
     [
         {
             name: items.bigResources.ore.name,
@@ -15,7 +15,7 @@ const task_buildMutationLab = createTask(
     ),
 )
 
-const task_beastGenes = createTask(
+const beastGenes = createTask(
     [
         {
             name: items.bigResources.beastRemains.name,
@@ -28,7 +28,7 @@ const task_beastGenes = createTask(
     ),
 )
 
-const task_reptiloiGenes = createTask(
+const reptiloidGenes = createTask(
     [
         {
             name: items.bigResources.reptiloidRemains.name,
@@ -41,7 +41,7 @@ const task_reptiloiGenes = createTask(
     ),
 )
 
-const task_insectoidGenes = createTask(
+const insectoidGenes = createTask(
     [
         {
             name: items.bigResources.insectoidRemains.name,
@@ -57,19 +57,19 @@ const task_insectoidGenes = createTask(
 const mutaLabTasks = {
     1: {
         status: TaskStatus.unknown,
-        task: task_buildMutationLab
+        task: buildMutationLab
     },
     2: {
         status: TaskStatus.unknown,
-        task: task_beastGenes
+        task: beastGenes
     },
     3: {
         status: TaskStatus.unknown,
-        task: task_reptiloiGenes
+        task: reptiloidGenes
     },
     5: {
         status: TaskStatus.unknown,
-        task: task_insectoidGenes
+        task: insectoidGenes
     }
 }
 

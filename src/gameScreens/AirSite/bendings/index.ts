@@ -44,15 +44,31 @@ const airDeprivation = createBending(
     ]
 );
 
+const lightningStrike = createBending(
+    [
+        chrome.i18n.getMessage('lightning_strike'),
+        chrome.i18n.getMessage('lightning_strike_bending_description'),
+        images.wizardSpells.magicBolt
+    ],
+    [
+        airMasteries.electrifiedStrikes.name,
+        '',
+        true,
+        abilities.battleAbilities.ranged.electrical.lightningStrike
+    ]
+);
+
 export const aerotheurgy = {
     windBlow,
     thunderPunch,
-    airDeprivation
+    airDeprivation,
+    lightningStrike
 }
 
 export const airSiteOptions: Record<string, IBending[]> = {
     0: [],
     1: [aerotheurgy.windBlow],
     2: [aerotheurgy.thunderPunch],
-    3: [aerotheurgy.airDeprivation]
+    3: [aerotheurgy.airDeprivation],
+    5: [aerotheurgy.lightningStrike]
 }

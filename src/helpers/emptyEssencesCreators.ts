@@ -89,8 +89,8 @@ export function createEmptyMind(): IMind {
     return mind
 }
 
-export function createEmptyInventory(): IInventory {
-    const inventory = {
+export function createEmptyInventory() {
+    const inventory: IInventory = {
         hat: createNoItem(),
         head: createNoItem(),
         chin: createNoItem(),
@@ -107,7 +107,9 @@ export function createEmptyInventory(): IInventory {
         legs: createNoItem(),
         leftHand: createNoItem(),
         rightHand: createNoItem(),
-        bothHands: createNoItem()
+        bothHands: createNoItem(),
+        telekinesisLeftHand: null,
+        telekinesisRightHand: null,
     };
 
     return inventory

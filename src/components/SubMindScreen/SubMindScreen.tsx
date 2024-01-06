@@ -66,7 +66,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('focus_site_title'),
             button: chrome.i18n.getMessage('develop'),
             listener: (data: IPower) => {
-                dispatch(gameSquad.actions.developPower({index, data}));
+                dispatch(gameSquad.actions.developPower(data));
             }
         },
         [MindGameScreens.focusSchool]: {
@@ -83,8 +83,8 @@ function SubMindScreen(props: {
             posessed: member.general.mind.rituals.length,
             title: chrome.i18n.getMessage('guild_rituals_title'),
             button: chrome.i18n.getMessage('learn'),
-            listener: (data: IMastery) => {
-                dispatch(gameSquad.actions.surpassRitual({index, data}));
+            listener: (data: IRitual) => {
+                dispatch(gameSquad.actions.surpassRitual(data));
             }
         },       
         [MindGameScreens.guildSchool]: {

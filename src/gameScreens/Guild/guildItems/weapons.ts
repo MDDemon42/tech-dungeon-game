@@ -23,6 +23,10 @@ const runicGreataxe = createGuildItem(
         {
             linkedMastery: guildMasteries.battleRunes.name,
             masterAbility: abilities.battleAbilities.ranged.physicalPiercing.iceHail
+        },
+        {
+            linkedMastery: academyMasteries.axeAffiliation.name,
+            masterAbility: abilities.battleAbilities.melee.physicalSlashing.runicGreataxeSlash
         }
     ]
 )
@@ -45,6 +49,10 @@ const runicGreatsword = createGuildItem(
         {
             linkedMastery: guildMasteries.battleRunes.name,
             masterAbility: abilities.battleAbilities.ranged.fire.fireWave
+        },
+        {
+            linkedMastery: academyMasteries.swordAffiliation.name,
+            masterAbility: abilities.battleAbilities.melee.physicalSlashing.runicGreatswordSlash
         }
     ]
 )
@@ -67,6 +75,10 @@ const runicGreathammer = createGuildItem(
         {
             linkedMastery: guildMasteries.battleRunes.name,
             masterAbility: abilities.battleAbilities.ranged.electrical.lightningStrike
+        },
+        {
+            linkedMastery: academyMasteries.maceAffiliation.name,
+            masterAbility: abilities.battleAbilities.melee.physicalSmashing.runicGreathammerSmash
         }
     ]
 )

@@ -46,14 +46,36 @@ const fangsBite = createBattleAbility(
     [1, 85]
 );
 
+const stickPierce = createBattleAbility(
+    [
+        chrome.i18n.getMessage('stick_pierce'), 
+        '', 
+        images.normalItems.pierceStick
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalPiercing]: 1},
+    [1, 70]
+);
+
+const affiliatedStickPierce = createBattleAbility(
+    [
+        chrome.i18n.getMessage('stick_pierce'), 
+        '', 
+        images.normalItems.pierceStick
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalPiercing]: 1},
+    [1, 95]
+);
+
 const spearPierce = createBattleAbility(
     [
         chrome.i18n.getMessage('spear_pierce'), 
         '', 
-        images.normalItems.spear
+        images.normalItems.steelSpear
     ], 
-    {Stamina: 1}, 
-    {[DamageType.physicalPiercing]: 1},
+    {Stamina: 2}, 
+    {[DamageType.physicalPiercing]: 2},
     [1, 70]
 );
 
@@ -61,10 +83,54 @@ const affiliatedSpearPierce = createBattleAbility(
     [
         chrome.i18n.getMessage('spear_pierce'), 
         '', 
-        images.normalItems.spear
+        images.normalItems.steelSpear
     ], 
-    {Stamina: 1}, 
-    {[DamageType.physicalPiercing]: 1},
+    {Stamina: 2}, 
+    {[DamageType.physicalPiercing]: 2},
+    [1, 95]
+);
+
+const glaivePierce = createBattleAbility(
+    [
+        chrome.i18n.getMessage('glaive_pierce'), 
+        '', 
+        images.armouryItems.glaive
+    ], 
+    {Stamina: 2},
+    {[DamageType.physicalPiercing]: 2},
+    [1, 70]
+);
+
+const affiliatedGlaivePierce = createBattleAbility(
+    [
+        chrome.i18n.getMessage('glaive_pierce'), 
+        '', 
+        images.armouryItems.glaive
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalPiercing]: 2},
+    [1, 95]
+);
+
+const mageGlaivePierce = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_glaive_pierce'), 
+        '', 
+        images.armouryItems.mageGlaive
+    ], 
+    {Stamina: 2},
+    {[DamageType.physicalPiercing]: 2},
+    [1, 70]
+);
+
+const affiliatedMageGlaivePierce = createBattleAbility(
+    [
+        chrome.i18n.getMessage('mage_glaive_pierce'), 
+        '', 
+        images.armouryItems.mageGlaive
+    ], 
+    {Stamina: 2}, 
+    {[DamageType.physicalPiercing]: 2},
     [1, 95]
 );
 
@@ -128,6 +194,12 @@ const physicalPiercing = {
     fangsBite,
     pincersStab,
     tailPrick,
+    glaivePierce,
+    affiliatedGlaivePierce,
+    mageGlaivePierce,
+    affiliatedMageGlaivePierce,
+    stickPierce,
+    affiliatedStickPierce,
     spearPierce,
     affiliatedSpearPierce,
     swordStab,
