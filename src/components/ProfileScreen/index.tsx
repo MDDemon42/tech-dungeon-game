@@ -5,11 +5,15 @@ import InventoryScreen from "../InventoryScreen";
 import { ICharacher } from '../../enums-and-interfaces/interfaces';
 import BackpacksScreen from '../BackpacksScreen/BackpacksScreen';
 import { MindOption } from '../../enums-and-interfaces/enums';
+import OldFashionInventoryScreen from '../OldFashionInventoryScreen';
+import { useState } from 'react';
+import {ToggleOn, ToggleOff} from 'react-bootstrap-icons';
 
 function ProfileScreen(props: {
     character: ICharacher
 }) {
     const {character} = props;
+    const [inventoryVisible, setInventoryVisible] = useState(false);
 
     return (
         <div className={styles.ProfileScreenContainer}>
@@ -26,6 +30,25 @@ function ProfileScreen(props: {
                             character={character} 
                             battle={false}
                         />
+                        {
+                            inventoryVisible ?
+                                <ToggleOn 
+                                    size={25}
+                                    className={styles.InventoryVisibleToggle}
+                                    title={chrome.i18n.getMessage('')}
+                                    onClick={() => setInventoryVisible(false)}
+                                /> :
+                                <ToggleOff 
+                                    size={25}
+                                    className={styles.InventoryVisibleToggle}
+                                    title={chrome.i18n.getMessage('')}
+                                    onClick={() => setInventoryVisible(true)}
+                                />
+                        }
+                        {
+                            inventoryVisible && 
+                                <OldFashionInventoryScreen character={character} />
+                        }
                     </div>
                     <MindScreen 
                         character={character}
@@ -46,7 +69,7 @@ function ProfileScreen(props: {
                     />
                 </div>
             </div>
-            <BackpacksScreen character={character}/>
+            <BackpacksScreen/>
         </div>
     )
 }

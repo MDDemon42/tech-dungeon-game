@@ -14,7 +14,7 @@ const runicGreataxe = createGuildItem(
     [
         2, [InventoryPlace.bothHands], 1
     ],
-    academyMasteries.brutalForce.name,
+    academyMasteries.brutalForce.name, 2,
     [
         abilities.battleAbilities.melee.physicalSlashing.runicGreataxeSlash
     ],
@@ -40,7 +40,7 @@ const runicGreatsword = createGuildItem(
     [
         2, [InventoryPlace.bothHands], 1
     ],
-    academyMasteries.brutalForce.name,
+    academyMasteries.brutalForce.name, 2,
     [
         abilities.battleAbilities.melee.physicalSlashing.runicGreatswordSlash
     ],
@@ -66,7 +66,7 @@ const runicGreathammer = createGuildItem(
     [
         2, [InventoryPlace.bothHands], 1
     ],
-    academyMasteries.brutalForce.name,
+    academyMasteries.brutalForce.name, 3,
     [
         abilities.battleAbilities.melee.physicalSmashing.runicGreathammerSmash
     ],
@@ -92,7 +92,7 @@ const oakCrossow = createGuildItem(
     [
         2, [InventoryPlace.bothHands], 1
     ],
-    '',
+    '', 0,
     [
         abilities.battleAbilities.ranged.physicalPiercing.crossbowShot
     ],
@@ -114,7 +114,7 @@ const steelChakram = createGuildItem(
     [
         2, [InventoryPlace.leftHand], 1
     ],
-    '',
+    '', 0,
     [
         abilities.battleAbilities.melee.physicalSlashing.chakramSlash
     ],
@@ -140,7 +140,7 @@ const acidBomd = createGuildItem(
     [
         1, [InventoryPlace.rightPocket], 1
     ],
-    '', 
+    '', 0,
     [
         abilities.battleAbilities.ranged.acid.acidBombThrow
     ],

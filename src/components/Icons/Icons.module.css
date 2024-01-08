@@ -9,6 +9,18 @@
     height: 50px;
 }
 
+.CommonIconAsButton {
+    border: 1px solid black;
+    background-color: rgba(0,0,0,0);
+    padding: 1px 0;
+    width: 55px;
+    height: 55px;
+}
+
+.CommonIconAsButton > img {
+    margin: 0;
+}
+
 .CommonIcon_hitChance, .CommonIcon_damagesColumn {
     position: absolute;
     font-weight: bold;

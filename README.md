@@ -24,5 +24,3 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  7) `Tropheys` after `win` on `Battle Screen`
  8) More items for `extra arms` and `telekinesis`
  9) `Mercenaries` on different screens
- 10) `Old Fashion Inventory` on `Inventory Screen`
- 11) `Strength` cost equipping items

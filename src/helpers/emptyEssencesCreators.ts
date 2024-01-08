@@ -33,6 +33,7 @@ function createEmptyParams(): ICharacherParams {
         name: '',
         level: 0,
         strength: 0,
+        lifted: 0,
         class: UserStartClass.noIcon,
         race: Race.human,
         currentParams: {
@@ -124,6 +125,7 @@ export function createNoItem(): ICyber & IItem {
         image: images.classIcons.noIcon,
         priority: 0,
         requiredMastery: '',
+        requiredStrength: 0,
         requiredCyber: '',
         abilities: null,
         passiveAbilities: null,

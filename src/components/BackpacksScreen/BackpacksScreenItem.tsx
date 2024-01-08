@@ -1,19 +1,24 @@
 import { ArrowUpCircle, ArrowUpCircleFill } from "react-bootstrap-icons";
-import { IItem, IManageItemsProps } from "../../enums-and-interfaces/interfaces";
+import { IItem, IManageItemsProps, IStore } from "../../enums-and-interfaces/interfaces";
 import CommonIcon from "../Icons/CommonIcon";
 import BackpacksScreenItemButton from "./BackpacksScreenItemButton";
 import { useDispatch } from "react-redux";
 import gameSquad from "../../redux/slices/gameSquad";
 import styles from './BackpacksScreen.module.css';
 import { backpacksItemEnableChecker } from "../../helpers/enableCheckers";
+import { useSelector } from "react-redux";
 
 function BackpacksScreenItem(props: {
     item: IItem,
     itemIndex: number,
-    memberMasteries: string[]
 }) {
-    const {item, itemIndex, memberMasteries} = props;
-    const [enabled, disableReason] = backpacksItemEnableChecker(item, memberMasteries);   
+    const {item, itemIndex} = props;
+    const squadMember = useSelector((store: IStore) => 
+        store.gameSquad.squadMembers[store.gameSquad.currentlyWatched]);
+    const memberMasteries = squadMember.general.mind.masteries.map(mastery => mastery.name);
+    const memberAvailableStrength = squadMember.params.strength - squadMember.params.lifted;
+    const [enabled, disableReason] = 
+        backpacksItemEnableChecker(item, memberMasteries, memberAvailableStrength);   
     
     const dispatch = useDispatch();
 

@@ -16,7 +16,7 @@ const musket = createArmouryItem(
         2, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.guns.craftMusket
     ],
     [
@@ -42,7 +42,7 @@ const battleMusket = createArmouryItem(
         3, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 0,
+        '', 2,
         crafts.guns.craftBattleMusket
     ],
     [
@@ -94,7 +94,7 @@ const battlePistol = createArmouryItem(
         3, [InventoryPlace.rightHand], 1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.guns.craftBattlePistol
     ],
     [
@@ -154,7 +154,7 @@ const battleRevolver = createArmouryItem(
         1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.guns.craftBattleRevolver
     ],
     [
@@ -184,7 +184,7 @@ const rifle = createArmouryItem(
         3, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.guns.craftRifle
     ],
     [
@@ -210,7 +210,7 @@ const battleRifle = createArmouryItem(
         4, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 0,
+        '', 2,
         crafts.guns.craftBattleRifle
     ],
     [

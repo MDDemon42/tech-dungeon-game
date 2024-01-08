@@ -18,7 +18,8 @@ export function createWizardItem(
     abilityInfo: [
         abilities: IBattleAbility[] | null,
         passiveAbilities: IPassiveAbility[] | null
-    ]    
+    ],    
+    requiredStrength: number = 0
 ): IWizardItem {
     return {
         name: commonInfo[0],
@@ -28,6 +29,8 @@ export function createWizardItem(
         cost: inventoryInfo[0],
         inventoryPlaces: inventoryInfo[1],
         priority: inventoryInfo[2],
+
+        requiredStrength,
 
         abilities: abilityInfo[0],
         passiveAbilities: abilityInfo[1]

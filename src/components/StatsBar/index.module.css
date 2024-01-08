@@ -46,3 +46,15 @@
     color: white;
     font-size: 8px;
 }
+
+.StatsBar_strength {
+    position: relative;
+    width: 24px;
+    height: 12px;
+    border: 1px solid black;
+    font-weight: bold;
+    cursor: default;
+    background-color: black; 
+    color: white;
+    font-size: 8px;
+}

@@ -20,6 +20,7 @@ export function createItem(
         priority: number
     ],
     requiredMastery: string,
+    requiredStrength: number,
     abilities: IBattleAbility[] | null,
     passiveAbilities: IPassiveAbility[] | null,
     linkedAbilities: {
@@ -37,6 +38,7 @@ export function createItem(
         priority: inventoryInfo[2],
 
         requiredMastery,
+        requiredStrength,
         abilities,
         passiveAbilities,
         linkedAbilities

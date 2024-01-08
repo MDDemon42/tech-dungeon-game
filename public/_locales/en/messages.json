@@ -571,6 +571,9 @@
     "siec_priority": {
         "message": "Better equipment in use"
     },
+    "siec_strength": {
+        "message": "Does not have enough Strength"
+    },
     "siec_cyber": {
         "message": "Does not have required cyber"
     },
@@ -741,6 +744,9 @@
     },
     "tail_prick": {
         "message": "Tail prick"
+    },
+    "strength": {
+        "message": "Strength"
     },
     "dodge": {
         "message": "Dodge"

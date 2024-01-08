@@ -16,7 +16,7 @@ const healingPotion = createItem(
         ], 
         1
     ],
-    '', null, null, null
+    '', 0, null, null, null
 )
 
 const other = {

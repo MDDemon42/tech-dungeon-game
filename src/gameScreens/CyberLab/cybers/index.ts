@@ -19,7 +19,8 @@ export function createCyber(
         abilities: IBattleAbility[] | null,
         passiveAbilities: IPassiveAbility[] | null
     ],
-    requiredCyber: string    
+    requiredCyber: string,
+    requiredStrength: number = 0 
 ): ICyber {
     return {
         name: commonInfo[0],
@@ -33,7 +34,8 @@ export function createCyber(
         abilities: abilityInfo[0],
         passiveAbilities: abilityInfo[1],
 
-        requiredCyber        
+        requiredCyber,
+        requiredStrength     
     }
 }
 

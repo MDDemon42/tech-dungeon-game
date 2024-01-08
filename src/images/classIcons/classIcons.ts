@@ -6,7 +6,7 @@ import geneKeeper from './geneKeeper.png';
 import coreKeeper from './coreKeeper.png';
 import richie from './richie.png';
 import ingenious from './ingenious.png';
-import noIcon from './noIcon.jpg';
+import noIcon from './noIcon.png';
 
 const classIcons = {
     vital,

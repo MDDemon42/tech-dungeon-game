@@ -149,7 +149,8 @@ export function subInventoryEnableChecker(
 
 export function backpacksItemEnableChecker(
     item: IItem,
-    memberMasteries: string[]
+    memberMasteries: string[],
+    memberAvailableStrength: number
 ): [boolean, string] {
     const requiredMasteryCheck = !!item.requiredMastery ? 
         memberMasteries.includes(item.requiredMastery) :
@@ -162,6 +163,11 @@ export function backpacksItemEnableChecker(
     const priorityCheck = priorityChecker(item);
     if (!priorityCheck) {
         return [false, chrome.i18n.getMessage('siec_priority')]
+    }
+
+    const strengthCheck = memberAvailableStrength >= item.requiredStrength;
+    if (!strengthCheck) {
+        return [false, chrome.i18n.getMessage('siec_strength')]
     }
 
     return [true, '']

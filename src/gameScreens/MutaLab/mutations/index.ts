@@ -18,7 +18,8 @@ export function createMutation(
     abilityInfo: [
         abilities: IBattleAbility[] | null,
         passiveAbilities: IPassiveAbility[] | null
-    ]    
+    ],    
+    requiredStrength: number = 0
 ): IMutation {
     return {
         name: commonInfo[0],
@@ -30,7 +31,9 @@ export function createMutation(
         priority: inventoryInfo[2],
 
         abilities: abilityInfo[0],
-        passiveAbilities: abilityInfo[1]  
+        passiveAbilities: abilityInfo[1],
+        
+        requiredStrength
     }
 }
 

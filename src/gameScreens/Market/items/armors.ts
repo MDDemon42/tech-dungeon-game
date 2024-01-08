@@ -13,7 +13,7 @@ const leatherArmor = createItem(
     [
         1, [InventoryPlace.armor], 1
     ],
-    '', null,
+    '', 0, null,
     [
         abilities.passiveAbilities.armor.leatherArmor
     ],
@@ -30,6 +30,7 @@ const steelArmor = createItem(
         2, [InventoryPlace.armor], 2
     ],
     academyMasteries.brutalForce.name,
+    1,
     null,
     [
         abilities.passiveAbilities.armor.steelArmor
@@ -46,7 +47,7 @@ const steelShield = createItem(
     [
         1, [InventoryPlace.leftHand], 1
     ],
-    '', null,
+    '', 1, null,
     [abilities.passiveAbilities.armor.steelShield],
     null
 )
@@ -60,7 +61,7 @@ const woodenShield = createItem(
     [
         1, [InventoryPlace.leftHand], 1
     ],
-    '', null,
+    '', 1, null,
     [
         abilities.passiveAbilities.armor.woodenShield
     ],

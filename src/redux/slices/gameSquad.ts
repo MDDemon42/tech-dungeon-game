@@ -341,7 +341,7 @@ const gameSquad = createSlice({
             const inventory = {...squadMember.general.inventory};
 
             const {item, itemIndex} = action.payload;
-            let itemsToPut: IItem[] = [];
+            let itemsToPut: [IItem, InventoryPlace][] = [];
 
             const nothing = createNoItem().name;
 
@@ -355,13 +355,13 @@ const gameSquad = createSlice({
                 ) {
                     const leftHandItem = {...inventory.leftHand} as IItem;
                     if (leftHandItem.name !== nothing) {
-                        itemsToPut.push(leftHandItem);
+                        itemsToPut.push([leftHandItem, InventoryPlace.leftHand]);
                     }
                     inventory.leftHand = createNoItem();
     
                     const rightHandItem = {...inventory.rightHand} as IItem;
                     if (rightHandItem.name !== nothing) {
-                        itemsToPut.push(rightHandItem);
+                        itemsToPut.push([rightHandItem, InventoryPlace.rightHand]);
                     }
                     inventory.rightHand = createNoItem();
                 } else if (
@@ -370,7 +370,7 @@ const gameSquad = createSlice({
                 ) {
                     const bothHandsItem = {...inventory.bothHands} as IItem;
                     if (bothHandsItem.name !== nothing) {
-                        itemsToPut.push(bothHandsItem);
+                        itemsToPut.push([bothHandsItem, InventoryPlace.bothHands]);
                     }
                     inventory.bothHands = createNoItem();
                 }
@@ -378,11 +378,12 @@ const gameSquad = createSlice({
                 {
                     const thisPositionItem = {...inventory[placeAsKey(position)]} as IItem;
                     if (thisPositionItem.name !== nothing) {
-                        itemsToPut.push(thisPositionItem);
+                        itemsToPut.push([thisPositionItem, position]);
                     }
                 }
                 
                 inventory[placeAsKey(position)] = item;
+                squadMember.params.lifted += item.requiredStrength;
             } else {
                 const handsOptions: (InventoryPlace.leftHand | InventoryPlace.extraLeftHand |
                     InventoryPlace.telekinesisLeftHand | InventoryPlace.telekinesisRightHand |
@@ -418,6 +419,12 @@ const gameSquad = createSlice({
                             }
 
                             inventory[placeAsKey(option)] = item;
+                            if (
+                                option !== InventoryPlace.telekinesisLeftHand &&
+                                option !== InventoryPlace.telekinesisRightHand
+                            ) {
+                                squadMember.params.lifted += item.requiredStrength;
+                            }                            
                             itemEquipped = true;
                             break;
                         } else if (thisOptionItem.name !== item.name) {
@@ -436,7 +443,7 @@ const gameSquad = createSlice({
     
                     const randomHandsOptionItem = {...inventory[placeAsKey(randomHandsOption)]} as IItem;
                     if (randomHandsOptionItem.name !== nothing) {
-                        itemsToPut.push(randomHandsOptionItem);
+                        itemsToPut.push([randomHandsOptionItem, randomHandsOption]);
                     }         
 
                     const bothHandsItem = {...inventory.bothHands} as IItem;
@@ -446,11 +453,17 @@ const gameSquad = createSlice({
                             randomHandsOption === InventoryPlace.rightHand
                         ) && bothHandsItem.name !== nothing 
                     ) {
-                        itemsToPut.push(bothHandsItem);
+                        itemsToPut.push([bothHandsItem, InventoryPlace.bothHands]);
                         inventory.bothHands = createNoItem();
                     }           
     
                     inventory[placeAsKey(randomHandsOption)] = item;
+                    if (
+                        randomHandsOption !== InventoryPlace.telekinesisLeftHand &&
+                        randomHandsOption !== InventoryPlace.telekinesisRightHand
+                    ) {
+                        squadMember.params.lifted += item.requiredStrength;
+                    }    
                 }
             }
            
@@ -471,9 +484,37 @@ const gameSquad = createSlice({
             })
 
             for (const itemToPut of itemsToPut) {
-                putItemInBackpacks(backpacks, itemToPut);
-                integratePassiveAbility(squadMember, itemToPut, -1);
+                if (
+                    itemToPut[1] !== InventoryPlace.telekinesisLeftHand &&
+                    itemToPut[1] !== InventoryPlace.telekinesisRightHand
+                ) {
+                    squadMember.params.lifted -= itemToPut[0].requiredStrength;
+                }                
+                putItemInBackpacks(backpacks, itemToPut[0]);
+                integratePassiveAbility(squadMember, itemToPut[0], -1);
             }
+
+            squadMember.general.backpacks = backpacks;
+            squadMember.general.inventory = inventory;
+
+            state = oldState;
+        },
+        unequipItem(state, action) {
+            const oldState = {...state};
+            const squadMember = {...oldState.squadMembers[oldState.currentlyWatched]};
+            const backpacks = [...squadMember.general.backpacks];
+            const inventory = {...squadMember.general.inventory};
+            const {item, inventoryPlace} = action.payload;
+            
+            if (
+                inventoryPlace !== InventoryPlace.telekinesisLeftHand &&
+                inventoryPlace !== InventoryPlace.telekinesisRightHand
+            ) {
+                squadMember.params.lifted -= item.requiredStrength;
+            }                
+            inventory[placeAsKey(inventoryPlace)] = createNoItem();
+            putItemInBackpacks(backpacks, item);
+            integratePassiveAbility(squadMember, item, -1);
 
             squadMember.general.backpacks = backpacks;
             squadMember.general.inventory = inventory;

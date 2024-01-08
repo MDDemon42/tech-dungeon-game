@@ -22,7 +22,7 @@ const steelSword = createItem(
         ], 
         1
     ],
-    '', 
+    '', 1,
     [
         abilities.battleAbilities.melee.physicalSlashing.swordSlash,
         abilities.battleAbilities.melee.physicalPiercing.swordStab
@@ -58,7 +58,7 @@ const steelMace = createItem(
         ], 
         1
     ],
-    '',
+    '', 2,
     [
         abilities.battleAbilities.melee.physicalSmashing.maceSmash
     ],
@@ -80,7 +80,7 @@ const pierceStick = createItem(
     [
         1, [InventoryPlace.bothHands], 1
     ],
-    '', 
+    '', 0,
     [
         abilities.battleAbilities.melee.physicalPiercing.stickPierce
     ],
@@ -102,7 +102,7 @@ const steelSpear = createItem(
     [
         1, [InventoryPlace.bothHands], 1
     ],
-    '', 
+    '', 2,
     [
         abilities.battleAbilities.melee.physicalPiercing.spearPierce
     ],
@@ -124,7 +124,7 @@ const steelGreataxe = createItem(
     [
         2, [InventoryPlace.bothHands], 1
     ],
-    academyMasteries.brutalForce.name,
+    academyMasteries.brutalForce.name, 2,
     [
         abilities.battleAbilities.melee.physicalSlashing.steelGreataxeSlash
     ],
@@ -146,7 +146,7 @@ const steelGreathammer = createItem(
     [
         2, [InventoryPlace.bothHands], 1
     ],
-    academyMasteries.brutalForce.name,
+    academyMasteries.brutalForce.name, 3,
     [
         abilities.battleAbilities.melee.physicalSmashing.steelGreathammerSmash
     ],
@@ -168,7 +168,7 @@ const steelGreatsword = createItem(
     [
         2, [InventoryPlace.bothHands], 1
     ],
-    academyMasteries.brutalForce.name,
+    academyMasteries.brutalForce.name, 2,
     [
         abilities.battleAbilities.melee.physicalSlashing.steelGreatswordSlash
     ],
@@ -190,7 +190,7 @@ const oakBow = createItem(
     [
         1, [InventoryPlace.bothHands], 1
     ],
-    '', 
+    '', 0,
     [
         abilities.battleAbilities.ranged.physicalPiercing.oakBowShot
     ],
@@ -220,7 +220,7 @@ const axe = createItem(
         ], 
         1
     ],
-    '',
+    '', 0,
     [
         abilities.battleAbilities.melee.physicalSlashing.axeSlash
     ],
@@ -250,7 +250,7 @@ const pickaxe = createItem(
         ],  
         1
     ],
-    '',
+    '', 0,
     [
         abilities.battleAbilities.melee.physicalPiercing.pickaxePick
     ],

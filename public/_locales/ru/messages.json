@@ -571,6 +571,9 @@
     "siec_priority": {
         "message": "Уже используется лучшее"
     },
+    "siec_strength": {
+        "message": "Недостаточно Силы"
+    },
     "siec_cyber": {
         "message": "Нет необходимой кибернизации"
     },
@@ -741,6 +744,9 @@
     },    
     "tail_prick": {
         "message": "Укол хвостом"
+    },
+    "strength": {
+        "message": "Сила"
     },
     "dodge": {
         "message": "Уворот"

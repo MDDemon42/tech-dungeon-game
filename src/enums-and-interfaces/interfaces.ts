@@ -99,6 +99,7 @@ export interface ICharacherParams {
     stage?: number,
     level: number,
     strength: number,
+    lifted: number,
     name: string,
     currentParams: {
         [UserParam.health]: number,
@@ -199,7 +200,6 @@ export interface IGuildItem extends IItem {
 }
 
 export interface IArmouryItem extends IItem {
-    requiredStrength: number,
     craft: ICraft
 }
 
@@ -224,6 +224,8 @@ export interface IInventorySlot extends ICommon {
     cost: number,
     inventoryPlaces: InventoryPlace[],
     priority: number,
+
+    requiredStrength: number,
 
     abilities: IBattleAbility[] | null,
     passiveAbilities: IPassiveAbility[] | null

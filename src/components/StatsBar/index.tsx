@@ -13,7 +13,8 @@ function StatsBar() {
         name, race, level, 
         currentParams,
         maxParams,
-        resistances, dodge
+        resistances, dodge,
+        strength, lifted
     } = member;
 
     return (
@@ -67,6 +68,14 @@ function StatsBar() {
                             className={styles.StatsBar_dodge}
                         >
                             {dodge}
+                        </div>
+                    }
+                    {
+                        <div 
+                            title={chrome.i18n.getMessage('strength')}
+                            className={styles.StatsBar_strength}
+                        >
+                            {lifted}/{strength}
                         </div>
                     }
                 </div>

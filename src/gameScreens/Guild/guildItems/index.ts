@@ -14,6 +14,7 @@ export function createGuildItem(
         priority: number
     ],
     requiredMastery: string,
+    requiredStrength: number,
     abilities: IBattleAbility[] | null,
     passiveAbilities: IPassiveAbility[] | null,
     linkedAbilities: {
@@ -31,6 +32,7 @@ export function createGuildItem(
         priority: inventoryInfo[2],
 
         requiredMastery,
+        requiredStrength,
         abilities,
         passiveAbilities,
         linkedAbilities        

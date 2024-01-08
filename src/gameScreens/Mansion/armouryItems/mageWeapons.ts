@@ -28,7 +28,7 @@ const battleMageAxe = createArmouryItem(
         1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.mageWeapons.craftBattleMageAxe
     ],
     [
@@ -67,7 +67,7 @@ const mageDragonBoneBlade = createArmouryItem(
         3, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 3,
+        '', 2,
         crafts.mageWeapons.craftMageDragonBoneBlade
     ],
     [
@@ -98,7 +98,7 @@ const mageGlaive = createArmouryItem(
         3, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 3,
+        '', 2,
         crafts.mageWeapons.craftMageGlaive
     ],
     [
@@ -134,7 +134,7 @@ const mageHalberd = createArmouryItem(
         3, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 3,
+        '', 2,
         crafts.mageWeapons.craftMageHalberd
     ],
     [
@@ -165,7 +165,7 @@ const mageKhopesh = createArmouryItem(
         3, [InventoryPlace.rightHand], 1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.mageWeapons.craftMageKhopesh
     ],
     [
@@ -196,7 +196,7 @@ const mageMacuahuitl = createArmouryItem(
         3, [InventoryPlace.rightHand], 1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.mageWeapons.craftMageMacuahuitl
     ],
     [
@@ -227,7 +227,7 @@ const mageMusket = createArmouryItem(
         3, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.mageWeapons.craftMageMusket
     ],
     [
@@ -258,7 +258,7 @@ const battleMageMusket = createArmouryItem(
         4, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 0,
+        '', 2,
         crafts.mageWeapons.craftBattleMageMusket
     ],
     [
@@ -294,7 +294,7 @@ const mageRifle = createArmouryItem(
         4, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.mageWeapons.craftMageRifle
     ],
     [
@@ -333,7 +333,7 @@ const battleMageRifle = createArmouryItem(
         5, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 0,
+        '', 2,
         crafts.mageWeapons.craftBattleMageRifle
     ],
     [

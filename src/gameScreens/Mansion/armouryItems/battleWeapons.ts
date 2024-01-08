@@ -24,7 +24,7 @@ const battleAxe = createArmouryItem(
         1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.battleWeapons.craftBattleAxe
     ],
     [
@@ -49,7 +49,7 @@ const dragonBoneBlade = createArmouryItem(
         2, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 3,
+        '', 2,
         crafts.battleWeapons.craftDragonBoneBlade
     ],
     [
@@ -74,7 +74,7 @@ const glaive = createArmouryItem(
         2, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 3,
+        '', 2,
         crafts.battleWeapons.craftGlaive
     ],
     [
@@ -104,7 +104,7 @@ const halberd = createArmouryItem(
         2, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 3,
+        '', 2,
         crafts.battleWeapons.craftHalberd
     ],
     [
@@ -138,7 +138,7 @@ const katana = createArmouryItem(
         1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.battleWeapons.craftKatana
     ],
     [
@@ -163,7 +163,7 @@ const khopesh = createArmouryItem(
         2, [InventoryPlace.rightHand], 1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.battleWeapons.craftKhopesh
     ],
     [
@@ -194,7 +194,7 @@ const macuahuitl = createArmouryItem(
         1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.battleWeapons.craftMacuahuitl
     ],
     [
@@ -225,7 +225,7 @@ const rapier = createArmouryItem(
         1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.battleWeapons.craftRapier
     ],
     [
@@ -256,7 +256,7 @@ const sabre = createArmouryItem(
         1
     ],
     [
-        '', 0,
+        '', 1,
         crafts.battleWeapons.craftSabre
     ],
     [
