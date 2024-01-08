@@ -47,9 +47,19 @@ const steelShield = createItem(
     [
         1, [InventoryPlace.leftHand], 1
     ],
-    '', 1, null,
-    [abilities.passiveAbilities.armor.steelShield],
-    null
+    '', 1, 
+    [
+        abilities.battleAbilities.melee.physicalSmashing.steelShieldBash
+    ],
+    [
+        abilities.passiveAbilities.armor.steelShield
+    ],
+    [
+        {
+            linkedMastery: academyMasteries.shieldAffiliation.name,
+            masterAbility: abilities.battleAbilities.melee.physicalSmashing.affiliatedSteelShieldBash
+        }
+    ]
 )
 
 const woodenShield = createItem(
@@ -61,11 +71,19 @@ const woodenShield = createItem(
     [
         1, [InventoryPlace.leftHand], 1
     ],
-    '', 1, null,
+    '', 1, 
+    [
+        abilities.battleAbilities.melee.physicalSmashing.woodenShieldBash
+    ],
     [
         abilities.passiveAbilities.armor.woodenShield
     ],
-    null
+    [
+        {
+            linkedMastery: academyMasteries.shieldAffiliation.name,
+            masterAbility: abilities.battleAbilities.melee.physicalSmashing.affiliatedWoodenShieldBash
+        }
+    ]
 )
 
 const armors = {

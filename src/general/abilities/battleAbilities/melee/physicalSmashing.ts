@@ -35,6 +35,50 @@ const martialHit = createBattleAbility(
     [1, 95]
 );
 
+const woodenShieldBash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('wooden_shield_bash'), 
+        '', 
+        images.normalItems.woodenShield
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSmashing]: 1},
+    [1, 70]
+);
+
+const affiliatedWoodenShieldBash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('wooden_shield_bash'), 
+        '', 
+        images.normalItems.woodenShield
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSmashing]: 1},
+    [1, 95]
+);
+
+const steelShieldBash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('steel_shield_bash'), 
+        '', 
+        images.normalItems.steelShield
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSmashing]: 1},
+    [1, 70]
+);
+
+const affiliatedSteelShieldBash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('steel_shield_bash'), 
+        '', 
+        images.normalItems.steelShield
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSmashing]: 1},
+    [1, 95]
+);
+
 const maceSmash = createBattleAbility(
     [
         chrome.i18n.getMessage('mace_smash'), 
@@ -201,6 +245,11 @@ const battleRifleButtHit = createBattleAbility(
 );
 
 const physicalSmashing = {
+    woodenShieldBash,
+    affiliatedWoodenShieldBash,
+    steelShieldBash,
+    affiliatedSteelShieldBash,
+
     maceSmash,
     affiliatedMaceSmash,
     doubleMaceSmash,

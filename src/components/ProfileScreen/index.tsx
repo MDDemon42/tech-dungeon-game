@@ -32,22 +32,21 @@ function ProfileScreen(props: {
                         />
                         {
                             inventoryVisible ?
-                                <ToggleOn 
-                                    size={25}
-                                    className={styles.InventoryVisibleToggle}
-                                    title={chrome.i18n.getMessage('')}
-                                    onClick={() => setInventoryVisible(false)}
-                                /> :
+                                <>
+                                    <ToggleOn 
+                                        size={25}
+                                        className={styles.InventoryVisibleToggle}
+                                        title={chrome.i18n.getMessage('hide_inventory')}
+                                        onClick={() => setInventoryVisible(false)}
+                                    />
+                                    <OldFashionInventoryScreen character={character} />
+                                </> :
                                 <ToggleOff 
                                     size={25}
                                     className={styles.InventoryVisibleToggle}
-                                    title={chrome.i18n.getMessage('')}
+                                    title={chrome.i18n.getMessage('show_inventory')}
                                     onClick={() => setInventoryVisible(true)}
                                 />
-                        }
-                        {
-                            inventoryVisible && 
-                                <OldFashionInventoryScreen character={character} />
                         }
                     </div>
                     <MindScreen 

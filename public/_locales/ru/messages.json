@@ -63,6 +63,12 @@
               }
         }
     },
+    "show_inventory": {
+        "message": "Показать Инвентарь!"
+    },
+    "hide_inventory": {
+        "message": "Скрыть Инвентарь"
+    },
     "cyber_lab_to": {
         "message": "В Кибер Лабу!"
     },
@@ -697,6 +703,9 @@
     "resistance_piercing_1": {
         "message": "Повышает сопротивление Проникающему урону на 1."
     },
+    "wooden_shield_bash": {
+        "message": "Удар деревянным щитом"
+    },
     "steel_shield": {
         "message": "Стальной щит"
     },
@@ -705,6 +714,9 @@
     },
     "resistance_piercing_and_slashing_1": {
         "message": "Повышает сопротивление Проникающему и Режущему урону на 1."
+    },
+    "steel_shield_bash": {
+        "message": "Удар стальным щитом"
     },
     "nano_vest": {
         "message": "Нано жилет"
@@ -2596,6 +2608,12 @@
     },
     "martial_arts_mastery_description": {
         "message": "Мастерство нанесения увечий голыми руками."
+    },
+    "shield_affiliation": {
+        "message": "Родство со щитом"
+    },
+    "shield_affiliation_mastery_description": {
+        "message": "Мастерство обращения со щитом."
     },
     "bomb_throwing": {
         "message": "Бомбометание"

@@ -63,6 +63,12 @@
               }
         }
     },
+    "show_inventory": {
+        "message": "Show Inventory!"
+    },
+    "hide_inventory": {
+        "message": "Hide Inventory"
+    },
     "cyber_lab_to": {
         "message": "To Cyber Lab!"
     },
@@ -697,6 +703,9 @@
     "resistance_piercing_1": {
         "message": "Upgrades resistance to Piercing damage by 1."
     },
+    "wooden_shield_bash": {
+        "message": "Wooden shield bash"
+    },
     "steel_shield": {
         "message": "Steel shield"
     },
@@ -705,6 +714,9 @@
     },
     "resistance_piercing_and_slashing_1": {
         "message": "Upgrades resistance to Piercing and Slashing damage by 1."
+    },
+    "steel_shield_bash": {
+        "message": "Steel shield bash"
     },
     "nano_vest": {
         "message": "Nano vest"
@@ -2604,6 +2616,12 @@
     },
     "martial_arts_mastery_description": {
         "message": "Mastery of dealing damage with bare hands."
+    },
+    "shield_affiliation": {
+        "message": "Shield affiliation"
+    },
+    "shield_affiliation_mastery_description": {
+        "message": "Mastery of gaining control over shield."
     },
     "bomb_throwing": {
         "message": "Bomb throwing"
