@@ -2859,6 +2859,18 @@
     "start_name_albert": {
         "message": "Альберт"
     },
+    "name_apprentice_billy": {
+        "message": "Ученик Билли"
+    },
+    "name_apprentice_mangold": {
+        "message": "Ученик Мангольд"
+    },
+    "name_cryomancer_sergio": {
+        "message": "Криомант Серджио"
+    },
+    "name_cryomancer_vito": {
+        "message": "Криомант Вито"
+    },
     "choose_class": {
         "message": "Выберите класс"
     },
@@ -2876,5 +2888,86 @@
     },
     "living_room": {
         "message": "Жилое помещение"
+    },
+    "core_keeper_name": {
+        "message": "Хранитель меха-ядра"
+    },
+    "creative_name": {
+        "message": "Выдумщик"
+    },
+    "dreamer_name": {
+        "message": "Мечтатель"
+    },
+    "gene_keeper_name": {
+        "message": "Хранитель мута-гена"
+    },
+    "ingenious_name": {
+        "message": "Гений"
+    },
+    "no_icon_name": {
+        "message": ""
+    },
+    "richie_name": {
+        "message": "Богатей"
+    },
+    "tireless_name": {
+        "message": "Неутомимый"
+    },
+    "vital_name": {
+        "message": "Живчик"
+    },
+    "start_class_common_description": {
+        "message": "Получает дополнительно $extra$ в начале.\n\nПри повышении уровня имеет увеличенный шанс получить $param_1$ или $param_2$.\n\nТакже есть просто вероятность получить $blank$",
+        "placeholders": {
+            "extra": {
+                "content": "$1",
+                "example": ""
+            },
+            "param_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "param_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "blank": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "blank": {
+        "message": "Ничего"
+    },
+    "focus": {
+        "message": "Концентрация"
+    },
+    "health": {
+        "message": "Здоровье"
+    },
+    "mana": {
+        "message": "Мана"
+    },
+    "stamina": {
+        "message": "Выносливость"
+    },
+    "mecha_core": {
+        "message": "Меха-ядро"
+    },
+    "muta_gene": {
+        "message": "Мута-ген"
+    },
+    "gem": {
+        "message": "Самоцвет"
+    },
+    "level": {
+        "message": "Уровень"
+    },
+    "no_one_to_hire": {
+        "message": "Некого нанять"
+    },
+    "hire": {
+        "message": "Нанять!"
     }
 }

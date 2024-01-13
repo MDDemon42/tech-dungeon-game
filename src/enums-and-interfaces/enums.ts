@@ -101,9 +101,12 @@ export enum BendingOption {
 
 export enum GameScreens {
     academy = 'Academy',
+    aerotheurgRooms = 'Aerotheurg_Rooms',
     airSchool = 'Air_School',
     airSite = 'Air_Site',
+    apprenticeRooms = 'Apprentice_Rooms',
     armoury = 'Armoury',
+    cryomancerRooms = 'Cryomancer_Rooms',
     cyberLab = 'Cyber_Lab',
     fireSchool = 'Fire_School',
     fireSite = 'Fire_Site',
@@ -116,7 +119,8 @@ export enum GameScreens {
     iceSite = 'Ice_Site',
     mansion = 'Mansion',
     market = 'Market',
-    mutaLab = 'Mutation_Lab',    
+    mutaLab = 'Mutation_Lab', 
+    pyrokineticRooms = 'Pyrokinetic_Rooms',   
     spellSchool = 'Spell_School',
     villageMap = 'Village_Map', 
     wizardSchool = 'Wizard_School',
@@ -153,6 +157,13 @@ export enum BendingGameScreens {
 
 export enum MansionScreens {
     livingRoom = 'Living_Room',
+}
+
+export enum SquadGameScreens {
+    aerotheurgRooms = 'Aerotheurg_Rooms',
+    apprenticeRooms = 'Apprentice_Rooms',
+    cryomancerRooms = 'Cryomancer_Rooms',
+    pyrokineticRooms = 'Pyrokinetic_Rooms'
 }
 
 export enum TaskStatus {

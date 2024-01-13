@@ -2867,6 +2867,18 @@
     "start_name_albert": {
         "message": "Albert"
     },
+    "name_apprentice_billy": {
+        "message": "Apprentice Billy"
+    },
+    "name_apprentice_mangold": {
+        "message": "Apprentice Mangold"
+    },
+    "name_cryomancer_sergio": {
+        "message": "Cryomancer Sergio"
+    },
+    "name_cryomancer_vito": {
+        "message": "Cryomancer Vito"
+    },
     "choose_class": {
         "message": "Choose class"
     },
@@ -2884,5 +2896,86 @@
     },
     "living_room": {
         "message": "Living room"
+    },
+    "core_keeper_name": {
+        "message": "Core keeper"
+    },
+    "creative_name": {
+        "message": "Creative"
+    },
+    "dreamer_name": {
+        "message": "Dreamer"
+    },
+    "gene_keeper_name": {
+        "message": "Gene keeper"
+    },
+    "ingenious_name": {
+        "message": "Ingeniuos"
+    },
+    "no_icon_name": {
+        "message": ""
+    },
+    "richie_name": {
+        "message": "Richie"
+    },
+    "tireless_name": {
+        "message": "Tireless"
+    },
+    "vital_name": {
+        "message": "Vital"
+    },
+    "start_class_common_description": {
+        "message": "Gets extra $extra$ on start.\n\nOn level up has increased chance of getting $param_1$ or $param_2$.\n\nAnd there is also a chance to get $blank$",
+        "placeholders": {
+            "extra": {
+                "content": "$1",
+                "example": ""
+            },
+            "param_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "param_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "blank": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
+    "blank": {
+        "message": "Nothing"
+    },
+    "focus": {
+        "message": "Focus"
+    },
+    "health": {
+        "message": "Health"
+    },
+    "mana": {
+        "message": "Mana"
+    },
+    "stamina": {
+        "message": "Stamina"
+    },
+    "mecha_core": {
+        "message": "Mecha-core"
+    },
+    "muta_gene": {
+        "message": "Muta-gene"
+    },
+    "gem": {
+        "message": "Gem"
+    },
+    "level": {
+        "message": "Level"
+    },
+    "no_one_to_hire": {
+        "message": "No one to hire"
+    },
+    "hire": {
+        "message": "Hire!"
     }
 }

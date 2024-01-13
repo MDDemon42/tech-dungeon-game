@@ -1,26 +1,30 @@
 import {IStore} from "../../enums-and-interfaces/interfaces";
 import styles from './index.module.css';
 import { useSelector } from "react-redux";
-import { upperCaseFirstLetter } from "../../pages/PopupPages/MainPage";
 import ParamIcon from "../Icons/ParamIcon";
 import { DamageType, UserParam } from "../../enums-and-interfaces/enums";
 import ResistanceIcon from "../Icons/ResistanceIcon";
+import classInfo from "../../general/classInfo";
 
 function StatsBar() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
     const member = useSelector((state: IStore) => state.gameSquad.squadMembers[index].params);
     const {
-        name, race, level, 
+        race, level, 
         currentParams,
         maxParams,
         resistances, dodge,
         strength, lifted
     } = member;
 
+    const headerText = race + ', ' + 
+        classInfo[member.class].name + ', ' + 
+        chrome.i18n.getMessage('level') + ' ' + level;
+
     return (
         <div className={styles.StatsBar}>
             <div className={styles.StatsBar_header}>
-                {name} the {race}, {upperCaseFirstLetter(member.class)} level {level}
+                {headerText}
             </div>
             <div className={styles.StatsBar_body}>
                 <div className={styles.StatsBar_params}>

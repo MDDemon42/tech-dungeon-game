@@ -3,8 +3,7 @@ import createEmptyCharacter,
 { createNoItem } from '../../helpers/emptyEssencesCreators';
 import { 
     IAbility,
-    ICharacher,
-    IClassInfo, 
+    ICharacher, 
     ICyber, 
     IGameSquad, 
     IItem, 
@@ -22,11 +21,11 @@ import {
     UserResource, 
     UserParam, 
     InventoryPlace, 
-    UserStartClass,
     Race,
     DamageType
 } from '../../enums-and-interfaces/enums';
 import powers from '../../gameScreens/FocusSite/powers';
+import classInfo from '../../general/classInfo';
 
 export function placeAsKey(place: string) {
     return place.split(' ').map((part, index) => {
@@ -55,17 +54,6 @@ export const createGameSquad: () => IGameSquad = () => {
 
 const initialState = createGameSquad();
 
-function createLevelUpBonuses(params: UserParam[]) {
-    const standartLevelUpBonuses = [
-        UserParam.health, UserParam.focus, UserParam.mana, UserParam.stamina, UserParam.blank
-    ];
-
-    const result = [...standartLevelUpBonuses];
-    result.push(...params);
-
-    return result
-}
-
 function getRandomStartName() {
     const startNames = [
         chrome.i18n.getMessage('start_name_boris'),
@@ -79,54 +67,6 @@ function getRandomStartName() {
     ]
 
     return startNames[Math.floor(Math.random() * startNames.length)]
-}
-
-export const classInfo: IClassInfo = {
-    [UserStartClass.vital]: {
-        bonusParam: UserParam.health,
-        levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.health]),
-        description: 'Gets extra Health on start.\n\nOn level up has super increased chance of getting Health.\n\nBut there is a chance to get nothing too',
-    },
-    [UserStartClass.tireless]: {
-        bonusParam: UserParam.stamina,
-        levelUpBonuses: createLevelUpBonuses([UserParam.stamina, UserParam.stamina]),
-        description: 'Gets extra Stamina on start.\n\nOn level up has super increased chance of getting Stamina.\n\nBut there is a chance to get nothing too'
-    },
-    [UserStartClass.creative]: {
-        bonusParam: UserParam.mana,
-        levelUpBonuses: createLevelUpBonuses([UserParam.mana, UserParam.mana]),
-        description: 'Gets extra Mana on start.\n\nOn level up has super increased chance of getting Mana.\n\nBut there is a chance to get nothing too'
-    },
-    [UserStartClass.dreamer]: {
-        bonusParam: UserParam.focus,
-        levelUpBonuses: createLevelUpBonuses([UserParam.focus, UserParam.focus]),
-        description: 'Gets extra Focus on start.\n\nOn level up has super increased chance of getting Focus.\n\nBut there is a chance to get nothing too'
-    },
-    [UserStartClass.geneKeeper]: {
-        bonusResource: UserResource.gene,
-        levelUpBonuses: createLevelUpBonuses([UserParam.stamina, UserParam.blank]),
-        description: 'Gets extra Muta-gene on start.\n\nOn level up has increased chance of getting Stamina.\n\nBut there is a big chance to get nothing too',
-    },
-    [UserStartClass.coreKeeper]: {
-        bonusResource: UserResource.core,
-        levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.blank]),
-        description: 'Gets extra Mecha-core on start.\n\nOn level up has increased chance of getting Health.\n\nBut there is a big chance to get nothing too'
-    },
-    [UserStartClass.richie]: {
-        bonusResource: UserResource.gem,
-        levelUpBonuses: createLevelUpBonuses([UserParam.mana, UserParam.blank]),
-        description: 'Gets extra Gem on start.\n\nOn level up has increased chance of getting Mana.\n\nBut there is a big chance to get nothing too'
-    },
-    [UserStartClass.ingenious]: {
-        bonusLevel: true,
-        levelUpBonuses: createLevelUpBonuses([UserParam.mana, UserParam.focus]),
-        description: 'Gets extra Level on start.\n\nOn level up has increased chance of getting Mana or Focus.\n\nBut there is a chance to get nothing too'
-    },
-    [UserStartClass.noIcon]: {
-        bonusParam: UserParam.blank,
-        levelUpBonuses: [UserParam.blank],
-        description: 'Choose one of classes to start playing'
-    }
 }
 
 const raceMasteries: Partial<Record<Race, IMastery>> = {
@@ -238,21 +178,21 @@ const gameSquad = createSlice({
             const rand = Math.floor(Math.random()*7);
 
             const squad = {...state.squadMembers};
-            const squadMember = squad[state.currentlyWatched];
+            Object.values(squad).forEach(squadMember => {
+                squadMember.params.level += 1;
+                
+                const levelUpParam = classInfo[squadMember.params.class].levelUpBonuses[rand];
+                squadMember.params.maxParams[levelUpParam] += 1;
 
-            squadMember.params.level += 1;
-            
-            const levelUpParam = classInfo[squadMember.params.class].levelUpBonuses[rand];
-            squadMember.params.maxParams[levelUpParam] += 1;
-
-            Object.keys(squad).forEach(key => {
-                if (!!squad[key]) {
-                    squad[key]!.params.currentParams.Focus = squad[key]!.params.maxParams.Focus;
-                    squad[key]!.params.currentParams.Mana = squad[key]!.params.maxParams.Mana;
-                    squad[key]!.params.currentParams.Stamina = squad[key]!.params.maxParams.Stamina;
-                    squad[key]!.params.currentParams[UserParam.health] = squad[key]!.params.maxParams[UserParam.health];
-                }
-            });
+                Object.keys(squad).forEach(key => {
+                    if (!!squad[key]) {
+                        squad[key]!.params.currentParams.Focus = squad[key]!.params.maxParams.Focus;
+                        squad[key]!.params.currentParams.Mana = squad[key]!.params.maxParams.Mana;
+                        squad[key]!.params.currentParams.Stamina = squad[key]!.params.maxParams.Stamina;
+                        squad[key]!.params.currentParams[UserParam.health] = squad[key]!.params.maxParams[UserParam.health];
+                    }
+                });
+            });            
 
             state.squadMembers = squad;
         },
@@ -347,6 +287,7 @@ const gameSquad = createSlice({
 
             const possiblePositions = item.inventoryPlaces;
 
+            let itemEquipped = false;
             if (possiblePositions.length === 1) {
                 const position = possiblePositions[0];
 
@@ -384,6 +325,7 @@ const gameSquad = createSlice({
                 
                 inventory[placeAsKey(position)] = item;
                 squadMember.params.lifted += item.requiredStrength;
+                itemEquipped = true;
             } else {
                 const handsOptions: (InventoryPlace.leftHand | InventoryPlace.extraLeftHand |
                     InventoryPlace.telekinesisLeftHand | InventoryPlace.telekinesisRightHand |
@@ -394,7 +336,6 @@ const gameSquad = createSlice({
                     InventoryPlace.telekinesisLeftHand, InventoryPlace.telekinesisRightHand                  
                 ];
     
-                let itemEquipped = false;
                 let exchangeOptions: null | (InventoryPlace.leftHand | InventoryPlace.extraLeftHand |
                     InventoryPlace.telekinesisLeftHand | InventoryPlace.telekinesisRightHand |
                     InventoryPlace.rightHand | InventoryPlace.extraRightHand)[] = null;
@@ -417,15 +358,26 @@ const gameSquad = createSlice({
                             ) {
                                 continue;
                             }
-
-                            inventory[placeAsKey(option)] = item;
+                            
                             if (
                                 option !== InventoryPlace.telekinesisLeftHand &&
                                 option !== InventoryPlace.telekinesisRightHand
                             ) {
                                 squadMember.params.lifted += item.requiredStrength;
-                            }                            
-                            itemEquipped = true;
+                                itemEquipped = true;
+                            } else {
+                                if (squadMember.params.maxParams.Focus > 0) {
+                                    squadMember.params.maxParams.Focus -= 1;
+                                    itemEquipped = true;
+                                    if (squadMember.params.currentParams.Focus > 0) {
+                                        squadMember.params.currentParams.Focus -= 1;
+                                    }
+                                }                                
+                            }     
+
+                            if (itemEquipped) {
+                                inventory[placeAsKey(option)] = item;
+                            }
                             break;
                         } else if (thisOptionItem.name !== item.name) {
                             if (!exchangeOptions) {
@@ -455,44 +407,61 @@ const gameSquad = createSlice({
                     ) {
                         itemsToPut.push([bothHandsItem, InventoryPlace.bothHands]);
                         inventory.bothHands = createNoItem();
-                    }           
-    
-                    inventory[placeAsKey(randomHandsOption)] = item;
+                    }   
+
                     if (
                         randomHandsOption !== InventoryPlace.telekinesisLeftHand &&
                         randomHandsOption !== InventoryPlace.telekinesisRightHand
                     ) {
                         squadMember.params.lifted += item.requiredStrength;
-                    }    
+                        itemEquipped = true;
+                    } else {
+                        if (squadMember.params.maxParams.Focus > 0) {
+                            squadMember.params.maxParams.Focus -= 1;
+                            itemEquipped = true;
+                            if (squadMember.params.currentParams.Focus > 0) {
+                                squadMember.params.currentParams.Focus -= 1;
+                            } 
+                        }                                               
+                    }
+
+                    if (itemEquipped) {
+                        inventory[placeAsKey(randomHandsOption)] = item;
+                    }                    
                 }
             }
            
-            integratePassiveAbility(squadMember, item, +1);
+            if (itemEquipped) {
+                integratePassiveAbility(squadMember, item, +1);
 
-            backpacks[itemIndex] = createNoItem();
+                backpacks[itemIndex] = createNoItem();
 
-            backpacks.sort((a, b) => {
-                if (a.name === nothing) {
-                    return 1
+                backpacks.sort((a, b) => {
+                    if (a.name === nothing) {
+                        return 1
+                    }
+                    
+                    if (b.name === nothing) {
+                        return -1
+                    }
+
+                    return 0
+                })
+
+                for (const itemToPut of itemsToPut) {
+                    if (
+                        itemToPut[1] !== InventoryPlace.telekinesisLeftHand &&
+                        itemToPut[1] !== InventoryPlace.telekinesisRightHand
+                    ) {
+                        squadMember.params.lifted -= itemToPut[0].requiredStrength;
+                    } else {
+                        squadMember.params.maxParams.Focus += 1;
+                        squadMember.params.currentParams.Focus += 1;
+                    }    
+                    putItemInBackpacks(backpacks, itemToPut[0]);
+                    integratePassiveAbility(squadMember, itemToPut[0], -1);
                 }
-                
-                if (b.name === nothing) {
-                    return -1
-                }
-
-                return 0
-            })
-
-            for (const itemToPut of itemsToPut) {
-                if (
-                    itemToPut[1] !== InventoryPlace.telekinesisLeftHand &&
-                    itemToPut[1] !== InventoryPlace.telekinesisRightHand
-                ) {
-                    squadMember.params.lifted -= itemToPut[0].requiredStrength;
-                }                
-                putItemInBackpacks(backpacks, itemToPut[0]);
-                integratePassiveAbility(squadMember, itemToPut[0], -1);
-            }
+            }            
 
             squadMember.general.backpacks = backpacks;
             squadMember.general.inventory = inventory;
@@ -511,7 +480,10 @@ const gameSquad = createSlice({
                 inventoryPlace !== InventoryPlace.telekinesisRightHand
             ) {
                 squadMember.params.lifted -= item.requiredStrength;
-            }                
+            } else {
+                squadMember.params.maxParams.Focus += 1;
+                squadMember.params.currentParams.Focus += 1;
+            }          
             inventory[placeAsKey(inventoryPlace)] = createNoItem();
             putItemInBackpacks(backpacks, item);
             integratePassiveAbility(squadMember, item, -1);
@@ -943,6 +915,14 @@ const gameSquad = createSlice({
 
             squadMember.general.backpacks = backpacks;
             squadMember.general.inventory = inventory;
+
+            state = oldState;
+        },
+        hireSquaddie(state, action) {
+            const oldState = {...state};
+            const {index, character} = action.payload;
+
+            oldState.squadMembers[index] = character;
 
             state = oldState;
         },

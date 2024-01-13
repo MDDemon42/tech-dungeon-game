@@ -1,54 +1,44 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import SubInventoryScreen from '../../components/SubInventoryScreen/SubInventoryScreen';
-import TaskScreen from '../../components/TaskScreen';
-import UpgradeButtons from '../../components/UpgradeButtons';
-import { InventoryGameScreens } from '../../enums-and-interfaces/enums';
-import { IStore, IUpgradeButton } from '../../enums-and-interfaces/interfaces';
-import styles from './index.module.css';
+import { GameScreens, InventoryGameScreens } from '../../enums-and-interfaces/enums';
+import { IUpgradeButton } from '../../enums-and-interfaces/interfaces';
+import { Virus } from 'react-bootstrap-icons';
+import PatternScreen from '../../components/PatternScreen';
+
+const mutaLabSubScreenMapping = {
+    [InventoryGameScreens.mutaLab]: {
+        requiredStage: 1,
+        icon: <Virus size={36} />,
+        screen: <SubInventoryScreen screenName={InventoryGameScreens.mutaLab}/>
+    } 
+}
+
+const mutaLabUpgradeButtons = (stage: number): IUpgradeButton[] => [
+    {
+        title: chrome.i18n.getMessage('beast_genes_task_title'),
+        stage: 2,
+        disabled: stage % 2 === 0,
+        visible: stage % 2 !== 0
+    },
+    {
+        title: chrome.i18n.getMessage('reptiloid_genes_task_title'),
+        stage: 3,
+        disabled: stage % 3 === 0,
+        visible: stage % 3 !== 0
+    },
+    {
+        title: chrome.i18n.getMessage('insectoid_genes_task_title'),
+        stage: 5,
+        disabled: stage % 5 === 0,
+        visible: stage % 5 !== 0
+    }
+];
 
 function MutationLab() {
-    const screenName = InventoryGameScreens.mutaLab;
-    const stage = useSelector((store: IStore) => store.gameStage[screenName].stage);
-    const [taskScreenOpen, setTaskScreenOpen] = useState<[InventoryGameScreens, number]|null>(null);
-
-    const upgradeButtons: IUpgradeButton[] = [
-        {
-            title: chrome.i18n.getMessage('beast_genes_task_title'),
-            stage: 2,
-            disabled: stage % 2 === 0,
-            visible: stage % 2 !== 0
-        },
-        {
-            title: chrome.i18n.getMessage('reptiloid_genes_task_title'),
-            stage: 3,
-            disabled: stage % 3 === 0,
-            visible: stage % 3 !== 0
-        },
-        {
-            title: chrome.i18n.getMessage('insectoid_genes_task_title'),
-            stage: 5,
-            disabled: stage % 5 === 0,
-            visible: stage % 5 !== 0
-        }
-    ];
-
-    return (
-        <div className={styles.MutationLab}>
-            {
-                taskScreenOpen && <TaskScreen 
-                    screen={taskScreenOpen[0]}
-                    stage={taskScreenOpen[1]}
-                    leaveListener={() => setTaskScreenOpen(null)}
-                />
-            }
-            <UpgradeButtons 
-                upgradeButtons={upgradeButtons} 
-                listener={(stage: number) => setTaskScreenOpen([screenName, stage])}
-            />
-            <SubInventoryScreen screenName={InventoryGameScreens.mutaLab}/>
-        </div>
-    )
+    return <PatternScreen 
+        screenName={GameScreens.mutaLab}
+        upgradeButtonsFunc={mutaLabUpgradeButtons}
+        subScreenMapping={mutaLabSubScreenMapping}
+    />
 }
 
 export default MutationLab

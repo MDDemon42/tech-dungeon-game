@@ -1,4 +1,4 @@
-.Guild {
+.PatternScreen {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -6,7 +6,7 @@
     gap: 20px;
 }
 
-.Guild_areas {
+.PatternScreen_areas {
     border: 1px solid black;
     padding: 5px;
     width: 95%;
@@ -16,6 +16,6 @@
     margin-top: 10px;
 }
 
-.Guild_areas > button {
+.PatternScreen > button {
     padding: 3px 5px;
 }

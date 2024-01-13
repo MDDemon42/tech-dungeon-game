@@ -1,0 +1,17 @@
+.SubSquadScreen {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    padding: 5px;
+    width: 95%;
+}
+
+.SubSquadScreen_character {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    gap: 20px;
+    align-items: center;
+}

@@ -1,43 +1,32 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import SubMindScreen from '../../components/SubMindScreen/SubMindScreen';
-import TaskScreen from '../../components/TaskScreen';
-import UpgradeButtons from '../../components/UpgradeButtons';
-import { MindGameScreens } from '../../enums-and-interfaces/enums';
-import { IStore, IUpgradeButton } from '../../enums-and-interfaces/interfaces';
-import styles from './index.module.css';
+import { GameScreens, MindGameScreens } from '../../enums-and-interfaces/enums';
+import { IUpgradeButton } from '../../enums-and-interfaces/interfaces';
+import { Book } from 'react-bootstrap-icons';
+import PatternScreen from '../../components/PatternScreen';
+
+const academySubScreenMapping = {
+    [MindGameScreens.airSchool]: {
+        requiredStage: 1,
+        icon: <Book size={36} />,
+        screen: <SubMindScreen screenName={MindGameScreens.academy}/>
+    }
+}
+
+const academyUpgradeButtons = (stage: number, extraStage: number): IUpgradeButton[] => [
+    {
+        title: chrome.i18n.getMessage('modernize_academy_task_title'),
+        stage: 2,
+        disabled: stage % 2 === 0 && extraStage === 2,
+        visible: stage % 2 !== 0
+    }
+];
 
 function Academy() {
-    const screenName = MindGameScreens.academy;
-    const academyStage = useSelector((store: IStore) => store.gameStage[screenName].stage);
-    const marketStage = useSelector((store: IStore) => store.gameStage.Market.stage);
-    const [taskScreenOpen, setTaskScreenOpen] = useState<[MindGameScreens, number]|null>(null);
-
-    const upgradeButtons: IUpgradeButton[] = [
-        {
-            title: chrome.i18n.getMessage('modernize_academy_task_title'),
-            stage: 2,
-            disabled: academyStage % 2 === 0 && marketStage === 2,
-            visible: academyStage % 2 !== 0
-        }
-    ];
-
-    return (
-        <div className={styles.Academy}>
-            {
-                taskScreenOpen && <TaskScreen 
-                    screen={taskScreenOpen[0]}
-                    stage={taskScreenOpen[1]}
-                    leaveListener={() => setTaskScreenOpen(null)}
-                />
-            }
-            <UpgradeButtons 
-                upgradeButtons={upgradeButtons} 
-                listener={(stage: number) => setTaskScreenOpen([screenName, stage])}
-            />
-            <SubMindScreen screenName={screenName}/> 
-        </div>
-    )
+    return <PatternScreen 
+        screenName={GameScreens.academy}
+        upgradeButtonsFunc={academyUpgradeButtons}
+        subScreenMapping={academySubScreenMapping}
+    />
 }
 
 export default Academy

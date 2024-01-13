@@ -31,6 +31,10 @@ import { spellSchoolOptions } from '../../gameScreens/WizardSchool/spells';
 import { wizardSchoolOptions } from '../../gameScreens/WizardSchool/masteries';
 import { wizardShopOptions } from '../../gameScreens/WizardSchool/wizardItems';
 import { armouryOptions, startClassBattleMageOptions, startClassBattleOptions } from '../../gameScreens/Mansion/armouryItems';
+import { apprenticeRoomsOptions } from '../../gameScreens/WizardSchool/members';
+import { cryomancerRoomsOptions } from '../../gameScreens/IceSite/members';
+import { pyrokineticRoomsOptions } from '../../gameScreens/FireSite/members';
+import { aerotheurgRoomsOptions } from '../../gameScreens/AirSite/members';
 
 export function createTask(
     resourceCost: {
@@ -49,9 +53,12 @@ export function createTask(
    
 export const tasks: IGameTasks = {
     [GameScreens.academy]: academyTasks,
+    [GameScreens.aerotheurgRooms]: null,
     [GameScreens.airSchool]: null,
     [GameScreens.airSite]: airSiteTasks,
+    [GameScreens.apprenticeRooms]: null,
     [GameScreens.armoury]: null,
+    [GameScreens.cryomancerRooms]: null,
     [GameScreens.cyberLab]: cyberLabTasks,
     [GameScreens.fireSchool]: null,
     [GameScreens.fireSite]: fireSiteTasks,
@@ -65,6 +72,7 @@ export const tasks: IGameTasks = {
     [GameScreens.mansion]: mansionTasks,
     [GameScreens.market]: marketTasks,
     [GameScreens.mutaLab]: mutaLabTasks,
+    [GameScreens.pyrokineticRooms]: null,
     [GameScreens.spellSchool]: null,
     [GameScreens.villageMap]: null,
     [GameScreens.wizardSchool]: wizardSchoolTasks,
@@ -73,9 +81,12 @@ export const tasks: IGameTasks = {
 
 export const stageOptions: IGameStageOptions = {
     [GameScreens.academy]: academyOptions,
+    [GameScreens.aerotheurgRooms]: aerotheurgRoomsOptions,
     [GameScreens.airSchool]: airSchoolOptions,
     [GameScreens.airSite]: airSiteOptions,
+    [GameScreens.apprenticeRooms]: apprenticeRoomsOptions,
     [GameScreens.armoury]: armouryOptions,
+    [GameScreens.cryomancerRooms]: cryomancerRoomsOptions,
     [GameScreens.cyberLab]: cyberLabOptions,
     [GameScreens.fireSchool]: fireSchoolOptions,
     [GameScreens.fireSite]: fireSiteOptions,
@@ -89,6 +100,7 @@ export const stageOptions: IGameStageOptions = {
     [GameScreens.mansion]: null,
     [GameScreens.market]: marketOptions,
     [GameScreens.mutaLab]: mutaLabOptions,
+    [GameScreens.pyrokineticRooms]: pyrokineticRoomsOptions,
     [GameScreens.spellSchool]: spellSchoolOptions,
     [GameScreens.villageMap]: null,
     [GameScreens.wizardSchool]: wizardSchoolOptions,
@@ -113,25 +125,33 @@ export const createGameStage = (strongStart: boolean) => {
 
 const relatedScreens: Record<GameScreens, GameScreens[]> = {
     [GameScreens.academy]: [],
+    [GameScreens.aerotheurgRooms]: [],
     [GameScreens.airSchool]: [],
-    [GameScreens.airSite]: [GameScreens.airSchool],
+    [GameScreens.airSite]: [GameScreens.airSchool, GameScreens.aerotheurgRooms],
+    [GameScreens.apprenticeRooms]: [],
     [GameScreens.armoury]: [],
+    [GameScreens.cryomancerRooms]: [],
     [GameScreens.cyberLab]: [],
     [GameScreens.fireSchool]: [],
-    [GameScreens.fireSite]: [GameScreens.fireSchool],
+    [GameScreens.fireSite]: [GameScreens.fireSchool, GameScreens.pyrokineticRooms],
     [GameScreens.focusSchool]: [],
     [GameScreens.focusSite]: [GameScreens.focusSchool],
     [GameScreens.guildRituals]: [],
     [GameScreens.guildSchool]: [GameScreens.guildShop],
     [GameScreens.guildShop]: [],
     [GameScreens.iceSchool]: [],
-    [GameScreens.iceSite]: [GameScreens.iceSchool],
+    [GameScreens.iceSite]: [GameScreens.iceSchool, GameScreens.cryomancerRooms],
     [GameScreens.mansion]: [GameScreens.armoury],
     [GameScreens.market]: [],
     [GameScreens.mutaLab]: [],
+    [GameScreens.pyrokineticRooms]: [],
     [GameScreens.spellSchool]: [],
     [GameScreens.villageMap]: [],
-    [GameScreens.wizardSchool]: [GameScreens.wizardShop, GameScreens.spellSchool],
+    [GameScreens.wizardSchool]: [
+        GameScreens.wizardShop, 
+        GameScreens.spellSchool,
+        GameScreens.apprenticeRooms
+    ],
     [GameScreens.wizardShop]: [],
 }
 

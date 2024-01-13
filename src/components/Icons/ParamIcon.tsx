@@ -1,6 +1,7 @@
 import { UserParam } from "../../enums-and-interfaces/enums";
 import images from "../../images/images";
 import styles from './Icons.module.css';
+import userParams from "../../general/params";
 
 function ParamIcon(props: {
     param: keyof typeof UserParam
@@ -12,7 +13,7 @@ function ParamIcon(props: {
     return <img 
         src={source} 
         alt={UserParam[param]} 
-        title={UserParam[param]}
+        title={userParams[UserParam[param]]}
         className={styles.ParamIcon}
     />
 }

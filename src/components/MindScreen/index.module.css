@@ -12,7 +12,8 @@
 }
 
 .MindScreen__notVertical > p {
-    height: 41px;
+    height: 55px;
+    margin: 0;
 }
 
 .MindScreen__vertical {

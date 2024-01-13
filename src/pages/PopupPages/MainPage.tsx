@@ -6,11 +6,12 @@ import images from '../../images/images';
 import { ICharacher, IStore } from '../../enums-and-interfaces/interfaces';
 import { useEffect, useState } from 'react';
 import C from '../../redux/constants';
-import gameSquad, { classInfo } from '../../redux/slices/gameSquad';
+import gameSquad from '../../redux/slices/gameSquad';
 import { iconToClass, classToIcon } from '../../helpers/classIconRelates';
 import { UserStartClass } from '../../enums-and-interfaces/enums';
 import { removeGameTabs } from '../../helpers/removeGameTabs';
 import gameStage from '../../redux/slices/gameStage';
+import classInfo from '../../general/classInfo';
 
 export function upperCaseFirstLetter(value: string) {
     return value.substring(0,1).toUpperCase() + value.substring(1)
@@ -111,7 +112,7 @@ function MainPage() {
                                     selected={iconToClass(item) === userClass}
                                 >
                                     {
-                                        iconToClass(item)
+                                        classInfo[iconToClass(item)].name
                                     }
                                 </option>
                             )

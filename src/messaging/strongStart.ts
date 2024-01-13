@@ -2,7 +2,7 @@ import { UserParam, UserResource } from "../enums-and-interfaces/enums";
 import C from '../redux/constants';
 import createEmptyCharacter, { createNoItem } from "../helpers/emptyEssencesCreators";
 import store from "../redux/store";
-import { classInfo } from "../redux/slices/gameSquad";
+import classInfo from "../general/classInfo";
 import { createGameStage } from "../redux/slices/gameStage";
 import powers from "../gameScreens/FocusSite/powers";
 import mutations from "../gameScreens/MutaLab/mutations";

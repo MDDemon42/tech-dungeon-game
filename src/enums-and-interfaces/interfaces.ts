@@ -32,7 +32,8 @@ export interface IGameStage extends Record<GameScreens, {
         ICyber | IMutation |
         IPower | ISpell |
         IWizardItem | IBending |
-        IRitual | IGuildItem
+        IRitual | IGuildItem |
+        ICharacher
     )[]
 }> {}
 
@@ -43,7 +44,8 @@ export interface IScreenStageOptions extends Record<string, (
     ICyber | IMutation |
     IPower | ISpell |
     IWizardItem | IBending |
-    IRitual | IGuildItem
+    IRitual | IGuildItem |
+    ICharacher
 )[]> {}
 
 export interface ITaskScreenProps {
@@ -284,6 +286,7 @@ export interface IClassInfo {
 }
 
 interface IClassInfoItem {
+    name: string,
     bonusLevel?: boolean,
     bonusParam?: UserParam,
     bonusResource?: UserResource,
