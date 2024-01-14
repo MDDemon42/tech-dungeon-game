@@ -1,15 +1,21 @@
-import SubInventoryScreen from '../../components/SubInventoryScreen/SubInventoryScreen';
-import { GameScreens, InventoryGameScreens } from '../../enums-and-interfaces/enums';
+import SubInventoryScreen from '../../components/SubInventoryScreen';
+import { GameScreens, InventoryGameScreens, SquadGameScreens } from '../../enums-and-interfaces/enums';
 import { IUpgradeButton } from '../../enums-and-interfaces/interfaces';
-import { ShopWindow } from 'react-bootstrap-icons';
+import { ShopWindow, CupHot } from 'react-bootstrap-icons';
 import PatternScreen from '../../components/PatternScreen';
+import SubSquadScreen from '../../components/SubSquadScreen';
 
 const marketSubScreenMapping = {
     [InventoryGameScreens.market]: {
         requiredStage: 1,
         icon: <ShopWindow size={36} />,
         screen: <SubInventoryScreen screenName={InventoryGameScreens.market}/>
-    } 
+    },
+    [SquadGameScreens.tavern]: {
+        requiredStage: 1,
+        icon: <CupHot size={36} />,
+        screen: <SubSquadScreen screenName={SquadGameScreens.tavern}/>
+    }
 }
 
 const marketUpgradeButtons = (stage: number): IUpgradeButton[] => [

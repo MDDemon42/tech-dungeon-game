@@ -1,3 +1,4 @@
+import { Race } from "../../enums-and-interfaces/enums";
 import createRace from "./createRace";
 
 /*
@@ -35,6 +36,20 @@ const races = {
     demonRace,
     dragonRace,
     chimeraRace
+}
+
+export const raceNames: Record<Race, string> = {
+    [Race.chimera]: chrome.i18n.getMessage('race_chimera'),
+    [Race.demon]: chrome.i18n.getMessage('race_demon'),
+    [Race.dragon]: chrome.i18n.getMessage('race_dragon'),
+    [Race.gnoll]: chrome.i18n.getMessage('race_gnoll'),
+    [Race.human]: chrome.i18n.getMessage('race_human'),
+    [Race.minotaur]: chrome.i18n.getMessage('race_minotaur'),
+    [Race.naga]: chrome.i18n.getMessage('race_naga'),
+    [Race.orc]: chrome.i18n.getMessage('race_orc'),
+    [Race.raptor]: chrome.i18n.getMessage('race_raptor'),
+    [Race.satyr]: chrome.i18n.getMessage('race_satyr'),
+    [Race.unknown]: chrome.i18n.getMessage('race_unknown')
 }
 
 export default races

@@ -1,7 +1,7 @@
 import { IInventorySlot } from "../../enums-and-interfaces/interfaces";
 import { upperCaseFirstLetter } from "../../pages/PopupPages/MainPage";
 import SubInventoryScreenItem from "./SubInventoryScreenItem";
-import styles from './SubInventoryScreen.module.css';
+import styles from './index.module.css';
 
 const keyToTitle = (key: string) => {
     let keyArray = key.split('_')

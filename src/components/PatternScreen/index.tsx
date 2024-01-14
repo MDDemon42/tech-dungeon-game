@@ -10,7 +10,7 @@ function PatternScreen(props: {
     screenName: GameScreens.fireSite | GameScreens.iceSite | 
         GameScreens.academy | GameScreens.airSite | GameScreens.wizardSchool |
         GameScreens.mansion | GameScreens.mutaLab | GameScreens.focusSite |
-        GameScreens.market | GameScreens.guildSchool,
+        GameScreens.market | GameScreens.guildSchool | GameScreens.tavern,
     upgradeButtonsFunc: (stage: number, extraStage: number) => IUpgradeButton[],
     subScreenMapping: Partial<Record<GameScreens, {
         requiredStage: number;

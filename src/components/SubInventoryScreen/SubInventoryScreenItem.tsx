@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { IItem, IMutation, ICyber, IStore } from "../../enums-and-interfaces/interfaces";
 import { subInventoryEnableChecker } from "../../helpers/enableCheckers";
 import CommonIcon from "../Icons/CommonIcon";
-import styles from './SubInventoryScreen.module.css';
-import { SubInventoryScreenItemContext } from "./SubInventoryScreen";
+import styles from './index.module.css';
+import { SubInventoryScreenItemContext } from ".";
 import { useSelector } from "react-redux";
 
 function SubInventoryScreenItem(props: {

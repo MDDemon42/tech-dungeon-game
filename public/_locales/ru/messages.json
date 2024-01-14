@@ -132,21 +132,11 @@
     "mansion_title": {
         "message": "Вот и Поместье!"
     },
-    "build_cabin_task_title": {
-        "message": "Построить Хижину"
+    "settle_in_cabin_task_title": {
+        "message": "Поселиться в заброшенной Хижине"
     },
-    "build_cabin_task_text": {
-        "message": "Вы можете взять $count$ $resource$ и построить собственную Хижину.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": ""
-            },
-            "resource": {
-                "content": "$2",
-                "example": ""
-            }
-        }
+    "settle_in_cabin_task_text": {
+        "message": "Вы можете начать жить здесь, будто это ваша собственная Хижина."
     },
     "build_cottege_task_title": {
         "message": "Построить Коттедж"
@@ -2871,6 +2861,27 @@
     "name_cryomancer_vito": {
         "message": "Криомант Вито"
     },
+    "name_aerotheurg_mackunga": {
+        "message": "Аэротеург Макунга"
+    },
+    "name_aerotheurg_danny": {
+        "message": "Аэротеург Дэнни"
+    },
+    "name_pyrokinetic_horst": {
+        "message": "Пирокинетик Хорст"
+    },
+    "name_pyrokinetic_august": {
+        "message": "Пирокинетик Август"
+    },
+    "name_adventurer_leon": {
+        "message": "Приключенец Леон"
+    },
+    "name_adventurer_lei_shan": {
+        "message": "Приключенец Лей Шань"
+    },
+    "name_adventurer_dovakin": {
+        "message": "Приключенец Довакин"
+    },
     "choose_class": {
         "message": "Выберите класс"
     },
@@ -2969,5 +2980,38 @@
     },
     "hire": {
         "message": "Нанять!"
+    },
+    "race_chimera": {
+        "message": "Химера"
+    },
+    "race_demon": {
+        "message": "Демон"
+    },
+    "race_dragon": {
+        "message": "Дракон"
+    },
+    "race_gnoll": {
+        "message": "Гнолль"
+    },
+    "race_human": {
+        "message": "Человек"
+    },
+    "race_minotaur": {
+        "message": "Минотавр"
+    },
+    "race_naga": {
+        "message": "Нага"
+    },
+    "race_orc": {
+        "message": "Орк"
+    },
+    "race_raptor": {
+        "message": "Раптор"
+    },
+    "race_satyr": {
+        "message": "Сатир"
+    },
+    "race_unknown": {
+        "message": "Нечто"
     }
 }

@@ -1,11 +1,12 @@
-import { GameScreens, InventoryGameScreens, MindGameScreens } from "../../enums-and-interfaces/enums";
-import SubInventoryScreen from "../../components/SubInventoryScreen/SubInventoryScreen";
+import { GameScreens, InventoryGameScreens, MindGameScreens, SquadGameScreens } from "../../enums-and-interfaces/enums";
+import SubInventoryScreen from "../../components/SubInventoryScreen";
 import SubMindScreen from "../../components/SubMindScreen/SubMindScreen";
 import { IUpgradeButton } from "../../enums-and-interfaces/interfaces";
 import { 
-    Book, Shop, PersonUp
+    Book, Shop, PersonUp, Person
 } from 'react-bootstrap-icons';
 import PatternScreen from "../../components/PatternScreen";
+import SubSquadScreen from "../../components/SubSquadScreen";
 
 const guildSubScreenMapping = {
     [MindGameScreens.guildSchool]: {
@@ -22,6 +23,11 @@ const guildSubScreenMapping = {
         requiredStage: 1,
         icon: <Shop size={36} />,
         screen: <SubInventoryScreen screenName={InventoryGameScreens.guildShop}/>
+    },
+    [SquadGameScreens.guildianRooms]: {
+        requiredStage: 1,
+        icon: <Person size={36} />,
+        screen: <SubSquadScreen screenName={SquadGameScreens.guildianRooms}/>
     }
 }
 

@@ -23,4 +23,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  6) Several generations of `MASPIC` masters (?)
  7) `Tropheys` after `win` on `Battle Screen`
  8) More items for `extra arms` and `telekinesis`
- 9) `Mercenaries` on different screens
+ 9) `Quests`

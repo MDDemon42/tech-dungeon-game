@@ -18,6 +18,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     overflow-y: scroll;
+    max-height: calc(95vh - 450px)
 }
 
 .SubInventoryScreen_buttons {

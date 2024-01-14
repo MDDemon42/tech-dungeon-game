@@ -112,6 +112,7 @@ export enum GameScreens {
     fireSite = 'Fire_Site',
     focusSchool = 'Focus_School',
     focusSite = 'Focus_Site',
+    guildianRooms = 'Guildian_Rooms',
     guildRituals = 'Guild_Rituals',
     guildSchool = 'Guild_School',
     guildShop = 'Guild_Shop',
@@ -120,8 +121,10 @@ export enum GameScreens {
     mansion = 'Mansion',
     market = 'Market',
     mutaLab = 'Mutation_Lab', 
+    psionRooms = 'Psion_Rooms',
     pyrokineticRooms = 'Pyrokinetic_Rooms',   
     spellSchool = 'Spell_School',
+    tavern = 'Tavern',
     villageMap = 'Village_Map', 
     wizardSchool = 'Wizard_School',
     wizardShop = 'Wizard_Shop',
@@ -163,7 +166,10 @@ export enum SquadGameScreens {
     aerotheurgRooms = 'Aerotheurg_Rooms',
     apprenticeRooms = 'Apprentice_Rooms',
     cryomancerRooms = 'Cryomancer_Rooms',
-    pyrokineticRooms = 'Pyrokinetic_Rooms'
+    guildianRooms = 'Guildian_Rooms',
+    psionRooms = 'Psion_Rooms',
+    pyrokineticRooms = 'Pyrokinetic_Rooms',
+    tavern = 'Tavern'
 }
 
 export enum TaskStatus {

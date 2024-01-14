@@ -1,4 +1,4 @@
-import SubInventoryScreen from '../../components/SubInventoryScreen/SubInventoryScreen';
+import SubInventoryScreen from '../../components/SubInventoryScreen';
 import { GameScreens, InventoryGameScreens } from '../../enums-and-interfaces/enums';
 import { IUpgradeButton } from '../../enums-and-interfaces/interfaces';
 import { Virus } from 'react-bootstrap-icons';

@@ -35,6 +35,9 @@ import { apprenticeRoomsOptions } from '../../gameScreens/WizardSchool/members';
 import { cryomancerRoomsOptions } from '../../gameScreens/IceSite/members';
 import { pyrokineticRoomsOptions } from '../../gameScreens/FireSite/members';
 import { aerotheurgRoomsOptions } from '../../gameScreens/AirSite/members';
+import { tavernOptions } from '../../gameScreens/Market/members';
+import { guildianRoomsOptions } from '../../gameScreens/Guild/members';
+import { psionRoomsOptions } from '../../gameScreens/FocusSite/members';
 
 export function createTask(
     resourceCost: {
@@ -64,6 +67,7 @@ export const tasks: IGameTasks = {
     [GameScreens.fireSite]: fireSiteTasks,
     [GameScreens.focusSchool]: null,
     [GameScreens.focusSite]: focusSiteTasks,
+    [GameScreens.guildianRooms]: null,
     [GameScreens.guildRituals]: null,
     [GameScreens.guildSchool]: guildTasks,
     [GameScreens.guildShop]: null,
@@ -72,8 +76,10 @@ export const tasks: IGameTasks = {
     [GameScreens.mansion]: mansionTasks,
     [GameScreens.market]: marketTasks,
     [GameScreens.mutaLab]: mutaLabTasks,
+    [GameScreens.psionRooms]: null,
     [GameScreens.pyrokineticRooms]: null,
     [GameScreens.spellSchool]: null,
+    [GameScreens.tavern]: null,
     [GameScreens.villageMap]: null,
     [GameScreens.wizardSchool]: wizardSchoolTasks,
     [GameScreens.wizardShop]: null,
@@ -92,6 +98,7 @@ export const stageOptions: IGameStageOptions = {
     [GameScreens.fireSite]: fireSiteOptions,
     [GameScreens.focusSchool]: focusSchoolOptions,
     [GameScreens.focusSite]: focusSiteOptions,
+    [GameScreens.guildianRooms]: guildianRoomsOptions,
     [GameScreens.guildRituals]: guildRitualOptions,
     [GameScreens.guildSchool]: guildSchoolOptions,
     [GameScreens.guildShop]: guildShopOptions,
@@ -100,8 +107,10 @@ export const stageOptions: IGameStageOptions = {
     [GameScreens.mansion]: null,
     [GameScreens.market]: marketOptions,
     [GameScreens.mutaLab]: mutaLabOptions,
+    [GameScreens.psionRooms]: psionRoomsOptions,
     [GameScreens.pyrokineticRooms]: pyrokineticRoomsOptions,
     [GameScreens.spellSchool]: spellSchoolOptions,
+    [GameScreens.tavern]: tavernOptions,
     [GameScreens.villageMap]: null,
     [GameScreens.wizardSchool]: wizardSchoolOptions,
     [GameScreens.wizardShop]: wizardShopOptions
@@ -136,16 +145,19 @@ const relatedScreens: Record<GameScreens, GameScreens[]> = {
     [GameScreens.fireSite]: [GameScreens.fireSchool, GameScreens.pyrokineticRooms],
     [GameScreens.focusSchool]: [],
     [GameScreens.focusSite]: [GameScreens.focusSchool],
+    [GameScreens.guildianRooms]: [],
     [GameScreens.guildRituals]: [],
-    [GameScreens.guildSchool]: [GameScreens.guildShop],
+    [GameScreens.guildSchool]: [GameScreens.guildShop, GameScreens.guildianRooms],
     [GameScreens.guildShop]: [],
     [GameScreens.iceSchool]: [],
     [GameScreens.iceSite]: [GameScreens.iceSchool, GameScreens.cryomancerRooms],
     [GameScreens.mansion]: [GameScreens.armoury],
-    [GameScreens.market]: [],
+    [GameScreens.market]: [GameScreens.tavern],
     [GameScreens.mutaLab]: [],
+    [GameScreens.psionRooms]: [],
     [GameScreens.pyrokineticRooms]: [],
     [GameScreens.spellSchool]: [],
+    [GameScreens.tavern]: [],
     [GameScreens.villageMap]: [],
     [GameScreens.wizardSchool]: [
         GameScreens.wizardShop, 

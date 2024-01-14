@@ -4,7 +4,6 @@ import {
     GameScreens,  
     InventoryPlace,
     MindOption, 
-    Race, 
     TaskStatus, 
     UserParam, 
     UserResource, 
@@ -97,7 +96,7 @@ export interface ICharacterGeneral {
 
 export interface ICharacherParams {
     class: UserStartClass,
-    race: Race,
+    race: string,
     stage?: number,
     level: number,
     strength: number,
@@ -317,7 +316,6 @@ export interface IBendingMapping extends ISubMapping {
 
 export interface ISubInventoryMapping extends ISubMapping {
     resource: UserResource,
-    maxHeight: string
 }
 
 export interface ISubMindMapping extends ISubMapping {

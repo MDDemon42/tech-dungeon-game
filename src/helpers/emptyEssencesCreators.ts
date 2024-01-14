@@ -20,6 +20,7 @@ import {
     InventoryPlace, 
     UserStartClass
 } from "../enums-and-interfaces/enums";
+import { raceNames } from "../general/races/races";
 
 export default function createEmptyCharacter(): ICharacher {
     return {
@@ -35,7 +36,7 @@ function createEmptyParams(): ICharacherParams {
         strength: 0,
         lifted: 0,
         class: UserStartClass.noIcon,
-        race: Race.human,
+        race: raceNames[Race.human],
         currentParams: {
             [UserParam.health]: 0,
             [UserParam.mana]: 0,

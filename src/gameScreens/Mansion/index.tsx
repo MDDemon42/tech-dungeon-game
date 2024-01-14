@@ -4,7 +4,7 @@ import {
     ChatRightHeart, Hammer
 } from 'react-bootstrap-icons';
 import LivingRoom from './LivingRoom';
-import SubInventoryScreen from '../../components/SubInventoryScreen/SubInventoryScreen';
+import SubInventoryScreen from '../../components/SubInventoryScreen';
 import PatternScreen from '../../components/PatternScreen';
 
 const mansionSubScreenMapping = {

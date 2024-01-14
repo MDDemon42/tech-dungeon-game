@@ -7,7 +7,7 @@ import airMasteries from "../masteries";
 const aerotheurgMackunga = () => {
     const character = createEmptyCharacter();
 
-    character.params.name = chrome.i18n.getMessage('');
+    character.params.name = chrome.i18n.getMessage('name_aerotheurg_mackunga');
     character.params.class = UserStartClass.creative;
 
     character.params.maxParams[UserParam.health] = 3;
@@ -28,7 +28,7 @@ const aerotheurgMackunga = () => {
 const aerotheurgDanny = () => {
     const character = createEmptyCharacter();
 
-    character.params.name = chrome.i18n.getMessage('');
+    character.params.name = chrome.i18n.getMessage('name_aerotheurg_danny');
     character.params.class = UserStartClass.ingenious;
 
     character.params.maxParams[UserParam.health] = 4;

@@ -2,12 +2,13 @@ import { Race, UserParam } from "../../enums-and-interfaces/enums";
 import createEmptyCharacter from "../../helpers/emptyEssencesCreators";
 import academyMasteries from "../../gameScreens/Academy/masteries";
 import mutations from "../../gameScreens/MutaLab/mutations";
+import { raceNames } from "../races/races";
 
 const satyr = () => {
     const character = createEmptyCharacter();
 
     character.params.name = 'Satyr';
-    character.params.race = Race.satyr;
+    character.params.race = raceNames[Race.satyr];
 
     character.params.maxParams[UserParam.health] = 3;
     character.params.currentParams[UserParam.health] = 3;
@@ -25,7 +26,7 @@ const minotaur = () => {
     const character = createEmptyCharacter();
 
     character.params.name = 'Minotaur';
-    character.params.race = Race.minotaur;
+    character.params.race = raceNames[Race.minotaur];
 
     character.params.maxParams[UserParam.health] = 3;
     character.params.currentParams[UserParam.health] = 3;
@@ -45,7 +46,7 @@ const orc = () => {
     const character = createEmptyCharacter();
 
     character.params.name = 'Orc';
-    character.params.race = Race.orc;
+    character.params.race = raceNames[Race.orc];
 
     character.params.maxParams[UserParam.health] = 3;
     character.params.currentParams[UserParam.health] = 3;
@@ -64,7 +65,7 @@ const naga = () => {
     const character = createEmptyCharacter();
 
     character.params.name = 'Naga';
-    character.params.race = Race.naga;
+    character.params.race = raceNames[Race.naga];
 
     character.params.maxParams[UserParam.health] = 3;
     character.params.currentParams[UserParam.health] = 3;
@@ -82,7 +83,7 @@ const demon = () => {
     const character = createEmptyCharacter();
 
     character.params.name = 'Demon';
-    character.params.race = Race.demon;
+    character.params.race = raceNames[Race.demon];
 
     character.params.maxParams[UserParam.health] = 6;
     character.params.currentParams[UserParam.health] = 6;
@@ -107,7 +108,7 @@ const dragon = () => {
     const character = createEmptyCharacter();
 
     character.params.name = 'Dragon';
-    character.params.race = Race.dragon;
+    character.params.race = raceNames[Race.dragon];
 
     character.params.maxParams[UserParam.health] = 6;
     character.params.currentParams[UserParam.health] = 6;
@@ -132,7 +133,7 @@ const ultimate_chimera = () => {
     const character = createEmptyCharacter();
 
     character.params.name = 'Ultimate chimera';
-    character.params.race = Race.dragon;
+    character.params.race = raceNames[Race.chimera];
 
     character.params.maxParams[UserParam.health] = 8;
     character.params.currentParams[UserParam.health] = 8;

@@ -1,5 +1,5 @@
 import { GameScreens, InventoryGameScreens, MindGameScreens, SquadGameScreens } from "../../enums-and-interfaces/enums";
-import SubInventoryScreen from "../../components/SubInventoryScreen/SubInventoryScreen";
+import SubInventoryScreen from "../../components/SubInventoryScreen";
 import SubMindScreen from "../../components/SubMindScreen/SubMindScreen";
 import { IUpgradeButton } from "../../enums-and-interfaces/interfaces";
 import { 

@@ -3,17 +3,10 @@ import { IScreenTasks } from "../../../enums-and-interfaces/interfaces";
 import items from "../../Market/items";
 import { createTask } from "../../../redux/slices/gameStage";
 
-const buildCabin = createTask(
-    [
-        {
-            name: items.bigResources.wood.name,
-            amount: 1
-        }
-    ],
-    chrome.i18n.getMessage('build_cabin_task_title'),
-    chrome.i18n.getMessage('build_cabin_task_text', 
-        ['1', items.bigResources.wood.name]
-    ),
+const settleInCabin = createTask(
+    [],
+    chrome.i18n.getMessage('settle_in_cabin_task_title'),
+    chrome.i18n.getMessage('settle_in_cabin_task_text'),
 );
 
 const buildArmoury = createTask(
@@ -110,7 +103,7 @@ const buildMansion = createTask(
 const mansionTasks: IScreenTasks = {
     1: {
         status: TaskStatus.unknown,
-        task: buildCabin
+        task: settleInCabin
     },
     2: {
         status: TaskStatus.unknown,

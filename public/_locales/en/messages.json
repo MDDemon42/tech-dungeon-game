@@ -132,21 +132,11 @@
     "mansion_title": {
         "message": "Welcome to Mnasion!"
     },
-    "build_cabin_task_title": {
-        "message": "Build Cabin"
+    "settle_in_cabin_task_title": {
+        "message": "Settle in abandoned Cabin"
     },
-    "build_cabin_task_text": {
-        "message": "You can use $count$ $resource$ to build your own Cabin.",
-        "placeholders": {
-            "count": {
-                "content": "$1",
-                "example": ""
-            },
-            "resource": {
-                "content": "$2",
-                "example": ""
-            }
-        }
+    "settle_in_cabin_task_text": {
+        "message": "You can live here like it is your own Cabin."
     },
     "build_cottege_task_title": {
         "message": "Build Cottege"
@@ -2879,6 +2869,27 @@
     "name_cryomancer_vito": {
         "message": "Cryomancer Vito"
     },
+    "name_aerotheurg_mackunga": {
+        "message": "Aerotheurg Mackunga"
+    },
+    "name_aerotheurg_danny": {
+        "message": "Aerotheurg Danny"
+    },
+    "name_pyrokinetic_horst": {
+        "message": "Pyrokinetic Horst"
+    },
+    "name_pyrokinetic_august": {
+        "message": "Pyrokinetic August"
+    },
+    "name_adventurer_leon": {
+        "message": "Adventurer Leon"
+    },
+    "name_adventurer_lei_shan": {
+        "message": "Adventurer Lei Shan"
+    },
+    "name_adventurer_dovakin": {
+        "message": "Adventurer Dovakin"
+    },
     "choose_class": {
         "message": "Choose class"
     },
@@ -2977,5 +2988,38 @@
     },
     "hire": {
         "message": "Hire!"
+    },
+    "race_chimera": {
+        "message": "Chimera"
+    },
+    "race_demon": {
+        "message": "Demon"
+    },
+    "race_dragon": {
+        "message": "Dragon"
+    },
+    "race_gnoll": {
+        "message": "Gnoll"
+    },
+    "race_human": {
+        "message": "Human"
+    },
+    "race_minotaur": {
+        "message": "Minotaur"
+    },
+    "race_naga": {
+        "message": "Naga"
+    },
+    "race_orc": {
+        "message": "Orc"
+    },
+    "race_raptor": {
+        "message": "Raptor"
+    },
+    "race_satyr": {
+        "message": "Satyr"
+    },
+    "race_unknown": {
+        "message": "Unknown"
     }
 }

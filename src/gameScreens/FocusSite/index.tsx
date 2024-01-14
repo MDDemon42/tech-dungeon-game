@@ -1,8 +1,9 @@
-import { GameScreens, MindGameScreens } from "../../enums-and-interfaces/enums";
+import { GameScreens, MindGameScreens, SquadGameScreens } from "../../enums-and-interfaces/enums";
 import SubMindScreen from "../../components/SubMindScreen/SubMindScreen";
 import { IUpgradeButton } from "../../enums-and-interfaces/interfaces";
 import PatternScreen from "../../components/PatternScreen";
-import { Book, Eye } from "react-bootstrap-icons";
+import { Book, Eye, Person } from "react-bootstrap-icons";
+import SubSquadScreen from "../../components/SubSquadScreen";
 
 const focusSiteSubScreenMapping = {
     [MindGameScreens.focusSchool]: {
@@ -14,7 +15,12 @@ const focusSiteSubScreenMapping = {
         requiredStage: 1,
         icon: <Eye size={36} />,
         screen: <SubMindScreen screenName={MindGameScreens.focusSite}/>
-    }    
+    },
+    [SquadGameScreens.psionRooms]: {
+        requiredStage: 1,
+        icon: <Person size={36} />,
+        screen: <SubSquadScreen screenName={SquadGameScreens.psionRooms}/>
+    }
 }
 
 const focusSiteUpgradeButtons = (stage: number): IUpgradeButton[] => [

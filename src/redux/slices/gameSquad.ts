@@ -26,6 +26,7 @@ import {
 } from '../../enums-and-interfaces/enums';
 import powers from '../../gameScreens/FocusSite/powers';
 import classInfo from '../../general/classInfo';
+import { raceNames } from '../../general/races/races';
 
 export function placeAsKey(place: string) {
     return place.split(' ').map((part, index) => {
@@ -671,7 +672,7 @@ const gameSquad = createSlice({
 
             if (mastery.name === academyMasteries.brutalForce.name) {
                 const newRace = checkRace(squadMember.general.inventory, true);
-                squadMember.params.race = newRace;
+                squadMember.params.race = raceNames[newRace];
     
                 const newRaceMastery = raceMasteries[newRace];
                 if (newRaceMastery) {
@@ -904,7 +905,7 @@ const gameSquad = createSlice({
                 })
 
             const newRace = checkRace(inventory, isStrong);
-            squadMember.params.race = newRace;
+            squadMember.params.race = raceNames[newRace];
 
             const newRaceMastery = raceMasteries[newRace];
             if (newRaceMastery) {

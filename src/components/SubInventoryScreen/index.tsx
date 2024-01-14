@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './SubInventoryScreen.module.css';
+import styles from './index.module.css';
 import { 
     IStore, 
     IMutation, 
@@ -33,37 +33,31 @@ const subInventoryMappings: Record<InventoryGameScreens, ISubInventoryMapping> =
         resource: UserResource.none,
         title: chrome.i18n.getMessage('armoury_title'),
         button: chrome.i18n.getMessage('craft'),
-        maxHeight: 'calc(95vh - 450px)'
     },
     [InventoryGameScreens.wizardShop]: {
         resource: UserResource.gem,
         title: chrome.i18n.getMessage('wizard_shop_title'),
         button: chrome.i18n.getMessage('buy'),
-        maxHeight: 'calc(95vh - 450px)'
     },
     [InventoryGameScreens.cyberLab]: {
         resource: UserResource.core,
         title: chrome.i18n.getMessage('cyber_lab_title'),
         button: chrome.i18n.getMessage('implement'),
-        maxHeight: 'calc(95vh - 350px)'
     },
     [InventoryGameScreens.mutaLab]: {
         resource: UserResource.gene,
         title: chrome.i18n.getMessage('muta_lab_title'),
         button: chrome.i18n.getMessage('mutate'),
-        maxHeight: 'calc(95vh - 350px)'
     },
     [InventoryGameScreens.market]: {
         resource: UserResource.gem,
         title: chrome.i18n.getMessage('market_title'),
         button: chrome.i18n.getMessage('buy'),
-        maxHeight: 'calc(95vh - 350px)'
     },
     [InventoryGameScreens.guildShop]: {
         resource: UserResource.gem,
         title: chrome.i18n.getMessage('guild_shop_title'),
         button: chrome.i18n.getMessage('buy'),
-        maxHeight: 'calc(95vh - 450px)'
     }
 }
 
@@ -149,10 +143,7 @@ function SubInventoryScreen(props: {
                     subInventoryMappings[screenName].title
                 }
             </h3>            
-            <div 
-                className={styles.SubInventoryScreen_body}
-                style={{maxHeight: subInventoryMappings[screenName].maxHeight}}
-            >
+            <div className={styles.SubInventoryScreen_body}>
                 {
                     Object.keys(dataSpecified).map(key => {
                         if (dataSpecified[key].length === 0) {
