@@ -1,5 +1,5 @@
-import { InventoryPlace } from "../../../enums-and-interfaces/enums";
-import { IBattleAbility, IPassiveAbility, IGuildItem } from "../../../enums-and-interfaces/interfaces";
+import { InventoryPlace, InventorySlotCategory } from "../../../enums-and-interfaces/enums";
+import { IBattleAbility, IPassiveAbility, IGuildItem, IMastery } from "../../../enums-and-interfaces/interfaces";
 import weapons from "./weapons";
 
 export function createGuildItem(
@@ -20,7 +20,9 @@ export function createGuildItem(
     linkedAbilities: {
         linkedMastery: string,
         masterAbility: IBattleAbility,
-    }[] | null,       
+    }[] | null,  
+    givenMastery: IMastery | null = null,   
+    category: InventorySlotCategory = InventorySlotCategory.item  
 ): IGuildItem {
     return {
         name: commonInfo[0],
@@ -31,6 +33,9 @@ export function createGuildItem(
         inventoryPlaces: inventoryInfo[1],
         priority: inventoryInfo[2],
 
+        category,
+
+        givenMastery,
         requiredMastery,
         requiredStrength,
         abilities,

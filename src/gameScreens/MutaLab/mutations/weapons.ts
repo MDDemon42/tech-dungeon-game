@@ -13,7 +13,28 @@ const acidSpit = createMutation(
         1, [InventoryPlace.chin], 2
     ],
     [
-        [abilities.battleAbilities.ranged.acid.acidSpit], 
+        [
+            abilities.battleAbilities.ranged.acid.acidSpit,
+            abilities.battleAbilities.melee.physicalPiercing.acidBite
+        ], 
+        null
+    ]
+);
+
+const fireBreath = createMutation(
+    [
+        chrome.i18n.getMessage('fire_breath'), 
+        chrome.i18n.getMessage('fire_breath_mutation_description'),
+        images.mutantEvolvings.fireBreath
+    ],
+    [
+        1, [InventoryPlace.chin], 2
+    ],
+    [
+        [
+            abilities.battleAbilities.ranged.fire.fireBreath,
+            abilities.battleAbilities.melee.physicalPiercing.fireBite
+        ], 
         null
     ]
 );
@@ -82,6 +103,21 @@ const horns = createMutation(
     ]
 )
 
+const tailWithBlunt = createMutation(
+    [
+        chrome.i18n.getMessage('tail_with_blunt'), 
+        chrome.i18n.getMessage('tail_with_blunt_mutation_description'),
+        images.mutantEvolvings.tailWithBlunt
+    ],
+    [
+        2, [InventoryPlace.tail], 1
+    ],
+    [
+        [abilities.battleAbilities.melee.physicalSmashing.tailCrash], 
+        [abilities.passiveAbilities.armor.tailWithBlunt]
+    ]    
+)
+
 const tailWithSting = createMutation(
     [
         chrome.i18n.getMessage('tail_with_sting'), 
@@ -131,10 +167,12 @@ const weapons = {
     acidSpit,
     claw,
     claws,
+    fireBreath,
     horns,
     lowerFangs,
     pincers,
     raptorLegs,
+    tailWithBlunt,
     tailWithSting
 }
 

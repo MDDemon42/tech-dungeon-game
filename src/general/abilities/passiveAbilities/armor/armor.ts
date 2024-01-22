@@ -107,9 +107,18 @@ const hooves = createPassiveAbility(
     0
 )
 
+const tailWithBlunt = createPassiveAbility(
+    [
+        '', chrome.i18n.getMessage('dodge_amount', ['10']), ''
+    ],
+    null,
+    null,
+    10
+)
+
 const tailWithSting = createPassiveAbility(
     [
-        '', chrome.i18n.getMessage('dodge_15'), ''
+        '', chrome.i18n.getMessage('dodge_amount', ['15']), ''
     ],
     null,
     null,
@@ -118,7 +127,7 @@ const tailWithSting = createPassiveAbility(
 
 const intuition = createPassiveAbility(
     [
-        '', chrome.i18n.getMessage('dodge_15'), ''
+        '', chrome.i18n.getMessage('dodge_amount', ['15']), ''
     ],
     null,
     null,
@@ -169,6 +178,7 @@ const armor = {
     scales,
     fur,
     hooves,
+    tailWithBlunt,
     tailWithSting,
     intuition,
     guardianField,

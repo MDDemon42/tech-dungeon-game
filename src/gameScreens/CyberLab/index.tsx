@@ -29,7 +29,7 @@ const cyberLabUpgradeButtons = (stage: number): IUpgradeButton[] => [
 
 function CyberLab() {
     return <PatternScreen 
-        screenName={GameScreens.academy}
+        screenName={GameScreens.cyberLab}
         upgradeButtonsFunc={cyberLabUpgradeButtons}
         subScreenMapping={cyberLabSubScreenMapping}
     />

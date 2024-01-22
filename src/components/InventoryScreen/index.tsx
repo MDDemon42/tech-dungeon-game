@@ -74,6 +74,7 @@ function InventoryScreen(props: {
     const head = getHeadImage(
         powersUserNames,
         inventory.chin.name,
+        inventory.eyes.name,
         inventory.head.name
     );
 

@@ -3,6 +3,7 @@ import {
     DamageType, 
     GameScreens,  
     InventoryPlace,
+    InventorySlotCategory,
     MindOption, 
     TaskStatus, 
     UserParam, 
@@ -74,7 +75,8 @@ export interface ITask {
 export interface IGameSquad {
     currentlyWatched: number,
     squadMembers: Record<string, ICharacher>,
-    resources: Record<UserResource, number>
+    resources: Record<UserResource, number>,
+    storage: IItem[]
 }
 
 export interface IOpponentSquad {
@@ -152,7 +154,7 @@ export interface IBending extends IMastery {
 }
 
 export interface IPower extends IMastery {
-    ability: IBattleAbility | null,
+    abilities: IBattleAbility[] | null,
     passiveAbilities: IPassiveAbility[] | null,
     requiredPower: string
 }
@@ -171,6 +173,7 @@ export interface IInventory extends Record<string,
 > {
     hat: IItem | IWizardItem,
     head: IMutation,
+    eyes: IMutation | ICyber,
     chin: IMutation,
     armor: IItem | IMutation,
     skin: IMutation | ICyber,
@@ -222,10 +225,12 @@ export interface IBigResource extends ICommon {
 }
 
 export interface IInventorySlot extends ICommon {
+    givenMastery: IMastery | null,
     cost: number,
     inventoryPlaces: InventoryPlace[],
     priority: number,
 
+    category: InventorySlotCategory,
     requiredStrength: number,
 
     abilities: IBattleAbility[] | null,
@@ -272,17 +277,7 @@ export interface IPassiveAbility extends ICommon {
 }
 
 // classes //
-export interface IClassInfo {
-    [UserStartClass.vital]: IClassInfoItem,
-    [UserStartClass.tireless]: IClassInfoItem,
-    [UserStartClass.creative]: IClassInfoItem,
-    [UserStartClass.dreamer]: IClassInfoItem,
-    [UserStartClass.geneKeeper]: IClassInfoItem,
-    [UserStartClass.coreKeeper]: IClassInfoItem,
-    [UserStartClass.richie]: IClassInfoItem,
-    [UserStartClass.ingenious]: IClassInfoItem,
-    [UserStartClass.noIcon]: IClassInfoItem
-}
+export interface IClassInfo extends Record<UserStartClass, IClassInfoItem> {}
 
 interface IClassInfoItem {
     name: string,
@@ -304,9 +299,12 @@ export interface IMutationsForRaceCheck {
     extraArms: boolean,
     claws: boolean,
     acidSpit: boolean,
-    wings: boolean,
+    skinWings: boolean,
     pincers: boolean,
-    raptorLegs: boolean
+    raptorLegs: boolean,
+    fireBreath: boolean,
+    featherWings: boolean,
+    tailWithBlunt: boolean
 }
 
 // lookout pages //

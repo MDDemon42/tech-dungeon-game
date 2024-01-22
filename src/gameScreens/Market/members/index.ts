@@ -1,8 +1,10 @@
 import { UserParam, UserStartClass } from "../../../enums-and-interfaces/enums";
 import { ICharacher } from "../../../enums-and-interfaces/interfaces";
+import { raceNames } from "../../../general/races/races";
 import createEmptyCharacter from "../../../helpers/emptyEssencesCreators";
 import academyMasteries from "../../Academy/masteries";
 import armouryItems from "../../Mansion/armouryItems";
+import mutations from "../../MutaLab/mutations";
 import items from "../items";
 
 const adventurerLeon = () => {
@@ -30,7 +32,7 @@ const adventurerLeiShan = () => {
     const character = createEmptyCharacter();
 
     character.params.name = chrome.i18n.getMessage('name_adventurer_lei_shan');
-    character.params.class = UserStartClass.richie;
+    character.params.class = UserStartClass.enduring;
 
     character.params.maxParams[UserParam.health] = 3;
     character.params.currentParams[UserParam.health] = 3;
@@ -64,10 +66,36 @@ const adventurerDovakin = () => {
     character.general.inventory.armor = items.armors.steelArmor;
     character.general.inventory.bothHands = armouryItems.mageWeapons.mageDragonBoneBlade;
 
+    character.general.inventory.eyes = mutations.other.dragonEyes;
+
+    return character
+}
+
+const adventurerGormak = () => {
+    const character = createEmptyCharacter();
+
+    character.params.name = chrome.i18n.getMessage('name_adventurer_gormak');
+    character.params.class = UserStartClass.enduring;
+    character.params.level = 5;
+    character.params.race = raceNames.Orc;
+    character.params.strength = 3;
+
+    character.params.maxParams[UserParam.health] = 6;
+    character.params.currentParams[UserParam.health] = 6;
+
+    character.params.maxParams[UserParam.stamina] = 6;
+    character.params.currentParams[UserParam.stamina] = 6;
+
+    character.general.mind.masteries.push(academyMasteries.axeAffiliation);
+    character.general.inventory.leftHand = items.weapons.axe;
+    character.general.inventory.rightHand = items.weapons.axe;
+
+    character.general.inventory.chin = mutations.weapons.lowerFangs;
+
     return character
 }
 
 export const tavernOptions: Record<string, ICharacher[]> = {
     0: [],
-    1: [adventurerLeon(), adventurerLeiShan(), adventurerDovakin()],
+    1: [adventurerLeon(), adventurerLeiShan(), adventurerDovakin(), adventurerGormak()],
 }

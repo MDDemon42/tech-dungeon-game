@@ -1,8 +1,8 @@
 import weapons from "./weapons";
 import armors from "./armors";
 import other from "./other";
-import { InventoryPlace } from "../../../enums-and-interfaces/enums";
-import { IBattleAbility, IPassiveAbility, IWizardItem } from "../../../enums-and-interfaces/interfaces";
+import { InventoryPlace, InventorySlotCategory } from "../../../enums-and-interfaces/enums";
+import { IBattleAbility, IMastery, IPassiveAbility, IWizardItem } from "../../../enums-and-interfaces/interfaces";
 
 export function createWizardItem(
     commonInfo: [
@@ -19,7 +19,9 @@ export function createWizardItem(
         abilities: IBattleAbility[] | null,
         passiveAbilities: IPassiveAbility[] | null
     ],    
-    requiredStrength: number = 0
+    requiredStrength: number = 0,
+    givenMastery: IMastery | null = null,
+    category: InventorySlotCategory = InventorySlotCategory.item
 ): IWizardItem {
     return {
         name: commonInfo[0],
@@ -31,6 +33,8 @@ export function createWizardItem(
         priority: inventoryInfo[2],
 
         requiredStrength,
+        givenMastery,
+        category,
 
         abilities: abilityInfo[0],
         passiveAbilities: abilityInfo[1]

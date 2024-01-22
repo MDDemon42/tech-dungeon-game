@@ -11,7 +11,12 @@ const telekinesis = createPower(
     ],
     [
         psionMasteries.meditativeInsights.name,
-        null, null
+        [
+            abilities.battleAbilities.ranged.physicalSmashing.telekineticPush,
+            abilities.battleAbilities.ranged.physicalSmashing.telekineticPressure,
+            abilities.battleAbilities.ranged.suffocation.telekineticChoke
+        ], 
+        null
     ],
     ''
 )
@@ -30,6 +35,20 @@ const intuition = createPower(
     ''    
 )
 
+const hypnosis = createPower(
+    [
+        chrome.i18n.getMessage('hypnosis'),
+        chrome.i18n.getMessage('hypnosis_power_description'),
+        images.psionInsights.hypnosis
+    ],
+    [
+        psionMasteries.meditativeInsights.name,
+        null,
+        null
+    ],
+    ''    
+)
+
 const levitation = createPower(
     [
         chrome.i18n.getMessage('levitation'),
@@ -44,9 +63,10 @@ const levitation = createPower(
 )
 
 const other = {
-    telekinesis,
+    hypnosis,
     intuition,
-    levitation
+    levitation,
+    telekinesis
 }
 
 export default other

@@ -7,7 +7,7 @@ import guildMasteries from "../masteries";
 const guildianZarrack = () => {
     const character = createEmptyCharacter();
 
-    character.params.name = chrome.i18n.getMessage('');
+    character.params.name = chrome.i18n.getMessage('name_guildian_zarrack');
     character.params.class = UserStartClass.ingenious;
 
     character.params.maxParams[UserParam.health] = 3;
@@ -31,8 +31,8 @@ const guildianZarrack = () => {
 const guildianShumashi = () => {
     const character = createEmptyCharacter();
 
-    character.params.name = chrome.i18n.getMessage('');
-    character.params.class = UserStartClass.richie;
+    character.params.name = chrome.i18n.getMessage('name_guildian_shumashi');
+    character.params.class = UserStartClass.enduring;
 
     character.params.maxParams[UserParam.health] = 3;
     character.params.currentParams[UserParam.health] = 3;

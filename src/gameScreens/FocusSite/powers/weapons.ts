@@ -11,7 +11,9 @@ const psiBlade = createPower(
     ],
     [
         psionMasteries.psiEnergy.name,
-        abilities.battleAbilities.melee.psionic.psiBladeSlash, 
+        [
+            abilities.battleAbilities.melee.psionic.psiBladeSlash
+        ], 
         null
     ],
     ''
@@ -25,7 +27,9 @@ const psiJavelin = createPower(
     ],
     [
         psionMasteries.psiEnergy.name,
-        abilities.battleAbilities.ranged.psionic.psiJavelin, 
+        [
+            abilities.battleAbilities.ranged.psionic.psiJavelin
+        ], 
         null
     ],
     ''
@@ -39,7 +43,9 @@ const psiLightning = createPower(
     ],
     [
         psionMasteries.psiEnergy.name,
-        abilities.battleAbilities.ranged.psionic.psiLightning, 
+        [
+            abilities.battleAbilities.ranged.psionic.psiLightning
+        ], 
         null
     ],
     ''

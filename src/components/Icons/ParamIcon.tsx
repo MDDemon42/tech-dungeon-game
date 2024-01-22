@@ -1,7 +1,7 @@
 import { UserParam } from "../../enums-and-interfaces/enums";
 import images from "../../images/images";
 import styles from './Icons.module.css';
-import userParams from "../../general/params";
+import userParams from "../../general/userParams";
 
 function ParamIcon(props: {
     param: keyof typeof UserParam

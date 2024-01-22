@@ -15,6 +15,7 @@ import {
 import fireMasteries from "../gameScreens/FireSite/masteries";
 import coldMasteries from "../gameScreens/IceSite/masteries";
 import gatherMultipleWeaponsAbilities from "./gatherMultipleWeaponsAbilities";
+import mutations from "../gameScreens/MutaLab/mutations";
 
 function gatherCharacterAbilities(character: ICharacher) {
     const result: IBattleAbility[] = [];
@@ -36,18 +37,20 @@ function gatherCharacterAbilities(character: ICharacher) {
                 for (const linkedAbility of inventory[name].linkedAbilities) {
                     const masteryName = linkedAbility.linkedMastery;
                     if (masteriesUser.includes(masteryName)) {
-                        result.push(linkedAbility.masterAbility);
+                        result.push({...linkedAbility.masterAbility});
                     } else {
                         const abilities = inventory[name]?.abilities;
                         if (abilities) {
-                            result.push(...abilities);
+                            const copyAbilities = [...abilities];
+                            result.push(...copyAbilities);
                         }
                     }
                 }                
             } else {
                 const abilities = inventory[name]?.abilities;
                 if (abilities) {
-                    result.push(...abilities);
+                    const copyAbilities = [...abilities];
+                    result.push(...copyAbilities);
                 }
             }
         }
@@ -69,10 +72,10 @@ function gatherCharacterAbilities(character: ICharacher) {
                 inventory.leftHand?.name === noItem.name &&
                 inventory.rightHand?.name === noItem.name
             ) {
-                result.push(bending.ability);
+                result.push({...bending.ability});
             }
         } else {
-            result.push(bending.ability);
+            result.push({...bending.ability});
         }
     })
 
@@ -83,17 +86,18 @@ function gatherCharacterAbilities(character: ICharacher) {
                     inventory.bothHands.name === wizardItems.weapons.apprenticeRod.name ||
                     inventory.bothHands.name === wizardItems.weapons.magisterScepter.name
                 ) {
-                    result.push(spell.ability);
+                    result.push({...spell.ability});
                 }
             } else {
-                result.push(spell.ability);
+                result.push({...spell.ability});
             }
         }
     })
 
     powersUser.forEach(power => {
-        if (!!power.ability) {
-            result.push(power.ability);
+        if (!!power.abilities) {
+            const copyAbilities = [...power.abilities];
+            result.push(...copyAbilities);
         }
     })
 
@@ -129,7 +133,20 @@ function gatherCharacterAbilities(character: ICharacher) {
             }
         })
 
-    return Array.from(new Set(result))
+    const finalResult = result.map(ability => {
+        if (inventory.eyes.name === mutations.other.dragonEyes.name) {
+            const copyAbility: IBattleAbility = {
+                ...ability,
+                hitChance: ability.hitChance + 5
+            }
+
+            ability = {...copyAbility};
+        }
+
+        return ability
+    })
+
+    return Array.from(new Set(finalResult))
 }
 
 export default gatherCharacterAbilities

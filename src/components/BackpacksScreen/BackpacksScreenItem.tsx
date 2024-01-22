@@ -1,4 +1,9 @@
-import { ArrowUpCircle, ArrowUpCircleFill } from "react-bootstrap-icons";
+import { 
+    ArrowUpCircle, 
+    ArrowUpCircleFill,
+    HandIndexThumb,
+    HandIndexThumbFill
+} from "react-bootstrap-icons";
 import { IItem, IManageItemsProps, IStore } from "../../enums-and-interfaces/interfaces";
 import CommonIcon from "../Icons/CommonIcon";
 import BackpacksScreenItemButton from "./BackpacksScreenItemButton";
@@ -7,6 +12,7 @@ import gameSquad from "../../redux/slices/gameSquad";
 import styles from './BackpacksScreen.module.css';
 import { backpacksItemEnableChecker } from "../../helpers/enableCheckers";
 import { useSelector } from "react-redux";
+import { createNoItem } from "../../helpers/emptyEssencesCreators";
 
 function BackpacksScreenItem(props: {
     item: IItem,
@@ -26,22 +32,37 @@ function BackpacksScreenItem(props: {
         dispatch(gameSquad.actions.equipItem(props));
     }
 
+    const storage = useSelector((store: IStore) => store.gameSquad.storage);
+    const nothing = createNoItem().name;
+    const emptyLockers = storage.filter(item => item.name === nothing).length;
+    const putIntoStorageListener = () => {
+        dispatch(gameSquad.actions.putIntoStorage(props))
+    }
+    const putIntoStorageDisabled = item.name === nothing || 
+        storage.length === 0 || emptyLockers === 0;
+
     return <div className={styles.BackpacksScreenItem_CommonIconWithButtons}>
         <CommonIcon item={item} disableReason={disableReason}/>
         <div className={styles.BackpacksScreenItem_CommonIconWithButtons_buttons}>
-            <div>
-                {
-                    enabled ?
-                        <ArrowUpCircle 
-                            onClick={() => equipListener(props)}
-                            title={chrome.i18n.getMessage('equip')}
-                        /> :
-                        <ArrowUpCircleFill
-                            title={disableReason}
-                        />
-                }                                
-            </div>
-            <BackpacksScreenItemButton item={item} itemIndex={itemIndex}/>                
+            {
+                enabled ?
+                    <HandIndexThumb 
+                        onClick={() => equipListener(props)}
+                        title={chrome.i18n.getMessage('equip')}
+                    /> :
+                    <HandIndexThumbFill
+                        title={disableReason}
+                    />
+            }
+            <BackpacksScreenItemButton item={item} itemIndex={itemIndex}/>  
+            {
+                putIntoStorageDisabled ?
+                    <ArrowUpCircleFill title={chrome.i18n.getMessage('storage_is_full')}/> :
+                    <ArrowUpCircle 
+                        title={chrome.i18n.getMessage('put_into_storage')} 
+                        onClick={putIntoStorageListener}
+                    /> 
+            }                         
         </div>
     </div>
 }

@@ -1,8 +1,8 @@
-import { ICyber, IPassiveAbility, IBattleAbility } from "../../../enums-and-interfaces/interfaces";
+import { ICyber, IPassiveAbility, IBattleAbility, IMastery } from "../../../enums-and-interfaces/interfaces";
 import armors from "./armors";
 import weapons from "./weapons";
 import other from "./other";
-import { InventoryPlace } from "../../../enums-and-interfaces/enums";
+import { InventoryPlace, InventorySlotCategory } from "../../../enums-and-interfaces/enums";
 
 export function createCyber(
     commonInfo: [
@@ -20,7 +20,9 @@ export function createCyber(
         passiveAbilities: IPassiveAbility[] | null
     ],
     requiredCyber: string,
-    requiredStrength: number = 0 
+    requiredStrength: number = 0,
+    givenMastery: IMastery | null = null,
+    category: InventorySlotCategory = InventorySlotCategory.cyber
 ): ICyber {
     return {
         name: commonInfo[0],
@@ -35,7 +37,9 @@ export function createCyber(
         passiveAbilities: abilityInfo[1],
 
         requiredCyber,
-        requiredStrength     
+        requiredStrength,
+        givenMastery,
+        category
     }
 }
 
@@ -63,6 +67,7 @@ const highEnergyOptions = [
 ];
 
 const nanoOptions = [
+    cybers.other.cyberEyes,
     cybers.armors.nanoVest,
     cybers.armors.nanoMatrix,
 ];

@@ -119,13 +119,14 @@ export const stageOptions: IGameStageOptions = {
 export const createGameStage = (strongStart: boolean) => {
     const result = {} as IGameStage;
     Object.keys(GameScreens).forEach(screen => {
-        const stage = (GameScreens[screen as keyof typeof GameScreens] === GameScreens.market ||
+        const gameScreen = screen as keyof typeof GameScreens;
+        const stage = (GameScreens[gameScreen] === GameScreens.market ||
                 strongStart) ? 1 : 0;
-        result[GameScreens[screen as keyof typeof GameScreens]] = {
+        result[GameScreens[gameScreen]] = {
             stage,
-            stageOptions: stageOptions[GameScreens[screen as keyof typeof GameScreens]],
-            tasks: tasks[GameScreens[screen as keyof typeof GameScreens]],
-            usableOptions: stageOptions[GameScreens[screen as keyof typeof GameScreens]]?.[stage] || []
+            stageOptions: stageOptions[GameScreens[gameScreen]],
+            tasks: tasks[GameScreens[gameScreen]],
+            usableOptions: stageOptions[GameScreens[gameScreen]]?.[stage] || []
         }
     })
 
@@ -172,6 +173,7 @@ const gameStage = createSlice({
     initialState: createGameStage(false),
     reducers: {
         setState(state, action) {
+            // the most workable solution
             Object.keys(state).forEach(key => {
                 // @ts-ignore
                 state[key] = action.payload[key];

@@ -7,7 +7,7 @@ import powers from "../powers";
 const psionMoloch = () => {
     const character = createEmptyCharacter();
 
-    character.params.name = chrome.i18n.getMessage('');
+    character.params.name = chrome.i18n.getMessage('name_psion_moloch');
     character.params.class = UserStartClass.dreamer;
 
     character.params.maxParams[UserParam.health] = 3;
@@ -28,7 +28,7 @@ const psionMoloch = () => {
 const psionAdun = () => {
     const character = createEmptyCharacter();
 
-    character.params.name = chrome.i18n.getMessage('');
+    character.params.name = chrome.i18n.getMessage('name_psion_adun');
     character.params.class = UserStartClass.ingenious;
 
     character.params.maxParams[UserParam.health] = 3;

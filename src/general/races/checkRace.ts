@@ -14,9 +14,12 @@ function checkRace(inventory: IInventory, isStrong: boolean): Race {
         tailWithSting: inventory.tail.name === mutations.weapons.tailWithSting.name,
         claws: inventory.bothHands.name === mutations.weapons.claws.name,
         acidSpit: inventory.chin.name === mutations.weapons.acidSpit.name,
-        wings: inventory.back.name === mutations.other.wings.name,
+        skinWings: inventory.back.name === mutations.other.skinWings.name,
         pincers: inventory.shoulders.name === mutations.weapons.pincers.name,
-        raptorLegs: inventory.legs.name === mutations.weapons.raptorLegs.name
+        raptorLegs: inventory.legs.name === mutations.weapons.raptorLegs.name,
+        fireBreath: inventory.chin.name === mutations.weapons.fireBreath.name,
+        featherWings: inventory.back.name === mutations.other.featherWings.name,
+        tailWithBlunt: inventory.tail.name === mutations.weapons.tailWithBlunt.name,
     }
 
     const isRace = (race: IMutationsForRaceCheck) => {
@@ -34,6 +37,8 @@ function checkRace(inventory: IInventory, isStrong: boolean): Race {
         [Race.raptor]: isRace(races.raptorRace),
         [Race.demon]: isRace(races.demonRace),
         [Race.dragon]: isRace(races.dragonRace),
+        [Race.koatl]: isRace(races.koatlRace),
+        [Race.ankylosaurus]: isRace(races.ankylosaurusRace),
         [Race.chimera]: isRace(races.chimeraRace)
     }
     

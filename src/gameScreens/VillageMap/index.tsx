@@ -112,8 +112,10 @@ const screenMappings: Partial<Record<GameScreens, {
 }
 
 function VillageMap() {
-    const squadMemberInventory = useSelector((store: IStore) => 
-        store.gameSquad.squadMembers[store.gameSquad.currentlyWatched].general.inventory);
+    const squadMember = useSelector((store: IStore) => 
+        store.gameSquad.squadMembers[store.gameSquad.currentlyWatched]);
+    const squadMemberStamina = squadMember.params.currentParams.Stamina;
+    const squadMemberInventory = squadMember.general.inventory;
     const treeCutterAmount = getWeaponAmount(squadMemberInventory, [cybers.weapons.treeCutter.name]);
     const axeAmount = getWeaponAmount(squadMemberInventory, [items.weapons.axe.name]);
     const pickaxeAmount = getWeaponAmount(squadMemberInventory, [items.weapons.pickaxe.name]);
@@ -171,15 +173,20 @@ function VillageMap() {
             }
             <button 
                 onClick={() => {
-                    const woodAmount = 0 + treeCutterAmount * 2 + axeAmount;
-                    for (let wood = 0; wood < woodAmount; wood++) {
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.wood));
-                    }
+                    if (squadMemberStamina >= 3) {
+                        const woodAmount = 1 + treeCutterAmount * 2 + axeAmount;
+                        dispatch(gameSquad.actions.getBigResource({
+                            resource: items.bigResources.wood,
+                            amount: woodAmount
+                        }));
 
-                    if (Math.floor(Math.random()*20) <= 1) {
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.beastRemains));
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.reptiloidRemains));
-                    }                    
+                        dispatch(gameSquad.actions.spendStamina(3));
+
+                        if (Math.floor(Math.random()*20) <= 1) {
+                            dispatch(gameSquad.actions.getBigResource(items.bigResources.beastRemains));
+                            dispatch(gameSquad.actions.getBigResource(items.bigResources.reptiloidRemains));
+                        } 
+                    }                
                 }}
                 className={styles.VillageMap_icon_Woods}
                 title={chrome.i18n.getMessage('woods_to')}
@@ -188,20 +195,25 @@ function VillageMap() {
             </button>
             <button 
                 onClick={() => {
-                    const oreAmount = 0 + pickaxeAmount;
-                    for (let ore = 0; ore < oreAmount; ore++) {
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.ore));
-                    }
-
-                    if (Math.floor(Math.random()*20) <= 1) {
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.dragonRemains));
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.insectoidRemains));
-                    }
-                    
-                    dispatch(gameStage.actions.changeStage({
-                        zone: GameScreens.villageMap,
-                        stage: 1
-                    }))
+                    if (squadMemberStamina >= 3) {
+                        const oreAmount = 0 + pickaxeAmount;
+                        dispatch(gameSquad.actions.getBigResource({
+                            resource: items.bigResources.ore,
+                            amount: oreAmount
+                        }));
+    
+                        if (Math.floor(Math.random()*20) <= 1) {
+                            dispatch(gameSquad.actions.getBigResource(items.bigResources.dragonRemains));
+                            dispatch(gameSquad.actions.getBigResource(items.bigResources.insectoidRemains));
+                        }
+    
+                        dispatch(gameSquad.actions.spendStamina(3));
+                        
+                        dispatch(gameStage.actions.changeStage({
+                            zone: GameScreens.villageMap,
+                            stage: 1
+                        }))
+                    }                    
                 }}
                 className={styles.VillageMap_icon_Mines}
                 title={chrome.i18n.getMessage('mines_to')}
@@ -210,12 +222,16 @@ function VillageMap() {
             </button>
             <button 
                 onClick={() => {
-                    dispatch(gameSquad.actions.getBigResource(items.bigResources.crystal));
+                    if (squadMemberStamina >= 3) {
+                        dispatch(gameSquad.actions.getBigResource(items.bigResources.crystal));
 
-                    const obsidianAmount = 0 + pickaxeAmount;
-                    for (let obsidian = 0; obsidian < obsidianAmount; obsidian++) {
-                        dispatch(gameSquad.actions.getBigResource(items.bigResources.obsidian));
-                    }
+                        dispatch(gameSquad.actions.spendStamina(3));
+
+                        const obsidianAmount = 0 + pickaxeAmount;
+                        for (let obsidian = 0; obsidian < obsidianAmount; obsidian++) {
+                            dispatch(gameSquad.actions.getBigResource(items.bigResources.obsidian));
+                        }
+                    }                    
                 }}
                 className={styles.VillageMap_icon_Caves}
                 title={chrome.i18n.getMessage('caves_to')}

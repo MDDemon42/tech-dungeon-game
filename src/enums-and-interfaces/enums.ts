@@ -1,6 +1,7 @@
 export enum InventoryPlace {
     hat = 'Hat',
     head = 'Head',
+    eyes = 'Eyes',
     chin = 'Chin',
     skin = 'Skin',
     back = 'Back',
@@ -34,12 +35,12 @@ export enum WeaponTypes {
 
 export enum UserStartClass {
     vital = 'Vital',
+    enduring = 'Enduring',
+    smart = 'Smart',
+    sane = 'Sane',
     tireless = 'Tireless',
     creative = 'Creative',
     dreamer = 'Dreamer',
-    geneKeeper = 'Gene-keeper',
-    coreKeeper = 'Core-keeper',  
-    richie = 'Richie',
     ingenious = 'Ingenious',
     noIcon = 'noIcon'
 }
@@ -55,6 +56,8 @@ export enum Race {
     raptor = 'Raptor',
     demon = 'Demon',
     dragon = 'Dragon',
+    koatl = 'Koatl',
+    ankylosaurus = 'Ankylosaurus',
     chimera = 'Chimera'
 }
 
@@ -182,4 +185,11 @@ export enum BattleResult {
     none = 'None',
     win = 'Win',
     lose = 'Lose'
+}
+
+export enum InventorySlotCategory {
+    item = 'Item',
+    cyber = 'Cyber',
+    mutation = 'Mutation',
+    nothing = 'Nothing'
 }

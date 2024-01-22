@@ -1,6 +1,7 @@
 import empoweredStrikes from './empoweredStrikes.png';
 import guardianAura from './guardianAura.png';
 import guardianField from './guardianField.png';
+import hypnosis from './hypnosis.png';
 import intuition from './intuition.png';
 import levitation from './levitation.png';
 import meditativeInsights from './meditativeInsights.png';
@@ -10,11 +11,14 @@ import psiInfusedStrikes from './psiInfusedStrikes.png';
 import psiJavelin from './psiJavelin.png';
 import psiLightning from './psiLightning.png';
 import telekinesis from './telekinesis.png';
+import telekineticChoke from './telekineticChoke.png';
+import telekineticPressure from './telekineticPressure.png';
 
 const psionInsights = {
     empoweredStrikes,
     guardianAura,
     guardianField,
+    hypnosis,
     intuition,
     levitation,
     meditativeInsights,
@@ -23,7 +27,9 @@ const psionInsights = {
     psiInfusedStrikes,
     psiJavelin,
     psiLightning,
-    telekinesis  
+    telekinesis,
+    telekineticChoke,
+    telekineticPressure 
 };
 
 export default psionInsights;

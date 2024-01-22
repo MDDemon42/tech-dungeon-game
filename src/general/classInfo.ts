@@ -1,7 +1,6 @@
-import { UserParam, UserStartClass, UserResource } from "../enums-and-interfaces/enums";
+import { UserParam, UserStartClass } from "../enums-and-interfaces/enums";
 import { IClassInfo } from "../enums-and-interfaces/interfaces";
-import userParams from "./params";
-import userResources from "./resources";
+import userParams from "./userParams";
 
 function createLevelUpBonuses(params: UserParam[]) {
     const standartLevelUpBonuses = [
@@ -24,6 +23,42 @@ const classInfo: IClassInfo = {
                 userParams[UserParam.health], 
                 userParams[UserParam.health], 
                 userParams[UserParam.health]
+            ]
+        )
+    },
+    [UserStartClass.enduring]: {
+        name: chrome.i18n.getMessage('enduring_name'),
+        bonusParam: UserParam.stamina,
+        levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.stamina]),
+        description: chrome.i18n.getMessage('start_class_common_description', 
+            [
+                userParams[UserParam.stamina], 
+                userParams[UserParam.health], 
+                userParams[UserParam.stamina]
+            ]
+        )
+    },
+    [UserStartClass.smart]: {
+        name: chrome.i18n.getMessage('smart_name'),
+        bonusParam: UserParam.mana,
+        levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.mana]),
+        description: chrome.i18n.getMessage('start_class_common_description', 
+            [
+                userParams[UserParam.mana], 
+                userParams[UserParam.health], 
+                userParams[UserParam.mana]
+            ]
+        )
+    },
+    [UserStartClass.sane]: {
+        name: chrome.i18n.getMessage('sane_name'),
+        bonusParam: UserParam.focus,
+        levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.focus]),
+        description: chrome.i18n.getMessage('start_class_common_description', 
+            [
+                userParams[UserParam.focus], 
+                userParams[UserParam.health], 
+                userParams[UserParam.focus]
             ]
         )
     },
@@ -60,42 +95,6 @@ const classInfo: IClassInfo = {
                 userParams[UserParam.focus], 
                 userParams[UserParam.focus], 
                 userParams[UserParam.focus]
-            ]
-        )
-    },
-    [UserStartClass.geneKeeper]: {
-        name: chrome.i18n.getMessage('gene_keeper_name'),
-        bonusResource: UserResource.gene,
-        levelUpBonuses: createLevelUpBonuses([UserParam.stamina, UserParam.blank]),
-        description: chrome.i18n.getMessage('start_class_common_description', 
-            [
-                userResources[UserResource.gene], 
-                userParams[UserParam.stamina], 
-                userParams[UserParam.health]
-            ]
-        )
-    },
-    [UserStartClass.coreKeeper]: {
-        name: chrome.i18n.getMessage('core_keeper_name'),
-        bonusResource: UserResource.core,
-        levelUpBonuses: createLevelUpBonuses([UserParam.health, UserParam.blank]),
-        description: chrome.i18n.getMessage('start_class_common_description', 
-            [
-                userResources[UserResource.core], 
-                userParams[UserParam.health], 
-                userParams[UserParam.blank]
-            ]
-        )
-    },
-    [UserStartClass.richie]: {
-        name: chrome.i18n.getMessage('richie_name'),
-        bonusResource: UserResource.gem,
-        levelUpBonuses: createLevelUpBonuses([UserParam.mana, UserParam.blank]),
-        description: chrome.i18n.getMessage('start_class_common_description', 
-            [
-                userResources[UserResource.gem], 
-                userParams[UserParam.mana], 
-                userParams[UserParam.blank]
             ]
         )
     },

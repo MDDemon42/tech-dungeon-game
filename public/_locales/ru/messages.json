@@ -738,6 +738,15 @@
     "resistance_cold_1": {
         "message": "Повышает сопротивление Холоду на 1."
     },
+    "tail_with_blunt": {
+        "message": "Хвост с шишаком"
+    },
+    "tail_with_blunt_mutation_description": {
+        "message": "Мутация для сокрушения жертв."
+    },
+    "tail_crash": {
+        "message": "Сокрушение хвостом"
+    },
     "tail_with_sting": {
         "message": "Хвост с жалом"
     },
@@ -1832,6 +1841,12 @@
     "cyber_claw_slash": {
         "message": "Удар кибер когтем"
     },
+    "cyber_eyes": {
+        "message": "Кибер глаза"
+    },
+    "cyber_eyes_cyber_description": {
+        "message": "Кибер для просчитывания траектории выстрелов."
+    },
     "cyber_fist_left_hand": {
         "message": "Энергетический кулак на левой руке"
     },
@@ -1910,8 +1925,11 @@
     "tree_cutter_slash": {
         "message": "Размах древопилом"
     },
-    "wings": {
-        "message": "Крылья"
+    "skin_wings": {
+        "message": "Кожистые крылья"
+    },
+    "feather_wings": {
+        "message": "Перьевые крылья"
     },
     "wings_mutation_description": {
         "message": "Мутация для полёта над полем боя."
@@ -1928,6 +1946,12 @@
     "acid_spit_mutation_description": {
         "message": "Мутация для плевков кислотой в лицо врагу."
     },
+    "fire_breath": {
+        "message": "Огненное дыхание"
+    },
+    "fire_breath_mutation_description": {
+        "message": "Мутация для сжигания лица врагу одним дыханием."
+    },
     "lower_fangs": {
         "message": "Нижние клыки"
     },
@@ -1936,6 +1960,12 @@
     },    
     "fangs_bite": {
         "message": "Укус клыками"
+    },
+    "acid_bite": {
+        "message": "Кислотный укус"
+    },
+    "fire_bite": {
+        "message": "Огненный укус"
     },
     "claws": {
         "message": "Когти"
@@ -2524,6 +2554,21 @@
     "telekinesis_power_description": {
         "message": "Мощь, открывающая бесконечные возможности."
     },
+    "telekinetic_push": {
+        "message": "Телекинетический толчок"
+    },
+    "telekinetic_pressure": {
+        "message": "Телекинетическое сдавливание"
+    },
+    "telekinetic_choke": {
+        "message": "Телекинетическое удушение"
+    },
+    "hypnosis": {
+        "message": "Гипноз"
+    },
+    "hypnosis_power_description": {
+        "message": "Мощь, останавливающая мозговую активность соперника."
+    },
     "guardian_aura": {
         "message": "Аура стража"
     },
@@ -2570,7 +2615,7 @@
         "message": "Меткость"
     },
     "marksmanship_mastery_description": {
-        "message": "Мастерство обращения с арбалетом."
+        "message": "Мастерство стрелять без промаха."
     },
     "sword_affiliation": {
         "message": "Родство с мечом"
@@ -2855,6 +2900,18 @@
     "name_apprentice_mangold": {
         "message": "Ученик Мангольд"
     },
+    "name_psion_moloch": {
+        "message": "Псион Молох"
+    },
+    "name_psion_adun": {
+        "message": "Псион Адун"
+    },
+    "name_guildian_zarrack": {
+        "message": "Гильдиец Заррак"
+    },
+    "name_guildian_shumashi": {
+        "message": "Гильдиец Шумаси"
+    },
     "name_cryomancer_sergio": {
         "message": "Криомант Серджио"
     },
@@ -2882,6 +2939,9 @@
     "name_adventurer_dovakin": {
         "message": "Приключенец Довакин"
     },
+    "name_adventurer_gormak": {
+        "message": "Приключенец Гормак"
+    },
     "choose_class": {
         "message": "Выберите класс"
     },
@@ -2900,17 +2960,11 @@
     "living_room": {
         "message": "Жилое помещение"
     },
-    "core_keeper_name": {
-        "message": "Хранитель меха-ядра"
-    },
     "creative_name": {
         "message": "Выдумщик"
     },
     "dreamer_name": {
         "message": "Мечтатель"
-    },
-    "gene_keeper_name": {
-        "message": "Хранитель мута-гена"
     },
     "ingenious_name": {
         "message": "Гений"
@@ -2918,14 +2972,20 @@
     "no_icon_name": {
         "message": ""
     },
-    "richie_name": {
-        "message": "Богатей"
-    },
     "tireless_name": {
         "message": "Неутомимый"
     },
     "vital_name": {
         "message": "Живчик"
+    },
+    "enduring_name": {
+        "message": "Выносливый"
+    },
+    "smart_name": {
+        "message": "Умник"
+    },
+    "sane_name": {
+        "message": "Здравомыслящий"
     },
     "start_class_common_description": {
         "message": "Получает дополнительно $extra$ в начале.\n\nПри повышении уровня имеет увеличенный шанс получить $param_1$ или $param_2$.\n\nТакже есть просто вероятность получить $blank$",
@@ -2981,6 +3041,9 @@
     "hire": {
         "message": "Нанять!"
     },
+    "race_ankylosaurus": {
+        "message": "Анкилозавр"
+    },
     "race_chimera": {
         "message": "Химера"
     },
@@ -2995,6 +3058,9 @@
     },
     "race_human": {
         "message": "Человек"
+    },
+    "race_koatl": {
+        "message": "Коатль"
     },
     "race_minotaur": {
         "message": "Минотавр"
@@ -3013,5 +3079,83 @@
     },
     "race_unknown": {
         "message": "Нечто"
+    },
+    "put_into_storage": {
+        "message": "Складировать"
+    },
+    "storage_is_full": {
+        "message": "Склад полон"
+    },
+    "open_storage": {
+        "message": "Открыть склад"
+    },
+    "close_storage": {
+        "message": "Закрыть склад"
+    },
+    "get_from_storage": {
+        "message": "Взять со склада"
+    },
+    "storage_is_empty": {
+        "message": "Складской шкафчик пуст"
+    },
+    "inventory_place_armor": {
+        "message": "Броня"
+    },
+    "inventory_place_back": {
+        "message": "Спина"
+    },
+    "inventory_place_belt": {
+        "message": "Пояс"
+    },
+    "inventory_place_both_hands": {
+        "message": "Обе руки"
+    },
+    "inventory_place_chin": {
+        "message": "Челюсть"
+    },
+    "inventory_place_extra_left_hand": {
+        "message": "Вторая левая рука"
+    },
+    "inventory_place_extra_right_hand": {
+        "message": "Вторая правая рука"
+    },
+    "inventory_place_eyes": {
+        "message": "Глаза"
+    },
+    "inventory_place_hat": {
+        "message": "Головной убор"
+    },
+    "inventory_place_head": {
+        "message": "Голова"
+    },
+    "inventory_place_left_hand": {
+        "message": "Левая рука"
+    },
+    "inventory_place_left_pocket": {
+        "message": "Левый карман"
+    },
+    "inventory_place_legs": {
+        "message": "Ноги"
+    },
+    "inventory_place_right_hand": {
+        "message": "Правая рука"
+    },
+    "inventory_place_right_pocket": {
+        "message": "Правый карман"
+    },
+    "inventory_place_shoulders": {
+        "message": "Плечи"
+    },
+    "inventory_place_skin": {
+        "message": "Кожа"
+    },
+    "inventory_place_tail": {
+        "message": "Хвост"
+    },
+    "inventory_place_telekinesis_left_hand": {
+        "message": "Телекинетическая левая рука"
+    },
+    "inventory_place_telekinesis_right_hand": {
+        "message": "Телекинетическая правая рука"
     }
 }

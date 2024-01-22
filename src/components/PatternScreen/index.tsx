@@ -7,7 +7,8 @@ import { IStore, IUpgradeButton } from "../../enums-and-interfaces/interfaces";
 import styles from './index.module.css';
 
 function PatternScreen(props: {
-    screenName: GameScreens.fireSite | GameScreens.iceSite | 
+    screenName: 
+        GameScreens.fireSite | GameScreens.iceSite | GameScreens.cyberLab |
         GameScreens.academy | GameScreens.airSite | GameScreens.wizardSchool |
         GameScreens.mansion | GameScreens.mutaLab | GameScreens.focusSite |
         GameScreens.market | GameScreens.guildSchool | GameScreens.tavern,

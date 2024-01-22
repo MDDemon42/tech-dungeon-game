@@ -6,6 +6,21 @@
     flex-direction: row;
 }
 
+.SquadAndStorage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.StorageIcon {
+    padding: 10px 0;
+    border: 1px solid black;
+    height: 30px;
+    width: 55px;
+    cursor: pointer;
+}
+
 .SquadBar {
     display: flex;
     flex-direction: column;
@@ -25,4 +40,36 @@
 
 .SquadBar > img {
     border: 1px solid black;
+}
+
+.StorageScreen {
+    z-index: 4;
+    border: 1px solid black;
+    position: absolute;
+    background-color: white;
+    top: 0;
+    left: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.StorageScreen > div {
+    flex: 1 1 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    padding-bottom: 5px;
+}
+
+.StorageScreen > div > div {
+    margin: 10px 0 3px;
+    display: flex;
+    justify-content: center;
+}
+
+.StorageScreen > div > svg {
+    cursor: pointer;
 }

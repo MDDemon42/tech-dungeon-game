@@ -11,7 +11,7 @@ export function createPower(
     ],
     abilityInfo: [
         requiredMastery: string,
-        ability: IBattleAbility | null,
+        abilities: IBattleAbility[] | null,
         passiveAbilities: IPassiveAbility[] | null
     ],
     requiredPower: string
@@ -22,7 +22,7 @@ export function createPower(
         image: commonInfo[2],
 
         requiredMastery: abilityInfo[0],
-        ability: abilityInfo[1],
+        abilities: abilityInfo[1],
         passiveAbilities: abilityInfo[2],
 
         requiredPower        
@@ -43,6 +43,7 @@ const basicOptions = [
 const advancedOptions = [
     powers.armors.guardianAura,
     powers.other.telekinesis,
+    powers.other.hypnosis,
     powers.other.levitation
 ];
 

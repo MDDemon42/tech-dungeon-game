@@ -6,8 +6,11 @@ function getBackImage(backName: string) {
     let result = null;
 
     switch (backName) {
-        case mutations.other.wings.name:
-            result = <img src={images.bodyElements.wings} alt={chrome.i18n.getMessage('wings')} />;
+        case mutations.other.skinWings.name:
+            result = <img src={images.bodyElements.skinWings} alt={chrome.i18n.getMessage('skin_wings')} />;
+            break;
+        case mutations.other.featherWings.name:
+            result = <img src={images.bodyElements.featherWings} alt={chrome.i18n.getMessage('feather_wings')} />;
             break;
         case wizardItems.other.wizardItem_flyingCape.name:
             result = <img src={images.bodyElements.flyingCape} alt={chrome.i18n.getMessage('flying_cape')} />;

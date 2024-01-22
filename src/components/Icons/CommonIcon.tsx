@@ -2,6 +2,7 @@ import styles from './Icons.module.css';
 import ParamIcon from './ParamIcon';
 import { DamageType, InventoryPlace, UserParam } from '../../enums-and-interfaces/enums';
 import { IPassiveAbility } from '../../enums-and-interfaces/interfaces';
+import inventoryPlaces from '../../general/inventoryPlaces';
 
 function CommonIcon(props: {
     item: {
@@ -90,7 +91,8 @@ function CommonIcon(props: {
     }
 
     if (item.inventoryPlaces) {
-        description += '\n' + chrome.i18n.getMessage('cid_inventory_place') + item.inventoryPlaces.join(', ');
+        description += '\n' + chrome.i18n.getMessage('cid_inventory_place') + 
+            item.inventoryPlaces.map(place => inventoryPlaces[place]).join(', ');
     }
 
     if (item.damage) {

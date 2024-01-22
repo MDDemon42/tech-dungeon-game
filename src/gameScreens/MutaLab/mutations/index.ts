@@ -1,8 +1,8 @@
-import { IBattleAbility, IMutation, IPassiveAbility } from "../../../enums-and-interfaces/interfaces";
+import { IBattleAbility, IMastery, IMutation, IPassiveAbility } from "../../../enums-and-interfaces/interfaces";
 import armors from "./armors";
 import weapons from "./weapons";
 import other from "./other";
-import { InventoryPlace } from "../../../enums-and-interfaces/enums";
+import { InventoryPlace, InventorySlotCategory } from "../../../enums-and-interfaces/enums";
 
 export function createMutation(
     commonInfo: [
@@ -19,7 +19,9 @@ export function createMutation(
         abilities: IBattleAbility[] | null,
         passiveAbilities: IPassiveAbility[] | null
     ],    
-    requiredStrength: number = 0
+    requiredStrength: number = 0,
+    givenMastery: IMastery | null = null,
+    category: InventorySlotCategory = InventorySlotCategory.mutation
 ): IMutation {
     return {
         name: commonInfo[0],
@@ -33,7 +35,9 @@ export function createMutation(
         abilities: abilityInfo[0],
         passiveAbilities: abilityInfo[1],
         
-        requiredStrength
+        requiredStrength,
+        givenMastery,
+        category
     }
 }
 
@@ -54,20 +58,27 @@ const reptiloidOptions = [
     mutations.weapons.acidSpit,
     mutations.other.extraArms,
     mutations.weapons.raptorLegs,
-    mutations.armors.scales,
-    mutations.weapons.tailWithSting,
+    mutations.armors.scales
 ];
 
 const insectoidOptions = [
     mutations.weapons.claws,
     mutations.weapons.pincers,
-    mutations.other.wings
+    mutations.other.skinWings
+];
+
+const dragonOptions = [
+    mutations.other.dragonEyes,
+    mutations.weapons.fireBreath,
+    mutations.weapons.tailWithBlunt,
+    mutations.weapons.tailWithSting,
+    mutations.other.featherWings
 ];
 
 export const mutaLabOptions: Record<string, IMutation[]> = {
     0: [],
     1: [],
-    2: [...beastOptions],
+    2: [...beastOptions, ...dragonOptions],
     3: [...reptiloidOptions],
     5: [...insectoidOptions]
 };

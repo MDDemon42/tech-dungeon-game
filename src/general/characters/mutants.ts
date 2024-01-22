@@ -122,7 +122,7 @@ const dragon = () => {
     character.general.inventory.skin = mutations.armors.scales;
     character.general.inventory.tail = mutations.weapons.tailWithSting;
     character.general.inventory.head = mutations.weapons.horns;
-    character.general.inventory.back = mutations.other.wings;
+    character.general.inventory.back = mutations.other.skinWings;
     character.general.inventory.chin = mutations.weapons.acidSpit;
     character.general.inventory.bothHands = mutations.weapons.claws;
 
@@ -144,7 +144,7 @@ const ultimate_chimera = () => {
     character.general.inventory.skin = mutations.armors.fur;
     character.general.inventory.tail = mutations.weapons.tailWithSting;
     character.general.inventory.head = mutations.weapons.horns;
-    character.general.inventory.back = mutations.other.wings;
+    character.general.inventory.back = mutations.other.skinWings;
     character.general.inventory.chin = mutations.weapons.acidSpit;
     character.general.inventory.bothHands = mutations.weapons.claws;
     character.general.inventory.legs = mutations.other.hooves;

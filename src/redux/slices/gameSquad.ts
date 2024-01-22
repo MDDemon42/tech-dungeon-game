@@ -39,36 +39,20 @@ export function placeAsKey(place: string) {
     }).join('');
 }
 
-export const createGameSquad: () => IGameSquad = () => {
+export const createGameSquad = (): IGameSquad => {
     return {
-    currentlyWatched: 0,
-    squadMembers: {
-        0: createEmptyCharacter()
-    },
-    resources: {
-        [UserResource.core]: 0,
-        [UserResource.gem]: 0,
-        [UserResource.gene]: 0,
-        [UserResource.none]: 10
-    }
+        currentlyWatched: 0,
+        squadMembers: {
+            0: createEmptyCharacter()
+        },
+        resources: {
+            [UserResource.core]: 0,
+            [UserResource.gem]: 0,
+            [UserResource.gene]: 0,
+            [UserResource.none]: 10
+        },
+        storage: []
 }};
-
-const initialState = createGameSquad();
-
-function getRandomStartName() {
-    const startNames = [
-        chrome.i18n.getMessage('start_name_boris'),
-        chrome.i18n.getMessage('start_name_jackline'),
-        chrome.i18n.getMessage('start_name_stephan'),
-        chrome.i18n.getMessage('start_name_colin'),
-        chrome.i18n.getMessage('start_name_mishelle'),
-        chrome.i18n.getMessage('start_name_hanz'),
-        chrome.i18n.getMessage('start_name_romul'),
-        chrome.i18n.getMessage('start_name_albert')
-    ]
-
-    return startNames[Math.floor(Math.random() * startNames.length)]
-}
 
 const raceMasteries: Partial<Record<Race, IMastery>> = {
     [Race.gnoll]: academyMasteries.maceAffiliation,
@@ -102,9 +86,10 @@ function integratePassiveAbility(
 
 const gameSquad = createSlice({
     name: 'gameSquad',
-    initialState,
+    initialState: createGameSquad(),
     reducers: {
         setState(state, action) {
+            // the most workable solution
             Object.keys(state).forEach(key => {
                 // @ts-ignore
                 state[key] = action.payload[key];
@@ -116,40 +101,20 @@ const gameSquad = createSlice({
                 state[key] = initialState[key];
             })
         },
-        changeName(state, action) {
-            const oldState = {...state};
-            const squad = {...oldState.squadMembers};
-            const squadMember = squad[oldState.currentlyWatched];
-
-            squadMember.params.name = action.payload;
-
-            state = oldState;
-        },
-        changeClass(state, action) {
-            Object.keys(state).forEach(key => {
-                // @ts-ignore
-                state[key] = initialState[key];
-            })
-
-            const squad = {...state.squadMembers};
-
-            const squadMember = createEmptyCharacter();
-            squadMember.params.class = action.payload;
-            squadMember.params.name = getRandomStartName();
-
-            squad[state.currentlyWatched] = squadMember;
-
-            state.squadMembers = squad;
-        },
         startGame(state, action) {
-            const oldState = {...state};
-            const squad = {...oldState.squadMembers};
-            const squadMember = squad[oldState.currentlyWatched];
+            const {userName, userClass} = action.payload;
 
-            squadMember.params.name = action.payload;
-            squadMember.params.maxParams[UserParam.health] = 3;
-            squadMember.params.maxParams[UserParam.stamina] = 3;
+            const newState = createGameSquad();
+            const squadMember = createEmptyCharacter();
+
+            squadMember.params.name = userName;
+            squadMember.params.class = userClass;
             squadMember.params.level = 1;
+
+            squadMember.params.maxParams.Health = 3;
+            squadMember.params.currentParams.Health = 3;
+            squadMember.params.maxParams.Stamina = 3;
+            squadMember.params.currentParams.Stamina = 3;
 
             const {
                 bonusParam, 
@@ -159,21 +124,21 @@ const gameSquad = createSlice({
 
             if (bonusParam) {
                 squadMember.params.maxParams[bonusParam] += 1;
-            }
-            if (bonusResource) {
-                oldState.resources[bonusResource] += 1;
+                squadMember.params.currentParams[bonusParam] += 1;
             }
             if (bonusLevel) {
                 squadMember.params.level += 1;
             }
+            if (bonusResource) {
+                newState.resources[bonusResource] += 1;
+            }
 
-            Object.keys(squad).forEach(key => {
-                if (!!squad[key]) {
-                    squad[key].params.currentParams = squad[key].params.maxParams;
-                }
-            });
+            newState.squadMembers[0] = squadMember;
 
-            state = oldState;
+            Object.keys(state).forEach(key => {
+                // @ts-ignore
+                state[key] = newState[key];
+            })
         },
         levelUp(state, action) {
             const rand = Math.floor(Math.random()*7);
@@ -207,7 +172,11 @@ const gameSquad = createSlice({
             const squadMember = members[index];
             const backpacks = squadMember.general.backpacks;
 
-            putItemInBackpacks(backpacks, action.payload);
+            const {resource, amount} = action.payload;
+
+            for (let count = 0; count < amount; count ++) {
+                putItemInBackpacks(backpacks, resource);
+            }            
 
             state = oldState;
         },
@@ -815,6 +784,9 @@ const gameSquad = createSlice({
             oldState.resources[UserResource.core] -= cyber.cost;
 
             integratePassiveAbility(squadMember, cyber, +1);
+            if (cyber.givenMastery) {
+                squadMember.general.mind.masteries.push(cyber.givenMastery);
+            }
 
             squadMember.general.backpacks = backpacks;
             squadMember.general.inventory = inventory;
@@ -910,6 +882,9 @@ const gameSquad = createSlice({
             const newRaceMastery = raceMasteries[newRace];
             if (newRaceMastery) {
                 squadMember.general.mind.masteries.push(newRaceMastery);
+            }
+            if (mutation.givenMastery) {
+                squadMember.general.mind.masteries.push(mutation.givenMastery);
             }
 
             integratePassiveAbility(squadMember, mutation, +1);
@@ -1030,6 +1005,70 @@ const gameSquad = createSlice({
 
             state.squadMembers = squad;
         },
+        expandStorage(state, action) {
+            const oldState = {...state};
+            const mansionStage = action.payload;
+
+            for (let i = 0; i < mansionStage * 4; i++) {
+                oldState.storage.push(createNoItem());
+            }
+            
+            state = oldState;
+        },
+        putIntoStorage(state, action) {
+            const oldState = {...state};
+            const squadMember = {...oldState.squadMembers[oldState.currentlyWatched]};
+            const backpacks = [...squadMember.general.backpacks]; 
+            
+            const {item, itemIndex} = action.payload;
+
+            putItemInBackpacks(oldState.storage, item);
+
+            const nothing = createNoItem();
+            backpacks[itemIndex] = nothing;
+
+            backpacks.sort((a, b) => {
+                if (a.name === nothing.name) {
+                    return 1
+                }
+                
+                if (b.name === nothing.name) {
+                    return -1
+                }
+
+                return 0
+            })
+
+            squadMember.general.backpacks = backpacks;
+            state = oldState;
+        },
+        getFromStorage(state, action) {
+            const oldState = {...state};
+            const squadMember = {...oldState.squadMembers[oldState.currentlyWatched]};
+            const backpacks = [...squadMember.general.backpacks]; 
+            
+            const {item, itemIndex} = action.payload;
+
+            putItemInBackpacks(backpacks, item);
+
+            const nothing = createNoItem();
+            oldState.storage[itemIndex] = nothing;
+
+            oldState.storage.sort((a, b) => {
+                if (a.name === nothing.name) {
+                    return 1
+                }
+                
+                if (b.name === nothing.name) {
+                    return -1
+                }
+
+                return 0
+            })
+
+            squadMember.general.backpacks = backpacks;
+            state = oldState;
+        }
     }
 })
 

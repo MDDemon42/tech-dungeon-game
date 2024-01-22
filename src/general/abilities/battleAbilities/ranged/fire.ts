@@ -57,7 +57,19 @@ const rocketLaunch = createBattleAbility(
     [5, 70]
 );
 
+const fireBreath = createBattleAbility(
+    [
+        chrome.i18n.getMessage('fire_breath'), 
+        '', 
+        images.mutantEvolvings.fireBreath
+    ], 
+    {Blank: 0}, 
+    {[DamageType.fire]: 1},
+    [1, 70]
+);
+
 const fire = {
+    fireBreath,
     flame,
     fireBall,
     fireWave,

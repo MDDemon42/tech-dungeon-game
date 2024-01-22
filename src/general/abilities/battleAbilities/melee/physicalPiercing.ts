@@ -46,6 +46,28 @@ const fangsBite = createBattleAbility(
     [1, 85]
 );
 
+const acidBite = createBattleAbility(
+    [
+        chrome.i18n.getMessage('acid_bite'), 
+        '', 
+        images.mutantEvolvings.acidSpit
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalPiercing]: 1},
+    [1, 85]
+);
+
+const fireBite = createBattleAbility(
+    [
+        chrome.i18n.getMessage('fire_bite'), 
+        '', 
+        images.mutantEvolvings.fireBreath
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalPiercing]: 1},
+    [1, 85]
+);
+
 const stickPierce = createBattleAbility(
     [
         chrome.i18n.getMessage('stick_pierce'), 
@@ -192,6 +214,8 @@ const battleMageMusketPierce = createBattleAbility(
 const physicalPiercing = {
     hornsCharge,
     fangsBite,
+    fireBite,
+    acidBite,
     pincersStab,
     tailPrick,
     glaivePierce,

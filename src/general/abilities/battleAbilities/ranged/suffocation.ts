@@ -13,8 +13,20 @@ const airDeprivation = createBattleAbility(
     [1, 100]
 );
 
+const telekineticChoke = createBattleAbility(
+    [
+        chrome.i18n.getMessage('telekinetic_choke'), 
+        '', 
+        images.psionInsights.telekineticChoke
+    ], 
+    {Focus: 3}, 
+    {[DamageType.suffocation]: 3},
+    [1, 100]
+);
+
 const suffocation = {
-    airDeprivation
+    airDeprivation,
+    telekineticChoke
 }
 
 export default suffocation

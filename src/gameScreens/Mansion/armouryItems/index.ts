@@ -1,5 +1,5 @@
-import { InventoryPlace, UserStartClass } from "../../../enums-and-interfaces/enums";
-import { IArmouryItem, IBattleAbility, ICraft, IPassiveAbility } from "../../../enums-and-interfaces/interfaces";
+import { InventoryPlace, InventorySlotCategory, UserStartClass } from "../../../enums-and-interfaces/enums";
+import { IArmouryItem, IBattleAbility, ICraft, IMastery, IPassiveAbility } from "../../../enums-and-interfaces/interfaces";
 import guns from "./guns";
 import mageWeapons from "./mageWeapons";
 import battleWeapons from "./battleWeapons";
@@ -26,6 +26,8 @@ export function createArmouryItem(
         linkedMastery: string,
         masterAbility: IBattleAbility,
     }[] | null,
+    givenMastery: IMastery | null = null,
+    category: InventorySlotCategory = InventorySlotCategory.item
 ): IArmouryItem {
     return {
         name: commonInfo[0],
@@ -36,6 +38,9 @@ export function createArmouryItem(
         inventoryPlaces: inventoryInfo[1],
         priority: inventoryInfo[2],
 
+        category,
+
+        givenMastery,
         requiredMastery: requirements[0],
         requiredStrength: requirements[1],
         craft: requirements[2],
@@ -64,13 +69,13 @@ const rifleOptions = [
 ];
 
 export const startClassBattleOptions: Record<UserStartClass, IArmouryItem | null> = {
-    [UserStartClass.coreKeeper]: armouryItems.battleWeapons.sabre,
+    [UserStartClass.smart]: armouryItems.battleWeapons.sabre,
     [UserStartClass.creative]: armouryItems.battleWeapons.khopesh,
     [UserStartClass.dreamer]: armouryItems.battleWeapons.katana,
-    [UserStartClass.geneKeeper]: armouryItems.battleWeapons.macuahuitl,
+    [UserStartClass.enduring]: armouryItems.battleWeapons.macuahuitl,
     [UserStartClass.ingenious]: null,
     [UserStartClass.noIcon]: null,
-    [UserStartClass.richie]: armouryItems.battleWeapons.rapier,
+    [UserStartClass.sane]: armouryItems.battleWeapons.rapier,
     [UserStartClass.tireless]: armouryItems.battleWeapons.halberd,
     [UserStartClass.vital]: armouryItems.battleWeapons.glaive
 }
@@ -91,13 +96,13 @@ const battleRifleOptions = [
 ];
 
 export const startClassBattleMageOptions: Record<UserStartClass, IArmouryItem | null> = {
-    [UserStartClass.coreKeeper]: null,
+    [UserStartClass.smart]: null,
     [UserStartClass.creative]: armouryItems.mageWeapons.mageKhopesh,
     [UserStartClass.dreamer]: null,
-    [UserStartClass.geneKeeper]: armouryItems.mageWeapons.mageMacuahuitl,
+    [UserStartClass.enduring]: armouryItems.mageWeapons.mageMacuahuitl,
     [UserStartClass.ingenious]: null,
     [UserStartClass.noIcon]: null,
-    [UserStartClass.richie]: null,
+    [UserStartClass.sane]: null,
     [UserStartClass.tireless]: armouryItems.mageWeapons.mageHalberd,
     [UserStartClass.vital]: armouryItems.mageWeapons.mageGlaive
 }

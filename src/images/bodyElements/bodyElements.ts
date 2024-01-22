@@ -26,13 +26,18 @@ import clawExtraRight from './clawExtraRight.png';
 import clawLeft from './clawLeft.png';
 import clawRight from './clawRight.png';
 import cyberClaw from './cyberClaw.png';
+import cyberEyes from './cyberEyes.png';
 import cyberFistRightHand from './cyberFistRightHand.png';
 import cyberFistLeftHand from './cyberFistLeftHand.png';
 import dragonBoneBlade from './dragonBoneBlade.png';
+import dragonEyes from './dragonEyes.png';
 import energyShield from './energyShield.png';
 import extraArms from './extraArms.png';
 import extraLeftHand from './extraLeftHand.png';
 import extraRightHand from './extraRightHand.png';
+import eyes from './eyes.png';
+import featherWings from './featherWings.png';
+import fireBreath from './fireBreath.png';
 import flyingCape from './flyingCape.png';
 import freezer from './freezer.png';
 import furTorso from './furTorso.png';
@@ -45,6 +50,7 @@ import healingPotion from './healingPotion.png';
 import heatSaber from './heatSaber.png';
 import hooves from './hooves.png';
 import horns from './horns.png';
+import hypnosis from './hypnosis.png';
 import intuition from './intuition.png';
 
 import katana from './katana';
@@ -116,6 +122,7 @@ import steelSpear from './steelSpear.png';
 
 import steelSword from './steelSword';
 
+import tailWithBlunt from './tailWithBlunt.png';
 import tailWithSting from './tailWithSting.png';
 import taserWhip from './taserWhip.png';
 import telekinesis from './telekinesis.png';
@@ -123,7 +130,7 @@ import titanLegs from './titanLegs.png';
 import titanTorso from './titanTorso.png';
 import torso from './torso.png';
 import treeCutter from './treeCutter.png';
-import wings from './wings.png';
+import skinWings from './skinWings.png';
 import woodenShield from './woodenShield.png';
 
 const bodyElements = {
@@ -142,10 +149,14 @@ const bodyElements = {
     clawExtraLeft, clawExtraRight,
     clawLeft, clawRight,
     cyberClaw,
+    cyberEyes,
     cyberFistRightHand, cyberFistLeftHand,
     dragonBoneBlade,
+    dragonEyes,
     energyShield,
     extraArms, extraLeftHand, extraRightHand,
+    eyes,
+    featherWings, fireBreath,
     flyingCape,
     freezer,
     furTorso,
@@ -156,7 +167,7 @@ const bodyElements = {
     healingPotion,
     heatSaber,
     hooves, horns,
-    intuition,
+    hypnosis, intuition,
     katana,
     khopesh,
     laser,
@@ -196,13 +207,13 @@ const bodyElements = {
     steelShield,
     steelSpear,
     steelSword,
-    tailWithSting,
+    tailWithBlunt, tailWithSting,
     taserWhip,    
     telekinesis,
     titanLegs, titanTorso,
     torso,
     treeCutter,
-    wings,
+    skinWings,
     woodenShield
 }
 

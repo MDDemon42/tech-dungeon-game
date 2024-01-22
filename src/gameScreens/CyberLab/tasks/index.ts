@@ -3,7 +3,7 @@ import { TaskStatus } from "../../../enums-and-interfaces/enums";
 import { IScreenTasks } from "../../../enums-and-interfaces/interfaces";
 import items from "../../Market/items";
 
-const task_buildCyberLab = createTask(
+const buildCyberLab = createTask(
     [
         {
             name: items.bigResources.ore.name,
@@ -16,7 +16,7 @@ const task_buildCyberLab = createTask(
     ),
 )
 
-const task_highEnergyCybers = createTask(
+const highEnergyCybers = createTask(
     [
         {
             name: items.bigResources.ore.name,
@@ -29,7 +29,7 @@ const task_highEnergyCybers = createTask(
     ),
 )
 
-const task_nanoCybers = createTask(
+const nanoCybers = createTask(
     [
         {
             name: items.bigResources.ore.name,
@@ -45,15 +45,15 @@ const task_nanoCybers = createTask(
 const cyberLabTasks: IScreenTasks = {
     1: {
         status: TaskStatus.unknown,
-        task: task_buildCyberLab
+        task: buildCyberLab
     },
     2: {
         status: TaskStatus.unknown,
-        task: task_highEnergyCybers
+        task: highEnergyCybers
     },
     3: {
         status: TaskStatus.unknown,
-        task: task_nanoCybers
+        task: nanoCybers
     },
 }
 

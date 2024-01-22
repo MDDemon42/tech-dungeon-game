@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { Capsule, Gem, Gear } from 'react-bootstrap-icons';
 import { UserResource } from "../../enums-and-interfaces/enums";
 import styles from './Icons.module.css';
-import userResources from "../../general/resources";
+import userResources from "../../general/userResources";
 
 function ResourceIcon(props: {
     resource: UserResource,
@@ -17,7 +17,7 @@ function ResourceIcon(props: {
     }
 
     return <div 
-        title={(price ? Number(price) : '') + userResources[resource]}
+        title={(price ? Number(price) : '') + ' ' + userResources[resource]}
         className={styles.ResourceIcon}
     >
         {resourceIcons[resource]}

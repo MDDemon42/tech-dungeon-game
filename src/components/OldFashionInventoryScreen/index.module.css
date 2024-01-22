@@ -10,7 +10,7 @@
 
 .hat, .head, .chin, .skin, .back, .armor,
 .shoulders, .tail, .extraLeftHand, .extraRightHand,
-.leftHand, .rightHand, .legs,
+.leftHand, .rightHand, .legs, .eyes,
 .telekinesisLeftHand, .telekinesisRightHand,
 .bothHands, .belt, .leftPocket, .rightPocket {
     position: absolute;
@@ -21,12 +21,17 @@
     top: 10px;
 }
 
-.head {
+.chin {
+    left: 135px;
+    top: 65px;
+}
+
+.eyes {
     left: 135px;
     top: 10px;
 }
 
-.chin {
+.head {
     left: 190px;
     top: 10px;
 }
@@ -42,22 +47,22 @@
 }
 
 .shoulders {
-    left: 50px;
+    left: 25px;
     top: 70px;
 }
 
 .armor {
-    left: 105px;
-    top: 70px;
+    left: 80px;
+    top: 75px;
 }
 
 .skin {
-    left: 165px;
-    top: 70px;
+    left: 190px;
+    top: 75px;
 }
 
 .back {
-    left: 220px;
+    left: 245px;
     top: 70px;
 }
 

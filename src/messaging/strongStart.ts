@@ -6,6 +6,8 @@ import classInfo from "../general/classInfo";
 import { createGameStage } from "../redux/slices/gameStage";
 import powers from "../gameScreens/FocusSite/powers";
 import mutations from "../gameScreens/MutaLab/mutations";
+import items from "../gameScreens/Market/items";
+import { IItem } from "../enums-and-interfaces/interfaces";
 
 function actionInCaseStrongStart(tabId: number) {
     const state = {...store.getState()}
@@ -43,6 +45,7 @@ function actionInCaseStrongStart(tabId: number) {
             memberClone.params.strength = 5;
             memberClone.general.backpacks.length = 7;
             memberClone.general.backpacks.fill(createNoItem());
+            memberClone.general.backpacks[0] = items.bigResources.beastRemains as IItem;
 
             memberClone.general.mind.powers.push(powers.other.telekinesis);
             memberClone.general.inventory.telekinesisLeftHand = createNoItem();

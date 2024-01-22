@@ -1,6 +1,7 @@
 import { createBattleAbility } from "..";
 import { DamageType } from "../../../../enums-and-interfaces/enums";
 import images from "../../../../images/images";
+import mutantEvolvings from "../../../../images/mutantEvolvings/mutantEvolvings";
 
 const fistPunch = createBattleAbility(
     [
@@ -244,6 +245,17 @@ const battleRifleButtHit = createBattleAbility(
     [1, 70]
 );
 
+const tailCrash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('tail_crash'), 
+        '', 
+        mutantEvolvings.tailWithBlunt
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSmashing]: 2},
+    [1, 70]
+);
+
 const physicalSmashing = {
     woodenShieldBash,
     affiliatedWoodenShieldBash,
@@ -269,6 +281,8 @@ const physicalSmashing = {
     runicGreathammerSmash,    
     affiliatedRunicGreathammerSlash,
     thunderPunch,    
+
+    tailCrash
 }
 
 export default physicalSmashing

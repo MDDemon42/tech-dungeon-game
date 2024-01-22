@@ -11,9 +11,12 @@ function createRace(mutations: (keyof IMutationsForRaceCheck)[]): IMutationsForR
         extraArms: false,
         claws: false,
         acidSpit: false,
-        wings: false,
+        skinWings: false,
         pincers: false,
-        raptorLegs: false
+        raptorLegs: false,
+        fireBreath: false,
+        featherWings: false,
+        tailWithBlunt: false
     };
 
     mutations.forEach(mutation => {

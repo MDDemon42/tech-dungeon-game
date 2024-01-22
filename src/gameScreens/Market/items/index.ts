@@ -1,8 +1,8 @@
 import { 
     IBattleAbility, 
-    IItem, IPassiveAbility 
+    IItem, IMastery, IPassiveAbility 
 } from "../../../enums-and-interfaces/interfaces";
-import { InventoryPlace } from "../../../enums-and-interfaces/enums";
+import { InventoryPlace, InventorySlotCategory } from "../../../enums-and-interfaces/enums";
 import weapons from "./weapons";
 import armors from "./armors";
 import other from "./other";
@@ -18,7 +18,7 @@ export function createItem(
         cost: number,
         inventoryPlaces: InventoryPlace[],
         priority: number
-    ],
+    ],    
     requiredMastery: string,
     requiredStrength: number,
     abilities: IBattleAbility[] | null,
@@ -27,6 +27,8 @@ export function createItem(
         linkedMastery: string,
         masterAbility: IBattleAbility,
     }[] | null,     
+    givenMastery: IMastery | null = null,
+    category: InventorySlotCategory = InventorySlotCategory.item
 ): IItem {
     return {
         name: commonInfo[0],
@@ -37,6 +39,9 @@ export function createItem(
         inventoryPlaces: inventoryInfo[1],
         priority: inventoryInfo[2],
 
+        category,
+        
+        givenMastery,
         requiredMastery,
         requiredStrength,
         abilities,

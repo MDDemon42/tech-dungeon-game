@@ -6,9 +6,9 @@ export function iconToClass(value: string) {
         tireless: UserStartClass.tireless,
         creative: UserStartClass.creative,
         dreamer: UserStartClass.dreamer,
-        geneKeeper: UserStartClass.geneKeeper,
-        coreKeeper: UserStartClass.coreKeeper,        
-        richie: UserStartClass.richie,
+        smart: UserStartClass.smart,
+        sane: UserStartClass.sane,        
+        enduring: UserStartClass.enduring,
         ingenious: UserStartClass.ingenious,
         noIcon: UserStartClass.noIcon
     }
@@ -22,9 +22,9 @@ export function classToIcon(value: UserStartClass) {
         [UserStartClass.tireless]: 'tireless',
         [UserStartClass.creative]: 'creative',
         [UserStartClass.dreamer]: 'dreamer',
-        [UserStartClass.geneKeeper]: 'geneKeeper',
-        [UserStartClass.coreKeeper]: 'coreKeeper',
-        [UserStartClass.richie]: 'richie',
+        [UserStartClass.enduring]: 'enduring',
+        [UserStartClass.smart]: 'smart',
+        [UserStartClass.sane]: 'sane',
         [UserStartClass.ingenious]: 'ingenious',
         [UserStartClass.noIcon]: 'noIcon' 
     }

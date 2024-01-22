@@ -9,7 +9,7 @@ function OldFashionInventoryScreen(props: {
     const {character} = props;
     const inventory = character.general.inventory;
     const inventoryParts: (keyof typeof InventoryPlace)[] = [
-        'hat', 'head', 'chin',
+        'hat', 'head', 'chin', 'eyes',
         'extraRightHand', 'extraLeftHand', 
         'shoulders', 'back', 'armor', 'skin',
         'rightHand', 'bothHands', 'leftHand',

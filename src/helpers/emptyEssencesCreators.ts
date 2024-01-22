@@ -18,7 +18,8 @@ import {
     UserParam, 
     DamageType, 
     InventoryPlace, 
-    UserStartClass
+    UserStartClass,
+    InventorySlotCategory
 } from "../enums-and-interfaces/enums";
 import { raceNames } from "../general/races/races";
 
@@ -95,6 +96,7 @@ export function createEmptyInventory() {
     const inventory: IInventory = {
         hat: createNoItem(),
         head: createNoItem(),
+        eyes: createNoItem(),
         chin: createNoItem(),
         armor: createNoItem(),
         skin: createNoItem(),
@@ -122,9 +124,11 @@ export function createNoItem(): ICyber & IItem {
         name: chrome.i18n.getMessage('no_item_name'),
         description: chrome.i18n.getMessage('no_item_description'),
         cost: 0,
+        category: InventorySlotCategory.nothing,
         inventoryPlaces: [InventoryPlace.belt],
         image: images.classIcons.noIcon,
         priority: 0,
+        givenMastery: null,
         requiredMastery: '',
         requiredStrength: 0,
         requiredCyber: '',

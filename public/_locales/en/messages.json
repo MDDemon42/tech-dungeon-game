@@ -738,6 +738,15 @@
     "resistance_cold_1": {
         "message": "Upgrades resistance to Cold damage by 1."
     },
+    "tail_with_blunt": {
+        "message": "Tail with blunt"
+    },
+    "tail_with_blunt_mutation_description": {
+        "message": "Mutation to smash your victims."
+    },
+    "tail_crash": {
+        "message": "Tail crash"
+    },
     "tail_with_sting": {
         "message": "Tail with sting"
     },
@@ -753,8 +762,14 @@
     "dodge": {
         "message": "Dodge"
     },
-    "dodge_15": {
-        "message": "Upgrades Dodge by 15."
+    "dodge_amount": {
+        "message": "Upgrades Dodge by $amount$.",
+        "placeholders": {
+            "amount": {
+                "content": "$1",
+                "example": "0"
+            } 
+        }
     },
     "intuition": {
         "message": "Intuition"
@@ -1840,6 +1855,12 @@
     "cyber_claw_slash": {
         "message": "Cyber claw slash"
     },
+    "cyber_eyes": {
+        "message": "Cyber eyes"
+    },
+    "cyber_eyes_cyber_description": {
+        "message": "Cyber to calculate shot trajectories."
+    },
     "cyber_fist_left_hand": {
         "message": "Energy fist on left hand"
     },
@@ -1918,8 +1939,11 @@
     "tree_cutter_slash": {
         "message": "Tree cutter cut"
     },
-    "wings": {
-        "message": "Wings"
+    "skin_wings": {
+        "message": "Skin wings"
+    },
+    "feather_wings": {
+        "message": "Feather wings"
     },
     "wings_mutation_description": {
         "message": "Mutation to fly over battlefield."
@@ -1931,10 +1955,22 @@
         "message": "Mutation to make confident steps."
     },
     "acid_spit": {
-        "message": "Acid split"
+        "message": "Acid spit"
     },
     "acid_spit_mutation_description": {
-        "message": "Mutation to split acid in your enemy`s face."
+        "message": "Mutation to spit acid in your enemy`s face."
+    },
+    "fire_breath": {
+        "message": "Fire breath"
+    },
+    "fire_breath_mutation_description": {
+        "message": "Mutation to burn your enemy`s face with just a breath."
+    },
+    "dragon_eyes": {
+        "message": "Dragon eyes"
+    },
+    "dragon_eyes_mutation_description": {
+        "message": "Mutation to see as dragon sees."
     },
     "lower_fangs": {
         "message": "Lower fangs"
@@ -1944,6 +1980,12 @@
     },
     "fangs_bite": {
         "message": "Fangs bite"
+    },
+    "acid_bite": {
+        "message": "Acid bite"
+    },
+    "fire_bite": {
+        "message": "Fire bite"
     },
     "claws": {
         "message": "Claws"
@@ -2532,6 +2574,21 @@
     "telekinesis_power_description": {
         "message": "Power that can do a lot of things."
     },
+    "telekinetic_push": {
+        "message": "Telekinesis push"
+    },
+    "telekinetic_pressure": {
+        "message": "Telekinesis pressure"
+    },
+    "telekinetic_choke": {
+        "message": "Telekinesis choke"
+    },
+    "hypnosis": {
+        "message": "Hypnosis"
+    },
+    "hypnosis_power_description": {
+        "message": "Power to stop your rival's brain activity."
+    },
     "guardian_aura": {
         "message": "Guardian aura"
     },
@@ -2578,7 +2635,7 @@
         "message": "Marksmanship"
     },
     "marksmanship_mastery_description": {
-        "message": "Mastery of not missing shooting with crossbow."
+        "message": "Mastery of not missing shooting."
     },
     "sword_affiliation": {
         "message": "Sword affiliation"
@@ -2860,6 +2917,18 @@
     "name_apprentice_billy": {
         "message": "Apprentice Billy"
     },
+    "name_psion_moloch": {
+        "message": "Psion Moloch"
+    },
+    "name_psion_adun": {
+        "message": "Psion Adun"
+    },
+    "name_guildian_zarrack": {
+        "message": "Guildian Zarrack"
+    },
+    "name_guildian_shumashi": {
+        "message": "Guildian Shumashi"
+    },
     "name_apprentice_mangold": {
         "message": "Apprentice Mangold"
     },
@@ -2890,6 +2959,9 @@
     "name_adventurer_dovakin": {
         "message": "Adventurer Dovakin"
     },
+    "name_adventurer_gormak": {
+        "message": "Adventurer Gormak"
+    },
     "choose_class": {
         "message": "Choose class"
     },
@@ -2908,17 +2980,11 @@
     "living_room": {
         "message": "Living room"
     },
-    "core_keeper_name": {
-        "message": "Core keeper"
-    },
     "creative_name": {
         "message": "Creative"
     },
     "dreamer_name": {
         "message": "Dreamer"
-    },
-    "gene_keeper_name": {
-        "message": "Gene keeper"
     },
     "ingenious_name": {
         "message": "Ingeniuos"
@@ -2926,14 +2992,20 @@
     "no_icon_name": {
         "message": ""
     },
-    "richie_name": {
-        "message": "Richie"
-    },
     "tireless_name": {
         "message": "Tireless"
     },
     "vital_name": {
         "message": "Vital"
+    },
+    "enduring_name": {
+        "message": "Enduring"
+    },
+    "smart_name": {
+        "message": "Smart"
+    },
+    "sane_name": {
+        "message": "Sane"
     },
     "start_class_common_description": {
         "message": "Gets extra $extra$ on start.\n\nOn level up has increased chance of getting $param_1$ or $param_2$.\n\nAnd there is also a chance to get $blank$",
@@ -2989,6 +3061,9 @@
     "hire": {
         "message": "Hire!"
     },
+    "race_ankylosaurus": {
+        "message": "Ankylosaurus"
+    },
     "race_chimera": {
         "message": "Chimera"
     },
@@ -3003,6 +3078,9 @@
     },
     "race_human": {
         "message": "Human"
+    },
+    "race_koatl": {
+        "message": "Koatl"
     },
     "race_minotaur": {
         "message": "Minotaur"
@@ -3021,5 +3099,83 @@
     },
     "race_unknown": {
         "message": "Unknown"
+    },
+    "put_into_storage": {
+        "message": "Put into storage"
+    },
+    "storage_is_full": {
+        "message": "Storage is full"
+    },
+    "open_storage": {
+        "message": "Open storage"
+    },
+    "close_storage": {
+        "message": "Close storage"
+    },
+    "get_from_storage": {
+        "message": "Get from storage"
+    },
+    "storage_is_empty": {
+        "message": "Storage locker is empty"
+    },
+    "inventory_place_armor": {
+        "message": "Armor"
+    },
+    "inventory_place_back": {
+        "message": "Back"
+    },
+    "inventory_place_belt": {
+        "message": "Belt"
+    },
+    "inventory_place_both_hands": {
+        "message": "Both hands"
+    },
+    "inventory_place_chin": {
+        "message": "Chin"
+    },
+    "inventory_place_extra_left_hand": {
+        "message": "Extra left hand"
+    },
+    "inventory_place_extra_right_hand": {
+        "message": "Extra right hand"
+    },
+    "inventory_place_eyes": {
+        "message": "Eyes"
+    },
+    "inventory_place_hat": {
+        "message": "Hat"
+    },
+    "inventory_place_head": {
+        "message": "Head"
+    },
+    "inventory_place_left_hand": {
+        "message": "Left hand"
+    },
+    "inventory_place_left_pocket": {
+        "message": "Left pocket"
+    },
+    "inventory_place_legs": {
+        "message": "Legs"
+    },
+    "inventory_place_right_hand": {
+        "message": "Right hand"
+    },
+    "inventory_place_right_pocket": {
+        "message": "Right pocket"
+    },
+    "inventory_place_shoulders": {
+        "message": "Shoulder"
+    },
+    "inventory_place_skin": {
+        "message": "Skin"
+    },
+    "inventory_place_tail": {
+        "message": "Tail"
+    },
+    "inventory_place_telekinesis_left_hand": {
+        "message": "Telekinesis left hand"
+    },
+    "inventory_place_telekinesis_right_hand": {
+        "message": "Telekinesis right hand"
     }
 }

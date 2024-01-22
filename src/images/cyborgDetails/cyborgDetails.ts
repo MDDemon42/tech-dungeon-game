@@ -1,5 +1,6 @@
 import acidizer from './acidizer.png';
 import cyberClaw from './cyberClaw.png';
+import cyberEyes from './cyberEyes.png';
 import cyberFist from './cyberFist.png';
 import doubleCyberFistSmash from './doubleCyberFistSmash.png';
 import energyShield from './energyShield.png';
@@ -16,6 +17,7 @@ import treeCutter from './treeCutter.png';
 const cyborgDetails = {
     acidizer,
     cyberClaw,
+    cyberEyes,
     cyberFist,
     doubleCyberFistSmash,
     energyShield,

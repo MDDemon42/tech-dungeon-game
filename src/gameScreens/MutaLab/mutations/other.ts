@@ -3,11 +3,25 @@ import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
 import abilities from "../../../general/abilities";
 
-const wings = createMutation(
+const skinWings = createMutation(
     [
-        chrome.i18n.getMessage('wings'), 
+        chrome.i18n.getMessage('skin_wings'), 
         chrome.i18n.getMessage('wings_mutation_description'),
-        images.mutantEvolvings.wings
+        images.mutantEvolvings.skinWings
+    ],
+    [
+        1, [InventoryPlace.back], 3
+    ],
+    [
+        null, null
+    ]
+);
+
+const featherWings = createMutation(
+    [
+        chrome.i18n.getMessage('feather_wings'), 
+        chrome.i18n.getMessage('wings_mutation_description'),
+        images.mutantEvolvings.featherWings
     ],
     [
         1, [InventoryPlace.back], 3
@@ -47,10 +61,27 @@ const extraArms = createMutation(
     ]    
 );
 
+const dragonEyes = createMutation(
+    [
+        chrome.i18n.getMessage('dragon_eyes'), 
+        chrome.i18n.getMessage('dragon_eyes_mutation_description'),
+        images.mutantEvolvings.dragonEyes
+    ],
+    [
+        1, [InventoryPlace.eyes], 1
+    ],
+    [
+        null, 
+        null
+    ]    
+);
+
 const other = {
+    dragonEyes,
     extraArms,
+    featherWings,
     hooves,
-    wings
+    skinWings
 }
 
 export default other

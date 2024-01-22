@@ -25,6 +25,7 @@ function TaskScreen(props: {
         screen, stage,
         leaveListener
     } = props;
+    
     const task = tasks[screen]?.[stage].task as ITask;
     const {
         resourceCost,
@@ -58,6 +59,12 @@ function TaskScreen(props: {
             zone: screen,
             stage: stage
         }));     
+
+        if (screen === GameScreens.mansion) {
+            if (stage === 1 || stage === 2 || stage === 3) {
+                dispatch(gameSquad.actions.expandStorage(stage));
+            }            
+        }
 
         leaveListener();
     }        
