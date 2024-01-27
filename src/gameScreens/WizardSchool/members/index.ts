@@ -23,8 +23,8 @@ const apprenticeBilly = () => {
     character.general.mind.masteries.push(wizardMasteries.scholarship);
     character.general.mind.spells.push(spells.magicBolt);
 
-    character.general.inventory.bothHands = wizardItems.weapons.apprenticeRod;
-    character.general.inventory.hat = wizardItems.armors.apprenticeHat;
+    character.general.inventory.Both_hands = wizardItems.weapons.apprenticeRod;
+    character.general.inventory.Hat = wizardItems.armors.apprenticeHat;
 
     return character
 }
@@ -47,8 +47,8 @@ const apprenticeSimon = () => {
     character.general.mind.masteries.push(wizardMasteries.scholarship);
     character.general.mind.spells.push(spells.magicBolt);
 
-    character.general.inventory.bothHands = wizardItems.weapons.apprenticeRod;
-    character.general.inventory.hat = wizardItems.armors.apprenticeHat;
+    character.general.inventory.Both_hands = wizardItems.weapons.apprenticeRod;
+    character.general.inventory.Hat = wizardItems.armors.apprenticeHat;
 
     return character
 }

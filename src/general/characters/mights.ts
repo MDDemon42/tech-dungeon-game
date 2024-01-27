@@ -28,8 +28,8 @@ const guard = () => {
     character.params.maxParams[UserParam.stamina] = 4;
     character.params.currentParams[UserParam.stamina] = 4;
 
-    character.general.inventory.armor = items.armors.leatherArmor;
-    character.general.inventory.rightHand = items.weapons.steelSword;
+    character.general.inventory.Armor = items.armors.leatherArmor;
+    character.general.inventory.Right_hand = items.weapons.steelSword;
 
     return character
 }
@@ -47,7 +47,7 @@ const barbarian = () => {
 
     character.general.mind.masteries.push(academyMasteries.brutalForce);
 
-    character.general.inventory.bothHands = items.weapons.steelGreataxe;
+    character.general.inventory.Both_hands = items.weapons.steelGreataxe;
 
     return character
 }
@@ -65,9 +65,9 @@ const knight = () => {
 
     character.general.mind.masteries.push(academyMasteries.swordAffiliation);
 
-    character.general.inventory.rightHand = items.weapons.steelSword;
-    character.general.inventory.armor = items.armors.steelArmor;
-    character.general.inventory.leftHand = items.armors.steelShield;
+    character.general.inventory.Right_hand = items.weapons.steelSword;
+    character.general.inventory.Armor = items.armors.steelArmor;
+    character.general.inventory.Left_hand = items.armors.steelShield;
 
     return character
 }
@@ -85,8 +85,8 @@ const paladin = () => {
 
     character.general.mind.masteries.push(academyMasteries.brutalForce);
 
-    character.general.inventory.bothHands = items.weapons.steelGreatsword;
-    character.general.inventory.armor = items.armors.steelArmor;
+    character.general.inventory.Both_hands = items.weapons.steelGreatsword;
+    character.general.inventory.Armor = items.armors.steelArmor;
 
     return character
 }

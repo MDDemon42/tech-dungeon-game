@@ -120,6 +120,8 @@ function SubInventoryScreen(props: {
         )),
         data_for_two_hands: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.bothHands),
         data_for_belt: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.belt),
+        data_for_hips: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.leftHip ||
+            item.inventoryPlaces[0] === InventoryPlace.rightHip),
         data_for_pockets: data.filter(item => item.inventoryPlaces.includes(InventoryPlace.leftPocket) || item.inventoryPlaces.includes(InventoryPlace.rightPocket)),
         data_for_legs: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.legs)
     }

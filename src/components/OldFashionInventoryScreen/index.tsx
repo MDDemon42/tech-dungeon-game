@@ -8,14 +8,7 @@ function OldFashionInventoryScreen(props: {
 }) {
     const {character} = props;
     const inventory = character.general.inventory;
-    const inventoryParts: (keyof typeof InventoryPlace)[] = [
-        'hat', 'head', 'chin', 'eyes',
-        'extraRightHand', 'extraLeftHand', 
-        'shoulders', 'back', 'armor', 'skin',
-        'rightHand', 'bothHands', 'leftHand',
-        'leftPocket', 'belt', 'rightPocket',
-        'telekinesisRightHand', 'legs', 'tail', 'telekinesisLeftHand', 
-    ];
+    const inventoryParts = Object.values(InventoryPlace);
 
     return (
         <div className={styles.OldFashionInventoryScreen}>
@@ -24,7 +17,7 @@ function OldFashionInventoryScreen(props: {
                     <div className={styles[part]}>
                         <InventoryIcon 
                             item={inventory[part]} 
-                            inventoryPlace={InventoryPlace[part]}
+                            inventoryPlace={part}
                         />
                     </div>
                 ))

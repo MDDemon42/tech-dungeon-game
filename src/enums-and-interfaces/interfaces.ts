@@ -168,29 +168,33 @@ export interface IMastery extends ICommon {
 }
 
 // inventory options //
-export interface IInventory extends Record<string, 
+export interface IInventory extends Record<InventoryPlace, 
     IItem | ICyber | IMutation | IWizardItem | IGuildItem | null
 > {
-    hat: IItem | IWizardItem,
-    head: IMutation,
-    eyes: IMutation | ICyber,
-    chin: IMutation,
-    armor: IItem | IMutation,
-    skin: IMutation | ICyber,
-    back: IMutation | IItem,
-    shoulders: IMutation | ICyber,
-    extraLeftHand: ICyber | IItem | IMutation | null,
-    extraRightHand: ICyber | IItem | IMutation | null,
-    belt: IItem,
-    leftPocket: IItem,
-    rightPocket: IItem,
-    tail: IMutation,
-    legs: ICyber | IMutation,
-    leftHand: ICyber | IMutation | IItem,
-    rightHand: ICyber | IMutation | IItem,
-    telekinesisLeftHand: IItem | null,
-    telekinesisRightHand: IItem | null,
-    bothHands: IMutation | IItem
+    [InventoryPlace.hat]: IItem | IWizardItem,
+    [InventoryPlace.head]: IMutation,
+    [InventoryPlace.eyes]: IMutation | ICyber,
+    [InventoryPlace.chin]: IMutation,
+    [InventoryPlace.armor]: IItem | IMutation,
+    [InventoryPlace.skin]: IMutation | ICyber,
+    [InventoryPlace.back]: IMutation | IItem,
+    [InventoryPlace.shoulders]: IMutation | ICyber,
+    [InventoryPlace.extraLeftHand]: ICyber | IItem | IMutation | null,
+    [InventoryPlace.extraRightHand]: ICyber | IItem | IMutation | null,
+    [InventoryPlace.belt]: IItem,
+    [InventoryPlace.leftPocket]: IItem,
+    [InventoryPlace.rightPocket]: IItem,
+    [InventoryPlace.tail]: IMutation,
+    [InventoryPlace.legs]: ICyber | IMutation,
+    [InventoryPlace.leftHand]: ICyber | IMutation | IItem,
+    [InventoryPlace.rightHand]: ICyber | IMutation | IItem,
+    [InventoryPlace.leftHip]: IItem,
+    [InventoryPlace.rightHip]: IItem,
+    [InventoryPlace.leftHipItem]: IItem | null,
+    [InventoryPlace.rightHipItem]: IItem | null,
+    [InventoryPlace.telekinesisLeftHand]: IItem | null,
+    [InventoryPlace.telekinesisRightHand]: IItem | null,
+    [InventoryPlace.bothHands]: IMutation | IItem
 }
 
 export interface ICyber extends IMutation {

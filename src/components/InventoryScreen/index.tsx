@@ -19,6 +19,8 @@ import getExtraRightHandImage from './extraRightHand';
 import getTelekinesisLeftHandImage from './telekinesisLeftHand';
 import getTelekinesisRightHandImage from './telekinesisRightHand';
 import powers from '../../gameScreens/FocusSite/powers';
+import getRightHipItemImage from './rightHipItem';
+import getLeftHipItemImage from './leftHipItem';
 
 function InventoryScreen(props: {
     character: ICharacher,
@@ -34,13 +36,15 @@ function InventoryScreen(props: {
     const width = battle ? '150px' : '355px';
     const height = battle ? '160px' : '370px';
 
-    const back = getBackImage(inventory.back.name);
+    const back = getBackImage(inventory.Back.name);
 
-    const tail = getTailImage(inventory.tail.name);
+    const tail = getTailImage(inventory.Tail.name);
 
     const legs = getLegsImage(
-        inventory.legs.name,
-        inventory.skin.name,
+        inventory.Left_hip.name,
+        inventory.Right_hip.name,
+        inventory.Legs.name,
+        inventory.Skin.name,
         ritualsUserNames,
         powersUserNames,
         userStrength
@@ -50,53 +54,57 @@ function InventoryScreen(props: {
         ritualsUserNames,
         powersUserNames,
         userStrength,
-        inventory.skin.name
+        inventory.Skin.name
     );    
 
-    const shoulders = getShouldersImage(inventory.shoulders.name);
+    const shoulders = getShouldersImage(inventory.Shoulders.name);
 
     const extraLeftHand = getExtraLeftHandImage(
-        inventory.extraLeftHand?.name || '',
-        inventory.shoulders.name
+        inventory.Extra_left_hand?.name || '',
+        inventory.Shoulders.name
     );
 
     const extraRightHand = getExtraRightHandImage(
-        inventory.extraRightHand?.name || '',
-        inventory.shoulders.name
+        inventory.Extra_right_hand?.name || '',
+        inventory.Shoulders.name
     );
 
-    const armor = getArmorImage(inventory.armor.name);
+    const armor = getArmorImage(inventory.Armor.name);
 
-    const rightPocket = getRightPocketImage(inventory.rightPocket.name);
+    const rightPocket = getRightPocketImage(inventory.Right_pocket.name);
 
-    const leftPocket = getLeftPocketImage(inventory.leftPocket.name);
+    const rightHipItem = getRightHipItemImage(inventory.Right_hip_item?.name || '');
+
+    const leftPocket = getLeftPocketImage(inventory.Left_pocket.name);
+
+    const leftHipItem = getLeftHipItemImage(inventory.Left_hip_item?.name || '');
 
     const head = getHeadImage(
         powersUserNames,
-        inventory.chin.name,
-        inventory.eyes.name,
-        inventory.head.name
+        inventory.Chin.name,
+        inventory.Eyes.name,
+        inventory.Head.name
     );
 
-    const hat = getHatImage(inventory.hat.name);
+    const hat = getHatImage(inventory.Hat.name);
 
-    const leftHand = getLeftHandImage(inventory.leftHand.name);
+    const leftHand = getLeftHandImage(inventory.Left_hand.name);
 
-    const rightHand = getRightHandImage(inventory.rightHand.name);
+    const rightHand = getRightHandImage(inventory.Right_hand.name);
 
     const bothHands = getBothHandsImage(
-        inventory.bothHands.name,
-        inventory.rightHand.name,
-        inventory.leftHand.name
+        inventory.Both_hands.name,
+        inventory.Right_hand.name,
+        inventory.Left_hand.name
     );
 
     const telekinesisLeftHand = getTelekinesisLeftHandImage(
-        inventory.telekinesisLeftHand?.name || '',
+        inventory.Telekinesis_left_hand?.name || '',
         powersUserNames.includes(powers.other.telekinesis.name)
     );
 
     const telekinesisRightHand = getTelekinesisRightHandImage(
-        inventory.telekinesisRightHand?.name || '',
+        inventory.Telekinesis_right_hand?.name || '',
         powersUserNames.includes(powers.other.telekinesis.name)
     );
 
@@ -114,8 +122,10 @@ function InventoryScreen(props: {
             { extraRightHand }
             { skin }
             { armor }
+            { rightHipItem }
             { rightPocket }
-            { leftPocket }
+            { leftHipItem }
+            { leftPocket }            
             { head }
             { hat }
             { leftHand }

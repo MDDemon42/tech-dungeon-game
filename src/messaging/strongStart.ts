@@ -48,12 +48,12 @@ function actionInCaseStrongStart(tabId: number) {
             memberClone.general.backpacks[0] = items.bigResources.beastRemains as IItem;
 
             memberClone.general.mind.powers.push(powers.other.telekinesis);
-            memberClone.general.inventory.telekinesisLeftHand = createNoItem();
-            memberClone.general.inventory.telekinesisRightHand = createNoItem();
+            memberClone.general.inventory.Telekinesis_left_hand = createNoItem();
+            memberClone.general.inventory.Telekinesis_right_hand = createNoItem();
 
-            memberClone.general.inventory.shoulders = mutations.other.extraArms;
-            memberClone.general.inventory.extraLeftHand = createNoItem();
-            memberClone.general.inventory.extraRightHand = createNoItem();
+            memberClone.general.inventory.Shoulders = mutations.other.extraArms;
+            memberClone.general.inventory.Extra_left_hand = createNoItem();
+            memberClone.general.inventory.Extra_right_hand = createNoItem();
 
             squadMembers[i] = memberClone;
         }

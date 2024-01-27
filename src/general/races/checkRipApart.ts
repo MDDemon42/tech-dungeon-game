@@ -6,15 +6,15 @@ import { createBattleAbility } from "../abilities/battleAbilities";
 
 function checkRipApart(inventory: IInventory): (IAbility | null)[] {
     const ripApartMutations = {
-        clawLeft: inventory.leftHand.name === mutations.weapons.claw.name,
-        clawRight: inventory.rightHand.name === mutations.weapons.claw.name,
-        clawExtraLeft: inventory.extraLeftHand?.name === mutations.weapons.claw.name,
-        clawExtraRight: inventory.extraRightHand?.name === mutations.weapons.claw.name,
-        horns: inventory.head.name === mutations.weapons.horns.name,
-        lowerFangs: inventory.chin.name === mutations.weapons.lowerFangs.name,
-        tailWithSting: inventory.tail.name === mutations.weapons.tailWithSting.name,
-        pincers: inventory.shoulders.name === mutations.weapons.pincers.name,
-        raptorLegs: inventory.legs.name === mutations.weapons.raptorLegs.name
+        clawLeft: inventory.Left_hand.name === mutations.weapons.claw.name,
+        clawRight: inventory.Right_hand.name === mutations.weapons.claw.name,
+        clawExtraLeft: inventory.Extra_left_hand?.name === mutations.weapons.claw.name,
+        clawExtraRight: inventory.Extra_right_hand?.name === mutations.weapons.claw.name,
+        horns: inventory.Head.name === mutations.weapons.horns.name,
+        lowerFangs: inventory.Chin.name === mutations.weapons.lowerFangs.name,
+        tailWithSting: inventory.Tail.name === mutations.weapons.tailWithSting.name,
+        pincers: inventory.Shoulders.name === mutations.weapons.pincers.name,
+        raptorLegs: inventory.Legs.name === mutations.weapons.raptorLegs.name
     }
 
     let amountOfClaws = 0;

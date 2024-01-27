@@ -66,7 +66,13 @@ const pistol = createArmouryItem(
         images.armouryItems.pistol
     ],
     [
-        2, [InventoryPlace.rightHand], 1
+        2, 
+        [
+            InventoryPlace.rightHipItem, 
+            InventoryPlace.leftHipItem, 
+            InventoryPlace.rightHand
+        ], 
+        1
     ],
     [
         '', 0,
@@ -118,6 +124,8 @@ const revolver = createArmouryItem(
     [
         3, 
         [
+            InventoryPlace.rightHipItem, 
+            InventoryPlace.leftHipItem,
             InventoryPlace.rightHand, 
             InventoryPlace.leftHand
         ], 

@@ -48,6 +48,8 @@ import halberd from './halberd.png';
 import head from './head.png';
 import healingPotion from './healingPotion.png';
 import heatSaber from './heatSaber.png';
+import holsterLeft from './holsterLeft.png';
+import holsterRight from './holsterRight.png';
 import hooves from './hooves.png';
 import horns from './horns.png';
 import hypnosis from './hypnosis.png';
@@ -59,6 +61,9 @@ import khopesh from './khopesh.png';
 import laser from './laser.png';
 import leatherArmor from './leatherArmor.png';
 import leftHand from './leftHand.png';
+
+import leftHipItem from './leftHipItem';
+
 import legs from './legs.png';
 import levitation from './levitation.png';
 import lowerFangs from './lowerFangs.png';
@@ -102,6 +107,9 @@ import revolverLeftHand from './revolverLeftHand.png';
 import revolverRightHand from './revolverRightHand.png';
 import rifle from './rifle.png'
 import rightHand from './rightHand.png';
+
+import rightHipItem from './rightHipItem';
+
 import rocketLauncher from './rocketLauncher.png';
 import runicGreataxe from './runicGreataxe.png';
 import runicGreathammer from './runicGreathammer.png';
@@ -166,6 +174,7 @@ const bodyElements = {
     head,
     healingPotion,
     heatSaber,
+    holsterLeft, holsterRight,
     hooves, horns,
     hypnosis, intuition,
     katana,
@@ -173,6 +182,7 @@ const bodyElements = {
     laser,
     leatherArmor,
     leftHand,
+    leftHipItem,
     legs,
     levitation,
     lowerFangs,
@@ -197,6 +207,7 @@ const bodyElements = {
     reactiveFeet,
     revolverLeftHand, revolverRightHand, rifle,
     rightHand,
+    rightHipItem,
     rocketLauncher,
     runicGreataxe, runicGreathammer, runicGreatsword,
     sabre,

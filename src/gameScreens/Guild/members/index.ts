@@ -23,7 +23,7 @@ const guildianZarrack = () => {
     character.params.currentParams[UserParam.focus] = 1;
 
     character.general.mind.masteries.push(guildMasteries.chakramAffiliation);
-    character.general.inventory.leftHand = guildItems.weapons.steelChakram;
+    character.general.inventory.Left_hand = guildItems.weapons.steelChakram;
 
     return character
 }
@@ -47,7 +47,7 @@ const guildianShumashi = () => {
     character.params.currentParams[UserParam.focus] = 1;
 
     character.general.mind.masteries.push(guildMasteries.marksmanship);
-    character.general.inventory.bothHands = guildItems.weapons.oakCrossow;
+    character.general.inventory.Both_hands = guildItems.weapons.oakCrossow;
 
     return character
 }

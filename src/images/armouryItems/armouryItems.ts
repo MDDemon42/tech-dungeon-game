@@ -9,6 +9,7 @@ import battleRifle from './battleRifle.png';
 import dragonBoneBlade from './dragonBoneBlade.png';
 import glaive from './glaive.png';
 import halberd from './halberd.png';
+import holster from './holster.png';
 import katana from './katana.png';
 import khopesh from './khopesh.png';
 import macuahuitl from './macuahuitl.png';
@@ -39,6 +40,7 @@ const armouryItems = {
     dragonBoneBlade,
     glaive,
     halberd,
+    holster,
     katana,
     khopesh,
     macuahuitl,

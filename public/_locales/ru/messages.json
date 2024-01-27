@@ -786,6 +786,28 @@
     "healing_potion_item_description": {
         "message": "Напиток из целебных трав."
     },
+    "holster": {
+        "message": "Кобура"
+    },
+    "holster_item_description": {
+        "message": "Фирменная кобура для освобождения руки."
+    },
+    "craft_holster": {
+        "message": "Создать кобуру"
+    },
+    "craft_holster_description": {
+        "message": "Использовать $count$ $resource$ для создания кобуры.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "musket": {
         "message": "Мушкет"
     },
@@ -3131,6 +3153,12 @@
     "inventory_place_left_hand": {
         "message": "Левая рука"
     },
+    "inventory_place_left_hip": {
+        "message": "Левое бедро"
+    },
+    "inventory_place_left_hip_item": {
+        "message": "Предмет на левом бедре"
+    },
     "inventory_place_left_pocket": {
         "message": "Левый карман"
     },
@@ -3139,6 +3167,12 @@
     },
     "inventory_place_right_hand": {
         "message": "Правая рука"
+    },
+    "inventory_place_right_hip": {
+        "message": "Правое бедро"
+    },
+    "inventory_place_right_hip_item": {
+        "message": "Предмет на правом бедре"
     },
     "inventory_place_right_pocket": {
         "message": "Правый карман"

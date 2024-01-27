@@ -8,110 +8,131 @@
     height: 370px;
 }
 
-.hat, .head, .chin, .skin, .back, .armor,
-.shoulders, .tail, .extraLeftHand, .extraRightHand,
-.leftHand, .rightHand, .legs, .eyes,
-.telekinesisLeftHand, .telekinesisRightHand,
-.bothHands, .belt, .leftPocket, .rightPocket {
+.Hat, .Head, .Chin, .Skin, .Back, .Armor,
+.Shoulders, .Tail, .Extra_left_hand, .Extra_right_hand,
+.Left_hand, .Right_hand, .Legs, .Eyes,
+.Left_hip, .Right_hip, .Right_hip_item, .Left_hip_item,
+.Telekinesis_left_hand, .Telekinesis_right_hand,
+.Both_hands, .Belt, .Left_pocket, .Right_pocket {
     position: absolute;
 }
 
-.hat {
+.Hat {
     left: 80px;
     top: 10px;
 }
 
-.chin {
+.Chin {
     left: 135px;
     top: 65px;
 }
 
-.eyes {
+.Eyes {
     left: 135px;
     top: 10px;
 }
 
-.head {
+.Head {
     left: 190px;
     top: 10px;
 }
 
-.extraRightHand {
+.Extra_right_hand {
     left: 15px;
     top: 15px;
 }
 
-.extraLeftHand {
+.Extra_left_hand {
     left: 255px;
     top: 15px;
 }
 
-.shoulders {
+.Shoulders {
     left: 25px;
     top: 70px;
 }
 
-.armor {
+.Armor {
     left: 80px;
     top: 75px;
 }
 
-.skin {
+.Skin {
     left: 190px;
     top: 75px;
 }
 
-.back {
+.Back {
     left: 245px;
     top: 70px;
 }
 
-.rightPocket {
+.Right_pocket {
     left: 80px;
     top: 130px;
 }
 
-.belt {
+.Right_hip {
+    left: 80px;
+    top: 190px;
+}
+
+.Right_hip_item {
+    left: 80px;
+    top: 245px;
+}
+
+.Belt {
     left: 135px;
     top: 130px;
 }
 
-.leftPocket {
+.Left_pocket {
     left: 190px;
     top: 130px;
 }
 
-.rightHand {
-    left: 70px;
+.Left_hip {
+    left: 190px;
     top: 190px;
 }
 
-.bothHands {
+.Left_hip_item {
+    left: 190px;
+    top: 245px;
+}
+
+.Right_hand {
+    left: 25px;
+    top: 170px;
+}
+
+.Both_hands {
     left: 135px;
     top: 190px;
 }
 
-.leftHand {
-    left: 200px;
-    top: 190px;
+.Left_hand {
+    left: 245px;
+    top: 170px;
 }
 
-.telekinesisRightHand {
+.Telekinesis_right_hand {
     left: 30px;
     top: 265px;
 }
 
-.legs {
+.Legs {
     left: 135px;
     top: 310px;
 }
 
-.tail {
+.Tail {
     left: 135px;
     top: 250px;
 }
 
-.telekinesisLeftHand {
+.Telekinesis_left_hand {
     left: 240px;
     top: 265px;
 }

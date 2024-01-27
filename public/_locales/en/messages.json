@@ -792,6 +792,28 @@
     "healing_potion_item_description": {
         "message": "Drink of herbs."
     },
+    "holster": {
+        "message": "Holster"
+    },
+    "holster_item_description": {
+        "message": "Brand holster to free up a hand."
+    },
+    "craft_holster": {
+        "message": "Craft holster"
+    },
+    "craft_holster_description": {
+        "message": "Use $count$ $resource$ to craft holster.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "musket": {
         "message": "Musket"
     },
@@ -3151,6 +3173,12 @@
     "inventory_place_left_hand": {
         "message": "Left hand"
     },
+    "inventory_place_left_hip": {
+        "message": "Left hip"
+    },
+    "inventory_place_left_hip_item": {
+        "message": "Left hip item"
+    },
     "inventory_place_left_pocket": {
         "message": "Left pocket"
     },
@@ -3159,6 +3187,12 @@
     },
     "inventory_place_right_hand": {
         "message": "Right hand"
+    },
+    "inventory_place_right_hip": {
+        "message": "Right hip"
+    },
+    "inventory_place_right_hip_item": {
+        "message": "Right hip item"
     },
     "inventory_place_right_pocket": {
         "message": "Right pocket"

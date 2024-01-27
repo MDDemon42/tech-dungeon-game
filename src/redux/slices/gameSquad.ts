@@ -28,17 +28,6 @@ import powers from '../../gameScreens/FocusSite/powers';
 import classInfo from '../../general/classInfo';
 import { raceNames } from '../../general/races/races';
 
-export function placeAsKey(place: string) {
-    return place.split(' ').map((part, index) => {
-        if (index === 0) {
-            part = part[0].toLowerCase() + part.substring(1);
-        } else {
-            part = part[0].toUpperCase() + part.substring(1);
-        }
-        return part
-    }).join('');
-}
-
 export const createGameSquad = (): IGameSquad => {
     return {
         currentlyWatched: 0,
@@ -250,6 +239,28 @@ const gameSquad = createSlice({
             const backpacks = [...squadMember.general.backpacks];
             const inventory = {...squadMember.general.inventory};
 
+            const handsOptions: 
+            (   
+                InventoryPlace.rightHipItem | InventoryPlace.leftHipItem |
+                InventoryPlace.leftHand | InventoryPlace.extraLeftHand |
+                InventoryPlace.telekinesisLeftHand | InventoryPlace.telekinesisRightHand |
+                InventoryPlace.rightHand | InventoryPlace.extraRightHand
+            )[] = 
+            [
+                InventoryPlace.rightHipItem, InventoryPlace.leftHipItem,
+                InventoryPlace.leftHand, InventoryPlace.extraLeftHand,
+                InventoryPlace.rightHand, InventoryPlace.extraRightHand,
+                InventoryPlace.telekinesisLeftHand, InventoryPlace.telekinesisRightHand
+            ];
+
+            const hipOptions: 
+            (
+                InventoryPlace.leftHip | InventoryPlace.rightHip
+            )[] = 
+            [
+                InventoryPlace.leftHip, InventoryPlace.rightHip
+            ];
+
             const {item, itemIndex} = action.payload;
             let itemsToPut: [IItem, InventoryPlace][] = [];
 
@@ -264,62 +275,55 @@ const gameSquad = createSlice({
                 if (
                     position === InventoryPlace.bothHands
                 ) {
-                    const leftHandItem = {...inventory.leftHand} as IItem;
+                    const leftHandItem = {...inventory.Left_hand} as IItem;
                     if (leftHandItem.name !== nothing) {
                         itemsToPut.push([leftHandItem, InventoryPlace.leftHand]);
                     }
-                    inventory.leftHand = createNoItem();
+                    inventory.Left_hand = createNoItem();
     
-                    const rightHandItem = {...inventory.rightHand} as IItem;
+                    const rightHandItem = {...inventory.Right_hand} as IItem;
                     if (rightHandItem.name !== nothing) {
                         itemsToPut.push([rightHandItem, InventoryPlace.rightHand]);
                     }
-                    inventory.rightHand = createNoItem();
+                    inventory.Right_hand = createNoItem();
                 } else if (
                     position === InventoryPlace.leftHand ||
                     position === InventoryPlace.rightHand
                 ) {
-                    const bothHandsItem = {...inventory.bothHands} as IItem;
+                    const bothHandsItem = {...inventory.Both_hands} as IItem;
                     if (bothHandsItem.name !== nothing) {
                         itemsToPut.push([bothHandsItem, InventoryPlace.bothHands]);
                     }
-                    inventory.bothHands = createNoItem();
+                    inventory.Both_hands = createNoItem();
                 }
 
                 {
-                    const thisPositionItem = {...inventory[placeAsKey(position)]} as IItem;
+                    const thisPositionItem = {...inventory[position]} as IItem;
                     if (thisPositionItem.name !== nothing) {
                         itemsToPut.push([thisPositionItem, position]);
                     }
                 }
                 
-                inventory[placeAsKey(position)] = item;
+                inventory[position] = item;
                 squadMember.params.lifted += item.requiredStrength;
                 itemEquipped = true;
-            } else {
-                const handsOptions: (InventoryPlace.leftHand | InventoryPlace.extraLeftHand |
-                    InventoryPlace.telekinesisLeftHand | InventoryPlace.telekinesisRightHand |
-                    InventoryPlace.rightHand | InventoryPlace.extraRightHand)[] = 
-                [
-                    InventoryPlace.rightHand, InventoryPlace.leftHand,
-                    InventoryPlace.extraRightHand, InventoryPlace.extraLeftHand,
-                    InventoryPlace.telekinesisLeftHand, InventoryPlace.telekinesisRightHand                  
-                ];
-    
+                // @ts-expect-error
+            } else if (handsOptions.includes(possiblePositions[0])) {    
                 let exchangeOptions: null | (InventoryPlace.leftHand | InventoryPlace.extraLeftHand |
                     InventoryPlace.telekinesisLeftHand | InventoryPlace.telekinesisRightHand |
-                    InventoryPlace.rightHand | InventoryPlace.extraRightHand)[] = null;
+                    InventoryPlace.rightHand | InventoryPlace.extraRightHand |
+                    InventoryPlace.leftHipItem | InventoryPlace.rightHipItem)[] = null;
         
                 for (const option of handsOptions) {
                     if (possiblePositions.includes(option)) {
-                        const thisOptionItem = {...inventory[placeAsKey(option)]} as IItem | null;
+                        const thisOptionItem = {...inventory[option]} as IItem | null;
     
                         if (!thisOptionItem) {
                             continue;
                         }
     
                         if (thisOptionItem.name === nothing) {
-                            const bothHandsItem = {...inventory.bothHands} as IItem;
+                            const bothHandsItem = {...inventory.Both_hands} as IItem;
                             if (
                                 (
                                     option === InventoryPlace.leftHand ||
@@ -346,7 +350,7 @@ const gameSquad = createSlice({
                             }     
 
                             if (itemEquipped) {
-                                inventory[placeAsKey(option)] = item;
+                                inventory[option] = item;
                             }
                             break;
                         } else if (thisOptionItem.name !== item.name) {
@@ -363,12 +367,12 @@ const gameSquad = createSlice({
                     const randomOptions = exchangeOptions ? exchangeOptions : handsOptions;
                     const randomHandsOption = randomOptions[Math.floor(Math.random() * randomOptions.length)];
     
-                    const randomHandsOptionItem = {...inventory[placeAsKey(randomHandsOption)]} as IItem;
+                    const randomHandsOptionItem = {...inventory[randomHandsOption]} as IItem;
                     if (randomHandsOptionItem.name !== nothing) {
                         itemsToPut.push([randomHandsOptionItem, randomHandsOption]);
                     }         
 
-                    const bothHandsItem = {...inventory.bothHands} as IItem;
+                    const bothHandsItem = {...inventory.Both_hands} as IItem;
                     if (
                         (
                             randomHandsOption === InventoryPlace.leftHand ||
@@ -376,7 +380,7 @@ const gameSquad = createSlice({
                         ) && bothHandsItem.name !== nothing 
                     ) {
                         itemsToPut.push([bothHandsItem, InventoryPlace.bothHands]);
-                        inventory.bothHands = createNoItem();
+                        inventory.Both_hands = createNoItem();
                     }   
 
                     if (
@@ -396,8 +400,53 @@ const gameSquad = createSlice({
                     }
 
                     if (itemEquipped) {
-                        inventory[placeAsKey(randomHandsOption)] = item;
+                        inventory[randomHandsOption] = item;
                     }                    
+                }
+                // @ts-expect-error
+            } else if (hipOptions.includes(possiblePositions[0])) {
+                let exchangeOptions: null | (InventoryPlace.leftHip | InventoryPlace.rightHip)[] = null;
+
+                for (const option of hipOptions) {
+                    if (possiblePositions.includes(option)) {
+                        const thisOptionItem = {...inventory[option]} as IItem | null;
+    
+                        if (!thisOptionItem) {
+                            continue;
+                        }
+    
+                        if (thisOptionItem.name === nothing) {
+                            inventory[option] = item;
+                            itemEquipped = true;
+                            
+                            if (option === InventoryPlace.leftHip) {
+                                inventory.Left_hip_item = createNoItem();
+                            }
+                            if (option === InventoryPlace.rightHip) {
+                                inventory.Right_hip_item = createNoItem();
+                            }
+                            break;
+                        } else if (thisOptionItem.name !== item.name) {
+                            if (!exchangeOptions) {
+                                exchangeOptions = [option];
+                            } else {
+                                exchangeOptions.push(option);
+                            }                            
+                        }
+                    }
+                }
+        
+                if (!itemEquipped) {
+                    const randomOptions = exchangeOptions ? exchangeOptions : hipOptions;
+                    const randomHandsOption = randomOptions[Math.floor(Math.random() * randomOptions.length)];
+    
+                    const randomHandsOptionItem = {...inventory[randomHandsOption]} as IItem;
+                    if (randomHandsOptionItem.name !== nothing) {
+                        itemsToPut.push([randomHandsOptionItem, randomHandsOption]);
+                    }
+
+                    inventory[randomHandsOption] = item;
+                    itemEquipped = true;
                 }
             }
            
@@ -443,7 +492,8 @@ const gameSquad = createSlice({
             const squadMember = {...oldState.squadMembers[oldState.currentlyWatched]};
             const backpacks = [...squadMember.general.backpacks];
             const inventory = {...squadMember.general.inventory};
-            const {item, inventoryPlace} = action.payload;
+            const {item, inventoryPlace}: 
+                {item: IItem, inventoryPlace: InventoryPlace} = action.payload;
             
             if (
                 inventoryPlace !== InventoryPlace.telekinesisLeftHand &&
@@ -454,7 +504,23 @@ const gameSquad = createSlice({
                 squadMember.params.maxParams.Focus += 1;
                 squadMember.params.currentParams.Focus += 1;
             }          
-            inventory[placeAsKey(inventoryPlace)] = createNoItem();
+            
+            if (inventoryPlace === InventoryPlace.leftHip) {
+                const leftHipItem = inventory.Left_hip_item;
+                if (leftHipItem) {
+                    putItemInBackpacks(backpacks, leftHipItem);
+                }
+                
+                inventory.Left_hip_item = null;
+            } else if (inventoryPlace === InventoryPlace.rightHip) {
+                const rightHipItem = inventory.Right_hip_item;
+                if (rightHipItem) {
+                    putItemInBackpacks(backpacks, rightHipItem);
+                }
+                
+                inventory.Right_hip_item = null;
+            } 
+            inventory[inventoryPlace] = createNoItem();
             putItemInBackpacks(backpacks, item);
             integratePassiveAbility(squadMember, item, -1);
 
@@ -546,8 +612,8 @@ const gameSquad = createSlice({
             const power: IPower = action.payload;
 
             if (power.name === powers.other.telekinesis.name) {
-                squadMember.general.inventory.telekinesisLeftHand = createNoItem();
-                squadMember.general.inventory.telekinesisRightHand = createNoItem();
+                squadMember.general.inventory.Telekinesis_left_hand = createNoItem();
+                squadMember.general.inventory.Telekinesis_right_hand = createNoItem();
             }
 
             squadMember.general.mind.powers.push(power);            
@@ -665,7 +731,7 @@ const gameSquad = createSlice({
             if (possiblePositions.length === 1) {
                 const position = cyber.inventoryPlaces[0];
                 
-                const oldCyber = {...inventory[placeAsKey(position)]} as ICyber | IItem;
+                const oldCyber = {...inventory[position]} as ICyber | IItem;
                 if (oldCyber.name !== nothing) {
                     if (
                         !oldCyber.description.includes('Cyber') && 
@@ -683,15 +749,16 @@ const gameSquad = createSlice({
                     position === InventoryPlace.leftHand ||
                     position === InventoryPlace.rightHand
                 ) {
-                    const bothHandsItem = {...inventory.bothHands} as IItem;
+                    const bothHandsItem = {...inventory.Both_hands} as IItem;
                     if (bothHandsItem.name !== nothing) {
                         putItemInBackpacks(backpacks, bothHandsItem); 
                     }
 
-                    inventory.bothHands = createNoItem();                
+                    inventory.Both_hands = createNoItem();                
                 }
     
-                inventory[placeAsKey(position)] = cyber;
+                // @ts-expect-error
+                inventory[position] = cyber;
             } else {
                 const handsOptions: 
                 (InventoryPlace.leftHand | InventoryPlace.rightHand |
@@ -704,20 +771,20 @@ const gameSquad = createSlice({
         
                 for (const option of handsOptions) {
                     if (possiblePositions.includes(option)) {
-                        const thisOptionCyber = {...inventory[placeAsKey(option)]} as ICyber | IItem | null;
+                        const thisOptionCyber = {...inventory[option]} as ICyber | IItem | null;
                         if (!thisOptionCyber) {
                             continue;
                         }
 
                         if (cyber.requiredCyber && thisOptionCyber.name === cyber.requiredCyber) {
                             integratePassiveAbility(squadMember, thisOptionCyber, -1);
-                            inventory[placeAsKey(option)] = cyber;
+                            inventory[option] = cyber;
                             cyberImplemented = true;
                             break;
                         }
     
                         if (thisOptionCyber.name === nothing) {
-                            const bothHandsItem = {...inventory.bothHands} as IItem;
+                            const bothHandsItem = {...inventory.Both_hands} as IItem;
                             if (
                                 (
                                     option === InventoryPlace.leftHand ||
@@ -727,7 +794,7 @@ const gameSquad = createSlice({
                                 continue;
                             }
                             
-                            inventory[placeAsKey(option)] = cyber;
+                            inventory[option] = cyber;
                             cyberImplemented = true;
                             break;
                         }
@@ -747,7 +814,7 @@ const gameSquad = createSlice({
 
                             integratePassiveAbility(squadMember, thisOptionCyber, -1); 
 
-                            inventory[placeAsKey(option)] = cyber;
+                            inventory[option] = cyber;
                             cyberImplemented = true;
                             break;
                         }                        
@@ -757,13 +824,13 @@ const gameSquad = createSlice({
                 if (!cyberImplemented) {
                     const randomHandsOption = handsOptions[Math.floor(Math.random() * handsOptions.length)];
     
-                    const randomHandsOptionItem = {...inventory[placeAsKey(randomHandsOption)]} as IItem;
+                    const randomHandsOptionItem = {...inventory[randomHandsOption]} as IItem;
                     if (randomHandsOptionItem.name !== nothing) {
                         putItemInBackpacks(backpacks, randomHandsOptionItem); 
                         integratePassiveAbility(squadMember, randomHandsOptionItem, -1);
                     }         
 
-                    const bothHandsItem = {...inventory.bothHands} as IItem;
+                    const bothHandsItem = {...inventory.Both_hands} as IItem;
                     if (
                         (
                             randomHandsOption === InventoryPlace.leftHand ||
@@ -774,10 +841,10 @@ const gameSquad = createSlice({
                     ) {
                         putItemInBackpacks(backpacks, bothHandsItem); 
                         integratePassiveAbility(squadMember, bothHandsItem, -1);
-                        inventory.bothHands = createNoItem();
+                        inventory.Both_hands = createNoItem();
                     }           
     
-                    inventory[placeAsKey(randomHandsOption)] = cyber;
+                    inventory[randomHandsOption] = cyber;
                 }
             }                      
             
@@ -804,63 +871,64 @@ const gameSquad = createSlice({
             const inventory = {...squadMember.general.inventory};
 
             if (mutation.name === mutations.weapons.claws.name) {
-                const bothHandsItem = {...inventory.bothHands} as IItem;
+                const bothHandsItem = {...inventory.Both_hands} as IItem;
                 if (bothHandsItem.name !== nothing) {
                     putItemInBackpacks(backpacks, bothHandsItem); 
                     integratePassiveAbility(squadMember, bothHandsItem, -1);
-                    inventory.bothHands = createNoItem();
+                    inventory.Both_hands = createNoItem();
                 }   
 
-                const leftHandItem = {...inventory.leftHand} as IItem;
+                const leftHandItem = {...inventory.Left_hand} as IItem;
                 if (leftHandItem.name !== nothing) {
                     putItemInBackpacks(backpacks, leftHandItem); 
                     integratePassiveAbility(squadMember, leftHandItem, -1);
                 }
-                inventory.leftHand = mutations.weapons.claw;
+                inventory.Left_hand = mutations.weapons.claw;
 
-                const rightHandItem = {...inventory.rightHand} as IItem;
+                const rightHandItem = {...inventory.Right_hand} as IItem;
                 if (rightHandItem.name !== nothing) {
                     putItemInBackpacks(backpacks, rightHandItem); 
                     integratePassiveAbility(squadMember, rightHandItem, -1);
                 }
-                inventory.rightHand = mutations.weapons.claw;
+                inventory.Right_hand = mutations.weapons.claw;
 
-                if (inventory.extraLeftHand) {
-                    const extraLeftHandItem = {...inventory.extraLeftHand} as IItem;
+                if (inventory.Extra_left_hand) {
+                    const extraLeftHandItem = {...inventory.Extra_left_hand} as IItem;
                     if (extraLeftHandItem.name !== nothing) {
                         putItemInBackpacks(backpacks, extraLeftHandItem); 
                         integratePassiveAbility(squadMember, extraLeftHandItem, -1);
                     }
-                    inventory.extraLeftHand = mutations.weapons.claw;
+                    inventory.Extra_left_hand = mutations.weapons.claw;
                 }
-                if (inventory.extraRightHand) {
-                    const extraRightHandItem = {...inventory.extraRightHand} as IItem;
+                if (inventory.Extra_right_hand) {
+                    const extraRightHandItem = {...inventory.Extra_right_hand} as IItem;
                     if (extraRightHandItem.name !== nothing) {
                         putItemInBackpacks(backpacks, extraRightHandItem); 
                         integratePassiveAbility(squadMember, extraRightHandItem, -1);
                     }
-                    inventory.extraRightHand = mutations.weapons.claw;
+                    inventory.Extra_right_hand = mutations.weapons.claw;
                 }
             } else {
-                const previousMutation = inventory[placeAsKey(position)];
+                const previousMutation = inventory[position];
                 integratePassiveAbility(squadMember, previousMutation as IMutation, -1);
             }            
 
             if (mutation.name === mutations.other.extraArms.name) {
                 if (
-                    inventory.bothHands.name === mutations.weapons.claws.name ||
-                    inventory.leftHand.name === mutations.weapons.claw.name ||
-                    inventory.rightHand.name === mutations.weapons.claw.name
+                    inventory.Both_hands.name === mutations.weapons.claws.name ||
+                    inventory.Left_hand.name === mutations.weapons.claw.name ||
+                    inventory.Right_hand.name === mutations.weapons.claw.name
                 ) {
-                    inventory.extraLeftHand = mutations.weapons.claw;
-                    inventory.extraRightHand = mutations.weapons.claw;
+                    inventory.Extra_left_hand = mutations.weapons.claw;
+                    inventory.Extra_right_hand = mutations.weapons.claw;
                 } else {
-                    inventory.extraLeftHand = createNoItem();
-                    inventory.extraRightHand = createNoItem();
+                    inventory.Extra_left_hand = createNoItem();
+                    inventory.Extra_right_hand = createNoItem();
                 }
             }
 
-            inventory[placeAsKey(position)] = mutation;
+            // @ts-expect-error
+            inventory[position] = mutation;
             oldState.resources[UserResource.gene] -= mutation.cost;
 
             const isStrong = squadMember.params.strength >= 3;

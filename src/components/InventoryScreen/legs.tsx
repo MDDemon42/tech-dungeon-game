@@ -1,10 +1,13 @@
 import cybers from "../../gameScreens/CyberLab/cybers";
 import powers from "../../gameScreens/FocusSite/powers";
 import rituals from "../../gameScreens/Guild/rituals";
+import armouryItems from "../../gameScreens/Mansion/armouryItems";
 import mutations from "../../gameScreens/MutaLab/mutations";
 import images from "../../images/images";
 
 function getLegsImage(
+    leftHipName: string,
+    rightHipName: string,
     legsName: string,
     skinName: string,
     ritualsUserNames: string[],
@@ -33,6 +36,10 @@ function getLegsImage(
                     <img src={images.bodyElements.nanoMatrixLegs} alt='nanoMatrixLegs' /> :
                     skinName === cybers.armors.nanoVest.name ?
                         <img src={images.bodyElements.nanoVestLegs} alt='nanoVestLegs' /> : null,
+                leftHipName === armouryItems.other.holster.name ?
+                    <img src={images.bodyElements.holsterLeft} alt={chrome.i18n.getMessage('holster')} /> : null,
+                rightHipName === armouryItems.other.holster.name ?
+                    <img src={images.bodyElements.holsterRight} alt={chrome.i18n.getMessage('holster')} /> : null,
                 legsName === cybers.other.reactiveFeet.name ?
                     <img src={images.bodyElements.reactiveFeet} alt={chrome.i18n.getMessage('reactive_feet')} /> : null
             ]

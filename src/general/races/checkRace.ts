@@ -5,21 +5,21 @@ import { Race } from "../../enums-and-interfaces/enums";
 
 function checkRace(inventory: IInventory, isStrong: boolean): Race {
     const currentRace: IMutationsForRaceCheck = {
-        horns: inventory.head.name === mutations.weapons.horns.name,
-        hooves: inventory.legs.name === mutations.other.hooves.name,
-        lowerFangs: inventory.chin.name === mutations.weapons.lowerFangs.name,
-        scales: inventory.skin.name === mutations.armors.scales.name,
-        fur: inventory.skin.name === mutations.armors.fur.name,
-        extraArms: inventory.shoulders.name === mutations.other.extraArms.name,
-        tailWithSting: inventory.tail.name === mutations.weapons.tailWithSting.name,
-        claws: inventory.bothHands.name === mutations.weapons.claws.name,
-        acidSpit: inventory.chin.name === mutations.weapons.acidSpit.name,
-        skinWings: inventory.back.name === mutations.other.skinWings.name,
-        pincers: inventory.shoulders.name === mutations.weapons.pincers.name,
-        raptorLegs: inventory.legs.name === mutations.weapons.raptorLegs.name,
-        fireBreath: inventory.chin.name === mutations.weapons.fireBreath.name,
-        featherWings: inventory.back.name === mutations.other.featherWings.name,
-        tailWithBlunt: inventory.tail.name === mutations.weapons.tailWithBlunt.name,
+        horns: inventory.Head.name === mutations.weapons.horns.name,
+        hooves: inventory.Legs.name === mutations.other.hooves.name,
+        lowerFangs: inventory.Chin.name === mutations.weapons.lowerFangs.name,
+        scales: inventory.Skin.name === mutations.armors.scales.name,
+        fur: inventory.Skin.name === mutations.armors.fur.name,
+        extraArms: inventory.Shoulders.name === mutations.other.extraArms.name,
+        tailWithSting: inventory.Tail.name === mutations.weapons.tailWithSting.name,
+        claws: inventory.Both_hands.name === mutations.weapons.claws.name,
+        acidSpit: inventory.Chin.name === mutations.weapons.acidSpit.name,
+        skinWings: inventory.Back.name === mutations.other.skinWings.name,
+        pincers: inventory.Shoulders.name === mutations.weapons.pincers.name,
+        raptorLegs: inventory.Legs.name === mutations.weapons.raptorLegs.name,
+        fireBreath: inventory.Chin.name === mutations.weapons.fireBreath.name,
+        featherWings: inventory.Back.name === mutations.other.featherWings.name,
+        tailWithBlunt: inventory.Tail.name === mutations.weapons.tailWithBlunt.name,
     }
 
     const isRace = (race: IMutationsForRaceCheck) => {

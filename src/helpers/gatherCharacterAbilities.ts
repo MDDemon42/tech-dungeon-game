@@ -1,4 +1,4 @@
-import { DamageType } from "../enums-and-interfaces/enums";
+import { DamageType, InventoryPlace } from "../enums-and-interfaces/enums";
 import { ICharacher, IBattleAbility } from "../enums-and-interfaces/interfaces";
 import checkRipApart from "../general/races/checkRipApart";
 import wizardItems from "../gameScreens/WizardSchool/wizardItems";
@@ -29,7 +29,8 @@ function gatherCharacterAbilities(character: ICharacher) {
         character.general.inventory : 
         createEmptyInventory();
     
-    for (const name in inventory) {
+    for (const place in inventory) {
+        const name = place as InventoryPlace;
         if (inventory[name]?.abilities) {
             // @ts-expect-error
             if (inventory[name].linkedAbilities) {
@@ -68,9 +69,9 @@ function gatherCharacterAbilities(character: ICharacher) {
     bendingUser.forEach(bending => {
         if (bending.requiresBothHands) {
             if (
-                inventory.bothHands.name === noItem.name &&
-                inventory.leftHand?.name === noItem.name &&
-                inventory.rightHand?.name === noItem.name
+                inventory.Both_hands.name === noItem.name &&
+                inventory.Left_hand?.name === noItem.name &&
+                inventory.Right_hand?.name === noItem.name
             ) {
                 result.push({...bending.ability});
             }
@@ -83,8 +84,8 @@ function gatherCharacterAbilities(character: ICharacher) {
         if (!!spell.ability) {
             if (!!spell.requiresRod) {
                 if (
-                    inventory.bothHands.name === wizardItems.weapons.apprenticeRod.name ||
-                    inventory.bothHands.name === wizardItems.weapons.magisterScepter.name
+                    inventory.Both_hands.name === wizardItems.weapons.apprenticeRod.name ||
+                    inventory.Both_hands.name === wizardItems.weapons.magisterScepter.name
                 ) {
                     result.push({...spell.ability});
                 }
@@ -134,7 +135,7 @@ function gatherCharacterAbilities(character: ICharacher) {
         })
 
     const finalResult = result.map(ability => {
-        if (inventory.eyes.name === mutations.other.dragonEyes.name) {
+        if (inventory.Eyes.name === mutations.other.dragonEyes.name) {
             const copyAbility: IBattleAbility = {
                 ...ability,
                 hitChance: ability.hitChance + 5

@@ -1,4 +1,4 @@
-import { BendingGameScreens, InventoryGameScreens, MindGameScreens } from "../enums-and-interfaces/enums";
+import { BendingGameScreens, InventoryGameScreens, InventoryPlace, MindGameScreens } from "../enums-and-interfaces/enums";
 import { 
     IBending, ICharacher, ICyber, 
     IItem, IMastery, IMutation, 
@@ -129,8 +129,9 @@ export function subInventoryEnableChecker(
     if (screenName === InventoryGameScreens.cyberLab) {
         const memberInventory = character.general.inventory;
         const memberInventoryNames: string[] = [];
-        for (let data in memberInventory) {
-            memberInventoryNames.push(memberInventory[data]?.name || '')
+        for (const name in memberInventory) {
+            const position = name as InventoryPlace;
+            memberInventoryNames.push(memberInventory[position]?.name || '')
         };
 
         // @ts-expect-error

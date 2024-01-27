@@ -3,6 +3,7 @@ import { IArmouryItem, IBattleAbility, ICraft, IMastery, IPassiveAbility } from 
 import guns from "./guns";
 import mageWeapons from "./mageWeapons";
 import battleWeapons from "./battleWeapons";
+import other from './other';
 
 export function createArmouryItem(
     commonInfo: [
@@ -55,12 +56,14 @@ export function createArmouryItem(
 const armouryItems = {
     battleWeapons,
     guns,
-    mageWeapons    
+    mageWeapons,
+    other  
 }
 
 const musketOptions = [
     armouryItems.guns.musket,
-    armouryItems.guns.pistol
+    armouryItems.guns.pistol,
+    armouryItems.other.holster
 ];
 
 const rifleOptions = [

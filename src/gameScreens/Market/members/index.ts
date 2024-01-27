@@ -23,7 +23,7 @@ const adventurerLeon = () => {
     character.params.currentParams[UserParam.mana] = 1;
 
     character.general.mind.masteries.push(academyMasteries.axeAffiliation);
-    character.general.inventory.rightHand = items.weapons.axe;
+    character.general.inventory.Right_hand = items.weapons.axe;
 
     return character
 }
@@ -41,7 +41,7 @@ const adventurerLeiShan = () => {
     character.params.currentParams[UserParam.stamina] = 5;
 
     character.general.mind.masteries.push(academyMasteries.bowAffiliation);
-    character.general.inventory.bothHands = items.weapons.oakBow;
+    character.general.inventory.Both_hands = items.weapons.oakBow;
 
     return character
 }
@@ -63,10 +63,10 @@ const adventurerDovakin = () => {
     character.params.currentParams[UserParam.mana] = 3;
 
     character.general.mind.masteries.push(academyMasteries.swordAffiliation);
-    character.general.inventory.armor = items.armors.steelArmor;
-    character.general.inventory.bothHands = armouryItems.mageWeapons.mageDragonBoneBlade;
+    character.general.inventory.Armor = items.armors.steelArmor;
+    character.general.inventory.Both_hands = armouryItems.mageWeapons.mageDragonBoneBlade;
 
-    character.general.inventory.eyes = mutations.other.dragonEyes;
+    character.general.inventory.Eyes = mutations.other.dragonEyes;
 
     return character
 }
@@ -87,10 +87,10 @@ const adventurerGormak = () => {
     character.params.currentParams[UserParam.stamina] = 6;
 
     character.general.mind.masteries.push(academyMasteries.axeAffiliation);
-    character.general.inventory.leftHand = items.weapons.axe;
-    character.general.inventory.rightHand = items.weapons.axe;
+    character.general.inventory.Left_hand = items.weapons.axe;
+    character.general.inventory.Right_hand = items.weapons.axe;
 
-    character.general.inventory.chin = mutations.weapons.lowerFangs;
+    character.general.inventory.Chin = mutations.weapons.lowerFangs;
 
     return character
 }

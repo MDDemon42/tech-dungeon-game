@@ -16,8 +16,8 @@ const satyr = () => {
     character.params.maxParams[UserParam.stamina] = 3;
     character.params.currentParams[UserParam.stamina] = 3;
 
-    character.general.inventory.head = mutations.weapons.horns;
-    character.general.inventory.legs = mutations.other.hooves;
+    character.general.inventory.Head = mutations.weapons.horns;
+    character.general.inventory.Legs = mutations.other.hooves;
 
     return character
 }
@@ -36,8 +36,8 @@ const minotaur = () => {
 
     character.general.mind.masteries.push(academyMasteries.brutalForce);
 
-    character.general.inventory.head = mutations.weapons.horns;
-    character.general.inventory.legs = mutations.other.hooves;
+    character.general.inventory.Head = mutations.weapons.horns;
+    character.general.inventory.Legs = mutations.other.hooves;
 
     return character
 }
@@ -56,7 +56,7 @@ const orc = () => {
 
     character.general.mind.masteries.push(academyMasteries.brutalForce);
 
-    character.general.inventory.chin = mutations.weapons.lowerFangs;
+    character.general.inventory.Chin = mutations.weapons.lowerFangs;
 
     return character
 }
@@ -73,8 +73,8 @@ const naga = () => {
     character.params.maxParams[UserParam.stamina] = 3;
     character.params.currentParams[UserParam.stamina] = 3;
 
-    character.general.inventory.skin = mutations.armors.scales;
-    character.general.inventory.tail = mutations.weapons.tailWithSting;
+    character.general.inventory.Skin = mutations.armors.scales;
+    character.general.inventory.Tail = mutations.weapons.tailWithSting;
 
     return character
 }
@@ -94,12 +94,12 @@ const demon = () => {
     character.params.maxParams[UserParam.focus] = 6;
     character.params.currentParams[UserParam.focus] = 6;
 
-    character.general.inventory.skin = mutations.armors.fur;
-    character.general.inventory.tail = mutations.weapons.tailWithSting;
-    character.general.inventory.head = mutations.weapons.horns;
-    character.general.inventory.legs = mutations.other.hooves;
-    character.general.inventory.chin = mutations.weapons.lowerFangs;
-    character.general.inventory.bothHands = mutations.weapons.claws;
+    character.general.inventory.Skin = mutations.armors.fur;
+    character.general.inventory.Tail = mutations.weapons.tailWithSting;
+    character.general.inventory.Head = mutations.weapons.horns;
+    character.general.inventory.Legs = mutations.other.hooves;
+    character.general.inventory.Chin = mutations.weapons.lowerFangs;
+    character.general.inventory.Both_hands = mutations.weapons.claws;
 
     return character
 }
@@ -119,12 +119,12 @@ const dragon = () => {
     character.params.maxParams[UserParam.mana] = 6;
     character.params.currentParams[UserParam.mana] = 6;
 
-    character.general.inventory.skin = mutations.armors.scales;
-    character.general.inventory.tail = mutations.weapons.tailWithSting;
-    character.general.inventory.head = mutations.weapons.horns;
-    character.general.inventory.back = mutations.other.skinWings;
-    character.general.inventory.chin = mutations.weapons.acidSpit;
-    character.general.inventory.bothHands = mutations.weapons.claws;
+    character.general.inventory.Skin = mutations.armors.scales;
+    character.general.inventory.Tail = mutations.weapons.tailWithSting;
+    character.general.inventory.Head = mutations.weapons.horns;
+    character.general.inventory.Back = mutations.other.skinWings;
+    character.general.inventory.Chin = mutations.weapons.acidSpit;
+    character.general.inventory.Both_hands = mutations.weapons.claws;
 
     return character
 }
@@ -141,14 +141,14 @@ const ultimate_chimera = () => {
     character.params.maxParams[UserParam.stamina] = 8;
     character.params.currentParams[UserParam.stamina] = 8;
 
-    character.general.inventory.skin = mutations.armors.fur;
-    character.general.inventory.tail = mutations.weapons.tailWithSting;
-    character.general.inventory.head = mutations.weapons.horns;
-    character.general.inventory.back = mutations.other.skinWings;
-    character.general.inventory.chin = mutations.weapons.acidSpit;
-    character.general.inventory.bothHands = mutations.weapons.claws;
-    character.general.inventory.legs = mutations.other.hooves;
-    character.general.inventory.shoulders = mutations.weapons.pincers;
+    character.general.inventory.Skin = mutations.armors.fur;
+    character.general.inventory.Tail = mutations.weapons.tailWithSting;
+    character.general.inventory.Head = mutations.weapons.horns;
+    character.general.inventory.Back = mutations.other.skinWings;
+    character.general.inventory.Chin = mutations.weapons.acidSpit;
+    character.general.inventory.Both_hands = mutations.weapons.claws;
+    character.general.inventory.Legs = mutations.other.hooves;
+    character.general.inventory.Shoulders = mutations.weapons.pincers;
 
     return character
 }

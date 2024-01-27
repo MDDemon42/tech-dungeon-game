@@ -27,40 +27,36 @@ function InventoryIcon(props: {
         return null
     }    
 
+    let clickHandler = () => {};
     let description = inventoryPlaces[inventoryPlace] + ':\n' + item.name;
+    const customStyle = {
+        backgroundColor: backgroundColorMapping[item.category],
+        outline: 'unset',
+        outlineOffset: '0',
+        cursor: 'default'
+    }
+
     if (item.category === InventorySlotCategory.item) {
         description += '\n\nClick to unequip';
-
-        return (
-            <button 
-                className={styles.CommonIconAsButton}
-                onClick={() => dispatch(gameSquad.actions.unequipItem({
-                    item, inventoryPlace
-                }))}
-            >
-                <img 
-                    src={item.image}
-                    title={description}
-                    className={styles.CommonIcon_icon}
-                    alt={item.name}
-                    style={{
-                        backgroundColor: backgroundColorMapping[item.category]
-                    }}
-                />
-            </button>
-        )
+        clickHandler = () => dispatch(gameSquad.actions.unequipItem({
+            item, inventoryPlace
+        }));
+        customStyle['outline'] = '1px solid black';
+        customStyle['outlineOffset'] = '-3px';
+        customStyle['cursor'] = 'pointer';
     }
 
     return (
-        <div className={styles.CommonIcon}>
+        <div 
+            className={styles.CommonIcon}
+            onClick={clickHandler}
+        >
             <img 
                 src={item.image}
                 title={description}
                 className={styles.CommonIcon_icon}
                 alt={item.name}
-                style={{
-                    backgroundColor: backgroundColorMapping[item.category]
-                }}
+                style={customStyle}
             />
         </div>
     )
