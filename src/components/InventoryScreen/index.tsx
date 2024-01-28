@@ -21,6 +21,7 @@ import getTelekinesisRightHandImage from './telekinesisRightHand';
 import powers from '../../gameScreens/FocusSite/powers';
 import getRightHipItemImage from './rightHipItem';
 import getLeftHipItemImage from './leftHipItem';
+import getBeltsImage from './belts';
 
 function InventoryScreen(props: {
     character: ICharacher,
@@ -79,6 +80,8 @@ function InventoryScreen(props: {
 
     const leftHipItem = getLeftHipItemImage(inventory.Left_hip_item?.name || '');
 
+    const belts = getBeltsImage(inventory.Left_hip.name, inventory.Right_hip.name);
+
     const head = getHeadImage(
         powersUserNames,
         inventory.Chin.name,
@@ -122,6 +125,7 @@ function InventoryScreen(props: {
             { extraRightHand }
             { skin }
             { armor }
+            { belts }
             { rightHipItem }
             { rightPocket }
             { leftHipItem }

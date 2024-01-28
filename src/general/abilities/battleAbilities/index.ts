@@ -29,8 +29,9 @@ export function createBattleAbility(
     },
     damageInfo: [
         targetAmount: number,
-        hitChance: number
-    ]        
+        hitChance: number,
+    ],
+    throwing?: boolean        
 ): IBattleAbility {
     return {
         name: commonInfo[0], 
@@ -42,7 +43,9 @@ export function createBattleAbility(
         damage,
 
         targetAmount: damageInfo[0],
-        hitChance: damageInfo[1]
+        hitChance: damageInfo[1],
+
+        throwing
     }
 }
 

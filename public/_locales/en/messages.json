@@ -1732,6 +1732,15 @@
     "stick_pierce": {
         "message": "Stick pierce"
     },
+    "pierce_stick_throw": {
+        "message": "Pierce stick throw"
+    },
+    "sheath": {
+        "message": "Sheath"
+    },
+    "sheath_item_description": {
+        "message": "Usual sheath to free up hand of sword."
+    },
     "steel_spear": {
         "message": "Steel spear"
     },

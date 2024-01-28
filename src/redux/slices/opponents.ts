@@ -1,7 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { DamageType, UserParam } from '../../enums-and-interfaces/enums';
-import { IAbility, ICharacher, IOpponentSquad } from '../../enums-and-interfaces/interfaces';
+import { DamageType, InventoryPlace, UserParam } from '../../enums-and-interfaces/enums';
+import { IAbility, ICharacher, IItem, IOpponentSquad } from '../../enums-and-interfaces/interfaces';
 import characters from '../../general/characters';
+import { createNoItem } from '../../helpers/emptyEssencesCreators';
 
 const opponents_options: Record<string, ICharacher>[] = [
     {
@@ -101,6 +102,31 @@ const opponents = createSlice({
 
             state.opponentMembers = squad;
         },
+        throwItem(state, action) {
+            const {index, item, inventoryPlace} = action.payload as 
+                {index: number, item: IItem, inventoryPlace: InventoryPlace};
+
+            const oldState = {...state};
+            const squadMember = {...oldState.opponentMembers[index]};
+            const inventory = {...squadMember.general.inventory};
+            
+            if (
+                inventoryPlace !== InventoryPlace.telekinesisLeftHand &&
+                inventoryPlace !== InventoryPlace.telekinesisRightHand
+            ) {
+                squadMember.params.lifted -= item.requiredStrength;
+            } else {
+                squadMember.params.maxParams.Focus += 1;
+                squadMember.params.currentParams.Focus += 1;
+            }          
+            
+            inventory[inventoryPlace] = createNoItem();
+            integratePassiveAbility(squadMember, item, -1);
+
+            squadMember.general.inventory = inventory;
+
+            state = oldState;
+        },
         respite(state, action) {
             const squad = {...state.opponentMembers};
 
@@ -124,3 +150,7 @@ const opponents = createSlice({
 })
 
 export default opponents
+
+function integratePassiveAbility(squadMember: { general: import("immer/dist/internal").WritableDraft<import("../../enums-and-interfaces/interfaces").ICharacterGeneral>; params: import("immer/dist/internal").WritableDraft<import("../../enums-and-interfaces/interfaces").ICharacherParams>; }, item: IItem, arg2: number) {
+    throw new Error('Function not implemented.');
+}

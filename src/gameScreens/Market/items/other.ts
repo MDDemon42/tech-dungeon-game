@@ -17,10 +17,28 @@ const healingPotion = createItem(
         1
     ],
     '', 0, null, null, null
-)
+);
+
+const sheath = createItem(
+    [
+        chrome.i18n.getMessage('sheath'), 
+        chrome.i18n.getMessage('sheath_item_description'),
+        images.normalItems.sheath
+    ], 
+    [
+        0, 
+        [
+            InventoryPlace.leftHip, 
+            InventoryPlace.rightHip
+        ], 
+        1
+    ],
+    '', 0, null, null, null
+);
 
 const other = {
-    healingPotion
+    healingPotion,
+    sheath
 }
 
 export default other

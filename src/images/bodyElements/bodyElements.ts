@@ -18,6 +18,8 @@ import battleRevolverLeftHand from './battleRevolverLeftHand.png';
 import battleRevolverRightHand from './battleRevolverRightHand.png';
 import battleRifle from './battleRifle.png';
 import belt from './belt.png';
+import beltSheathLeft from './beltSheathLeft.png';
+import beltSheathRight from './beltSheathRight.png';
 import brutalLegs from './brutalLegs.png';
 import brutalTorso from './brutalTorso.png';
 import chakram from './chakram.png';
@@ -118,6 +120,8 @@ import runicGreatsword from './runicGreatsword.png';
 import sabre from './sabre';
 
 import scalesTorso from './scalesTorso.png';
+import sheathLeft from './sheathLeft.png';
+import sheathRight from './sheathRight.png';
 import steelArmor from './steelArmor.png';
 import steelGreataxe from './steelGreataxe.png';
 import steelGreathammer from './steelGreathammer.png';
@@ -152,6 +156,7 @@ const bodyElements = {
     battleRevolverLeftHand, battleRevolverRightHand,
     battleRifle,
     belt,
+    beltSheathLeft, beltSheathRight,
     brutalLegs, brutalTorso,
     chakram,
     clawExtraLeft, clawExtraRight,
@@ -212,6 +217,7 @@ const bodyElements = {
     runicGreataxe, runicGreathammer, runicGreatsword,
     sabre,
     scalesTorso,
+    sheathLeft, sheathRight,
     steelArmor,
     steelGreataxe, steelGreathammer, steelGreatsword,
     steelMace,

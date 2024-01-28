@@ -2,6 +2,18 @@ import { createBattleAbility } from "..";
 import { DamageType } from "../../../../enums-and-interfaces/enums";
 import images from "../../../../images/images";
 
+const pierceStickThrow = createBattleAbility(
+    [
+        chrome.i18n.getMessage('pierce_stick_throw'), 
+        '', 
+        images.normalItems.pierceStick
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalPiercing]: 1},
+    [1, 70],
+    true
+);
+
 const iceShard = createBattleAbility(
     [
         chrome.i18n.getMessage('ice_shard'), 
@@ -344,6 +356,7 @@ const masterBattleMageRifleDoubleShot = createBattleAbility(
 );
 
 const physicalPiercing = {
+    pierceStickThrow,
     iceShard,
     iceSpear,
     iceHail,

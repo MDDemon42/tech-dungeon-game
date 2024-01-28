@@ -10,7 +10,8 @@ const chakramThrow = createBattleAbility(
     ], 
     {Blank: 0}, 
     {[DamageType.physicalSlashing]: 1},
-    [3, 70]
+    [3, 70],
+    true
 );
 
 const physicalSlashing = {

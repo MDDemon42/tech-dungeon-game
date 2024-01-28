@@ -13,6 +13,8 @@ const steelSword = createItem(
     [
         1, 
         [
+            InventoryPlace.leftHipItem,
+            InventoryPlace.rightHipItem,
             InventoryPlace.rightHand,
             InventoryPlace.leftHand,
             InventoryPlace.extraLeftHand,
@@ -89,6 +91,10 @@ const pierceStick = createItem(
         {
             linkedMastery: academyMasteries.spearAffiliation.name, 
             masterAbility: abilities.battleAbilities.melee.physicalPiercing.affiliatedStickPierce
+        },
+        {
+            linkedMastery: academyMasteries.spearAffiliation.name, 
+            masterAbility: abilities.battleAbilities.ranged.physicalPiercing.pierceStickThrow
         }
     ]
 );

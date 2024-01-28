@@ -22,7 +22,8 @@ import {
     UserParam, 
     InventoryPlace, 
     Race,
-    DamageType
+    DamageType,
+    InventorySlotCategory
 } from '../../enums-and-interfaces/enums';
 import powers from '../../gameScreens/FocusSite/powers';
 import classInfo from '../../general/classInfo';
@@ -309,10 +310,10 @@ const gameSquad = createSlice({
                 itemEquipped = true;
                 // @ts-expect-error
             } else if (handsOptions.includes(possiblePositions[0])) {    
-                let exchangeOptions: null | (InventoryPlace.leftHand | InventoryPlace.extraLeftHand |
+                let exchangeOptions: (InventoryPlace.leftHand | InventoryPlace.extraLeftHand |
                     InventoryPlace.telekinesisLeftHand | InventoryPlace.telekinesisRightHand |
                     InventoryPlace.rightHand | InventoryPlace.extraRightHand |
-                    InventoryPlace.leftHipItem | InventoryPlace.rightHipItem)[] = null;
+                    InventoryPlace.leftHipItem | InventoryPlace.rightHipItem)[] = [];
         
                 for (const option of handsOptions) {
                     if (possiblePositions.includes(option)) {
@@ -330,6 +331,7 @@ const gameSquad = createSlice({
                                     option === InventoryPlace.rightHand
                                 ) && bothHandsItem.name !== nothing 
                             ) {
+                                exchangeOptions.push(option);
                                 continue;
                             }
                             
@@ -354,19 +356,15 @@ const gameSquad = createSlice({
                             }
                             break;
                         } else if (thisOptionItem.name !== item.name) {
-                            if (!exchangeOptions) {
-                                exchangeOptions = [option];
-                            } else {
+                            if (inventory[option] !== null) {
                                 exchangeOptions.push(option);
-                            }                            
+                            }                                                        
                         }
                     }
                 }
         
                 if (!itemEquipped) {
-                    const randomOptions = exchangeOptions ? exchangeOptions : handsOptions;
-                    const randomHandsOption = randomOptions[Math.floor(Math.random() * randomOptions.length)];
-    
+                    const randomHandsOption = exchangeOptions[Math.floor(Math.random() * exchangeOptions.length)];
                     const randomHandsOptionItem = {...inventory[randomHandsOption]} as IItem;
                     if (randomHandsOptionItem.name !== nothing) {
                         itemsToPut.push([randomHandsOptionItem, randomHandsOption]);
@@ -377,7 +375,7 @@ const gameSquad = createSlice({
                         (
                             randomHandsOption === InventoryPlace.leftHand ||
                             randomHandsOption === InventoryPlace.rightHand
-                        ) && bothHandsItem.name !== nothing 
+                        ) && bothHandsItem.category === InventorySlotCategory.item 
                     ) {
                         itemsToPut.push([bothHandsItem, InventoryPlace.bothHands]);
                         inventory.Both_hands = createNoItem();
@@ -405,7 +403,7 @@ const gameSquad = createSlice({
                 }
                 // @ts-expect-error
             } else if (hipOptions.includes(possiblePositions[0])) {
-                let exchangeOptions: null | (InventoryPlace.leftHip | InventoryPlace.rightHip)[] = null;
+                let exchangeOptions: (InventoryPlace.leftHip | InventoryPlace.rightHip)[] = [];
 
                 for (const option of hipOptions) {
                     if (possiblePositions.includes(option)) {
@@ -427,18 +425,13 @@ const gameSquad = createSlice({
                             }
                             break;
                         } else if (thisOptionItem.name !== item.name) {
-                            if (!exchangeOptions) {
-                                exchangeOptions = [option];
-                            } else {
-                                exchangeOptions.push(option);
-                            }                            
+                            exchangeOptions.push(option);                           
                         }
                     }
                 }
         
                 if (!itemEquipped) {
-                    const randomOptions = exchangeOptions ? exchangeOptions : hipOptions;
-                    const randomHandsOption = randomOptions[Math.floor(Math.random() * randomOptions.length)];
+                    const randomHandsOption = exchangeOptions[Math.floor(Math.random() * exchangeOptions.length)];
     
                     const randomHandsOptionItem = {...inventory[randomHandsOption]} as IItem;
                     if (randomHandsOptionItem.name !== nothing) {
@@ -569,6 +562,31 @@ const gameSquad = createSlice({
             
             squadMember.general.backpacks = backpacks;
             resources.Gems += profit;
+
+            state = oldState;
+        },
+        throwItem(state, action) {
+            const {index, item, inventoryPlace} = action.payload as 
+                {index: number, item: IItem, inventoryPlace: InventoryPlace};
+
+            const oldState = {...state};
+            const squadMember = {...oldState.squadMembers[index]};
+            const inventory = {...squadMember.general.inventory};
+            
+            if (
+                inventoryPlace !== InventoryPlace.telekinesisLeftHand &&
+                inventoryPlace !== InventoryPlace.telekinesisRightHand
+            ) {
+                squadMember.params.lifted -= item.requiredStrength;
+            } else {
+                squadMember.params.maxParams.Focus += 1;
+                squadMember.params.currentParams.Focus += 1;
+            }          
+            
+            inventory[inventoryPlace] = createNoItem();
+            integratePassiveAbility(squadMember, item, -1);
+
+            squadMember.general.inventory = inventory;
 
             state = oldState;
         },

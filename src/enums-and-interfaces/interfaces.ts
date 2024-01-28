@@ -271,7 +271,8 @@ export interface IBattleAbility extends ICommon {
         [DamageType.suffocation]?: number
     },
     hitChance: number,
-    targetAmount: number
+    targetAmount: number,
+    throwing?: boolean
 }
 
 export interface IPassiveAbility extends ICommon {

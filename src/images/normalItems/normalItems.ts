@@ -10,6 +10,7 @@ import oakBow from './oakBow.png';
 import oakCrossbow from './oakCrossbow.png';
 import pickaxe from './pickaxe.png';
 import pierceStick from './pierceStick.png';
+import sheath from './sheath.png';
 import steelSpear from './steelSpear.png';
 import steelArmor from './steelArmor.png';
 import steelGreataxe from './steelGreataxe.png';
@@ -33,6 +34,7 @@ const normalItems = {
     oakCrossbow,
     pickaxe,
     pierceStick,
+    sheath,
     steelSpear,
     steelArmor,
     steelGreataxe,

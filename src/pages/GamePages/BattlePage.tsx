@@ -4,6 +4,8 @@ import {
     IAbility, 
     IBattlePageState, 
     ICharacher, 
+    IInventorySlot, 
+    IItem, 
     IMemberStatus, 
     IStore
 } from '../../enums-and-interfaces/interfaces';
@@ -23,7 +25,7 @@ import {
 import BattleTurnButtons from '../../components/BattleTurnButtons';
 import BattleOverScreen from '../../components/BattleOverScreen/BattleOverScreen';
 import { removeGameTabs } from '../../helpers/removeGameTabs';
-import { BattleResult, GameScreens } from '../../enums-and-interfaces/enums';
+import { BattleResult, GameScreens, InventoryPlace, InventorySlotCategory } from '../../enums-and-interfaces/enums';
 import gameStage from '../../redux/slices/gameStage';
 
 function BattlePage() {
@@ -393,16 +395,56 @@ function BattlePage() {
 
             const indexes = collectSufferIndexes(state, memberIndex);
 
-            if (state.selectedAbility) {
+            const {selectedAbility} = state;
+            if (selectedAbility) {
                 dispatch(gameSquad.actions.sufferAbility({
                     indexes,
-                    ability: state.selectedAbility
+                    ability: selectedAbility
                 }))
 
                 dispatch(opponents.actions.processAbility({
                     index: state.selectedOpponentIndex,
-                    data: state.selectedAbility.costs
-                }));                
+                    data: selectedAbility.costs
+                })); 
+
+                if (selectedAbility.throwing) {
+                    const thisOpponent = oppsMembers[state.selectedOpponentIndex];
+                    const thisOpponentInventory = thisOpponent.general.inventory;
+                    const [abilityItem, abilityItemInventoryPlace] = Object.keys(thisOpponentInventory).map(key => {
+                        const inventoryPlace = key as InventoryPlace;
+                        const inventorySlot = thisOpponentInventory[inventoryPlace] as IItem;
+
+                        if (inventorySlot) {
+                            if (inventorySlot.category === InventorySlotCategory.item) {
+                                const inventorySlotAbilities = inventorySlot.abilities;
+                                if (inventorySlotAbilities) {
+                                    const inventorySlotAbilitiesNames = inventorySlotAbilities
+                                        .map(ability => ability.name);
+                                    if (inventorySlotAbilitiesNames.includes(selectedAbility.name)) {
+                                        return [inventorySlot, inventoryPlace]
+                                    }
+                                }
+
+                                const inventorySlotlinkedAbilities = inventorySlot.linkedAbilities;
+                                if (inventorySlotlinkedAbilities) {
+                                    const inventorySlotlinkedAbilitiesNames = inventorySlotlinkedAbilities
+                                        .map(ability => ability.masterAbility.name);
+                                    if (inventorySlotlinkedAbilitiesNames.includes(selectedAbility.name)) {
+                                        return [inventorySlot, inventoryPlace]
+                                    }
+                                }
+                            }
+                        }
+
+                        return [inventorySlot, inventoryPlace]
+                    }).filter(item => !!item[0])[0] as [IItem, InventoryPlace];
+
+                    dispatch(opponents.actions.throwItem({
+                        index: state.selectedOpponentIndex,
+                        item: abilityItem,
+                        inventoryPlace: abilityItemInventoryPlace
+                    }))
+                }
             }            
 
             return state
@@ -424,6 +466,47 @@ function BattlePage() {
                 index: state.selectedMemberIndex,
                 data: state.selectedAbility?.costs
             }));
+
+            const {selectedAbility} = state;
+            if (selectedAbility && selectedAbility.throwing) {
+                const thisMember = squadMembers[state.selectedOpponentIndex];
+                const thisMemberInventory = thisMember.general.inventory;
+                const [abilityItem, abilityItemInventoryPlace] = Object.keys(thisMemberInventory).map(key => {
+                    const inventoryPlace = key as InventoryPlace;
+                    const inventorySlot = thisMemberInventory[inventoryPlace] as IItem;
+
+                    if (inventorySlot) {
+                        if (inventorySlot.category === InventorySlotCategory.item) {
+                            const inventorySlotAbilities = inventorySlot.abilities;
+                            if (inventorySlotAbilities) {
+                                const inventorySlotAbilitiesNames = inventorySlotAbilities
+                                    .map(ability => ability.name);
+                                if (inventorySlotAbilitiesNames.includes(selectedAbility.name)) {
+                                    return [inventorySlot, inventoryPlace]
+                                }
+                            }
+
+                            const inventorySlotlinkedAbilities = inventorySlot.linkedAbilities;
+                            if (inventorySlotlinkedAbilities) {
+                                const inventorySlotlinkedAbilitiesNames = inventorySlotlinkedAbilities
+                                    .map(ability => ability.masterAbility.name);
+                                if (inventorySlotlinkedAbilitiesNames.includes(selectedAbility.name)) {
+                                    return [inventorySlot, inventoryPlace]
+                                }
+                            }
+
+                        }
+                    }
+
+                    return [null, null]
+                }).filter(item => !!item[0])[0] as [IItem, InventoryPlace];
+                
+                dispatch(gameSquad.actions.throwItem({
+                    index: state.selectedMemberIndex,
+                    item: abilityItem,
+                    inventoryPlace: abilityItemInventoryPlace
+                }))
+            }
 
             state.selectedOpponentIndex = -1;
             state.opponentsStatus.forEach((member) => {

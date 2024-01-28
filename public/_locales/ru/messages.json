@@ -1718,6 +1718,15 @@
     "stick_pierce": {
         "message": "Тык палкой"
     },
+    "pierce_stick_throw": {
+        "message": "Бросок протыкалки"
+    },
+    "sheath": {
+        "message": "Ножны"
+    },
+    "sheath_item_description": {
+        "message": "Обычные ножны для освобождения руки от меча."
+    },
     "steel_spear": {
         "message": "Стальное копьё"
     },

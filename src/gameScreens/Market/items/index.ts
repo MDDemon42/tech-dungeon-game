@@ -73,6 +73,7 @@ const steelOptions = [
     items.weapons.steelMace,
     items.weapons.steelSpear,
     items.weapons.steelSword,
+    items.other.sheath,
     items.weapons.steelGreataxe,
     items.weapons.steelGreathammer,
     items.weapons.steelGreatsword
