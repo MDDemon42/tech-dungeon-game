@@ -76,7 +76,8 @@ const steelOptions = [
     items.other.sheath,
     items.weapons.steelGreataxe,
     items.weapons.steelGreathammer,
-    items.weapons.steelGreatsword
+    items.weapons.steelGreatsword,
+    items.other.greatSheath,
 ];
 
 export const marketOptions: Record<string, IItem[]> = {

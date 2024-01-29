@@ -35,6 +35,14 @@ function priorityChecker(slot: IInventorySlot) {
         InventoryPlace.leftHip, InventoryPlace.rightHip
     ];
 
+    const greatSwordOptions: 
+    (
+        InventoryPlace.backItem | InventoryPlace.bothHands
+    )[] = 
+    [
+        InventoryPlace.backItem, InventoryPlace.bothHands
+    ];
+
     if (possiblePositions.length === 1) {
         const position = possiblePositions[0];
         const name_old = inventory[position]?.name || '';
@@ -86,7 +94,31 @@ function priorityChecker(slot: IInventorySlot) {
                     thisOptionItem.priority <= priority_new);
             }
         }
-    }    
+        // @ts-expect-error
+    } else if (greatSwordOptions.includes(possiblePositions[0])) {
+        for (const option of greatSwordOptions) {
+            if (possiblePositions.includes(option)) {
+                const thisOptionItem = {...inventory[option]} as IItem | null;
+                if (!thisOptionItem) {
+                    continue;
+                }
+
+                if (option === InventoryPlace.bothHands) {
+                    const name_old = inventory[option].name;
+                    const priority_old = inventory[option].priority;
+
+                    result = result || (name_old !== name_new && priority_new >= priority_old);
+
+                    return result &&
+                        priority_new >= inventory.Left_hand.priority &&
+                        priority_new >= inventory.Right_hand.priority
+                }
+                
+                result = result || (thisOptionItem.name !== name_new && 
+                    thisOptionItem.priority <= priority_new);
+            }
+        }
+    }
     
     return result
 }

@@ -1727,6 +1727,12 @@
     "sheath_item_description": {
         "message": "Обычные ножны для освобождения руки от меча."
     },
+    "great_sheath": {
+        "message": "Большие ножны"
+    },
+    "great_sheath_item_description": {
+        "message": "Обычные большие ножны для освобождения рук от клейморы."
+    },
     "steel_spear": {
         "message": "Стальное копьё"
     },
@@ -3134,6 +3140,9 @@
     },
     "inventory_place_back": {
         "message": "Спина"
+    },
+    "inventory_place_back_item": {
+        "message": "Предмет на спине"
     },
     "inventory_place_belt": {
         "message": "Пояс"

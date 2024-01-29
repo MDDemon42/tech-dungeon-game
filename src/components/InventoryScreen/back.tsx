@@ -1,6 +1,7 @@
 import mutations from "../../gameScreens/MutaLab/mutations";
 import images from "../../images/images";
 import wizardItems from "../../gameScreens/WizardSchool/wizardItems";
+import items from "../../gameScreens/Market/items";
 
 function getBackImage(backName: string) {
     let result = null;
@@ -14,6 +15,9 @@ function getBackImage(backName: string) {
             break;
         case wizardItems.other.wizardItem_flyingCape.name:
             result = <img src={images.bodyElements.flyingCape} alt={chrome.i18n.getMessage('flying_cape')} />;
+            break;
+        case items.other.greatSheath.name:
+            result = <img src={images.bodyElements.greatSheath} alt={chrome.i18n.getMessage('great_sheath')} />;
             break;
         default:
             break;

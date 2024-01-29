@@ -101,6 +101,7 @@ export function createEmptyInventory() {
         [InventoryPlace.armor]: createNoItem(),
         [InventoryPlace.skin]: createNoItem(),
         [InventoryPlace.back]: createNoItem(),
+        [InventoryPlace.backItem]: null,
         [InventoryPlace.shoulders]: createNoItem(),
         [InventoryPlace.extraLeftHand]: null,
         [InventoryPlace.extraRightHand]: null,

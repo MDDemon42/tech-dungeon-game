@@ -5,6 +5,7 @@ export enum InventoryPlace {
     chin = 'Chin',
     skin = 'Skin',
     back = 'Back',
+    backItem = 'Back_item',
     armor = 'Armor',
     shoulders = 'Shoulders',
     tail = 'Tail',

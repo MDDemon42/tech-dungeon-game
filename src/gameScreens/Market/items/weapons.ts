@@ -172,7 +172,12 @@ const steelGreatsword = createItem(
         images.normalItems.steelGreatsword
     ],
     [
-        2, [InventoryPlace.bothHands], 1
+        2, 
+        [
+            InventoryPlace.backItem,
+            InventoryPlace.bothHands
+        ], 
+        1
     ],
     academyMasteries.brutalForce.name, 2,
     [

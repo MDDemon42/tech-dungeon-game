@@ -1741,6 +1741,12 @@
     "sheath_item_description": {
         "message": "Usual sheath to free up hand of sword."
     },
+    "great_sheath": {
+        "message": "Great sheath"
+    },
+    "great_sheath_item_description": {
+        "message": "Usual great sheath to free up hands of greatsword."
+    },
     "steel_spear": {
         "message": "Steel spear"
     },
@@ -3154,6 +3160,9 @@
     },
     "inventory_place_back": {
         "message": "Back"
+    },
+    "inventory_place_back_item": {
+        "message": "Back item"
     },
     "inventory_place_belt": {
         "message": "Belt"

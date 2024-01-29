@@ -38,7 +38,12 @@ const runicGreatsword = createGuildItem(
         images.guildianLearnings.runicGreatsword
     ],
     [
-        2, [InventoryPlace.bothHands], 1
+        2, 
+        [
+            InventoryPlace.backItem,
+            InventoryPlace.bothHands
+        ], 
+        1
     ],
     academyMasteries.brutalForce.name, 2,
     [

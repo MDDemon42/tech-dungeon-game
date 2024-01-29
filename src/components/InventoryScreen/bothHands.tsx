@@ -8,7 +8,8 @@ import wizardItems from "../../gameScreens/WizardSchool/wizardItems";
 function getBothHandsImage(
     bothHandsName: string,
     rightHandName: string,
-    leftHandName: string
+    leftHandName: string,
+    backItemName: string
 ) {
     let result = null;
 
@@ -157,7 +158,11 @@ function getBothHandsImage(
                 result.push(<img src={images.bodyElements.rightHand} alt='rightHand' />);
             }
             if (leftHandName === createNoItem().name) {
-                result.push(<img src={images.bodyElements.leftHand} alt='leftHand' />);
+                if (backItemName === guildItems.weapons.runicGreatsword.name) {
+                    result.push(<img src={images.bodyElements.runicGreatswordGlove} alt='leftHand' />);
+                } else {
+                    result.push(<img src={images.bodyElements.leftHand} alt='leftHand' />);
+                }
             }            
             break;
     }

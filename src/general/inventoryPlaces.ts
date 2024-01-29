@@ -3,6 +3,7 @@ import { InventoryPlace } from "../enums-and-interfaces/enums"
 const inventoryPlaces: Record<InventoryPlace, string> = {
     [InventoryPlace.armor]: chrome.i18n.getMessage('inventory_place_armor'),
     [InventoryPlace.back]: chrome.i18n.getMessage('inventory_place_back'),
+    [InventoryPlace.backItem]: chrome.i18n.getMessage('inventory_place_back_item'),
     [InventoryPlace.belt]: chrome.i18n.getMessage('inventory_place_belt'),
     [InventoryPlace.bothHands]: chrome.i18n.getMessage('inventory_place_both_hands'),
     [InventoryPlace.chin]: chrome.i18n.getMessage('inventory_place_chin'),

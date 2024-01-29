@@ -22,6 +22,7 @@ import powers from '../../gameScreens/FocusSite/powers';
 import getRightHipItemImage from './rightHipItem';
 import getLeftHipItemImage from './leftHipItem';
 import getBeltsImage from './belts';
+import getBackItemImage from './backItem';
 
 function InventoryScreen(props: {
     character: ICharacher,
@@ -38,6 +39,8 @@ function InventoryScreen(props: {
     const height = battle ? '160px' : '370px';
 
     const back = getBackImage(inventory.Back.name);
+
+    const backItem = getBackItemImage(inventory.Back_item?.name || '');
 
     const tail = getTailImage(inventory.Tail.name);
 
@@ -80,7 +83,11 @@ function InventoryScreen(props: {
 
     const leftHipItem = getLeftHipItemImage(inventory.Left_hip_item?.name || '');
 
-    const belts = getBeltsImage(inventory.Left_hip.name, inventory.Right_hip.name);
+    const belts = getBeltsImage(
+        inventory.Left_hip.name, 
+        inventory.Right_hip.name,
+        inventory.Back.name
+    );
 
     const head = getHeadImage(
         powersUserNames,
@@ -98,7 +105,8 @@ function InventoryScreen(props: {
     const bothHands = getBothHandsImage(
         inventory.Both_hands.name,
         inventory.Right_hand.name,
-        inventory.Left_hand.name
+        inventory.Left_hand.name,
+        inventory.Back_item?.name || ''
     );
 
     const telekinesisLeftHand = getTelekinesisLeftHandImage(
@@ -118,6 +126,7 @@ function InventoryScreen(props: {
             title={params.name}
         >                   
             { back }
+            { backItem }
             { tail }
             { legs }
             { shoulders }

@@ -36,7 +36,20 @@ const sheath = createItem(
     '', 0, null, null, null
 );
 
+const greatSheath = createItem(
+    [
+        chrome.i18n.getMessage('great_sheath'), 
+        chrome.i18n.getMessage('great_sheath_item_description'),
+        images.normalItems.greatSheath
+    ], 
+    [
+        0, [InventoryPlace.back], 1
+    ],
+    '', 0, null, null, null
+);
+
 const other = {
+    greatSheath,
     healingPotion,
     sheath
 }

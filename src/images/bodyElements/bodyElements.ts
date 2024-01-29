@@ -18,6 +18,7 @@ import battleRevolverLeftHand from './battleRevolverLeftHand.png';
 import battleRevolverRightHand from './battleRevolverRightHand.png';
 import battleRifle from './battleRifle.png';
 import belt from './belt.png';
+import beltGreatSheath from './beltGreatSheath.png';
 import beltSheathLeft from './beltSheathLeft.png';
 import beltSheathRight from './beltSheathRight.png';
 import brutalLegs from './brutalLegs.png';
@@ -44,6 +45,8 @@ import flyingCape from './flyingCape.png';
 import freezer from './freezer.png';
 import furTorso from './furTorso.png';
 import glaive from './glaive.png';
+import greatSheath from './greatSheath.png';
+import greatSwordGreatSheath from './greatSwordGreatSheath.png';
 import guardianAura from './guardianAura.png';
 import guardianField from './guardianField.png';
 import halberd from './halberd.png';
@@ -116,6 +119,7 @@ import rocketLauncher from './rocketLauncher.png';
 import runicGreataxe from './runicGreataxe.png';
 import runicGreathammer from './runicGreathammer.png';
 import runicGreatsword from './runicGreatsword.png';
+import runicGreatswordGlove from './runicGreatswordGlove.png';
 
 import sabre from './sabre';
 
@@ -156,7 +160,7 @@ const bodyElements = {
     battleRevolverLeftHand, battleRevolverRightHand,
     battleRifle,
     belt,
-    beltSheathLeft, beltSheathRight,
+    beltSheathLeft, beltSheathRight, beltGreatSheath,
     brutalLegs, brutalTorso,
     chakram,
     clawExtraLeft, clawExtraRight,
@@ -174,6 +178,8 @@ const bodyElements = {
     freezer,
     furTorso,
     glaive,
+    greatSheath,
+    greatSwordGreatSheath,
     guardianAura, guardianField,
     halberd,
     head,
@@ -215,6 +221,7 @@ const bodyElements = {
     rightHipItem,
     rocketLauncher,
     runicGreataxe, runicGreathammer, runicGreatsword,
+    runicGreatswordGlove,
     sabre,
     scalesTorso,
     sheathLeft, sheathRight,

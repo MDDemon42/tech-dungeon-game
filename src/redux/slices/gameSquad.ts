@@ -28,6 +28,7 @@ import {
 import powers from '../../gameScreens/FocusSite/powers';
 import classInfo from '../../general/classInfo';
 import { raceNames } from '../../general/races/races';
+import items from '../../gameScreens/Market/items';
 
 export const createGameSquad = (): IGameSquad => {
     return {
@@ -262,6 +263,14 @@ const gameSquad = createSlice({
                 InventoryPlace.leftHip, InventoryPlace.rightHip
             ];
 
+            const greatSwordOptions: 
+            (
+                InventoryPlace.backItem | InventoryPlace.bothHands
+            )[] = 
+            [
+                InventoryPlace.backItem, InventoryPlace.bothHands
+            ];
+
             const {item, itemIndex} = action.payload;
             let itemsToPut: [IItem, InventoryPlace][] = [];
 
@@ -296,6 +305,13 @@ const gameSquad = createSlice({
                         itemsToPut.push([bothHandsItem, InventoryPlace.bothHands]);
                     }
                     inventory.Both_hands = createNoItem();
+                }
+
+                if (
+                    position === InventoryPlace.back &&
+                    item.name === items.other.greatSheath.name
+                ) {
+                    inventory.Back_item = createNoItem();
                 }
 
                 {
@@ -441,6 +457,67 @@ const gameSquad = createSlice({
                     inventory[randomHandsOption] = item;
                     itemEquipped = true;
                 }
+                // @ts-expect-error
+            } else if (greatSwordOptions.includes(possiblePositions[0])) {
+                let exchangeOptions: (InventoryPlace.backItem | InventoryPlace.bothHands)[] = [];
+
+                for (const option of greatSwordOptions) {
+                    if (possiblePositions.includes(option)) {
+                        const thisOptionItem = {...inventory[option]} as IItem | null;
+    
+                        if (!thisOptionItem) {
+                            continue;
+                        }
+    
+                        if (thisOptionItem.name === nothing) {
+                            if (option === InventoryPlace.bothHands) {
+                                const leftHandItem = {...inventory.Left_hand} as IItem;
+                                const rightHandItem = {...inventory.Right_hand} as IItem;
+                                if (
+                                    leftHandItem.name !== nothing ||
+                                    rightHandItem.name !== nothing
+                                ) {
+                                    exchangeOptions.push(option);
+                                    continue;
+                                }
+                            }
+
+                            inventory[option] = item;
+                            squadMember.params.lifted += item.requiredStrength;
+                            itemEquipped = true;
+                            break;
+                        } else if (thisOptionItem.name !== item.name) {
+                            exchangeOptions.push(option);                           
+                        }
+                    }
+                }
+        
+                if (!itemEquipped) {
+                    const randomHandsOption = exchangeOptions[Math.floor(Math.random() * exchangeOptions.length)];
+    
+                    const randomHandsOptionItem = {...inventory[randomHandsOption]} as IItem;
+                    if (randomHandsOptionItem.name !== nothing) {
+                        itemsToPut.push([randomHandsOptionItem, randomHandsOption]);
+                    }
+
+                    if (randomHandsOption === InventoryPlace.bothHands) {
+                        const leftHandItem = {...inventory.Left_hand} as IItem;
+                        if (leftHandItem.name !== nothing) {
+                            itemsToPut.push([leftHandItem, InventoryPlace.leftHand]);
+                        }
+                        inventory.Left_hand = createNoItem();
+        
+                        const rightHandItem = {...inventory.Right_hand} as IItem;
+                        if (rightHandItem.name !== nothing) {
+                            itemsToPut.push([rightHandItem, InventoryPlace.rightHand]);
+                        }
+                        inventory.Right_hand = createNoItem();
+                    }
+
+                    inventory[randomHandsOption] = item;
+                    squadMember.params.lifted += item.requiredStrength;
+                    itemEquipped = true;
+                }
             }
            
             if (itemEquipped) {
@@ -512,7 +589,18 @@ const gameSquad = createSlice({
                 }
                 
                 inventory.Right_hip_item = null;
-            } 
+            } else if (
+                inventoryPlace === InventoryPlace.back &&
+                item.name === items.other.greatSheath.name
+            ) {
+                const backItem = inventory.Back_item;
+                if (backItem) {
+                    putItemInBackpacks(backpacks, backItem);
+                }
+                
+                inventory.Back_item = null;
+            }
+
             inventory[inventoryPlace] = createNoItem();
             putItemInBackpacks(backpacks, item);
             integratePassiveAbility(squadMember, item, -1);

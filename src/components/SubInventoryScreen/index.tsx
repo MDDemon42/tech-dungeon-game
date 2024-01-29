@@ -118,7 +118,7 @@ function SubInventoryScreen(props: {
             (item.inventoryPlaces.includes(InventoryPlace.extraLeftHand) && screenName !== InventoryGameScreens.mutaLab) || 
             (item.inventoryPlaces.includes(InventoryPlace.extraRightHand) && screenName !== InventoryGameScreens.mutaLab)
         )),
-        data_for_two_hands: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.bothHands),
+        data_for_two_hands: data.filter(item => item.inventoryPlaces.includes(InventoryPlace.bothHands)),
         data_for_belt: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.belt),
         data_for_hips: data.filter(item => item.inventoryPlaces[0] === InventoryPlace.leftHip ||
             item.inventoryPlaces[0] === InventoryPlace.rightHip),

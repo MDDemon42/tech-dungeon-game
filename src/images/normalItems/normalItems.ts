@@ -4,6 +4,7 @@ import axe from './axe.png';
 import doubleAxeSlash from './doubleAxeSlash.png';
 import doubleMaceSmash from './doubleMaceSmash.png';
 import doubleSwordSlash from './doubleSwordSlash.png';
+import greatSheath from './greatSheath.png';
 import healingPotion from './healingPotion.png';
 import leatherArmor from './leatherArmor.png';
 import oakBow from './oakBow.png';
@@ -28,6 +29,7 @@ const normalItems = {
     doubleAxeSlash,
     doubleMaceSmash,
     doubleSwordSlash,
+    greatSheath,
     healingPotion,
     leatherArmor,
     oakBow,
