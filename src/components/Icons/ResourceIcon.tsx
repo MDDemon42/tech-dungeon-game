@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Capsule, Gem, Gear } from 'react-bootstrap-icons';
+import { Apple, Capsule, Gem, Gear } from 'react-bootstrap-icons';
 import { UserResource } from "../../enums-and-interfaces/enums";
 import styles from './Icons.module.css';
 import userResources from "../../general/userResources";
@@ -10,8 +10,9 @@ function ResourceIcon(props: {
 }) {
     const {price, resource} = props;
     const resourceIcons: Record<UserResource, ReactElement> = {
-        [UserResource.gem]: <Gem/>,
         [UserResource.core]: <Gear/>,
+        [UserResource.food]: <Apple/>,
+        [UserResource.gem]: <Gem/>,
         [UserResource.gene]: <Capsule/>,
         [UserResource.none]: <></>
     }

@@ -199,7 +199,12 @@ const oakBow = createItem(
         images.normalItems.oakBow
     ], 
     [
-        1, [InventoryPlace.bothHands], 1
+        1, 
+        [
+            InventoryPlace.shouldersItem,
+            InventoryPlace.bothHands
+        ], 
+        1
     ],
     '', 0,
     [

@@ -22,6 +22,7 @@ const inventoryPlaces: Record<InventoryPlace, string> = {
     [InventoryPlace.rightHipItem]: chrome.i18n.getMessage('inventory_place_right_hip_item'),
     [InventoryPlace.rightPocket]: chrome.i18n.getMessage('inventory_place_right_pocket'),
     [InventoryPlace.shoulders]: chrome.i18n.getMessage('inventory_place_shoulders'),
+    [InventoryPlace.shouldersItem]: chrome.i18n.getMessage('inventory_place_shoulders_item'),
     [InventoryPlace.skin]: chrome.i18n.getMessage('inventory_place_skin'),
     [InventoryPlace.tail]: chrome.i18n.getMessage('inventory_place_tail'),
     [InventoryPlace.telekinesisLeftHand]: chrome.i18n.getMessage('inventory_place_telekinesis_left_hand'),

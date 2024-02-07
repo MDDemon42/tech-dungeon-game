@@ -21,6 +21,7 @@ function LivingRoom() {
         store.gameSquad.squadMembers[store.gameSquad.currentlyWatched]
             .general.mind.masteries).map(mastery => mastery.name);
 
+    const squadResources = useSelector((store: IStore) => store.gameSquad.resources);
     const memberParams = useSelector((store: IStore) => 
         store.gameSquad.squadMembers[store.gameSquad.currentlyWatched].params);
      
@@ -38,8 +39,21 @@ function LivingRoom() {
             visible: true,
             listener: () => {
                 dispatch(gameSquad.actions.relaxate({}));
-
-                dispatch(gameSquad.actions.regenerate({}));
+            }
+        },
+        {
+            data: {
+                name: chrome.i18n.getMessage('eat_title'),
+                description: chrome.i18n.getMessage('eat_description'),
+                image: images.misc.eat
+            },
+            buttonText: chrome.i18n.getMessage('eat_title'),
+            buttonDisabled: 
+                memberParams.currentParams.Satiety >= memberParams.maxParams.Satiety ||
+                squadResources.Food === 0,
+            visible: true,
+            listener: () => {
+                dispatch(gameSquad.actions.eatFood({}));
             }
         },
         {

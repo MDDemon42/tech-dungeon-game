@@ -1,5 +1,5 @@
 import { createItem } from ".";
-import { InventoryPlace } from "../../../enums-and-interfaces/enums";
+import { InventoryPlace, InventorySlotCategory } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
 
 const healingPotion = createItem(
@@ -48,9 +48,64 @@ const greatSheath = createItem(
     '', 0, null, null, null
 );
 
+const quiver = createItem(
+    [
+        chrome.i18n.getMessage('quiver'), 
+        chrome.i18n.getMessage('quiver_item_description'),
+        images.normalItems.quiver
+    ], 
+    [
+        0, [InventoryPlace.shoulders], 1
+    ],
+    '', 0, null, null, null
+);
+
+const food = createItem(
+    [
+        chrome.i18n.getMessage('food'), 
+        chrome.i18n.getMessage('food_item_description'),
+        images.normalItems.food
+    ], 
+    [
+        1, [InventoryPlace.belt], 1
+    ],
+    '', 0, null, null, null, null, 
+    InventorySlotCategory.resource
+);
+
+const mutaGene = createItem(
+    [
+        chrome.i18n.getMessage('muta_gene'), 
+        chrome.i18n.getMessage('muta_gene_item_description'),
+        images.normalItems.mutaGene
+    ], 
+    [
+        2, [InventoryPlace.belt], 1
+    ],
+    '', 0, null, null, null, null, 
+    InventorySlotCategory.resource
+);
+
+const mechaCore = createItem(
+    [
+        chrome.i18n.getMessage('mecha_core'), 
+        chrome.i18n.getMessage('mecha_core_item_description'),
+        images.normalItems.mechaCore
+    ], 
+    [
+        2, [InventoryPlace.belt], 1
+    ],
+    '', 0, null, null, null, null, 
+    InventorySlotCategory.resource
+);
+
 const other = {
+    food,
     greatSheath,
     healingPotion,
+    mechaCore,
+    mutaGene,
+    quiver,
     sheath
 }
 

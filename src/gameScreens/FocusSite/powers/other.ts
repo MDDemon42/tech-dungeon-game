@@ -12,6 +12,7 @@ const telekinesis = createPower(
     [
         psionMasteries.meditativeInsights.name,
         [
+            abilities.battleAbilities.ranged.physicalSmashing.telekineticDisarm,
             abilities.battleAbilities.ranged.physicalSmashing.telekineticPush,
             abilities.battleAbilities.ranged.physicalSmashing.telekineticPressure,
             abilities.battleAbilities.ranged.suffocation.telekineticChoke

@@ -53,7 +53,7 @@ const extraArms = createMutation(
         images.mutantEvolvings.extraArms
     ],
     [
-        1, [InventoryPlace.shoulders], 1
+        1, [InventoryPlace.shoulders], 2
     ],
     [
         null, 

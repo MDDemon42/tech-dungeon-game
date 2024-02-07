@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import styles from './BackpacksScreen.module.css';
+import styles from './index.module.css';
 import { IStore } from '../../enums-and-interfaces/interfaces';
 import ResourceIcon from '../Icons/ResourceIcon';
 import { UserResource } from '../../enums-and-interfaces/enums';

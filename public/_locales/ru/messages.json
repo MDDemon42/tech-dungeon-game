@@ -1721,6 +1721,12 @@
     "pierce_stick_throw": {
         "message": "Бросок протыкалки"
     },
+    "quiver": {
+        "message": "Колчан"
+    },
+    "quiver_item_description": {
+        "message": "Обычный колчан для освобождения рук от лука."
+    },
     "sheath": {
         "message": "Ножны"
     },
@@ -2591,6 +2597,9 @@
     "telekinesis_power_description": {
         "message": "Мощь, открывающая бесконечные возможности."
     },
+    "telekinetic_disarm": {
+        "message": "Телекинетическое разоружение"
+    },
     "telekinetic_push": {
         "message": "Телекинетический толчок"
     },
@@ -2982,6 +2991,12 @@
     "choose_class": {
         "message": "Выберите класс"
     },
+    "eat_title": {
+        "message": "Поесть"
+    },
+    "eat_description": {
+        "message": "Насытить тело и/или не умереть от голода"
+    },
     "sleep_title": {
         "message": "Поспать"
     },
@@ -3057,14 +3072,29 @@
     "mana": {
         "message": "Мана"
     },
+    "satiety": {
+        "message": "Сытость"
+    },
     "stamina": {
         "message": "Выносливость"
     },
     "mecha_core": {
         "message": "Меха-ядро"
     },
+    "mecha_core_item_description": {
+        "message": "Для адаптации тела к Киберам"
+    },
     "muta_gene": {
         "message": "Мута-ген"
+    },
+    "muta_gene_item_description": {
+        "message": "Для адаптации тела к Мутациям"
+    },
+    "food": {
+        "message": "Еда"
+    },
+    "food_item_description": {
+        "message": "Содержит еды на 10 приёмов пищи."
     },
     "gem": {
         "message": "Самоцвет"
@@ -3197,6 +3227,9 @@
     },
     "inventory_place_shoulders": {
         "message": "Плечи"
+    },
+    "inventory_place_shoulders_item": {
+        "message": "Предмет на плечах"
     },
     "inventory_place_skin": {
         "message": "Кожа"

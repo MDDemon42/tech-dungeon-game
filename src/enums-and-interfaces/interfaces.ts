@@ -108,6 +108,7 @@ export interface ICharacherParams {
         [UserParam.health]: number,
         [UserParam.mana]: number,
         [UserParam.focus]: number,
+        [UserParam.satiety]: number,
         [UserParam.stamina]: number,
         [UserParam.blank]?: number
     },
@@ -115,6 +116,7 @@ export interface ICharacherParams {
         [UserParam.health]: number,
         [UserParam.mana]: number,
         [UserParam.focus]: number,
+        [UserParam.satiety]: number,
         [UserParam.stamina]: number,
         [UserParam.blank]?: number
     },
@@ -180,6 +182,7 @@ export interface IInventory extends Record<InventoryPlace,
     [InventoryPlace.back]: IMutation | IItem,
     [InventoryPlace.backItem]: IItem | null,
     [InventoryPlace.shoulders]: IMutation | ICyber,
+    [InventoryPlace.shouldersItem]: IItem | null,
     [InventoryPlace.extraLeftHand]: ICyber | IItem | IMutation | null,
     [InventoryPlace.extraRightHand]: ICyber | IItem | IMutation | null,
     [InventoryPlace.belt]: IItem,

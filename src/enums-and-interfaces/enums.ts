@@ -8,6 +8,7 @@ export enum InventoryPlace {
     backItem = 'Back_item',
     armor = 'Armor',
     shoulders = 'Shoulders',
+    shouldersItem = 'Shoulders_item',
     tail = 'Tail',
     extraLeftHand = 'Extra_left_hand',
     extraRightHand = 'Extra_right_hand',
@@ -71,6 +72,7 @@ export enum UserParam {
     health = 'Health',
     mana = 'Mana',
     focus = 'Focus',
+    satiety = 'Satiety',
     stamina = 'Stamina'    
 }
 
@@ -78,6 +80,7 @@ export enum UserResource {
     gem = 'Gems',
     core = 'Mecha-cores',
     gene = 'Muta-genes',
+    food = 'Food',
     none = 'None'
 }
 
@@ -196,5 +199,6 @@ export enum InventorySlotCategory {
     item = 'Item',
     cyber = 'Cyber',
     mutation = 'Mutation',
+    resource = 'Resource',
     nothing = 'Nothing'
 }

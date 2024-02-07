@@ -19,8 +19,8 @@ const telekineticPush = createBattleAbility(
         '', 
         images.misc.fistPunch
     ], 
-    {Focus: 1}, 
-    {[DamageType.physicalSmashing]: 1},
+    {Focus: 2}, 
+    {[DamageType.physicalSmashing]: 2},
     [1, 95]
 );
 
@@ -30,13 +30,25 @@ const telekineticPressure = createBattleAbility(
         '', 
         images.psionInsights.telekineticPressure
     ], 
-    {Focus: 2}, 
-    {[DamageType.physicalSmashing]: 2},
-    [1, 100]
+    {Focus: 3}, 
+    {[DamageType.physicalSmashing]: 3},
+    [1, 95]
+);
+
+const telekineticDisarm = createBattleAbility(
+    [
+        chrome.i18n.getMessage('telekinetic_disarm'), 
+        '', 
+        images.psionInsights.telekineticDisarm
+    ], 
+    {Focus: 1}, 
+    {[DamageType.physicalSmashing]: 1},
+    [1, 95]
 );
 
 const physicalSmashing = {
     windBlow,
+    telekineticDisarm,
     telekineticPressure,
     telekineticPush
 }

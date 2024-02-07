@@ -45,7 +45,7 @@ function getSkinImage(
             ];
             break;
     }
-    result.push(<img src={images.bodyElements.belt} alt='belt' />);
+    result.push(<img src={images.bodyElements.belts.standart} alt='belt' />);
 
     return result
 }

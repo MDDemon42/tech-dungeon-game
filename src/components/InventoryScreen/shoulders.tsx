@@ -1,4 +1,5 @@
 import cybers from "../../gameScreens/CyberLab/cybers";
+import items from "../../gameScreens/Market/items";
 import mutations from "../../gameScreens/MutaLab/mutations";
 import images from "../../images/images";
 
@@ -15,6 +16,9 @@ function getShouldersImage(shouldersName: string) {
         case mutations.other.extraArms.name:
             result = <img src={images.bodyElements.extraArms} alt={chrome.i18n.getMessage('extra_arms')} />;
             break;  
+        case items.other.quiver.name:
+            result = <img src={images.bodyElements.quiver} alt={chrome.i18n.getMessage('quiver')} />;
+            break;
         default:
             break;
     }

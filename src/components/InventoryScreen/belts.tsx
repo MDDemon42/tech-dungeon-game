@@ -4,20 +4,25 @@ import images from "../../images/images";
 function getBeltsImage(
     leftHipName: string, 
     rightHipName: string,
-    backName: string
+    backName: string,
+    shouldersName: string
 ) {
     const result = [];
 
     if (leftHipName === items.other.sheath.name) {
-        result.push(<img src={images.bodyElements.beltSheathLeft} alt={chrome.i18n.getMessage('sheath')} />);
+        result.push(<img src={images.bodyElements.belts.sheathLeft} alt={chrome.i18n.getMessage('sheath')} />);
     }
 
     if (rightHipName === items.other.sheath.name) {
-        result.push(<img src={images.bodyElements.beltSheathRight} alt={chrome.i18n.getMessage('sheath')} />);
+        result.push(<img src={images.bodyElements.belts.sheathRight} alt={chrome.i18n.getMessage('sheath')} />);
     }
 
     if (backName === items.other.greatSheath.name) {
-        result.push(<img src={images.bodyElements.beltGreatSheath} alt={chrome.i18n.getMessage('great_sheath')} />);
+        result.push(<img src={images.bodyElements.belts.greatSheath} alt={chrome.i18n.getMessage('great_sheath')} />);
+    }
+
+    if (shouldersName === items.other.quiver.name) {
+        result.push(<img src={images.bodyElements.belts.quiver} alt={chrome.i18n.getMessage('quiver')} />);
     }
 
     if (result.length === 0) {

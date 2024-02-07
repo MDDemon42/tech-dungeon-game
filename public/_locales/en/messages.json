@@ -1735,6 +1735,12 @@
     "pierce_stick_throw": {
         "message": "Pierce stick throw"
     },
+    "quiver": {
+        "message": "Quiver"
+    },
+    "quiver_item_description": {
+        "message": "Usual quiver to free up hands of bow."
+    },
     "sheath": {
         "message": "Sheath"
     },
@@ -2611,14 +2617,17 @@
     "telekinesis_power_description": {
         "message": "Power that can do a lot of things."
     },
+    "telekinetic_disarm": {
+        "message": "Telekinetic disarm"
+    },
     "telekinetic_push": {
-        "message": "Telekinesis push"
+        "message": "Telekinetic push"
     },
     "telekinetic_pressure": {
-        "message": "Telekinesis pressure"
+        "message": "Telekinetic pressure"
     },
     "telekinetic_choke": {
-        "message": "Telekinesis choke"
+        "message": "Telekinetic choke"
     },
     "hypnosis": {
         "message": "Hypnosis"
@@ -3002,6 +3011,12 @@
     "choose_class": {
         "message": "Choose class"
     },
+    "eat_title": {
+        "message": "Eat"
+    },
+    "eat_description": {
+        "message": "To not starve to death"
+    },
     "sleep_title": {
         "message": "Sleep"
     },
@@ -3077,14 +3092,29 @@
     "mana": {
         "message": "Mana"
     },
+    "satiety": {
+        "message": "Satiety"
+    },
     "stamina": {
         "message": "Stamina"
     },
     "mecha_core": {
         "message": "Mecha-core"
     },
+    "mecha_core_item_description": {
+        "message": "To adapt your body for Cybers"
+    },
     "muta_gene": {
         "message": "Muta-gene"
+    },
+    "muta_gene_item_description": {
+        "message": "To adapt your body for Mutations"
+    },
+    "food": {
+        "message": "Food"
+    },
+    "food_item_description": {
+        "message": "Contains food for 10 meals."
     },
     "gem": {
         "message": "Gem"
@@ -3216,7 +3246,10 @@
         "message": "Right pocket"
     },
     "inventory_place_shoulders": {
-        "message": "Shoulder"
+        "message": "Shoulders"
+    },
+    "inventory_place_shoulders_item": {
+        "message": "Shoulders item"
     },
     "inventory_place_skin": {
         "message": "Skin"

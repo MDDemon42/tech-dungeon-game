@@ -17,10 +17,10 @@ import battlePistol from './battlePistol.png';
 import battleRevolverLeftHand from './battleRevolverLeftHand.png';
 import battleRevolverRightHand from './battleRevolverRightHand.png';
 import battleRifle from './battleRifle.png';
-import belt from './belt.png';
-import beltGreatSheath from './beltGreatSheath.png';
-import beltSheathLeft from './beltSheathLeft.png';
-import beltSheathRight from './beltSheathRight.png';
+
+import belts from './belts';
+
+import bowQuiver from './bowQuiver.png';
 import brutalLegs from './brutalLegs.png';
 import brutalTorso from './brutalTorso.png';
 import chakram from './chakram.png';
@@ -103,6 +103,7 @@ import pistol from './pistol.png';
 import psiBlade from './psiBlade.png';
 import psiJavelin from './psiJavelin.png';
 import psiLightning from './psiLightning.png';
+import quiver from './quiver.png';
 
 import rapier from './rapier';
 
@@ -159,8 +160,8 @@ const bodyElements = {
     battleMusket, battlePistol,
     battleRevolverLeftHand, battleRevolverRightHand,
     battleRifle,
-    belt,
-    beltSheathLeft, beltSheathRight, beltGreatSheath,
+    belts,
+    bowQuiver,
     brutalLegs, brutalTorso,
     chakram,
     clawExtraLeft, clawExtraRight,
@@ -213,6 +214,7 @@ const bodyElements = {
     pincers,
     pistol,
     psiBlade, psiJavelin, psiLightning,
+    quiver,
     rapier,
     raptorLegs,
     reactiveFeet,

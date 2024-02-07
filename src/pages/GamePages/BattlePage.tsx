@@ -27,6 +27,9 @@ import BattleOverScreen from '../../components/BattleOverScreen/BattleOverScreen
 import { removeGameTabs } from '../../helpers/removeGameTabs';
 import { BattleResult, GameScreens, InventoryPlace, InventorySlotCategory } from '../../enums-and-interfaces/enums';
 import gameStage from '../../redux/slices/gameStage';
+import powers from '../../gameScreens/FocusSite/powers';
+import { createNoItem } from '../../helpers/emptyEssencesCreators';
+import abilities from '../../general/abilities';
 
 function BattlePage() {
     const [battlePageState, setBattlePageState] = useState<IBattlePageState>({
@@ -468,7 +471,7 @@ function BattlePage() {
             }));
 
             const {selectedAbility} = state;
-            if (selectedAbility && selectedAbility.throwing) {
+            if (selectedAbility?.throwing) {
                 const thisMember = squadMembers[state.selectedOpponentIndex];
                 const thisMemberInventory = thisMember.general.inventory;
                 const [abilityItem, abilityItemInventoryPlace] = Object.keys(thisMemberInventory).map(key => {
@@ -505,6 +508,51 @@ function BattlePage() {
                     index: state.selectedMemberIndex,
                     item: abilityItem,
                     inventoryPlace: abilityItemInventoryPlace
+                }))
+            }
+
+            if (selectedAbility?.name === abilities.battleAbilities.ranged.physicalSmashing.telekineticDisarm.name) {
+                const certainOpponentInventory = opps[state.selectedOpponentIndex].general.inventory;
+                const possibleWeapons = [
+                    {
+                        item: certainOpponentInventory.Both_hands,
+                        place: InventoryPlace.bothHands
+                    },
+                    {
+                        item: certainOpponentInventory.Right_hand,
+                        place: InventoryPlace.rightHand
+                    },
+                    {
+                        item: certainOpponentInventory.Extra_right_hand,
+                        place: InventoryPlace.extraRightHand
+                    },
+                    {
+                        item: certainOpponentInventory.Left_hand,
+                        place: InventoryPlace.leftHand
+                    },
+                    {
+                        item: certainOpponentInventory.Extra_left_hand,
+                        place: InventoryPlace.extraLeftHand
+                    }
+                ];
+
+                let itemToDispatch = createNoItem() as IItem;
+                let inventoryPlace = InventoryPlace.belt;
+
+                possibleWeapons.forEach(weapon => {
+                    if (
+                        weapon.item &&
+                        weapon.item.category === InventorySlotCategory.item
+                    ) {
+                        itemToDispatch = weapon.item as IItem;
+                        inventoryPlace = weapon.place;
+                    }
+                })                
+
+                dispatch(opponents.actions.throwItem({
+                    index: state.selectedOpponentIndex,
+                    item: itemToDispatch,
+                    inventoryPlace
                 }))
             }
 

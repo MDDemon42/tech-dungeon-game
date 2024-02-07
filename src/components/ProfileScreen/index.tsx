@@ -3,7 +3,7 @@ import MindScreen from "../MindScreen";
 import StatsBar from "../StatsBar";
 import InventoryScreen from "../InventoryScreen";
 import { ICharacher } from '../../enums-and-interfaces/interfaces';
-import BackpacksScreen from '../BackpacksScreen/BackpacksScreen';
+import BackpacksScreen from '../BackpacksScreen';
 import { MindOption } from '../../enums-and-interfaces/enums';
 import OldFashionInventoryScreen from '../OldFashionInventoryScreen';
 import { useState } from 'react';

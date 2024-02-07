@@ -35,12 +35,16 @@ function priorityChecker(slot: IInventorySlot) {
         InventoryPlace.leftHip, InventoryPlace.rightHip
     ];
 
-    const greatSwordOptions: 
+    const doubleBackOptions: 
     (
-        InventoryPlace.backItem | InventoryPlace.bothHands
+        InventoryPlace.backItem | 
+        InventoryPlace.bothHands |
+        InventoryPlace.shouldersItem
     )[] = 
     [
-        InventoryPlace.backItem, InventoryPlace.bothHands
+        InventoryPlace.backItem, 
+        InventoryPlace.shouldersItem,
+        InventoryPlace.bothHands
     ];
 
     if (possiblePositions.length === 1) {
@@ -95,8 +99,8 @@ function priorityChecker(slot: IInventorySlot) {
             }
         }
         // @ts-expect-error
-    } else if (greatSwordOptions.includes(possiblePositions[0])) {
-        for (const option of greatSwordOptions) {
+    } else if (doubleBackOptions.includes(possiblePositions[0])) {
+        for (const option of doubleBackOptions) {
             if (possiblePositions.includes(option)) {
                 const thisOptionItem = {...inventory[option]} as IItem | null;
                 if (!thisOptionItem) {

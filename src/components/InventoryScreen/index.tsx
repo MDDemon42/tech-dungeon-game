@@ -23,6 +23,7 @@ import getRightHipItemImage from './rightHipItem';
 import getLeftHipItemImage from './leftHipItem';
 import getBeltsImage from './belts';
 import getBackItemImage from './backItem';
+import getShouldersItemImage from './shouldersItem';
 
 function InventoryScreen(props: {
     character: ICharacher,
@@ -63,6 +64,8 @@ function InventoryScreen(props: {
 
     const shoulders = getShouldersImage(inventory.Shoulders.name);
 
+    const shouldersItem = getShouldersItemImage(inventory.Shoulders_item?.name || '');
+
     const extraLeftHand = getExtraLeftHandImage(
         inventory.Extra_left_hand?.name || '',
         inventory.Shoulders.name
@@ -86,7 +89,8 @@ function InventoryScreen(props: {
     const belts = getBeltsImage(
         inventory.Left_hip.name, 
         inventory.Right_hip.name,
-        inventory.Back.name
+        inventory.Back.name,
+        inventory.Shoulders.name
     );
 
     const head = getHeadImage(
@@ -130,6 +134,7 @@ function InventoryScreen(props: {
             { tail }
             { legs }
             { shoulders }
+            { shouldersItem }
             { extraLeftHand }
             { extraRightHand }
             { skin }

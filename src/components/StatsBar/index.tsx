@@ -2,7 +2,7 @@ import {IStore} from "../../enums-and-interfaces/interfaces";
 import styles from './index.module.css';
 import { useSelector } from "react-redux";
 import ParamIcon from "../Icons/ParamIcon";
-import { DamageType, UserParam } from "../../enums-and-interfaces/enums";
+import { DamageType } from "../../enums-and-interfaces/enums";
 import ResistanceIcon from "../Icons/ResistanceIcon";
 import classInfo from "../../general/classInfo";
 
@@ -29,15 +29,19 @@ function StatsBar() {
             <div className={styles.StatsBar_body}>
                 <div className={styles.StatsBar_params}>
                     <div>
+                        <ParamIcon param='health'/>
                         {
-                            [...Array(currentParams[UserParam.health])].map(icon => <ParamIcon param='health'/>)
+                            currentParams.Health + '/' +
+                            maxParams.Health
                         }
                     </div>
                     {
                         maxParams.Mana > 0 ?
                             <div>
+                                <ParamIcon param='mana'/>
                                 {
-                                    [...Array(currentParams.Mana)].map(icon => <ParamIcon param='mana'/>)
+                                    currentParams.Mana + '/' +
+                                    maxParams.Mana
                                 }
                             </div> : 
                             null
@@ -45,15 +49,26 @@ function StatsBar() {
                     {
                         maxParams.Focus > 0 ?
                             <div>
+                                <ParamIcon param='focus'/>
                                 {
-                                    [...Array(currentParams.Focus)].map(icon => <ParamIcon param='focus'/>)
+                                    currentParams.Focus + '/' +
+                                    maxParams.Focus
                                 }
                             </div> : 
                             null
                     }                
                     <div>
+                        <ParamIcon param='stamina'/>
                         {
-                            [...Array(currentParams.Stamina)].map(icon => <ParamIcon param='stamina'/>)
+                            currentParams.Stamina + '/' +
+                            maxParams.Stamina
+                        }
+                    </div>
+                    <div>
+                        <ParamIcon param='satiety'/>
+                        {
+                            currentParams.Satiety + '/' +
+                            maxParams.Satiety
                         }
                     </div>
                 </div>

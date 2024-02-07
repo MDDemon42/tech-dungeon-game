@@ -38,6 +38,7 @@ export const createGameSquad = (): IGameSquad => {
         },
         resources: {
             [UserResource.core]: 0,
+            [UserResource.food]: 10,
             [UserResource.gem]: 0,
             [UserResource.gene]: 0,
             [UserResource.none]: 10
@@ -171,6 +172,24 @@ const gameSquad = createSlice({
 
             state = oldState;
         },
+        getUserResource(state, action) {
+            const oldState = {...state};
+
+            const {resource, amount, bought}: 
+                {
+                    resource: UserResource, 
+                    amount: number,
+                    bought: boolean
+                } = action.payload;
+
+            oldState.resources[resource] += amount;
+
+            if (bought) {
+                oldState.resources.Gems--;
+            }
+
+            state = oldState;
+        },
         useBigResource(state, action) {
             const oldState = {...state};
             const members = oldState.squadMembers;
@@ -263,12 +282,16 @@ const gameSquad = createSlice({
                 InventoryPlace.leftHip, InventoryPlace.rightHip
             ];
 
-            const greatSwordOptions: 
+            const doubleBackOptions: 
             (
-                InventoryPlace.backItem | InventoryPlace.bothHands
+                InventoryPlace.backItem | 
+                InventoryPlace.bothHands |
+                InventoryPlace.shouldersItem
             )[] = 
             [
-                InventoryPlace.backItem, InventoryPlace.bothHands
+                InventoryPlace.backItem, 
+                InventoryPlace.shouldersItem,
+                InventoryPlace.bothHands
             ];
 
             const {item, itemIndex} = action.payload;
@@ -281,37 +304,51 @@ const gameSquad = createSlice({
             let itemEquipped = false;
             if (possiblePositions.length === 1) {
                 const position = possiblePositions[0];
+                const bothHandsItem = {...inventory.Both_hands} as IItem;
 
-                if (
-                    position === InventoryPlace.bothHands
-                ) {
-                    const leftHandItem = {...inventory.Left_hand} as IItem;
-                    if (leftHandItem.name !== nothing) {
-                        itemsToPut.push([leftHandItem, InventoryPlace.leftHand]);
-                    }
-                    inventory.Left_hand = createNoItem();
-    
-                    const rightHandItem = {...inventory.Right_hand} as IItem;
-                    if (rightHandItem.name !== nothing) {
-                        itemsToPut.push([rightHandItem, InventoryPlace.rightHand]);
-                    }
-                    inventory.Right_hand = createNoItem();
-                } else if (
-                    position === InventoryPlace.leftHand ||
-                    position === InventoryPlace.rightHand
-                ) {
-                    const bothHandsItem = {...inventory.Both_hands} as IItem;
-                    if (bothHandsItem.name !== nothing) {
-                        itemsToPut.push([bothHandsItem, InventoryPlace.bothHands]);
-                    }
-                    inventory.Both_hands = createNoItem();
-                }
+                switch (position) {
+                    case InventoryPlace.bothHands:
+                        const leftHandItem = {...inventory.Left_hand} as IItem;
+                        if (leftHandItem.name !== nothing) {
+                            itemsToPut.push([leftHandItem, InventoryPlace.leftHand]);
+                        }
+                        inventory.Left_hand = createNoItem();
+        
+                        const rightHandItem = {...inventory.Right_hand} as IItem;
+                        if (rightHandItem.name !== nothing) {
+                            itemsToPut.push([rightHandItem, InventoryPlace.rightHand]);
+                        }
+                        inventory.Right_hand = createNoItem();
+                        break;
 
-                if (
-                    position === InventoryPlace.back &&
-                    item.name === items.other.greatSheath.name
-                ) {
-                    inventory.Back_item = createNoItem();
+                    case InventoryPlace.leftHand:
+                        if (bothHandsItem.name !== nothing) {
+                            itemsToPut.push([bothHandsItem, InventoryPlace.bothHands]);
+                        }
+                        inventory.Both_hands = createNoItem();
+                        break;
+
+                    case InventoryPlace.rightHand:
+                        if (bothHandsItem.name !== nothing) {
+                            itemsToPut.push([bothHandsItem, InventoryPlace.bothHands]);
+                        }
+                        inventory.Both_hands = createNoItem();
+                        break;
+
+                    case InventoryPlace.back:
+                        if (item.name === items.other.greatSheath.name) {
+                            inventory.Back_item = createNoItem();
+                        }
+                        break;
+
+                    case InventoryPlace.shoulders:
+                        if (item.name === items.other.quiver.name) {
+                            inventory.Shoulders_item = createNoItem();
+                        }
+                        break;
+                        
+                    default:
+                        break;
                 }
 
                 {
@@ -458,10 +495,14 @@ const gameSquad = createSlice({
                     itemEquipped = true;
                 }
                 // @ts-expect-error
-            } else if (greatSwordOptions.includes(possiblePositions[0])) {
-                let exchangeOptions: (InventoryPlace.backItem | InventoryPlace.bothHands)[] = [];
+            } else if (doubleBackOptions.includes(possiblePositions[0])) {
+                let exchangeOptions: (
+                    InventoryPlace.backItem | 
+                    InventoryPlace.shouldersItem |
+                    InventoryPlace.bothHands
+                )[] = [];
 
-                for (const option of greatSwordOptions) {
+                for (const option of doubleBackOptions) {
                     if (possiblePositions.includes(option)) {
                         const thisOptionItem = {...inventory[option]} as IItem | null;
     
@@ -575,30 +616,49 @@ const gameSquad = createSlice({
                 squadMember.params.currentParams.Focus += 1;
             }          
             
-            if (inventoryPlace === InventoryPlace.leftHip) {
-                const leftHipItem = inventory.Left_hip_item;
-                if (leftHipItem) {
-                    putItemInBackpacks(backpacks, leftHipItem);
-                }
-                
-                inventory.Left_hip_item = null;
-            } else if (inventoryPlace === InventoryPlace.rightHip) {
-                const rightHipItem = inventory.Right_hip_item;
-                if (rightHipItem) {
-                    putItemInBackpacks(backpacks, rightHipItem);
-                }
-                
-                inventory.Right_hip_item = null;
-            } else if (
-                inventoryPlace === InventoryPlace.back &&
-                item.name === items.other.greatSheath.name
-            ) {
-                const backItem = inventory.Back_item;
-                if (backItem) {
-                    putItemInBackpacks(backpacks, backItem);
-                }
-                
-                inventory.Back_item = null;
+            switch (inventoryPlace) {
+                case InventoryPlace.leftHip:
+                    const leftHipItem = inventory.Left_hip_item;
+                    if (leftHipItem) {
+                        putItemInBackpacks(backpacks, leftHipItem);
+                    }
+                    
+                    inventory.Left_hip_item = null;
+                    break;
+
+                case InventoryPlace.rightHip:
+                    const rightHipItem = inventory.Right_hip_item;
+                    if (rightHipItem) {
+                        putItemInBackpacks(backpacks, rightHipItem);
+                    }
+                    
+                    inventory.Right_hip_item = null;
+                    break;
+
+                case InventoryPlace.back:
+                    if (item.name === items.other.greatSheath.name) {
+                        const backItem = inventory.Back_item;
+                        if (backItem) {
+                            putItemInBackpacks(backpacks, backItem);
+                        }
+                        
+                        inventory.Back_item = null;
+                    }
+                    break;
+
+                case InventoryPlace.shoulders:
+                    if (item.name === items.other.quiver.name) {
+                        const shouldersItem = inventory.Shoulders_item;
+                        if (shouldersItem) {
+                            putItemInBackpacks(backpacks, shouldersItem);
+                        }
+                        
+                        inventory.Shoulders_item = null;
+                    }
+                    break;
+
+                default:
+                    break;
             }
 
             inventory[inventoryPlace] = createNoItem();
@@ -1124,8 +1184,36 @@ const gameSquad = createSlice({
             const squadMember = squad[state.currentlyWatched];
 
             squadMember.params.currentParams.Stamina -= action.payload;
+            
+            if (squadMember.params.currentParams.Satiety > 0) {
+                squadMember.params.currentParams.Satiety--;
+            }            
 
             state.squadMembers = squad;
+        },
+        eatFood(state, action) {
+            const oldState = {...state};
+            const squad = {...oldState.squadMembers};
+            const squadMember = squad[oldState.currentlyWatched];
+
+            if (
+                squadMember.params.currentParams.Health < 
+                squadMember.params.maxParams.Health
+            ) {
+                squadMember.params.currentParams.Health++;
+            }
+
+            if (
+                squadMember.params.currentParams.Satiety < 
+                squadMember.params.maxParams.Satiety
+            ) {
+                squadMember.params.currentParams.Satiety++;
+            }
+
+            oldState.resources.Food--;
+            oldState.squadMembers = squad;
+
+            state = oldState;
         },
         regenerate(state, action) {
             const squad = {...state.squadMembers};
@@ -1145,17 +1233,51 @@ const gameSquad = createSlice({
 
             for (const index in squad) {
                 const squadMember = squad[index];
-                for (const param in squadMember.params.currentParams) {
-                    if (param !== UserParam.health && param !== UserParam.blank) {
+                if (squadMember.params.currentParams.Satiety > 0) {
+                    for (const param in squadMember.params.currentParams) {
                         if (
-                            Number(squadMember.params.currentParams[param as UserParam]) < 
-                            Number(squadMember.params.maxParams[param as UserParam])
+                            param !== UserParam.health && 
+                            param !== UserParam.blank &&
+                            param !== UserParam.satiety
                         ) {
-                            squadMember.params.currentParams[param as UserParam] = 
-                                Number(squadMember.params.maxParams[param as UserParam]);
+                            if (
+                                Number(squadMember.params.currentParams[param as UserParam]) < 
+                                Number(squadMember.params.maxParams[param as UserParam])
+                            ) {
+                                squadMember.params.currentParams[param as UserParam] = 
+                                    Number(squadMember.params.maxParams[param as UserParam]);
+                            }
                         }
                     }
-                }
+
+                    if (
+                        squadMember.params.currentParams.Health <
+                        squadMember.params.maxParams.Health
+                    ) {
+                        squadMember.params.currentParams.Health++;
+                    }
+                    
+                    squadMember.params.currentParams.Satiety--;                    
+                } else {
+                    for (const param in squadMember.params.currentParams) {
+                        if (
+                            param !== UserParam.health && 
+                            param !== UserParam.blank &&
+                            param !== UserParam.satiety
+                        ) {
+                            if (
+                                Number(squadMember.params.currentParams[param as UserParam]) < 
+                                Number(squadMember.params.maxParams[param as UserParam])
+                            ) {
+                                squadMember.params.currentParams[param as UserParam]++;
+                            }
+                        }
+                    }
+
+                    if (squadMember.params.currentParams.Health > 0) {
+                        squadMember.params.currentParams.Health--;
+                    }
+                }                
             }
 
             state.squadMembers = squad;
@@ -1166,7 +1288,11 @@ const gameSquad = createSlice({
             for (const index in squad) {
                 const squadMember = squad[index];
                 for (const param in squadMember.params.currentParams) {
-                    if (param !== UserParam.health && param !== UserParam.blank) {
+                    if (
+                        param !== UserParam.health && 
+                        param !== UserParam.blank &&
+                        param !== UserParam.satiety
+                    ) {
                         if (
                             Number(squadMember.params.currentParams[param as UserParam]) < 
                             Number(squadMember.params.maxParams[param as UserParam])

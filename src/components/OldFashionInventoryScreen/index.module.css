@@ -9,7 +9,8 @@
 }
 
 .Hat, .Head, .Chin, .Skin, .Back, .Back_item, .Armor,
-.Shoulders, .Tail, .Extra_left_hand, .Extra_right_hand,
+.Shoulders, .Shoulders_item,.Tail, 
+.Extra_left_hand, .Extra_right_hand,
 .Left_hand, .Right_hand, .Legs, .Eyes,
 .Left_hip, .Right_hip, .Right_hip_item, .Left_hip_item,
 .Telekinesis_left_hand, .Telekinesis_right_hand,
@@ -50,6 +51,11 @@
 .Shoulders {
     left: 25px;
     top: 70px;
+}
+
+.Shoulders_item{
+    left: 25px;
+    top: 125px;
 }
 
 .Armor {

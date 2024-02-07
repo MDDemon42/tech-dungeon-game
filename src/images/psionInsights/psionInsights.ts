@@ -12,6 +12,7 @@ import psiJavelin from './psiJavelin.png';
 import psiLightning from './psiLightning.png';
 import telekinesis from './telekinesis.png';
 import telekineticChoke from './telekineticChoke.png';
+import telekineticDisarm from './telekineticDisarm.png';
 import telekineticPressure from './telekineticPressure.png';
 
 const psionInsights = {
@@ -29,6 +30,7 @@ const psionInsights = {
     psiLightning,
     telekinesis,
     telekineticChoke,
+    telekineticDisarm,
     telekineticPressure 
 };
 

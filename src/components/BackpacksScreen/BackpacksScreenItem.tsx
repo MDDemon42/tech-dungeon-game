@@ -9,7 +9,7 @@ import CommonIcon from "../Icons/CommonIcon";
 import BackpacksScreenItemButton from "./BackpacksScreenItemButton";
 import { useDispatch } from "react-redux";
 import gameSquad from "../../redux/slices/gameSquad";
-import styles from './BackpacksScreen.module.css';
+import styles from './index.module.css';
 import { backpacksItemEnableChecker } from "../../helpers/enableCheckers";
 import { useSelector } from "react-redux";
 import { createNoItem } from "../../helpers/emptyEssencesCreators";

@@ -15,11 +15,13 @@ import gameSquad from '../../redux/slices/gameSquad';
 import { 
     UserResource,
     InventoryPlace, 
-    InventoryGameScreens
+    InventoryGameScreens,
+    InventorySlotCategory
 } from '../../enums-and-interfaces/enums';
 import SubInventoryScreenItemLine from './SubInventoryScreenItemLine';
 import { createContext, useState } from 'react';
 import CraftScreen from '../CraftScreen';
+import items from '../../gameScreens/Market/items';
 
 export const SubInventoryScreenItemContext = createContext({
     screenName: '' as InventoryGameScreens,
@@ -61,6 +63,28 @@ const subInventoryMappings: Record<InventoryGameScreens, ISubInventoryMapping> =
     }
 }
 
+const userResourceMarketMapping: Record<string, {
+    resource: UserResource,
+    amount: number,
+    bought: boolean
+}> = {
+    [items.other.food.name]: {
+        resource: UserResource.food,
+        amount: 10,
+        bought: true
+    },
+    [items.other.mechaCore.name]: {
+        resource: UserResource.core,
+        amount: 1,
+        bought: true
+    },
+    [items.other.mutaGene.name]: {
+        resource: UserResource.gene,
+        amount: 1,
+        bought: true
+    }
+}
+
 function SubInventoryScreen(props: {
     screenName: InventoryGameScreens
 }) {
@@ -88,7 +112,13 @@ function SubInventoryScreen(props: {
             dispatch(gameSquad.actions.mutateMutation(data));
         },
         [InventoryGameScreens.market]: (data) => {
-            dispatch(gameSquad.actions.buyItem(data));
+            if (data.category === InventorySlotCategory.resource) {
+                dispatch(gameSquad.actions.getUserResource(
+                    userResourceMarketMapping[data.name]
+                ))
+            } else {
+                dispatch(gameSquad.actions.buyItem(data));
+            }            
         },
         [InventoryGameScreens.guildShop]: (data) => {
             dispatch(gameSquad.actions.buyItem(data));

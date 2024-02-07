@@ -34,6 +34,13 @@
     align-items: center;
 }
 
+.StatsBar_params > div {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 12px; 
+}
+
 .StatsBar_dodge {
     position: relative;
     width: 12px;

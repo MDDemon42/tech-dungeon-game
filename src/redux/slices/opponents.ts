@@ -6,7 +6,7 @@ import { createNoItem } from '../../helpers/emptyEssencesCreators';
 
 const opponents_options: Record<string, ICharacher>[] = [
     {
-        0: characters.mights.dummy(),
+        0: characters.mights.barbarian(),
     },
     {
         0: characters.mights.dummy(),
@@ -121,7 +121,7 @@ const opponents = createSlice({
             }          
             
             inventory[inventoryPlace] = createNoItem();
-            integratePassiveAbility(squadMember, item, -1);
+            // integratePassiveAbility(squadMember, item, -1);
 
             squadMember.general.inventory = inventory;
 
@@ -150,7 +150,3 @@ const opponents = createSlice({
 })
 
 export default opponents
-
-function integratePassiveAbility(squadMember: { general: import("immer/dist/internal").WritableDraft<import("../../enums-and-interfaces/interfaces").ICharacterGeneral>; params: import("immer/dist/internal").WritableDraft<import("../../enums-and-interfaces/interfaces").ICharacherParams>; }, item: IItem, arg2: number) {
-    throw new Error('Function not implemented.');
-}

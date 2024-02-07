@@ -12,7 +12,8 @@ const backgroundColorMapping: Record<InventorySlotCategory, string> = {
     [InventorySlotCategory.mutation]: 'rgba(0, 128, 0, 0.25)',
     [InventorySlotCategory.cyber]: 'rgba(128, 128, 128, 0.25)',
     [InventorySlotCategory.item]: 'rgba(0, 0, 128, 0.25)',
-    [InventorySlotCategory.nothing]: 'rgba(0, 0, 0, 0)'
+    [InventorySlotCategory.nothing]: 'rgba(0, 0, 0, 0)',
+    [InventorySlotCategory.resource]: 'rgba(0, 0, 0, 0)'
 }
 
 function InventoryIcon(props: {

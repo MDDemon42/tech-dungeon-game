@@ -38,6 +38,7 @@ const barbarian = () => {
     const character = createEmptyCharacter();
 
     character.params.name = 'Barbarian';
+    character.params.strength = 3;
 
     character.params.maxParams[UserParam.health] = 3;
     character.params.currentParams[UserParam.health] = 3;
