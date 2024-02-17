@@ -39,9 +39,10 @@ function CommonIcon(props: {
         targetAmount?: number,
         passiveAbilities?: IPassiveAbility[] | null
     },
-    disableReason?: string
+    disableReason?: string,
+    forInfoPage?: boolean
 }) {
-    const {item, disableReason} = props;
+    const {item, disableReason, forInfoPage} = props;
 
     let description = item.name + '\n' 
     
@@ -136,7 +137,7 @@ function CommonIcon(props: {
     return(
         <div className={styles.CommonIcon}>
             {
-                !!item.damage ?
+                (!!item.damage && !forInfoPage) ?
                     <>
                         <div className={styles.CommonIcon_damagesColumn}>
                             {
@@ -163,44 +164,47 @@ function CommonIcon(props: {
                 className={styles.CommonIcon_icon}
                 alt={item.name}
             /> 
-            <div className={styles.CommonIcon_costs}>
-                {
-                    healthCost > 0 ?
-                        <div>
-                            {
-                                [...Array(healthCost)].map(icon => <ParamIcon param='health'/>)
-                            }
-                        </div> : 
-                        null
-                }
-                {
-                    manaCost > 0 ?
-                        <div>
-                            {
-                                [...Array(manaCost)].map(icon => <ParamIcon param='mana'/>)
-                            }
-                        </div> : 
-                        null
-                }
-                {
-                    focusCost > 0 ?
-                        <div>
-                            {
-                                [...Array(focusCost)].map(icon => <ParamIcon param='focus'/>)
-                            }
-                        </div> : 
-                        null
-                }
-                {
-                    staminaCost > 0 ?
-                        <div>
-                            {
-                                [...Array(staminaCost)].map(icon => <ParamIcon param='stamina'/>)
-                            }
-                        </div> : 
-                        null
-                }
-            </div>
+            {
+                !forInfoPage &&
+                <div className={styles.CommonIcon_costs}>
+                    {
+                        healthCost > 0 ?
+                            <div>
+                                {
+                                    [...Array(healthCost)].map(icon => <ParamIcon param='health'/>)
+                                }
+                            </div> : 
+                            null
+                    }
+                    {
+                        manaCost > 0 ?
+                            <div>
+                                {
+                                    [...Array(manaCost)].map(icon => <ParamIcon param='mana'/>)
+                                }
+                            </div> : 
+                            null
+                    }
+                    {
+                        focusCost > 0 ?
+                            <div>
+                                {
+                                    [...Array(focusCost)].map(icon => <ParamIcon param='focus'/>)
+                                }
+                            </div> : 
+                            null
+                    }
+                    {
+                        staminaCost > 0 ?
+                            <div>
+                                {
+                                    [...Array(staminaCost)].map(icon => <ParamIcon param='stamina'/>)
+                                }
+                            </div> : 
+                            null
+                    }
+                </div>
+            }
         </div>
     )
 }

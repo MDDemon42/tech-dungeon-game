@@ -32,7 +32,7 @@ const titanSkin = createRitual(
     ],
     [
         academyMasteries.brutalForce.name,
-        [abilities.passiveAbilities.armor.titanSkin]
+        [abilities.passiveAbilities.rituals.titanSkin]
     ]
 )
 

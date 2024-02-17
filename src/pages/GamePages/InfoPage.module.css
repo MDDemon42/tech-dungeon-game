@@ -1,0 +1,37 @@
+.InfoPage {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 5px;
+}
+
+.InfoPage_contentSelectArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.InfoPage_contentZoneSelect, .InfoPage_contentPartSelect {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 5px;
+}
+
+.InfoPage_contentZoneSelect > select, 
+.InfoPage_contentPartSelect > select {
+    text-align: center;
+}
+
+.InfoPage_content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    width: 500px;
+    border: 1px solid black;
+    padding: 5px;
+}

@@ -13,6 +13,9 @@ function getBackImage(backName: string) {
         case mutations.other.featherWings.name:
             result = <img src={images.bodyElements.featherWings} alt={chrome.i18n.getMessage('feather_wings')} />;
             break;
+        case mutations.armors.spikedShell.name:
+            result = <img src={images.bodyElements.spikedShell} alt={chrome.i18n.getMessage('spiked_shell')} />;
+            break;
         case wizardItems.other.wizardItem_flyingCape.name:
             result = <img src={images.bodyElements.flyingCape} alt={chrome.i18n.getMessage('flying_cape')} />;
             break;

@@ -117,7 +117,7 @@ const affiliatedDoubleMaceSmash = createBattleAbility(
     [
         chrome.i18n.getMessage('double_mace_smash'),
         '', 
-        ''
+        images.normalItems.doubleMaceSmash
     ], 
     {Stamina: 2}, 
     {[DamageType.physicalSmashing]: 4},

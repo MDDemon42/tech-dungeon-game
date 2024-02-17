@@ -4,7 +4,7 @@ import createRace from "./createRace";
 /*
 Races' special abilities
 1) Satyr (Rod + 1)
-2) Minotaur (Bull's charge)
+2) Taur (Bull's charge)
 3) Orc (Axe + 1)
 4) Gnoll (Mace + 1)
 5*) Ghoul (Lifesteal)
@@ -17,20 +17,22 @@ Races' special abilities
 */
 
 const humanRace = createRace([]);
-const beastRace = createRace(['horns', 'hooves']);
+const satyrRace = createRace(['horns', 'hooves']);
+const taurRace = createRace(['horns', 'hooves', 'fur']);
 const orkRace = createRace(['lowerFangs']);
 const gnollRace = createRace(['lowerFangs', 'fur']);
 const nagaRace = createRace(['scales', 'extraArms', 'tailWithSting']);
 const raptorRace = createRace(['scales', 'raptorLegs', 'tailWithSting']);
-const demonRace = createRace(['horns', 'fur', 'claws', 'extraArms', 'tailWithSting', 'lowerFangs', 'hooves']);
-const dragonRace = createRace(['horns', 'scales', 'claws', 'tailWithSting', 'fireBreath', 'raptorLegs', 'skinWings']);
-const koatlRace = createRace(['horns', 'scales', 'claws', 'tailWithSting', 'acidSpit', 'raptorLegs', 'featherWings']);
-const ankylosaurusRace = createRace(['horns', 'scales', 'tailWithBlunt', 'lowerFangs', 'raptorLegs']);
+const demonRace = createRace(['horns', 'fur', 'claws', 'extraArms', 'tailWithCutter', 'lowerFangs', 'hooves']);
+const dragonRace = createRace(['dragonEyes', 'horns', 'scales', 'claws', 'tailWithSting', 'fireBreath', 'raptorLegs', 'skinWings']);
+const koatlRace = createRace(['dragonEyes', 'horns', 'scales', 'claws', 'tailWithCutter', 'acidSpit', 'raptorLegs', 'featherWings']);
+const ankylosaurusRace = createRace(['dragonEyes', 'horns', 'scales', 'tailWithBlunt', 'lowerFangs', 'raptorLegs', 'spikedShell']);
 const chimeraRace = createRace(['horns', 'fur', 'claws', 'tailWithSting', 'acidSpit', 'skinWings', 'pincers', 'hooves'])
 
 const races = {
     humanRace,
-    beastRace,
+    satyrRace,
+    taurRace,
     orkRace,
     gnollRace,
     nagaRace,
@@ -50,7 +52,7 @@ export const raceNames: Record<Race, string> = {
     [Race.gnoll]: chrome.i18n.getMessage('race_gnoll'),
     [Race.human]: chrome.i18n.getMessage('race_human'),
     [Race.koatl]: chrome.i18n.getMessage('race_koatl'),
-    [Race.minotaur]: chrome.i18n.getMessage('race_minotaur'),
+    [Race.taur]: chrome.i18n.getMessage('race_taur'),
     [Race.naga]: chrome.i18n.getMessage('race_naga'),
     [Race.orc]: chrome.i18n.getMessage('race_orc'),
     [Race.raptor]: chrome.i18n.getMessage('race_raptor'),

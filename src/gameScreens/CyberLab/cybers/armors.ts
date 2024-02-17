@@ -15,7 +15,7 @@ const energyShield = createCyber(
     ],
     [
         null, 
-        [abilities.passiveAbilities.armor.energyShield]
+        [abilities.passiveAbilities.cybers.energyShield]
     ],
     weapons.cyberFist.name    
 )
@@ -31,7 +31,7 @@ const nanoVest = createCyber(
     ],
     [
         null, 
-        [abilities.passiveAbilities.cyber.nanoVest]
+        [abilities.passiveAbilities.cybers.nanoVest]
     ],
     ''    
 )
@@ -47,7 +47,7 @@ const nanoMatrix = createCyber(
     ],
     [
         null, 
-        [abilities.passiveAbilities.cyber.nanoMatrix]
+        [abilities.passiveAbilities.cybers.nanoMatrix]
     ],
     nanoVest.name
 )

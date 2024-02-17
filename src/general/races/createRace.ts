@@ -1,7 +1,7 @@
 import { IMutationsForRaceCheck } from "../../enums-and-interfaces/interfaces";
 
 function createRace(mutations: (keyof IMutationsForRaceCheck)[]): IMutationsForRaceCheck {
-    const race = {
+    const race: IMutationsForRaceCheck = {
         horns: false,
         hooves: false,
         lowerFangs: false,
@@ -9,6 +9,7 @@ function createRace(mutations: (keyof IMutationsForRaceCheck)[]): IMutationsForR
         fur: false,
         tailWithSting: false,
         extraArms: false,
+        dragonEyes: false,
         claws: false,
         acidSpit: false,
         skinWings: false,
@@ -16,7 +17,9 @@ function createRace(mutations: (keyof IMutationsForRaceCheck)[]): IMutationsForR
         raptorLegs: false,
         fireBreath: false,
         featherWings: false,
-        tailWithBlunt: false
+        tailWithBlunt: false,
+        spikedShell: false,
+        tailWithCutter: false
     };
 
     mutations.forEach(mutation => {

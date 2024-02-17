@@ -738,6 +738,15 @@
     "resistance_cold_1": {
         "message": "Upgrades resistance to Cold damage by 1."
     },
+    "spiked_shell": {
+        "message": "Spiked shell"
+    },
+    "spiked_shell_mutation_description": {
+        "message": "Mutation to make your back an offensive armor."
+    },
+    "spiked_shell_rush": {
+        "message": "Spiked shell rush"
+    },
     "tail_with_blunt": {
         "message": "Tail with blunt"
     },
@@ -746,6 +755,15 @@
     },
     "tail_crash": {
         "message": "Tail crash"
+    },
+    "tail_with_cutter": {
+        "message": "Tail with cutter"
+    },
+    "tail_with_cutter_mutation_description": {
+        "message": "Mutation to slash your victims."
+    },
+    "tail_slash": {
+        "message": "Tail slash"
     },
     "tail_with_sting": {
         "message": "Tail with sting"
@@ -3149,8 +3167,8 @@
     "race_koatl": {
         "message": "Koatl"
     },
-    "race_minotaur": {
-        "message": "Minotaur"
+    "race_taur": {
+        "message": "Taur"
     },
     "race_naga": {
         "message": "Naga"

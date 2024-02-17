@@ -14,9 +14,9 @@ const scales = createMutation(
     ],
     [
         null, 
-        [abilities.passiveAbilities.armor.scales]
+        [abilities.passiveAbilities.mutations.scales]
     ]    
-)
+);
 
 const fur = createMutation(
     [
@@ -29,13 +29,29 @@ const fur = createMutation(
     ],
     [
         null, 
-        [abilities.passiveAbilities.armor.fur]
+        [abilities.passiveAbilities.mutations.fur]
     ]    
-)
+);
+
+const spikedShell = createMutation(
+    [
+        chrome.i18n.getMessage('spiked_shell'), 
+        chrome.i18n.getMessage('spiked_shell_mutation_description'),
+        images.mutantEvolvings.spikedShell
+    ],
+    [
+        1, [InventoryPlace.back], 1
+    ],
+    [
+        [abilities.battleAbilities.melee.mixed.spikedShellRush], 
+        [abilities.passiveAbilities.mutations.spikedShell]
+    ]    
+);
 
 const armors = {
+    fur,
     scales,
-    fur
+    spikedShell    
 }
 
 export default armors

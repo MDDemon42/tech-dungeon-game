@@ -101,7 +101,7 @@ const horns = createMutation(
         [abilities.battleAbilities.melee.physicalPiercing.hornsCharge], 
         null
     ]
-)
+);
 
 const tailWithBlunt = createMutation(
     [
@@ -114,9 +114,24 @@ const tailWithBlunt = createMutation(
     ],
     [
         [abilities.battleAbilities.melee.physicalSmashing.tailCrash], 
-        [abilities.passiveAbilities.armor.tailWithBlunt]
+        [abilities.passiveAbilities.mutations.tailWithBlunt]
     ]    
-)
+);
+
+const tailWithCutter = createMutation(
+    [
+        chrome.i18n.getMessage('tail_with_cutter'), 
+        chrome.i18n.getMessage('tail_with_cutter_mutation_description'),
+        images.mutantEvolvings.tailWithCutter
+    ],
+    [
+        2, [InventoryPlace.tail], 1
+    ],
+    [
+        [abilities.battleAbilities.melee.physicalSlashing.tailSlash], 
+        [abilities.passiveAbilities.mutations.tailWithCutter]
+    ]    
+);
 
 const tailWithSting = createMutation(
     [
@@ -129,9 +144,9 @@ const tailWithSting = createMutation(
     ],
     [
         [abilities.battleAbilities.melee.physicalPiercing.tailPrick], 
-        [abilities.passiveAbilities.armor.tailWithSting]
+        [abilities.passiveAbilities.mutations.tailWithSting]
     ]    
-)
+);
 
 const pincers = createMutation(
     [
@@ -161,7 +176,7 @@ const raptorLegs = createMutation(
         [abilities.battleAbilities.melee.physicalSlashing.raptorJump], 
         null
     ]
-)
+);
 
 const weapons = {
     acidSpit,
@@ -173,6 +188,7 @@ const weapons = {
     pincers,
     raptorLegs,
     tailWithBlunt,
+    tailWithCutter,
     tailWithSting
 }
 

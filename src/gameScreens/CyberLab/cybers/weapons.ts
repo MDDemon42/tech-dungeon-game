@@ -14,7 +14,7 @@ const cyberFist = createCyber(
     ],
     [
         [abilities.battleAbilities.melee.physicalSmashing.cyberFistSmash],
-        [abilities.passiveAbilities.cyber.cyberFist]
+        [abilities.passiveAbilities.cybers.cyberFist]
     ], 
     ''
 );
@@ -30,7 +30,7 @@ const cyberClaw = createCyber(
     ],
     [
         [abilities.battleAbilities.melee.physicalSlashing.cyberClawSlash],
-        [abilities.passiveAbilities.cyber.cyberClaw]
+        [abilities.passiveAbilities.cybers.cyberClaw]
     ], 
     cyberFist.name
 );

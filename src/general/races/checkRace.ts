@@ -11,6 +11,7 @@ function checkRace(inventory: IInventory, isStrong: boolean): Race {
         scales: inventory.Skin.name === mutations.armors.scales.name,
         fur: inventory.Skin.name === mutations.armors.fur.name,
         extraArms: inventory.Shoulders.name === mutations.other.extraArms.name,
+        dragonEyes: inventory.Eyes.name === mutations.other.dragonEyes.name,
         tailWithSting: inventory.Tail.name === mutations.weapons.tailWithSting.name,
         claws: inventory.Both_hands.name === mutations.weapons.claws.name,
         acidSpit: inventory.Chin.name === mutations.weapons.acidSpit.name,
@@ -20,6 +21,8 @@ function checkRace(inventory: IInventory, isStrong: boolean): Race {
         fireBreath: inventory.Chin.name === mutations.weapons.fireBreath.name,
         featherWings: inventory.Back.name === mutations.other.featherWings.name,
         tailWithBlunt: inventory.Tail.name === mutations.weapons.tailWithBlunt.name,
+        spikedShell: inventory.Back.name === mutations.armors.spikedShell.name,
+        tailWithCutter: inventory.Tail.name === mutations.weapons.tailWithCutter.name
     }
 
     const isRace = (race: IMutationsForRaceCheck) => {
@@ -29,8 +32,8 @@ function checkRace(inventory: IInventory, isStrong: boolean): Race {
     const raceChecks: Record<Race, boolean> = {
         [Race.unknown]: false,
         [Race.human]: isRace(races.humanRace),
-        [Race.satyr]: isRace(races.beastRace),
-        [Race.minotaur]: isRace(races.beastRace) && isStrong,
+        [Race.satyr]: isRace(races.satyrRace),
+        [Race.taur]: isRace(races.taurRace) && isStrong,
         [Race.orc]: isRace(races.orkRace) && isStrong,
         [Race.gnoll]: isRace(races.gnollRace) && isStrong,
         [Race.naga]: isRace(races.nagaRace),

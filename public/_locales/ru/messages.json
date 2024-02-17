@@ -738,6 +738,15 @@
     "resistance_cold_1": {
         "message": "Повышает сопротивление Холоду на 1."
     },
+    "spiked_shell": {
+        "message": "Шипастый панцирь"
+    },
+    "spiked_shell_mutation_description": {
+        "message": "Мутация, превращающая спину в атакующую броню."
+    },
+    "spiked_shell_rush": {
+        "message": "Разгон шипастым панцирем"
+    },
     "tail_with_blunt": {
         "message": "Хвост с шишаком"
     },
@@ -746,6 +755,15 @@
     },
     "tail_crash": {
         "message": "Сокрушение хвостом"
+    },
+    "tail_with_cutter": {
+        "message": "Хвост с резцом"
+    },
+    "tail_with_cutter_mutation_description": {
+        "message": "Мутация для кромсания жертв."
+    },
+    "tail_slash": {
+        "message": "Порез хвостом"
     },
     "tail_with_sting": {
         "message": "Хвост с жалом"
@@ -3129,8 +3147,8 @@
     "race_koatl": {
         "message": "Коатль"
     },
-    "race_minotaur": {
-        "message": "Минотавр"
+    "race_taur": {
+        "message": "Тавр"
     },
     "race_naga": {
         "message": "Нага"

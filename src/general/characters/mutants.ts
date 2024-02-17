@@ -22,11 +22,11 @@ const satyr = () => {
     return character
 }
 
-const minotaur = () => {
+const taur = () => {
     const character = createEmptyCharacter();
 
     character.params.name = 'Minotaur';
-    character.params.race = raceNames[Race.minotaur];
+    character.params.race = raceNames[Race.taur];
 
     character.params.maxParams[UserParam.health] = 3;
     character.params.currentParams[UserParam.health] = 3;
@@ -155,7 +155,7 @@ const ultimate_chimera = () => {
 
 const mutants = {
     satyr,
-    minotaur,
+    taur,
     orc,
     naga,
     demon,

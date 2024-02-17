@@ -36,10 +36,10 @@ const mageDragonBoneBladeFireSlash = createBattleAbility(
         '', 
         images.armouryItems.mageDragonBoneBlade
     ], 
-    {Mana: 2, Stamina: 1}, 
+    {Mana: 2, Stamina: 2}, 
     {
         [DamageType.fire]: 2,
-        [DamageType.physicalSlashing]: 1
+        [DamageType.physicalSlashing]: 2
     },
     [1, 70]
 );
@@ -131,6 +131,20 @@ const battleMageRifleFireSlash = createBattleAbility(
     [1, 70]
 );
 
+const spikedShellRush = createBattleAbility(
+    [
+        chrome.i18n.getMessage('spiked_shell_rush'), 
+        '', 
+        images.mutantEvolvings.spikedShell
+    ], 
+    {Stamina: 2},
+    {
+        [DamageType.physicalSmashing]: 2,
+        [DamageType.physicalPiercing]: 1
+    },
+    [1, 70]
+);
+
 const mixed = {
     battleMageAxeColdSlash,
     battleMageAxeFireSlash,
@@ -140,7 +154,8 @@ const mixed = {
     mageMacuahuitlColdSlash,
     battleMageMusketColdPierce,
     battleMageRifleColdSlash,
-    battleMageRifleFireSlash
+    battleMageRifleFireSlash,
+    spikedShellRush
 }
 
 export default mixed

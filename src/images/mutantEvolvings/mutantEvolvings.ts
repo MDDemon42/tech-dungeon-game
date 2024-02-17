@@ -12,7 +12,9 @@ import pincers from './pincers.png';
 import raptorLegs from './raptorLegs.png';
 import ripApart from './ripApart.png';
 import scales from './scales.png';
+import spikedShell from './spikedShell.png';
 import tailWithBlunt from './tailWithBlunt.png';
+import tailWithCutter from './tailWithCutter.png';
 import tailWithSting from './tailWithSting.png';
 import skinWings from './skinWings.png';
 
@@ -31,9 +33,11 @@ const mutantEvolvings = {
     raptorLegs,
     ripApart,    
     scales,
+    skinWings,
+    spikedShell,
     tailWithBlunt,
-    tailWithSting,
-    skinWings
+    tailWithCutter,
+    tailWithSting,    
 };
 
 export default mutantEvolvings;

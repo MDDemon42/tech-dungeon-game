@@ -55,7 +55,7 @@ export enum Race {
     human = 'Human',
     unknown = 'Unknown',
     satyr = 'Satyr',
-    minotaur = 'Minotaur',
+    taur = 'Taur',
     orc = 'Orc',
     gnoll = 'Gnoll',
     naga = 'Naga',
@@ -201,4 +201,38 @@ export enum InventorySlotCategory {
     mutation = 'Mutation',
     resource = 'Resource',
     nothing = 'Nothing'
+}
+
+export enum ContentZones {
+    mind = 'Mind',
+    inventory = 'Inventory',
+    meleeBattleAbilities = 'Melee_battle_abilities',
+    passiveAbilities = 'Passive_abilities',
+    races = 'Races',
+    rangedBattleAbilities = 'Ranged_battle_abilities'
+}
+
+export enum MindContentParts {
+    academyMasteries = 'Academy_masteries',
+    airBendings = 'Air_bendings',
+    airMasteries = 'Air_masteries',
+    fireBendings = 'Fire_bendings',
+    fireMasteries = 'Fire_masteries',
+    guildMasteries = 'Guild_masteries',
+    guildRituals = 'Guild_rituals',
+    iceBendings = 'Ice_bendings',
+    iceMasteries = 'Ice_masteries',
+    psionMasteries = 'Psion_masteries',
+    psionPowers = 'Psion_powers',
+    wizardMasteries = 'Wizard_masteries',
+    wizardSpells = 'Wizard_spells'
+}
+
+export enum InventoryContentParts {
+    armouryItems = 'Armoury_items',
+    guildItems = 'Guild_items',
+    normalItems = 'Normal_items',
+    wizardItems = 'Wizard_items',
+    cybers = 'Cybers',
+    mutations = 'Mutations'    
 }

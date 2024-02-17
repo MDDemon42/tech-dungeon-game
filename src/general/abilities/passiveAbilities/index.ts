@@ -1,14 +1,17 @@
 import { UserParam, DamageType } from "../../../enums-and-interfaces/enums";
 import { IPassiveAbility } from "../../../enums-and-interfaces/interfaces";
-import armor from "./armor/armor";
-import cyber from "./cyber";
+import images from "../../../images/images";
+import armor from "./armor";
+import cybers from "./cybers";
+import mutations from "./mutations";
+import psionics from "./psionics";
+import rituals from "./rituals";
 import weapons from "./weapons";
 
 export function createPassiveAbility(
     commonInfo: [
         name: string,
         description: string,
-        image: string
     ],
     bonusMaxParams: Partial<Record<UserParam, number>> | null,
     bonusResistances: Partial<Record<DamageType, number>> | null,
@@ -17,7 +20,7 @@ export function createPassiveAbility(
     return {
         name: commonInfo[0], 
         description: commonInfo[1], 
-        image: commonInfo[2],
+        image: images.classIcons.noIcon,
 
         bonusMaxParams,
         bonusResistances,
@@ -27,7 +30,10 @@ export function createPassiveAbility(
 
 const passiveAbilities = {
     armor,
-    cyber,
+    cybers,
+    mutations,
+    psionics,
+    rituals,
     weapons
 }
 

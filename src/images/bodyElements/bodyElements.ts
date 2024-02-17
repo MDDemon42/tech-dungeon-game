@@ -127,6 +127,7 @@ import sabre from './sabre';
 import scalesTorso from './scalesTorso.png';
 import sheathLeft from './sheathLeft.png';
 import sheathRight from './sheathRight.png';
+import spikedShell from './spikedShell.png';
 import steelArmor from './steelArmor.png';
 import steelGreataxe from './steelGreataxe.png';
 import steelGreathammer from './steelGreathammer.png';
@@ -140,6 +141,7 @@ import steelSpear from './steelSpear.png';
 import steelSword from './steelSword';
 
 import tailWithBlunt from './tailWithBlunt.png';
+import tailWithCutter from './tailWithCutter.png';
 import tailWithSting from './tailWithSting.png';
 import taserWhip from './taserWhip.png';
 import telekinesis from './telekinesis.png';
@@ -227,13 +229,14 @@ const bodyElements = {
     sabre,
     scalesTorso,
     sheathLeft, sheathRight,
+    spikedShell,
     steelArmor,
     steelGreataxe, steelGreathammer, steelGreatsword,
     steelMace,
     steelShield,
     steelSpear,
     steelSword,
-    tailWithBlunt, tailWithSting,
+    tailWithBlunt, tailWithCutter, tailWithSting,
     taserWhip,    
     telekinesis,
     titanLegs, titanTorso,

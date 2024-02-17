@@ -1,6 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {Link} from "react-router-dom";
-import {Gear} from 'react-bootstrap-icons';
+import {Gear, InfoCircle} from 'react-bootstrap-icons';
 import styles from './PopupPage.module.css';
 import images from '../../images/images';
 import { ICharacher, IStore } from '../../enums-and-interfaces/interfaces';
@@ -150,9 +150,17 @@ function MainPage() {
                 >
                     {startButtonText}
                 </button>
-                <Link to={'settings'}>
+                <Link 
+                    title='Settings'
+                    to={'settings'}
+                >
                     <Gear/> 
                 </Link>
+                <InfoCircle 
+                    title='Info'
+                    size={24}
+                    onClick={() => window.open('#/info')}
+                />
             </div>                        
         </div>
     )

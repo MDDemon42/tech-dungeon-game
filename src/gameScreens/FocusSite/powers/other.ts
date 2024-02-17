@@ -31,7 +31,7 @@ const intuition = createPower(
     [
         psionMasteries.meditativeInsights.name,
         null,
-        [abilities.passiveAbilities.armor.intuition]
+        [abilities.passiveAbilities.psionics.intuition]
     ],
     ''    
 )

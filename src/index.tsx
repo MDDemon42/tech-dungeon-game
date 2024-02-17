@@ -7,6 +7,7 @@ import MainPage from './pages/PopupPages/MainPage';
 import SettingsPage from './pages/PopupPages/SettingsPage';
 import ErrorPage from './pages/PopupPages/ErrorPage';
 import GamePage from './pages/GamePages/GamePage';
+import InfoPage from './pages/GamePages/InfoPage';
 
 import store from './redux/store';
 
@@ -23,6 +24,7 @@ ReactDOM
           <Route path={'/settings'} element={<SettingsPage />}/>
           <Route path={'/game'} element={<GamePage />}/>
           <Route path={'/battle'} element={<BattlePage />}/>
+          <Route path={'/info'} element={<InfoPage />}/>
         </Routes>
       </Provider>
     </HashRouter>

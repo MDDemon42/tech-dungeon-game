@@ -8,6 +8,9 @@ function getTailImage(tailName: string) {
         case mutations.weapons.tailWithBlunt.name:
             result = <img src={images.bodyElements.tailWithBlunt} alt={chrome.i18n.getMessage('tail_with_blunt')} />;
             break;
+        case mutations.weapons.tailWithCutter.name:
+            result = <img src={images.bodyElements.tailWithCutter} alt={chrome.i18n.getMessage('tail_with_cutter')} />;
+            break;
         case mutations.weapons.tailWithSting.name:
             result = <img src={images.bodyElements.tailWithSting} alt={chrome.i18n.getMessage('tail_with_sting')} />;
             break;

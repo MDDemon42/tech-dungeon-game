@@ -42,7 +42,7 @@ const hooves = createMutation(
     ],
     [
         null, 
-        [abilities.passiveAbilities.armor.hooves]
+        [abilities.passiveAbilities.mutations.hooves]
     ]    
 );
 

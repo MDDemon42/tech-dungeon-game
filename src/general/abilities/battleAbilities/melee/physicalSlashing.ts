@@ -697,6 +697,17 @@ const affiliatedBattleMageRifleSlash = createBattleAbility(
     [1, 95]
 );
 
+const tailSlash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('tail_slash'), 
+        '', 
+        images.mutantEvolvings.tailWithCutter
+    ], 
+    {Stamina: 1}, 
+    {[DamageType.physicalSlashing]: 1},
+    [1, 70]
+);
+
 const physicalSlashing = {
     axeSlash,
     affiliatedAxeSlash,
@@ -730,6 +741,7 @@ const physicalSlashing = {
     treeCutterSlash,
     clawSlash,
     raptorJump,
+    tailSlash,
 
     dragonBoneBladeSlash,
     affiliatedDragonBoneBladeSlash,

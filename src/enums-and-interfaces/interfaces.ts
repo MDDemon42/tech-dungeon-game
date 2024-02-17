@@ -306,6 +306,7 @@ export interface IMutationsForRaceCheck {
     fur: boolean,
     tailWithSting: boolean,
     extraArms: boolean,
+    dragonEyes: boolean,
     claws: boolean,
     acidSpit: boolean,
     skinWings: boolean,
@@ -313,7 +314,9 @@ export interface IMutationsForRaceCheck {
     raptorLegs: boolean,
     fireBreath: boolean,
     featherWings: boolean,
-    tailWithBlunt: boolean
+    tailWithBlunt: boolean,
+    spikedShell: boolean,
+    tailWithCutter: boolean
 }
 
 // lookout pages //

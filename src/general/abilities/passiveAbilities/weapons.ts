@@ -3,7 +3,7 @@ import { UserParam } from "../../../enums-and-interfaces/enums";
 
 const mageWeapon = createPassiveAbility(
     [
-        '', chrome.i18n.getMessage('mage_weapon'), ''
+        '', chrome.i18n.getMessage('mage_weapon'),
     ],
     {
         [UserParam.mana]: 2
