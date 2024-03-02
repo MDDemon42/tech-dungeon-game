@@ -5,7 +5,10 @@ import mutations from "../../gameScreens/MutaLab/mutations";
 import armouryItems from "../../gameScreens/Mansion/armouryItems";
 import images from "../../images/images";
 
-function getLeftHandImage(leftHandName: string) {
+function getLeftHandImage(
+    leftHandName: string,
+    skinName: string
+) {
     let result = null;
 
     switch (leftHandName) {
@@ -28,7 +31,17 @@ function getLeftHandImage(leftHandName: string) {
             result = <img src={images.bodyElements.laser} alt={chrome.i18n.getMessage('laser')} />;
             break;
         case mutations.weapons.claw.name:
-            result = <img src={images.bodyElements.clawLeft} alt={chrome.i18n.getMessage('claws')} />;
+            switch (skinName) {
+                case mutations.armors.scales.name:
+                    result = <img src={images.bodyElements.claws.scalesLeft} alt={chrome.i18n.getMessage('claws')} />;
+                    break;
+                case mutations.armors.fur.name:
+                    result = <img src={images.bodyElements.claws.furLeft} alt={chrome.i18n.getMessage('claws')} />;
+                    break;
+                default:
+                    result = <img src={images.bodyElements.claws.usualLeft} alt={chrome.i18n.getMessage('claws')} />;
+                    break;
+            }            
             break;
         case items.weapons.axe.name:
             result = <img src={images.bodyElements.axe.leftHand} alt={chrome.i18n.getMessage('axe')} />;

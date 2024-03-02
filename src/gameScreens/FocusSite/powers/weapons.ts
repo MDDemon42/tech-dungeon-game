@@ -51,10 +51,27 @@ const psiLightning = createPower(
     ''
 );
 
+const voidCrash = createPower(
+    [
+        chrome.i18n.getMessage('void_crash'),
+        chrome.i18n.getMessage('void_crash_power_description'),
+        images.psionInsights.voidCrash
+    ],
+    [
+        psionMasteries.psiEnergy.name,
+        [
+            abilities.battleAbilities.ranged.psionic.voidCrash
+        ], 
+        null
+    ],
+    ''
+);
+
 const weapons = {
     psiBlade,
     psiJavelin,
-    psiLightning
+    psiLightning,
+    voidCrash
 }
 
 export default weapons

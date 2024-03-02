@@ -1,4 +1,4 @@
-import { BendingGameScreens, InventoryGameScreens, InventoryPlace, MindGameScreens } from "../enums-and-interfaces/enums";
+import { InventoryGameScreens, InventoryPlace, MindGameScreens } from "../enums-and-interfaces/enums";
 import { 
     IBending, ICharacher, ICyber, 
     IItem, IMastery, IMutation, 
@@ -11,12 +11,11 @@ import rituals from "../gameScreens/Guild/rituals";
 export function bendingEnableChecker(
     bending: IBending,
     memberMind: string[],
-    screenName: BendingGameScreens,
     capacity: number,
     posessed: number
 ): [boolean, string] {
     if (capacity <= posessed) {
-        return [false, chrome.i18n.getMessage('smec_capacity', screenName)]
+        return [false, chrome.i18n.getMessage('smec_capacity', 'Bendings')]
     }
 
     const posessedCheck = memberMind.includes(bending.name);
@@ -43,6 +42,19 @@ export function bendingEnableChecker(
     return [true, '']
 }
 
+const screenNameCapacityMappings: Record<MindGameScreens, string> = {
+    [MindGameScreens.academy]: 'Masteries',
+    [MindGameScreens.airSchool]: 'Masteries',
+    [MindGameScreens.fireSchool]: 'Masteries',
+    [MindGameScreens.focusSchool]: 'Masteries',
+    [MindGameScreens.focusSite]: 'Powers',
+    [MindGameScreens.guildRituals]: 'Rituals',
+    [MindGameScreens.guildSchool]: 'Masteries',
+    [MindGameScreens.iceSchool]: 'Masteries',
+    [MindGameScreens.spellSchool]: 'Masteries',
+    [MindGameScreens.wizardSchool]: 'Masteries'
+}
+
 export function subMindEnableChecker(
     data: IMastery | IPower | ISpell,
     memberMind: string[],
@@ -51,7 +63,7 @@ export function subMindEnableChecker(
     posessed: number
 ): [boolean, string] {
     if (capacity <= posessed) {
-        return [false, chrome.i18n.getMessage('smec_capacity', screenName)]
+        return [false, chrome.i18n.getMessage('smec_capacity', screenNameCapacityMappings[screenName])]
     }
 
     const posessedCheck = memberMind.includes(data.name);

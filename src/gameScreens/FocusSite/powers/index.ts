@@ -50,7 +50,8 @@ const advancedOptions = [
 const psiEnergyOptions = [
     powers.weapons.psiBlade,
     powers.weapons.psiJavelin,
-    powers.weapons.psiLightning
+    powers.weapons.psiLightning,
+    powers.weapons.voidCrash
 ];
 
 export const focusSiteOptions: Record<string, IPower[]> = {

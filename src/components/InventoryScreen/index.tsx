@@ -31,6 +31,7 @@ function InventoryScreen(props: {
 }) {
     const {character, battle} = props;
     const {general, params} = character;
+    const userRace = params.race;
     const userStrength = params.strength;
     const powersUserNames = general.mind.powers.map(power => power.name);
     const ritualsUserNames = general.mind.rituals.map(ritual => ritual.name);
@@ -62,7 +63,10 @@ function InventoryScreen(props: {
         inventory.Skin.name
     );    
 
-    const shoulders = getShouldersImage(inventory.Shoulders.name);
+    const shoulders = getShouldersImage(
+        inventory.Shoulders.name,
+        powersUserNames
+    );
 
     const shouldersItem = getShouldersItemImage(inventory.Shoulders_item?.name || '');
 
@@ -94,6 +98,7 @@ function InventoryScreen(props: {
     );
 
     const head = getHeadImage(
+        userRace,
         powersUserNames,
         inventory.Chin.name,
         inventory.Eyes.name,
@@ -102,9 +107,15 @@ function InventoryScreen(props: {
 
     const hat = getHatImage(inventory.Hat.name);
 
-    const leftHand = getLeftHandImage(inventory.Left_hand.name);
+    const leftHand = getLeftHandImage(
+        inventory.Left_hand.name,
+        inventory.Skin.name
+    );
 
-    const rightHand = getRightHandImage(inventory.Right_hand.name);
+    const rightHand = getRightHandImage(
+        inventory.Right_hand.name,
+        inventory.Skin.name
+    );
 
     const bothHands = getBothHandsImage(
         inventory.Both_hands.name,

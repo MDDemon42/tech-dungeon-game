@@ -14,6 +14,9 @@
     "cid_cost": {
         "message": "Цена: "
     },
+    "cid_health_cost": {
+        "message": "Трата Здоровья: "
+    },
     "cid_required_bending": {
         "message": "Необходимое подчинение стихии: "
     },
@@ -228,6 +231,22 @@
         "message": "Гены Инсектоида"
     },
     "insectoid_genes_task_text": {
+        "message": "Капитан приказывает добыть $count$ $resource$ для мутирования в будущем.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "dragon_genes_task_title": {
+        "message": "Гены Дракона"
+    },
+    "dragon_genes_task_text": {
         "message": "Капитан приказывает добыть $count$ $resource$ для мутирования в будущем.",
         "placeholders": {
             "count": {
@@ -780,8 +799,14 @@
     "dodge": {
         "message": "Уворот"
     },
-    "dodge_15": {
-        "message": "Повышает Уворот на 15."
+    "dodge_amount": {
+        "message": "Повышает Уворот на $amount$.",
+        "placeholders": {
+            "amount": {
+                "content": "$1",
+                "example": "0"
+            } 
+        }
     },
     "intuition": {
         "message": "Интуиция"
@@ -2668,6 +2693,12 @@
     },
     "psi_lightning_power_description": {
         "message": "Мощь для поражения врагов цепной молнией, созданной твоим разумом."
+    },
+    "void_crash": {
+        "message": "Пустотное сокрушение"
+    },
+    "void_crash_power_description": {
+        "message": "Мощь для сокрушения группы врагов самой пустотой."
     },
     "bow_affiliation": {
         "message": "Родство с луком"

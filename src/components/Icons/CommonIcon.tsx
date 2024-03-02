@@ -37,6 +37,7 @@ function CommonIcon(props: {
         },
         hitChance?: number,
         targetAmount?: number,
+        healthCost?: number,
         passiveAbilities?: IPassiveAbility[] | null
     },
     disableReason?: string,
@@ -69,6 +70,10 @@ function CommonIcon(props: {
 
     if (item.cost) {
         description += '\n' + chrome.i18n.getMessage('cid_cost') + item.cost;
+    }
+
+    if (item.healthCost) {
+        description += '\n' + chrome.i18n.getMessage('cid_health_cost') + item.healthCost;
     }
 
     if (item.requiredBending) {

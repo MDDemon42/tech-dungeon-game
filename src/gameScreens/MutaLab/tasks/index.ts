@@ -13,7 +13,7 @@ const buildMutationLab = createTask(
     chrome.i18n.getMessage('build_muta_lab_task_text', 
         ['4', items.bigResources.ore.name]
     ),
-)
+);
 
 const beastGenes = createTask(
     [
@@ -26,7 +26,7 @@ const beastGenes = createTask(
     chrome.i18n.getMessage('beast_genes_task_text', 
         ['1', items.bigResources.beastRemains.name]
     ),
-)
+);
 
 const reptiloidGenes = createTask(
     [
@@ -39,7 +39,7 @@ const reptiloidGenes = createTask(
     chrome.i18n.getMessage('reptiloid_genes_task_text', 
         ['1', items.bigResources.reptiloidRemains.name]
     ),
-)
+);
 
 const insectoidGenes = createTask(
     [
@@ -52,7 +52,20 @@ const insectoidGenes = createTask(
     chrome.i18n.getMessage('insectoid_genes_task_text', 
         ['1', items.bigResources.insectoidRemains.name]
     ),
-)
+);
+
+const dragonGenes = createTask(
+    [
+        {
+            name: items.bigResources.dragonRemains.name,
+            amount: 1
+        }
+    ], 
+    chrome.i18n.getMessage('dragon_genes_task_title'),
+    chrome.i18n.getMessage('dragon_genes_task_text', 
+        ['1', items.bigResources.dragonRemains.name]
+    ),
+);
 
 const mutaLabTasks = {
     1: {
@@ -70,6 +83,10 @@ const mutaLabTasks = {
     5: {
         status: TaskStatus.unknown,
         task: insectoidGenes
+    },
+    7: {
+        status: TaskStatus.unknown,
+        task: dragonGenes
     }
 }
 

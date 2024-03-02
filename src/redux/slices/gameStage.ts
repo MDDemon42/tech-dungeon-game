@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { IGameStage, IGameStageOptions, IGameTasks, ITask } from '../../enums-and-interfaces/interfaces';
+import { ICommon, IGameStage, IGameStageOptions, IGameTasks, ITask } from '../../enums-and-interfaces/interfaces';
 import { GameScreens, UserStartClass } from '../../enums-and-interfaces/enums';
 import academyTasks from '../../gameScreens/Academy/tasks';
 import airSiteTasks from '../../gameScreens/AirSite/tasks';
@@ -224,9 +224,25 @@ const gameStage = createSlice({
             }
 
             oldState[zone].stage = upgradedStage;
-            oldState[zone].usableOptions?.push(
+
+            const usableOptions = [...oldState[zone].usableOptions];
+            usableOptions.push(
                 ...(oldState[zone].stageOptions?.[stage] || [])
             );
+
+            const uniqueOptions: string[] = [];
+            usableOptions.forEach((option, index, array) => {
+                const optionName = (option as ICommon).name;
+                if (optionName) {
+                    if (!uniqueOptions.includes(optionName)) {
+                        uniqueOptions.push(optionName);
+                    } else {
+                        array.splice(index, 1);
+                    }
+                }
+            });
+
+            oldState[zone].usableOptions = [...usableOptions];
 
             if (relatedScreens[zone].length > 0) {
                 for (const relatedScreen of relatedScreens[zone]) {

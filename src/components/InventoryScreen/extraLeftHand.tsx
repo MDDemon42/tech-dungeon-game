@@ -15,7 +15,7 @@ function getExtraLeftHandImage(
 
     switch (extraLeftHandName) {
         case mutations.weapons.claw.name:
-            result = <img src={images.bodyElements.clawExtraLeft} alt={chrome.i18n.getMessage('claw')} />;
+            result = <img src={images.bodyElements.claws.extraLeft} alt={chrome.i18n.getMessage('claw')} />;
             break;
         case items.weapons.axe.name:
             result = <img src={images.bodyElements.axe.extraLeftHand} alt={chrome.i18n.getMessage('axe')} />;

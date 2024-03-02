@@ -10,9 +10,9 @@ function checkRace(inventory: IInventory, isStrong: boolean): Race {
         lowerFangs: inventory.Chin.name === mutations.weapons.lowerFangs.name,
         scales: inventory.Skin.name === mutations.armors.scales.name,
         fur: inventory.Skin.name === mutations.armors.fur.name,
+        tailWithSting: inventory.Tail.name === mutations.weapons.tailWithSting.name,
         extraArms: inventory.Shoulders.name === mutations.other.extraArms.name,
         dragonEyes: inventory.Eyes.name === mutations.other.dragonEyes.name,
-        tailWithSting: inventory.Tail.name === mutations.weapons.tailWithSting.name,
         claws: inventory.Both_hands.name === mutations.weapons.claws.name,
         acidSpit: inventory.Chin.name === mutations.weapons.acidSpit.name,
         skinWings: inventory.Back.name === mutations.other.skinWings.name,
@@ -22,7 +22,7 @@ function checkRace(inventory: IInventory, isStrong: boolean): Race {
         featherWings: inventory.Back.name === mutations.other.featherWings.name,
         tailWithBlunt: inventory.Tail.name === mutations.weapons.tailWithBlunt.name,
         spikedShell: inventory.Back.name === mutations.armors.spikedShell.name,
-        tailWithCutter: inventory.Tail.name === mutations.weapons.tailWithCutter.name
+        tailWithCutter: inventory.Tail.name === mutations.weapons.tailWithCutter.name,
     }
 
     const isRace = (race: IMutationsForRaceCheck) => {
@@ -39,10 +39,10 @@ function checkRace(inventory: IInventory, isStrong: boolean): Race {
         [Race.naga]: isRace(races.nagaRace),
         [Race.raptor]: isRace(races.raptorRace),
         [Race.demon]: isRace(races.demonRace),
-        [Race.dragon]: isRace(races.dragonRace),
-        [Race.koatl]: isRace(races.koatlRace),
-        [Race.ankylosaurus]: isRace(races.ankylosaurusRace),
-        [Race.chimera]: isRace(races.chimeraRace)
+        [Race.dragon]: isRace(races.dragonRace) && isStrong,
+        [Race.koatl]: isRace(races.koatlRace) && isStrong,
+        [Race.ankylosaurus]: isRace(races.ankylosaurusRace) && isStrong,
+        [Race.chimera]: isRace(races.chimeraRace) && isStrong
     }
     
     let race = Race.unknown;

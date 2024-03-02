@@ -1,14 +1,42 @@
 import cybers from "../../gameScreens/CyberLab/cybers";
 import powers from "../../gameScreens/FocusSite/powers";
 import mutations from "../../gameScreens/MutaLab/mutations";
+import { raceNames } from "../../general/races/races";
 import images from "../../images/images";
 
 function getHeadImage(
+    userRace: string,
     powersUserNames: string[],
     chinName: string,
     eyesName: string,
     headName: string
 ) {
+    switch (userRace) {
+        case raceNames.Ankylosaurus:
+            return <img src={images.bodyElements.heads.ankylosaurusHead} alt={chrome.i18n.getMessage('race_ankylosaurus')} />;
+
+        case raceNames.Dragon:
+            return <img src={images.bodyElements.heads.dragonHead} alt={chrome.i18n.getMessage('race_dragon')} />;
+
+        case raceNames.Gnoll:
+            return <img src={images.bodyElements.heads.gnollHead} alt={chrome.i18n.getMessage('race_gnoll')} />;
+
+        case raceNames.Naga:
+            return <img src={images.bodyElements.heads.nagaHead} alt={chrome.i18n.getMessage('race_naga')} />;
+
+        case raceNames.Raptor:
+            return <img src={images.bodyElements.heads.raptorHead} alt={chrome.i18n.getMessage('race_raptor')} />;
+        
+        case raceNames.Satyr:
+            return <img src={images.bodyElements.heads.satyrHead} alt={chrome.i18n.getMessage('race_satyr')} />;
+        
+        case raceNames.Taur:
+            return <img src={images.bodyElements.heads.taurHead} alt={chrome.i18n.getMessage('race_taur')} />;
+        
+        default: 
+            break;
+    }
+
     let result = [
         <img src={images.bodyElements.head} alt='head' />
     ];

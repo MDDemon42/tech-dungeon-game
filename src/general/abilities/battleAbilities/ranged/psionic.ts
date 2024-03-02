@@ -10,7 +10,7 @@ const psiJavelin = createBattleAbility(
     ], 
     {Focus: 2}, 
     {[DamageType.psionic]: 2},
-    [1, 100]
+    [1, 95]
 );
 
 const psiLightning = createBattleAbility(
@@ -21,12 +21,24 @@ const psiLightning = createBattleAbility(
     ], 
     {Focus: 2}, 
     {[DamageType.psionic]: 1},
-    [5, 100]
+    [5, 95]
+);
+
+const voidCrash = createBattleAbility(
+    [
+        chrome.i18n.getMessage('void_crash'), 
+        '', 
+        images.psionInsights.voidCrash
+    ], 
+    {Focus: 2}, 
+    {[DamageType.psionic]: 2},
+    [3, 95]
 );
 
 const psionic = {
     psiJavelin,
-    psiLightning
+    psiLightning,
+    voidCrash
 }
 
 export default psionic

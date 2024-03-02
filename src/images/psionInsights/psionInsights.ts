@@ -14,6 +14,7 @@ import telekinesis from './telekinesis.png';
 import telekineticChoke from './telekineticChoke.png';
 import telekineticDisarm from './telekineticDisarm.png';
 import telekineticPressure from './telekineticPressure.png';
+import voidCrash from './voidCrash.png';
 
 const psionInsights = {
     empoweredStrikes,
@@ -31,7 +32,8 @@ const psionInsights = {
     telekinesis,
     telekineticChoke,
     telekineticDisarm,
-    telekineticPressure 
+    telekineticPressure,
+    voidCrash 
 };
 
 export default psionInsights;

@@ -9,7 +9,8 @@ function createRitual(
         description: string,
         image: string
     ],
-    abilityInfo: [
+    ritualInfo: [
+        healthCost: number,
         requiredMastery: string,
         passiveAbilities: IPassiveAbility[]
     ]
@@ -19,8 +20,9 @@ function createRitual(
         description: commonInfo[1],
         image: commonInfo[2],
 
-        requiredMastery: abilityInfo[0],
-        passiveAbilities: abilityInfo[1]
+        healthCost: ritualInfo[0],
+        requiredMastery: ritualInfo[1],
+        passiveAbilities: ritualInfo[2]
     }
 }
 
@@ -31,10 +33,11 @@ const titanSkin = createRitual(
         images.guildianLearnings.titanSkinRitual
     ],
     [
+        3,
         academyMasteries.brutalForce.name,
         [abilities.passiveAbilities.rituals.titanSkin]
     ]
-)
+);
 
 const rituals = {
     titanSkin

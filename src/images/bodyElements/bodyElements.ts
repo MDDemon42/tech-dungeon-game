@@ -22,12 +22,10 @@ import belts from './belts';
 
 import bowQuiver from './bowQuiver.png';
 import brutalLegs from './brutalLegs.png';
-import brutalTorso from './brutalTorso.png';
 import chakram from './chakram.png';
-import clawExtraLeft from './clawExtraLeft.png';
-import clawExtraRight from './clawExtraRight.png';
-import clawLeft from './clawLeft.png';
-import clawRight from './clawRight.png';
+
+import claws from './claws';
+
 import cyberClaw from './cyberClaw.png';
 import cyberEyes from './cyberEyes.png';
 import cyberFistRightHand from './cyberFistRightHand.png';
@@ -43,7 +41,6 @@ import featherWings from './featherWings.png';
 import fireBreath from './fireBreath.png';
 import flyingCape from './flyingCape.png';
 import freezer from './freezer.png';
-import furTorso from './furTorso.png';
 import glaive from './glaive.png';
 import greatSheath from './greatSheath.png';
 import greatSwordGreatSheath from './greatSwordGreatSheath.png';
@@ -51,11 +48,13 @@ import guardianAura from './guardianAura.png';
 import guardianField from './guardianField.png';
 import halberd from './halberd.png';
 import head from './head.png';
+
+import heads from './heads';
+
 import healingPotion from './healingPotion.png';
 import heatSaber from './heatSaber.png';
 import holsterLeft from './holsterLeft.png';
 import holsterRight from './holsterRight.png';
-import hooves from './hooves.png';
 import horns from './horns.png';
 import hypnosis from './hypnosis.png';
 import intuition from './intuition.png';
@@ -69,7 +68,8 @@ import leftHand from './leftHand.png';
 
 import leftHipItem from './leftHipItem';
 
-import legs from './legs.png';
+import legs from './legs';
+
 import levitation from './levitation.png';
 import lowerFangs from './lowerFangs.png';
 
@@ -88,10 +88,6 @@ import magisterHat from './magisterHat.png';
 import magisterRobe from './magisterRobe.png';
 import magisterScepter from './magisterScepter.png';
 import musket from './musket.png';
-import nanoMatrixTorso from './nanoMatrixTorso.png';
-import nanoMatrixLegs from './nanoMatrixLegs.png';
-import nanoVestTorso from './nanoVestTorso.png';
-import nanoVestLegs from './nanoVestLegs.png';
 import oakBow from './oakBow.png';
 import oakCrossbow from './oakCrossbow.png';
 
@@ -107,8 +103,6 @@ import quiver from './quiver.png';
 
 import rapier from './rapier';
 
-import raptorLegs from './raptorLegs.png';
-import reactiveFeet from './reactiveFeet.png';
 import revolverLeftHand from './revolverLeftHand.png';
 import revolverRightHand from './revolverRightHand.png';
 import rifle from './rifle.png'
@@ -124,7 +118,6 @@ import runicGreatswordGlove from './runicGreatswordGlove.png';
 
 import sabre from './sabre';
 
-import scalesTorso from './scalesTorso.png';
 import sheathLeft from './sheathLeft.png';
 import sheathRight from './sheathRight.png';
 import spikedShell from './spikedShell.png';
@@ -146,10 +139,12 @@ import tailWithSting from './tailWithSting.png';
 import taserWhip from './taserWhip.png';
 import telekinesis from './telekinesis.png';
 import titanLegs from './titanLegs.png';
-import titanTorso from './titanTorso.png';
-import torso from './torso.png';
+
+import torso from './torso';
+
 import treeCutter from './treeCutter.png';
 import skinWings from './skinWings.png';
+import voidCrash from './voidCrash.png';
 import woodenShield from './woodenShield.png';
 
 const bodyElements = {
@@ -164,10 +159,9 @@ const bodyElements = {
     battleRifle,
     belts,
     bowQuiver,
-    brutalLegs, brutalTorso,
+    brutalLegs,
     chakram,
-    clawExtraLeft, clawExtraRight,
-    clawLeft, clawRight,
+    claws,
     cyberClaw,
     cyberEyes,
     cyberFistRightHand, cyberFistLeftHand,
@@ -179,17 +173,17 @@ const bodyElements = {
     featherWings, fireBreath,
     flyingCape,
     freezer,
-    furTorso,
     glaive,
     greatSheath,
     greatSwordGreatSheath,
     guardianAura, guardianField,
     halberd,
     head,
+    heads,
     healingPotion,
     heatSaber,
     holsterLeft, holsterRight,
-    hooves, horns,
+    horns,
     hypnosis, intuition,
     katana,
     khopesh,
@@ -208,8 +202,6 @@ const bodyElements = {
     mageWandLeftHand, mageWandRightHand,
     magisterHat, magisterRobe, magisterScepter,
     musket,
-    nanoMatrixTorso, nanoMatrixLegs,
-    nanoVestTorso, nanoVestLegs,
     oakBow, oakCrossbow,
     pickaxe,
     pierceStick,
@@ -218,8 +210,6 @@ const bodyElements = {
     psiBlade, psiJavelin, psiLightning,
     quiver,
     rapier,
-    raptorLegs,
-    reactiveFeet,
     revolverLeftHand, revolverRightHand, rifle,
     rightHand,
     rightHipItem,
@@ -227,7 +217,6 @@ const bodyElements = {
     runicGreataxe, runicGreathammer, runicGreatsword,
     runicGreatswordGlove,
     sabre,
-    scalesTorso,
     sheathLeft, sheathRight,
     spikedShell,
     steelArmor,
@@ -239,10 +228,11 @@ const bodyElements = {
     tailWithBlunt, tailWithCutter, tailWithSting,
     taserWhip,    
     telekinesis,
-    titanLegs, titanTorso,
+    titanLegs,
     torso,
     treeCutter,
     skinWings,
+    voidCrash,
     woodenShield
 }
 

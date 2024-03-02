@@ -10,7 +10,7 @@ const psiBladeSlash = createBattleAbility(
     ], 
     {Focus: 1}, 
     {[DamageType.psionic]: 1},
-    [1, 100]
+    [1, 95]
 );
 
 const psionic = {

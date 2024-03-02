@@ -48,14 +48,16 @@ const mutations = {
 };
 
 const beastOptions = [
+    mutations.weapons.claws,
     mutations.armors.fur,
     mutations.other.hooves,
     mutations.weapons.horns,
-    mutations.weapons.lowerFangs
+    mutations.weapons.lowerFangs,
 ];
 
 const reptiloidOptions = [
     mutations.weapons.acidSpit,
+    mutations.weapons.claws,
     mutations.other.extraArms,
     mutations.weapons.raptorLegs,
     mutations.armors.scales
@@ -68,19 +70,23 @@ const insectoidOptions = [
 ];
 
 const dragonOptions = [
+    mutations.weapons.claws,
     mutations.other.dragonEyes,
     mutations.weapons.fireBreath,
     mutations.weapons.tailWithBlunt,
+    mutations.weapons.tailWithCutter,
     mutations.weapons.tailWithSting,
-    mutations.other.featherWings
+    mutations.other.featherWings,
+    mutations.armors.spikedShell
 ];
 
 export const mutaLabOptions: Record<string, IMutation[]> = {
     0: [],
     1: [],
-    2: [...beastOptions, ...dragonOptions],
+    2: [...beastOptions],
     3: [...reptiloidOptions],
-    5: [...insectoidOptions]
+    5: [...insectoidOptions],
+    7: [...dragonOptions]
 };
 
 export default mutations

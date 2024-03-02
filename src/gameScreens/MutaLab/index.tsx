@@ -30,6 +30,12 @@ const mutaLabUpgradeButtons = (stage: number): IUpgradeButton[] => [
         stage: 5,
         disabled: stage % 5 === 0,
         visible: stage % 5 !== 0
+    },
+    {
+        title: chrome.i18n.getMessage('dragon_genes_task_title'),
+        stage: 7,
+        disabled: stage % 7 === 0,
+        visible: stage % 7 !== 0
     }
 ];
 

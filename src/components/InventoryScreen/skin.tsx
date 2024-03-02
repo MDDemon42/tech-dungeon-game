@@ -14,24 +14,24 @@ function getSkinImage(
     
     switch (skinName) {
         case cybers.armors.nanoMatrix.name:
-            result.push(<img src={images.bodyElements.nanoMatrixTorso} alt={chrome.i18n.getMessage('nano_matrix')} />);
+            result.push(<img src={images.bodyElements.torso.nanoMatrix} alt={chrome.i18n.getMessage('nano_matrix')} />);
             break;
         case cybers.armors.nanoVest.name:
-            result.push(<img src={images.bodyElements.nanoVestTorso} alt={chrome.i18n.getMessage('nano_vest')} />);
+            result.push(<img src={images.bodyElements.torso.nanoVest} alt={chrome.i18n.getMessage('nano_vest')} />);
             break;
         case mutations.armors.scales.name:
-            result.push(<img src={images.bodyElements.scalesTorso} alt={chrome.i18n.getMessage('scales')} />);
+            result.push(<img src={images.bodyElements.torso.scales} alt={chrome.i18n.getMessage('scales')} />);
             break;
         case mutations.armors.fur.name:
-            result.push(<img src={images.bodyElements.furTorso} alt={chrome.i18n.getMessage('fur')} />);
+            result.push(<img src={images.bodyElements.torso.fur} alt={chrome.i18n.getMessage('fur')} />);
             break;
         default:
             result = [
                 ritualsUserNames.includes(rituals.titanSkin.name) ?
-                    <img src={images.bodyElements.titanTorso} alt='titanTorso' /> :
+                    <img src={images.bodyElements.torso.titan} alt='titanTorso' /> :
                     userStrength >= 3 ?
-                        <img src={images.bodyElements.brutalTorso} alt='brutalTorso' /> :
-                        <img src={images.bodyElements.torso} alt='torso' />,
+                        <img src={images.bodyElements.torso.brutal} alt='brutalTorso' /> :
+                        <img src={images.bodyElements.torso.usual} alt='torso' />,
                 powersUserNames.includes(powers.armors.guardianAura.name) ?
                     <img src={images.bodyElements.guardianAura} alt={chrome.i18n.getMessage('guardian_aura')} /> :
                     powersUserNames.includes(powers.armors.guardianField.name) ?

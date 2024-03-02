@@ -62,7 +62,6 @@ function BendingScreen(props: {
                             bending={bending as IBending}
                             buttonText={bendingMappings[screenName].button}
                             listener={bendingMappings[screenName].listener}
-                            screenName={screenName}
                             memberMind={memberMind}
                             capacity={member.params.level}
                             posessed={member.general.mind.bending.length}

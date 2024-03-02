@@ -1,4 +1,3 @@
-import { BendingGameScreens } from "../../enums-and-interfaces/enums";
 import { IBending } from "../../enums-and-interfaces/interfaces";
 import { bendingEnableChecker } from "../../helpers/enableCheckers";
 import CommonIcon from "../Icons/CommonIcon";
@@ -6,7 +5,6 @@ import styles from './BendingScreen.module.css';
 
 function BendingScreenItem(props: {
     bending: IBending,
-    screenName: BendingGameScreens,
     memberMind: string[],
     buttonText: string,
     listener: any,
@@ -15,11 +13,11 @@ function BendingScreenItem(props: {
 }) {
     const {
         bending, buttonText, listener,
-        memberMind, screenName,
+        memberMind,
         capacity, posessed
     } = props;
     const [enabled, disableReason] = bendingEnableChecker(
-        bending, memberMind, screenName, 
+        bending, memberMind, 
         capacity, posessed
     );
 

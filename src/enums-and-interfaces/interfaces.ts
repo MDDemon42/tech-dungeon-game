@@ -162,7 +162,8 @@ export interface IPower extends IMastery {
 }
 
 export interface IRitual extends IMastery {
-    passiveAbilities: IPassiveAbility[]
+    passiveAbilities: IPassiveAbility[],
+    healthCost: number
 }
 
 export interface IMastery extends ICommon {

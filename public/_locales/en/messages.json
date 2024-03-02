@@ -14,6 +14,9 @@
     "cid_cost": {
         "message": "Cost: "
     },
+    "cid_health_cost": {
+        "message": "Health cost: "
+    },
     "cid_required_bending": {
         "message": "Required bending: "
     },
@@ -228,6 +231,22 @@
         "message": "Insectoid genes"
     },
     "insectoid_genes_task_text": {
+        "message": "Captain orders to get $count$ $resource$ to mutate with in future.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "dragon_genes_task_title": {
+        "message": "Dragon genes"
+    },
+    "dragon_genes_task_text": {
         "message": "Captain orders to get $count$ $resource$ to mutate with in future.",
         "placeholders": {
             "count": {
@@ -2688,6 +2707,12 @@
     },
     "psi_lightning_power_description": {
         "message": "Power to attack with chain lightning made by your mind."
+    },
+    "void_crash": {
+        "message": "Void crash"
+    },
+    "void_crash_power_description": {
+        "message": "Power to crash a group of enemies with void itself."
     },
     "bow_affiliation": {
         "message": "Bow affiliation"
