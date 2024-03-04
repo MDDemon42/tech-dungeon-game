@@ -25,7 +25,7 @@ import cybers from "../CyberLab/cybers";
 import gameStage from "../../redux/slices/gameStage";
 import { getWeaponAmount } from "../../helpers/gatherMultipleWeaponsAbilities";
 
-const screenMappings: Partial<Record<GameScreens, {
+export const screenMappings: Partial<Record<GameScreens, {
     title: string,
     icon: ReactElement,
     houses: number[],

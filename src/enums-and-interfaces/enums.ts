@@ -185,7 +185,7 @@ export enum SquadGameScreens {
 
 export enum TaskStatus {
     unknown = 'Unknown',
-    known = 'Known',
+    actual = 'Actual',
     completed = 'Completed'
 }
 

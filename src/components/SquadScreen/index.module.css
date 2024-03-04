@@ -13,7 +13,7 @@
     gap: 10px;
 }
 
-.StorageIcon {
+.StorageIcon, .TasksIcon {
     padding: 10px 0;
     border: 1px solid black;
     height: 30px;
@@ -42,7 +42,7 @@
     border: 1px solid black;
 }
 
-.StorageScreen {
+.StorageScreen, .TasksScreen {
     z-index: 4;
     border: 1px solid black;
     position: absolute;
@@ -51,8 +51,11 @@
     left: 60px;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
     padding: 10px;
+}
+
+.StorageScreen {
+    flex-direction: row;
 }
 
 .StorageScreen > div {
@@ -72,4 +75,50 @@
 
 .StorageScreen > div > svg {
     cursor: pointer;
+}
+
+.TasksScreen {
+    width: 540px;
+    min-height: 100px;
+    flex-direction: column;
+}
+
+.NoTasks {
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.TaskCategories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.TaskCategories > button {
+    width: 250px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.TaskLine {
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    width: 520px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.TaskTitle {
+    font-weight: bold;
 }

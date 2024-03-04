@@ -3196,6 +3196,21 @@
     "race_unknown": {
         "message": "Нечто"
     },
+    "open_task_list": {
+        "message": "Открыть список задач"
+    },
+    "close_task_list": {
+        "message": "Закрыть список задач"
+    },
+    "no_tasks_yet": {
+        "message": "Пока нет задач"
+    },
+    "actual_tasks": {
+        "message": "Актуальные задачи"
+    },
+    "completed_tasks": {
+        "message": "Завершённые задачи"
+    },
     "put_into_storage": {
         "message": "Складировать"
     },

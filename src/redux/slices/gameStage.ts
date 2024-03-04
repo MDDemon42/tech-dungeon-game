@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { ICommon, IGameStage, IGameStageOptions, IGameTasks, ITask } from '../../enums-and-interfaces/interfaces';
-import { GameScreens, UserStartClass } from '../../enums-and-interfaces/enums';
+import { GameScreens, TaskStatus, UserStartClass } from '../../enums-and-interfaces/enums';
 import academyTasks from '../../gameScreens/Academy/tasks';
 import airSiteTasks from '../../gameScreens/AirSite/tasks';
 import cyberLabTasks from '../../gameScreens/CyberLab/tasks';
@@ -281,6 +281,22 @@ const gameStage = createSlice({
                     ...oldState[GameScreens.guildRituals].stageOptions?.[1] as any[]
                 );
             }
+
+            state = oldState;
+        },
+        updateTask(state, action) {
+            const oldState = {...state};
+
+            const {screen, stage, status} = action.payload as {
+                screen: GameScreens,
+                stage: string,
+                status: TaskStatus
+            };
+
+            const certainScreenTasks = oldState[screen].tasks;
+            if (certainScreenTasks) {
+                certainScreenTasks[stage].status = status;
+            }            
 
             state = oldState;
         }

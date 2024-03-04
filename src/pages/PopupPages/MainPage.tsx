@@ -61,9 +61,15 @@ function MainPage() {
 
                 dispatch(gameStage.actions.setState(result[C.extensionStorageName].gameStage));
 
-                const user = result[C.extensionStorageName].gameSquad.squadMembers[index];
-                if (user.params.level > 0) {
+                const storageUser = result[C.extensionStorageName].gameSquad.squadMembers[index];
+                if (storageUser.params.level > 0) {
                     setStartButtonText(chrome.i18n.getMessage('main_page_continue'))
+                }
+
+                if (storageUser.params.name !== user.params.name) {
+                    setUserClass(storageUser.params.class);
+                    setUserLevel(storageUser.params.length);
+                    setUserName(storageUser.params.name);
                 }
             }
         });       

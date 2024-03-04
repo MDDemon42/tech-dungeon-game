@@ -3210,6 +3210,21 @@
     "race_unknown": {
         "message": "Unknown"
     },
+    "open_task_list": {
+        "message": "Open task list"
+    },
+    "close_task_list": {
+        "message": "Close task list"
+    },
+    "no_tasks_yet": {
+        "message": "No tasks yet"
+    },
+    "actual_tasks": {
+        "message": "Actual tasks"
+    },
+    "completed_tasks": {
+        "message": "Completed tasks"
+    },
     "put_into_storage": {
         "message": "Put into storage"
     },

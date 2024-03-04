@@ -6,9 +6,15 @@ import images from '../../images/images';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
 import { classToIcon } from '../../helpers/classIconRelates';
-import { Inboxes, InboxesFill } from 'react-bootstrap-icons';
+import { 
+    Inboxes, 
+    InboxesFill,
+    QuestionCircle,
+    QuestionCircleFill
+} from 'react-bootstrap-icons';
 import { useState } from 'react';
 import StorageScreen from './StorageScreen';
+import TasksScreen from './TasksScreen';
 
 function SquadScreen() {
     const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
@@ -30,6 +36,11 @@ function SquadScreen() {
         if (mansionStage % 3 === 0) {
             squadSize += 3;
         }
+    }
+
+    const [tasksScreenOpen, setTasksScreenOpen] = useState(false);
+    const tasksIconListener = () => {
+        setTasksScreenOpen(value => !value);
     }
 
     const dispatch = useDispatch();
@@ -64,6 +75,22 @@ function SquadScreen() {
                         })
                     }              
                 </div>
+                {
+                    tasksScreenOpen ?
+                        <QuestionCircleFill
+                            className={styles.TasksIcon}
+                            onClick={tasksIconListener}
+                            title={chrome.i18n.getMessage('close_task_list')}
+                        /> :
+                        <QuestionCircle
+                            className={styles.TasksIcon}
+                            onClick={tasksIconListener}
+                            title={chrome.i18n.getMessage('open_task_list')}
+                        />                    
+                }
+                {
+                    tasksScreenOpen && <TasksScreen/>
+                }
                 {
                     mansionStage > 0 && (
                         storageScreenOpen ?
