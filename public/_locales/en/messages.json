@@ -550,6 +550,27 @@
     "study": {
         "message": "Study!"
     },
+    "trophey_field_title": {
+        "message": "This is Trophey Field!"
+    },
+    "trophey_field_to": {
+        "message": "To Trophey Field!"
+    },
+    "take": {
+        "message": "Take!"
+    },
+    "burn_the_bodies_task_title": {
+        "message": "Burn the bodies"
+    },
+    "burn_the_bodies_task_text": {
+        "message": "Burn the bodies to prevent their resurrection"
+    },
+    "bury_the_bodies_task_title": {
+        "message": "Bury the bodies"
+    },
+    "bury_the_bodies_task_text": {
+        "message": "Bury the bodies to prevent rot smell spread"
+    },
     "no_item_name": {
         "message": "Nothing yet"
     },
@@ -3161,6 +3182,9 @@
     },
     "gem": {
         "message": "Gem"
+    },
+    "gem_item_description": {
+        "message": "To participate in trade-related communications."
     },
     "level": {
         "message": "Level"

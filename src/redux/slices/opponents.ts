@@ -6,6 +6,11 @@ import { createNoItem } from '../../helpers/emptyEssencesCreators';
 
 const opponents_options: Record<string, ICharacher>[] = [
     {
+        0: characters.mutants.satyrBeeenny(),
+        1: characters.mutants.satyrBeeenny(),
+        2: characters.mutants.satyrBeeenny()
+    },
+    {
         0: characters.mights.barbarian(),
     },
     {
@@ -22,7 +27,7 @@ const opponents_options: Record<string, ICharacher>[] = [
         3: characters.magicians.pyrokinetic(),
     },
     {
-        0:characters.mutants.satyr(),
+        0: characters.mutants.satyr(),
         1: characters.mutants.taur(),
         2: characters.mutants.orc(),
         3: characters.mutants.naga()

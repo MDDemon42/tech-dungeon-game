@@ -22,6 +22,7 @@ import SubInventoryScreenItemLine from './SubInventoryScreenItemLine';
 import { createContext, useState } from 'react';
 import CraftScreen from '../CraftScreen';
 import items from '../../gameScreens/Market/items';
+import gameStage from '../../redux/slices/gameStage';
 
 export const SubInventoryScreenItemContext = createContext({
     screenName: '' as InventoryGameScreens,
@@ -60,6 +61,11 @@ const subInventoryMappings: Record<InventoryGameScreens, ISubInventoryMapping> =
         resource: UserResource.gem,
         title: chrome.i18n.getMessage('guild_shop_title'),
         button: chrome.i18n.getMessage('buy'),
+    },
+    [InventoryGameScreens.tropheyField]: {
+        resource: UserResource.none,
+        title: chrome.i18n.getMessage('trophey_field_title'),
+        button: chrome.i18n.getMessage('take'),
     }
 }
 
@@ -82,6 +88,11 @@ const userResourceMarketMapping: Record<string, {
         resource: UserResource.gene,
         amount: 1,
         bought: true
+    },
+    [items.other.gem.name]: {
+        resource: UserResource.gem,
+        amount: 1,
+        bought: false
     }
 }
 
@@ -115,7 +126,7 @@ function SubInventoryScreen(props: {
             if (data.category === InventorySlotCategory.resource) {
                 dispatch(gameSquad.actions.getUserResource(
                     userResourceMarketMapping[data.name]
-                ))
+                ));
             } else {
                 dispatch(gameSquad.actions.buyItem(data));
             }            
@@ -123,6 +134,26 @@ function SubInventoryScreen(props: {
         [InventoryGameScreens.guildShop]: (data) => {
             dispatch(gameSquad.actions.buyItem(data));
         },
+        [InventoryGameScreens.tropheyField]: (item) => {
+            if (item.category === InventorySlotCategory.resource) {
+                const resourceItem = {...userResourceMarketMapping[item.name]};
+                resourceItem.bought = false;
+                dispatch(gameSquad.actions.getUserResource(resourceItem));
+            } else {
+                dispatch(gameSquad.actions.getItem(item));
+            }
+
+            const itemIndex = data
+                .findIndex(dataItem => dataItem.name === item.name);
+
+            const newData = data.filter((_, index) => index !== itemIndex);
+
+            dispatch(gameStage.actions.setUsableOptions({
+                screen: InventoryGameScreens.tropheyField,
+                stage: 0,
+                options: {0: newData}
+            }))
+        }
     }
 
     const resource = useSelector((store: IStore) => 

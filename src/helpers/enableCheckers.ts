@@ -109,7 +109,8 @@ export function subInventoryEnableChecker(
         screenName === InventoryGameScreens.market ||
         screenName === InventoryGameScreens.guildShop ||
         screenName === InventoryGameScreens.wizardShop ||
-        screenName === InventoryGameScreens.armoury
+        screenName === InventoryGameScreens.armoury ||
+        screenName === InventoryGameScreens.tropheyField
     ) {
         const nothing = createNoItem().name;
         const maxBackpacksItemsAmount = character.general.backpacks.length;

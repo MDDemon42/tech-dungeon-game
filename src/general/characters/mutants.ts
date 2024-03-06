@@ -3,6 +3,7 @@ import createEmptyCharacter from "../../helpers/emptyEssencesCreators";
 import academyMasteries from "../../gameScreens/Academy/masteries";
 import mutations from "../../gameScreens/MutaLab/mutations";
 import { raceNames } from "../races/races";
+import items from "../../gameScreens/Market/items";
 
 const satyr = () => {
     const character = createEmptyCharacter();
@@ -18,6 +19,26 @@ const satyr = () => {
 
     character.general.inventory.Head = mutations.weapons.horns;
     character.general.inventory.Legs = mutations.other.hooves;
+
+    return character
+}
+
+const satyrBeeenny = () => {
+    const character = createEmptyCharacter();
+
+    character.params.name = 'Satyr Beeenny';
+    character.params.race = raceNames[Race.satyr];
+
+    character.params.maxParams[UserParam.health] = 3;
+    character.params.currentParams[UserParam.health] = 3;
+
+    character.params.maxParams[UserParam.stamina] = 3;
+    character.params.currentParams[UserParam.stamina] = 3;
+
+    character.general.inventory.Head = mutations.weapons.horns;
+    character.general.inventory.Legs = mutations.other.hooves;
+
+    character.general.inventory.Left_hand = items.weapons.axe;
 
     return character
 }
@@ -155,6 +176,7 @@ const ultimate_chimera = () => {
 
 const mutants = {
     satyr,
+    satyrBeeenny,
     taur,
     orc,
     naga,

@@ -20,7 +20,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  3) More ~abilities~ to get more user resources (~battery capacity~ for cyborg, `psi-capacity`)
  4) Mix `MASPIC` to get `elf` and `werewolf`(?)
  5) Long hair of `fur` mutation
- 6) Several generations of `MASPIC` masters (?)
- 7) `Tropheys` after `win` on `Battle Screen`
- 8) More items for `extra arms` and `telekinesis` (`mage khopesh`)
- 9) `Quests`
+ 6) More items for `extra arms` and `telekinesis` (`mage khopesh`)

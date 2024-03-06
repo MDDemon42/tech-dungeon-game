@@ -5,6 +5,7 @@ import food from './food.png';
 import doubleAxeSlash from './doubleAxeSlash.png';
 import doubleMaceSmash from './doubleMaceSmash.png';
 import doubleSwordSlash from './doubleSwordSlash.png';
+import gem from './gem.png';
 import greatSheath from './greatSheath.png';
 import healingPotion from './healingPotion.png';
 import leatherArmor from './leatherArmor.png';
@@ -34,6 +35,7 @@ const normalItems = {
     doubleAxeSlash,
     doubleMaceSmash,
     doubleSwordSlash,
+    gem,
     greatSheath,
     healingPotion,
     leatherArmor,

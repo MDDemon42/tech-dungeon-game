@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { ICommon, IGameStage, IGameStageOptions, IGameTasks, ITask } from '../../enums-and-interfaces/interfaces';
+import { ICommon, IGameStage, IGameStageOptions, IGameTasks, IScreenStageOptions, ITask } from '../../enums-and-interfaces/interfaces';
 import { GameScreens, TaskStatus, UserStartClass } from '../../enums-and-interfaces/enums';
 import academyTasks from '../../gameScreens/Academy/tasks';
 import airSiteTasks from '../../gameScreens/AirSite/tasks';
@@ -38,6 +38,7 @@ import { aerotheurgRoomsOptions } from '../../gameScreens/AirSite/members';
 import { tavernOptions } from '../../gameScreens/Market/members';
 import { guildianRoomsOptions } from '../../gameScreens/Guild/members';
 import { psionRoomsOptions } from '../../gameScreens/FocusSite/members';
+import tropheyFieldTasks from '../../gameScreens/TropheyField/tasks';
 
 export function createTask(
     resourceCost: {
@@ -80,6 +81,7 @@ export const tasks: IGameTasks = {
     [GameScreens.pyrokineticRooms]: null,
     [GameScreens.spellSchool]: null,
     [GameScreens.tavern]: null,
+    [GameScreens.tropheyField]: tropheyFieldTasks,
     [GameScreens.villageMap]: null,
     [GameScreens.wizardSchool]: wizardSchoolTasks,
     [GameScreens.wizardShop]: null,
@@ -111,6 +113,7 @@ export const stageOptions: IGameStageOptions = {
     [GameScreens.pyrokineticRooms]: pyrokineticRoomsOptions,
     [GameScreens.spellSchool]: spellSchoolOptions,
     [GameScreens.tavern]: tavernOptions,
+    [GameScreens.tropheyField]: null,
     [GameScreens.villageMap]: null,
     [GameScreens.wizardSchool]: wizardSchoolOptions,
     [GameScreens.wizardShop]: wizardShopOptions
@@ -120,8 +123,11 @@ export const createGameStage = (strongStart: boolean) => {
     const result = {} as IGameStage;
     Object.keys(GameScreens).forEach(screen => {
         const gameScreen = screen as keyof typeof GameScreens;
-        const stage = (GameScreens[gameScreen] === GameScreens.market ||
-                strongStart) ? 1 : 0;
+        const stage = (
+            GameScreens[gameScreen] === GameScreens.market ||
+            GameScreens[gameScreen] === GameScreens.tropheyField ||
+            strongStart
+        ) ? 1 : 0;
         result[GameScreens[gameScreen]] = {
             stage,
             stageOptions: stageOptions[GameScreens[gameScreen]],
@@ -159,6 +165,7 @@ const relatedScreens: Record<GameScreens, GameScreens[]> = {
     [GameScreens.pyrokineticRooms]: [],
     [GameScreens.spellSchool]: [],
     [GameScreens.tavern]: [],
+    [GameScreens.tropheyField]: [],
     [GameScreens.villageMap]: [],
     [GameScreens.wizardSchool]: [
         GameScreens.wizardShop, 
@@ -230,17 +237,19 @@ const gameStage = createSlice({
                 ...(oldState[zone].stageOptions?.[stage] || [])
             );
 
-            const uniqueOptions: string[] = [];
-            usableOptions.forEach((option, index, array) => {
-                const optionName = (option as ICommon).name;
-                if (optionName) {
-                    if (!uniqueOptions.includes(optionName)) {
-                        uniqueOptions.push(optionName);
-                    } else {
-                        array.splice(index, 1);
+            if (zone !== GameScreens.tropheyField) {
+                const uniqueOptions: string[] = [];
+                usableOptions.forEach((option, index, array) => {
+                    const optionName = (option as ICommon).name;
+                    if (optionName) {
+                        if (!uniqueOptions.includes(optionName)) {
+                            uniqueOptions.push(optionName);
+                        } else {
+                            array.splice(index, 1);
+                        }
                     }
-                }
-            });
+                });
+            }            
 
             oldState[zone].usableOptions = [...usableOptions];
 
@@ -289,14 +298,29 @@ const gameStage = createSlice({
 
             const {screen, stage, status} = action.payload as {
                 screen: GameScreens,
-                stage: string,
+                stage: number,
                 status: TaskStatus
             };
 
             const certainScreenTasks = oldState[screen].tasks;
             if (certainScreenTasks) {
                 certainScreenTasks[stage].status = status;
-            }            
+                if (screen === GameScreens.tropheyField) {
+                    certainScreenTasks[8/stage].status = status;
+                }
+            }
+
+            state = oldState;
+        },
+        setUsableOptions(state, action) {
+            const oldState = {...state};
+            const {screen, stage, options} = action.payload as {
+                screen: GameScreens,
+                stage: string,
+                options: IScreenStageOptions
+            }
+            
+            oldState[screen].usableOptions = options[stage];
 
             state = oldState;
         }

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { 
-    HexagonHalf,
+    HexagonHalf,EmojiDizzy,
     MortarboardFill, Virus, 
     Tools, Eye, Magic, 
     EmojiAngryFill, Fire,
@@ -101,6 +101,13 @@ export const screenMappings: Partial<Record<GameScreens, {
         title: chrome.i18n.getMessage('muta_lab_to'),
         icon: <Virus size={25}/>,
         houses: [20]
+    }, 
+    [GameScreens.tropheyField]: {
+        requiredScreen: GameScreens.villageMap,
+        requiredStage: 111,
+        title: chrome.i18n.getMessage('trophey_field_to'),
+        icon: <EmojiDizzy size={25}/>,
+        houses: [0]
     },        
     [GameScreens.wizardSchool]: {
         requiredScreen: GameScreens.academy,

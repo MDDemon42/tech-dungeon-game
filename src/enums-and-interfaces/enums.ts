@@ -136,6 +136,7 @@ export enum GameScreens {
     pyrokineticRooms = 'Pyrokinetic_Rooms',   
     spellSchool = 'Spell_School',
     tavern = 'Tavern',
+    tropheyField = 'Trophey_Field',
     villageMap = 'Village_Map', 
     wizardSchool = 'Wizard_School',
     wizardShop = 'Wizard_Shop',
@@ -147,7 +148,8 @@ export enum InventoryGameScreens {
     cyberLab = 'Cyber_Lab',
     mutaLab = 'Mutation_Lab',
     wizardShop = 'Wizard_Shop',
-    guildShop = 'Guild_Shop'
+    guildShop = 'Guild_Shop',
+    tropheyField = 'Trophey_Field'
 }
 
 export enum MindGameScreens {

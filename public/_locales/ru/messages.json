@@ -550,6 +550,27 @@
     "study": {
         "message": "Зазубрить!"
     },
+    "trophey_field_title": {
+        "message": "Это Поле Трофеев!"
+    },
+    "trophey_field_to": {
+        "message": "На поле трофеев!"
+    },
+    "take": {
+        "message": "Взять!"
+    },
+    "burn_the_bodies_task_title": {
+        "message": "Сжечь тела"
+    },
+    "burn_the_bodies_task_text": {
+        "message": "Сжечь тела для предотвращения их поднятия как нежити"
+    },
+    "bury_the_bodies_task_title": {
+        "message": "Закопать тела"
+    },
+    "bury_the_bodies_task_text": {
+        "message": "Закопать тела для предотвращения распространения вони"
+    },
     "no_item_name": {
         "message": "Пока ничего"
     },
@@ -3147,6 +3168,9 @@
     },
     "gem": {
         "message": "Самоцвет"
+    },
+    "gem_item_description": {
+        "message": "Для участия в торгово-денежных отношениях."
     },
     "level": {
         "message": "Уровень"

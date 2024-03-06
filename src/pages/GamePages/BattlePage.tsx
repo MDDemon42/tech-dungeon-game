@@ -3,6 +3,7 @@ import styles from './BattlePage.module.css';
 import { 
     IAbility, 
     IBattlePageState, 
+    IBigResource, 
     ICharacher, 
     IInventorySlot, 
     IItem, 
@@ -25,11 +26,13 @@ import {
 import BattleTurnButtons from '../../components/BattleTurnButtons';
 import BattleOverScreen from '../../components/BattleOverScreen/BattleOverScreen';
 import { removeGameTabs } from '../../helpers/removeGameTabs';
-import { BattleResult, GameScreens, InventoryPlace, InventorySlotCategory } from '../../enums-and-interfaces/enums';
+import { BattleResult, GameScreens, InventoryPlace, InventorySlotCategory, Race, TaskStatus } from '../../enums-and-interfaces/enums';
 import gameStage from '../../redux/slices/gameStage';
-import powers from '../../gameScreens/FocusSite/powers';
 import { createNoItem } from '../../helpers/emptyEssencesCreators';
 import abilities from '../../general/abilities';
+import gameScreen from '../../redux/slices/gameScreen';
+import { raceNames } from '../../general/races/races';
+import items from '../../gameScreens/Market/items';
 
 function BattlePage() {
     const [battlePageState, setBattlePageState] = useState<IBattlePageState>({
@@ -721,10 +724,78 @@ function BattlePage() {
         navigate('/game');
     }
 
-    const showTropheys = () => {
+    const collectTropheys = () => {
+        const result: (IItem | IBigResource)[] = [];
 
-        // for now
-        navigate('/game');
+        oppsMembers.forEach(opp => {
+            const oppInventory = opp.general.inventory;
+
+            Object.values(oppInventory).forEach((item: IInventorySlot) => {
+                if (!!item && item.category === InventorySlotCategory.item) {
+                    result.push(item as IItem);
+                }
+            })
+
+            const oppRace = opp.params.race;
+            const beastRaces = [
+                raceNames[Race.gnoll], 
+                raceNames[Race.satyr], 
+                raceNames[Race.taur]
+            ];
+            const reptiloidRaces = [
+                raceNames[Race.naga], 
+                raceNames[Race.raptor]
+            ];
+            const dragonRaces = [
+                raceNames[Race.ankylosaurus], 
+                raceNames[Race.dragon], 
+                raceNames[Race.koatl]
+            ];
+
+            if (beastRaces.includes(oppRace)) {
+                result.push(items.bigResources.beastRemains);
+            }
+
+            if (reptiloidRaces.includes(oppRace)) {
+                result.push(items.bigResources.reptiloidRemains);
+            }
+
+            if (dragonRaces.includes(oppRace)) {
+                result.push(items.bigResources.dragonRemains);
+            }
+        })
+
+        const oppGems = Array(Math.floor(oppsMembers.length / 2) + 1)
+            .fill(items.other.gem) as IItem[];
+        console.log('-oppGems-', oppGems);
+        result.push(...oppGems);
+        console.log('-result-', result);
+        return result
+    }
+
+    const showTropheys = () => {
+        const tropheys = collectTropheys();
+
+        dispatch(gameStage.actions.setUsableOptions({
+            screen: GameScreens.tropheyField,
+            stage: 0,
+            options: {0: tropheys}
+        }));
+
+        dispatch(gameStage.actions.changeStage({
+            zone: GameScreens.tropheyField,
+            stage: 1
+        }))
+
+        dispatch(gameStage.actions.updateTask({
+            screen: GameScreens.tropheyField,
+            stage: 2,
+            status: TaskStatus.unknown
+        }))
+
+        dispatch(gameScreen.actions.changeScreen(GameScreens.tropheyField));
+        
+        setTimeout(() => navigate('/game'), 0);
     }
 
     const battleTurnButtonsListeners = {

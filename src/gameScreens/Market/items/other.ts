@@ -99,8 +99,22 @@ const mechaCore = createItem(
     InventorySlotCategory.resource
 );
 
+const gem = createItem(
+    [
+        chrome.i18n.getMessage('gem'), 
+        chrome.i18n.getMessage('gem_item_description'),
+        images.normalItems.gem
+    ], 
+    [
+        1, [InventoryPlace.belt], 1
+    ],
+    '', 0, null, null, null, null, 
+    InventorySlotCategory.resource
+);
+
 const other = {
     food,
+    gem,
     greatSheath,
     healingPotion,
     mechaCore,

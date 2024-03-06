@@ -11,7 +11,8 @@ function PatternScreen(props: {
         GameScreens.fireSite | GameScreens.iceSite | GameScreens.cyberLab |
         GameScreens.academy | GameScreens.airSite | GameScreens.wizardSchool |
         GameScreens.mansion | GameScreens.mutaLab | GameScreens.focusSite |
-        GameScreens.market | GameScreens.guildSchool | GameScreens.tavern,
+        GameScreens.market | GameScreens.guildSchool | GameScreens.tavern |
+        GameScreens.tropheyField,
     upgradeButtonsFunc: (stage: number, extraStage: number) => IUpgradeButton[],
     subScreenMapping: Partial<Record<GameScreens, {
         requiredStage: number;
@@ -53,12 +54,12 @@ function PatternScreen(props: {
                         }
 
                         return(
-                        <button 
-                            title={key}
-                            onClick={() => setScreenOpen(key as screenOpenType)}
-                        >
-                            {subScreenMapping[key as keyof typeof subScreenMapping]?.icon}
-                        </button>
+                            <button 
+                                title={key}
+                                onClick={() => setScreenOpen(key as screenOpenType)}
+                            >
+                                {subScreenMapping[key as keyof typeof subScreenMapping]?.icon}
+                            </button>
                     )})
                 }
             </div>
