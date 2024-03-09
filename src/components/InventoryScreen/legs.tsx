@@ -27,12 +27,12 @@ function getLegsImage(
         default:
             result = [
                 ritualsUserNames.includes(rituals.titanSkin.name) ?
-                    <img src={images.bodyElements.titanLegs} alt='titanLegs' /> :
+                    <img src={images.bodyElements.legs.titan} alt='titanLegs' /> :
                     userStrength >= 3 ?
-                        <img src={images.bodyElements.brutalLegs} alt='brutalLegs' /> :
+                        <img src={images.bodyElements.legs.brutal} alt='brutalLegs' /> :
                         <img src={images.bodyElements.legs.usual} alt='legs' />,
                 powersUserNames.includes(powers.other.levitation.name) ?
-                    <img src={images.bodyElements.levitation} alt={chrome.i18n.getMessage('levitation')} /> : null,
+                    <img src={images.bodyElements.tattoes.levitation} alt={chrome.i18n.getMessage('levitation')} /> : null,
                 skinName === cybers.armors.nanoMatrix.name ?
                     <img src={images.bodyElements.legs.nanoMatrix} alt='nanoMatrixLegs' /> :
                     skinName === cybers.armors.nanoVest.name ?
@@ -42,13 +42,13 @@ function getLegsImage(
                             skinName === mutations.armors.scales.name ?
                                 <img src={images.bodyElements.legs.scales} alt='scalesLegs' /> : null,
                 leftHipName === armouryItems.other.holster.name ?
-                    <img src={images.bodyElements.holsterLeft} alt={chrome.i18n.getMessage('holster')} /> : 
+                    <img src={images.bodyElements.ammunition.holsterLeft} alt={chrome.i18n.getMessage('holster')} /> : 
                     leftHipName === items.other.sheath.name ?
-                        <img src={images.bodyElements.sheathLeft} alt={chrome.i18n.getMessage('sheath')} /> : null,
+                        <img src={images.bodyElements.ammunition.sheathLeft} alt={chrome.i18n.getMessage('sheath')} /> : null,
                 rightHipName === armouryItems.other.holster.name ?
-                    <img src={images.bodyElements.holsterRight} alt={chrome.i18n.getMessage('holster')} /> : 
+                    <img src={images.bodyElements.ammunition.holsterRight} alt={chrome.i18n.getMessage('holster')} /> : 
                     rightHipName === items.other.sheath.name ?
-                        <img src={images.bodyElements.sheathRight} alt={chrome.i18n.getMessage('sheath')} /> : null,
+                        <img src={images.bodyElements.ammunition.sheathRight} alt={chrome.i18n.getMessage('sheath')} /> : null,
                 legsName === cybers.other.reactiveFeet.name ?
                     <img src={images.bodyElements.legs.reactiveFeet} alt={chrome.i18n.getMessage('reactive_feet')} /> : null
             ]

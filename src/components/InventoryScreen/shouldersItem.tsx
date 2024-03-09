@@ -6,7 +6,7 @@ function getShouldersItemImage(shouldersItem: string) {
 
     switch (shouldersItem) {
         case items.weapons.oakBow.name:
-            result = <img src={images.bodyElements.bowQuiver} alt={chrome.i18n.getMessage('oak_bow')} />;
+            result = <img src={images.bodyElements.ammunition.bowQuiver} alt={chrome.i18n.getMessage('oak_bow')} />;
             break;
         default:
             break;

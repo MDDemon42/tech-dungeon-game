@@ -12,16 +12,16 @@ function getRightHandImage(
 
     switch (rightHandName) {
         case cybers.weapons.cyberClaw.name:
-            result = <img src={images.bodyElements.cyberClaw} alt={chrome.i18n.getMessage('cyber_claw')} />;
+            result = <img src={images.bodyElements.cybers.claw} alt={chrome.i18n.getMessage('cyber_claw')} />;
             break;
         case cybers.weapons.heatSaber.name:
-            result = <img src={images.bodyElements.heatSaber} alt={chrome.i18n.getMessage('heat_saber')} />;
+            result = <img src={images.bodyElements.cybers.heatSaber} alt={chrome.i18n.getMessage('heat_saber')} />;
             break;
         case cybers.weapons.taserWhip.name:
-            result = <img src={images.bodyElements.taserWhip} alt={chrome.i18n.getMessage('taser_whip')} />;
+            result = <img src={images.bodyElements.cybers.taserWhip} alt={chrome.i18n.getMessage('taser_whip')} />;
             break;
         case cybers.weapons.cyberFist.name:
-            result = <img src={images.bodyElements.cyberFistRightHand} alt={chrome.i18n.getMessage('cyber_fist_right_hand')} />;
+            result = <img src={images.bodyElements.cybers.fistRightHand} alt={chrome.i18n.getMessage('cyber_fist_right_hand')} />;
             break;
         case mutations.weapons.claw.name:
             switch (skinName) {
@@ -49,16 +49,16 @@ function getRightHandImage(
             result = <img src={images.bodyElements.pickaxe.rightHand} alt={chrome.i18n.getMessage('pickaxe')} />;
             break;
         case armouryItems.guns.pistol.name:
-            result = <img src={images.bodyElements.pistol} alt={chrome.i18n.getMessage('pistol')} />;
+            result = <img src={images.bodyElements.pistols.pistol} alt={chrome.i18n.getMessage('pistol')} />;
             break;
         case armouryItems.guns.battlePistol.name:
-            result = <img src={images.bodyElements.battlePistol} alt={chrome.i18n.getMessage('battle_pistol')} />;
+            result = <img src={images.bodyElements.pistols.battlePistol} alt={chrome.i18n.getMessage('battle_pistol')} />;
             break;
         case armouryItems.guns.revolver.name:
-            result = <img src={images.bodyElements.revolverRightHand} alt={chrome.i18n.getMessage('revolver')} />;
+            result = <img src={images.bodyElements.pistols.revolverRightHand} alt={chrome.i18n.getMessage('revolver')} />;
             break;
         case armouryItems.guns.battleRevolver.name:
-            result = <img src={images.bodyElements.battleRevolverRightHand} alt={chrome.i18n.getMessage('battle_revolver')} />;
+            result = <img src={images.bodyElements.pistols.battleRevolverRightHand} alt={chrome.i18n.getMessage('battle_revolver')} />;
             break;
         case items.weapons.axe.name:
             result = <img src={images.bodyElements.axe.rightHand} alt={chrome.i18n.getMessage('axe')} />;

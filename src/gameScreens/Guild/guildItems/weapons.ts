@@ -143,7 +143,10 @@ const acidBomd = createGuildItem(
         images.normalItems.acidBomb
     ],
     [
-        1, [InventoryPlace.rightPocket], 1
+        1, [
+            InventoryPlace.rightPocket,
+            InventoryPlace.leftPocket
+        ], 1
     ],
     '', 0,
     [

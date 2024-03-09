@@ -12,19 +12,19 @@ function getShouldersImage(
 
     switch (shouldersName) {
         case cybers.weapons.rocketLauncher.name:
-            result = <img src={images.bodyElements.rocketLauncher} alt={chrome.i18n.getMessage('rocket_launcher')} />;
+            result = <img src={images.bodyElements.cybers.rocketLauncher} alt={chrome.i18n.getMessage('rocket_launcher')} />;
             break;
         case mutations.weapons.pincers.name:
-            result = <img src={images.bodyElements.pincers} alt={chrome.i18n.getMessage('pincers')} />;
+            result = <img src={images.bodyElements.mutations.pincers} alt={chrome.i18n.getMessage('pincers')} />;
             break;
         case mutations.other.extraArms.name:
-            result = [<img src={images.bodyElements.extraArms} alt={chrome.i18n.getMessage('extra_arms')} />];
+            result = [<img src={images.bodyElements.mutations.extraArms} alt={chrome.i18n.getMessage('extra_arms')} />];
             if (powersUserNames.includes(powers.weapons.voidCrash.name)) {
-                result.push(<img src={images.bodyElements.voidCrash} alt={chrome.i18n.getMessage('void_crash')} />)
+                result.push(<img src={images.bodyElements.tattoes.voidCrash} alt={chrome.i18n.getMessage('void_crash')} />)
             }
             break;  
         case items.other.quiver.name:
-            result = <img src={images.bodyElements.quiver} alt={chrome.i18n.getMessage('quiver')} />;
+            result = <img src={images.bodyElements.ammunition.quiver} alt={chrome.i18n.getMessage('quiver')} />;
             break;
         default:
             break;

@@ -282,6 +282,14 @@ const gameSquad = createSlice({
                 InventoryPlace.leftHip, InventoryPlace.rightHip
             ];
 
+            const pocketOptions: 
+            (
+                InventoryPlace.leftPocket | InventoryPlace.rightPocket
+            )[] = 
+            [
+                InventoryPlace.leftPocket, InventoryPlace.rightPocket
+            ];
+
             const doubleBackOptions: 
             (
                 InventoryPlace.backItem | 
@@ -484,14 +492,48 @@ const gameSquad = createSlice({
                 }
         
                 if (!itemEquipped) {
-                    const randomHandsOption = exchangeOptions[Math.floor(Math.random() * exchangeOptions.length)];
+                    const randomHipOption = exchangeOptions[Math.floor(Math.random() * exchangeOptions.length)];
     
-                    const randomHandsOptionItem = {...inventory[randomHandsOption]} as IItem;
-                    if (randomHandsOptionItem.name !== nothing) {
-                        itemsToPut.push([randomHandsOptionItem, randomHandsOption]);
+                    const randomHipOptionItem = {...inventory[randomHipOption]} as IItem;
+                    if (randomHipOptionItem.name !== nothing) {
+                        itemsToPut.push([randomHipOptionItem, randomHipOption]);
                     }
 
-                    inventory[randomHandsOption] = item;
+                    inventory[randomHipOption] = item;
+                    itemEquipped = true;
+                }
+                // @ts-expect-error
+            } else if (pocketOptions.includes(possiblePositions[0])) {
+                let exchangeOptions: (InventoryPlace.leftPocket | InventoryPlace.rightPocket)[] = [];
+
+                for (const option of pocketOptions) {
+                    if (possiblePositions.includes(option)) {
+                        const thisOptionItem = {...inventory[option]} as IItem | null;
+    
+                        if (!thisOptionItem) {
+                            continue;
+                        }
+    
+                        if (thisOptionItem.name === nothing) {
+                            inventory[option] = item;
+                            squadMember.params.lifted += item.requiredStrength;
+                            itemEquipped = true;
+                            break;
+                        } else if (thisOptionItem.name !== item.name) {
+                            exchangeOptions.push(option);                           
+                        }
+                    }
+                }
+        
+                if (!itemEquipped) {
+                    const randomPocketOption = exchangeOptions[Math.floor(Math.random() * exchangeOptions.length)];
+    
+                    const randomPocketOptionItem = {...inventory[randomPocketOption]} as IItem;
+                    if (randomPocketOptionItem.name !== nothing) {
+                        itemsToPut.push([randomPocketOptionItem, randomPocketOption]);
+                    }
+
+                    inventory[randomPocketOption] = item;
                     itemEquipped = true;
                 }
                 // @ts-expect-error

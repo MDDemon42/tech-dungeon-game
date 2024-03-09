@@ -33,15 +33,15 @@ function getSkinImage(
                         <img src={images.bodyElements.torso.brutal} alt='brutalTorso' /> :
                         <img src={images.bodyElements.torso.usual} alt='torso' />,
                 powersUserNames.includes(powers.armors.guardianAura.name) ?
-                    <img src={images.bodyElements.guardianAura} alt={chrome.i18n.getMessage('guardian_aura')} /> :
+                    <img src={images.bodyElements.tattoes.guardianAura} alt={chrome.i18n.getMessage('guardian_aura')} /> :
                     powersUserNames.includes(powers.armors.guardianField.name) ?
-                        <img src={images.bodyElements.guardianField} alt={chrome.i18n.getMessage('guardian_field')} /> : null,
+                        <img src={images.bodyElements.tattoes.guardianField} alt={chrome.i18n.getMessage('guardian_field')} /> : null,
                 powersUserNames.includes(powers.weapons.psiBlade.name) ?
-                    <img src={images.bodyElements.psiBlade} alt={chrome.i18n.getMessage('psi_blade')} /> : null,
+                    <img src={images.bodyElements.tattoes.psiBlade} alt={chrome.i18n.getMessage('psi_blade')} /> : null,
                 powersUserNames.includes(powers.weapons.psiJavelin.name) ?
-                    <img src={images.bodyElements.psiJavelin} alt={chrome.i18n.getMessage('psi_javelin')} /> : null,
+                    <img src={images.bodyElements.tattoes.psiJavelin} alt={chrome.i18n.getMessage('psi_javelin')} /> : null,
                 powersUserNames.includes(powers.weapons.psiLightning.name) ?
-                    <img src={images.bodyElements.psiLightning} alt={chrome.i18n.getMessage('psi_lightning')} /> : null
+                    <img src={images.bodyElements.tattoes.psiLightning} alt={chrome.i18n.getMessage('psi_lightning')} /> : null
             ];
             break;
     }

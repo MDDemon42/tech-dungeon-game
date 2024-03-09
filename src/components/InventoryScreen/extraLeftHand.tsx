@@ -48,7 +48,7 @@ function getExtraLeftHandImage(
             result = <img src={images.bodyElements.battleMageAxe.extraLeftHand} alt={chrome.i18n.getMessage('battle_mage_axe')} />;
             break;
         default:
-            result = <img src={images.bodyElements.extraLeftHand} alt='extraLeftHand' />;
+            result = <img src={images.bodyElements.mutations.extraLeftHand} alt='extraLeftHand' />;
             break;
     }
 

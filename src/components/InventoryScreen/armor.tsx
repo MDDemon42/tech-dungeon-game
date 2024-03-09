@@ -7,13 +7,13 @@ function getArmorImage(armorName: string) {
 
     switch (armorName) {
         case wizardItems.armors.magisterRobe.name:
-            result = <img src={images.bodyElements.magisterRobe} alt={chrome.i18n.getMessage('magister_robe')} />;
+            result = <img src={images.bodyElements.armor.magisterRobe} alt={chrome.i18n.getMessage('magister_robe')} />;
             break;
         case items.armors.steelArmor.name:
-            result = <img src={images.bodyElements.steelArmor} alt={chrome.i18n.getMessage('steel_armor')} />;
+            result = <img src={images.bodyElements.armor.steelArmor} alt={chrome.i18n.getMessage('steel_armor')} />;
             break;
         case items.armors.leatherArmor.name:
-            result = <img src={images.bodyElements.leatherArmor} alt={chrome.i18n.getMessage('leather_armor')} />;
+            result = <img src={images.bodyElements.armor.leatherArmor} alt={chrome.i18n.getMessage('leather_armor')} />;
             break;
         default:
             break;

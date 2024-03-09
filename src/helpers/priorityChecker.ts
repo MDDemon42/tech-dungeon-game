@@ -35,6 +35,14 @@ function priorityChecker(slot: IInventorySlot) {
         InventoryPlace.leftHip, InventoryPlace.rightHip
     ];
 
+    const pocketOptions: 
+    (
+        InventoryPlace.leftPocket | InventoryPlace.rightPocket
+    )[] = 
+    [
+        InventoryPlace.leftPocket, InventoryPlace.rightPocket
+    ];
+
     const doubleBackOptions: 
     (
         InventoryPlace.backItem | 
@@ -88,6 +96,19 @@ function priorityChecker(slot: IInventorySlot) {
         // @ts-expect-error
     } else if (hipOptions.includes(possiblePositions[0])) {
         for (const option of hipOptions) {
+            if (possiblePositions.includes(option)) {
+                const thisOptionItem = {...inventory[option]} as IItem | null;
+                if (!thisOptionItem) {
+                    continue;
+                }
+                
+                result = result || (thisOptionItem.name !== name_new && 
+                    thisOptionItem.priority <= priority_new);
+            }
+        }
+        // @ts-expect-error
+    } else if (pocketOptions.includes(possiblePositions[0])) {
+        for (const option of pocketOptions) {
             if (possiblePositions.includes(option)) {
                 const thisOptionItem = {...inventory[option]} as IItem | null;
                 if (!thisOptionItem) {
