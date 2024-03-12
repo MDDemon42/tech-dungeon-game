@@ -1,7 +1,7 @@
 import { IBattleAbility } from "../../../enums-and-interfaces/interfaces";
 import melee from "./melee";
 import ranged from "./ranged";
-import { DamageType, UserParam } from "../../../enums-and-interfaces/enums";
+import { AbilityTarget, DamageType, UserParam } from "../../../enums-and-interfaces/enums";
 
 export function createBattleAbility(
     commonInfo: [
@@ -30,6 +30,7 @@ export function createBattleAbility(
     damageInfo: [
         targetAmount: number,
         hitChance: number,
+        target?: AbilityTarget,
     ],
     throwing?: boolean        
 ): IBattleAbility {
@@ -44,6 +45,7 @@ export function createBattleAbility(
 
         targetAmount: damageInfo[0],
         hitChance: damageInfo[1],
+        target: damageInfo[2] ? damageInfo[2] : AbilityTarget.enemy,
 
         throwing
     }

@@ -51,6 +51,9 @@
     "cid_hit_chance": {
         "message": "Шанс попадания: "
     },
+    "cid_target": {
+        "message": "Цель: "
+    },
     "cid_target_amount": {
         "message": "Число целей: "
     },
@@ -616,29 +619,17 @@
     "siec_titanSkin": {
         "message": "Нельзя изменить Титановую кожу"
     },
-    "battle_page_title": {
-        "message": "Экран боя"
-    },
-    "battle_page_turn": {
-        "message": "Ход $battleTurn$",
-        "placeholders": {
-            "battleTurn": {
-                "content": "$1",
-                "example": "0"
-              }
-        }
-    },
     "battle_page_your_turn": {
-        "message": "Выберите члена отряда"
+        "message": "Ваш ход"
     },
     "battle_page_opponents_turn": {
         "message": "Ход противника"
     },
     "battle_page_deselect_ability": {
-        "message": "Отменить\n выбор"
+        "message": "Отменить выбор"
     },
     "battle_page_process_ability": {
-        "message": "Применить\n способность"
+        "message": "Применить способность"
     },
     "battle_page_next_turn": {
         "message": "Следующий ход"
@@ -647,7 +638,19 @@
         "message": "Назад в деревню"
     },
     "battle_page_deselect_member": {
-        "message": "Выбрать другого"
+        "message": "Перевыбрать соратника"
+    },
+    "battle_page_deselect_opponent": {
+        "message": "Перевыбрать врага"
+    },
+    "battle_page_choose_member": {
+        "message": " - Выберите соратника"
+    },
+    "battle_page_choose_ability": {
+        "message": " - Выберите способность"
+    },
+    "battle_page_choose_target": {
+        "message": " - Выберите цель"
     },
     "error_page_title": {
         "message": "Ойк!"
@@ -3330,5 +3333,73 @@
     },
     "inventory_place_telekinesis_right_hand": {
         "message": "Телекинетическая правая рука"
+    },
+    "target_ally": {
+        "message": "Друг"
+    },
+    "target_enemy": {
+        "message": "Враг"
+    },
+    "target_place": {
+        "message": "Место"
+    },
+    "target_self": {
+        "message": "На себя"
+    },
+    "battle_log_battle_started": {
+        "message": "Битва началась!"
+    },
+    "battle_log_someone_dies": {
+        "message": "$someone$ умирает",
+        "placeholders": {
+            "someone": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "battle_log_someone_uses_ability_and_result": {
+        "message": "$someone$ использует '$ability$' на $somebody$ и $result$ ($hit$/$chance$)",
+        "placeholders": {
+            "someone": {
+                "content": "$1",
+                "example": ""
+            },
+            "ability": {
+                "content": "$2",
+                "example": ""
+            },
+            "somebody": {
+                "content": "$3",
+                "example": ""
+            },
+            "result": {
+                "content": "$4",
+                "example": ""
+            },
+            "hit": {
+                "content": "$5",
+                "example": ""
+            },
+            "chance": {
+                "content": "$6",
+                "example": ""
+            }
+        }
+    },
+    "battle_log_success_result": {
+        "message": "преуспевает"
+    },
+    "battle_log_failure_result": {
+        "message": "терпит неудачу"
+    },
+    "battle_log_next_turn": {
+        "message": "Ход $number$ начинается",
+        "placeholders": {
+            "number": {
+                "content": "$1",
+                "example": ""
+            }
+        }
     }
 }

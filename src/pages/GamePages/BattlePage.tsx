@@ -21,12 +21,15 @@ import gatherCharacterAbilities from '../../helpers/gatherCharacterAbilities';
 import opponents from '../../redux/slices/opponents';
 import {
     ArrowCounterclockwise,
-    CheckCircle
+    ArrowReturnLeft,
+    CheckCircle,
+    LayerBackward,
+    SkipForward
 } from 'react-bootstrap-icons';
 import BattleTurnButtons from '../../components/BattleTurnButtons';
 import BattleOverScreen from '../../components/BattleOverScreen/BattleOverScreen';
 import { removeGameTabs } from '../../helpers/removeGameTabs';
-import { BattleResult, GameScreens, InventoryPlace, InventorySlotCategory, Race, TaskStatus } from '../../enums-and-interfaces/enums';
+import { AbilityTarget, BattleResult, GameScreens, InventoryPlace, InventorySlotCategory, Race, TaskStatus } from '../../enums-and-interfaces/enums';
 import gameStage from '../../redux/slices/gameStage';
 import { createNoItem } from '../../helpers/emptyEssencesCreators';
 import abilities from '../../general/abilities';
@@ -44,7 +47,8 @@ function BattlePage() {
         squadStatus: [] as IMemberStatus[],
         opponentsStatus: [] as IMemberStatus[],
         abilitiesOnTurn: [] as IAbility[],
-        battleResult: BattleResult.none
+        battleResult: BattleResult.none,
+        battleLog: [chrome.i18n.getMessage('battle_log_battle_started')] as string[],
     });
 
     const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
@@ -113,6 +117,12 @@ function BattlePage() {
             state.opponentsStatus = opponentsStatusBasis;
 
             state.battleTurn = 1;
+            state.battleLog.push(
+                chrome.i18n.getMessage(
+                    'battle_log_next_turn', 
+                    [String(state.battleTurn)]
+                )
+            );
 
             return state
         })
@@ -171,7 +181,15 @@ function BattlePage() {
             squadStatusBasis.forEach((member, index) => {
                 if (!!member) {
                     allMembers++;
-                    if (squadMembers[index].params.currentParams.Health <= 0) {
+                    if (member.dead) {
+                        deadMembers++;
+                    } else if (squadMembers[index].params.currentParams.Health <= 0) {
+                        state.battleLog.push(
+                            chrome.i18n.getMessage(
+                                'battle_log_someone_dies', 
+                                [squadMembers[index].params.name]
+                            )
+                        );
                         member.dead = true;
                         deadMembers++;
                     }
@@ -193,7 +211,15 @@ function BattlePage() {
             opponentsStatusBasis.forEach((opponent, index) => {
                 if (!!opponent) {
                     allOpponents++;
-                    if (oppsMembers[index].params.currentParams.Health <= 0) {
+                    if (opponent.dead) {
+                        deadOpponents++;
+                    } else if (oppsMembers[index].params.currentParams.Health <= 0) {
+                        state.battleLog.push(
+                            chrome.i18n.getMessage(
+                                'battle_log_someone_dies', 
+                                [oppsMembers[index].params.name]
+                            )
+                        );
                         opponent.dead = true;
                         deadOpponents++;
                     }               
@@ -372,8 +398,10 @@ function BattlePage() {
             state.opponentsStatus = opp_status;
             state.selectedOpponentIndex = opponentIndex;
             if (opponentTurn) {
+                state.selectedAbility = null;
+                state.selectedAbilityDiv = null;
                 state.abilitiesOnTurn = gatherCharacterAbilities(oppsMembers[opponentIndex]);
-            }            
+            }        
 
             return state
         });
@@ -399,12 +427,37 @@ function BattlePage() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
 
-            const indexes = collectSufferIndexes(state, memberIndex);
+            const possibleIndexes = collectSufferIndexes(state, memberIndex);
 
             const {selectedAbility} = state;
             if (selectedAbility) {
+                const {hitChance} = selectedAbility;
+                const sufferIndexes = possibleIndexes.filter(index => {
+                    const squadMember = squadMembers[index];
+
+                    const chance = Math.floor(Math.random()*100);
+                    const success = hitChance - squadMember.params.dodge > chance;
+                    const result = success ?
+                        chrome.i18n.getMessage('battle_log_success_result'):
+                        chrome.i18n.getMessage('battle_log_failure_result');
+                    state.battleLog.push(
+                        chrome.i18n.getMessage(
+                            'battle_log_someone_uses_ability_and_result',
+                            [
+                                oppsMembers[state.selectedOpponentIndex].params.name,
+                                selectedAbility.name,
+                                squadMember.params.name,
+                                result,
+                                String(hitChance - squadMember.params.dodge),
+                                String(chance)
+                            ]
+                        )
+                    );
+                    return success
+                });                
+
                 dispatch(gameSquad.actions.sufferAbility({
-                    indexes,
+                    indexes: sufferIndexes,
                     ability: selectedAbility
                 }))
 
@@ -461,102 +514,129 @@ function BattlePage() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
 
-            const indexes = collectSufferIndexes(state, state.selectedOpponentIndex);
-
-            dispatch(opponents.actions.sufferAbility({
-                indexes,
-                ability: state.selectedAbility
-            }))
-            
-            dispatch(gameSquad.actions.processAbility({
-                index: state.selectedMemberIndex,
-                data: state.selectedAbility?.costs
-            }));
+            const possibleIndexes = collectSufferIndexes(state, state.selectedOpponentIndex);             
 
             const {selectedAbility} = state;
-            if (selectedAbility?.throwing) {
-                const thisMember = squadMembers[state.selectedOpponentIndex];
-                const thisMemberInventory = thisMember.general.inventory;
-                const [abilityItem, abilityItemInventoryPlace] = Object.keys(thisMemberInventory).map(key => {
-                    const inventoryPlace = key as InventoryPlace;
-                    const inventorySlot = thisMemberInventory[inventoryPlace] as IItem;
+            if (selectedAbility) {
+                const {hitChance} = selectedAbility;
+                const sufferIndexes = possibleIndexes.filter(index => {
+                    const oppsMember = oppsMembers[index];
 
-                    if (inventorySlot) {
-                        if (inventorySlot.category === InventorySlotCategory.item) {
-                            const inventorySlotAbilities = inventorySlot.abilities;
-                            if (inventorySlotAbilities) {
-                                const inventorySlotAbilitiesNames = inventorySlotAbilities
-                                    .map(ability => ability.name);
-                                if (inventorySlotAbilitiesNames.includes(selectedAbility.name)) {
-                                    return [inventorySlot, inventoryPlace]
-                                }
-                            }
+                    const chance = Math.floor(Math.random()*100);
+                    const success = hitChance - oppsMember.params.dodge > chance;
+                    const result = success ?
+                        chrome.i18n.getMessage('battle_log_success_result'):
+                        chrome.i18n.getMessage('battle_log_failure_result');
+                    state.battleLog.push(
+                        chrome.i18n.getMessage(
+                            'battle_log_someone_uses_ability_and_result',
+                            [
+                                squadMembers[state.selectedMemberIndex].params.name,
+                                selectedAbility.name,
+                                oppsMember.params.name,
+                                result,
+                                String(hitChance - oppsMember.params.dodge),
+                                String(chance)
+                            ]
+                        )
+                    );
+                    return success
+                }); 
 
-                            const inventorySlotlinkedAbilities = inventorySlot.linkedAbilities;
-                            if (inventorySlotlinkedAbilities) {
-                                const inventorySlotlinkedAbilitiesNames = inventorySlotlinkedAbilities
-                                    .map(ability => ability.masterAbility.name);
-                                if (inventorySlotlinkedAbilitiesNames.includes(selectedAbility.name)) {
-                                    return [inventorySlot, inventoryPlace]
-                                }
-                            }
-
-                        }
-                    }
-
-                    return [null, null]
-                }).filter(item => !!item[0])[0] as [IItem, InventoryPlace];
+                dispatch(opponents.actions.sufferAbility({
+                    indexes: sufferIndexes,
+                    ability: selectedAbility
+                }))
                 
-                dispatch(gameSquad.actions.throwItem({
+                dispatch(gameSquad.actions.processAbility({
                     index: state.selectedMemberIndex,
-                    item: abilityItem,
-                    inventoryPlace: abilityItemInventoryPlace
-                }))
-            }
+                    data: selectedAbility.costs
+                }));
 
-            if (selectedAbility?.name === abilities.battleAbilities.ranged.physicalSmashing.telekineticDisarm.name) {
-                const certainOpponentInventory = opps[state.selectedOpponentIndex].general.inventory;
-                const possibleWeapons = [
-                    {
-                        item: certainOpponentInventory.Both_hands,
-                        place: InventoryPlace.bothHands
-                    },
-                    {
-                        item: certainOpponentInventory.Right_hand,
-                        place: InventoryPlace.rightHand
-                    },
-                    {
-                        item: certainOpponentInventory.Extra_right_hand,
-                        place: InventoryPlace.extraRightHand
-                    },
-                    {
-                        item: certainOpponentInventory.Left_hand,
-                        place: InventoryPlace.leftHand
-                    },
-                    {
-                        item: certainOpponentInventory.Extra_left_hand,
-                        place: InventoryPlace.extraLeftHand
-                    }
-                ];
+                if (selectedAbility.throwing) {
+                    const thisMember = squadMembers[state.selectedOpponentIndex];
+                    const thisMemberInventory = thisMember.general.inventory;
+                    const [abilityItem, abilityItemInventoryPlace] = Object.keys(thisMemberInventory).map(key => {
+                        const inventoryPlace = key as InventoryPlace;
+                        const inventorySlot = thisMemberInventory[inventoryPlace] as IItem;
+    
+                        if (inventorySlot) {
+                            if (inventorySlot.category === InventorySlotCategory.item) {
+                                const inventorySlotAbilities = inventorySlot.abilities;
+                                if (inventorySlotAbilities) {
+                                    const inventorySlotAbilitiesNames = inventorySlotAbilities
+                                        .map(ability => ability.name);
+                                    if (inventorySlotAbilitiesNames.includes(selectedAbility.name)) {
+                                        return [inventorySlot, inventoryPlace]
+                                    }
+                                }
+    
+                                const inventorySlotlinkedAbilities = inventorySlot.linkedAbilities;
+                                if (inventorySlotlinkedAbilities) {
+                                    const inventorySlotlinkedAbilitiesNames = inventorySlotlinkedAbilities
+                                        .map(ability => ability.masterAbility.name);
+                                    if (inventorySlotlinkedAbilitiesNames.includes(selectedAbility.name)) {
+                                        return [inventorySlot, inventoryPlace]
+                                    }
+                                }
+    
+                            }
+                        }
+    
+                        return [null, null]
+                    }).filter(item => !!item[0])[0] as [IItem, InventoryPlace];
+                    
+                    dispatch(gameSquad.actions.throwItem({
+                        index: state.selectedMemberIndex,
+                        item: abilityItem,
+                        inventoryPlace: abilityItemInventoryPlace
+                    }))
+                }
 
-                let itemToDispatch = createNoItem() as IItem;
-                let inventoryPlace = InventoryPlace.belt;
-
-                possibleWeapons.forEach(weapon => {
-                    if (
-                        weapon.item &&
-                        weapon.item.category === InventorySlotCategory.item
-                    ) {
-                        itemToDispatch = weapon.item as IItem;
-                        inventoryPlace = weapon.place;
-                    }
-                })                
-
-                dispatch(opponents.actions.throwItem({
-                    index: state.selectedOpponentIndex,
-                    item: itemToDispatch,
-                    inventoryPlace
-                }))
+                if (selectedAbility.name === abilities.battleAbilities.ranged.physicalSmashing.telekineticDisarm.name) {
+                    const certainOpponentInventory = opps[state.selectedOpponentIndex].general.inventory;
+                    const possibleWeapons = [
+                        {
+                            item: certainOpponentInventory.Both_hands,
+                            place: InventoryPlace.bothHands
+                        },
+                        {
+                            item: certainOpponentInventory.Right_hand,
+                            place: InventoryPlace.rightHand
+                        },
+                        {
+                            item: certainOpponentInventory.Extra_right_hand,
+                            place: InventoryPlace.extraRightHand
+                        },
+                        {
+                            item: certainOpponentInventory.Left_hand,
+                            place: InventoryPlace.leftHand
+                        },
+                        {
+                            item: certainOpponentInventory.Extra_left_hand,
+                            place: InventoryPlace.extraLeftHand
+                        }
+                    ];
+    
+                    let itemToDispatch = createNoItem() as IItem;
+                    let inventoryPlace = InventoryPlace.belt;
+    
+                    possibleWeapons.forEach(weapon => {
+                        if (
+                            weapon.item &&
+                            weapon.item.category === InventorySlotCategory.item
+                        ) {
+                            itemToDispatch = weapon.item as IItem;
+                            inventoryPlace = weapon.place;
+                        }
+                    })                
+    
+                    dispatch(opponents.actions.throwItem({
+                        index: state.selectedOpponentIndex,
+                        item: itemToDispatch,
+                        inventoryPlace
+                    }))
+                }
             }
 
             state.selectedOpponentIndex = -1;
@@ -662,6 +742,9 @@ function BattlePage() {
             state.squadStatus = status;
             state.selectedMemberIndex = -1;
 
+            state.selectedAbility = null;
+            state.selectedAbilityDiv = null;
+
             return state
         });
     }
@@ -670,6 +753,13 @@ function BattlePage() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
             state.battleTurn++;
+
+            state.battleLog.push(
+                chrome.i18n.getMessage(
+                    'battle_log_next_turn', 
+                    [String(state.battleTurn)]
+                )
+            );
 
             return state
         });
@@ -687,6 +777,13 @@ function BattlePage() {
             }); 
             if (turnsLeft === 0) {
                 state.battleTurn++;
+
+                state.battleLog.push(
+                    chrome.i18n.getMessage(
+                        'battle_log_next_turn', 
+                        [String(state.battleTurn)]
+                    )
+                );
             }
 
             return state
@@ -800,101 +897,155 @@ function BattlePage() {
 
     const battleTurnButtonsListeners = {
         navigateHome: navigateHomeHandler,
-        deselectMember: deselectSquadMember,
-        nextTurn: nextBattleTurn
     }
 
-    const battleTurnButtonsDisableReasons = {
-        deselectMember: battlePageState.selectedMemberIndex < 0
+    const abilitiesBlockInstructionStyle = 
+        (condition: boolean): React.CSSProperties => 
+    {
+        if (battlePageState.battleTurn % 2 === 0) {
+            return {}
+        }
+
+        return {fontWeight: condition ? 'bold' : '400'}
     }
+
+    // fix double ability choosing on opponent turn
+    console.log('-battlePageState-', battlePageState);
 
     return (
-        <div className={styles.BattlePage}>
-            {
-                battlePageState.battleResult === BattleResult.lose ?
-                    <BattleOverScreen 
-                        result={battlePageState.battleResult} 
-                        listener={setGameOver}
-                    /> :
-                    battlePageState.battleResult === BattleResult.win ?
+        <div className={styles.BattlePageContainer}>
+            <div className={styles.BattlePage}>
+                {
+                    battlePageState.battleResult === BattleResult.lose ?
                         <BattleOverScreen 
                             result={battlePageState.battleResult} 
-                            listener={showTropheys}
+                            listener={setGameOver}
                         /> :
-                        null
-            }
-            <h3 className={styles.BattlePage_header}>
-                {chrome.i18n.getMessage('battle_page_title')}
-            </h3>            
-            <div style={{position: 'absolute', right: '10px', top: '20px'}}>
-                {chrome.i18n.getMessage('battle_page_turn', String(battlePageState.battleTurn))}
-            </div>
-            <div className={styles.BattlePage_body}>
-                <BattleOrder 
-                    squad={oppsMembers}
-                    squadStatus={battlePageState.opponentsStatus} 
-                    attacker={true} 
-                    listener={(opp_index: number) => selectOpponent(opp_index, false)}
+                        battlePageState.battleResult === BattleResult.win ?
+                            <BattleOverScreen 
+                                result={battlePageState.battleResult} 
+                                listener={showTropheys}
+                            /> :
+                            null
+                }
+                <div className={styles.BattlePage_body}>
+                    <BattleOrder 
+                        squad={oppsMembers}
+                        squadStatus={battlePageState.opponentsStatus} 
+                        attacker={true} 
+                        listener={(opp_index: number) => selectOpponent(opp_index, false)}
+                    />
+                    <div className={styles.BattlePage_body_abilitiesBlock}>
+                        <button 
+                            className={styles.BattlePage_body_abilitiesBlock_button_deselectSquadMember}
+                            onClick={deselectSquadMember}
+                            disabled={battlePageState.selectedMemberIndex < 0}
+                            title={chrome.i18n.getMessage('battle_page_deselect_member')}
+                        >
+                            <LayerBackward size={30}/>                        
+                        </button>
+                        <button 
+                            className={styles.BattlePage_body_abilitiesBlock_button_deselectAbility}
+                            onClick={deselectAbility}
+                            disabled={
+                                !battlePageState.selectedAbility ||
+                                battlePageState.battleTurn % 2 === 0
+                            }
+                            title={chrome.i18n.getMessage('battle_page_deselect_ability')}
+                        >
+                            <ArrowCounterclockwise size={30}/>                        
+                        </button>
+                        <button 
+                            className={styles.BattlePage_body_abilitiesBlock_button_deselectAbility}
+                            onClick={() => deselectOpponent()}
+                            disabled={battlePageState.selectedOpponentIndex < 0}
+                            title={chrome.i18n.getMessage('battle_page_deselect_opponent')}
+                        >
+                            <ArrowReturnLeft size={30}/>                        
+                        </button>
+                        <div className={styles.BattlePage_body_abilitiesBlock_abilities}>
+                            {
+                                battlePageState.battleResult === BattleResult.none ?
+                                (
+                                    battlePageState.battleTurn % 2 === 1 ? 
+                                        battlePageState.selectedMemberIndex >= 0 ?
+                                            abilitiesOnTurnBlock(squad[battlePageState.selectedMemberIndex]) :
+                                            <p>
+                                                {chrome.i18n.getMessage('battle_page_your_turn')}
+                                            </p> :
+                                        battlePageState.abilitiesOnTurn ?
+                                            abilitiesOnTurnBlock(opps[battlePageState.selectedOpponentIndex]) :
+                                            <p>
+                                                {chrome.i18n.getMessage('battle_page_opponents_turn')}
+                                            </p> 
+                                ) :
+                                'Battle is ' + battlePageState.battleResult
+                            }
+                        </div> 
+                        <div className={styles.BattlePage_body_abilitiesBlock_button_instruction}>
+                            <span style={abilitiesBlockInstructionStyle(battlePageState.selectedMemberIndex < 0)}>
+                                {chrome.i18n.getMessage('battle_page_choose_member')}
+                            </span>
+                            <span style={abilitiesBlockInstructionStyle(!battlePageState.selectedAbility)}>
+                                {chrome.i18n.getMessage('battle_page_choose_ability')}
+                            </span>
+                            <span style={abilitiesBlockInstructionStyle(
+                                !!battlePageState.selectedAbility &&
+                                battlePageState.selectedAbility.target === AbilityTarget.enemy && 
+                                battlePageState.selectedOpponentIndex < 0
+                            )}>
+                                {chrome.i18n.getMessage('battle_page_choose_target')}
+                            </span>
+                        </div>
+                        <button 
+                            className={styles.BattlePage_body_abilitiesBlock_button_process}
+                            onClick={() => {
+                                processAbilityOntoOpponent();
+                                checkEndOfTurn();
+                            }}
+                            disabled={
+                                battlePageState.selectedMemberIndex < 0 ||
+                                !battlePageState.selectedAbility ||
+                                (
+                                    battlePageState.selectedAbility &&
+                                    battlePageState.selectedAbility.target === AbilityTarget.enemy && 
+                                    battlePageState.selectedOpponentIndex < 0
+                                )
+                            }
+                            title={chrome.i18n.getMessage('battle_page_process_ability')}
+                        >
+                            <CheckCircle size={30}/>                        
+                        </button>
+                        <button 
+                            className={styles.BattlePage_body_abilitiesBlock_button_nextTurn}
+                            onClick={nextBattleTurn}
+                            title={chrome.i18n.getMessage('battle_page_next_turn')}
+                        >
+                            <SkipForward size={30}/>                        
+                        </button>                    
+                    </div>                
+                    <BattleOrder
+                        squad={squadMembers} 
+                        squadStatus={battlePageState.squadStatus} 
+                        attacker={false} 
+                        listener={(memb_index: number) => selectSquadMember(memb_index, false)}
+                    /> 
+                </div>
+                <BattleTurnButtons 
+                    listeners={battleTurnButtonsListeners}
                 />
-                <div className={styles.BattlePage_body_abilitiesBlock}>
-                    <button 
-                        className={styles.BattlePage_body_abilitiesBlock_button_deselect}
-                        onClick={deselectAbility}
-                        disabled={
-                            !battlePageState.selectedAbility ||
-                            battlePageState.battleTurn % 2 === 0
-                        }
-                        title={chrome.i18n.getMessage('battle_page_deselect_ability')}
-                    >
-                        <ArrowCounterclockwise size={30}/>                        
-                    </button>
-                    <div className={styles.BattlePage_body_abilitiesBlock_abilities}>
-                        {
-                            battlePageState.battleResult === BattleResult.none ?
-                            (
-                                battlePageState.battleTurn % 2 === 1 ? 
-                                    battlePageState.selectedMemberIndex >= 0 ?
-                                        abilitiesOnTurnBlock(squad[battlePageState.selectedMemberIndex]) :
-                                        <p>
-                                            {chrome.i18n.getMessage('battle_page_your_turn')}
-                                        </p> :
-                                    battlePageState.abilitiesOnTurn ?
-                                        abilitiesOnTurnBlock(opps[battlePageState.selectedOpponentIndex]) :
-                                        <p>
-                                            {chrome.i18n.getMessage('battle_page_opponents_turn')}
-                                        </p> 
-                            ) :
-                            'Battle is ' + battlePageState.battleResult
-                        }
-                    </div>
-                    <button 
-                        className={styles.BattlePage_body_abilitiesBlock_button_process}
-                        onClick={() => {
-                            processAbilityOntoOpponent();
-                            checkEndOfTurn();
-                        }}
-                        disabled={
-                            !battlePageState.selectedAbility || 
-                            battlePageState.selectedMemberIndex < 0 ||
-                            battlePageState.selectedOpponentIndex < 0
-                        }
-                        title={chrome.i18n.getMessage('battle_page_process_ability')}
-                    >
-                        <CheckCircle size={30}/>                        
-                    </button>
-                </div>                
-                <BattleOrder
-                    squad={squadMembers} 
-                    squadStatus={battlePageState.squadStatus} 
-                    attacker={false} 
-                    listener={(memb_index: number) => selectSquadMember(memb_index, false)}
-                /> 
             </div>
-            <BattleTurnButtons 
-                listeners={battleTurnButtonsListeners}
-                disableReasons={battleTurnButtonsDisableReasons}
-            />
+            <div className={styles.BattleLog}>
+                {
+                    battlePageState.battleLog.map(log => (
+                        <div className={styles.BattleLog_log}> 
+                            {log}
+                        </div>
+                    ))
+                }
+            </div>
         </div>
+        
     )
 }
 

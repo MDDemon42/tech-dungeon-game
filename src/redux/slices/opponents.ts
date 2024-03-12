@@ -85,17 +85,14 @@ const opponents = createSlice({
                 }
             })
 
-            const {damage, hitChance} = ability as IAbility;
+            const {damage} = ability as IAbility;
             for (const index in squadMembers) {
                 const squadMember = squadMembers[index];
 
-                const chance = Math.floor(Math.random()*100);
-                if (hitChance > chance) {
-                    for (const key in damage) {
-                        const damageType = key as DamageType;
-                        const resultDamage = damage[damageType]! - squadMember.params.resistances[damageType];
-                        squadMember.params.currentParams[UserParam.health] -= resultDamage;
-                    }
+                for (const key in damage) {
+                    const damageType = key as DamageType;
+                    const resultDamage = damage[damageType]! - squadMember.params.resistances[damageType];
+                    squadMember.params.currentParams[UserParam.health] -= resultDamage;
                 }
             }  
             

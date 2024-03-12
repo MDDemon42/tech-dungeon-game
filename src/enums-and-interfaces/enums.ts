@@ -96,6 +96,13 @@ export enum DamageType {
     cold = 'Cold'
 }
 
+export enum AbilityTarget {
+    self = 'self',
+    ally = 'ally',
+    enemy = 'enemy',
+    place = 'place'
+}
+
 export enum MindOption {
     masteries = 'masteries',
     spells = 'spells',

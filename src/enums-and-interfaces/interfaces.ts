@@ -1,4 +1,5 @@
 import { 
+    AbilityTarget,
     BattleResult,
     DamageType, 
     GameScreens,  
@@ -276,6 +277,7 @@ export interface IBattleAbility extends ICommon {
         [DamageType.suffocation]?: number
     },
     hitChance: number,
+    target: AbilityTarget,
     targetAmount: number,
     throwing?: boolean
 }
@@ -371,4 +373,5 @@ export interface IBattlePageState {
     opponentsStatus: IMemberStatus[];
     abilitiesOnTurn: IAbility[];
     battleResult: BattleResult;
+    battleLog: string[]
 }

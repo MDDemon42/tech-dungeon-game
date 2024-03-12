@@ -51,6 +51,9 @@
     "cid_hit_chance": {
         "message": "Hit chance: "
     },
+    "cid_target": {
+        "message": "Target: "
+    },
     "cid_target_amount": {
         "message": "Target amount: "
     },
@@ -616,29 +619,17 @@
     "siec_titanSkin": {
         "message": "Cannot modify through Titan skin"
     },
-    "battle_page_title": {
-        "message": "Battle Screen"
-    },
-    "battle_page_turn": {
-        "message": "Turn $battleTurn$",
-        "placeholders": {
-            "battleTurn": {
-                "content": "$1",
-                "example": "0"
-              }
-        }
-    },
     "battle_page_your_turn": {
-        "message": "Choose squad member"
+        "message": "Your turn"
     },
     "battle_page_opponents_turn": {
         "message": "Opponent's turn"
     },
     "battle_page_deselect_ability": {
-        "message": "Deselect\n ability"
+        "message": "Deselect ability"
     },
     "battle_page_process_ability": {
-        "message": "Process\n ability"
+        "message": "Process ability"
     },
     "battle_page_next_turn": {
         "message": "Next turn"
@@ -648,6 +639,18 @@
     },
     "battle_page_deselect_member": {
         "message": "Deselect member"
+    },
+    "battle_page_deselect_opponent": {
+        "message": "Deselect opponent"
+    },
+    "battle_page_choose_member": {
+        "message": " - Choose member"
+    },
+    "battle_page_choose_ability": {
+        "message": " - Choose ability"
+    },
+    "battle_page_choose_target": {
+        "message": " - Choose target"
     },
     "error_page_title": {
         "message": "Oops!"
@@ -3344,5 +3347,73 @@
     },
     "inventory_place_telekinesis_right_hand": {
         "message": "Telekinesis right hand"
+    },
+    "target_ally": {
+        "message": "Ally"
+    },
+    "target_enemy": {
+        "message": "Enemy"
+    },
+    "target_place": {
+        "message": "Place"
+    },
+    "target_self": {
+        "message": "Self"
+    },
+    "battle_log_battle_started": {
+        "message": "Battle started!"
+    },
+    "battle_log_someone_dies": {
+        "message": "$someone$ dies",
+        "placeholders": {
+            "someone": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "battle_log_someone_uses_ability_and_result": {
+        "message": "$someone$ uses '$ability$' on $somebody$ and $result$ ($hit$/$chance$)",
+        "placeholders": {
+            "someone": {
+                "content": "$1",
+                "example": ""
+            },
+            "ability": {
+                "content": "$2",
+                "example": ""
+            },
+            "somebody": {
+                "content": "$3",
+                "example": ""
+            },
+            "result": {
+                "content": "$4",
+                "example": ""
+            },
+            "hit": {
+                "content": "$5",
+                "example": ""
+            },
+            "chance": {
+                "content": "$6",
+                "example": ""
+            }
+        }
+    },
+    "battle_log_success_result": {
+        "message": "successes"
+    },
+    "battle_log_failure_result": {
+        "message": "fails"
+    },
+    "battle_log_next_turn": {
+        "message": "Turn $number$ starts",
+        "placeholders": {
+            "number": {
+                "content": "$1",
+                "example": ""
+            }
+        }
     }
 }

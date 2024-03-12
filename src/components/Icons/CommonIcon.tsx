@@ -1,8 +1,15 @@
 import styles from './Icons.module.css';
 import ParamIcon from './ParamIcon';
-import { DamageType, InventoryPlace, UserParam } from '../../enums-and-interfaces/enums';
+import { AbilityTarget, DamageType, InventoryPlace, UserParam } from '../../enums-and-interfaces/enums';
 import { IPassiveAbility } from '../../enums-and-interfaces/interfaces';
 import inventoryPlaces from '../../general/inventoryPlaces';
+
+const abilityTargetMapping: Record<AbilityTarget, string> = {
+    [AbilityTarget.ally]: chrome.i18n.getMessage('target_ally'),
+    [AbilityTarget.enemy]: chrome.i18n.getMessage('target_enemy'),
+    [AbilityTarget.place]: chrome.i18n.getMessage('target_place'),
+    [AbilityTarget.self]: chrome.i18n.getMessage('target_self')
+}
 
 function CommonIcon(props: {
     item: {
@@ -36,6 +43,7 @@ function CommonIcon(props: {
             [DamageType.suffocation]?: number
         },
         hitChance?: number,
+        target?: AbilityTarget,
         targetAmount?: number,
         healthCost?: number,
         passiveAbilities?: IPassiveAbility[] | null
@@ -112,6 +120,10 @@ function CommonIcon(props: {
 
     if (item.hitChance) {
         description += '\n' + chrome.i18n.getMessage('cid_hit_chance') + item.hitChance;
+    }
+
+    if (item.target) {
+        description += '\n' + chrome.i18n.getMessage('cid_target') + abilityTargetMapping[item.target];
     }
 
     if (item.targetAmount) {
