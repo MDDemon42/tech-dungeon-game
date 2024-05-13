@@ -7,8 +7,6 @@ import { createNoItem } from '../../helpers/emptyEssencesCreators';
 const opponents_options: Record<string, ICharacher>[] = [
     {
         0: characters.mutants.satyrBeeenny(),
-        1: characters.mutants.satyrBeeenny(),
-        2: characters.mutants.satyrBeeenny()
     },
     {
         0: characters.mights.barbarian(),

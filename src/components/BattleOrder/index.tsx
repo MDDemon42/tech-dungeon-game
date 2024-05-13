@@ -5,10 +5,9 @@ import SquadMember from "./SquadMember";
 function BattleOrder(props: {
     squad: ICharacher[],
     squadStatus: IMemberStatus[],
-    attacker: boolean,
     listener: any
 }) {
-    const {squad, squadStatus, attacker, listener} = props;
+    const {squad, squadStatus, listener} = props;
     
     return (
         <div className={styles.BattleOrder}>

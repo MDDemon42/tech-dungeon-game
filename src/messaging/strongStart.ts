@@ -4,10 +4,10 @@ import createEmptyCharacter, { createNoItem } from "../helpers/emptyEssencesCrea
 import store from "../redux/store";
 import classInfo from "../general/classInfo";
 import { createGameStage } from "../redux/slices/gameStage";
-import powers from "../gameScreens/FocusSite/powers";
-import mutations from "../gameScreens/MutaLab/mutations";
-import items from "../gameScreens/Market/items";
 import { IItem } from "../enums-and-interfaces/interfaces";
+import wizardItems from "../gameScreens/WizardSchool/wizardItems";
+import wizardMasteries from "../gameScreens/WizardSchool/masteries";
+import spells from "../gameScreens/WizardSchool/spells";
 
 function actionInCaseStrongStart(tabId: number) {
     const state = {...store.getState()}
@@ -46,18 +46,22 @@ function actionInCaseStrongStart(tabId: number) {
             memberClone.general.backpacks.length = 7;
             memberClone.general.backpacks.fill(createNoItem());
 
-            memberClone.general.mind.powers.push(powers.other.telekinesis);
-            memberClone.general.inventory.Telekinesis_left_hand = createNoItem();
-            memberClone.general.inventory.Telekinesis_right_hand = createNoItem();
+            // memberClone.general.mind.powers.push(powers.other.telekinesis);
+            // memberClone.general.inventory.Telekinesis_left_hand = createNoItem();
+            // memberClone.general.inventory.Telekinesis_right_hand = createNoItem();
 
             // memberClone.general.inventory.Shoulders = mutations.other.extraArms;
             // memberClone.general.inventory.Extra_left_hand = createNoItem();
             // memberClone.general.inventory.Extra_right_hand = createNoItem();
 
-            memberClone.general.backpacks[0] = items.bigResources.beastRemains as IItem;
-            memberClone.general.backpacks[1] = items.bigResources.dragonRemains as IItem;
-            memberClone.general.backpacks[2] = items.bigResources.insectoidRemains as IItem;
-            memberClone.general.backpacks[3] = items.bigResources.reptiloidRemains as IItem;
+            // memberClone.general.backpacks[0] = items.bigResources.beastRemains as IItem;
+            // memberClone.general.backpacks[1] = items.bigResources.dragonRemains as IItem;
+            // memberClone.general.backpacks[2] = items.bigResources.insectoidRemains as IItem;
+            // memberClone.general.backpacks[3] = items.bigResources.reptiloidRemains as IItem;
+
+            memberClone.general.mind.masteries.push(wizardMasteries.scholarship);
+            memberClone.general.mind.spells.push(spells.defensiveCharms);
+            memberClone.general.backpacks[0] = wizardItems.weapons.apprenticeRod as IItem;
 
             squadMembers[i] = memberClone;
         }

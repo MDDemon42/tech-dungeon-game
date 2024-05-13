@@ -1,6 +1,7 @@
 import { UserParam } from "../../enums-and-interfaces/enums";
 import { ICharacher, IMemberStatus } from "../../enums-and-interfaces/interfaces";
 import InventoryScreen from "../InventoryScreen";
+import ResistancesLine from "../StatsBar/ResistancesLine";
 import SquadMemberParamLine from "./SquadMemberParamLine";
 import styles from './index.module.css';
 
@@ -29,6 +30,7 @@ function SquadMember(props: {
     }    
 
     return (<div className={squadMemberStyles.join(' ')}>
+        <ResistancesLine characterParams={member.params} />
         <SquadMemberParamLine 
             paramAmount={currentParams[UserParam.health]}
             paramName='health'

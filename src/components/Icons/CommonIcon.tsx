@@ -47,6 +47,7 @@ function CommonIcon(props: {
         targetAmount?: number,
         healthCost?: number,
         passiveAbilities?: IPassiveAbility[] | null
+        bonusResistances?: Partial<Record<DamageType, number>>
     },
     disableReason?: string,
     forInfoPage?: boolean
@@ -114,6 +115,15 @@ function CommonIcon(props: {
             const damageType = key as DamageType;
             description += '\n' + chrome.i18n.getMessage('cid_damage', 
                 [String(item.damage[damageType]), String(damageType)]
+            );
+        }
+    }
+
+    if (item.bonusResistances) {
+        for (const key in item.bonusResistances) {
+            const damageType = key as DamageType;
+            description += '\n' + chrome.i18n.getMessage('', 
+                [String(item.bonusResistances[damageType]), String(damageType)]
             );
         }
     }

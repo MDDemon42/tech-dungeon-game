@@ -14,7 +14,7 @@ function SquadMemberParamLine(props: {
         {
             paramAmount > 0 ?
                 [...Array(paramAmount)]
-                    .map(icon => <ParamIcon param={paramName}/>) :
+                    .map(_ => <ParamIcon param={paramName}/>) :
                 <ParamIcon param='blank'/>
         }
     </div>

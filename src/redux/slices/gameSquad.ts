@@ -1199,15 +1199,35 @@ const gameSquad = createSlice({
                 }
             })
 
-            const {damage} = ability as IAbility;
+            const {damage, bonusResistances} = ability as IAbility;
             for (const index in squadMembers) {
                 const squadMember = squadMembers[index];
 
-                for (const key in damage) {
-                    const damageType = key as DamageType;
-                    const resultDamage = damage[damageType]! - squadMember.params.resistances[damageType];
-                    squadMember.params.currentParams[UserParam.health] -= resultDamage;
-                }                    
+                if (damage) {
+                    for (const key in damage) {
+                        const damageType = key as DamageType;
+                        let resultDamage = damage[damageType]! - squadMember.params.resistances[damageType];
+                        if (
+                            resultDamage < 0 && 
+                            (
+                                damageType === DamageType.physicalPiercing ||
+                                damageType === DamageType.physicalSlashing ||
+                                damageType === DamageType.physicalSmashing
+                            )
+                        ) {
+                            resultDamage = 0;
+                        }
+
+                        squadMember.params.currentParams[UserParam.health] -= resultDamage;
+                    }
+                }
+                      
+                if (bonusResistances) {
+                    for (const key in bonusResistances) {
+                        const damageType = key as DamageType;
+                        squadMember.params.resistances[damageType] += bonusResistances[damageType]!;
+                    }
+                }                
             }  
             
             indexes.forEach((index: number) => {

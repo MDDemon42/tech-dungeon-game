@@ -9,30 +9,14 @@ export function createBattleAbility(
         description: string,
         image: string
     ],
-    costs: {
-        [UserParam.health]?: number,
-        [UserParam.mana]?: number,
-        [UserParam.focus]?: number,
-        [UserParam.stamina]?: number,
-        [UserParam.blank]?: number        
-    },
-    damage: {
-        [DamageType.acid]?: number,
-        [DamageType.cold]?: number,
-        [DamageType.electrical]?: number,
-        [DamageType.fire]?: number,
-        [DamageType.physicalPiercing]?: number,
-        [DamageType.physicalSlashing]?: number,
-        [DamageType.physicalSmashing]?: number,
-        [DamageType.psionic]?: number,
-        [DamageType.suffocation]?: number
-    },
+    costs: Partial<Record<UserParam, number>>,
+    damage: Partial<Record<DamageType, number>>,
     damageInfo: [
         targetAmount: number,
         hitChance: number,
         target?: AbilityTarget,
     ],
-    throwing?: boolean        
+    throwing: boolean = false       
 ): IBattleAbility {
     return {
         name: commonInfo[0], 

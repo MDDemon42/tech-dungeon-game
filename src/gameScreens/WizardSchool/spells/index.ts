@@ -1,8 +1,9 @@
-import { IBattleAbility, ISpell } from "../../../enums-and-interfaces/interfaces";
+import { IBattleAbility, ISpell, ISupportAbility } from "../../../enums-and-interfaces/interfaces";
 import images from "../../../images/images";
 import abilities from "../../../general/abilities";
 import wizardMasteries from "../masteries";
 import academyMasteries from "../../Academy/masteries";
+import supportAbilities from "../../../general/abilities/supportAbilities";
 
 function createSpell(
     commonInfo: [
@@ -13,7 +14,7 @@ function createSpell(
     abilityInfo: [
         requiredMastery: string,
         requiresRod: boolean,
-        ability: IBattleAbility | null
+        ability: IBattleAbility | ISupportAbility | null
     ]
 ): ISpell {
     return {
@@ -38,7 +39,7 @@ const multistrike = createSpell(
         false,
         null
     ]
-)
+);
 
 const defensiveCharms = createSpell(
     [
@@ -49,9 +50,9 @@ const defensiveCharms = createSpell(
     [
         wizardMasteries.scholarship.name,
         true,
-        null
+        supportAbilities.armor.defensiveCharms
     ]
-)
+);
 
 const defensiveEnchantment = createSpell(
     [
@@ -64,7 +65,7 @@ const defensiveEnchantment = createSpell(
         true,
         null
     ]
-)
+);
 
 const flyingCharms = createSpell(
     [
@@ -77,7 +78,7 @@ const flyingCharms = createSpell(
         true,
         null
     ]
-)
+);
 
 const stoneGolem = createSpell(
     [
@@ -90,7 +91,7 @@ const stoneGolem = createSpell(
         true,
         null
     ]
-)
+);
 
 const magicBolt = createSpell(
     [
@@ -103,7 +104,7 @@ const magicBolt = createSpell(
         true,
         abilities.battleAbilities.ranged.electrical.magicBolt
     ]
-)
+);
 
 const teleport = createSpell(
     [
@@ -116,7 +117,7 @@ const teleport = createSpell(
         true,
         null
     ]
-)
+);
 
 const spells = {
     multistrike,

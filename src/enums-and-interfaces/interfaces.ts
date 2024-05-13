@@ -146,7 +146,7 @@ export interface IMind {
 }
 
 export interface ISpell extends IMastery {
-    ability: IBattleAbility | null,
+    ability: IBattleAbility | ISupportAbility | null,
     requiresRod: boolean
 }
 
@@ -254,32 +254,23 @@ export interface ICommon {
 }
 
 // abilities //
-export interface IAbility extends IBattleAbility {
+export interface IAbility extends IBattleAbility, ISupportAbility {
 }
 
 export interface IBattleAbility extends ICommon {
-    costs: {
-        [UserParam.health]?: number,
-        [UserParam.mana]?: number,
-        [UserParam.focus]?: number,
-        [UserParam.stamina]?: number,
-        [UserParam.blank]?: number        
-    },
-    damage: {
-        [DamageType.acid]?: number,
-        [DamageType.cold]?: number,
-        [DamageType.electrical]?: number,
-        [DamageType.fire]?: number,
-        [DamageType.physicalPiercing]?: number,
-        [DamageType.physicalSlashing]?: number,
-        [DamageType.physicalSmashing]?: number,
-        [DamageType.psionic]?: number,
-        [DamageType.suffocation]?: number
-    },
+    costs: Partial<Record<UserParam, number>>,
+    damage: Partial<Record<DamageType, number>>,
     hitChance: number,
     target: AbilityTarget,
     targetAmount: number,
-    throwing?: boolean
+    throwing: boolean
+}
+
+export interface ISupportAbility extends ICommon {
+    costs: Partial<Record<UserParam, number>>,
+    bonusResistances?: Partial<Record<DamageType, number>>,
+    hitChance: number,
+    target: AbilityTarget,
 }
 
 export interface IPassiveAbility extends ICommon {
@@ -359,19 +350,21 @@ export interface IManageItemsProps {
 export interface IMemberStatus {
     selected: boolean,
     hasTurn: boolean,
-    dead: boolean
+    dead: boolean,
+    defensiveCharms: boolean
 }
 
 // battle page state
 export interface IBattlePageState {
-    battleTurn: number;
-    selectedMemberIndex: number;
-    selectedOpponentIndex: number;
-    selectedAbility: IAbility | null;
+    allyIndex: number;
+    memberIndex: number;
+    opponentIndex: number;
+    selectedAbility: IBattleAbility | ISupportAbility | null;
     selectedAbilityDiv: HTMLElement | null;
     squadStatus: IMemberStatus[];
     opponentsStatus: IMemberStatus[];
-    abilitiesOnTurn: IAbility[];
-    battleResult: BattleResult;
-    battleLog: string[]
+    abilitiesOnTurn: (IBattleAbility | ISupportAbility)[];
+    result: BattleResult;
+    log: string[];
+    turn: number;
 }

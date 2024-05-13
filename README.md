@@ -21,4 +21,3 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  4) Long hair of `fur` mutation
  5) More items for `extra arms` and `telekinesis` (`mage khopesh`)
  6) Legendary `MASPIC`
- 7) `Target` (ally, enemy, blank) on abilities

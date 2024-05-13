@@ -2155,7 +2155,10 @@
         "message": "Defensive charm"
     },
     "defensive_charms_spell_description": {
-        "message": "Spell to protect one of your buddies from one Physical attack.\nCasted via rod or staff."
+        "message": "Spell to protect one of your buddies for a short time from any Physical attack.\nCasted via rod or staff."
+    },
+    "defensive_charms_ability_description": {
+        "message": "Adds 10 to every Physical resistance for 1 turn"
     },
     "defensive_enchantment": {
         "message": "Defensive enchantment"

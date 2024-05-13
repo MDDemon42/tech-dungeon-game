@@ -23,7 +23,7 @@
     position: relative;
     border: 1px solid black;
     padding: 5px;
-    max-height: 500px;
+    max-height: 580px;
     width: calc(95vw - 150px);
 }
 
@@ -44,20 +44,22 @@
     margin: 5px;
     padding: 5px;
     position: relative;
-    min-height: 75px;
+    min-height: 105px;
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
 
 .BattlePage_body_abilitiesBlock_abilities {
-    left: 0;
+    border: 1px solid black;
     gap: 10px;
-    width: calc(100% - 70px);
+    padding: 5px;
+    width: calc(100% - 500px);
+    overflow-x: scroll;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .BattlePage_body_abilitiesBlock_abilities > p {
@@ -87,8 +89,9 @@
 .BattlePage_body_abilitiesBlock_button_process,
 .BattlePage_body_abilitiesBlock_button_nextTurn {
     position: relative;
-    margin-left: 5px;
     padding: 4px 13px 0;
+    height: 60px;
+    margin: auto 0;
 }
 
 .BattlePage_body_abilitiesBlock_button_deselectSquadMember,
@@ -103,5 +106,4 @@
 
 .BattlePage_body_abilitiesBlock_button_nextTurn {
     background-color: lightcoral;
-    margin-right: 5px;
 }

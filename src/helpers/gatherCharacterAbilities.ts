@@ -1,5 +1,5 @@
 import { DamageType, InventoryPlace } from "../enums-and-interfaces/enums";
-import { ICharacher, IBattleAbility } from "../enums-and-interfaces/interfaces";
+import { ICharacher, IBattleAbility, ISupportAbility } from "../enums-and-interfaces/interfaces";
 import checkRipApart from "../general/races/checkRipApart";
 import wizardItems from "../gameScreens/WizardSchool/wizardItems";
 import { createEmptyInventory, createNoItem } from "./emptyEssencesCreators";
@@ -18,7 +18,7 @@ import gatherMultipleWeaponsAbilities from "./gatherMultipleWeaponsAbilities";
 import mutations from "../gameScreens/MutaLab/mutations";
 
 function gatherCharacterAbilities(character: ICharacher) {
-    const result: IBattleAbility[] = [];
+    const result: (IBattleAbility | ISupportAbility)[] = [];
 
     const masteriesUser = character.general.mind.masteries.map(mastery => mastery.name);
     const spellsUser = character.general.mind.spells;
@@ -105,38 +105,45 @@ function gatherCharacterAbilities(character: ICharacher) {
     result.push(...gatherMultipleWeaponsAbilities(inventory, masteriesUser));    
 
     result
-        .filter(ability => (
-            Object.keys(ability.damage).length === 1 && (
-                ability.damage[DamageType.physicalPiercing] ||
-                ability.damage[DamageType.physicalSlashing] ||
-                ability.damage[DamageType.physicalSmashing]
-            )
-        ))
+        .filter(ability => {
+            const abilityDamage = (ability as IBattleAbility).damage;
+            if (abilityDamage) {
+                const damageTypeAmount = Object.keys(abilityDamage).length;
+
+                if (damageTypeAmount === 1) {
+                    return abilityDamage[DamageType.physicalPiercing] ||
+                        abilityDamage[DamageType.physicalSlashing] ||
+                        abilityDamage[DamageType.physicalSmashing]
+                }
+            }
+                
+            return false
+        })
         .forEach(ability => {
             if (masteriesUser.includes(psionMasteries.empoweredStrikes.name)) {        
-                result.push(createEmpoweredAbility(ability));
+                result.push(createEmpoweredAbility(ability as IBattleAbility));
             }
 
             if (masteriesUser.includes(psionMasteries.psiInfusedStrikes.name)) {        
-                result.push(createPsiInfusedAbility(ability));
+                result.push(createPsiInfusedAbility(ability as IBattleAbility));
             }
 
             if (masteriesUser.includes(airMasteries.electrifiedStrikes.name)) {
-                result.push(createElectrifiedAbility(ability));
+                result.push(createElectrifiedAbility(ability as IBattleAbility));
             }
 
             if (masteriesUser.includes(fireMasteries.enflamedStrikes.name)) {
-                result.push(createEnflamedAbility(ability));
+                result.push(createEnflamedAbility(ability as IBattleAbility));
             }
 
             if (masteriesUser.includes(coldMasteries.freezingStrikes.name)) {
-                result.push(createFreezingAbility(ability));
+                result.push(createFreezingAbility(ability as IBattleAbility));
             }
         })
 
     const finalResult = result.map(ability => {
         if (inventory.Eyes.name === mutations.other.dragonEyes.name) {
-            const copyAbility: IBattleAbility = {
+            const copyAbility: IBattleAbility | ISupportAbility = {
                 ...ability,
                 hitChance: ability.hitChance + 5
             }
