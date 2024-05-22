@@ -6,7 +6,7 @@ const titanSkin = createPassiveAbility(
         chrome.i18n.getMessage('titan_skin'), 
         chrome.i18n.getMessage('resistance_titan_invincibility'),
     ],
-    {[UserParam.health]: 2},
+    {[UserParam.health]: 0},
     {
         [DamageType.physicalPiercing]: 2,
         [DamageType.physicalSlashing]: 2,

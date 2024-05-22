@@ -601,6 +601,9 @@
     "smec_power": {
         "message": "Does not have required power"
     },
+    "smec_health_cost": {
+        "message": "Health cost is too big"
+    },
     "siec_resources": {
         "message": "Not enough resouces"
     },

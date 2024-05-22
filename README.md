@@ -15,6 +15,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  - Battle abilities must have either 1 or 3 or 5 targets
 
  # TODO:
+ 0) Test are really hard to implement to this project =(
+
+    
  1) More `MASPIC`(`Beak`, rituals to become `Elementals`)
  2) More ~abilities~ to get more user resources (~battery capacity~ for cyborg, `psi-capacity`)
  3) Mix `MASPIC` to get `elf` and `werewolf`(?)

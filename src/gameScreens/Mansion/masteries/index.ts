@@ -1,5 +1,4 @@
-import images from "../../../images/images";
-import { createMastery } from "../../Academy/masteries";
+import { createMastery } from "../../../general/masteries";
 
 const mansionMasteries = {
     

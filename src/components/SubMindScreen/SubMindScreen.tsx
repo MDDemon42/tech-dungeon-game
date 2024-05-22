@@ -14,6 +14,7 @@ function SubMindScreen(props: {
     const member = useSelector((store: IStore) => store.gameSquad.squadMembers[index]);
 
     const memberMind: string[] = [];
+    member.general.mind.rituals.map(data => memberMind.push(data.name));
     member.general.mind.masteries.map(data => memberMind.push(data.name));
     member.general.mind.powers.map(data => memberMind.push(data.name));
     member.general.mind.spells.map(data => memberMind.push(data.name));
@@ -79,8 +80,8 @@ function SubMindScreen(props: {
             }
         },
         [MindGameScreens.guildRituals]: {
-            capacity: member.params.level,
-            posessed: member.general.mind.rituals.length,
+            capacity: member.params.maxParams[UserParam.health],
+            posessed: 0,
             title: chrome.i18n.getMessage('guild_rituals_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IRitual) => {

@@ -1,22 +1,6 @@
 import { IMastery } from "../../../enums-and-interfaces/interfaces";
 import images from "../../../images/images";
-
-export function createMastery(
-    commonInfo: [
-        name: string,
-        description: string,
-        image: string
-    ],
-    requiredMastery: string
-): IMastery {
-    return {
-        name: commonInfo[0],
-        description: commonInfo[1],
-        image: commonInfo[2],
-
-        requiredMastery
-    }
-};
+import { createMastery } from "../../../general/masteries";
 
 const bowAffiliation = createMastery(
     [

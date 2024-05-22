@@ -601,6 +601,9 @@
     "smec_power": {
         "message": "Нет необходимой силы"
     },
+    "smec_health_cost": {
+        "message": "Потеря Здоровья слишком высока"
+    },
     "siec_resources": {
         "message": "Недостаточно ресурсов"
     },

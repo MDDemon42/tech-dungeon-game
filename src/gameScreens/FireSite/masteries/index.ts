@@ -1,5 +1,5 @@
 import { IMastery } from "../../../enums-and-interfaces/interfaces";
-import { createMastery } from "../../Academy/masteries";
+import { createMastery } from "../../../general/masteries";
 import images from "../../../images/images";
 
 const fireAffiliation = createMastery(

@@ -1,6 +1,6 @@
-import { IMastery } from "../../../enums-and-interfaces/interfaces"
-import images from "../../../images/images"
-import { createMastery } from "../../Academy/masteries"
+import { IMastery } from "../../../enums-and-interfaces/interfaces";
+import images from "../../../images/images";
+import { createMastery } from "../../../general/masteries";
 
 const scholarship = createMastery(
     [

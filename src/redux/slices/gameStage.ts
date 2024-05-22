@@ -154,7 +154,11 @@ const relatedScreens: Record<GameScreens, GameScreens[]> = {
     [GameScreens.focusSite]: [GameScreens.focusSchool],
     [GameScreens.guildianRooms]: [],
     [GameScreens.guildRituals]: [],
-    [GameScreens.guildSchool]: [GameScreens.guildShop, GameScreens.guildianRooms],
+    [GameScreens.guildSchool]: [
+        GameScreens.guildShop, 
+        GameScreens.guildianRooms, 
+        GameScreens.guildRituals
+    ],
     [GameScreens.guildShop]: [],
     [GameScreens.iceSchool]: [],
     [GameScreens.iceSite]: [GameScreens.iceSchool, GameScreens.cryomancerRooms],
@@ -282,14 +286,7 @@ const gameStage = createSlice({
                         );
                     } 
                 }
-            }
-
-            if (stage === 2 && zone === GameScreens.guildSchool) {
-                oldState[GameScreens.guildRituals].stage = 1;
-                oldState[GameScreens.guildRituals].usableOptions.push(
-                    ...oldState[GameScreens.guildRituals].stageOptions?.[1] as any[]
-                );
-            }
+            }            
 
             state = oldState;
         },

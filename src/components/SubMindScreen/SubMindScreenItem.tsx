@@ -1,11 +1,11 @@
 import { MindGameScreens } from "../../enums-and-interfaces/enums";
-import { IMastery, IPower, ISpell } from "../../enums-and-interfaces/interfaces";
+import { IMastery, IPower, IRitual, ISpell } from "../../enums-and-interfaces/interfaces";
 import { subMindEnableChecker } from "../../helpers/enableCheckers";
 import CommonIcon from "../Icons/CommonIcon";
 import styles from './SubMindScreen.module.css';
 
 function SubMindScreenItem(props: {
-    data: IMastery | IPower | ISpell,
+    data: IMastery | IPower | ISpell | IRitual,
     screenName: MindGameScreens,
     memberMind: string[],
     buttonText: string,

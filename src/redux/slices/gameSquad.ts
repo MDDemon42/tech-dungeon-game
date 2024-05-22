@@ -836,6 +836,8 @@ const gameSquad = createSlice({
 
             const ritual: IRitual = action.payload;
 
+            squadMember.params.maxParams.Health -= ritual.healthCost;
+            squadMember.params.currentParams.Health = squadMember.params.maxParams.Health;
             squadMember.general.mind.rituals.push(ritual);
 
             integratePassiveAbility(squadMember, ritual, +1);

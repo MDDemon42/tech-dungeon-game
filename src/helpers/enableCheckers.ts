@@ -2,7 +2,7 @@ import { InventoryGameScreens, InventoryPlace, MindGameScreens } from "../enums-
 import { 
     IBending, ICharacher, ICyber, 
     IItem, IMastery, IMutation, 
-    IPower, ISpell 
+    IPower, IRitual, ISpell 
 } from "../enums-and-interfaces/interfaces";
 import priorityChecker from "./priorityChecker";
 import { createNoItem } from "./emptyEssencesCreators";
@@ -18,24 +18,24 @@ export function bendingEnableChecker(
         return [false, chrome.i18n.getMessage('smec_capacity', 'Bendings')]
     }
 
-    const posessedCheck = memberMind.includes(bending.name);
-    if (posessedCheck) {
+    const alreadyPosessed = memberMind.includes(bending.name);
+    if (alreadyPosessed) {
         return [false, chrome.i18n.getMessage('smec_posessed')]
     }
     
-    const requiredMasteryCheck = !!bending.requiredMastery ? 
+    const hasRequiredMastery = !!bending.requiredMastery ? 
         memberMind.includes(bending.requiredMastery) :
         true;
         
-    if (!requiredMasteryCheck) {
+    if (!hasRequiredMastery) {
         return [false, chrome.i18n.getMessage('smec_mastery')]
     }
 
-    const requiredBendingCheck = !!bending.requiredBending ?
+    const hasRequiredBending = !!bending.requiredBending ?
         memberMind.includes(bending.requiredBending) :
         true;
 
-    if (!requiredBendingCheck) {
+    if (!hasRequiredBending) {
         return [false, chrome.i18n.getMessage('smec_bending')]
     }
 
@@ -56,7 +56,7 @@ const screenNameCapacityMappings: Record<MindGameScreens, string> = {
 }
 
 export function subMindEnableChecker(
-    data: IMastery | IPower | ISpell,
+    data: IMastery | IPower | ISpell | IRitual,
     memberMind: string[],
     screenName: MindGameScreens,
     capacity: number,
@@ -66,28 +66,37 @@ export function subMindEnableChecker(
         return [false, chrome.i18n.getMessage('smec_capacity', screenNameCapacityMappings[screenName])]
     }
 
-    const posessedCheck = memberMind.includes(data.name);
-    if (posessedCheck) {
+    const alreadyPosessed = memberMind.includes(data.name);
+    if (alreadyPosessed) {
         return [false, chrome.i18n.getMessage('smec_posessed')]
     }
     
-    const requiredMasteryCheck = !!data.requiredMastery ? 
+    const hasRequiredMastery = !!data.requiredMastery ? 
         memberMind.includes(data.requiredMastery) :
         true;
         
-    if (!requiredMasteryCheck) {
+    if (!hasRequiredMastery) {
         return [false, chrome.i18n.getMessage('smec_mastery')]
     }
 
     if (screenName === MindGameScreens.focusSite) {
         // @ts-expect-error
-        const requiredPowerCheck = !!data.requiredPower ?
+        const hasRequiredPower = !!data.requiredPower ?
             // @ts-expect-error
             memberMind.includes(data.requiredPower) :
             true;
 
-        if (!requiredPowerCheck) {
+        if (!hasRequiredPower) {
             return [false, chrome.i18n.getMessage('smec_power')]
+        }
+    }
+
+    if (screenName === MindGameScreens.guildRituals) {
+        // @ts-expect-error
+        const hasEnoughHealth = !!data.healthCost >= capacity;
+
+        if (hasEnoughHealth) {
+            return [false, chrome.i18n.getMessage('smec_health_cost')]
         }
     }
 
@@ -100,8 +109,8 @@ export function subInventoryEnableChecker(
     screenName: InventoryGameScreens,
     resource: number
 ): [boolean, string] {
-    const resourceCheck = resource >= datum.cost;
-    if (!resourceCheck) {
+    const hasEnoughResources = resource >= datum.cost;
+    if (!hasEnoughResources) {
         return [false, chrome.i18n.getMessage('siec_resources')]
     }
 
@@ -116,13 +125,13 @@ export function subInventoryEnableChecker(
         const maxBackpacksItemsAmount = character.general.backpacks.length;
         const currentBackpacksItemsAmount = character.general.backpacks
             .filter((item) => item.name !== nothing).length;
-        const getBackpacksCapabilityCheck = currentBackpacksItemsAmount < maxBackpacksItemsAmount;
-        if (!getBackpacksCapabilityCheck) {
+        const backpacksHaveFreeSlots = currentBackpacksItemsAmount < maxBackpacksItemsAmount;
+        if (!backpacksHaveFreeSlots) {
             return [false, chrome.i18n.getMessage('siec_backpacks_capability')]
         }
     } else {
-        const priorityCheck = priorityChecker(datum);
-        if (!priorityCheck) {
+        const hasMorePriority = priorityChecker(datum);
+        if (!hasMorePriority) {
             return [false, chrome.i18n.getMessage('siec_priority')]
         }
     }
@@ -132,9 +141,9 @@ export function subInventoryEnableChecker(
         screenName === InventoryGameScreens.mutaLab
     ) {
         const memberRitualNames = character.general.mind.rituals.map(ritual => ritual.name);
-        const titanSkinCheck = memberRitualNames.includes(rituals.titanSkin.name);
+        const hasTitanSkin = memberRitualNames.includes(rituals.titanSkin.name);
 
-        if (titanSkinCheck) {
+        if (hasTitanSkin) {
             return [false, chrome.i18n.getMessage('siec_titanSkin')]
         }
     }
@@ -148,12 +157,12 @@ export function subInventoryEnableChecker(
         };
 
         // @ts-expect-error
-        const requiredCyberCheck = !!datum.requiredCyber ?
+        const hasRequiredCyber = !!datum.requiredCyber ?
             // @ts-expect-error
             memberInventoryNames.includes(datum.requiredCyber) :
             true;
 
-        if (!requiredCyberCheck) {
+        if (!hasRequiredCyber) {
             return [false, chrome.i18n.getMessage('siec_cyber')]
         }
     }    
@@ -166,21 +175,21 @@ export function backpacksItemEnableChecker(
     memberMasteries: string[],
     memberAvailableStrength: number
 ): [boolean, string] {
-    const requiredMasteryCheck = !!item.requiredMastery ? 
+    const hasRequiredMastery = !!item.requiredMastery ? 
         memberMasteries.includes(item.requiredMastery) :
         true;
 
-    if (!requiredMasteryCheck) {
+    if (!hasRequiredMastery) {
         return [false, chrome.i18n.getMessage('smec_mastery')]
     }
 
-    const priorityCheck = priorityChecker(item);
-    if (!priorityCheck) {
+    const hasMorePriority = priorityChecker(item);
+    if (!hasMorePriority) {
         return [false, chrome.i18n.getMessage('siec_priority')]
     }
 
-    const strengthCheck = memberAvailableStrength >= item.requiredStrength;
-    if (!strengthCheck) {
+    const hasEnoughStrength = memberAvailableStrength >= item.requiredStrength;
+    if (!hasEnoughStrength) {
         return [false, chrome.i18n.getMessage('siec_strength')]
     }
 

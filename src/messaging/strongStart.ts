@@ -8,6 +8,8 @@ import { IItem } from "../enums-and-interfaces/interfaces";
 import wizardItems from "../gameScreens/WizardSchool/wizardItems";
 import wizardMasteries from "../gameScreens/WizardSchool/masteries";
 import spells from "../gameScreens/WizardSchool/spells";
+import academyMasteries from "../gameScreens/Academy/masteries";
+import items from "../gameScreens/Market/items";
 
 function actionInCaseStrongStart(tabId: number) {
     const state = {...store.getState()}
@@ -43,6 +45,7 @@ function actionInCaseStrongStart(tabId: number) {
             
             memberClone.params.currentParams = {...memberClone.params.maxParams};
             memberClone.params.strength = 5;
+            memberClone.general.mind.masteries.push(academyMasteries.brutalForce);
             memberClone.general.backpacks.length = 7;
             memberClone.general.backpacks.fill(createNoItem());
 
@@ -62,6 +65,9 @@ function actionInCaseStrongStart(tabId: number) {
             memberClone.general.mind.masteries.push(wizardMasteries.scholarship);
             memberClone.general.mind.spells.push(spells.defensiveCharms);
             memberClone.general.backpacks[0] = wizardItems.weapons.apprenticeRod as IItem;
+
+            memberClone.general.backpacks[1] = items.weapons.pickaxe as IItem;
+            memberClone.general.backpacks[2] = items.weapons.pickaxe as IItem;
 
             squadMembers[i] = memberClone;
         }
