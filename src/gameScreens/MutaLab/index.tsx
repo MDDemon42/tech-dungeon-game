@@ -1,5 +1,5 @@
 import SubInventoryScreen from '../../components/SubInventoryScreen';
-import { GameScreens, InventoryGameScreens } from '../../enums-and-interfaces/enums';
+import { InventoryGameScreens } from '../../enums-and-interfaces/enums';
 import { IUpgradeButton } from '../../enums-and-interfaces/interfaces';
 import { Virus } from 'react-bootstrap-icons';
 import PatternScreen from '../../components/PatternScreen';
@@ -41,7 +41,7 @@ const mutaLabUpgradeButtons = (stage: number): IUpgradeButton[] => [
 
 function MutationLab() {
     return <PatternScreen 
-        screenName={GameScreens.mutaLab}
+        screenName={InventoryGameScreens.mutaLab}
         upgradeButtonsFunc={mutaLabUpgradeButtons}
         subScreenMapping={mutaLabSubScreenMapping}
     />

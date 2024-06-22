@@ -91,6 +91,21 @@ const freezingStrikes = createTask(
     ),
 );
 
+const iceRituals = createTask(
+    [
+        {
+            name: items.bigResources.ore.name,
+            amount: 1
+        }
+    ], 
+    chrome.i18n.getMessage('ice_rituals_task_title', 
+        [items.bigResources.ore.name]
+    ),
+    chrome.i18n.getMessage('ice_rituals_task_text', 
+        ['1', items.bigResources.ore.name]
+    ),
+);
+
 const iceSiteTasks: IScreenTasks = {
     1: {
         status: TaskStatus.unknown,
@@ -115,6 +130,10 @@ const iceSiteTasks: IScreenTasks = {
     11: {
         status: TaskStatus.unknown,
         task: freezingStrikes
+    },
+    13: {
+        status: TaskStatus.unknown,
+        task: iceRituals
     }
 }
 

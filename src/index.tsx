@@ -33,7 +33,7 @@ ReactDOM
 export function chromeStorageSaver() {
   chrome.runtime.sendMessage({
     type: 'save',
-    token: '0_0',
+    token: '^_^',
     data: store.getState()
   })
 }

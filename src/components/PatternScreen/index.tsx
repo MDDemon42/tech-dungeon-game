@@ -2,17 +2,24 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import TaskScreen from "../TaskScreen";
 import UpgradeButtons from "../UpgradeButtons";
-import { GameScreens } from "../../enums-and-interfaces/enums";
+import { 
+    BendingGameScreens, 
+    CommonGameScreens, 
+    GameScreens, 
+    InventoryGameScreens, 
+    SchoolGameScreens, 
+    SquadGameScreens 
+} from "../../enums-and-interfaces/enums";
 import { IStore, IUpgradeButton } from "../../enums-and-interfaces/interfaces";
 import styles from './index.module.css';
 
 function PatternScreen(props: {
     screenName: 
-        GameScreens.fireSite | GameScreens.iceSite | GameScreens.cyberLab |
-        GameScreens.academy | GameScreens.airSite | GameScreens.wizardSchool |
-        GameScreens.mansion | GameScreens.mutaLab | GameScreens.focusSite |
-        GameScreens.market | GameScreens.guildSchool | GameScreens.tavern |
-        GameScreens.tropheyField,
+        BendingGameScreens.fireSite | BendingGameScreens.iceSite | InventoryGameScreens.cyberLab |
+        SchoolGameScreens.academy | BendingGameScreens.airSite | SchoolGameScreens.wizardSchool |
+        CommonGameScreens.mansion | InventoryGameScreens.mutaLab | SchoolGameScreens.focusSite |
+        InventoryGameScreens.market | SchoolGameScreens.guildSchool | SquadGameScreens.tavern |
+        InventoryGameScreens.tropheyField,
     upgradeButtonsFunc: (stage: number, extraStage: number) => IUpgradeButton[],
     subScreenMapping: Partial<Record<GameScreens, {
         requiredStage: number;
@@ -22,8 +29,8 @@ function PatternScreen(props: {
     const {screenName, upgradeButtonsFunc, subScreenMapping} = props;
 
     const stage = useSelector((store: IStore) => store.gameStage[screenName].stage);
-    const marketStage = useSelector((store: IStore) => store.gameStage[GameScreens.market].stage);
-    const extraStage = screenName === GameScreens.academy ? marketStage : 0;
+    const marketStage = useSelector((store: IStore) => store.gameStage[InventoryGameScreens.market].stage);
+    const extraStage = screenName === SchoolGameScreens.academy ? marketStage : 0;
     
     const [taskScreenOpen, setTaskScreenOpen] = useState<[GameScreens, number]|null>(null);
 

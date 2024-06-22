@@ -31,7 +31,16 @@ import {
 import BattleTurnButtons from '../../components/BattleTurnButtons';
 import BattleOverScreen from '../../components/BattleOverScreen/BattleOverScreen';
 import { removeGameTabs } from '../../helpers/removeGameTabs';
-import { AbilityTarget, BattleResult, GameScreens, InventoryPlace, InventorySlotCategory, Race, TaskStatus } from '../../enums-and-interfaces/enums';
+import { 
+    AbilityTarget, 
+    BattleResult, 
+    CommonGameScreens, 
+    InventoryGameScreens, 
+    InventoryPlace, 
+    InventorySlotCategory, 
+    Race, 
+    TaskStatus 
+} from '../../enums-and-interfaces/enums';
 import gameStage from '../../redux/slices/gameStage';
 import { createNoItem } from '../../helpers/emptyEssencesCreators';
 import abilities from '../../general/abilities';
@@ -73,7 +82,7 @@ function BattlePage() {
             setBattlePageStatuses();
             
             dispatch(gameStage.actions.changeStage({
-                zone: GameScreens.villageMap,
+                zone: CommonGameScreens.villageMap,
                 stage: 0
             }))
         } else if (battlePageState.turn % 2 === 1) {
@@ -1012,23 +1021,23 @@ function BattlePage() {
         const tropheys = collectTropheys();
 
         dispatch(gameStage.actions.setUsableOptions({
-            screen: GameScreens.tropheyField,
+            screen: InventoryGameScreens.tropheyField,
             stage: 0,
             options: {0: tropheys}
         }));
 
         dispatch(gameStage.actions.changeStage({
-            zone: GameScreens.tropheyField,
+            zone: InventoryGameScreens.tropheyField,
             stage: 1
         }))
 
         dispatch(gameStage.actions.updateTask({
-            screen: GameScreens.tropheyField,
+            screen: InventoryGameScreens.tropheyField,
             stage: 2,
             status: TaskStatus.unknown
         }))
 
-        dispatch(gameScreen.actions.changeScreen(GameScreens.tropheyField));
+        dispatch(gameScreen.actions.changeScreen(InventoryGameScreens.tropheyField));
         
         setTimeout(() => navigate('/game'), 0);
     }

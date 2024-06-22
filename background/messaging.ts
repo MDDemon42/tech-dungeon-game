@@ -7,7 +7,7 @@ function onMessage(
 ) {  
     console.log('Background got message', request)
 
-    if (request.token !== '0_0') {
+    if (request.token !== '^_^') {
         return
     }
 

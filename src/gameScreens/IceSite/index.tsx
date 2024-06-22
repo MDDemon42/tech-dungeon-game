@@ -1,16 +1,21 @@
-import { BendingGameScreens, GameScreens, MindGameScreens, SquadGameScreens } from "../../enums-and-interfaces/enums";
+import { 
+    BendingGameScreens, 
+    RitualGameScreens, 
+    SchoolGameScreens, 
+    SquadGameScreens 
+} from "../../enums-and-interfaces/enums";
 import BendingScreen from "../../components/BendingScreen/BendingScreen";
 import SubMindScreen from "../../components/SubMindScreen/SubMindScreen";
 import { IUpgradeButton } from "../../enums-and-interfaces/interfaces";
-import { Book, Person, Spellcheck } from "react-bootstrap-icons";
+import { Book, Person, Spellcheck, PersonUp } from "react-bootstrap-icons";
 import SubSquadScreen from "../../components/SubSquadScreen";
 import PatternScreen from "../../components/PatternScreen";
 
 const iceSiteSubScreenMapping = {
-    [MindGameScreens.iceSchool]: {
+    [SchoolGameScreens.iceSchool]: {
         requiredStage: 1,
         icon: <Book size={36} />,
-        screen: <SubMindScreen screenName={MindGameScreens.iceSchool}/>
+        screen: <SubMindScreen screenName={SchoolGameScreens.iceSchool}/>
     },
     [BendingGameScreens.iceSite]: {
         requiredStage: 1,
@@ -21,6 +26,11 @@ const iceSiteSubScreenMapping = {
         requiredStage: 1,
         icon: <Person size={36} />,
         screen: <SubSquadScreen screenName={SquadGameScreens.cryomancerRooms}/>
+    },
+    [RitualGameScreens.iceRituals]: {
+        requiredStage: 13,
+        icon: <PersonUp size={36} />,
+        screen: <SubMindScreen screenName={RitualGameScreens.iceRituals}/>
     }
 }
 
@@ -55,11 +65,17 @@ const iceSiteUpgradeButtons = (stage: number): IUpgradeButton[] => [
         disabled: stage % 11 === 0,
         visible: stage % 11 !== 0
     },
+    {
+        title: chrome.i18n.getMessage('ice_rituals'),
+        stage: 13,
+        disabled: stage % 13 === 0,
+        visible: stage % 13 !== 0
+    }
 ];
 
 function IceSite() {
     return <PatternScreen 
-        screenName={GameScreens.iceSite}
+        screenName={BendingGameScreens.iceSite}
         upgradeButtonsFunc={iceSiteUpgradeButtons}
         subScreenMapping={iceSiteSubScreenMapping}
     />

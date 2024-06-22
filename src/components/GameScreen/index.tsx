@@ -2,7 +2,13 @@ import styles from './index.module.css';
 import gameScreens from '../../redux/slices/gameScreen';
 import { useDispatch, useSelector } from 'react-redux';
 import { IStore } from '../../enums-and-interfaces/interfaces';
-import { GameScreens } from '../../enums-and-interfaces/enums';
+import { 
+    BendingGameScreens, 
+    CommonGameScreens, 
+    GameScreens, 
+    InventoryGameScreens, 
+    SchoolGameScreens 
+} from '../../enums-and-interfaces/enums';
 import { Arrow90degLeft } from 'react-bootstrap-icons';
 import Academy from '../../gameScreens/Academy';
 import AirSite from '../../gameScreens/AirSite';
@@ -23,27 +29,27 @@ function GameScreen() {
     const dispatch = useDispatch();
 
     const screens: Partial<Record<GameScreens, JSX.Element>> = {
-        [GameScreens.academy]: <Academy />,
-        [GameScreens.airSite]: <AirSite />,
-        [GameScreens.cyberLab]: <CyberLab />,
-        [GameScreens.fireSite]: <FireSite />,
-        [GameScreens.focusSite]: <FocusSite />,
-        [GameScreens.guildSchool]: <Guild />,
-        [GameScreens.iceSite]: <IceSite />,
-        [GameScreens.mansion]: <Mansion />,
-        [GameScreens.market]: <Market />,
-        [GameScreens.mutaLab]: <MutaLab />,
-        [GameScreens.tropheyField]: <TropheyField />,
-        [GameScreens.villageMap]: <VillageMap />,
-        [GameScreens.wizardSchool]: <WizardSchool />,
+        [SchoolGameScreens.academy]: <Academy />,
+        [BendingGameScreens.airSite]: <AirSite />,
+        [InventoryGameScreens.cyberLab]: <CyberLab />,
+        [BendingGameScreens.fireSite]: <FireSite />,
+        [SchoolGameScreens.focusSite]: <FocusSite />,
+        [SchoolGameScreens.guildSchool]: <Guild />,
+        [BendingGameScreens.iceSite]: <IceSite />,
+        [CommonGameScreens.mansion]: <Mansion />,
+        [InventoryGameScreens.market]: <Market />,
+        [InventoryGameScreens.mutaLab]: <MutaLab />,
+        [InventoryGameScreens.tropheyField]: <TropheyField />,
+        [CommonGameScreens.villageMap]: <VillageMap />,
+        [SchoolGameScreens.wizardSchool]: <WizardSchool />,
     }
 
     return (
         <div className={styles.GameScreen}>
             {
-                screen !== GameScreens.villageMap && <button 
+                screen !== CommonGameScreens.villageMap && <button 
                     className={styles.GameScreen_villageButton}
-                    onClick={() => dispatch(gameScreens.actions.changeScreen(GameScreens.villageMap))}
+                    onClick={() => dispatch(gameScreens.actions.changeScreen(CommonGameScreens.villageMap))}
                     title={chrome.i18n.getMessage('back_to_village')}
                 >
                     <Arrow90degLeft size={25}/>

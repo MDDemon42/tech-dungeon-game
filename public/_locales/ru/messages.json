@@ -2140,6 +2140,42 @@
     "titan_skin_ritual_description": {
         "message": "Ритуал для почти неуязвимой кожи."
     },
+    "air_vessel": {
+        "message": "Сосуд Воздуха"
+    },
+    "air_vessel_ability_description": {
+        "message": "Повышает Уворот на 10, сопротивление Удушению на 1,\nа также увеличивает запас Маны на 1."
+    },
+    "air_vessel_ritual_description": {
+        "message": "Ритуал, вселяющий в тело дух Воздуха."
+    },
+    "fire_vessel": {
+        "message": "Сосуд Огня"
+    },
+    "fire_vessel_ability_description": {
+        "message": "Повышает сопротивление Огню на 1 и увеличивает запас Маны на 2."
+    },
+    "fire_vessel_ritual_description": {
+        "message": "Ритуал, вселяющий в тело дух Огня."
+    },
+    "cold_vessel": {
+        "message": "Сосуд Холода"
+    },
+    "cold_vessel_ability_description": {
+        "message": "Повышает сопротивление Холоду на 1 и увеличивает запас Маны на 1."
+    },
+    "cold_vessel_ritual_description": {
+        "message": "Ритуал, вселяющий в тело дух Холода."
+    },
+    "cosmo_chakra": {
+        "message": "Космо чакра"
+    },
+    "cosmo_chakra_ability_description": {
+        "message": "Повышает сопротивление Пси-урону на 1,\nувеличивает запас Концентрации на 1."
+    },
+    "cosmo_chakra_ritual_description": {
+        "message": "Ритуал, расширяющий связь с космосом. Внимание: приводит к облысению!"
+    },
     "defensive_charms": {
         "message": "Защитные чары"
     },
@@ -2329,6 +2365,31 @@
             }
         }
     },
+    "ice_rituals": {
+        "message": "Ритуалы Льда"
+    },
+    "ice_rituals_task_title": {
+        "message": "Можешь мне помочь с $resource$, пожалуйста?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "ice_rituals_task_text": {
+        "message": "Ледяная девушка просит $count$ $resource$ для возведения Ритуальной зоны.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "fire_site_to": {
         "message": "К Огнищу!"
     },
@@ -2436,6 +2497,31 @@
     },
     "enflamed_strikes_task_text": {
         "message": "Огненная девушка просит $count$ $resource$ для тренировочных чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "fire_rituals": {
+        "message": "Ритуалы Огня"
+    },
+    "fire_rituals_task_title": {
+        "message": "Помоги мне с $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "fire_rituals_task_text": {
+        "message": "Огненная девушка просит $count$ $resource$ для возведения Ритуальной зоны.",
         "placeholders": {
             "count": {
                 "content": "$1",
@@ -2623,6 +2709,31 @@
     },
     "electrified_strikes_task_text": {
         "message": "Воздушный парень просит $count$ $resource$ для тренировочных чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "air_rituals": {
+        "message": "Ритуалы Воздуха"
+    },
+    "air_rituals_task_title": {
+        "message": "Мне нужно $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "air_rituals_task_text": {
+        "message": "Воздушный парень просит $count$ $resource$ для возведения Ритуальной зоны.",
         "placeholders": {
             "count": {
                 "content": "$1",
@@ -2915,6 +3026,31 @@
     },
     "psi_infused_strikes_task_text": {
         "message": "Татуированный парень просит ещё $count$ $resource$ для тренировочных чучел..",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "focus_rituals": {
+        "message": "Ритуалы Средоточия"
+    },
+    "focus_rituals_task_title": {
+        "message": "Помоги мне теперь с $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "focus_rituals_task_text": {
+        "message": "Татуированный парень просит $count$ $resource$ для возведения Ритуальной зоны.",
         "placeholders": {
             "count": {
                 "content": "$1",

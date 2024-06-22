@@ -6,7 +6,7 @@ const titanSkin = createPassiveAbility(
         chrome.i18n.getMessage('titan_skin'), 
         chrome.i18n.getMessage('resistance_titan_invincibility'),
     ],
-    {[UserParam.health]: 0},
+    {[UserParam.stamina]: 1},
     {
         [DamageType.physicalPiercing]: 2,
         [DamageType.physicalSlashing]: 2,
@@ -19,8 +19,52 @@ const titanSkin = createPassiveAbility(
     0
 );
 
+const airVessel = createPassiveAbility(
+    [
+        chrome.i18n.getMessage('air_vessel'),
+        chrome.i18n.getMessage('air_vessel_ability_description'),
+    ],
+    {[UserParam.mana]: 1},
+    {[DamageType.suffocation]: 1},
+    10
+);
+
+const fireVessel = createPassiveAbility(
+    [
+        chrome.i18n.getMessage('fire_vessel'),
+        chrome.i18n.getMessage('fire_vessel_ability_description'),
+    ],
+    {[UserParam.mana]: 2},
+    {[DamageType.fire]: 1},
+    0
+);
+
+const coldVessel = createPassiveAbility(
+    [
+        chrome.i18n.getMessage('cold_vessel'),
+        chrome.i18n.getMessage('cold_vessel_ability_description'),
+    ],
+    {[UserParam.mana]: 1},
+    {[DamageType.cold]: 1},
+    0
+);
+
+const cosmoChakra = createPassiveAbility(
+    [
+        chrome.i18n.getMessage('cosmo_chakra'),
+        chrome.i18n.getMessage('cosmo_chakra_ability_description'),
+    ],
+    {[UserParam.focus]: 1},
+    {[DamageType.psionic]: 1},
+    0
+);
+
 const rituals = {
-    titanSkin
+    titanSkin,
+    airVessel,
+    fireVessel,
+    coldVessel,
+    cosmoChakra
 }
 
 export default rituals

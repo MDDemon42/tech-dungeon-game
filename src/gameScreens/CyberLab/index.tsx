@@ -1,5 +1,5 @@
 import SubInventoryScreen from '../../components/SubInventoryScreen';
-import { GameScreens, InventoryGameScreens } from '../../enums-and-interfaces/enums';
+import { InventoryGameScreens } from '../../enums-and-interfaces/enums';
 import { IUpgradeButton } from '../../enums-and-interfaces/interfaces';
 import PatternScreen from '../../components/PatternScreen';
 import { Tools } from 'react-bootstrap-icons';
@@ -29,7 +29,7 @@ const cyberLabUpgradeButtons = (stage: number): IUpgradeButton[] => [
 
 function CyberLab() {
     return <PatternScreen 
-        screenName={GameScreens.cyberLab}
+        screenName={InventoryGameScreens.cyberLab}
         upgradeButtonsFunc={cyberLabUpgradeButtons}
         subScreenMapping={cyberLabSubScreenMapping}
     />

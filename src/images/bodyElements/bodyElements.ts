@@ -19,6 +19,7 @@ import pistols from './pistols';
 import pocket from './pockets';
 import rapier from './rapier';
 import rightHipItem from './rightHipItem';
+import rituals from './rituals';
 import sabre from './sabre';
 import shield from './shield';
 import steelMace from './steelMace';
@@ -56,6 +57,7 @@ const bodyElements = {
     pocket,
     rapier,
     rightHipItem,
+    rituals,
     sabre,
     shield,
     steelMace,

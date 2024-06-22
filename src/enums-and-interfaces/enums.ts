@@ -117,38 +117,6 @@ export enum BendingOption {
     pyrokinesis = 'pyrokinesis'
 }
 
-export enum GameScreens {
-    academy = 'Academy',
-    aerotheurgRooms = 'Aerotheurg_Rooms',
-    airSchool = 'Air_School',
-    airSite = 'Air_Site',
-    apprenticeRooms = 'Apprentice_Rooms',
-    armoury = 'Armoury',
-    cryomancerRooms = 'Cryomancer_Rooms',
-    cyberLab = 'Cyber_Lab',
-    fireSchool = 'Fire_School',
-    fireSite = 'Fire_Site',
-    focusSchool = 'Focus_School',
-    focusSite = 'Focus_Site',
-    guildianRooms = 'Guildian_Rooms',
-    guildRituals = 'Guild_Rituals',
-    guildSchool = 'Guild_School',
-    guildShop = 'Guild_Shop',
-    iceSchool = 'Ice_School',
-    iceSite = 'Ice_Site',
-    mansion = 'Mansion',
-    market = 'Market',
-    mutaLab = 'Mutation_Lab', 
-    psionRooms = 'Psion_Rooms',
-    pyrokineticRooms = 'Pyrokinetic_Rooms',   
-    spellSchool = 'Spell_School',
-    tavern = 'Tavern',
-    tropheyField = 'Trophey_Field',
-    villageMap = 'Village_Map', 
-    wizardSchool = 'Wizard_School',
-    wizardShop = 'Wizard_Shop',
-}
-
 export enum InventoryGameScreens {
     armoury = 'Armoury',
     market = 'Market',
@@ -159,7 +127,7 @@ export enum InventoryGameScreens {
     tropheyField = 'Trophey_Field'
 }
 
-export enum MindGameScreens {
+export enum SchoolGameScreens {
     academy = 'Academy',
     focusSite = 'Focus_Site',
     focusSchool = 'Focus_School',
@@ -168,8 +136,15 @@ export enum MindGameScreens {
     fireSchool = 'Fire_School',
     iceSchool = 'Ice_School',
     airSchool = 'Air_School',
-    guildSchool = 'Guild_School',
-    guildRituals ='Guild_Rituals'
+    guildSchool = 'Guild_School'    
+}
+
+export enum RitualGameScreens {
+    airRituals = 'Air_Rituals',
+    fireRituals = 'Fire_Rituals',
+    focusRituals = 'Focus_Rituals',
+    guildRituals ='Guild_Rituals',
+    iceRituals = 'Ice_Rituals'    
 }
 
 export enum BendingGameScreens {
@@ -177,6 +152,8 @@ export enum BendingGameScreens {
     iceSite = 'Ice_Site',
     airSite = 'Air_Site'
 }
+
+export type MindGameScreens = SchoolGameScreens | RitualGameScreens;
 
 export enum MansionScreens {
     livingRoom = 'Living_Room',
@@ -191,6 +168,20 @@ export enum SquadGameScreens {
     pyrokineticRooms = 'Pyrokinetic_Rooms',
     tavern = 'Tavern'
 }
+
+export enum CommonGameScreens {
+    mansion = 'Mansion',
+    villageMap = 'Village_Map'
+}
+
+export type GameScreens = 
+    InventoryGameScreens | 
+    SchoolGameScreens |
+    RitualGameScreens |
+    BendingGameScreens |
+    MansionScreens |
+    SquadGameScreens |
+    CommonGameScreens;
 
 export enum TaskStatus {
     unknown = 'Unknown',

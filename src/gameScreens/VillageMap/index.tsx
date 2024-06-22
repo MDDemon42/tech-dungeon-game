@@ -10,7 +10,13 @@ import {
     ExclamationCircle
 } from 'react-bootstrap-icons';
 import gameScreens from '../../redux/slices/gameScreen';
-import { GameScreens } from "../../enums-and-interfaces/enums";
+import { 
+    BendingGameScreens, 
+    CommonGameScreens, 
+    GameScreens, 
+    InventoryGameScreens, 
+    SchoolGameScreens 
+} from "../../enums-and-interfaces/enums";
 import styles from './index.module.css';
 import { useNavigate } from "react-router-dom";
 import { ReactElement, useState } from "react";
@@ -32,85 +38,85 @@ export const screenMappings: Partial<Record<GameScreens, {
     requiredScreen: GameScreens,
     requiredStage: number
 }>> = {
-    [GameScreens.academy]: {
-        requiredScreen: GameScreens.market,
+    [SchoolGameScreens.academy]: {
+        requiredScreen: InventoryGameScreens.market,
         requiredStage: 1,
         title: chrome.i18n.getMessage('academy_to'),
         icon: <MortarboardFill size={25}/>,
         houses: [10, 11, 12, 13]
     },
-    [GameScreens.airSite]: {
-        requiredScreen: GameScreens.guildSchool,
+    [BendingGameScreens.airSite]: {
+        requiredScreen: SchoolGameScreens.guildSchool,
         requiredStage: 1,
         title: chrome.i18n.getMessage('air_site_to'),
         icon: <Wind size={25}/>,
         houses: [7]
     },
-    [GameScreens.cyberLab]: {
-        requiredScreen: GameScreens.villageMap,
+    [InventoryGameScreens.cyberLab]: {
+        requiredScreen: CommonGameScreens.villageMap,
         requiredStage: 0,
         title: chrome.i18n.getMessage('cyber_lab_to'),
         icon: <Tools size={25}/>,
         houses: [20]
     },        
-    [GameScreens.fireSite]: {
-        requiredScreen: GameScreens.guildSchool,
+    [BendingGameScreens.fireSite]: {
+        requiredScreen: SchoolGameScreens.guildSchool,
         requiredStage: 1,
         title: chrome.i18n.getMessage('fire_site_to'),
         icon: <Fire size={25}/>,
         houses: [8]
     },
-    [GameScreens.focusSite]: {
-        requiredScreen: GameScreens.guildSchool,
+    [SchoolGameScreens.focusSite]: {
+        requiredScreen: SchoolGameScreens.guildSchool,
         requiredStage: 1,
         title: chrome.i18n.getMessage('focus_site_to'),
         icon: <Eye size={25}/>,
         houses: [9]
     },
-    [GameScreens.guildSchool]: {
-        requiredScreen: GameScreens.market,
+    [SchoolGameScreens.guildSchool]: {
+        requiredScreen: InventoryGameScreens.market,
         requiredStage: 1,
         title: chrome.i18n.getMessage('guild_to'),
         icon: <Bank2 size={25}/>,
         houses: [14, 15, 16, 17]
     },
-    [GameScreens.iceSite]: {
-        requiredScreen: GameScreens.guildSchool,
+    [BendingGameScreens.iceSite]: {
+        requiredScreen: SchoolGameScreens.guildSchool,
         requiredStage: 1,
         title: chrome.i18n.getMessage('ice_site_to'),
         icon: <Snow2 size={25}/>,
         houses: [6]
     },
-    [GameScreens.mansion]: {
-        requiredScreen: GameScreens.villageMap,
+    [CommonGameScreens.mansion]: {
+        requiredScreen: CommonGameScreens.villageMap,
         requiredStage: 0,
         title: chrome.i18n.getMessage('mansion_to'),
         icon: <HouseFill size={25}/>,
         houses: []
     },
-    [GameScreens.market]: {
-        requiredScreen: GameScreens.villageMap,
+    [InventoryGameScreens.market]: {
+        requiredScreen: CommonGameScreens.villageMap,
         requiredStage: 0,
         title: chrome.i18n.getMessage('market_to'),
         icon: <ShopWindow size={25}/>,
         houses: [0, 1, 2, 3, 4, 5]
     },
-    [GameScreens.mutaLab]: {
-        requiredScreen: GameScreens.villageMap,
+    [InventoryGameScreens.mutaLab]: {
+        requiredScreen: CommonGameScreens.villageMap,
         requiredStage: 0,
         title: chrome.i18n.getMessage('muta_lab_to'),
         icon: <Virus size={25}/>,
         houses: [20]
     }, 
-    [GameScreens.tropheyField]: {
-        requiredScreen: GameScreens.villageMap,
+    [InventoryGameScreens.tropheyField]: {
+        requiredScreen: CommonGameScreens.villageMap,
         requiredStage: 111,
         title: chrome.i18n.getMessage('trophey_field_to'),
         icon: <EmojiDizzy size={25}/>,
         houses: [0]
     },        
-    [GameScreens.wizardSchool]: {
-        requiredScreen: GameScreens.academy,
+    [SchoolGameScreens.wizardSchool]: {
+        requiredScreen: SchoolGameScreens.academy,
         requiredStage: 1,
         title: chrome.i18n.getMessage('wizard_school_to'),
         icon: <Magic size={25}/>,
@@ -217,7 +223,7 @@ function VillageMap() {
                         dispatch(gameSquad.actions.spendStamina(3));
                         
                         dispatch(gameStage.actions.changeStage({
-                            zone: GameScreens.villageMap,
+                            zone: CommonGameScreens.villageMap,
                             stage: 1
                         }))
                     }                    

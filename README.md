@@ -21,6 +21,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  1) More `MASPIC`(`Beak`, rituals to become `Elementals`)
  2) More ~abilities~ to get more user resources (~battery capacity~ for cyborg, `psi-capacity`)
  3) Mix `MASPIC` to get `elf` and `werewolf`(?)
- 4) Long hair of `fur` mutation
+ 4) Long hair of `fur` mutation (bald on `cosmo chakra`)
  5) More items for `extra arms` and `telekinesis` (`mage khopesh`)
  6) Legendary `MASPIC`

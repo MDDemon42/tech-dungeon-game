@@ -2,7 +2,7 @@ import { createTask } from "../../../redux/slices/gameStage";
 import { TaskStatus } from "../../../enums-and-interfaces/enums";
 import items from "../../Market/items";
 
-const task_buildWizardSchool = createTask(
+const buildWizardSchool = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -15,7 +15,7 @@ const task_buildWizardSchool = createTask(
     ),
 )
 
-const task_constructLibrarium = createTask(
+const constructLibrarium = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -31,11 +31,11 @@ const task_constructLibrarium = createTask(
 const wizardSchoolTasks = {
     1: {
         status: TaskStatus.unknown,
-        task: task_buildWizardSchool
+        task: buildWizardSchool
     },
     2: {
         status: TaskStatus.unknown,
-        task: task_constructLibrarium
+        task: constructLibrarium
     }
 }
 

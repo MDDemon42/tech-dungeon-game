@@ -2154,6 +2154,42 @@
     "titan_skin_ritual_description": {
         "message": "Ritual to make skin almost invincible."
     },
+    "air_vessel": {
+        "message": "Air vessel"
+    },
+    "air_vessel_ability_description": {
+        "message": "Upgrades resistance to Suffocation by 1 and Dodge by 10, gives 1 extra Mana."
+    },
+    "air_vessel_ritual_description": {
+        "message": "Ritual to make you a vessel for Air spirit."
+    },
+    "fire_vessel": {
+        "message": "Fire vessel"
+    },
+    "fire_vessel_ability_description": {
+        "message": "Upgrades resistance to Fire damage by 1 and gives 2 extra Mana."
+    },
+    "fire_vessel_ritual_description": {
+        "message": "Ritual to make you a vessel for Fire spirit."
+    },
+    "cold_vessel": {
+        "message": "Cold vessel"
+    },
+    "cold_vessel_ability_description": {
+        "message": "Upgrades resistance to Cold damage by 1 and gives 1 extra Mana."
+    },
+    "cold_vessel_ritual_description": {
+        "message": "Ritual to make you a vessel for Cold spirit."
+    },
+    "cosmo_chakra": {
+        "message": "Cosmo chakra"
+    },
+    "cosmo_chakra_ability_description": {
+        "message": "Upgrades resistance to Psionic damage by 1 and gives 1 extra Focus."
+    },
+    "cosmo_chakra_ritual_description": {
+        "message": "Ritual to expand your link with cosmos. Attention: leads to baldness!"
+    },
     "defensive_charms": {
         "message": "Defensive charm"
     },
@@ -2343,6 +2379,31 @@
             }
         }
     },
+    "ice_rituals": {
+        "message": "Ice rituals"
+    },
+    "ice_rituals_task_title": {
+        "message": "Can you help me with $resource$, please?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "ice_rituals_task_text": {
+        "message": "Ice girl asks for $count$ $resource$ to make Ritual zone.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "fire_site_to": {
         "message": "To Fire Site!"
     },
@@ -2450,6 +2511,31 @@
     },
     "enflamed_strikes_task_text": {
         "message": "Fire girl asks for $count$ $resource$ to make more training dummies.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "fire_rituals": {
+        "message": "Fire rituals"
+    },
+    "fire_rituals_task_title": {
+        "message": "Help me with $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "fire_rituals_task_text": {
+        "message": "Fire girl asks for $count$ $resource$ to make Ritual zone.",
         "placeholders": {
             "count": {
                 "content": "$1",
@@ -2637,6 +2723,31 @@
     },
     "electrified_strikes_task_text": {
         "message": "Air guy asks for $count$ $resource$ to make more training dummies.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "air_rituals": {
+        "message": "Air rituals"
+    },
+    "air_rituals_task_title": {
+        "message": "I need $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "air_rituals_task_text": {
+        "message": "Air guy asks for $count$ $resource$ to make Ritual zone.",
         "placeholders": {
             "count": {
                 "content": "$1",
@@ -2929,6 +3040,31 @@
     },
     "psi_infused_strikes_task_text": {
         "message": "Tattoed guy asks for $count$ $resource$ to make more training dummies.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "focus_rituals": {
+        "message": "Focus rituals"
+    },
+    "focus_rituals_task_title": {
+        "message": "Help me now with $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "focus_rituals_task_text": {
+        "message": "Tattoed guy asks for $count$ $resource$ to build Ritual zone.",
         "placeholders": {
             "count": {
                 "content": "$1",

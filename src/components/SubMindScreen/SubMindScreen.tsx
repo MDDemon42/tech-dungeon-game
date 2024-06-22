@@ -3,7 +3,12 @@ import styles from './SubMindScreen.module.css';
 import { IMastery, IPower, IRitual, ISpell, IStore, ISubMindMapping } from '../../enums-and-interfaces/interfaces';
 import { useDispatch } from 'react-redux';
 import gameSquad from '../../redux/slices/gameSquad';
-import { MindGameScreens, UserParam } from '../../enums-and-interfaces/enums';
+import { 
+    MindGameScreens, 
+    RitualGameScreens, 
+    SchoolGameScreens, 
+    UserParam 
+} from '../../enums-and-interfaces/enums';
 import SubMindScreenItem from './SubMindScreenItem';
 import academyMasteries from '../../gameScreens/Academy/masteries';
 
@@ -30,7 +35,7 @@ function SubMindScreen(props: {
     }
 
     const subMindMappings: Record<MindGameScreens, ISubMindMapping> = {
-        [MindGameScreens.academy]: {
+        [SchoolGameScreens.academy]: {
             capacity: member.params.level,
             posessed: member.general.mind.masteries.length,
             title: chrome.i18n.getMessage('academy_title'),
@@ -43,7 +48,16 @@ function SubMindScreen(props: {
                 }
             }
         },
-        [MindGameScreens.airSchool]: {
+        [RitualGameScreens.airRituals]: {
+            capacity: member.params.maxParams[UserParam.health],
+            posessed: 0,
+            title: chrome.i18n.getMessage(''),
+            button: chrome.i18n.getMessage('learn'),
+            listener: (data: IRitual) => {
+                dispatch(gameSquad.actions.surpassRitual(data));
+            }
+        }, 
+        [SchoolGameScreens.airSchool]: {
             capacity: member.params.level,
             posessed: member.general.mind.masteries.length,
             title: chrome.i18n.getMessage('air_school_title'),
@@ -52,7 +66,16 @@ function SubMindScreen(props: {
                 dispatch(gameSquad.actions.learnMastery(data));
             }
         },
-        [MindGameScreens.fireSchool]: {
+        [RitualGameScreens.fireRituals]: {
+            capacity: member.params.maxParams[UserParam.health],
+            posessed: 0,
+            title: chrome.i18n.getMessage(''),
+            button: chrome.i18n.getMessage('learn'),
+            listener: (data: IRitual) => {
+                dispatch(gameSquad.actions.surpassRitual(data));
+            }
+        }, 
+        [SchoolGameScreens.fireSchool]: {
             capacity: member.params.level,
             posessed: member.general.mind.masteries.length,
             title: chrome.i18n.getMessage('fire_school_title'),
@@ -61,7 +84,16 @@ function SubMindScreen(props: {
                 dispatch(gameSquad.actions.learnMastery(data));
             }
         },
-        [MindGameScreens.focusSite]: {
+        [RitualGameScreens.focusRituals]: {
+            capacity: member.params.maxParams[UserParam.health],
+            posessed: 0,
+            title: chrome.i18n.getMessage(''),
+            button: chrome.i18n.getMessage('learn'),
+            listener: (data: IRitual) => {
+                dispatch(gameSquad.actions.surpassRitual(data));
+            }
+        }, 
+        [SchoolGameScreens.focusSite]: {
             capacity: member.params.maxParams[UserParam.focus],
             posessed: member.general.mind.powers.length,
             title: chrome.i18n.getMessage('focus_site_title'),
@@ -70,7 +102,7 @@ function SubMindScreen(props: {
                 dispatch(gameSquad.actions.developPower(data));
             }
         },
-        [MindGameScreens.focusSchool]: {
+        [SchoolGameScreens.focusSchool]: {
             capacity: member.params.level,
             posessed: member.general.mind.masteries.length,
             title: chrome.i18n.getMessage('focus_school_title'),
@@ -79,7 +111,7 @@ function SubMindScreen(props: {
                 dispatch(gameSquad.actions.learnMastery(data));
             }
         },
-        [MindGameScreens.guildRituals]: {
+        [RitualGameScreens.guildRituals]: {
             capacity: member.params.maxParams[UserParam.health],
             posessed: 0,
             title: chrome.i18n.getMessage('guild_rituals_title'),
@@ -88,7 +120,7 @@ function SubMindScreen(props: {
                 dispatch(gameSquad.actions.surpassRitual(data));
             }
         },       
-        [MindGameScreens.guildSchool]: {
+        [SchoolGameScreens.guildSchool]: {
             capacity: member.params.level,
             posessed: member.general.mind.masteries.length,
             title: chrome.i18n.getMessage('guild_school_title'),
@@ -97,7 +129,16 @@ function SubMindScreen(props: {
                 dispatch(gameSquad.actions.learnMastery(data));
             }
         },
-        [MindGameScreens.iceSchool]: {
+        [RitualGameScreens.iceRituals]: {
+            capacity: member.params.maxParams[UserParam.health],
+            posessed: 0,
+            title: chrome.i18n.getMessage(''),
+            button: chrome.i18n.getMessage('learn'),
+            listener: (data: IRitual) => {
+                dispatch(gameSquad.actions.surpassRitual(data));
+            }
+        }, 
+        [SchoolGameScreens.iceSchool]: {
             capacity: member.params.level,
             posessed: member.general.mind.masteries.length,
             title: chrome.i18n.getMessage('ice_school_title'),
@@ -106,7 +147,7 @@ function SubMindScreen(props: {
                 dispatch(gameSquad.actions.learnMastery(data));
             }
         },
-        [MindGameScreens.spellSchool]: {
+        [SchoolGameScreens.spellSchool]: {
             capacity: member.params.maxParams[UserParam.mana],
             posessed: member.general.mind.spells.length,
             title: chrome.i18n.getMessage('spell_shop_title'),
@@ -115,7 +156,7 @@ function SubMindScreen(props: {
                 dispatch(gameSquad.actions.studySpell({index, data}));
             }
         },
-        [MindGameScreens.wizardSchool]: {
+        [SchoolGameScreens.wizardSchool]: {
             capacity: member.params.level,
             posessed: member.general.mind.masteries.length,
             title: chrome.i18n.getMessage('wizard_school_title'),

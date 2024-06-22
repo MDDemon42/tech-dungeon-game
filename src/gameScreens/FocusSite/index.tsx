@@ -1,25 +1,34 @@
-import { GameScreens, MindGameScreens, SquadGameScreens } from "../../enums-and-interfaces/enums";
+import { 
+    RitualGameScreens, 
+    SchoolGameScreens, 
+    SquadGameScreens 
+} from "../../enums-and-interfaces/enums";
 import SubMindScreen from "../../components/SubMindScreen/SubMindScreen";
 import { IUpgradeButton } from "../../enums-and-interfaces/interfaces";
 import PatternScreen from "../../components/PatternScreen";
-import { Book, Eye, Person } from "react-bootstrap-icons";
+import { Book, Eye, Person, PersonUp } from "react-bootstrap-icons";
 import SubSquadScreen from "../../components/SubSquadScreen";
 
 const focusSiteSubScreenMapping = {
-    [MindGameScreens.focusSchool]: {
+    [SchoolGameScreens.focusSchool]: {
         requiredStage: 1,
         icon: <Book size={36} />,
-        screen: <SubMindScreen screenName={MindGameScreens.focusSchool}/>
+        screen: <SubMindScreen screenName={SchoolGameScreens.focusSchool}/>
     },
-    [MindGameScreens.focusSite]: {
+    [SchoolGameScreens.focusSite]: {
         requiredStage: 1,
         icon: <Eye size={36} />,
-        screen: <SubMindScreen screenName={MindGameScreens.focusSite}/>
+        screen: <SubMindScreen screenName={SchoolGameScreens.focusSite}/>
     },
     [SquadGameScreens.psionRooms]: {
         requiredStage: 1,
         icon: <Person size={36} />,
         screen: <SubSquadScreen screenName={SquadGameScreens.psionRooms}/>
+    },
+    [RitualGameScreens.focusRituals]: {
+        requiredStage: 11,
+        icon: <PersonUp size={36} />,
+        screen: <SubMindScreen screenName={RitualGameScreens.focusRituals}/>
     }
 }
 
@@ -47,12 +56,18 @@ const focusSiteUpgradeButtons = (stage: number): IUpgradeButton[] => [
         stage: 7,
         disabled: stage % 7 === 0,
         visible: stage % 3 === 0 && stage % 7 !== 0
+    },
+    {
+        title: chrome.i18n.getMessage('focus_rituals'),
+        stage: 11,
+        disabled: stage % 11 === 0,
+        visible: stage % 11 !== 0
     }
 ];
 
 function FocusSite() {
     return <PatternScreen 
-        screenName={GameScreens.focusSite}
+        screenName={SchoolGameScreens.focusSite}
         upgradeButtonsFunc={focusSiteUpgradeButtons}
         subScreenMapping={focusSiteSubScreenMapping}
     />

@@ -1,4 +1,8 @@
-import { GameScreens, InventoryGameScreens, MansionScreens } from '../../enums-and-interfaces/enums';
+import { 
+    CommonGameScreens, 
+    InventoryGameScreens, 
+    MansionScreens 
+} from '../../enums-and-interfaces/enums';
 import { IUpgradeButton } from '../../enums-and-interfaces/interfaces';
 import { 
     ChatRightHeart, Hammer
@@ -67,7 +71,7 @@ const mansionUpgradeButtons = (stage: number): IUpgradeButton[] => [
 
 function Mansion() {
     return <PatternScreen 
-        screenName={GameScreens.mansion}
+        screenName={CommonGameScreens.mansion}
         upgradeButtonsFunc={mansionUpgradeButtons}
         subScreenMapping={mansionSubScreenMapping}
     />

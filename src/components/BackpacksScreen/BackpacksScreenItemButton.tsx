@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { UserResource, GameScreens } from "../../enums-and-interfaces/enums";
+import { UserResource, InventoryGameScreens } from "../../enums-and-interfaces/enums";
 import { IManageItemsProps, IStore } from "../../enums-and-interfaces/interfaces";
 import items from "../../gameScreens/Market/items";
 import { createNoItem } from "../../helpers/emptyEssencesCreators";
@@ -27,7 +27,7 @@ function BackpacksScreenItemButton(props: IManageItemsProps) {
         listener: () => sellListener(props),
         resource: UserResource.gem,
         price: item.cost,
-        disabled: gameScreen !== GameScreens.market || item.name === nothing
+        disabled: gameScreen !== InventoryGameScreens.market || item.name === nothing
     };
 
     if (item.name === items.bigResources.beastRemains.name ||
@@ -38,7 +38,7 @@ function BackpacksScreenItemButton(props: IManageItemsProps) {
         buttonProps.listener = () => utilizeListener(itemIndex);
         buttonProps.resource = UserResource.gene;
         buttonProps.price = item.cost;
-        buttonProps.disabled = gameScreen !== GameScreens.mutaLab
+        buttonProps.disabled = gameScreen !== InventoryGameScreens.mutaLab
     }
 
     return <button 

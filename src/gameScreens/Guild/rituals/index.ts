@@ -1,8 +1,8 @@
+import { createRitual } from "../../../general/rituals/func";
 import images from "../../../images/images";
 import abilities from "../../../general/abilities";
 import academyMasteries from "../../Academy/masteries";
 import { IRitual } from "../../../enums-and-interfaces/interfaces";
-import { createRitual } from "../../../general/rituals";
 
 const titanSkin = createRitual(
     [

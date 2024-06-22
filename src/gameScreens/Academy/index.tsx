@@ -1,14 +1,14 @@
 import SubMindScreen from '../../components/SubMindScreen/SubMindScreen';
-import { GameScreens, MindGameScreens } from '../../enums-and-interfaces/enums';
+import { SchoolGameScreens } from '../../enums-and-interfaces/enums';
 import { IUpgradeButton } from '../../enums-and-interfaces/interfaces';
 import { Book } from 'react-bootstrap-icons';
 import PatternScreen from '../../components/PatternScreen';
 
 const academySubScreenMapping = {
-    [MindGameScreens.airSchool]: {
+    [SchoolGameScreens.academy]: {
         requiredStage: 1,
         icon: <Book size={36} />,
-        screen: <SubMindScreen screenName={MindGameScreens.academy}/>
+        screen: <SubMindScreen screenName={SchoolGameScreens.academy}/>
     }
 }
 
@@ -23,7 +23,7 @@ const academyUpgradeButtons = (stage: number, extraStage: number): IUpgradeButto
 
 function Academy() {
     return <PatternScreen 
-        screenName={GameScreens.academy}
+        screenName={SchoolGameScreens.academy}
         upgradeButtonsFunc={academyUpgradeButtons}
         subScreenMapping={academySubScreenMapping}
     />

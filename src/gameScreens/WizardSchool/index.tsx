@@ -1,4 +1,8 @@
-import { GameScreens, InventoryGameScreens, MindGameScreens, SquadGameScreens } from "../../enums-and-interfaces/enums";
+import { 
+    InventoryGameScreens, 
+    SchoolGameScreens, 
+    SquadGameScreens 
+} from "../../enums-and-interfaces/enums";
 import SubInventoryScreen from "../../components/SubInventoryScreen";
 import SubMindScreen from "../../components/SubMindScreen/SubMindScreen";
 import { IUpgradeButton } from "../../enums-and-interfaces/interfaces";
@@ -9,15 +13,15 @@ import SubSquadScreen from "../../components/SubSquadScreen";
 import PatternScreen from "../../components/PatternScreen";
 
 const wizardSchoolSubScreenMapping = {
-    [MindGameScreens.wizardSchool]: {
+    [SchoolGameScreens.wizardSchool]: {
         requiredStage: 1,
         icon: <Book size={36} />,
-        screen: <SubMindScreen screenName={MindGameScreens.wizardSchool}/>
+        screen: <SubMindScreen screenName={SchoolGameScreens.wizardSchool}/>
     },
-    [MindGameScreens.spellSchool]: {
+    [SchoolGameScreens.spellSchool]: {
         requiredStage: 1,
         icon: <Spellcheck size={36} />,
-        screen: <SubMindScreen screenName={MindGameScreens.spellSchool}/>
+        screen: <SubMindScreen screenName={SchoolGameScreens.spellSchool}/>
     },
     [InventoryGameScreens.wizardShop]: {
         requiredStage: 1,
@@ -42,7 +46,7 @@ const wizardSchoolUpgradeButtons = (stage: number): IUpgradeButton[] => [
 
 function WizardSchool() {
     return <PatternScreen 
-        screenName={GameScreens.wizardSchool}
+        screenName={SchoolGameScreens.wizardSchool}
         upgradeButtonsFunc={wizardSchoolUpgradeButtons}
         subScreenMapping={wizardSchoolSubScreenMapping}
     />

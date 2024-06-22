@@ -3,7 +3,7 @@ import { TaskStatus } from "../../../enums-and-interfaces/enums";
 import { IScreenTasks } from "../../../enums-and-interfaces/interfaces";
 import items from "../../Market/items";
 
-const task_buildAcademy = createTask(
+const buildAcademy = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -20,7 +20,7 @@ const task_buildAcademy = createTask(
     )
 );
 
-const task_modernizeAcademy = createTask(
+const modernizeAcademy = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -36,11 +36,11 @@ const task_modernizeAcademy = createTask(
 const academyTasks: IScreenTasks = {
     1: {
         status: TaskStatus.unknown,
-        task: task_buildAcademy
+        task: buildAcademy
     },
     2: {
         status: TaskStatus.unknown,
-        task: task_modernizeAcademy
+        task: modernizeAcademy
     }
 }
 

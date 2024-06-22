@@ -1,16 +1,21 @@
-import { BendingGameScreens, GameScreens, MindGameScreens, SquadGameScreens } from "../../enums-and-interfaces/enums";
+import { 
+    BendingGameScreens, 
+    RitualGameScreens, 
+    SchoolGameScreens, 
+    SquadGameScreens 
+} from "../../enums-and-interfaces/enums";
 import BendingScreen from "../../components/BendingScreen/BendingScreen";
 import SubMindScreen from "../../components/SubMindScreen/SubMindScreen";
 import { IUpgradeButton } from "../../enums-and-interfaces/interfaces";
-import { Book, Spellcheck, Person } from "react-bootstrap-icons";
+import { Book, Spellcheck, Person, PersonUp } from "react-bootstrap-icons";
 import SubSquadScreen from "../../components/SubSquadScreen";
 import PatternScreen from "../../components/PatternScreen";
 
 const fireSiteSubScreenMapping = {
-    [MindGameScreens.fireSchool]: {
+    [SchoolGameScreens.fireSchool]: {
         requiredStage: 1,
         icon: <Book size={36} />,
-        screen: <SubMindScreen screenName={MindGameScreens.fireSchool}/>
+        screen: <SubMindScreen screenName={SchoolGameScreens.fireSchool}/>
     },
     [BendingGameScreens.fireSite]: {
         requiredStage: 1,
@@ -21,6 +26,11 @@ const fireSiteSubScreenMapping = {
         requiredStage: 1,
         icon: <Person size={36} />,
         screen: <SubSquadScreen screenName={SquadGameScreens.pyrokineticRooms}/>
+    },
+    [RitualGameScreens.fireRituals]: {
+        requiredStage: 7,
+        icon: <PersonUp size={36} />,
+        screen: <SubMindScreen screenName={RitualGameScreens.fireRituals}/>
     }
 }
 
@@ -43,11 +53,17 @@ const fireSiteUpgradeButtons = (stage: number): IUpgradeButton[] => [
         disabled: stage % 5 === 0,
         visible: stage % 5 !== 0
     },
+    {
+        title: chrome.i18n.getMessage('fire_rituals'),
+        stage: 7,
+        disabled: stage % 7 === 0,
+        visible: stage % 7 !== 0
+    }
 ];
 
 function FireSite() {
     return <PatternScreen 
-        screenName={GameScreens.fireSite}
+        screenName={BendingGameScreens.fireSite}
         upgradeButtonsFunc={fireSiteUpgradeButtons}
         subScreenMapping={fireSiteSubScreenMapping}
     />

@@ -76,6 +76,21 @@ const psiInfusedStrikes = createTask(
     ),
 );
 
+const focusRituals = createTask(
+    [
+        {
+            name: items.bigResources.ore.name,
+            amount: 1
+        }
+    ],
+    chrome.i18n.getMessage('focus_rituals_task_title',
+        [items.bigResources.ore.name]
+    ),
+    chrome.i18n.getMessage('focus_rituals_task_text', 
+        ['1', items.bigResources.ore.name]
+    ),
+);
+
 const focusSiteTasks: IScreenTasks = {
     1: {
         status: TaskStatus.unknown,
@@ -96,6 +111,10 @@ const focusSiteTasks: IScreenTasks = {
     7: {
         status: TaskStatus.unknown,
         task: psiInfusedStrikes
+    },
+    11: {
+        status: TaskStatus.unknown,
+        task: focusRituals
     }
 }
 

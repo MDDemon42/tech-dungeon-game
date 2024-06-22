@@ -3,7 +3,7 @@ import { TaskStatus } from "../../../enums-and-interfaces/enums";
 import { IScreenTasks } from "../../../enums-and-interfaces/interfaces";
 import items from "../items";
 
-const task_steelOptions = createTask(
+const steelOptions = createTask(
     [
         {
             name: items.bigResources.ore.name,
@@ -19,7 +19,7 @@ const task_steelOptions = createTask(
 const marketTasks: IScreenTasks = {
     2: {
         status: TaskStatus.unknown,
-        task: task_steelOptions
+        task: steelOptions
     }
 }
 

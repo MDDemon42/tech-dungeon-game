@@ -1,7 +1,7 @@
 import { EmojiDizzy } from "react-bootstrap-icons";
 import PatternScreen from "../../components/PatternScreen";
 import SubInventoryScreen from "../../components/SubInventoryScreen";
-import { GameScreens, InventoryGameScreens } from "../../enums-and-interfaces/enums";
+import { InventoryGameScreens } from "../../enums-and-interfaces/enums";
 import { IUpgradeButton } from "../../enums-and-interfaces/interfaces";
 
 const tropheyFieldMapping = {
@@ -29,7 +29,7 @@ const tropheyFieldUpgradeButtons = (stage: number): IUpgradeButton[] => [
 
 function TropheyField() {
     return <PatternScreen 
-        screenName={GameScreens.tropheyField}
+        screenName={InventoryGameScreens.tropheyField}
         upgradeButtonsFunc={tropheyFieldUpgradeButtons}
         subScreenMapping={tropheyFieldMapping}
     />

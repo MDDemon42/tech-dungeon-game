@@ -3,7 +3,7 @@ import { IScreenTasks } from "../../../enums-and-interfaces/interfaces";
 import items from "../../Market/items";
 import { createTask } from "../../../redux/slices/gameStage";
 
-const task_buildAirSite = createTask(
+const buildAirSite = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -16,7 +16,7 @@ const task_buildAirSite = createTask(
     ),
 )
 
-const task_thunderPunch = createTask(
+const thunderPunch = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -31,7 +31,7 @@ const task_thunderPunch = createTask(
     ),
 );
 
-const task_airDeprivation = createTask(
+const airDeprivation = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -61,22 +61,41 @@ const electrifiedStrikes = createTask(
     ),
 );
 
+const airRituals = createTask(
+    [
+        {
+            name: items.bigResources.ore.name,
+            amount: 1
+        }
+    ],
+    chrome.i18n.getMessage('air_rituals_task_title', 
+        [items.bigResources.ore.name]
+    ),
+    chrome.i18n.getMessage('air_rituals_task_text', 
+        ['1', items.bigResources.ore.name]
+    ),
+);
+
 const airSiteTasks: IScreenTasks = {
     1: {
         status: TaskStatus.unknown,
-        task: task_buildAirSite
+        task: buildAirSite
     },
     2: {
         status: TaskStatus.unknown,
-        task: task_thunderPunch
+        task: thunderPunch
     },
     3: {
         status: TaskStatus.unknown,
-        task: task_airDeprivation
+        task: airDeprivation
     },
     5: {
         status: TaskStatus.unknown,
         task: electrifiedStrikes
+    },
+    7: {
+        status: TaskStatus.unknown,
+        task: airRituals
     }
 }
 

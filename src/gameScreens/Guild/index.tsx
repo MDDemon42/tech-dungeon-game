@@ -1,4 +1,9 @@
-import { GameScreens, InventoryGameScreens, MindGameScreens, SquadGameScreens } from "../../enums-and-interfaces/enums";
+import { 
+    InventoryGameScreens, 
+    RitualGameScreens, 
+    SchoolGameScreens, 
+    SquadGameScreens 
+} from "../../enums-and-interfaces/enums";
 import SubInventoryScreen from "../../components/SubInventoryScreen";
 import SubMindScreen from "../../components/SubMindScreen/SubMindScreen";
 import { IUpgradeButton } from "../../enums-and-interfaces/interfaces";
@@ -9,15 +14,15 @@ import PatternScreen from "../../components/PatternScreen";
 import SubSquadScreen from "../../components/SubSquadScreen";
 
 const guildSubScreenMapping = {
-    [MindGameScreens.guildSchool]: {
+    [SchoolGameScreens.guildSchool]: {
         requiredStage: 1,
         icon: <Book size={36} />,
-        screen: <SubMindScreen screenName={MindGameScreens.guildSchool}/>
+        screen: <SubMindScreen screenName={SchoolGameScreens.guildSchool}/>
     },
-    [MindGameScreens.guildRituals]: {
+    [RitualGameScreens.guildRituals]: {
         requiredStage: 2,
         icon: <PersonUp size={36} />,
-        screen: <SubMindScreen screenName={MindGameScreens.guildRituals}/>
+        screen: <SubMindScreen screenName={RitualGameScreens.guildRituals}/>
     },
     [InventoryGameScreens.guildShop]: {
         requiredStage: 1,
@@ -42,7 +47,7 @@ const guildUpgradeButtons = (stage: number): IUpgradeButton[] => [
 
 function Guild() {
     return <PatternScreen 
-        screenName={GameScreens.guildSchool}
+        screenName={SchoolGameScreens.guildSchool}
         upgradeButtonsFunc={guildUpgradeButtons}
         subScreenMapping={guildSubScreenMapping}
     />

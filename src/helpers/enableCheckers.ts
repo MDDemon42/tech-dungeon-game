@@ -1,4 +1,11 @@
-import { InventoryGameScreens, InventoryPlace, MindGameScreens } from "../enums-and-interfaces/enums";
+import { 
+    InventoryGameScreens, 
+    InventoryPlace, 
+    MindGameScreens, 
+    MindOption, 
+    RitualGameScreens, 
+    SchoolGameScreens 
+} from "../enums-and-interfaces/enums";
 import { 
     IBending, ICharacher, ICyber, 
     IItem, IMastery, IMutation, 
@@ -7,6 +14,7 @@ import {
 import priorityChecker from "./priorityChecker";
 import { createNoItem } from "./emptyEssencesCreators";
 import rituals from "../gameScreens/Guild/rituals";
+import { upperCaseFirstLetter } from "../pages/PopupPages/MainPage";
 
 export function bendingEnableChecker(
     bending: IBending,
@@ -42,17 +50,21 @@ export function bendingEnableChecker(
     return [true, '']
 }
 
-const screenNameCapacityMappings: Record<MindGameScreens, string> = {
-    [MindGameScreens.academy]: 'Masteries',
-    [MindGameScreens.airSchool]: 'Masteries',
-    [MindGameScreens.fireSchool]: 'Masteries',
-    [MindGameScreens.focusSchool]: 'Masteries',
-    [MindGameScreens.focusSite]: 'Powers',
-    [MindGameScreens.guildRituals]: 'Rituals',
-    [MindGameScreens.guildSchool]: 'Masteries',
-    [MindGameScreens.iceSchool]: 'Masteries',
-    [MindGameScreens.spellSchool]: 'Masteries',
-    [MindGameScreens.wizardSchool]: 'Masteries'
+const screenNameCapacityMappings: Record<MindGameScreens, MindOption> = {
+    [SchoolGameScreens.academy]: MindOption.masteries,
+    [RitualGameScreens.airRituals]: MindOption.rituals,
+    [SchoolGameScreens.airSchool]: MindOption.masteries,
+    [RitualGameScreens.fireRituals]: MindOption.rituals,
+    [SchoolGameScreens.fireSchool]: MindOption.masteries,
+    [RitualGameScreens.focusRituals]: MindOption.rituals,
+    [SchoolGameScreens.focusSchool]: MindOption.masteries,
+    [SchoolGameScreens.focusSite]: MindOption.powers,
+    [RitualGameScreens.guildRituals]: MindOption.rituals,
+    [SchoolGameScreens.guildSchool]: MindOption.masteries,
+    [RitualGameScreens.iceRituals]: MindOption.rituals,
+    [SchoolGameScreens.iceSchool]: MindOption.masteries,
+    [SchoolGameScreens.spellSchool]: MindOption.masteries,
+    [SchoolGameScreens.wizardSchool]: MindOption.masteries
 }
 
 export function subMindEnableChecker(
@@ -63,7 +75,10 @@ export function subMindEnableChecker(
     posessed: number
 ): [boolean, string] {
     if (capacity <= posessed) {
-        return [false, chrome.i18n.getMessage('smec_capacity', screenNameCapacityMappings[screenName])]
+        return [false, chrome.i18n.getMessage(
+            'smec_capacity', 
+            upperCaseFirstLetter(screenNameCapacityMappings[screenName])
+        )]
     }
 
     const alreadyPosessed = memberMind.includes(data.name);
@@ -79,7 +94,7 @@ export function subMindEnableChecker(
         return [false, chrome.i18n.getMessage('smec_mastery')]
     }
 
-    if (screenName === MindGameScreens.focusSite) {
+    if (screenName === SchoolGameScreens.focusSite) {
         // @ts-expect-error
         const hasRequiredPower = !!data.requiredPower ?
             // @ts-expect-error
@@ -91,7 +106,7 @@ export function subMindEnableChecker(
         }
     }
 
-    if (screenName === MindGameScreens.guildRituals) {
+    if (screenName.includes('Ritual')) {
         // @ts-expect-error
         const hasEnoughHealth = !!data.healthCost >= capacity;
 

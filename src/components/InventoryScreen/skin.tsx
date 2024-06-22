@@ -1,6 +1,6 @@
 import cybers from "../../gameScreens/CyberLab/cybers";
 import powers from "../../gameScreens/FocusSite/powers";
-import rituals from "../../gameScreens/Guild/rituals";
+import rituals from "../../general/rituals";
 import mutations from "../../gameScreens/MutaLab/mutations";
 import images from "../../images/images";
 
@@ -27,11 +27,17 @@ function getSkinImage(
             break;
         default:
             result = [
-                ritualsUserNames.includes(rituals.titanSkin.name) ?
+                ritualsUserNames.includes(rituals.guildRituals.titanSkin.name) ?
                     <img src={images.bodyElements.torso.titan} alt='titanTorso' /> :
                     userStrength >= 3 ?
                         <img src={images.bodyElements.torso.brutal} alt='brutalTorso' /> :
                         <img src={images.bodyElements.torso.usual} alt='torso' />,
+                ritualsUserNames.includes(rituals.airRituals.airVessel.name) ?
+                    <img src={images.bodyElements.rituals.airVessel} alt={chrome.i18n.getMessage('air_vessel')} /> : null,
+                ritualsUserNames.includes(rituals.fireRituals.fireVessel.name) ?
+                    <img src={images.bodyElements.rituals.fireVessel} alt={chrome.i18n.getMessage('fire_vessel')} /> : null,
+                ritualsUserNames.includes(rituals.iceRituals.coldVessel.name) ?
+                    <img src={images.bodyElements.rituals.coldVessel} alt={chrome.i18n.getMessage('cold_vessel')} /> : null,
                 powersUserNames.includes(powers.armors.guardianAura.name) ?
                     <img src={images.bodyElements.tattoes.guardianAura} alt={chrome.i18n.getMessage('guardian_aura')} /> :
                     powersUserNames.includes(powers.armors.guardianField.name) ?

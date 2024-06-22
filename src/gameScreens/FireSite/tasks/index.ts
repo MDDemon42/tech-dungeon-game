@@ -61,6 +61,21 @@ const enflamedStrikes = createTask(
     ),
 );
 
+const fireRituals = createTask(
+    [
+        {
+            name: items.bigResources.ore.name,
+            amount: 1
+        }
+    ],
+    chrome.i18n.getMessage('fire_rituals_task_title', 
+        [items.bigResources.ore.name]
+    ),
+    chrome.i18n.getMessage('fire_rituals_task_text', 
+        ['1', items.bigResources.ore.name]
+    ),
+);
+
 const fireSiteTasks: IScreenTasks = {
     1: {
         status: TaskStatus.unknown,
@@ -77,6 +92,10 @@ const fireSiteTasks: IScreenTasks = {
     5: {
         status: TaskStatus.unknown,
         task: enflamedStrikes
+    },
+    7: {
+        status: TaskStatus.unknown,
+        task: fireRituals
     }
 }
 

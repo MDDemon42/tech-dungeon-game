@@ -1,6 +1,24 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { ICommon, IGameStage, IGameStageOptions, IGameTasks, IScreenStageOptions, ITask } from '../../enums-and-interfaces/interfaces';
-import { GameScreens, TaskStatus, UserStartClass } from '../../enums-and-interfaces/enums';
+import { 
+    ICommon, 
+    IGameStage, 
+    IGameStageOptions, 
+    IGameTasks, 
+    IScreenStageOptions, 
+    ITask 
+} from '../../enums-and-interfaces/interfaces';
+import { 
+    BendingGameScreens, 
+    CommonGameScreens, 
+    GameScreens, 
+    InventoryGameScreens, 
+    MansionScreens, 
+    RitualGameScreens, 
+    SchoolGameScreens, 
+    SquadGameScreens, 
+    TaskStatus, 
+    UserStartClass 
+} from '../../enums-and-interfaces/enums';
 import academyTasks from '../../gameScreens/Academy/tasks';
 import airSiteTasks from '../../gameScreens/AirSite/tasks';
 import cyberLabTasks from '../../gameScreens/CyberLab/tasks';
@@ -39,6 +57,10 @@ import { tavernOptions } from '../../gameScreens/Market/members';
 import { guildianRoomsOptions } from '../../gameScreens/Guild/members';
 import { psionRoomsOptions } from '../../gameScreens/FocusSite/members';
 import tropheyFieldTasks from '../../gameScreens/TropheyField/tasks';
+import { focusRitualOptions } from '../../gameScreens/FocusSite/rituals';
+import { airRitualOptions } from '../../gameScreens/AirSite/rituals';
+import { fireRitualOptions } from '../../gameScreens/FireSite/rituals';
+import { iceRitualOptions } from '../../gameScreens/IceSite/rituals';
 
 export function createTask(
     resourceCost: {
@@ -56,83 +78,102 @@ export function createTask(
 }
    
 export const tasks: IGameTasks = {
-    [GameScreens.academy]: academyTasks,
-    [GameScreens.aerotheurgRooms]: null,
-    [GameScreens.airSchool]: null,
-    [GameScreens.airSite]: airSiteTasks,
-    [GameScreens.apprenticeRooms]: null,
-    [GameScreens.armoury]: null,
-    [GameScreens.cryomancerRooms]: null,
-    [GameScreens.cyberLab]: cyberLabTasks,
-    [GameScreens.fireSchool]: null,
-    [GameScreens.fireSite]: fireSiteTasks,
-    [GameScreens.focusSchool]: null,
-    [GameScreens.focusSite]: focusSiteTasks,
-    [GameScreens.guildianRooms]: null,
-    [GameScreens.guildRituals]: null,
-    [GameScreens.guildSchool]: guildTasks,
-    [GameScreens.guildShop]: null,
-    [GameScreens.iceSchool]: null,
-    [GameScreens.iceSite]: iceSiteTasks,
-    [GameScreens.mansion]: mansionTasks,
-    [GameScreens.market]: marketTasks,
-    [GameScreens.mutaLab]: mutaLabTasks,
-    [GameScreens.psionRooms]: null,
-    [GameScreens.pyrokineticRooms]: null,
-    [GameScreens.spellSchool]: null,
-    [GameScreens.tavern]: null,
-    [GameScreens.tropheyField]: tropheyFieldTasks,
-    [GameScreens.villageMap]: null,
-    [GameScreens.wizardSchool]: wizardSchoolTasks,
-    [GameScreens.wizardShop]: null,
+    [SchoolGameScreens.academy]: academyTasks,
+    [SquadGameScreens.aerotheurgRooms]: null,
+    [RitualGameScreens.airRituals]: null,
+    [SchoolGameScreens.airSchool]: null,
+    [BendingGameScreens.airSite]: airSiteTasks,
+    [SquadGameScreens.apprenticeRooms]: null,
+    [InventoryGameScreens.armoury]: null,
+    [SquadGameScreens.cryomancerRooms]: null,
+    [InventoryGameScreens.cyberLab]: cyberLabTasks,
+    [RitualGameScreens.fireRituals]: null,
+    [SchoolGameScreens.fireSchool]: null,
+    [BendingGameScreens.fireSite]: fireSiteTasks,
+    [RitualGameScreens.focusRituals]: null,
+    [SchoolGameScreens.focusSchool]: null,
+    [SchoolGameScreens.focusSite]: focusSiteTasks,
+    [SquadGameScreens.guildianRooms]: null,
+    [RitualGameScreens.guildRituals]: null,
+    [SchoolGameScreens.guildSchool]: guildTasks,
+    [InventoryGameScreens.guildShop]: null,
+    [RitualGameScreens.iceRituals]: null,
+    [SchoolGameScreens.iceSchool]: null,
+    [BendingGameScreens.iceSite]: iceSiteTasks,
+    [CommonGameScreens.mansion]: mansionTasks,
+    [InventoryGameScreens.market]: marketTasks,
+    [InventoryGameScreens.mutaLab]: mutaLabTasks,
+    [SquadGameScreens.psionRooms]: null,
+    [SquadGameScreens.pyrokineticRooms]: null,
+    [SchoolGameScreens.spellSchool]: null,
+    [SquadGameScreens.tavern]: null,
+    [InventoryGameScreens.tropheyField]: tropheyFieldTasks,
+    [CommonGameScreens.villageMap]: null,
+    [SchoolGameScreens.wizardSchool]: wizardSchoolTasks,
+    [InventoryGameScreens.wizardShop]: null,
+    [MansionScreens.livingRoom]: null
 }
 
 export const stageOptions: IGameStageOptions = {
-    [GameScreens.academy]: academyOptions,
-    [GameScreens.aerotheurgRooms]: aerotheurgRoomsOptions,
-    [GameScreens.airSchool]: airSchoolOptions,
-    [GameScreens.airSite]: airSiteOptions,
-    [GameScreens.apprenticeRooms]: apprenticeRoomsOptions,
-    [GameScreens.armoury]: armouryOptions,
-    [GameScreens.cryomancerRooms]: cryomancerRoomsOptions,
-    [GameScreens.cyberLab]: cyberLabOptions,
-    [GameScreens.fireSchool]: fireSchoolOptions,
-    [GameScreens.fireSite]: fireSiteOptions,
-    [GameScreens.focusSchool]: focusSchoolOptions,
-    [GameScreens.focusSite]: focusSiteOptions,
-    [GameScreens.guildianRooms]: guildianRoomsOptions,
-    [GameScreens.guildRituals]: guildRitualOptions,
-    [GameScreens.guildSchool]: guildSchoolOptions,
-    [GameScreens.guildShop]: guildShopOptions,
-    [GameScreens.iceSchool]: iceSchoolOptions,
-    [GameScreens.iceSite]: iceSiteOptions,
-    [GameScreens.mansion]: null,
-    [GameScreens.market]: marketOptions,
-    [GameScreens.mutaLab]: mutaLabOptions,
-    [GameScreens.psionRooms]: psionRoomsOptions,
-    [GameScreens.pyrokineticRooms]: pyrokineticRoomsOptions,
-    [GameScreens.spellSchool]: spellSchoolOptions,
-    [GameScreens.tavern]: tavernOptions,
-    [GameScreens.tropheyField]: null,
-    [GameScreens.villageMap]: null,
-    [GameScreens.wizardSchool]: wizardSchoolOptions,
-    [GameScreens.wizardShop]: wizardShopOptions
+    [SchoolGameScreens.academy]: academyOptions,
+    [SquadGameScreens.aerotheurgRooms]: aerotheurgRoomsOptions,
+    [RitualGameScreens.airRituals]: airRitualOptions,
+    [SchoolGameScreens.airSchool]: airSchoolOptions,
+    [BendingGameScreens.airSite]: airSiteOptions,
+    [SquadGameScreens.apprenticeRooms]: apprenticeRoomsOptions,
+    [InventoryGameScreens.armoury]: armouryOptions,
+    [SquadGameScreens.cryomancerRooms]: cryomancerRoomsOptions,
+    [InventoryGameScreens.cyberLab]: cyberLabOptions,
+    [RitualGameScreens.fireRituals]: fireRitualOptions,
+    [SchoolGameScreens.fireSchool]: fireSchoolOptions,
+    [BendingGameScreens.fireSite]: fireSiteOptions,
+    [RitualGameScreens.focusRituals]: focusRitualOptions,
+    [SchoolGameScreens.focusSchool]: focusSchoolOptions,
+    [SchoolGameScreens.focusSite]: focusSiteOptions,
+    [SquadGameScreens.guildianRooms]: guildianRoomsOptions,
+    [RitualGameScreens.guildRituals]: guildRitualOptions,
+    [SchoolGameScreens.guildSchool]: guildSchoolOptions,
+    [InventoryGameScreens.guildShop]: guildShopOptions,
+    [RitualGameScreens.iceRituals]: iceRitualOptions,
+    [SchoolGameScreens.iceSchool]: iceSchoolOptions,
+    [BendingGameScreens.iceSite]: iceSiteOptions,
+    [CommonGameScreens.mansion]: null,
+    [InventoryGameScreens.market]: marketOptions,
+    [InventoryGameScreens.mutaLab]: mutaLabOptions,
+    [SquadGameScreens.psionRooms]: psionRoomsOptions,
+    [SquadGameScreens.pyrokineticRooms]: pyrokineticRoomsOptions,
+    [SchoolGameScreens.spellSchool]: spellSchoolOptions,
+    [SquadGameScreens.tavern]: tavernOptions,
+    [InventoryGameScreens.tropheyField]: null,
+    [CommonGameScreens.villageMap]: null,
+    [SchoolGameScreens.wizardSchool]: wizardSchoolOptions,
+    [InventoryGameScreens.wizardShop]: wizardShopOptions,
+    [MansionScreens.livingRoom]: null
 }
 
 export const createGameStage = (strongStart: boolean) => {
     const result = {} as IGameStage;
-    Object.keys(GameScreens).forEach(screen => {
-        const gameScreen = screen as keyof typeof GameScreens;
+    const screens = [
+        ...Object.values(BendingGameScreens),
+        ...Object.values(SchoolGameScreens),
+        ...Object.values(InventoryGameScreens),
+        ...Object.values(RitualGameScreens),
+        ...Object.values(MansionScreens),
+        ...Object.values(SquadGameScreens),
+        ...Object.values(CommonGameScreens),
+    ]
+    screens.forEach(screen => {
+        const gameScreen = screen as GameScreens;
         const stage = (
-            GameScreens[gameScreen] === GameScreens.market ||
-            GameScreens[gameScreen] === GameScreens.tropheyField ||
+            screen === InventoryGameScreens.market ||
+            screen === InventoryGameScreens.tropheyField ||
             strongStart
         ) ? 1 : 0;
-        result[GameScreens[gameScreen]] = {
+        result[gameScreen] = {
             stage,
-            stageOptions: stageOptions[GameScreens[gameScreen]],
-            tasks: tasks[GameScreens[gameScreen]],
-            usableOptions: stageOptions[GameScreens[gameScreen]]?.[stage] || []
+            stageOptions: stageOptions[gameScreen],
+            tasks: tasks[gameScreen],
+            usableOptions: stageOptions[gameScreen]?.[stage] || []
         }
     })
 
@@ -140,43 +181,63 @@ export const createGameStage = (strongStart: boolean) => {
 }
 
 const relatedScreens: Record<GameScreens, GameScreens[]> = {
-    [GameScreens.academy]: [],
-    [GameScreens.aerotheurgRooms]: [],
-    [GameScreens.airSchool]: [],
-    [GameScreens.airSite]: [GameScreens.airSchool, GameScreens.aerotheurgRooms],
-    [GameScreens.apprenticeRooms]: [],
-    [GameScreens.armoury]: [],
-    [GameScreens.cryomancerRooms]: [],
-    [GameScreens.cyberLab]: [],
-    [GameScreens.fireSchool]: [],
-    [GameScreens.fireSite]: [GameScreens.fireSchool, GameScreens.pyrokineticRooms],
-    [GameScreens.focusSchool]: [],
-    [GameScreens.focusSite]: [GameScreens.focusSchool],
-    [GameScreens.guildianRooms]: [],
-    [GameScreens.guildRituals]: [],
-    [GameScreens.guildSchool]: [
-        GameScreens.guildShop, 
-        GameScreens.guildianRooms, 
-        GameScreens.guildRituals
+    [SchoolGameScreens.academy]: [],
+    [SquadGameScreens.aerotheurgRooms]: [],
+    [RitualGameScreens.airRituals]: [],
+    [SchoolGameScreens.airSchool]: [],
+    [BendingGameScreens.airSite]: [
+        SchoolGameScreens.airSchool, 
+        SquadGameScreens.aerotheurgRooms,
+        RitualGameScreens.airRituals
     ],
-    [GameScreens.guildShop]: [],
-    [GameScreens.iceSchool]: [],
-    [GameScreens.iceSite]: [GameScreens.iceSchool, GameScreens.cryomancerRooms],
-    [GameScreens.mansion]: [GameScreens.armoury],
-    [GameScreens.market]: [GameScreens.tavern],
-    [GameScreens.mutaLab]: [],
-    [GameScreens.psionRooms]: [],
-    [GameScreens.pyrokineticRooms]: [],
-    [GameScreens.spellSchool]: [],
-    [GameScreens.tavern]: [],
-    [GameScreens.tropheyField]: [],
-    [GameScreens.villageMap]: [],
-    [GameScreens.wizardSchool]: [
-        GameScreens.wizardShop, 
-        GameScreens.spellSchool,
-        GameScreens.apprenticeRooms
+    [SquadGameScreens.apprenticeRooms]: [],
+    [InventoryGameScreens.armoury]: [],
+    [SquadGameScreens.cryomancerRooms]: [],
+    [InventoryGameScreens.cyberLab]: [],
+    [RitualGameScreens.fireRituals]: [],
+    [SchoolGameScreens.fireSchool]: [],
+    [BendingGameScreens.fireSite]: [
+        SchoolGameScreens.fireSchool, 
+        SquadGameScreens.pyrokineticRooms,
+        RitualGameScreens.fireRituals
     ],
-    [GameScreens.wizardShop]: [],
+    [RitualGameScreens.focusRituals]: [],
+    [SchoolGameScreens.focusSchool]: [],
+    [SchoolGameScreens.focusSite]: [
+        SchoolGameScreens.focusSchool,
+        RitualGameScreens.focusRituals
+    ],
+    [SquadGameScreens.guildianRooms]: [],
+    [RitualGameScreens.guildRituals]: [],
+    [SchoolGameScreens.guildSchool]: [
+        InventoryGameScreens.guildShop, 
+        SquadGameScreens.guildianRooms, 
+        RitualGameScreens.guildRituals
+    ],
+    [InventoryGameScreens.guildShop]: [],
+    [RitualGameScreens.iceRituals]: [],
+    [SchoolGameScreens.iceSchool]: [],
+    [BendingGameScreens.iceSite]: [
+        SchoolGameScreens.iceSchool, 
+        SquadGameScreens.cryomancerRooms,
+        RitualGameScreens.iceRituals
+    ],
+    [CommonGameScreens.mansion]: [InventoryGameScreens.armoury],
+    [InventoryGameScreens.market]: [SquadGameScreens.tavern],
+    [InventoryGameScreens.mutaLab]: [],
+    [SquadGameScreens.psionRooms]: [],
+    [SquadGameScreens.pyrokineticRooms]: [],
+    [SchoolGameScreens.spellSchool]: [],
+    [SquadGameScreens.tavern]: [],
+    [InventoryGameScreens.tropheyField]: [],
+    [CommonGameScreens.villageMap]: [],
+    [SchoolGameScreens.wizardSchool]: [
+        InventoryGameScreens.wizardShop, 
+        SchoolGameScreens.spellSchool,
+        SquadGameScreens.apprenticeRooms
+    ],
+    [InventoryGameScreens.wizardShop]: [],
+    [MansionScreens.livingRoom]: []
 }
 
 const gameStage = createSlice({
@@ -241,7 +302,7 @@ const gameStage = createSlice({
                 ...(oldState[zone].stageOptions?.[stage] || [])
             );
 
-            if (zone !== GameScreens.tropheyField) {
+            if (zone !== InventoryGameScreens.tropheyField) {
                 const uniqueOptions: string[] = [];
                 usableOptions.forEach((option, index, array) => {
                     const optionName = (option as ICommon).name;
@@ -259,7 +320,7 @@ const gameStage = createSlice({
 
             if (relatedScreens[zone].length > 0) {
                 for (const relatedScreen of relatedScreens[zone]) {
-                    if (relatedScreen === GameScreens.armoury) {
+                    if (relatedScreen === InventoryGameScreens.armoury) {
                         let bonusStage = 0;
                         const bonusStages = [2431, 1001, 221, 187, 143, 91, 77];
                         for (const checkStage of bonusStages) {
@@ -302,7 +363,7 @@ const gameStage = createSlice({
             const certainScreenTasks = oldState[screen].tasks;
             if (certainScreenTasks) {
                 certainScreenTasks[stage].status = status;
-                if (screen === GameScreens.tropheyField) {
+                if (screen === InventoryGameScreens.tropheyField) {
                     certainScreenTasks[8/stage].status = status;
                 }
             }

@@ -2,7 +2,7 @@ import { createTask } from "../../../redux/slices/gameStage";
 import { TaskStatus } from "../../../enums-and-interfaces/enums";
 import items from "../../Market/items";
 
-const task_buildGuild = createTask(
+const buildGuild = createTask(
     [
         {
             name: items.bigResources.wood.name,
@@ -15,7 +15,7 @@ const task_buildGuild = createTask(
     ),
 );
 
-const task_runes_and_rituals = createTask(
+const runes_and_rituals = createTask(
     [
         {
             name: items.bigResources.ore.name,
@@ -31,11 +31,11 @@ const task_runes_and_rituals = createTask(
 const guildTasks = {
     1: {
         status: TaskStatus.unknown,
-        task: task_buildGuild
+        task: buildGuild
     },
     2: {
         status: TaskStatus.unknown,
-        task: task_runes_and_rituals
+        task: runes_and_rituals
     }
 }
 

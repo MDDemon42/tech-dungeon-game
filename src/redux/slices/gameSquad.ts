@@ -48,6 +48,7 @@ export const createGameSquad = (): IGameSquad => {
 
 const raceMasteries: Partial<Record<Race, IMastery>> = {
     [Race.gnoll]: academyMasteries.maceAffiliation,
+    [Race.orc]: academyMasteries.axeAffiliation,
     [Race.naga]: academyMasteries.spearAffiliation
 }
 

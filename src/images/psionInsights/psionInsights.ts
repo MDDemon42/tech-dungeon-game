@@ -1,3 +1,4 @@
+import cosmoChakra from './cosmoChakra.png';
 import empoweredStrikes from './empoweredStrikes.png';
 import guardianAura from './guardianAura.png';
 import guardianField from './guardianField.png';
@@ -17,6 +18,7 @@ import telekineticPressure from './telekineticPressure.png';
 import voidCrash from './voidCrash.png';
 
 const psionInsights = {
+    cosmoChakra,
     empoweredStrikes,
     guardianAura,
     guardianField,
