@@ -18,9 +18,8 @@ const telekinesis = createPower(
             abilities.battleAbilities.ranged.suffocation.telekineticChoke
         ], 
         null
-    ],
-    ''
-)
+    ]
+);
 
 const intuition = createPower(
     [
@@ -32,9 +31,8 @@ const intuition = createPower(
         psionMasteries.meditativeInsights.name,
         null,
         [abilities.passiveAbilities.psionics.intuition]
-    ],
-    ''    
-)
+    ]
+);
 
 const hypnosis = createPower(
     [
@@ -46,9 +44,8 @@ const hypnosis = createPower(
         psionMasteries.meditativeInsights.name,
         null,
         null
-    ],
-    ''    
-)
+    ]    
+);
 
 const levitation = createPower(
     [
@@ -59,9 +56,8 @@ const levitation = createPower(
     [
         psionMasteries.meditativeInsights.name,
         null, null
-    ],
-    ''
-)
+    ]
+);
 
 const other = {
     hypnosis,

@@ -10,7 +10,8 @@ const acidBombThrow = createBattleAbility(
     ], 
     {Blank: 0}, 
     {[DamageType.acid]: 1},
-    [1, 70]
+    [1, 70],
+    true
 );
 
 const masterAcidBombThrow = createBattleAbility(
@@ -21,7 +22,8 @@ const masterAcidBombThrow = createBattleAbility(
     ], 
     {Blank: 0}, 
     {[DamageType.acid]: 1},
-    [1, 95]
+    [1, 95],
+    true
 );
 
 const acidizerSpill = createBattleAbility(

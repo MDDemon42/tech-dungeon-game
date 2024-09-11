@@ -1,4 +1,5 @@
-import { IPassiveAbility, IRitual } from "../../enums-and-interfaces/interfaces";
+import { InventoryPlace } from "../../enums-and-interfaces/enums";
+import { IBending, IPassiveAbility, IRitual, IRitualBodyPart } from "../../enums-and-interfaces/interfaces";
 
 export function createRitual(
     commonInfo: [
@@ -9,7 +10,13 @@ export function createRitual(
     ritualInfo: [
         healthCost: number,
         requiredMastery: string,
-        passiveAbilities: IPassiveAbility[]
+        passiveAbilities: IPassiveAbility[],
+        requiredRitual?: string,
+        bendings?: IBending[],
+        lostInventorySlots?: InventoryPlace[],
+        lostInventorySlots?: InventoryPlace[],
+        grantedBodyParts?: Partial<Record<InventoryPlace, IRitualBodyPart>>,
+        newRaceName?: string
     ]
 ): IRitual {
     return {
@@ -19,6 +26,13 @@ export function createRitual(
 
         healthCost: ritualInfo[0],
         requiredMastery: ritualInfo[1],
-        passiveAbilities: ritualInfo[2]
+        passiveAbilities: ritualInfo[2],
+        requiredRitual: ritualInfo[3] ?? '',
+        
+        bendings: ritualInfo[4] ?? [],
+        lostInventorySlots: ritualInfo[5] ?? [],
+        unchangeableInventorySlots: ritualInfo[6] ?? [],
+        grantedBodyParts: ritualInfo[7] ?? null,
+        newRaceName: ritualInfo[8] ?? ''
     }
 }

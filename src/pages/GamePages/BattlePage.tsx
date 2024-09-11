@@ -48,6 +48,7 @@ import gameScreen from '../../redux/slices/gameScreen';
 import { raceNames } from '../../general/races/races';
 import items from '../../gameScreens/Market/items';
 import supportAbilities from '../../general/abilities/supportAbilities';
+import rituals from '../../general/rituals';
 
 function BattlePage() {
     const [battlePageState, setBattlePageState] = useState<IBattlePageState>({
@@ -117,12 +118,19 @@ function BattlePage() {
                 selected: false,
                 hasTurn: false,
                 dead: false,
-                defensiveCharms: false
+                defensiveCharms: false,
+                flameShield: false
             };
 
             squadMembers.forEach((member, index) => {
                 if (!!member) {
                     squadStatusBasis[index] = {...memberStatusBasis};
+                    if (
+                        squadMembers[index].params.race === 
+                        rituals.fireRituals.fireElemental.newRaceName
+                    ) {
+                        squadStatusBasis[index].flameShield = true;
+                    }
                 }
             });
             state.squadStatus = squadStatusBasis;
@@ -130,6 +138,12 @@ function BattlePage() {
             oppsMembers.forEach((member, index) => {
                 if (!!member) {
                     opponentsStatusBasis[index] = {...memberStatusBasis};
+                    if (
+                        oppsMembers[index].params.race === 
+                        rituals.fireRituals.fireElemental.newRaceName
+                    ) {
+                        opponentsStatusBasis[index].flameShield = true;
+                    }
                 }
             })
             state.opponentsStatus = opponentsStatusBasis;
@@ -264,13 +278,27 @@ function BattlePage() {
             const squadStatusBasis = [...state.squadStatus];
             squadStatusBasis.forEach((member, index) => {
                 if (!!member) {
-                    if (!member.dead && member.defensiveCharms) {
-                        member.defensiveCharms = false;
+                    if (!member.dead) {
+                        if (member.defensiveCharms) {
+                            member.defensiveCharms = false;
 
-                        dispatch(gameSquad.actions.sufferAbility({
-                            indexes: [index],
-                            ability: supportAbilities.armor.reverseDefensiveCharms
-                        }));
+                            dispatch(gameSquad.actions.sufferAbility({
+                                indexes: [index],
+                                ability: supportAbilities.armor.reverseDefensiveCharms
+                            }));
+                        }
+
+                        if (
+                            member.flameShield && 
+                            squadMembers[index].params.race !== rituals.fireRituals.fireElemental.newRaceName
+                        ) {
+                            member.flameShield = false;
+
+                            dispatch(gameSquad.actions.sufferAbility({
+                                indexes: [index],
+                                ability: supportAbilities.armor.reverseFlameShield
+                            }));
+                        }
                     }
                 }
             })
@@ -287,13 +315,27 @@ function BattlePage() {
             const opponentsStatusBasis = [...state.opponentsStatus];
             opponentsStatusBasis.forEach((member, index) => {
                 if (!!member) {
-                    if (!member.dead && member.defensiveCharms) {
-                        member.defensiveCharms = false;
+                    if (!member.dead) {
+                        if (member.defensiveCharms) {
+                            member.defensiveCharms = false;
 
-                        dispatch(opponents.actions.sufferAbility({
-                            indexes: [index],
-                            ability: supportAbilities.armor.reverseDefensiveCharms
-                        }));
+                            dispatch(opponents.actions.sufferAbility({
+                                indexes: [index],
+                                ability: supportAbilities.armor.reverseDefensiveCharms
+                            }));
+                        }
+
+                        if (
+                            member.flameShield && 
+                            oppsMembers[index].params.race !== rituals.fireRituals.fireElemental.newRaceName
+                        ) {
+                            member.flameShield = false;
+
+                            dispatch(opponents.actions.sufferAbility({
+                                indexes: [index],
+                                ability: supportAbilities.armor.reverseFlameShield
+                            }));
+                        }
                     }
                 }
             })
@@ -548,7 +590,32 @@ function BattlePage() {
                 dispatch(gameSquad.actions.sufferAbility({
                     indexes: sufferIndexes,
                     ability: selectedAbility
-                }))
+                }));
+
+                if (!(selectedAbility as IBattleAbility).ranged) {
+                    const {squadStatus} = state;
+                    sufferIndexes.forEach(index => {
+                        if (squadStatus[index].flameShield) {
+                            dispatch(opponents.actions.sufferAbility({
+                                indexes: [state.opponentIndex],
+                                ability: abilities.battleAbilities.ranged.fire.flame
+                            })); 
+                            state.log.push(
+                                chrome.i18n.getMessage(
+                                    'battle_log_someone_uses_ability_and_result',
+                                    [
+                                        squadMembers[index].params.name,
+                                        supportAbilities.armor.flameShield.name,
+                                        oppsMembers[state.opponentIndex].params.name,
+                                        chrome.i18n.getMessage('battle_log_success_result'),
+                                        String(100),
+                                        String(100)
+                                    ]
+                                )
+                            );
+                        }
+                    })
+                }                
 
                 dispatch(opponents.actions.processAbility({
                     index: state.opponentIndex,
@@ -692,6 +759,31 @@ function BattlePage() {
                     indexes: sufferIndexes,
                     ability: selectedAbility
                 }))
+
+                if (!(selectedAbility as IBattleAbility).ranged) {
+                    const {opponentsStatus} = state;
+                    sufferIndexes.forEach(index => {
+                        if (opponentsStatus[index].flameShield) {
+                            dispatch(gameSquad.actions.sufferAbility({
+                                indexes: [state.memberIndex],
+                                ability: abilities.battleAbilities.ranged.fire.flame
+                            })); 
+                            state.log.push(
+                                chrome.i18n.getMessage(
+                                    'battle_log_someone_uses_ability_and_result',
+                                    [
+                                        oppsMembers[index].params.name,
+                                        supportAbilities.armor.flameShield.name,
+                                        squadMembers[state.memberIndex].params.name,
+                                        chrome.i18n.getMessage('battle_log_success_result'),
+                                        String(100),
+                                        String(100)
+                                    ]
+                                )
+                            );
+                        }
+                    })
+                } 
                 
                 dispatch(gameSquad.actions.processAbility({
                     index: state.memberIndex,

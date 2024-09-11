@@ -40,17 +40,17 @@ function InventoryScreen(props: {
     const width = battle ? '150px' : '355px';
     const height = battle ? '160px' : '370px';
 
-    const back = getBackImage(inventory.Back.name);
+    const back = getBackImage(inventory.Back?.name || '');
 
     const backItem = getBackItemImage(inventory.Back_item?.name || '');
 
-    const tail = getTailImage(inventory.Tail.name);
+    const tail = getTailImage(inventory.Tail?.name || '');
 
     const legs = getLegsImage(
-        inventory.Left_hip.name,
-        inventory.Right_hip.name,
-        inventory.Legs.name,
-        inventory.Skin.name,
+        inventory.Left_hip?.name || '',
+        inventory.Right_hip?.name || '',
+        inventory.Legs?.name || '',
+        inventory.Skin?.name || '',
         ritualsUserNames,
         powersUserNames,
         userStrength
@@ -60,11 +60,11 @@ function InventoryScreen(props: {
         ritualsUserNames,
         powersUserNames,
         userStrength,
-        inventory.Skin.name
+        inventory.Skin?.name || ''
     );    
 
     const shoulders = getShouldersImage(
-        inventory.Shoulders.name,
+        inventory.Shoulders?.name || '',
         powersUserNames
     );
 
@@ -72,55 +72,55 @@ function InventoryScreen(props: {
 
     const extraLeftHand = getExtraLeftHandImage(
         inventory.Extra_left_hand?.name || '',
-        inventory.Shoulders.name
+        inventory.Shoulders?.name || '',
     );
 
     const extraRightHand = getExtraRightHandImage(
         inventory.Extra_right_hand?.name || '',
-        inventory.Shoulders.name
+        inventory.Shoulders?.name || ''
     );
 
-    const armor = getArmorImage(inventory.Armor.name);
+    const armor = getArmorImage(inventory.Armor?.name || '');
 
-    const rightPocket = getRightPocketImage(inventory.Right_pocket.name);
+    const rightPocket = getRightPocketImage(inventory.Right_pocket?.name || '');
 
     const rightHipItem = getRightHipItemImage(inventory.Right_hip_item?.name || '');
 
-    const leftPocket = getLeftPocketImage(inventory.Left_pocket.name);
+    const leftPocket = getLeftPocketImage(inventory.Left_pocket?.name || '');
 
     const leftHipItem = getLeftHipItemImage(inventory.Left_hip_item?.name || '');
 
     const belts = getBeltsImage(
-        inventory.Left_hip.name, 
-        inventory.Right_hip.name,
-        inventory.Back.name,
-        inventory.Shoulders.name
+        inventory.Left_hip?.name || '', 
+        inventory.Right_hip?.name || '', 
+        inventory.Back?.name || '',
+        inventory.Shoulders?.name || ''
     );
 
     const head = getHeadImage(
         userRace,
         powersUserNames,
-        inventory.Chin.name,
-        inventory.Eyes.name,
-        inventory.Head.name
+        inventory.Chin?.name || '',
+        inventory.Eyes?.name || '',
+        inventory.Head?.name || ''
     );
 
-    const hat = getHatImage(inventory.Hat.name);
+    const hat = getHatImage(inventory.Hat?.name || '');
 
     const leftHand = getLeftHandImage(
-        inventory.Left_hand.name,
-        inventory.Skin.name
+        inventory.Left_hand?.name || '',
+        inventory.Skin?.name || ''
     );
 
     const rightHand = getRightHandImage(
-        inventory.Right_hand.name,
-        inventory.Skin.name
+        inventory.Right_hand?.name || '',
+        inventory.Skin?.name || ''
     );
 
     const bothHands = getBothHandsImage(
-        inventory.Both_hands.name,
-        inventory.Right_hand.name,
-        inventory.Left_hand.name,
+        inventory.Both_hands?.name || '',
+        inventory.Right_hand?.name || '',
+        inventory.Left_hand?.name || '',
         inventory.Back_item?.name || ''
     );
 

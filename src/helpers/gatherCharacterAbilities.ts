@@ -69,7 +69,7 @@ function gatherCharacterAbilities(character: ICharacher) {
     bendingUser.forEach(bending => {
         if (bending.requiresBothHands) {
             if (
-                inventory.Both_hands.name === noItem.name &&
+                inventory.Both_hands?.name === noItem.name &&
                 inventory.Left_hand?.name === noItem.name &&
                 inventory.Right_hand?.name === noItem.name
             ) {
@@ -84,8 +84,8 @@ function gatherCharacterAbilities(character: ICharacher) {
         if (!!spell.ability) {
             if (!!spell.requiresRod) {
                 if (
-                    inventory.Both_hands.name === wizardItems.weapons.apprenticeRod.name ||
-                    inventory.Both_hands.name === wizardItems.weapons.magisterScepter.name
+                    inventory.Both_hands?.name === wizardItems.weapons.apprenticeRod.name ||
+                    inventory.Both_hands?.name === wizardItems.weapons.magisterScepter.name
                 ) {
                     result.push({...spell.ability});
                 }
@@ -142,7 +142,7 @@ function gatherCharacterAbilities(character: ICharacher) {
         })
 
     const finalResult = result.map(ability => {
-        if (inventory.Eyes.name === mutations.other.dragonEyes.name) {
+        if (inventory.Eyes?.name === mutations.other.dragonEyes.name) {
             const copyAbility: IBattleAbility | ISupportAbility = {
                 ...ability,
                 hitChance: ability.hitChance + 5

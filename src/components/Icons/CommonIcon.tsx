@@ -22,6 +22,7 @@ function CommonIcon(props: {
         requiredMastery?: string,
         requiredPower?: string,
         requiredCyber?: string,
+        requiredRitual?: string,
         passive?: boolean,
         inventoryPlaces?: InventoryPlace[]
         costs?: {
@@ -99,6 +100,10 @@ function CommonIcon(props: {
 
     if (item.requiredCyber) {
         description += '\n' + chrome.i18n.getMessage('cid_required_cyber') + item.requiredCyber;
+    }
+
+    if (item.requiredRitual) {
+        description += '\n' + chrome.i18n.getMessage('cid_required_ritual') + item.requiredRitual;
     }
 
     if (item.passive) {

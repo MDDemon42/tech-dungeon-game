@@ -10,6 +10,10 @@ function getSkinImage(
     userStrength: number,
     skinName: string
 ) {
+    if (ritualsUserNames.includes(rituals.fireRituals.fireElemental.name)) {
+        return [<img src={images.bodyElements.torso.flameTorso} alt='flameTorso' />]
+    }
+
     let result = [];
     
     switch (skinName) {

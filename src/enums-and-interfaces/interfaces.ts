@@ -151,7 +151,7 @@ export interface ISpell extends IMastery {
 }
 
 export interface IBending extends IMastery {
-    ability: IBattleAbility,
+    ability: IBattleAbility | ISupportAbility,
     requiresBothHands: boolean,
     requiredBending: string
 }
@@ -164,7 +164,13 @@ export interface IPower extends IMastery {
 
 export interface IRitual extends IMastery {
     passiveAbilities: IPassiveAbility[],
-    healthCost: number
+    healthCost: number,
+    requiredRitual: string,
+    bendings: IBending[],
+    lostInventorySlots: InventoryPlace[],
+    unchangeableInventorySlots: InventoryPlace[],
+    grantedBodyParts: Partial<Record<InventoryPlace, IRitualBodyPart>> | null,
+    newRaceName: string
 }
 
 export interface IMastery extends ICommon {
@@ -175,32 +181,35 @@ export interface IMastery extends ICommon {
 export interface IInventory extends Record<InventoryPlace, 
     IItem | ICyber | IMutation | IWizardItem | IGuildItem | null
 > {
-    [InventoryPlace.hat]: IItem | IWizardItem,
-    [InventoryPlace.head]: IMutation,
-    [InventoryPlace.eyes]: IMutation | ICyber,
-    [InventoryPlace.chin]: IMutation,
-    [InventoryPlace.armor]: IItem | IMutation,
-    [InventoryPlace.skin]: IMutation | ICyber,
-    [InventoryPlace.back]: IMutation | IItem,
+    [InventoryPlace.hat]: IItem | IWizardItem | null,
+    [InventoryPlace.head]: IMutation | null,
+    [InventoryPlace.eyes]: IMutation | ICyber | null,
+    [InventoryPlace.chin]: IMutation | null,
+    [InventoryPlace.armor]: IItem | IMutation | null,
+    [InventoryPlace.skin]: IMutation | ICyber | null,
+    [InventoryPlace.back]: IMutation | IItem | null,
     [InventoryPlace.backItem]: IItem | null,
-    [InventoryPlace.shoulders]: IMutation | ICyber,
+    [InventoryPlace.shoulders]: IMutation | ICyber | null,
     [InventoryPlace.shouldersItem]: IItem | null,
     [InventoryPlace.extraLeftHand]: ICyber | IItem | IMutation | null,
     [InventoryPlace.extraRightHand]: ICyber | IItem | IMutation | null,
-    [InventoryPlace.belt]: IItem,
-    [InventoryPlace.leftPocket]: IItem,
-    [InventoryPlace.rightPocket]: IItem,
-    [InventoryPlace.tail]: IMutation,
-    [InventoryPlace.legs]: ICyber | IMutation,
-    [InventoryPlace.leftHand]: ICyber | IMutation | IItem,
-    [InventoryPlace.rightHand]: ICyber | IMutation | IItem,
-    [InventoryPlace.leftHip]: IItem,
-    [InventoryPlace.rightHip]: IItem,
+    [InventoryPlace.belt]: IItem | null,
+    [InventoryPlace.leftPocket]: IItem | null,
+    [InventoryPlace.rightPocket]: IItem | null,
+    [InventoryPlace.tail]: IMutation | null,
+    [InventoryPlace.legs]: ICyber | IMutation | null,
+    [InventoryPlace.leftHand]: ICyber | IMutation | IItem | null,
+    [InventoryPlace.rightHand]: ICyber | IMutation | IItem | null,
+    [InventoryPlace.leftHip]: IItem | null,
+    [InventoryPlace.rightHip]: IItem | null,
     [InventoryPlace.leftHipItem]: IItem | null,
     [InventoryPlace.rightHipItem]: IItem | null,
     [InventoryPlace.telekinesisLeftHand]: IItem | null,
     [InventoryPlace.telekinesisRightHand]: IItem | null,
-    [InventoryPlace.bothHands]: IMutation | IItem
+    [InventoryPlace.bothHands]: IMutation | IItem | null
+}
+
+export interface IRitualBodyPart extends IItem {
 }
 
 export interface ICyber extends IMutation {
@@ -263,7 +272,8 @@ export interface IBattleAbility extends ICommon {
     hitChance: number,
     target: AbilityTarget,
     targetAmount: number,
-    throwing: boolean
+    throwing: boolean,
+    ranged: boolean
 }
 
 export interface ISupportAbility extends ICommon {
@@ -351,7 +361,8 @@ export interface IMemberStatus {
     selected: boolean,
     hasTurn: boolean,
     dead: boolean,
-    defensiveCharms: boolean
+    defensiveCharms: boolean,
+    flameShield: boolean
 }
 
 // battle page state

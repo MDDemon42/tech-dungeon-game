@@ -51,7 +51,7 @@ function SubMindScreen(props: {
         [RitualGameScreens.airRituals]: {
             capacity: member.params.maxParams[UserParam.health],
             posessed: 0,
-            title: chrome.i18n.getMessage(''),
+            title: chrome.i18n.getMessage('air_rituals_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IRitual) => {
                 dispatch(gameSquad.actions.surpassRitual(data));
@@ -69,7 +69,7 @@ function SubMindScreen(props: {
         [RitualGameScreens.fireRituals]: {
             capacity: member.params.maxParams[UserParam.health],
             posessed: 0,
-            title: chrome.i18n.getMessage(''),
+            title: chrome.i18n.getMessage('fire_rituals_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IRitual) => {
                 dispatch(gameSquad.actions.surpassRitual(data));
@@ -87,7 +87,7 @@ function SubMindScreen(props: {
         [RitualGameScreens.focusRituals]: {
             capacity: member.params.maxParams[UserParam.health],
             posessed: 0,
-            title: chrome.i18n.getMessage(''),
+            title: chrome.i18n.getMessage('focus_rituals_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IRitual) => {
                 dispatch(gameSquad.actions.surpassRitual(data));
@@ -132,7 +132,7 @@ function SubMindScreen(props: {
         [RitualGameScreens.iceRituals]: {
             capacity: member.params.maxParams[UserParam.health],
             posessed: 0,
-            title: chrome.i18n.getMessage(''),
+            title: chrome.i18n.getMessage('ice_rituals_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IRitual) => {
                 dispatch(gameSquad.actions.surpassRitual(data));

@@ -23,8 +23,12 @@ function BackpacksScreenItem(props: {
         store.gameSquad.squadMembers[store.gameSquad.currentlyWatched]);
     const memberMasteries = squadMember.general.mind.masteries.map(mastery => mastery.name);
     const memberAvailableStrength = squadMember.params.strength - squadMember.params.lifted;
-    const [enabled, disableReason] = 
-        backpacksItemEnableChecker(item, memberMasteries, memberAvailableStrength);   
+    const memberInventory = squadMember.general.inventory;
+    const [enabled, disableReason] = backpacksItemEnableChecker(
+        item, memberMasteries, 
+        memberAvailableStrength,
+        memberInventory
+    );   
     
     const dispatch = useDispatch();
 

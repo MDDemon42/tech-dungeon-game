@@ -15,7 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  - Battle abilities must have either 1 or 3 or 5 targets
 
  # TODO:
- 0) Test are really hard to implement to this project =(
+ 0) Tests are really hard to implement to this project =(
 
     
  1) More `MASPIC`(`Beak`, rituals to become `Elementals`)
@@ -24,3 +24,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  4) Long hair of `fur` mutation (bald on `cosmo chakra`)
  5) More items for `extra arms` and `telekinesis` (`mage khopesh`)
  6) Legendary `MASPIC`
+ 7) `Throwing away` item from backpack

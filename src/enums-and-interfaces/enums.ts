@@ -200,7 +200,8 @@ export enum InventorySlotCategory {
     cyber = 'Cyber',
     mutation = 'Mutation',
     resource = 'Resource',
-    nothing = 'Nothing'
+    nothing = 'Nothing',
+    unchangeable = 'Unchangeable'
 }
 
 export enum ContentZones {

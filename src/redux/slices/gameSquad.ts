@@ -1,6 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
 import createEmptyCharacter, 
-{ createNoItem } from '../../helpers/emptyEssencesCreators';
+{ 
+    createEmptyUnchangeableSlot,
+    createNoItem 
+} from '../../helpers/emptyEssencesCreators';
 import { 
     IAbility,
     ICharacher, 
@@ -11,7 +14,8 @@ import {
     IMastery,
     IMutation,
     IPower,
-    IRitual
+    IRitual,
+    IRitualBodyPart
 } from '../../enums-and-interfaces/interfaces';
 import mutations from '../../gameScreens/MutaLab/mutations';
 import academyMasteries from '../../gameScreens/Academy/masteries';
@@ -842,6 +846,55 @@ const gameSquad = createSlice({
             squadMember.general.mind.rituals.push(ritual);
 
             integratePassiveAbility(squadMember, ritual, +1);
+            
+            const {
+                bendings, lostInventorySlots, 
+                unchangeableInventorySlots, 
+                grantedBodyParts, newRaceName
+            } = ritual;
+
+            if (bendings.length > 0) {
+                squadMember.general.mind.bending.push(...bendings);
+            }
+
+            if (
+                lostInventorySlots.length > 0 || 
+                unchangeableInventorySlots.length > 0 ||
+                grantedBodyParts
+            ) {
+                const backpacks = [...squadMember.general.backpacks];
+                const inventory = {...squadMember.general.inventory};
+
+                lostInventorySlots.forEach(slot => {
+                    putItemInBackpacks(backpacks, inventory[slot]);
+                    if (inventory[slot]) {
+                        inventory[slot] = null;
+                    }                    
+                });
+
+                const unchangeableSlot = createEmptyUnchangeableSlot();
+                unchangeableInventorySlots.forEach(slot => {
+                    putItemInBackpacks(backpacks, inventory[slot]);
+                    if (inventory[slot]) {
+                        inventory[slot] = unchangeableSlot;
+                    }                    
+                });
+
+                if (grantedBodyParts) {
+                    Object.keys(grantedBodyParts).forEach(key => {
+                        const bodyPartPlace = key as InventoryPlace;
+                        const bodyPartItem = grantedBodyParts[bodyPartPlace] as IRitualBodyPart;
+                        inventory[bodyPartPlace] = bodyPartItem;
+                    });
+                } 
+                
+                if (newRaceName.length > 0) {
+                    squadMember.params.race = newRaceName;
+                }
+
+                squadMember.general.backpacks = backpacks;
+                squadMember.general.inventory = inventory;
+            }
 
             state = oldState;
         },
@@ -950,7 +1003,7 @@ const gameSquad = createSlice({
                         !oldCyber.description.includes('Mutation') && 
                         !oldCyber.description.includes('Мутация')
                     ) {
-                        putItemInBackpacks(backpacks, oldCyber as IItem); 
+                        putItemInBackpacks(backpacks, oldCyber); 
                     }
 
                     integratePassiveAbility(squadMember, oldCyber, -1);
@@ -1126,9 +1179,9 @@ const gameSquad = createSlice({
 
             if (mutation.name === mutations.other.extraArms.name) {
                 if (
-                    inventory.Both_hands.name === mutations.weapons.claws.name ||
-                    inventory.Left_hand.name === mutations.weapons.claw.name ||
-                    inventory.Right_hand.name === mutations.weapons.claw.name
+                    inventory.Both_hands?.name === mutations.weapons.claws.name ||
+                    inventory.Left_hand?.name === mutations.weapons.claw.name ||
+                    inventory.Right_hand?.name === mutations.weapons.claw.name
                 ) {
                     inventory.Extra_left_hand = mutations.weapons.claw;
                     inventory.Extra_right_hand = mutations.weapons.claw;

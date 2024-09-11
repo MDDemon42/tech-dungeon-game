@@ -1,4 +1,4 @@
-import { IBattleAbility, IBending } from "../../enums-and-interfaces/interfaces";
+import { IBattleAbility, IBending, ISupportAbility } from "../../enums-and-interfaces/interfaces";
 import { aerotheurgy } from "../../gameScreens/AirSite/bendings";
 import { cryomancy } from "../../gameScreens/IceSite/bendings";
 import { pyrokinesis } from "../../gameScreens/FireSite/bendings";
@@ -13,7 +13,7 @@ export function createBending(
         requiredMastery: string,
         requiredBending: string,
         requiresBothHands: boolean,
-        ability: IBattleAbility
+        ability: IBattleAbility | ISupportAbility
     ]
 ): IBending {
     return {

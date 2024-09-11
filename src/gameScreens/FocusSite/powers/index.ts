@@ -14,7 +14,7 @@ export function createPower(
         abilities: IBattleAbility[] | null,
         passiveAbilities: IPassiveAbility[] | null
     ],
-    requiredPower: string
+    requiredPower?: string
 ): IPower {
     return {
         name: commonInfo[0],
@@ -25,7 +25,7 @@ export function createPower(
         abilities: abilityInfo[1],
         passiveAbilities: abilityInfo[2],
 
-        requiredPower        
+        requiredPower: requiredPower ?? ''        
     }
 }
 

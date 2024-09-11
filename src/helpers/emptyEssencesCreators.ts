@@ -145,3 +145,47 @@ export function createNoItem(): ICyber & IItem {
         linkedAbilities: null,        
     }    
 }
+
+export function createEmptyUnchangeableSlot() {
+    return {
+        name: chrome.i18n.getMessage('no_item_name'),
+        description: chrome.i18n.getMessage('unchangeable_item_description'),
+        cost: 0,
+        category: InventorySlotCategory.unchangeable,
+        inventoryPlaces: [
+            InventoryPlace.armor,
+            InventoryPlace.back,
+            InventoryPlace.backItem,
+            InventoryPlace.belt,
+            InventoryPlace.bothHands,
+            InventoryPlace.chin,
+            InventoryPlace.extraLeftHand,
+            InventoryPlace.extraRightHand,
+            InventoryPlace.eyes,
+            InventoryPlace.hat,
+            InventoryPlace.head,
+            InventoryPlace.leftHand,
+            InventoryPlace.leftHip,
+            InventoryPlace.leftHipItem,
+            InventoryPlace.leftPocket,
+            InventoryPlace.legs,
+            InventoryPlace.rightHand,
+            InventoryPlace.rightHip,
+            InventoryPlace.rightHipItem,
+            InventoryPlace.rightPocket,
+            InventoryPlace.shoulders,
+            InventoryPlace.shouldersItem,
+            InventoryPlace.skin,
+            InventoryPlace.tail
+        ],
+        image: images.classIcons.noIcon,
+        priority: 5,
+        givenMastery: null,
+        requiredMastery: '',
+        requiredStrength: 0,
+        requiredCyber: '',
+        abilities: null,
+        passiveAbilities: null,
+        linkedAbilities: null,        
+    } 
+}

@@ -13,8 +13,7 @@ const guardianField = createPower(
         psionMasteries.meditativeInsights.name,
         null,
         [abilities.passiveAbilities.psionics.guardianField]
-    ],
-    ''
+    ]
 )
 
 const guardianAura = createPower(

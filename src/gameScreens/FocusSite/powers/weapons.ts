@@ -15,8 +15,7 @@ const psiBlade = createPower(
             abilities.battleAbilities.melee.psionic.psiBladeSlash
         ], 
         null
-    ],
-    ''
+    ]
 );
 
 const psiJavelin = createPower(
@@ -31,8 +30,7 @@ const psiJavelin = createPower(
             abilities.battleAbilities.ranged.psionic.psiJavelin
         ], 
         null
-    ],
-    ''
+    ]
 );
 
 const psiLightning = createPower(
@@ -47,8 +45,7 @@ const psiLightning = createPower(
             abilities.battleAbilities.ranged.psionic.psiLightning
         ], 
         null
-    ],
-    ''
+    ]
 );
 
 const voidCrash = createPower(
@@ -63,8 +60,7 @@ const voidCrash = createPower(
             abilities.battleAbilities.ranged.psionic.voidCrash
         ], 
         null
-    ],
-    ''
+    ]
 );
 
 const weapons = {

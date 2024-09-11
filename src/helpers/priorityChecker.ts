@@ -58,12 +58,14 @@ function priorityChecker(slot: IInventorySlot) {
     if (possiblePositions.length === 1) {
         const position = possiblePositions[0];
         const name_old = inventory[position]?.name || '';
-        const priority_old = inventory[position]?.priority || 0;
+        const priority_old = inventory[position]?.priority || 999;
 
         result = name_old !== name_new && priority_new >= priority_old;
         if (position === InventoryPlace.bothHands) {
             return result &&
+                inventory.Left_hand &&
                 priority_new >= inventory.Left_hand.priority &&
+                inventory.Right_hand &&
                 priority_new >= inventory.Right_hand.priority
         }
 
@@ -71,7 +73,9 @@ function priorityChecker(slot: IInventorySlot) {
             position === InventoryPlace.leftHand ||
             position === InventoryPlace.rightHand
         ) {
-            return result && priority_new >= inventory.Both_hands.priority
+            return result && 
+                inventory.Both_hands &&
+                priority_new >= inventory.Both_hands.priority
         }
         // @ts-expect-error
     } else if (handsOptions.includes(possiblePositions[0])) {
@@ -89,7 +93,9 @@ function priorityChecker(slot: IInventorySlot) {
                     option === InventoryPlace.leftHand ||
                     option === InventoryPlace.rightHand
                 ) {
-                    result = result && priority_new >= inventory.Both_hands.priority
+                    result = result && 
+                        !!inventory.Both_hands &&
+                        priority_new >= inventory.Both_hands.priority
                 }
             }
         }
@@ -129,13 +135,15 @@ function priorityChecker(slot: IInventorySlot) {
                 }
 
                 if (option === InventoryPlace.bothHands) {
-                    const name_old = inventory[option].name;
-                    const priority_old = inventory[option].priority;
+                    const name_old = inventory[option]?.name;
+                    const priority_old = inventory[option]?.priority || 999;
 
                     result = result || (name_old !== name_new && priority_new >= priority_old);
 
                     return result &&
+                        inventory.Left_hand &&
                         priority_new >= inventory.Left_hand.priority &&
+                        inventory.Right_hand &&
                         priority_new >= inventory.Right_hand.priority
                 }
                 

@@ -28,9 +28,33 @@ const reverseDefensiveCharms = createSupportAbility(
     [100]
 );
 
+const flameShield = createSupportAbility(
+    [
+        chrome.i18n.getMessage('flame_shield'),
+        chrome.i18n.getMessage('flame_shield_ability_description'), 
+        images.elementBendings.flameShield
+    ],
+    {Mana: 1},
+    {
+        [DamageType.cold]: 1, 
+    },
+    [90]
+);
+
+const reverseFlameShield = createSupportAbility(
+    [ '', '', '' ],
+    {Blank: 0},
+    {
+        [DamageType.cold]: -1 
+    },
+    [100]
+);
+
 const armor = {
     defensiveCharms,
-    reverseDefensiveCharms
+    reverseDefensiveCharms,
+    flameShield,
+    reverseFlameShield
 };
 
 export default armor

@@ -39,6 +39,25 @@ const fireVessel = createPassiveAbility(
     0
 );
 
+const fireElemental = createPassiveAbility(
+    [
+        chrome.i18n.getMessage('fire_elemental'), 
+        chrome.i18n.getMessage('fire_elemental_ability_description'),
+    ],
+    {[UserParam.mana]: 3},
+    {
+        [DamageType.physicalPiercing]: 1,
+        [DamageType.physicalSlashing]: 1,
+        [DamageType.physicalSmashing]: 1,
+        [DamageType.acid]: 1,
+        [DamageType.cold]: -1,
+        [DamageType.electrical]: 1,
+        [DamageType.fire]: 8,
+        [DamageType.suffocation]: -1
+    },
+    0
+);
+
 const coldVessel = createPassiveAbility(
     [
         chrome.i18n.getMessage('cold_vessel'),
@@ -63,6 +82,7 @@ const rituals = {
     titanSkin,
     airVessel,
     fireVessel,
+    fireElemental,
     coldVessel,
     cosmoChakra
 }

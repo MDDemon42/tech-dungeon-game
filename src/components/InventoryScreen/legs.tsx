@@ -1,6 +1,6 @@
 import cybers from "../../gameScreens/CyberLab/cybers";
 import powers from "../../gameScreens/FocusSite/powers";
-import rituals from "../../gameScreens/Guild/rituals";
+import rituals from "../../general/rituals";
 import armouryItems from "../../gameScreens/Mansion/armouryItems";
 import items from "../../gameScreens/Market/items";
 import mutations from "../../gameScreens/MutaLab/mutations";
@@ -15,6 +15,13 @@ function getLegsImage(
     powersUserNames: string[],
     userStrength: number
 ) {
+    if (ritualsUserNames.includes(rituals.fireRituals.fireElemental.name)) {
+        return [
+            <img src={images.bodyElements.legs.usual} alt='legs' />,
+            <img src={images.bodyElements.legs.flameLegs} alt='flameLegs' />
+        ]
+    }
+
     let result = [];
 
     switch (legsName) {
@@ -26,7 +33,7 @@ function getLegsImage(
             break;
         default:
             result = [
-                ritualsUserNames.includes(rituals.titanSkin.name) ?
+                ritualsUserNames.includes(rituals.guildRituals.titanSkin.name) ?
                     <img src={images.bodyElements.legs.titan} alt='titanLegs' /> :
                     userStrength >= 3 ?
                         <img src={images.bodyElements.legs.brutal} alt='brutalLegs' /> :

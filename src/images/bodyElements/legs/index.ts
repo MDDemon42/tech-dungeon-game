@@ -1,4 +1,5 @@
 import brutal from './brutalLegs.png';
+import flameLegs from './flameLegs.png';
 import fur from './furLegs.png';
 import hooves from './hooves.png';
 import nanoMatrix from './nanoMatrixLegs.png';
@@ -11,6 +12,7 @@ import usual from './legs.png';
 
 const legs = {
     brutal,
+    flameLegs,
     fur,
     hooves,
     nanoMatrix,

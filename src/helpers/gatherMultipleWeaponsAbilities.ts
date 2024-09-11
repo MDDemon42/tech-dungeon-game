@@ -119,9 +119,9 @@ export function getWeaponAmount(
     weaponNames: string[],
 ) {
     const weaponCount = 0 +
-    ((weaponNames.includes(inventory.Left_hand.name)) ? 1 : 0) +
-    ((weaponNames.includes(inventory.Right_hand.name)) ? 1 : 0) +
-    ((weaponNames.includes(inventory.Both_hands.name)) ? 1 : 0) +
+    ((weaponNames.includes(inventory.Left_hand?.name || '')) ? 1 : 0) +
+    ((weaponNames.includes(inventory.Right_hand?.name || '')) ? 1 : 0) +
+    ((weaponNames.includes(inventory.Both_hands?.name || '')) ? 1 : 0) +
     ((weaponNames.includes(inventory.Extra_left_hand?.name || '')) ? 1 : 0) +
     ((weaponNames.includes(inventory.Extra_right_hand?.name || '')) ? 1 : 0) +
     ((weaponNames.includes(inventory.Telekinesis_left_hand?.name || '')) ? 1 : 0) +
@@ -226,9 +226,9 @@ function gatherMultipleWeaponsAbilities(
 
     if (
         (
-            inventory.Left_hand.name === nothing ||
-            inventory.Right_hand.name === nothing
-        ) && inventory.Both_hands.name === nothing
+            inventory.Left_hand?.name === nothing ||
+            inventory.Right_hand?.name === nothing
+        ) && inventory.Both_hands?.name === nothing
     ) {
         if (masteriesUser.includes(academyMasteries.martialArts.name)) {
             result.push(abilities.battleAbilities.melee.physicalSmashing.martialHit);

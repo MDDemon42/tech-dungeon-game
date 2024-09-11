@@ -29,6 +29,9 @@
     "cid_required_cyber": {
         "message": "Required cyber: "
     },
+    "cid_required_ritual": {
+        "message": "Required ritual: "
+    },
     "cid_passive": {
         "message": "Passive: "
     },
@@ -434,6 +437,9 @@
     "focus_site_title": {
         "message": "Welcome to Focus Site!"
     },
+    "focus_rituals_title": {
+        "message": "Surpass Focus Rituals!"
+    },
     "build_focus_site_task_title": {
         "message": "Help me settle a Focus Site"
     },
@@ -580,6 +586,9 @@
     "no_item_description": {
         "message": "Nothing at all"
     },
+    "unchangeable_item_description": {
+        "message": "And nothing would be cause of ritual"
+    },
     "smec_capacity": {
         "message": "Your mind cannot contain any more $dataName$",
         "placeholders": {
@@ -601,11 +610,17 @@
     "smec_power": {
         "message": "Does not have required power"
     },
+    "smec_ritual": {
+        "message": "Does not have required ritual"
+    },
     "smec_health_cost": {
         "message": "Health cost is too big"
     },
     "siec_resources": {
         "message": "Not enough resouces"
+    },
+    "siec_inventory_slot": {
+        "message": "No suitable inventory slot"
     },
     "siec_backpacks_capability": {
         "message": "Not enough space in backpacks"
@@ -2172,6 +2187,27 @@
     "fire_vessel_ritual_description": {
         "message": "Ritual to make you a vessel for Fire spirit."
     },
+    "fire_elemental": {
+        "message": "Fire Elemental"
+    },
+    "fire_elemental_legs": {
+        "message": "Fire Elemental legs"
+    },
+    "fire_elemental_legs_description": {
+        "message": "Grant the ability to Fly"
+    },
+    "fire_elemental_torso": {
+        "message": "Fire Elemental torso"
+    },
+    "fire_elemental_torso_description": {
+        "message": "Grants the passive `Flame shield` ability (1 Fire retaliation damage)"
+    },
+    "fire_elemental_ability_description": {
+        "message": "Upgrades resistance to All Physical, Acid and Electrical damage by 1,\nto Fire damage - by 8, but lowers Cold and Suffocation resistances by 1."
+    },
+    "fire_elemental_ritual_description": {
+        "message": "Ritual to make you a Fire Elemental."
+    },
     "cold_vessel": {
         "message": "Cold vessel"
     },
@@ -2229,6 +2265,9 @@
     },
     "ice_school_title": {
         "message": "Learn Ice Sense!"
+    },
+    "ice_rituals_title": {
+        "message": "Surpass Ice Rituals!"
     },
     "frost": {
         "message": "Frost"
@@ -2428,6 +2467,9 @@
     },
     "fire_school_title": {
         "message": "Learn Fire Sense!"
+    }, 
+    "fire_rituals_title": {
+        "message": "Surpass Fire Rituals!"
     },    
     "flame": {
         "message": "Flame"
@@ -2462,6 +2504,15 @@
                 "example": ""
             }
         }
+    },
+    "flame_shield": {
+        "message": "Flame shield"
+    },
+    "flame_shield_bending_description": {
+        "message": "Spell to create shield of fire."
+    },
+    "flame_shield_ability_description": {
+        "message": "Adds 1 Cold damage resistance and 1 Fire damage retaliation in melee."
     },
     "fire_wave": {
         "message": "Fire wave"
@@ -2571,6 +2622,9 @@
     },
     "air_school_title": {
         "message": "Learn Air Sense!"
+    },
+    "air_rituals_title": {
+        "message": "Surpass Air Rituals!"
     },
     "dominate": {
         "message": "Dominate!"

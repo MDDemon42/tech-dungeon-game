@@ -1,6 +1,7 @@
 import { 
     InventoryGameScreens, 
     InventoryPlace, 
+    InventorySlotCategory, 
     MindGameScreens, 
     MindOption, 
     RitualGameScreens, 
@@ -8,12 +9,13 @@ import {
 } from "../enums-and-interfaces/enums";
 import { 
     IBending, ICharacher, ICyber, 
+    IInventory, 
     IItem, IMastery, IMutation, 
     IPower, IRitual, ISpell 
 } from "../enums-and-interfaces/interfaces";
 import priorityChecker from "./priorityChecker";
 import { createNoItem } from "./emptyEssencesCreators";
-import rituals from "../gameScreens/Guild/rituals";
+import rituals from "../general/rituals";
 import { upperCaseFirstLetter } from "../pages/PopupPages/MainPage";
 
 export function bendingEnableChecker(
@@ -113,6 +115,16 @@ export function subMindEnableChecker(
         if (hasEnoughHealth) {
             return [false, chrome.i18n.getMessage('smec_health_cost')]
         }
+
+        // @ts-expect-error
+        const hasRequiredRitual = !!data.requiredRitual ? 
+            // @ts-expect-error
+            memberMind.includes(data.requiredRitual) :
+            true;
+            
+        if (!hasRequiredRitual) {
+            return [false, chrome.i18n.getMessage('smec_ritual')]
+        }
     }
 
     return [true, '']
@@ -124,6 +136,20 @@ export function subInventoryEnableChecker(
     screenName: InventoryGameScreens,
     resource: number
 ): [boolean, string] {
+    let hasInventorySlots = false;
+    for (const slot of datum.inventoryPlaces) {
+        if (
+            character.general.inventory[slot] !== null &&
+            character.general.inventory[slot]?.category !== InventorySlotCategory.unchangeable
+        ) {
+            hasInventorySlots = true;
+            break;
+        }
+    }
+    if (!hasInventorySlots) {
+        return [false, chrome.i18n.getMessage('siec_inventory_slot')]
+    }
+
     const hasEnoughResources = resource >= datum.cost;
     if (!hasEnoughResources) {
         return [false, chrome.i18n.getMessage('siec_resources')]
@@ -156,7 +182,7 @@ export function subInventoryEnableChecker(
         screenName === InventoryGameScreens.mutaLab
     ) {
         const memberRitualNames = character.general.mind.rituals.map(ritual => ritual.name);
-        const hasTitanSkin = memberRitualNames.includes(rituals.titanSkin.name);
+        const hasTitanSkin = memberRitualNames.includes(rituals.guildRituals.titanSkin.name);
 
         if (hasTitanSkin) {
             return [false, chrome.i18n.getMessage('siec_titanSkin')]
@@ -188,8 +214,23 @@ export function subInventoryEnableChecker(
 export function backpacksItemEnableChecker(
     item: IItem,
     memberMasteries: string[],
-    memberAvailableStrength: number
+    memberAvailableStrength: number,
+    memberInventory: IInventory
 ): [boolean, string] {
+    let hasInventorySlots = false;
+    for (const slot of item.inventoryPlaces) {
+        if (
+            memberInventory[slot] !== null &&
+            memberInventory[slot]?.category !== InventorySlotCategory.unchangeable
+        ) {
+            hasInventorySlots = true;
+            break;
+        }
+    }
+    if (!hasInventorySlots) {
+        return [false, chrome.i18n.getMessage('siec_inventory_slot')]
+    }
+    
     const hasRequiredMastery = !!item.requiredMastery ? 
         memberMasteries.includes(item.requiredMastery) :
         true;

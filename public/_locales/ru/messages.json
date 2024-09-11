@@ -29,6 +29,9 @@
     "cid_required_cyber": {
         "message": "Необходимая кибернизация: "
     },
+    "cid_required_ritual": {
+        "message": "Необходимый ритуал: "
+    },
     "cid_passive": {
         "message": "Пассивно: "
     },
@@ -434,6 +437,9 @@
     "focus_site_title": {
         "message": "Это Место Средоточия!"
     },
+    "focus_rituals_title": {
+        "message": "Переживите Ритуалы Средоточия!"
+    },
     "build_focus_site_task_title": {
         "message": "Помоги оформить Место Средоточия"
     },
@@ -580,6 +586,9 @@
     "no_item_description": {
         "message": "Вообще ничего"
     },
+    "unchangeable_item_description": {
+        "message": "И ничего не будет из-за ритуала"
+    },
     "smec_capacity": {
         "message": "Ваш разум не выдержит больше $dataName$",
         "placeholders": {
@@ -601,11 +610,17 @@
     "smec_power": {
         "message": "Нет необходимой силы"
     },
+    "smec_ritual": {
+        "message": "Нет необходимого ритуала"
+    },
     "smec_health_cost": {
         "message": "Потеря Здоровья слишком высока"
     },
     "siec_resources": {
         "message": "Недостаточно ресурсов"
+    },
+    "siec_inventory_slot": {
+        "message": "Нет подходящего места в инвентаре"
     },
     "siec_backpacks_capability": {
         "message": "Нет места в рюкзаках"
@@ -2158,6 +2173,27 @@
     "fire_vessel_ritual_description": {
         "message": "Ритуал, вселяющий в тело дух Огня."
     },
+    "fire_elemental": {
+        "message": "Элементаль Огня"
+    },
+    "fire_elemental_legs": {
+        "message": "Ноги Огненного Элементаля"
+    },
+    "fire_elemental_legs_description": {
+        "message": "Даруют способность Летать"
+    },
+    "fire_elemental_torso": {
+        "message": "Тело Огненного Элементаля"
+    },
+    "fire_elemental_torso_description": {
+        "message": "Дарует пассивный 'Пламенный щит' (1 урон Огнём отдачи)"
+    },
+    "fire_elemental_ability_description": {
+        "message": "Повышает сопротивление Всему Физическому, Кислотному и Электрическому урону на 1,\nОгненному урону - на 8, но снижает сопротивление Холоду и Удушению на 1."
+    },
+    "fire_elemental_ritual_description": {
+        "message": "Ритуал, перерождающий в теле Элементаля Огня."
+    },
     "cold_vessel": {
         "message": "Сосуд Холода"
     },
@@ -2215,6 +2251,9 @@
     },
     "ice_school_title": {
         "message": "Изучите Чувство Льда!"
+    },
+    "ice_rituals_title": {
+        "message": "Переживите Ритуалы Льда!"
     },
     "frost": {
         "message": "Холод"
@@ -2415,6 +2454,9 @@
     "fire_school_title": {
         "message": "Изучите Чувство Огня!"
     },
+    "fire_rituals_title": {
+        "message": "Переживите Ритуалы Огня!"
+    }, 
     "flame": {
         "message": "Пламя"
     },
@@ -2448,6 +2490,15 @@
                 "example": ""
             }
         }
+    },
+    "flame_shield": {
+        "message": "Пламенный щит"
+    },
+    "flame_shield_bending_description": {
+        "message": "Заклинание для создания щита из огня."
+    },
+    "flame_shield_ability_description": {
+        "message": "Добавляет сопротивление 1 урону от Холода и отдачу 1 урона от Огня в ближнем бою."
     },
     "fire_wave": {
         "message": "Огненная волна"
@@ -2557,6 +2608,9 @@
     },
     "air_school_title": {
         "message": "Изучите Чувство Воздуха!"
+    },
+    "air_rituals_title": {
+        "message": "Переживите Ритуалы Воздуха!"
     },
     "dominate": {
         "message": "Подчинить!"

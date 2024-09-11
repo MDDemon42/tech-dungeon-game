@@ -16,7 +16,8 @@ export function createBattleAbility(
         hitChance: number,
         target?: AbilityTarget,
     ],
-    throwing: boolean = false       
+    throwing: boolean = false,
+    ranged: boolean = false 
 ): IBattleAbility {
     return {
         name: commonInfo[0], 
@@ -31,7 +32,8 @@ export function createBattleAbility(
         hitChance: damageInfo[1],
         target: damageInfo[2] ? damageInfo[2] : AbilityTarget.enemy,
 
-        throwing
+        throwing,
+        ranged
     }
 }
 
