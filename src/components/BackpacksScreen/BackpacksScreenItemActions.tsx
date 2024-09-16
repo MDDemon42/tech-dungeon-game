@@ -3,11 +3,12 @@ import {
     HandIndexThumbFill, 
     ArrowUpCircleFill, 
     ArrowUpCircle,
-    ArrowLeft
+    ArrowLeft,
+    Trash
 } from "react-bootstrap-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { UserResource, InventoryGameScreens } from "../../enums-and-interfaces/enums";
-import { IStore, IManageItemsProps, IItem } from "../../enums-and-interfaces/interfaces";
+import { IStore, IItem } from "../../enums-and-interfaces/interfaces";
 import items from "../../gameScreens/Market/items";
 import { createNoItem } from "../../helpers/emptyEssencesCreators";
 import gameSquad from "../../redux/slices/gameSquad";
@@ -27,6 +28,7 @@ function BackpacksScreenItemActions(props: {
     } = props;
     
     const storage = useSelector((store: IStore) => store.gameSquad.storage);
+    const memberIndex = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
     const nothing = createNoItem().name;
     const emptyLockers = storage.filter(item => item.name === nothing).length;
 
@@ -34,7 +36,7 @@ function BackpacksScreenItemActions(props: {
 
     const dispatch = useDispatch();
 
-    const equipListener = (props: IManageItemsProps) => {
+    const equipListener = () => {
         dispatch(gameSquad.actions.equipItem(props));
         closeListener();
     }
@@ -47,14 +49,14 @@ function BackpacksScreenItemActions(props: {
     const putIntoStorageDisabled = storage.length === 0 || emptyLockers === 0;
     const shouldShowPutIntoStorage = item.name !== nothing;
 
-    const sellListener = (props: IManageItemsProps) => {
+    const sellListener = () => {
         dispatch(gameSquad.actions.sellItem(props));
         closeListener();
     }
     const shouldShowSell = item.name !== nothing &&
-        gameScreen === InventoryGameScreens.market
+        gameScreen === InventoryGameScreens.market;
     
-    const utilizeListener = (itemIndex: number) => {
+    const utilizeListener = () => {
         dispatch(gameSquad.actions.utilizeRemains(itemIndex));
         closeListener();
     }
@@ -64,6 +66,18 @@ function BackpacksScreenItemActions(props: {
         item.name === items.bigResources.reptiloidRemains.name ||
         item.name === items.bigResources.dragonRemains.name;
 
+    const throwingAwayListener = () => {
+        dispatch(gameSquad.actions.throwItem({
+            index: memberIndex, 
+            item, 
+            inventoryPlace: item.inventoryPlaces[0],
+            fromBackpacks: true,
+            backpacksIndex: itemIndex
+        }));
+        closeListener();
+    }
+    const shouldShowThrowAway = item.name !== nothing;
+
     return <div className={styles.BackpacksScreenItemActions}>
         <label>
             {item.name}
@@ -71,7 +85,7 @@ function BackpacksScreenItemActions(props: {
 
         {
             shouldShowEquip ?
-                <button onClick={() => equipListener(props)}>
+                <button onClick={equipListener}>
                     {chrome.i18n.getMessage('equip')}
                     {
                         enabled ?
@@ -88,7 +102,7 @@ function BackpacksScreenItemActions(props: {
         
         {
             shouldShowSell ?
-                <button onClick={() => sellListener(props)}>
+                <button onClick={sellListener}>
                     Sell {chrome.i18n.getMessage('')}
                     <ResourceIcon resource={UserResource.gem} price={item.cost}/>
                 </button> :
@@ -97,7 +111,7 @@ function BackpacksScreenItemActions(props: {
 
         {
             shouldShowUtilize ?
-                <button onClick={() => utilizeListener(itemIndex)}>
+                <button onClick={utilizeListener}>
                     Utilize {chrome.i18n.getMessage('')}
                     <ResourceIcon resource={UserResource.gene} price={item.cost}/>
                 </button> :
@@ -122,7 +136,16 @@ function BackpacksScreenItemActions(props: {
                     }
                 </button> :
                 null
-        }        
+        }    
+
+        {
+            shouldShowThrowAway ?
+                <button onClick={throwingAwayListener}>
+                    Throw away
+                    <Trash title={chrome.i18n.getMessage('')}/>
+                </button> :
+                null
+        }       
 
         <button onClick={closeListener}>
             {nothing}

@@ -657,7 +657,9 @@ function BattlePage() {
                     dispatch(opponents.actions.throwItem({
                         index: state.opponentIndex,
                         item: abilityItem,
-                        inventoryPlace: abilityItemInventoryPlace
+                        inventoryPlace: abilityItemInventoryPlace,
+                        fromBackpacks: false,
+                        backpacksIndex: 0
                     }))
                 }
             }            
@@ -826,7 +828,9 @@ function BattlePage() {
                     dispatch(gameSquad.actions.throwItem({
                         index: state.memberIndex,
                         item: abilityItem,
-                        inventoryPlace: abilityItemInventoryPlace
+                        inventoryPlace: abilityItemInventoryPlace,
+                        fromBackpacks: false,
+                        backpacksIndex: 0
                     }))
                 }
 
@@ -871,7 +875,9 @@ function BattlePage() {
                     dispatch(opponents.actions.throwItem({
                         index: state.opponentIndex,
                         item: itemToDispatch,
-                        inventoryPlace
+                        inventoryPlace,
+                        fromBackpacks: false,
+                        backpacksIndex: 0
                     }))
                 }
             }

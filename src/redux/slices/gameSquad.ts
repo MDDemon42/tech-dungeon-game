@@ -761,27 +761,57 @@ const gameSquad = createSlice({
             state = oldState;
         },
         throwItem(state, action) {
-            const {index, item, inventoryPlace} = action.payload as 
-                {index: number, item: IItem, inventoryPlace: InventoryPlace};
+            const {
+                index, item, 
+                inventoryPlace,
+                fromBackpacks,
+                backpacksIndex
+            } = action.payload as 
+                {
+                    index: number, item: IItem, 
+                    fromBackpacks: boolean,
+                    inventoryPlace: InventoryPlace,
+                    backpacksIndex: number
+                };
 
             const oldState = {...state};
             const squadMember = {...oldState.squadMembers[index]};
-            const inventory = {...squadMember.general.inventory};
-            
-            if (
-                inventoryPlace !== InventoryPlace.telekinesisLeftHand &&
-                inventoryPlace !== InventoryPlace.telekinesisRightHand
-            ) {
-                squadMember.params.lifted -= item.requiredStrength;
-            } else {
-                squadMember.params.maxParams.Focus += 1;
-                squadMember.params.currentParams.Focus += 1;
-            }          
-            
-            inventory[inventoryPlace] = createNoItem();
-            integratePassiveAbility(squadMember, item, -1);
+            const nothing = createNoItem();
 
-            squadMember.general.inventory = inventory;
+            if (fromBackpacks) {
+                const backpacks = [...squadMember.general.backpacks];
+
+                backpacks[backpacksIndex] = nothing;
+                backpacks.sort((a, b) => {
+                    if (a.name === nothing.name) {
+                        return 1
+                    }
+                    
+                    if (b.name === nothing.name) {
+                        return -1
+                    }
+
+                    return 0
+                });
+
+                squadMember.general.backpacks = backpacks;
+            } else {
+                const inventory = {...squadMember.general.inventory};
+                if (
+                    inventoryPlace !== InventoryPlace.telekinesisLeftHand &&
+                    inventoryPlace !== InventoryPlace.telekinesisRightHand
+                ) {
+                    squadMember.params.lifted -= item.requiredStrength;
+                } else {
+                    squadMember.params.maxParams.Focus += 1;
+                    squadMember.params.currentParams.Focus += 1;
+                }          
+                
+                inventory[inventoryPlace] = nothing;
+                integratePassiveAbility(squadMember, item, -1);
+
+                squadMember.general.inventory = inventory; 
+            }                       
 
             state = oldState;
         },

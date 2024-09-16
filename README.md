@@ -24,4 +24,3 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  4) Long hair of `fur` mutation (bald on `cosmo chakra`)
  5) More items for `extra arms` and `telekinesis` (`mage khopesh`)
  6) Legendary `MASPIC`
- 7) `Throwing away` item from backpack
