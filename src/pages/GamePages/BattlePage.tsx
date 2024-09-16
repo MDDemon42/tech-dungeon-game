@@ -12,7 +12,6 @@ import {
     IStore,
     ISupportAbility
 } from '../../enums-and-interfaces/interfaces';
-import CommonIcon from '../../components/Icons/CommonIcon';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import gameSquad, { createGameSquad } from '../../redux/slices/gameSquad';
@@ -49,6 +48,7 @@ import { raceNames } from '../../general/races/races';
 import items from '../../gameScreens/Market/items';
 import supportAbilities from '../../general/abilities/supportAbilities';
 import rituals from '../../general/rituals';
+import AbilityIcon from '../../components/Icons/AbilityIcon';
 
 function BattlePage() {
     const [battlePageState, setBattlePageState] = useState<IBattlePageState>({
@@ -1041,7 +1041,7 @@ function BattlePage() {
                         id={id}
                         onClick={() => selectAbility(ability, character)}
                     >
-                        <CommonIcon item={ability}/>
+                        <AbilityIcon item={ability}/>
                     </div>
                 }
 
@@ -1103,9 +1103,8 @@ function BattlePage() {
 
         const oppGems = Array(Math.floor(oppsMembers.length / 2) + 1)
             .fill(items.other.gem) as IItem[];
-        console.log('-oppGems-', oppGems);
         result.push(...oppGems);
-        console.log('-result-', result);
+        
         return result
     }
 

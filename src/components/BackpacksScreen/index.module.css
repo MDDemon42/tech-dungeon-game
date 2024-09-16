@@ -28,30 +28,53 @@
     width: 88%;
 }
 
-.BackpacksScreenItem_CommonIconWithButtons {
+.BackpacksScreenItem {
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
 }
 
-.BackpacksScreenItem_CommonIconWithButtons_buttons {
+.BackpacksScreenItemButton {
+    width: calc(100% - 10px);
+    padding: 0;
+}
+
+.BackpacksScreenItemActions {
+    position: absolute;
+    left: 60px;
+    bottom: 0px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
-    align-items: center;
-    width: 80%;
+    align-items: flex-start;
+    border: 2px solid black;
+    background-color: white;
+    gap: 1px;
+    padding: 1px;
+    z-index: 3;
+    min-width: 100px;
 }
 
-.BackpacksScreenItem_CommonIconWithButtons_buttons > svg,
-.BackpacksScreenItem_CommonIconWithButtons_buttons > button {
-    width: 14px;
+.BackpacksScreenItemActions > label {
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.BackpacksScreenItemActions > svg {
     height: 14px;
-    cursor: pointer;
+    width: 14px;
 }
 
-.BackpacksScreenItem_CommonIconWithButtons_buttons > button {
-    padding: 0 0 3px;
-    border: none;
-    background: none;
+.BackpacksScreenItemActions > button {
+    padding: 3px;
+    border: 1px solid black;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: lightgrey;
 }

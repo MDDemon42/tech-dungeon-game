@@ -1,5 +1,4 @@
 import styles from './Icons.module.css';
-import ParamIcon from './ParamIcon';
 import { AbilityTarget, DamageType, InventoryPlace, UserParam } from '../../enums-and-interfaces/enums';
 import { IPassiveAbility } from '../../enums-and-interfaces/interfaces';
 import inventoryPlaces from '../../general/inventoryPlaces';
@@ -50,10 +49,9 @@ function CommonIcon(props: {
         passiveAbilities?: IPassiveAbility[] | null
         bonusResistances?: Partial<Record<DamageType, number>>
     },
-    disableReason?: string,
-    forInfoPage?: boolean
+    disableReason?: string
 }) {
-    const {item, disableReason, forInfoPage} = props;
+    const {item, disableReason} = props;
 
     let description = item.name + '\n' 
     
@@ -149,96 +147,12 @@ function CommonIcon(props: {
         description += '\n\n' + chrome.i18n.getMessage('cid_not_allowed') + disableReason;
     }
 
-    const damageColors = {
-        [DamageType.acid]: 'lightgreen',
-        [DamageType.electrical]: 'yellow',
-        [DamageType.fire]: 'orange',
-        [DamageType.suffocation]: 'lighyellow',
-        [DamageType.physicalSlashing]: 'lightblue',
-        [DamageType.physicalSmashing]: 'darkblue',
-        [DamageType.physicalPiercing]: 'blue',
-        [DamageType.psionic]: 'pink',
-        [DamageType.cold]: 'aqua'
-    }
-
-    const manaCost = item.costs?.Mana!;
-    const focusCost = item.costs?.Focus!;
-    const staminaCost = item.costs?.Stamina!;
-    const healthCost = item.costs?.[UserParam.health]!;
-
-    return(
-        <div className={styles.CommonIcon}>
-            {
-                (!!item.damage && !forInfoPage) ?
-                    <>
-                        <div className={styles.CommonIcon_damagesColumn}>
-                            {
-                                Object.keys(item.damage).map(key =>
-                                    <span 
-                                        style={{color: damageColors[key as DamageType]}}
-                                    >
-                                        {item.damage?.[key as DamageType]}
-                                    </span>
-                                )
-                            }                            
-                        </div>
-                        <span className={styles.CommonIcon_hitChance}
-                            style={{color: item.hitChance! >= 90 ? 'gold' : 'grey'}}
-                        >
-                            {item.hitChance}
-                        </span>
-                    </> : 
-                    null
-            }
-            <img 
-                src={item.image}
-                title={description}
-                className={styles.CommonIcon_icon}
-                alt={item.name}
-            /> 
-            {
-                !forInfoPage &&
-                <div className={styles.CommonIcon_costs}>
-                    {
-                        healthCost > 0 ?
-                            <div>
-                                {
-                                    [...Array(healthCost)].map(icon => <ParamIcon param='health'/>)
-                                }
-                            </div> : 
-                            null
-                    }
-                    {
-                        manaCost > 0 ?
-                            <div>
-                                {
-                                    [...Array(manaCost)].map(icon => <ParamIcon param='mana'/>)
-                                }
-                            </div> : 
-                            null
-                    }
-                    {
-                        focusCost > 0 ?
-                            <div>
-                                {
-                                    [...Array(focusCost)].map(icon => <ParamIcon param='focus'/>)
-                                }
-                            </div> : 
-                            null
-                    }
-                    {
-                        staminaCost > 0 ?
-                            <div>
-                                {
-                                    [...Array(staminaCost)].map(icon => <ParamIcon param='stamina'/>)
-                                }
-                            </div> : 
-                            null
-                    }
-                </div>
-            }
-        </div>
-    )
+    return <img 
+        src={item.image}
+        title={description}
+        className={styles.CommonIcon_icon}
+        alt={item.name}
+    />
 }
 
 export default CommonIcon

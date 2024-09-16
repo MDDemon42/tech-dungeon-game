@@ -324,7 +324,7 @@ function InfoPage() {
                         // @ts-expect-error
                         possibleContentParts[contentPart].content
                         // @ts-expect-error
-                            .map(item => <CommonIcon item={item} forInfoPage/>)
+                            .map(item => <CommonIcon item={item}/>)
                 }
             </div>
         </div>

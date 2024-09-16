@@ -581,7 +581,7 @@
         "message": "Закопать тела для предотвращения распространения вони"
     },
     "no_item_name": {
-        "message": "Пока ничего"
+        "message": "Ничего"
     },
     "no_item_description": {
         "message": "Вообще ничего"
@@ -3435,7 +3435,7 @@
         "message": "Завершённые задачи"
     },
     "put_into_storage": {
-        "message": "Складировать"
+        "message": "На склад"
     },
     "storage_is_full": {
         "message": "Склад полон"

@@ -54,11 +54,11 @@ function priorityChecker(slot: IInventorySlot) {
         InventoryPlace.shouldersItem,
         InventoryPlace.bothHands
     ];
-
+    
     if (possiblePositions.length === 1) {
         const position = possiblePositions[0];
-        const name_old = inventory[position]?.name || '';
-        const priority_old = inventory[position]?.priority || 999;
+        const name_old = inventory[position]?.name ?? '';
+        const priority_old = inventory[position]?.priority ?? 999;
 
         result = name_old !== name_new && priority_new >= priority_old;
         if (position === InventoryPlace.bothHands) {
