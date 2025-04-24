@@ -6,7 +6,7 @@ import images from '../../images/images';
 import { ICharacher, IStore } from '../../enums-and-interfaces/interfaces';
 import { useEffect, useState } from 'react';
 import C from '../../redux/constants';
-import gameSquad from '../../redux/slices/gameSquad';
+import character from '../../redux/slices/character';
 import { iconToClass, classToIcon } from '../../helpers/classIconRelates';
 import { UserStartClass } from '../../enums-and-interfaces/enums';
 import { removeGameTabs } from '../../helpers/removeGameTabs';
@@ -32,18 +32,17 @@ function getRandomStartName() {
     return startNames[Math.floor(Math.random() * startNames.length)]
 }
 
-function userEquality(oldUser: ICharacher, newUser: ICharacher) {
+function charEquality(oldUser: ICharacher, newUser: ICharacher) {
     return oldUser.params.class === newUser.params.class &&
         oldUser.params.name === newUser.params.name
 }
 
 function MainPage() {
-    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
-    const user = useSelector((store: IStore) => store.gameSquad.squadMembers[index], userEquality);
+    const char = useSelector((store: IStore) => store.character, charEquality);
 
-    const [userClass, setUserClass] = useState(user.params.class);
-    const [userName, setUserName] = useState(user.params.name);
-    const [userLevel, setUserLevel] = useState(user.params.level);
+    const [charClass, setUserClass] = useState(char.params.class);
+    const [charName, setUserName] = useState(char.params.name);
+    const [charLevel, setUserLevel] = useState(char.params.level);
 
     const [startButtonText, setStartButtonText] = 
         useState(chrome.i18n.getMessage('main_page_start'));
@@ -57,26 +56,26 @@ function MainPage() {
     useEffect(() => {
         chrome.storage.local.get().then(result => {
             if (result[C.extensionStorageName]) {
-                dispatch(gameSquad.actions.setState(result[C.extensionStorageName].gameSquad));
+                dispatch(character.actions.setState(result[C.extensionStorageName].character));
 
                 dispatch(gameStage.actions.setState(result[C.extensionStorageName].gameStage));
 
-                const storageUser = result[C.extensionStorageName].gameSquad.squadMembers[index];
-                if (storageUser.params.level > 0) {
+                const storagedChar = result[C.extensionStorageName].character;
+                if (storagedChar.params.level > 0) {
                     setStartButtonText(chrome.i18n.getMessage('main_page_continue'))
                 }
 
-                if (storageUser.params.name !== user.params.name) {
-                    setUserClass(storageUser.params.class);
-                    setUserLevel(storageUser.params.length);
-                    setUserName(storageUser.params.name);
+                if (storagedChar.params.name !== char.params.name) {
+                    setUserClass(storagedChar.params.class);
+                    setUserLevel(storagedChar.params.length);
+                    setUserName(storagedChar.params.name);
                 }
             }
         });       
     }, [])
 
     const getUserName = () => {
-        return (document.getElementById('userName') as HTMLInputElement)?.value;
+        return (document.getElementById('charName') as HTMLInputElement)?.value;
     }
 
     const chooseAnotherName = () => {
@@ -94,10 +93,10 @@ function MainPage() {
     const startButtonListener = async () => {
         await removeGameTabs();
 
-        if (userLevel === 0) {
-            dispatch(gameSquad.actions.startGame({
-                userName,
-                userClass,
+        if (charLevel === 0) {
+            dispatch(character.actions.startGame({
+                charName,
+                charClass,
             }));
             dispatch(gameStage.actions.setState(createGameStage(false)));
         }       
@@ -109,25 +108,25 @@ function MainPage() {
         <div className={styles.Popup}>
             <div className={styles.Popup_iconBlock}>
                 <img 
-                    src={images.classIcons[classToIcon(userClass) as keyof typeof images.classIcons]} 
+                    src={images.classIcons[classToIcon(charClass) as keyof typeof images.classIcons]} 
                     alt='classIcon' 
-                    title={classInfo[userClass].description}
+                    title={classInfo[charClass].description}
                 />      
                 <input 
-                    id='userName'
+                    id='charName'
                     maxLength={15}
                     onBlur={chooseAnotherName}
                     onChange={(event) => setUserName(event.target.value)}
                     placeholder={chrome.i18n.getMessage('hero_name')}
-                    disabled={userLevel > 0 || userClass === UserStartClass.noIcon}
-                    defaultValue={userName}
+                    disabled={charLevel > 0 || charClass === UserStartClass.noIcon}
+                    defaultValue={charName}
                 ></input>
                 <select 
                     onChange={(event) => chooseAnotherClass(event.target.value)}
                     style={{textAlignLast: 'center'}}
                 >
                     <option 
-                        selected={userClass === UserStartClass.noIcon}
+                        selected={charClass === UserStartClass.noIcon}
                         disabled hidden
                     >
                         {chrome.i18n.getMessage('choose_class')}
@@ -137,7 +136,7 @@ function MainPage() {
                             return (
                                 <option 
                                     value={item} 
-                                    selected={iconToClass(item) === userClass}
+                                    selected={iconToClass(item) === charClass}
                                 >
                                     {
                                         classInfo[iconToClass(item)].name
@@ -150,7 +149,7 @@ function MainPage() {
             </div>
             <div className={styles.Popup_buttonsBlock}>
                 <button 
-                    disabled={userClass === UserStartClass.noIcon}
+                    disabled={charClass === UserStartClass.noIcon}
                     className={styles.border}
                     onClick={startButtonListener}
                 >

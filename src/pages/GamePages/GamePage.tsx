@@ -3,7 +3,7 @@ import C from '../../redux/constants';
 import {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import GameScreen from '../../components/GameScreen';
-import gameSquad from '../../redux/slices/gameSquad';
+import character from '../../redux/slices/character';
 import SquadScreen from '../../components/SquadScreen';
 import gameStage from '../../redux/slices/gameStage';
 
@@ -14,12 +14,9 @@ function GamePage() {
     useEffect(() => {
         chrome.storage.local.get().then(result => {
             if (result[C.extensionStorageName]) {
-                dispatch(gameSquad.actions.setState(result[C.extensionStorageName].gameSquad));
+                dispatch(character.actions.setState(result[C.extensionStorageName].character));
 
                 dispatch(gameStage.actions.setState(result[C.extensionStorageName].gameStage));
-
-                const startClass = result[C.extensionStorageName].gameSquad.squadMembers[0].params.class;
-                dispatch(gameStage.actions.addStartClassWeapons(startClass));
             }
         });
 

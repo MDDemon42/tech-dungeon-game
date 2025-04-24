@@ -5,7 +5,7 @@ import styles from './BendingScreen.module.css';
 
 function BendingScreenItem(props: {
     bending: IBending,
-    memberMind: string[],
+    charMind: string[],
     buttonText: string,
     listener: any,
     capacity: number,
@@ -13,11 +13,11 @@ function BendingScreenItem(props: {
 }) {
     const {
         bending, buttonText, listener,
-        memberMind,
+        charMind,
         capacity, posessed
     } = props;
     const [enabled, disableReason] = bendingEnableChecker(
-        bending, memberMind, 
+        bending, charMind, 
         capacity, posessed
     );
 

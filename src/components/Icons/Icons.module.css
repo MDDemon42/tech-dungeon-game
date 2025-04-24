@@ -57,7 +57,7 @@
     margin: 0 5px;
 }
 
-.ResourceIcon, .ParamIcon, .ResistanceIcon {
+.ParamIcon, .ResistanceIcon {
     position: relative;
     width: 12px;
     height: 12px;

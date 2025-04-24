@@ -3,7 +3,6 @@ import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import abilities from "../../../general/abilities";
 import images from "../../../images/images";
 import academyMasteries from "../../Academy/masteries";
-import crafts from "../crafts";
 
 const battleAxe = createArmouryItem(
     [
@@ -24,8 +23,7 @@ const battleAxe = createArmouryItem(
         1
     ],
     [
-        '', 1,
-        crafts.battleWeapons.craftBattleAxe
+        '', 1
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.battleAxeSlash
@@ -49,8 +47,7 @@ const dragonBoneBlade = createArmouryItem(
         2, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 2,
-        crafts.battleWeapons.craftDragonBoneBlade
+        '', 2
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.dragonBoneBladeSlash
@@ -74,8 +71,7 @@ const glaive = createArmouryItem(
         2, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 2,
-        crafts.battleWeapons.craftGlaive
+        '', 2
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.glaiveSlash,
@@ -104,8 +100,7 @@ const halberd = createArmouryItem(
         2, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 2,
-        crafts.battleWeapons.craftHalberd
+        '', 2
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.halberdSlash
@@ -138,8 +133,7 @@ const katana = createArmouryItem(
         1
     ],
     [
-        '', 1,
-        crafts.battleWeapons.craftKatana
+        '', 1
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.katanaSlash
@@ -163,8 +157,7 @@ const khopesh = createArmouryItem(
         2, [InventoryPlace.rightHand], 1
     ],
     [
-        '', 1,
-        crafts.battleWeapons.craftKhopesh
+        '', 1
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.khopeshSlash
@@ -194,8 +187,7 @@ const macuahuitl = createArmouryItem(
         1
     ],
     [
-        '', 1,
-        crafts.battleWeapons.craftMacuahuitl
+        '', 1
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.macuahuitlSlash
@@ -225,8 +217,7 @@ const rapier = createArmouryItem(
         1
     ],
     [
-        '', 1,
-        crafts.battleWeapons.craftRapier
+        '', 1
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.rapierSlash
@@ -256,8 +247,7 @@ const sabre = createArmouryItem(
         1
     ],
     [
-        '', 1,
-        crafts.battleWeapons.craftSabre
+        '', 1
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.sabreSlash

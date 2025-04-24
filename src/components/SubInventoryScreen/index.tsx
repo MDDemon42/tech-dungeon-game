@@ -5,94 +5,45 @@ import {
     IMutation, 
     ICyber, 
     IItem,  
-    IInventorySlot, 
-    ISubInventoryMapping,
+    IInventorySlot,
     IWizardItem,
     IGuildItem,
-    IArmouryItem
+    ISubMapping
 } from '../../enums-and-interfaces/interfaces';
-import gameSquad from '../../redux/slices/gameSquad';
-import { 
-    UserResource,
+import character from '../../redux/slices/character';
+import {
     InventoryPlace, 
     InventoryGameScreens,
-    InventorySlotCategory
 } from '../../enums-and-interfaces/enums';
 import SubInventoryScreenItemLine from './SubInventoryScreenItemLine';
-import { createContext, useState } from 'react';
-import CraftScreen from '../CraftScreen';
-import items from '../../gameScreens/Market/items';
-import gameStage from '../../redux/slices/gameStage';
+import { createContext } from 'react';
 
 export const SubInventoryScreenItemContext = createContext({
     screenName: '' as InventoryGameScreens,
-    resource: 0 as number,
     listener: (datum: IItem | IMutation | ICyber | IWizardItem) => {},
     buttonText: '' as string
 });
 
-const subInventoryMappings: Record<InventoryGameScreens, ISubInventoryMapping> = {
-    [InventoryGameScreens.armoury]: {
-        resource: UserResource.none,
-        title: chrome.i18n.getMessage('armoury_title'),
-        button: chrome.i18n.getMessage('craft'),
-    },
+const subInventoryMappings: Record<InventoryGameScreens, ISubMapping> = {
     [InventoryGameScreens.wizardShop]: {
-        resource: UserResource.gem,
         title: chrome.i18n.getMessage('wizard_shop_title'),
         button: chrome.i18n.getMessage('buy'),
     },
     [InventoryGameScreens.cyberLab]: {
-        resource: UserResource.core,
         title: chrome.i18n.getMessage('cyber_lab_title'),
         button: chrome.i18n.getMessage('implement'),
     },
     [InventoryGameScreens.mutaLab]: {
-        resource: UserResource.gene,
         title: chrome.i18n.getMessage('muta_lab_title'),
         button: chrome.i18n.getMessage('mutate'),
     },
     [InventoryGameScreens.market]: {
-        resource: UserResource.gem,
         title: chrome.i18n.getMessage('market_title'),
         button: chrome.i18n.getMessage('buy'),
     },
     [InventoryGameScreens.guildShop]: {
-        resource: UserResource.gem,
         title: chrome.i18n.getMessage('guild_shop_title'),
         button: chrome.i18n.getMessage('buy'),
-    },
-    [InventoryGameScreens.tropheyField]: {
-        resource: UserResource.none,
-        title: chrome.i18n.getMessage('trophey_field_title'),
-        button: chrome.i18n.getMessage('take'),
-    }
-}
-
-const userResourceMarketMapping: Record<string, {
-    resource: UserResource,
-    amount: number,
-    bought: boolean
-}> = {
-    [items.other.food.name]: {
-        resource: UserResource.food,
-        amount: 10,
-        bought: true
-    },
-    [items.other.mechaCore.name]: {
-        resource: UserResource.core,
-        amount: 1,
-        bought: true
-    },
-    [items.other.mutaGene.name]: {
-        resource: UserResource.gene,
-        amount: 1,
-        bought: true
-    },
-    [items.other.gem.name]: {
-        resource: UserResource.gem,
-        amount: 1,
-        bought: false
     }
 }
 
@@ -102,62 +53,28 @@ function SubInventoryScreen(props: {
     const {screenName} = props;
     const data = useSelector((store: IStore) => 
         store.gameStage[screenName].usableOptions) as 
-        (IItem | IMutation | ICyber | IWizardItem | IGuildItem | IArmouryItem)[];
+        (IItem | IMutation | ICyber | IWizardItem | IGuildItem)[];
 
     const dispatch = useDispatch();
 
-    const [craftOpen, setCraftOpen] = useState<IArmouryItem|null>(null);
-
     const subInventoryMappingListeners: Record<InventoryGameScreens, 
-        (data: IItem | IMutation | ICyber | IWizardItem | IGuildItem | IArmouryItem) => void> = {
-        [InventoryGameScreens.armoury]: (data) => {
-            setCraftOpen(data as IArmouryItem);
-        },
+        (data: IItem | IMutation | ICyber | IWizardItem | IGuildItem) => void> = {
         [InventoryGameScreens.wizardShop]: (data) => {
-            dispatch(gameSquad.actions.buyItem(data));
+            dispatch(character.actions.getItem(data));
         },
         [InventoryGameScreens.cyberLab]: (data) => {
-            dispatch(gameSquad.actions.implementCyber(data));
+            dispatch(character.actions.implementCyber(data));
         },
         [InventoryGameScreens.mutaLab]: (data) => {
-            dispatch(gameSquad.actions.mutateMutation(data));
+            dispatch(character.actions.mutateMutation(data));
         },
         [InventoryGameScreens.market]: (data) => {
-            if (data.category === InventorySlotCategory.resource) {
-                dispatch(gameSquad.actions.getUserResource(
-                    userResourceMarketMapping[data.name]
-                ));
-            } else {
-                dispatch(gameSquad.actions.buyItem(data));
-            }            
+            dispatch(character.actions.getItem(data));           
         },
         [InventoryGameScreens.guildShop]: (data) => {
-            dispatch(gameSquad.actions.buyItem(data));
-        },
-        [InventoryGameScreens.tropheyField]: (item) => {
-            if (item.category === InventorySlotCategory.resource) {
-                const resourceItem = {...userResourceMarketMapping[item.name]};
-                resourceItem.bought = false;
-                dispatch(gameSquad.actions.getUserResource(resourceItem));
-            } else {
-                dispatch(gameSquad.actions.getItem(item));
-            }
-
-            const itemIndex = data
-                .findIndex(dataItem => dataItem.name === item.name);
-
-            const newData = data.filter((_, index) => index !== itemIndex);
-
-            dispatch(gameStage.actions.setUsableOptions({
-                screen: InventoryGameScreens.tropheyField,
-                stage: 0,
-                options: {0: newData}
-            }))
+            dispatch(character.actions.getItem(data));
         }
     }
-
-    const resource = useSelector((store: IStore) => 
-        store.gameSquad.resources[subInventoryMappings[screenName].resource]);
 
     if (data.length === 0) {
         return null
@@ -189,19 +106,12 @@ function SubInventoryScreen(props: {
 
     const SubInventoryScreenItemContextData = {
         screenName,
-        resource,
         listener: subInventoryMappingListeners[screenName],
         buttonText: subInventoryMappings[screenName].button
     }
 
     return (
         <div className={styles.SubInventoryScreen}>
-            {
-                craftOpen && <CraftScreen 
-                    armouryItem={craftOpen}
-                    leaveListener={() => setCraftOpen(null)}
-                />
-            }
             <h3 className={styles.SubInventoryScreen_header}>
                 {
                     subInventoryMappings[screenName].title

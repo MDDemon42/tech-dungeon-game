@@ -24,7 +24,6 @@
 .VillageMap_icon_Fire_Site,
 .VillageMap_icon_Ice_Site,
 .VillageMap_icon_Guild_School,
-.VillageMap_icon_Trophey_Field,
 .VillageMap_icon_Caves,
 .VillageMap_icon_Woods,
 .VillageMap_icon_Mines {
@@ -183,10 +182,4 @@
 .VillageMap_icon_Mines:hover {
     color: darkgoldenrod;
     border-color: darkgoldenrod;
-}
-
-.VillageMap_icon_Trophey_Field {
-    left: 0px;
-    top: 0px;
-    z-index: -1;
 }

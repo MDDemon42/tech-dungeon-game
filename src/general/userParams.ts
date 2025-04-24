@@ -5,7 +5,6 @@ const userParams: Record<UserParam, string> = {
     [UserParam.focus]: chrome.i18n.getMessage('focus'),
     [UserParam.health]: chrome.i18n.getMessage('health'),
     [UserParam.mana]: chrome.i18n.getMessage('mana'),
-    [UserParam.satiety]: chrome.i18n.getMessage('satiety'),
     [UserParam.stamina]: chrome.i18n.getMessage('stamina')
 }
 

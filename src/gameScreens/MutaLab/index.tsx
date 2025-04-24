@@ -1,6 +1,5 @@
 import SubInventoryScreen from '../../components/SubInventoryScreen';
 import { InventoryGameScreens } from '../../enums-and-interfaces/enums';
-import { IUpgradeButton } from '../../enums-and-interfaces/interfaces';
 import { Virus } from 'react-bootstrap-icons';
 import PatternScreen from '../../components/PatternScreen';
 
@@ -12,37 +11,9 @@ const mutaLabSubScreenMapping = {
     } 
 }
 
-const mutaLabUpgradeButtons = (stage: number): IUpgradeButton[] => [
-    {
-        title: chrome.i18n.getMessage('beast_genes_task_title'),
-        stage: 2,
-        disabled: stage % 2 === 0,
-        visible: stage % 2 !== 0
-    },
-    {
-        title: chrome.i18n.getMessage('reptiloid_genes_task_title'),
-        stage: 3,
-        disabled: stage % 3 === 0,
-        visible: stage % 3 !== 0
-    },
-    {
-        title: chrome.i18n.getMessage('insectoid_genes_task_title'),
-        stage: 5,
-        disabled: stage % 5 === 0,
-        visible: stage % 5 !== 0
-    },
-    {
-        title: chrome.i18n.getMessage('dragon_genes_task_title'),
-        stage: 7,
-        disabled: stage % 7 === 0,
-        visible: stage % 7 !== 0
-    }
-];
-
 function MutationLab() {
     return <PatternScreen 
         screenName={InventoryGameScreens.mutaLab}
-        upgradeButtonsFunc={mutaLabUpgradeButtons}
         subScreenMapping={mutaLabSubScreenMapping}
     />
 }

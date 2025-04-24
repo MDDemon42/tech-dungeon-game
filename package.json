@@ -1,6 +1,6 @@
 {
   "name": "tech-dungeon-game",
-  "version": "0.6.40",
+  "version": "0.6.41",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",

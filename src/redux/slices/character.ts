@@ -8,7 +8,6 @@ import {
     IAbility,
     ICharacher, 
     ICyber, 
-    IGameSquad, 
     IItem, 
     IManageItemsProps,
     IMastery,
@@ -22,7 +21,6 @@ import academyMasteries from '../../gameScreens/Academy/masteries';
 import checkRace from '../../general/races/checkRace';
 import putItemInBackpacks from '../../helpers/backpacksPutter';
 import { 
-    UserResource, 
     UserParam, 
     InventoryPlace, 
     Race,
@@ -34,22 +32,6 @@ import classInfo from '../../general/classInfo';
 import { raceNames } from '../../general/races/races';
 import items from '../../gameScreens/Market/items';
 
-export const createGameSquad = (): IGameSquad => {
-    return {
-        currentlyWatched: 0,
-        squadMembers: {
-            0: createEmptyCharacter()
-        },
-        resources: {
-            [UserResource.core]: 0,
-            [UserResource.food]: 10,
-            [UserResource.gem]: 0,
-            [UserResource.gene]: 0,
-            [UserResource.none]: 10
-        },
-        storage: []
-}};
-
 const raceMasteries: Partial<Record<Race, IMastery>> = {
     [Race.gnoll]: academyMasteries.maceAffiliation,
     [Race.orc]: academyMasteries.axeAffiliation,
@@ -57,7 +39,7 @@ const raceMasteries: Partial<Record<Race, IMastery>> = {
 }
 
 function integratePassiveAbility(
-    squadMember: ICharacher,
+    char: ICharacher,
     data: IItem | ICyber | IMutation | IPower | IRitual, 
     sign: number
 ) {
@@ -66,24 +48,24 @@ function integratePassiveAbility(
         for (const passiveAbility of passiveAbilities) {
             const {bonusMaxParams, bonusResistances, bonusDodge} = passiveAbility;
             for (const param in bonusMaxParams) {
-                squadMember.params.maxParams[param as UserParam] += 
+                char.params.maxParams[param as UserParam] += 
                     ((bonusMaxParams[param as UserParam]  || 0) * sign);
-                squadMember.params.currentParams = {...squadMember.params.maxParams};
+                char.params.currentParams = {...char.params.maxParams};
             }
 
             for (const resistance in bonusResistances) {
-                squadMember.params.resistances[resistance as DamageType] += 
+                char.params.resistances[resistance as DamageType] += 
                     ((bonusResistances[resistance as DamageType]  || 0) * sign);                         
             }
 
-            squadMember.params.dodge += ((bonusDodge || 0) * sign);
+            char.params.dodge += ((bonusDodge || 0) * sign);
         }        
     }
 }
 
-const gameSquad = createSlice({
-    name: 'gameSquad',
-    initialState: createGameSquad(),
+const character = createSlice({
+    name: 'character',
+    initialState: createEmptyCharacter(),
     reducers: {
         setState(state, action) {
             // the most workable solution
@@ -99,171 +81,62 @@ const gameSquad = createSlice({
             })
         },
         startGame(state, action) {
-            const {userName, userClass} = action.payload;
+            const { userName, userClass } = action.payload;
 
-            const newState = createGameSquad();
-            const squadMember = createEmptyCharacter();
+            const char = createEmptyCharacter();
 
-            squadMember.params.name = userName;
-            squadMember.params.class = userClass;
-            squadMember.params.level = 1;
+            char.params.name = userName;
+            char.params.class = userClass;
+            char.params.level = 1;
 
-            squadMember.params.maxParams.Health = 3;
-            squadMember.params.currentParams.Health = 3;
-            squadMember.params.maxParams.Stamina = 3;
-            squadMember.params.currentParams.Stamina = 3;
+            char.params.maxParams.Health = 3;
+            char.params.currentParams.Health = 3;
+            char.params.maxParams.Stamina = 3;
+            char.params.currentParams.Stamina = 3;
 
-            const {
-                bonusParam, 
-                bonusResource, 
-                bonusLevel
-            } = classInfo[squadMember.params.class];
+            const { bonusParam, bonusLevel } = classInfo[char.params.class];
 
             if (bonusParam) {
-                squadMember.params.maxParams[bonusParam] += 1;
-                squadMember.params.currentParams[bonusParam] += 1;
+                char.params.maxParams[bonusParam] += 1;
+                char.params.currentParams[bonusParam] += 1;
             }
             if (bonusLevel) {
-                squadMember.params.level += 1;
-            }
-            if (bonusResource) {
-                newState.resources[bonusResource] += 1;
+                char.params.level += 1;
             }
 
-            newState.squadMembers[0] = squadMember;
-
-            Object.keys(state).forEach(key => {
-                // @ts-ignore
-                state[key] = newState[key];
-            })
+            state = char;
         },
         levelUp(state, action) {
             const rand = Math.floor(Math.random()*7);
 
-            const squad = {...state.squadMembers};
-            Object.values(squad).forEach(squadMember => {
-                squadMember.params.level += 1;
-                
-                const levelUpParam = classInfo[squadMember.params.class].levelUpBonuses[rand];
-                squadMember.params.maxParams[levelUpParam] += 1;
+            const char = {...state};
+            char.params.level += 1;
+            
+            const levelUpParam = classInfo[char.params.class].levelUpBonuses[rand];
+            char.params.maxParams[levelUpParam] += 1;
 
-                Object.keys(squad).forEach(key => {
-                    if (!!squad[key]) {
-                        squad[key]!.params.currentParams.Focus = squad[key]!.params.maxParams.Focus;
-                        squad[key]!.params.currentParams.Mana = squad[key]!.params.maxParams.Mana;
-                        squad[key]!.params.currentParams.Stamina = squad[key]!.params.maxParams.Stamina;
-                        squad[key]!.params.currentParams[UserParam.health] = squad[key]!.params.maxParams[UserParam.health];
-                    }
-                });
-            });            
+            char.params.currentParams.Focus = char.params.maxParams.Focus;
+            char.params.currentParams.Mana = char.params.maxParams.Mana;
+            char.params.currentParams.Stamina = char.params.maxParams.Stamina;
+            char.params.currentParams.Health = char.params.maxParams.Health;
 
-            state.squadMembers = squad;
-        },
-        changeSquadMember(state, action) {
-            state.currentlyWatched = action.payload
-        },
-        getBigResource(state, action) {
-            const oldState = {...state};
-            const index = oldState.currentlyWatched;
-            const members = oldState.squadMembers;
-            const squadMember = members[index];
-            const backpacks = squadMember.general.backpacks;
-
-            const {resource, amount} = action.payload;
-
-            for (let count = 0; count < amount; count ++) {
-                putItemInBackpacks(backpacks, resource);
-            }            
-
-            state = oldState;
-        },
-        getUserResource(state, action) {
-            const oldState = {...state};
-
-            const {resource, amount, bought}: 
-                {
-                    resource: UserResource, 
-                    amount: number,
-                    bought: boolean
-                } = action.payload;
-
-            oldState.resources[resource] += amount;
-
-            if (bought) {
-                oldState.resources.Gems--;
-            }
-
-            state = oldState;
-        },
-        useBigResource(state, action) {
-            const oldState = {...state};
-            const members = oldState.squadMembers;
-            const squadMember = members[oldState.currentlyWatched];
-
-            let {amount, name} = action.payload;
-
-            const backpacks = squadMember.general.backpacks.map(item => {
-                if (item.name === name && amount > 0) {
-                    amount--;
-                    return createNoItem();
-                } else {
-                    return item
-                }
-            })
-
-            const nothing = createNoItem().name;
-
-            backpacks.sort((a, b) => {
-                if (a.name === nothing) {
-                    return 1
-                }
-                
-                if (b.name === nothing) {
-                    return -1
-                }
-
-                return 0
-            })
-
-            squadMember.general.backpacks = backpacks;
-
-            state = oldState;
+            state = char;
         },
         getItem(state, action) {
-            const oldState = {...state};
-            const index = oldState.currentlyWatched;
-            const members = oldState.squadMembers;
-            const squadMember = members[index];
-            const backpacks = squadMember.general.backpacks;
+            const char = {...state};
+            const backpacks = char.general.backpacks;
 
             putItemInBackpacks(backpacks, action.payload);           
 
-            state = oldState;
-        },
-        buyItem(state, action) {
-            const oldState = {...state};
-            const resources = oldState.resources;
-            const index = oldState.currentlyWatched;
-            const members = oldState.squadMembers;
-            const squadMember = members[index];
-            const backpacks = squadMember.general.backpacks;
-
-            resources[UserResource.gem] -= action.payload.cost;
-
-            putItemInBackpacks(backpacks, action.payload);           
-
-            state = oldState;
+            state = char;
         },
         equipItem(state, action: {
             type: string,
             payload: IManageItemsProps
         }) {
-            const oldState = {...state};
-            const index = oldState.currentlyWatched;
-            const members = oldState.squadMembers;
-            const squadMember = members[index];
-            const backpacks = [...squadMember.general.backpacks];
-            const inventory = {...squadMember.general.inventory};
+            const char = {...state};
+            const backpacks = [...char.general.backpacks];
+            const inventory = {...char.general.inventory};
 
             const handsOptions: 
             (   
@@ -372,7 +245,7 @@ const gameSquad = createSlice({
                 }
                 
                 inventory[position] = item;
-                squadMember.params.lifted += item.requiredStrength;
+                char.params.lifted += item.requiredStrength;
                 itemEquipped = true;
                 // @ts-expect-error
             } else if (handsOptions.includes(possiblePositions[0])) {    
@@ -405,14 +278,14 @@ const gameSquad = createSlice({
                                 option !== InventoryPlace.telekinesisLeftHand &&
                                 option !== InventoryPlace.telekinesisRightHand
                             ) {
-                                squadMember.params.lifted += item.requiredStrength;
+                                char.params.lifted += item.requiredStrength;
                                 itemEquipped = true;
                             } else {
-                                if (squadMember.params.maxParams.Focus > 0) {
-                                    squadMember.params.maxParams.Focus -= 1;
+                                if (char.params.maxParams.Focus > 0) {
+                                    char.params.maxParams.Focus -= 1;
                                     itemEquipped = true;
-                                    if (squadMember.params.currentParams.Focus > 0) {
-                                        squadMember.params.currentParams.Focus -= 1;
+                                    if (char.params.currentParams.Focus > 0) {
+                                        char.params.currentParams.Focus -= 1;
                                     }
                                 }                                
                             }     
@@ -451,14 +324,14 @@ const gameSquad = createSlice({
                         randomHandsOption !== InventoryPlace.telekinesisLeftHand &&
                         randomHandsOption !== InventoryPlace.telekinesisRightHand
                     ) {
-                        squadMember.params.lifted += item.requiredStrength;
+                        char.params.lifted += item.requiredStrength;
                         itemEquipped = true;
                     } else {
-                        if (squadMember.params.maxParams.Focus > 0) {
-                            squadMember.params.maxParams.Focus -= 1;
+                        if (char.params.maxParams.Focus > 0) {
+                            char.params.maxParams.Focus -= 1;
                             itemEquipped = true;
-                            if (squadMember.params.currentParams.Focus > 0) {
-                                squadMember.params.currentParams.Focus -= 1;
+                            if (char.params.currentParams.Focus > 0) {
+                                char.params.currentParams.Focus -= 1;
                             } 
                         }                                               
                     }
@@ -521,7 +394,7 @@ const gameSquad = createSlice({
     
                         if (thisOptionItem.name === nothing) {
                             inventory[option] = item;
-                            squadMember.params.lifted += item.requiredStrength;
+                            char.params.lifted += item.requiredStrength;
                             itemEquipped = true;
                             break;
                         } else if (thisOptionItem.name !== item.name) {
@@ -571,7 +444,7 @@ const gameSquad = createSlice({
                             }
 
                             inventory[option] = item;
-                            squadMember.params.lifted += item.requiredStrength;
+                            char.params.lifted += item.requiredStrength;
                             itemEquipped = true;
                             break;
                         } else if (thisOptionItem.name !== item.name) {
@@ -603,13 +476,13 @@ const gameSquad = createSlice({
                     }
 
                     inventory[randomHandsOption] = item;
-                    squadMember.params.lifted += item.requiredStrength;
+                    char.params.lifted += item.requiredStrength;
                     itemEquipped = true;
                 }
             }
            
             if (itemEquipped) {
-                integratePassiveAbility(squadMember, item, +1);
+                integratePassiveAbility(char, item, +1);
 
                 backpacks[itemIndex] = createNoItem();
 
@@ -630,26 +503,25 @@ const gameSquad = createSlice({
                         itemToPut[1] !== InventoryPlace.telekinesisLeftHand &&
                         itemToPut[1] !== InventoryPlace.telekinesisRightHand
                     ) {
-                        squadMember.params.lifted -= itemToPut[0].requiredStrength;
+                        char.params.lifted -= itemToPut[0].requiredStrength;
                     } else {
-                        squadMember.params.maxParams.Focus += 1;
-                        squadMember.params.currentParams.Focus += 1;
+                        char.params.maxParams.Focus += 1;
+                        char.params.currentParams.Focus += 1;
                     }    
                     putItemInBackpacks(backpacks, itemToPut[0]);
-                    integratePassiveAbility(squadMember, itemToPut[0], -1);
+                    integratePassiveAbility(char, itemToPut[0], -1);
                 }
             }            
 
-            squadMember.general.backpacks = backpacks;
-            squadMember.general.inventory = inventory;
+            char.general.backpacks = backpacks;
+            char.general.inventory = inventory;
 
-            state = oldState;
+            state = char;
         },
         unequipItem(state, action) {
-            const oldState = {...state};
-            const squadMember = {...oldState.squadMembers[oldState.currentlyWatched]};
-            const backpacks = [...squadMember.general.backpacks];
-            const inventory = {...squadMember.general.inventory};
+            const char = {...state};
+            const backpacks = [...char.general.backpacks];
+            const inventory = {...char.general.inventory};
             const {item, inventoryPlace}: 
                 {item: IItem, inventoryPlace: InventoryPlace} = action.payload;
             
@@ -657,10 +529,10 @@ const gameSquad = createSlice({
                 inventoryPlace !== InventoryPlace.telekinesisLeftHand &&
                 inventoryPlace !== InventoryPlace.telekinesisRightHand
             ) {
-                squadMember.params.lifted -= item.requiredStrength;
+                char.params.lifted -= item.requiredStrength;
             } else {
-                squadMember.params.maxParams.Focus += 1;
-                squadMember.params.currentParams.Focus += 1;
+                char.params.maxParams.Focus += 1;
+                char.params.currentParams.Focus += 1;
             }          
             
             switch (inventoryPlace) {
@@ -710,38 +582,24 @@ const gameSquad = createSlice({
 
             inventory[inventoryPlace] = createNoItem();
             putItemInBackpacks(backpacks, item);
-            integratePassiveAbility(squadMember, item, -1);
+            integratePassiveAbility(char, item, -1);
 
-            squadMember.general.backpacks = backpacks;
-            squadMember.general.inventory = inventory;
+            char.general.backpacks = backpacks;
+            char.general.inventory = inventory;
 
-            state = oldState;
+            state = char;
         },
-        sellItem(state, action: {
+        returnItem(state, action: {
             type: string,
             payload: IManageItemsProps
         }) {
-            const oldState = {...state};
-            const resources = oldState.resources;
-            const members = oldState.squadMembers;
-            const squadMember = members[oldState.currentlyWatched];
-            const backpacks = [...squadMember.general.backpacks];
+            const char = {...state};
+            const backpacks = [...char.general.backpacks];
 
-            const {item, itemIndex} = action.payload;
+            const { itemIndex } = action.payload;
 
             backpacks[itemIndex] = createNoItem();
             const nothing = createNoItem().name;
-
-            let profit = 0;
-            if (
-                squadMember.general.mind.masteries
-                    .map(mastery => mastery.name)
-                    .includes(academyMasteries.sellmanship.name)
-            ) {
-                profit = item.cost;
-            } else if (item.name !== nothing) {
-                profit = 1;
-            } 
 
             backpacks.sort((a, b) => {
                 if (a.name === nothing) {
@@ -755,14 +613,13 @@ const gameSquad = createSlice({
                 return 0
             })
             
-            squadMember.general.backpacks = backpacks;
-            resources.Gems += profit;
+            char.general.backpacks = backpacks;
 
-            state = oldState;
+            state = char;
         },
         throwItem(state, action) {
             const {
-                index, item, 
+                item, 
                 inventoryPlace,
                 fromBackpacks,
                 backpacksIndex
@@ -774,12 +631,11 @@ const gameSquad = createSlice({
                     backpacksIndex: number
                 };
 
-            const oldState = {...state};
-            const squadMember = {...oldState.squadMembers[index]};
+            const char = {...state};
             const nothing = createNoItem();
 
             if (fromBackpacks) {
-                const backpacks = [...squadMember.general.backpacks];
+                const backpacks = [...char.general.backpacks];
 
                 backpacks[backpacksIndex] = nothing;
                 backpacks.sort((a, b) => {
@@ -794,88 +650,67 @@ const gameSquad = createSlice({
                     return 0
                 });
 
-                squadMember.general.backpacks = backpacks;
+                char.general.backpacks = backpacks;
             } else {
-                const inventory = {...squadMember.general.inventory};
+                const inventory = {...char.general.inventory};
                 if (
                     inventoryPlace !== InventoryPlace.telekinesisLeftHand &&
                     inventoryPlace !== InventoryPlace.telekinesisRightHand
                 ) {
-                    squadMember.params.lifted -= item.requiredStrength;
+                    char.params.lifted -= item.requiredStrength;
                 } else {
-                    squadMember.params.maxParams.Focus += 1;
-                    squadMember.params.currentParams.Focus += 1;
+                    char.params.maxParams.Focus += 1;
+                    char.params.currentParams.Focus += 1;
                 }          
                 
                 inventory[inventoryPlace] = nothing;
-                integratePassiveAbility(squadMember, item, -1);
+                integratePassiveAbility(char, item, -1);
 
-                squadMember.general.inventory = inventory; 
+                char.general.inventory = inventory; 
             }                       
 
-            state = oldState;
-        },
-        utilizeRemains(state, action: {
-            type: string,
-            payload: number
-        }) {
-            const oldState = {...state};
-            const resources = oldState.resources;
-            const members = oldState.squadMembers;
-            const squadMember = members[oldState.currentlyWatched];
-
-            squadMember.general.backpacks[action.payload] = createNoItem();
-            
-            resources['Muta-genes'] += 1;
-
-            state = oldState;
+            state = char;
         },
         studySpell(state, action) {
-            const {index} = action.payload;
-            const squad = {...state.squadMembers};
-            const squadMember = squad[index]!;
+            const char = {...state};
 
-            squadMember.general.mind.spells.push(action.payload.data);
+            char.general.mind.spells.push(action.payload);
 
-            state.squadMembers = squad;
+            state = char;
         },
         dominateBending(state, action) {
-            const {index, data} = action.payload;
-            const squad = {...state.squadMembers};
-            const squadMember = squad[index];
+            const char = {...state};
 
-            squadMember.general.mind.bending.push(data);
+            char.general.mind.bending.push(action.payload);
 
-            state.squadMembers = squad;
+            state = char;
         },
         developPower(state, action) { 
-            const oldState = {...state};           
-            const squadMember = oldState.squadMembers[oldState.currentlyWatched];
+            const char = {...state};
 
             const power: IPower = action.payload;
 
             if (power.name === powers.other.telekinesis.name) {
-                squadMember.general.inventory.Telekinesis_left_hand = createNoItem();
-                squadMember.general.inventory.Telekinesis_right_hand = createNoItem();
+                char.general.inventory.Telekinesis_left_hand = createNoItem();
+                char.general.inventory.Telekinesis_right_hand = createNoItem();
             }
 
-            squadMember.general.mind.powers.push(power);            
+            char.general.mind.powers.push(power);            
 
-            integratePassiveAbility(squadMember, power, +1);
+            integratePassiveAbility(char, power, +1);
 
-            state = oldState;
+            state = char;
         },
         surpassRitual(state, action) {
-            const oldState = {...state};           
-            const squadMember = oldState.squadMembers[oldState.currentlyWatched];
+            const char = {...state};   
 
             const ritual: IRitual = action.payload;
 
-            squadMember.params.maxParams.Health -= ritual.healthCost;
-            squadMember.params.currentParams.Health = squadMember.params.maxParams.Health;
-            squadMember.general.mind.rituals.push(ritual);
+            char.params.maxParams.Health -= ritual.healthCost;
+            char.params.currentParams.Health = char.params.maxParams.Health;
+            char.general.mind.rituals.push(ritual);
 
-            integratePassiveAbility(squadMember, ritual, +1);
+            integratePassiveAbility(char, ritual, +1);
             
             const {
                 bendings, lostInventorySlots, 
@@ -884,7 +719,7 @@ const gameSquad = createSlice({
             } = ritual;
 
             if (bendings.length > 0) {
-                squadMember.general.mind.bending.push(...bendings);
+                char.general.mind.bending.push(...bendings);
             }
 
             if (
@@ -892,8 +727,8 @@ const gameSquad = createSlice({
                 unchangeableInventorySlots.length > 0 ||
                 grantedBodyParts
             ) {
-                const backpacks = [...squadMember.general.backpacks];
-                const inventory = {...squadMember.general.inventory};
+                const backpacks = [...char.general.backpacks];
+                const inventory = {...char.general.inventory};
 
                 lostInventorySlots.forEach(slot => {
                     putItemInBackpacks(backpacks, inventory[slot]);
@@ -919,105 +754,102 @@ const gameSquad = createSlice({
                 } 
                 
                 if (newRaceName.length > 0) {
-                    squadMember.params.race = newRaceName;
+                    char.params.race = newRaceName;
                 }
 
-                squadMember.general.backpacks = backpacks;
-                squadMember.general.inventory = inventory;
+                char.general.backpacks = backpacks;
+                char.general.inventory = inventory;
             }
 
-            state = oldState;
+            state = char;
         },
         raiseStrength(state, action) {
-            const squad = {...state.squadMembers};
-            const squadMember = squad[state.currentlyWatched];
+            const char = {...state};
 
             if (action.payload === 1) {
-                switch (squadMember.params.strength + action.payload) {
+                switch (char.params.strength + action.payload) {
                     case 5:
-                        squadMember.general.backpacks.push(createNoItem());
-                        squadMember.params.strength = 5;
+                        char.general.backpacks.push(createNoItem());
+                        char.params.strength = 5;
                         break;
                     case 4:
-                        squadMember.params.strength = 4;
+                        char.params.strength = 4;
                         break;
                     case 3:
                         if (
-                            !squadMember.general.mind.masteries
+                            !char.general.mind.masteries
                                 .map(mastery => mastery.name)
                                 .includes(academyMasteries.brutalForce.name)
                         ) {
-                            squadMember.general.mind.masteries.push(academyMasteries.brutalForce)
+                            char.general.mind.masteries.push(academyMasteries.brutalForce)
                         }
-                        squadMember.general.backpacks.push(createNoItem());
-                        squadMember.params.strength = 3;
+                        char.general.backpacks.push(createNoItem());
+                        char.params.strength = 3;
                         break;
                     case 2: 
-                        squadMember.general.backpacks.push(createNoItem());
-                        squadMember.params.strength = 2;
+                        char.general.backpacks.push(createNoItem());
+                        char.params.strength = 2;
                         break;
                     case 1:
-                        squadMember.params.strength = 1;
+                        char.params.strength = 1;
                         break;
                 }
             } 
 
             if (action.payload === 3) {
-                switch (squadMember.params.strength + action.payload) {
+                switch (char.params.strength + action.payload) {
                     case 7:
-                        squadMember.general.backpacks.push(createNoItem());
-                        squadMember.params.strength = 5;
+                        char.general.backpacks.push(createNoItem());
+                        char.params.strength = 5;
                         break;
                     case 6:
-                        squadMember.general.backpacks.push(createNoItem());
-                        squadMember.params.strength = 5;
+                        char.general.backpacks.push(createNoItem());
+                        char.params.strength = 5;
                         break;
                     case 5:
-                        squadMember.general.backpacks.push(createNoItem());
-                        squadMember.general.backpacks.push(createNoItem());
-                        squadMember.params.strength = 5;
+                        char.general.backpacks.push(createNoItem());
+                        char.general.backpacks.push(createNoItem());
+                        char.params.strength = 5;
                         break;
                     case 4:
-                        squadMember.general.backpacks.push(createNoItem());
-                        squadMember.general.backpacks.push(createNoItem());
-                        squadMember.params.strength = 4;
+                        char.general.backpacks.push(createNoItem());
+                        char.general.backpacks.push(createNoItem());
+                        char.params.strength = 4;
                         break;
                     case 3:
-                        squadMember.general.backpacks.push(createNoItem());
-                        squadMember.general.backpacks.push(createNoItem());
-                        squadMember.params.strength = 3;
+                        char.general.backpacks.push(createNoItem());
+                        char.general.backpacks.push(createNoItem());
+                        char.params.strength = 3;
                         break;
                 }
             }
             
-            state.squadMembers = squad;
+            state = char;
         },
         learnMastery(state, action) {
-            const squad = {...state.squadMembers};
-            const squadMember = squad[state.currentlyWatched];
+            const char = {...state};
 
             const mastery = action.payload;
-            squadMember.general.mind.masteries.push(mastery);
+            char.general.mind.masteries.push(mastery);
 
             if (mastery.name === academyMasteries.brutalForce.name) {
-                const newRace = checkRace(squadMember.general.inventory, true);
-                squadMember.params.race = raceNames[newRace];
+                const newRace = checkRace(char.general.inventory, true);
+                char.params.race = raceNames[newRace];
     
                 const newRaceMastery = raceMasteries[newRace];
                 if (newRaceMastery) {
-                    squadMember.general.mind.masteries.push(newRaceMastery);
+                    char.general.mind.masteries.push(newRaceMastery);
                 }
             }
 
-            state.squadMembers = squad;
+            state = char;
         },
         implementCyber(state, action) {
-            const oldState = {...state};
-            const squadMember = oldState.squadMembers[oldState.currentlyWatched];
+            const char = {...state};
 
             const nothing = createNoItem().name;
-            const backpacks = [...squadMember.general.backpacks];
-            const inventory = {...squadMember.general.inventory};
+            const backpacks = [...char.general.backpacks];
+            const inventory = {...char.general.inventory};
 
             const cyber: ICyber = action.payload;
 
@@ -1036,7 +868,7 @@ const gameSquad = createSlice({
                         putItemInBackpacks(backpacks, oldCyber); 
                     }
 
-                    integratePassiveAbility(squadMember, oldCyber, -1);
+                    integratePassiveAbility(char, oldCyber, -1);
                 }
 
                 if (
@@ -1071,7 +903,7 @@ const gameSquad = createSlice({
                         }
 
                         if (cyber.requiredCyber && thisOptionCyber.name === cyber.requiredCyber) {
-                            integratePassiveAbility(squadMember, thisOptionCyber, -1);
+                            integratePassiveAbility(char, thisOptionCyber, -1);
                             inventory[option] = cyber;
                             cyberImplemented = true;
                             break;
@@ -1106,7 +938,7 @@ const gameSquad = createSlice({
                                 putItemInBackpacks(backpacks, thisOptionCyber as IItem); 
                             }
 
-                            integratePassiveAbility(squadMember, thisOptionCyber, -1); 
+                            integratePassiveAbility(char, thisOptionCyber, -1); 
 
                             inventory[option] = cyber;
                             cyberImplemented = true;
@@ -1121,7 +953,7 @@ const gameSquad = createSlice({
                     const randomHandsOptionItem = {...inventory[randomHandsOption]} as IItem;
                     if (randomHandsOptionItem.name !== nothing) {
                         putItemInBackpacks(backpacks, randomHandsOptionItem); 
-                        integratePassiveAbility(squadMember, randomHandsOptionItem, -1);
+                        integratePassiveAbility(char, randomHandsOptionItem, -1);
                     }         
 
                     const bothHandsItem = {...inventory.Both_hands} as IItem;
@@ -1134,55 +966,52 @@ const gameSquad = createSlice({
                         !bothHandsItem.description.includes('Мутация')
                     ) {
                         putItemInBackpacks(backpacks, bothHandsItem); 
-                        integratePassiveAbility(squadMember, bothHandsItem, -1);
+                        integratePassiveAbility(char, bothHandsItem, -1);
                         inventory.Both_hands = createNoItem();
                     }           
     
                     inventory[randomHandsOption] = cyber;
                 }
             }                      
-            
-            oldState.resources[UserResource.core] -= cyber.cost;
 
-            integratePassiveAbility(squadMember, cyber, +1);
+            integratePassiveAbility(char, cyber, +1);
             if (cyber.givenMastery) {
-                squadMember.general.mind.masteries.push(cyber.givenMastery);
+                char.general.mind.masteries.push(cyber.givenMastery);
             }
 
-            squadMember.general.backpacks = backpacks;
-            squadMember.general.inventory = inventory;
+            char.general.backpacks = backpacks;
+            char.general.inventory = inventory;
 
-            state = oldState;
+            state = char;
         },
         mutateMutation(state, action) {
-            const oldState = {...state};
-            const squadMember = oldState.squadMembers[oldState.currentlyWatched];
+            const char = {...state};
 
             const mutation: IMutation = action.payload;
             const position = mutation.inventoryPlaces[0];
             const nothing = createNoItem().name;
-            const backpacks = [...squadMember.general.backpacks];
-            const inventory = {...squadMember.general.inventory};
+            const backpacks = [...char.general.backpacks];
+            const inventory = {...char.general.inventory};
 
             if (mutation.name === mutations.weapons.claws.name) {
                 const bothHandsItem = {...inventory.Both_hands} as IItem;
                 if (bothHandsItem.name !== nothing) {
                     putItemInBackpacks(backpacks, bothHandsItem); 
-                    integratePassiveAbility(squadMember, bothHandsItem, -1);
+                    integratePassiveAbility(char, bothHandsItem, -1);
                     inventory.Both_hands = createNoItem();
                 }   
 
                 const leftHandItem = {...inventory.Left_hand} as IItem;
                 if (leftHandItem.name !== nothing) {
                     putItemInBackpacks(backpacks, leftHandItem); 
-                    integratePassiveAbility(squadMember, leftHandItem, -1);
+                    integratePassiveAbility(char, leftHandItem, -1);
                 }
                 inventory.Left_hand = mutations.weapons.claw;
 
                 const rightHandItem = {...inventory.Right_hand} as IItem;
                 if (rightHandItem.name !== nothing) {
                     putItemInBackpacks(backpacks, rightHandItem); 
-                    integratePassiveAbility(squadMember, rightHandItem, -1);
+                    integratePassiveAbility(char, rightHandItem, -1);
                 }
                 inventory.Right_hand = mutations.weapons.claw;
 
@@ -1190,7 +1019,7 @@ const gameSquad = createSlice({
                     const extraLeftHandItem = {...inventory.Extra_left_hand} as IItem;
                     if (extraLeftHandItem.name !== nothing) {
                         putItemInBackpacks(backpacks, extraLeftHandItem); 
-                        integratePassiveAbility(squadMember, extraLeftHandItem, -1);
+                        integratePassiveAbility(char, extraLeftHandItem, -1);
                     }
                     inventory.Extra_left_hand = mutations.weapons.claw;
                 }
@@ -1198,13 +1027,13 @@ const gameSquad = createSlice({
                     const extraRightHandItem = {...inventory.Extra_right_hand} as IItem;
                     if (extraRightHandItem.name !== nothing) {
                         putItemInBackpacks(backpacks, extraRightHandItem); 
-                        integratePassiveAbility(squadMember, extraRightHandItem, -1);
+                        integratePassiveAbility(char, extraRightHandItem, -1);
                     }
                     inventory.Extra_right_hand = mutations.weapons.claw;
                 }
             } else {
                 const previousMutation = inventory[position];
-                integratePassiveAbility(squadMember, previousMutation as IMutation, -1);
+                integratePassiveAbility(char, previousMutation as IMutation, -1);
             }            
 
             if (mutation.name === mutations.other.extraArms.name) {
@@ -1223,13 +1052,12 @@ const gameSquad = createSlice({
 
             // @ts-expect-error
             inventory[position] = mutation;
-            oldState.resources[UserResource.gene] -= mutation.cost;
 
-            const isStrong = squadMember.params.strength >= 3;
+            const isStrong = char.params.strength >= 3;
                 
             const raceMasteriesNames = Object.values(raceMasteries)
                 .map(mastery => mastery.name);
-            squadMember.general.mind.masteries = squadMember.general.mind.masteries
+                char.general.mind.masteries = char.general.mind.masteries
                 .filter(mastery => {
                     if (raceMasteriesNames.includes(mastery.name)) {
                         return false
@@ -1239,282 +1067,105 @@ const gameSquad = createSlice({
                 })
 
             const newRace = checkRace(inventory, isStrong);
-            squadMember.params.race = raceNames[newRace];
+            char.params.race = raceNames[newRace];
 
             const newRaceMastery = raceMasteries[newRace];
             if (newRaceMastery) {
-                squadMember.general.mind.masteries.push(newRaceMastery);
+                char.general.mind.masteries.push(newRaceMastery);
             }
             if (mutation.givenMastery) {
-                squadMember.general.mind.masteries.push(mutation.givenMastery);
+                char.general.mind.masteries.push(mutation.givenMastery);
             }
 
-            integratePassiveAbility(squadMember, mutation, +1);
+            integratePassiveAbility(char, mutation, +1);
 
-            squadMember.general.backpacks = backpacks;
-            squadMember.general.inventory = inventory;
+            char.general.backpacks = backpacks;
+            char.general.inventory = inventory;
 
-            state = oldState;
-        },
-        hireSquaddie(state, action) {
-            const oldState = {...state};
-            const {index, character} = action.payload;
-
-            oldState.squadMembers[index] = character;
-
-            state = oldState;
+            state = char;
         },
         processAbility(state, action) {
-            const {index, data} = action.payload;
-            const squad = {...state.squadMembers};
-            const squadMember = squad[index];
+            const char = {...state};
+            const { data } = action.payload;
 
             Object.keys(data).forEach(key => {
-                squadMember.params.currentParams[key as UserParam] -= data[key];
+                char.params.currentParams[key as UserParam] -= data[key];
             });
 
-            state.squadMembers = squad;
+            state = char;
         },
         sufferAbility(state, action) {
-            const {indexes, ability} = action.payload;
-            const squad = {...state.squadMembers};
-            const squadMembers = {} as Record<string, ICharacher>;
-            indexes.forEach((index: number) => {
-                if (squad[index]) {
-                    squadMembers[index] = squad[index];
-                }
-            })
+            const { ability } = action.payload;
+            const char = {...state};
 
             const {damage, bonusResistances} = ability as IAbility;
-            for (const index in squadMembers) {
-                const squadMember = squadMembers[index];
-
-                if (damage) {
-                    for (const key in damage) {
-                        const damageType = key as DamageType;
-                        let resultDamage = damage[damageType]! - squadMember.params.resistances[damageType];
-                        if (
-                            resultDamage < 0 && 
-                            (
-                                damageType === DamageType.physicalPiercing ||
-                                damageType === DamageType.physicalSlashing ||
-                                damageType === DamageType.physicalSmashing
-                            )
-                        ) {
-                            resultDamage = 0;
-                        }
-
-                        squadMember.params.currentParams[UserParam.health] -= resultDamage;
+            if (damage) {
+                for (const key in damage) {
+                    const damageType = key as DamageType;
+                    let resultDamage = damage[damageType]! - char.params.resistances[damageType];
+                    if (
+                        resultDamage < 0 && 
+                        (
+                            damageType === DamageType.physicalPiercing ||
+                            damageType === DamageType.physicalSlashing ||
+                            damageType === DamageType.physicalSmashing
+                        )
+                    ) {
+                        resultDamage = 0;
                     }
-                }
-                      
-                if (bonusResistances) {
-                    for (const key in bonusResistances) {
-                        const damageType = key as DamageType;
-                        squadMember.params.resistances[damageType] += bonusResistances[damageType]!;
-                    }
-                }                
-            }  
-            
-            indexes.forEach((index: number) => {
-                if (squad[index]) {
-                    squad[index] = squadMembers[index];
-                }
-            })
 
-            state.squadMembers = squad;
+                    char.params.currentParams[UserParam.health] -= resultDamage;
+                }
+            }
+                    
+            if (bonusResistances) {
+                for (const key in bonusResistances) {
+                    const damageType = key as DamageType;
+                    char.params.resistances[damageType] += bonusResistances[damageType]!;
+                }
+            }                
+
+            state = char;
         },
         spendStamina(state, action) {
-            const squad = {...state.squadMembers};
-            const squadMember = squad[state.currentlyWatched];
+            const char = {...state};
 
-            squadMember.params.currentParams.Stamina -= action.payload;
-            
-            if (squadMember.params.currentParams.Satiety > 0) {
-                squadMember.params.currentParams.Satiety--;
-            }            
+            char.params.currentParams.Stamina -= action.payload;
 
-            state.squadMembers = squad;
-        },
-        eatFood(state, action) {
-            const oldState = {...state};
-            const squad = {...oldState.squadMembers};
-            const squadMember = squad[oldState.currentlyWatched];
-
-            if (
-                squadMember.params.currentParams.Health < 
-                squadMember.params.maxParams.Health
-            ) {
-                squadMember.params.currentParams.Health++;
-            }
-
-            if (
-                squadMember.params.currentParams.Satiety < 
-                squadMember.params.maxParams.Satiety
-            ) {
-                squadMember.params.currentParams.Satiety++;
-            }
-
-            oldState.resources.Food--;
-            oldState.squadMembers = squad;
-
-            state = oldState;
+            state = char;
         },
         regenerate(state, action) {
-            const squad = {...state.squadMembers};
-            const squadMember = squad[state.currentlyWatched];
+            const char = {...state};
 
             if (
-                squadMember.params.currentParams.Health < 
-                squadMember.params.maxParams.Health
+                char.params.currentParams.Health < 
+                char.params.maxParams.Health
             ) {
-                squadMember.params.currentParams.Health++;
+                char.params.currentParams.Health++;
             }
 
-            state.squadMembers = squad;
-        },
-        relaxate(state, action) {
-            const squad = {...state.squadMembers};
-
-            for (const index in squad) {
-                const squadMember = squad[index];
-                if (squadMember.params.currentParams.Satiety > 0) {
-                    for (const param in squadMember.params.currentParams) {
-                        if (
-                            param !== UserParam.health && 
-                            param !== UserParam.blank &&
-                            param !== UserParam.satiety
-                        ) {
-                            if (
-                                Number(squadMember.params.currentParams[param as UserParam]) < 
-                                Number(squadMember.params.maxParams[param as UserParam])
-                            ) {
-                                squadMember.params.currentParams[param as UserParam] = 
-                                    Number(squadMember.params.maxParams[param as UserParam]);
-                            }
-                        }
-                    }
-
-                    if (
-                        squadMember.params.currentParams.Health <
-                        squadMember.params.maxParams.Health
-                    ) {
-                        squadMember.params.currentParams.Health++;
-                    }
-                    
-                    squadMember.params.currentParams.Satiety--;                    
-                } else {
-                    for (const param in squadMember.params.currentParams) {
-                        if (
-                            param !== UserParam.health && 
-                            param !== UserParam.blank &&
-                            param !== UserParam.satiety
-                        ) {
-                            if (
-                                Number(squadMember.params.currentParams[param as UserParam]) < 
-                                Number(squadMember.params.maxParams[param as UserParam])
-                            ) {
-                                squadMember.params.currentParams[param as UserParam]++;
-                            }
-                        }
-                    }
-
-                    if (squadMember.params.currentParams.Health > 0) {
-                        squadMember.params.currentParams.Health--;
-                    }
-                }                
-            }
-
-            state.squadMembers = squad;
+            state = char;
         },
         respite(state, action) {
-            const squad = {...state.squadMembers};
+            const char = {...state};
 
-            for (const index in squad) {
-                const squadMember = squad[index];
-                for (const param in squadMember.params.currentParams) {
+            for (const param in char.params.currentParams) {
+                if (
+                    param !== UserParam.health && 
+                    param !== UserParam.blank
+                ) {
                     if (
-                        param !== UserParam.health && 
-                        param !== UserParam.blank &&
-                        param !== UserParam.satiety
+                        Number(char.params.currentParams[param as UserParam]) < 
+                        Number(char.params.maxParams[param as UserParam])
                     ) {
-                        if (
-                            Number(squadMember.params.currentParams[param as UserParam]) < 
-                            Number(squadMember.params.maxParams[param as UserParam])
-                        ) {
-                            squadMember.params.currentParams[param as UserParam]++;
-                        }
+                        char.params.currentParams[param as UserParam]++;
                     }
                 }
             }
 
-            state.squadMembers = squad;
+            state = char;
         },
-        expandStorage(state, action) {
-            const oldState = {...state};
-            const mansionStage = action.payload;
-
-            for (let i = 0; i < mansionStage * 4; i++) {
-                oldState.storage.push(createNoItem());
-            }
-            
-            state = oldState;
-        },
-        putIntoStorage(state, action) {
-            const oldState = {...state};
-            const squadMember = {...oldState.squadMembers[oldState.currentlyWatched]};
-            const backpacks = [...squadMember.general.backpacks]; 
-            
-            const {item, itemIndex} = action.payload;
-
-            putItemInBackpacks(oldState.storage, item);
-
-            const nothing = createNoItem();
-            backpacks[itemIndex] = nothing;
-
-            backpacks.sort((a, b) => {
-                if (a.name === nothing.name) {
-                    return 1
-                }
-                
-                if (b.name === nothing.name) {
-                    return -1
-                }
-
-                return 0
-            })
-
-            squadMember.general.backpacks = backpacks;
-            state = oldState;
-        },
-        getFromStorage(state, action) {
-            const oldState = {...state};
-            const squadMember = {...oldState.squadMembers[oldState.currentlyWatched]};
-            const backpacks = [...squadMember.general.backpacks]; 
-            
-            const {item, itemIndex} = action.payload;
-
-            putItemInBackpacks(backpacks, item);
-
-            const nothing = createNoItem();
-            oldState.storage[itemIndex] = nothing;
-
-            oldState.storage.sort((a, b) => {
-                if (a.name === nothing.name) {
-                    return 1
-                }
-                
-                if (b.name === nothing.name) {
-                    return -1
-                }
-
-                return 0
-            })
-
-            squadMember.general.backpacks = backpacks;
-            state = oldState;
-        }
     }
 })
 
-export default gameSquad
+export default character

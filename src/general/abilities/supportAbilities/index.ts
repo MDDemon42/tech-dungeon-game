@@ -30,7 +30,7 @@ export function createSupportAbility(
         bonusResistances,
 
         hitChance: damageInfo[0],
-        target: damageInfo[1] ? damageInfo[1] : AbilityTarget.ally,
+        target: damageInfo[1] ? damageInfo[1] : AbilityTarget.self,
     }
 }
 

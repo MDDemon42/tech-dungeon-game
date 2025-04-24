@@ -11,11 +11,10 @@ function BackpacksScreenItem(props: {
     itemIndex: number
 }) {
     const {item, itemIndex} = props;
-    const squadMember = useSelector((store: IStore) => 
-        store.gameSquad.squadMembers[store.gameSquad.currentlyWatched]);
-    const memberMasteries = squadMember.general.mind.masteries.map(mastery => mastery.name);
-    const memberAvailableStrength = squadMember.params.strength - squadMember.params.lifted;
-    const memberInventory = squadMember.general.inventory;
+    const char = useSelector((store: IStore) => store.character);
+    const memberMasteries = char.general.mind.masteries.map(mastery => mastery.name);
+    const memberAvailableStrength = char.params.strength - char.params.lifted;
+    const memberInventory = char.general.inventory;
     const [enabled, disableReason] = backpacksItemEnableChecker(
         item, memberMasteries, 
         memberAvailableStrength,

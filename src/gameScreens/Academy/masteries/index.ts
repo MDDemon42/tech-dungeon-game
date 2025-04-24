@@ -74,22 +74,12 @@ const shieldAffiliation = createMastery(
     ''
 );
 
-const sellmanship = createMastery(
-    [
-        chrome.i18n.getMessage('sellmanship'),
-        chrome.i18n.getMessage('sellmanship_mastery_description'),
-        images.academyMasteries.sellmanship
-    ],
-    ''
-);
-
 const academyMasteries = {
     axeAffiliation,
     bowAffiliation,
     brutalForce,
     maceAffiliation,
     martialArts,
-    sellmanship,
     shieldAffiliation,
     spearAffiliation,
     swordAffiliation
@@ -99,7 +89,6 @@ const basicOptions = [
     academyMasteries.axeAffiliation,
     academyMasteries.bowAffiliation,
     academyMasteries.brutalForce,
-    academyMasteries.sellmanship,
     academyMasteries.shieldAffiliation,
     academyMasteries.spearAffiliation
 ];

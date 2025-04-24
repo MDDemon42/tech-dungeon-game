@@ -3,10 +3,8 @@ import styles from './BattlePage.module.css';
 import { 
     IAbility, 
     IBattleAbility, 
-    IBattlePageState, 
-    IBigResource, 
+    IBattlePageState,
     ICharacher, 
-    IInventorySlot, 
     IItem, 
     IMemberStatus, 
     IStore,
@@ -14,7 +12,6 @@ import {
 } from '../../enums-and-interfaces/interfaces';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import gameSquad, { createGameSquad } from '../../redux/slices/gameSquad';
 import BattleOrder from '../../components/BattleOrder';
 import { useNavigate } from 'react-router-dom';
 import shuffleArray from '../../helpers/shuffleArray';
@@ -41,7 +38,7 @@ import {
     TaskStatus 
 } from '../../enums-and-interfaces/enums';
 import gameStage from '../../redux/slices/gameStage';
-import { createNoItem } from '../../helpers/emptyEssencesCreators';
+import createEmptyCharacter, { createNoItem } from '../../helpers/emptyEssencesCreators';
 import abilities from '../../general/abilities';
 import gameScreen from '../../redux/slices/gameScreen';
 import { raceNames } from '../../general/races/races';
@@ -49,28 +46,24 @@ import items from '../../gameScreens/Market/items';
 import supportAbilities from '../../general/abilities/supportAbilities';
 import rituals from '../../general/rituals';
 import AbilityIcon from '../../components/Icons/AbilityIcon';
+import character from '../../redux/slices/character';
 
 function BattlePage() {
     const [battlePageState, setBattlePageState] = useState<IBattlePageState>({
         turn: 0,
-        allyIndex: -1,
-        memberIndex: -1,
         opponentIndex: -1,
         selectedAbility: null as IAbility | null,
         selectedAbilityDiv: null as HTMLElement | null,
-        squadStatus: [] as IMemberStatus[],
+        charStatus: {} as IMemberStatus,
         opponentsStatus: [] as IMemberStatus[],
         abilitiesOnTurn: [] as IAbility[],
         result: BattleResult.none,
         log: [chrome.i18n.getMessage('battle_log_battle_started')] as string[],
     });
 
-    const squad = useSelector((store: IStore) => store.gameSquad.squadMembers);
+    const char = useSelector((store: IStore) => store.character);
 
     const opps = useSelector((store: IStore) => store.opponents.opponentMembers);
-
-    const squadMembers: ICharacher[] = [];
-    Object.keys(squad).forEach(key => squadMembers[Number(key)] = squad[key]);
 
     const oppsMembers: ICharacher[] = [];
     Object.keys(opps).forEach(key => oppsMembers[Number(key)] = opps[key]);
@@ -94,7 +87,7 @@ function BattlePage() {
             giveTurns();
 
             if ((battlePageState.turn + 1) % 4 === 0) {
-                dispatch(gameSquad.actions.respite({}));
+                dispatch(character.actions.respite({}));
 
                 dispatch(opponents.actions.respite({}));
             }
@@ -112,7 +105,6 @@ function BattlePage() {
     function setBattlePageStatuses() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
-            const squadStatusBasis = [...state.squadStatus];
             const opponentsStatusBasis = [...state.opponentsStatus];
             const memberStatusBasis: IMemberStatus = {
                 selected: false,
@@ -122,18 +114,16 @@ function BattlePage() {
                 flameShield: false
             };
 
-            squadMembers.forEach((member, index) => {
-                if (!!member) {
-                    squadStatusBasis[index] = {...memberStatusBasis};
-                    if (
-                        squadMembers[index].params.race === 
-                        rituals.fireRituals.fireElemental.newRaceName
-                    ) {
-                        squadStatusBasis[index].flameShield = true;
-                    }
-                }
-            });
-            state.squadStatus = squadStatusBasis;
+
+            const charStatusBasis = {...memberStatusBasis};
+            if (
+                char.params.race === 
+                rituals.fireRituals.fireElemental.newRaceName
+            ) {
+                charStatusBasis.flameShield = true;
+            }
+
+            state.charStatus = charStatusBasis;
 
             oppsMembers.forEach((member, index) => {
                 if (!!member) {
@@ -172,17 +162,12 @@ function BattlePage() {
                 selectAbility(null, oppsMembers[index]);
             }, (orderIndex) * 4000 + 1000)
 
-            const sufferMember = chooseSquadMemberIndex();
-            if (sufferMember === -1) {
-                return
-            }
-
             setTimeout(() => {
-                selectSquadMember(sufferMember, true);
+                selectSquadMember();
             }, (orderIndex) * 4000 + 1500)
 
             setTimeout(() => {
-                processAbilityOntoMember(sufferMember);
+                processAbilityOntoChar();
             }, (orderIndex) * 4000 + 2500)
 
             setTimeout(() => {
@@ -205,29 +190,17 @@ function BattlePage() {
     function checkDead() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
-            const squadStatusBasis = [...state.squadStatus];
+            const { charStatus } = {...state};
             const opponentsStatusBasis = [...state.opponentsStatus];
 
-            let allMembers = 0;
-            let deadMembers = 0;
-            squadStatusBasis.forEach((member, index) => {
-                if (!!member) {
-                    allMembers++;
-                    if (member.dead) {
-                        deadMembers++;
-                    } else if (squadMembers[index].params.currentParams.Health <= 0) {
-                        state.log.push(
-                            chrome.i18n.getMessage(
-                                'battle_log_someone_dies', 
-                                [squadMembers[index].params.name]
-                            )
-                        );
-                        member.dead = true;
-                        deadMembers++;
-                    }
-                }
-            });
-            if (allMembers === deadMembers) {
+            if (char.params.currentParams.Health <= 0) {
+                state.log.push(
+                    chrome.i18n.getMessage(
+                        'battle_log_someone_dies', 
+                        [char.params.name]
+                    )
+                );
+                
                 setBattlePageState((prevState) => {
                     const state = {...prevState};
     
@@ -236,7 +209,8 @@ function BattlePage() {
                     return state
                 })
             }
-            state.squadStatus = squadStatusBasis;
+
+            state.charStatus = charStatus;
 
             let allOpponents = 0;
             let deadOpponents = 0;
@@ -275,35 +249,29 @@ function BattlePage() {
     function checkAllyProtection() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
-            const squadStatusBasis = [...state.squadStatus];
-            squadStatusBasis.forEach((member, index) => {
-                if (!!member) {
-                    if (!member.dead) {
-                        if (member.defensiveCharms) {
-                            member.defensiveCharms = false;
+            const { charStatus } = {...state};
+            if (!charStatus.dead) {
+                if (charStatus.defensiveCharms) {
+                    charStatus.defensiveCharms = false;
 
-                            dispatch(gameSquad.actions.sufferAbility({
-                                indexes: [index],
-                                ability: supportAbilities.armor.reverseDefensiveCharms
-                            }));
-                        }
-
-                        if (
-                            member.flameShield && 
-                            squadMembers[index].params.race !== rituals.fireRituals.fireElemental.newRaceName
-                        ) {
-                            member.flameShield = false;
-
-                            dispatch(gameSquad.actions.sufferAbility({
-                                indexes: [index],
-                                ability: supportAbilities.armor.reverseFlameShield
-                            }));
-                        }
-                    }
+                    dispatch(character.actions.sufferAbility({
+                        ability: supportAbilities.armor.reverseDefensiveCharms
+                    }));
                 }
-            })
 
-            state.squadStatus = squadStatusBasis;
+                if (
+                    charStatus.flameShield && 
+                    char.params.race !== rituals.fireRituals.fireElemental.newRaceName
+                ) {
+                    charStatus.flameShield = false;
+
+                    dispatch(character.actions.sufferAbility({
+                        ability: supportAbilities.armor.reverseFlameShield
+                    }));
+                }
+            }
+
+            state.charStatus = charStatus;
 
             return state
         })
@@ -349,18 +317,14 @@ function BattlePage() {
     function giveTurns() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
-            const squadStatusBasis = [...state.squadStatus];
+            const { charStatus } = {...state};
             const opponentsStatusBasis = [...state.opponentsStatus];
 
             if (state.turn % 2 === 1) {
-                squadStatusBasis.forEach((member) => {
-                    if (!!member) {
-                        if (!member.dead) {
-                            member.hasTurn = true;
-                        }
-                    }
-                });
-                state.squadStatus = squadStatusBasis;
+                if (!charStatus.dead) {
+                    charStatus.hasTurn = true;
+                }
+                state.charStatus = charStatus;
 
                 opponentsStatusBasis.forEach((member) => {
                     if (!!member) {
@@ -378,12 +342,10 @@ function BattlePage() {
                 })
                 state.opponentsStatus = opponentsStatusBasis;
     
-                squadStatusBasis.forEach((member) => {
-                    if (!!member) {
-                        member.hasTurn = false;
-                    }
-                });
-                state.squadStatus = squadStatusBasis;
+                if (!!charStatus) {
+                    charStatus.hasTurn = false;
+                }
+                state.charStatus = charStatus;
             }            
 
             return state
@@ -515,106 +477,79 @@ function BattlePage() {
         });
     }
 
-    function selectTarget(index: number) {
-        setBattlePageState((prevState) => {
-            const state = {...prevState};
-            const squad_status = [...state.squadStatus];
-            squad_status[index].selected = true;
-
-            state.squadStatus = squad_status;
-            state.allyIndex = index;
-
-            return state
-        });
-    }
-
     function deselectTarget(opponentIndex?: number) {
         setBattlePageState((prevState) => {
             const state = {...prevState};
-            const opp_status = [...state.opponentsStatus];
-            const squad_status = [...state.squadStatus];
+            const { opponentsStatus } = {...state};
+            const { charStatus } = {...state};
 
-            opp_status.forEach(opponent => opponent.selected = false);
+            opponentsStatus.forEach(opponent => opponent.selected = false);
             if (opponentIndex) {
-                opp_status[opponentIndex].hasTurn = false;
+                opponentsStatus[opponentIndex].hasTurn = false;
             }
 
-            squad_status.forEach((status, index) => {
-                if (index !== state.memberIndex) {
-                    status.selected = false;
-                }
-            })
+            charStatus.selected = false;
     
-            state.opponentsStatus = opp_status;
-            state.squadStatus = squad_status;
+            state.opponentsStatus = opponentsStatus;
+            state.charStatus = charStatus;
             state.opponentIndex = -1;
-            state.allyIndex = -1;
 
             return state
         });      
     }
 
-    function processAbilityOntoMember(memberIndex: number) {
+    function processAbilityOntoChar() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
-
-            const possibleIndexes = collectSufferIndexes(state, memberIndex);
 
             const {selectedAbility} = state;
             if (selectedAbility) {
                 const {hitChance} = selectedAbility;
-                const sufferIndexes = possibleIndexes.filter(index => {
-                    const squadMember = squadMembers[index];
 
-                    const chance = Math.floor(Math.random()*100);
-                    const success = hitChance - squadMember.params.dodge > chance;
-                    const result = success ?
-                        chrome.i18n.getMessage('battle_log_success_result'):
-                        chrome.i18n.getMessage('battle_log_failure_result');
-                    state.log.push(
-                        chrome.i18n.getMessage(
-                            'battle_log_someone_uses_ability_and_result',
-                            [
-                                oppsMembers[state.opponentIndex].params.name,
-                                selectedAbility.name,
-                                squadMember.params.name,
-                                result,
-                                String(hitChance - squadMember.params.dodge),
-                                String(chance)
-                            ]
-                        )
-                    );
-                    return success
-                });                
+                const chance = Math.floor(Math.random()*100);
+                const success = hitChance - char.params.dodge > chance;
+                const result = success ?
+                    chrome.i18n.getMessage('battle_log_success_result'):
+                    chrome.i18n.getMessage('battle_log_failure_result');
+                state.log.push(
+                    chrome.i18n.getMessage(
+                        'battle_log_someone_uses_ability_and_result',
+                        [
+                            oppsMembers[state.opponentIndex].params.name,
+                            selectedAbility.name,
+                            char.params.name,
+                            result,
+                            String(hitChance - char.params.dodge),
+                            String(chance)
+                        ]
+                    )
+                );
 
-                dispatch(gameSquad.actions.sufferAbility({
-                    indexes: sufferIndexes,
+                dispatch(character.actions.sufferAbility({
                     ability: selectedAbility
                 }));
 
                 if (!(selectedAbility as IBattleAbility).ranged) {
-                    const {squadStatus} = state;
-                    sufferIndexes.forEach(index => {
-                        if (squadStatus[index].flameShield) {
-                            dispatch(opponents.actions.sufferAbility({
-                                indexes: [state.opponentIndex],
-                                ability: abilities.battleAbilities.ranged.fire.flame
-                            })); 
-                            state.log.push(
-                                chrome.i18n.getMessage(
-                                    'battle_log_someone_uses_ability_and_result',
-                                    [
-                                        squadMembers[index].params.name,
-                                        supportAbilities.armor.flameShield.name,
-                                        oppsMembers[state.opponentIndex].params.name,
-                                        chrome.i18n.getMessage('battle_log_success_result'),
-                                        String(100),
-                                        String(100)
-                                    ]
-                                )
-                            );
-                        }
-                    })
+                    const { charStatus } = state;
+                    if (charStatus.flameShield) {
+                        dispatch(opponents.actions.sufferAbility({
+                            indexes: [state.opponentIndex],
+                            ability: abilities.battleAbilities.ranged.fire.flame
+                        })); 
+                        state.log.push(
+                            chrome.i18n.getMessage(
+                                'battle_log_someone_uses_ability_and_result',
+                                [
+                                    char.params.name,
+                                    supportAbilities.armor.flameShield.name,
+                                    oppsMembers[state.opponentIndex].params.name,
+                                    chrome.i18n.getMessage('battle_log_success_result'),
+                                    String(100),
+                                    String(100)
+                                ]
+                            )
+                        );
+                    }
                 }                
 
                 dispatch(opponents.actions.processAbility({
@@ -668,62 +603,6 @@ function BattlePage() {
         })
     }
 
-    function processAbilityOntoAlly() {
-        setBattlePageState((prevState) => {
-            const state = {...prevState};
-
-            const {selectedAbility} = state;
-            if (selectedAbility) {
-                const {hitChance} = selectedAbility;
-                const chance = Math.floor(Math.random()*100);
-                const success = hitChance > chance;
-                const result = success ?
-                    chrome.i18n.getMessage('battle_log_success_result'):
-                    chrome.i18n.getMessage('battle_log_failure_result');
-                state.log.push(
-                    chrome.i18n.getMessage(
-                        'battle_log_someone_uses_ability_and_result',
-                        [
-                            squadMembers[state.memberIndex].params.name,
-                            selectedAbility.name,
-                            squadMembers[state.allyIndex].params.name,
-                            result,
-                            String(hitChance),
-                            String(chance)
-                        ]
-                    )
-                );
-
-                dispatch(gameSquad.actions.sufferAbility({
-                    indexes: [state.allyIndex],
-                    ability: selectedAbility
-                }));
-                
-                dispatch(gameSquad.actions.processAbility({
-                    index: state.memberIndex,
-                    data: selectedAbility.costs
-                }));
-
-                if (selectedAbility.name === supportAbilities.armor.defensiveCharms.name) {
-                    state.squadStatus[state.allyIndex].defensiveCharms = true;
-                }
-            }
-
-            state.allyIndex = -1;
-            state.squadStatus[state.memberIndex].hasTurn = false;
-            state.memberIndex = -1;
-            state.squadStatus.forEach((member) => {
-                if (!!member) {
-                    member.selected = false;
-                }
-            });            
-            state.selectedAbility = null;
-            state.selectedAbilityDiv = null;
-
-            return state
-        })
-    }
-
     function processAbilityOntoOpponent() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
@@ -745,7 +624,7 @@ function BattlePage() {
                         chrome.i18n.getMessage(
                             'battle_log_someone_uses_ability_and_result',
                             [
-                                squadMembers[state.memberIndex].params.name,
+                                char.params.name,
                                 selectedAbility.name,
                                 oppsMember.params.name,
                                 result,
@@ -766,8 +645,7 @@ function BattlePage() {
                     const {opponentsStatus} = state;
                     sufferIndexes.forEach(index => {
                         if (opponentsStatus[index].flameShield) {
-                            dispatch(gameSquad.actions.sufferAbility({
-                                indexes: [state.memberIndex],
+                            dispatch(character.actions.sufferAbility({
                                 ability: abilities.battleAbilities.ranged.fire.flame
                             })); 
                             state.log.push(
@@ -776,7 +654,7 @@ function BattlePage() {
                                     [
                                         oppsMembers[index].params.name,
                                         supportAbilities.armor.flameShield.name,
-                                        squadMembers[state.memberIndex].params.name,
+                                        char.params.name,
                                         chrome.i18n.getMessage('battle_log_success_result'),
                                         String(100),
                                         String(100)
@@ -787,17 +665,15 @@ function BattlePage() {
                     })
                 } 
                 
-                dispatch(gameSquad.actions.processAbility({
-                    index: state.memberIndex,
+                dispatch(character.actions.processAbility({
                     data: selectedAbility.costs
                 }));
 
                 if ((selectedAbility as IBattleAbility).throwing) {
-                    const thisMember = squadMembers[state.opponentIndex];
-                    const thisMemberInventory = thisMember.general.inventory;
-                    const [abilityItem, abilityItemInventoryPlace] = Object.keys(thisMemberInventory).map(key => {
+                    const charInventory = char.general.inventory;
+                    const [abilityItem, abilityItemInventoryPlace] = Object.keys(charInventory).map(key => {
                         const inventoryPlace = key as InventoryPlace;
-                        const inventorySlot = thisMemberInventory[inventoryPlace] as IItem;
+                        const inventorySlot = charInventory[inventoryPlace] as IItem;
     
                         if (inventorySlot) {
                             if (inventorySlot.category === InventorySlotCategory.item) {
@@ -825,8 +701,7 @@ function BattlePage() {
                         return [null, null]
                     }).filter(item => !!item[0])[0] as [IItem, InventoryPlace];
                     
-                    dispatch(gameSquad.actions.throwItem({
-                        index: state.memberIndex,
+                    dispatch(character.actions.throwItem({
                         item: abilityItem,
                         inventoryPlace: abilityItemInventoryPlace,
                         fromBackpacks: false,
@@ -886,13 +761,8 @@ function BattlePage() {
             state.opponentsStatus.forEach((member) => {
                 member.selected = false;
             })
-            state.squadStatus[state.memberIndex].hasTurn = false;
-            state.memberIndex = -1;
-            state.squadStatus.forEach((member) => {
-                if (!!member) {
-                    member.selected = false;
-                }
-            });            
+            state.charStatus.hasTurn = false;
+            state.charStatus.selected = false;       
             state.selectedAbility = null;
             state.selectedAbilityDiv = null;
 
@@ -902,22 +772,21 @@ function BattlePage() {
 
     function collectSufferIndexes(state: IBattlePageState, targetIndex: number): number[] {
         const indexes = [] as number[];
-        const processingSquad = state.turn % 2 === 1 ? squadMembers : oppsMembers;
         
         const stateSelAbil = state.selectedAbility;
         const stateSelAbilTarAmount = (stateSelAbil as IBattleAbility).targetAmount;
         if (stateSelAbilTarAmount > 1) {
-            if (processingSquad[targetIndex - 1]) {
+            if (oppsMembers[targetIndex - 1]) {
                 indexes.push(targetIndex - 1);
             }
 
-            if (processingSquad[targetIndex + 1]) {
+            if (oppsMembers[targetIndex + 1]) {
                 indexes.push(targetIndex + 1);
             }
 
             if (stateSelAbilTarAmount === 5) {
-                for (const index in processingSquad) {
-                    if (processingSquad[index] && Number(index) !== targetIndex) {
+                for (const index in oppsMembers) {
+                    if (oppsMembers[index] && Number(index) !== targetIndex) {
                         indexes.push(Number(index));
                     }
                 }
@@ -929,45 +798,13 @@ function BattlePage() {
         return indexes
     }
 
-    function chooseSquadMemberIndex() {
-        const squadStatus = [...battlePageState.squadStatus];
-
-        const memberIndexes = squadMembers.map((member, index) => {
-            if (member && !squadStatus[index].dead) {
-                return index
-            }
-            return undefined
-        }).filter(index => Number(index) > -1 );
-
-        const memberIndex = memberIndexes[Math.floor(Math.random() * memberIndexes.length)] as number ?? -1;
-
-        return memberIndex
-    }
-
-    function selectSquadMember(memberIndex: number, opponentTurn: boolean) {
+    function selectSquadMember() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
-            const status = [...state.squadStatus];
+            const { charStatus } = state;
 
-            if (!opponentTurn) {
-                if (status[memberIndex].hasTurn) {  
-                    status.forEach(member => {
-                        if (!!member) {
-                            member.selected = false;
-                        }                
-                    });
-                    status[memberIndex].selected = true;
-    
-                    state.squadStatus = status;
-                    state.memberIndex = memberIndex;
-
-                    dispatch(gameSquad.actions.changeSquadMember(memberIndex));
-                    state.abilitiesOnTurn = gatherCharacterAbilities(squad[memberIndex]);
-                }                
-            } else {
-                status[memberIndex].selected = true;
-                state.squadStatus = status;
-            }
+            charStatus.selected = true;
+            state.charStatus = charStatus;
 
             return state
         });
@@ -976,16 +813,11 @@ function BattlePage() {
     function deselectSquadMember() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
-            const status = [...state.squadStatus];
+            const { charStatus } = {...state};
 
-            status.forEach(member => {
-                if (!!member) {
-                    member.selected = false;
-                }                
-            });
+            charStatus.selected = false;
 
-            state.squadStatus = status;
-            state.memberIndex = -1;
+            state.charStatus = charStatus;
 
             state.selectedAbility = null;
             state.selectedAbilityDiv = null;
@@ -1014,13 +846,7 @@ function BattlePage() {
         setBattlePageState((prevState) => {
             const state = {...prevState};
 
-            let turnsLeft = 0;
-            state.squadStatus.forEach((member) => {
-                if (!!member && member.hasTurn) {
-                    turnsLeft++;
-                }
-            }); 
-            if (turnsLeft === 0) {
+            if (state.charStatus.hasTurn) {
                 state.turn++;
 
                 state.log.push(
@@ -1057,86 +883,13 @@ function BattlePage() {
     }
 
     const setGameOver = () => {
-        dispatch(gameSquad.actions.setState(createGameSquad()));
+        dispatch(character.actions.setState(createEmptyCharacter()));
 
         removeGameTabs();
     }
 
     const navigateHomeHandler = () => {
         navigate('/game');
-    }
-
-    const collectTropheys = () => {
-        const result: (IItem | IBigResource)[] = [];
-
-        oppsMembers.forEach(opp => {
-            const oppInventory = opp.general.inventory;
-
-            Object.values(oppInventory).forEach((item: IInventorySlot) => {
-                if (!!item && item.category === InventorySlotCategory.item) {
-                    result.push(item as IItem);
-                }
-            })
-
-            const oppRace = opp.params.race;
-            const beastRaces = [
-                raceNames[Race.gnoll], 
-                raceNames[Race.satyr], 
-                raceNames[Race.taur]
-            ];
-            const reptiloidRaces = [
-                raceNames[Race.naga], 
-                raceNames[Race.raptor]
-            ];
-            const dragonRaces = [
-                raceNames[Race.ankylosaurus], 
-                raceNames[Race.dragon], 
-                raceNames[Race.koatl]
-            ];
-
-            if (beastRaces.includes(oppRace)) {
-                result.push(items.bigResources.beastRemains);
-            }
-
-            if (reptiloidRaces.includes(oppRace)) {
-                result.push(items.bigResources.reptiloidRemains);
-            }
-
-            if (dragonRaces.includes(oppRace)) {
-                result.push(items.bigResources.dragonRemains);
-            }
-        })
-
-        const oppGems = Array(Math.floor(oppsMembers.length / 2) + 1)
-            .fill(items.other.gem) as IItem[];
-        result.push(...oppGems);
-        
-        return result
-    }
-
-    const showTropheys = () => {
-        const tropheys = collectTropheys();
-
-        dispatch(gameStage.actions.setUsableOptions({
-            screen: InventoryGameScreens.tropheyField,
-            stage: 0,
-            options: {0: tropheys}
-        }));
-
-        dispatch(gameStage.actions.changeStage({
-            zone: InventoryGameScreens.tropheyField,
-            stage: 1
-        }))
-
-        dispatch(gameStage.actions.updateTask({
-            screen: InventoryGameScreens.tropheyField,
-            stage: 2,
-            status: TaskStatus.unknown
-        }))
-
-        dispatch(gameScreen.actions.changeScreen(InventoryGameScreens.tropheyField));
-        
-        setTimeout(() => navigate('/game'), 0);
     }
 
     const battleTurnButtonsListeners = {
@@ -1165,7 +918,7 @@ function BattlePage() {
                         battlePageState.result === BattleResult.win ?
                             <BattleOverScreen 
                                 result={battlePageState.result} 
-                                listener={showTropheys}
+                                listener={() => navigate('/game')}
                             /> :
                             null
                 }
@@ -1179,7 +932,7 @@ function BattlePage() {
                         <button 
                             className={styles.BattlePage_body_abilitiesBlock_button_deselectSquadMember}
                             onClick={deselectSquadMember}
-                            disabled={battlePageState.memberIndex < 0}
+                            disabled={!battlePageState.charStatus.selected}
                             title={chrome.i18n.getMessage('battle_page_deselect_member')}
                         >
                             <LayerBackward size={30}/>                        
@@ -1208,8 +961,8 @@ function BattlePage() {
                                 battlePageState.result === BattleResult.none ?
                                 (
                                     battlePageState.turn % 2 === 1 ? 
-                                        battlePageState.memberIndex >= 0 ?
-                                            abilitiesOnTurnBlock(squad[battlePageState.memberIndex]) :
+                                        battlePageState.charStatus.selected ?
+                                            abilitiesOnTurnBlock(char) :
                                             <p>
                                                 {chrome.i18n.getMessage('battle_page_your_turn')}
                                             </p> :
@@ -1223,7 +976,7 @@ function BattlePage() {
                             }
                         </div> 
                         <div className={styles.BattlePage_body_abilitiesBlock_button_instruction}>
-                            <span style={abilitiesBlockInstructionStyle(battlePageState.memberIndex < 0)}>
+                            <span style={abilitiesBlockInstructionStyle(!battlePageState.charStatus.selected)}>
                                 {chrome.i18n.getMessage('battle_page_choose_member')}
                             </span>
                             <span style={abilitiesBlockInstructionStyle(!battlePageState.selectedAbility)}>
@@ -1231,14 +984,8 @@ function BattlePage() {
                             </span>
                             <span style={abilitiesBlockInstructionStyle(
                                 !!battlePageState.selectedAbility && (
-                                    (
-                                        battlePageState.selectedAbility.target === AbilityTarget.enemy && 
-                                        battlePageState.opponentIndex < 0 
-                                    ) ||
-                                    (
-                                        battlePageState.selectedAbility.target === AbilityTarget.ally &&
-                                        battlePageState.allyIndex < 0
-                                    )
+                                    battlePageState.selectedAbility.target === AbilityTarget.enemy && 
+                                    battlePageState.opponentIndex < 0 
                                 )
                             )}>
                                 {chrome.i18n.getMessage('battle_page_choose_target')}
@@ -1251,25 +998,16 @@ function BattlePage() {
                                     if (battlePageState.selectedAbility.target === AbilityTarget.enemy) {
                                         processAbilityOntoOpponent();
                                     }
-                                    if (battlePageState.selectedAbility.target === AbilityTarget.ally) {
-                                        processAbilityOntoAlly();
-                                    }
                                 }
                                 checkEndOfTurn();
                             }}
                             disabled={
-                                battlePageState.memberIndex < 0 ||
+                                !battlePageState.charStatus.selected ||
                                 !battlePageState.selectedAbility ||
                                 (
                                     !!battlePageState.selectedAbility && (
-                                        (
-                                            battlePageState.selectedAbility.target === AbilityTarget.enemy && 
-                                            battlePageState.opponentIndex < 0 
-                                        ) ||
-                                        (
-                                            battlePageState.selectedAbility.target === AbilityTarget.ally &&
-                                            battlePageState.allyIndex < 0
-                                        )
+                                        battlePageState.selectedAbility.target === AbilityTarget.enemy && 
+                                        battlePageState.opponentIndex < 0
                                     )
                                 )
                             }
@@ -1286,18 +1024,9 @@ function BattlePage() {
                         </button>                    
                     </div>                
                     <BattleOrder
-                        squad={squadMembers} 
-                        squadStatus={battlePageState.squadStatus} 
-                        listener={(memb_index: number) => {
-                            if (
-                                battlePageState.selectedAbility &&
-                                battlePageState.selectedAbility.target === AbilityTarget.ally
-                            ) {
-                                selectTarget(memb_index);
-                            } else {
-                                selectSquadMember(memb_index, false);
-                            }                            
-                        }}
+                        squad={[char]} 
+                        squadStatus={[battlePageState.charStatus]} 
+                        listener={selectSquadMember}
                     /> 
                 </div>
                 <BattleTurnButtons 

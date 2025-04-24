@@ -72,16 +72,7 @@ export enum UserParam {
     health = 'Health',
     mana = 'Mana',
     focus = 'Focus',
-    satiety = 'Satiety',
     stamina = 'Stamina'    
-}
-
-export enum UserResource {
-    gem = 'Gems',
-    core = 'Mecha-cores',
-    gene = 'Muta-genes',
-    food = 'Food',
-    none = 'None'
 }
 
 export enum DamageType {
@@ -98,7 +89,6 @@ export enum DamageType {
 
 export enum AbilityTarget {
     self = 'self',
-    ally = 'ally',
     enemy = 'enemy',
     place = 'place'
 }
@@ -118,13 +108,11 @@ export enum BendingOption {
 }
 
 export enum InventoryGameScreens {
-    armoury = 'Armoury',
     market = 'Market',
     cyberLab = 'Cyber_Lab',
     mutaLab = 'Mutation_Lab',
     wizardShop = 'Wizard_Shop',
-    guildShop = 'Guild_Shop',
-    tropheyField = 'Trophey_Field'
+    guildShop = 'Guild_Shop'
 }
 
 export enum SchoolGameScreens {
@@ -155,10 +143,6 @@ export enum BendingGameScreens {
 
 export type MindGameScreens = SchoolGameScreens | RitualGameScreens;
 
-export enum MansionScreens {
-    livingRoom = 'Living_Room',
-}
-
 export enum SquadGameScreens {
     aerotheurgRooms = 'Aerotheurg_Rooms',
     apprenticeRooms = 'Apprentice_Rooms',
@@ -170,7 +154,6 @@ export enum SquadGameScreens {
 }
 
 export enum CommonGameScreens {
-    mansion = 'Mansion',
     villageMap = 'Village_Map'
 }
 
@@ -179,7 +162,6 @@ export type GameScreens =
     SchoolGameScreens |
     RitualGameScreens |
     BendingGameScreens |
-    MansionScreens |
     SquadGameScreens |
     CommonGameScreens;
 
