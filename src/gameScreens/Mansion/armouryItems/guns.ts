@@ -4,6 +4,7 @@ import abilities from "../../../general/abilities";
 import images from "../../../images/images";
 import academyMasteries from "../../Academy/masteries";
 import guildMasteries from "../../Guild/masteries";
+import crafts from "../crafts";
 
 const musket = createArmouryItem(
     [
@@ -15,7 +16,8 @@ const musket = createArmouryItem(
         2, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 1
+        '', 1,
+        crafts.guns.craftMusket
     ],
     [
         abilities.battleAbilities.ranged.physicalPiercing.musketShot,
@@ -40,7 +42,8 @@ const battleMusket = createArmouryItem(
         3, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 2
+        '', 2,
+        crafts.guns.craftBattleMusket
     ],
     [
         abilities.battleAbilities.ranged.physicalPiercing.battleMusketShot,
@@ -72,7 +75,8 @@ const pistol = createArmouryItem(
         1
     ],
     [
-        '', 0
+        '', 0,
+        crafts.guns.craftPistol
     ],
     [
         abilities.battleAbilities.ranged.physicalPiercing.pistolShot
@@ -96,7 +100,8 @@ const battlePistol = createArmouryItem(
         3, [InventoryPlace.rightHand], 1
     ],
     [
-        '', 1
+        '', 1,
+        crafts.guns.craftBattlePistol
     ],
     [
         abilities.battleAbilities.ranged.physicalPiercing.battlePistolShot
@@ -127,7 +132,8 @@ const revolver = createArmouryItem(
         1
     ],
     [
-        '', 0
+        '', 0,
+        crafts.guns.craftRevolver
     ],
     [
         abilities.battleAbilities.ranged.physicalPiercing.revolverDoubleShot
@@ -156,7 +162,8 @@ const battleRevolver = createArmouryItem(
         1
     ],
     [
-        '', 1
+        '', 1,
+        crafts.guns.craftBattleRevolver
     ],
     [
         abilities.battleAbilities.ranged.physicalPiercing.battleRevolverDoubleShot,
@@ -185,7 +192,8 @@ const rifle = createArmouryItem(
         3, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 1
+        '', 1,
+        crafts.guns.craftRifle
     ],
     [
         abilities.battleAbilities.ranged.physicalPiercing.rifleDoubleShot,
@@ -210,7 +218,8 @@ const battleRifle = createArmouryItem(
         4, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 2
+        '', 2,
+        crafts.guns.craftBattleRifle
     ],
     [
         abilities.battleAbilities.ranged.physicalPiercing.battleRifleDoubleShot,

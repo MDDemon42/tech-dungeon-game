@@ -4,6 +4,7 @@ import { IPassiveAbility } from '../../enums-and-interfaces/interfaces';
 import inventoryPlaces from '../../general/inventoryPlaces';
 
 const abilityTargetMapping: Record<AbilityTarget, string> = {
+    [AbilityTarget.ally]: chrome.i18n.getMessage('target_ally'),
     [AbilityTarget.enemy]: chrome.i18n.getMessage('target_enemy'),
     [AbilityTarget.place]: chrome.i18n.getMessage('target_place'),
     [AbilityTarget.self]: chrome.i18n.getMessage('target_self')

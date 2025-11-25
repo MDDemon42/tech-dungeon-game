@@ -9,7 +9,8 @@ function priorityChecker(slot: IInventorySlot) {
     const possiblePositions = slot.inventoryPlaces;
     const name_new = slot.name;
     const priority_new = slot.priority;
-    const inventory = store.getState().character.general.inventory 
+    const index = store.getState().gameSquad.currentlyWatched;
+    const inventory = store.getState().gameSquad.squadMembers[index].general.inventory 
         || createEmptyInventory();
 
     const handsOptions: 

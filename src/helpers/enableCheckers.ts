@@ -134,6 +134,7 @@ export function subInventoryEnableChecker(
     character: ICharacher,
     datum: IItem | IMutation | ICyber,
     screenName: InventoryGameScreens,
+    resource: number
 ): [boolean, string] {
     let hasInventorySlots = false;
     for (const slot of datum.inventoryPlaces) {
@@ -149,10 +150,17 @@ export function subInventoryEnableChecker(
         return [false, chrome.i18n.getMessage('siec_inventory_slot')]
     }
 
+    const hasEnoughResources = resource >= datum.cost;
+    if (!hasEnoughResources) {
+        return [false, chrome.i18n.getMessage('siec_resources')]
+    }
+
     if (
         screenName === InventoryGameScreens.market ||
         screenName === InventoryGameScreens.guildShop ||
-        screenName === InventoryGameScreens.wizardShop
+        screenName === InventoryGameScreens.wizardShop ||
+        screenName === InventoryGameScreens.armoury ||
+        screenName === InventoryGameScreens.tropheyField
     ) {
         const nothing = createNoItem().name;
         const maxBackpacksItemsAmount = character.general.backpacks.length;

@@ -58,6 +58,9 @@ const items = {
 }
 
 const basicOptions = [
+    items.other.food,
+    items.other.mechaCore,
+    items.other.mutaGene,
     items.weapons.axe,
     items.other.healingPotion,
     items.armors.leatherArmor,

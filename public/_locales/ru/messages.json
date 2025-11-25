@@ -84,14 +84,186 @@
     "cyber_lab_title": {
         "message": "Вот наша Кибер Лаба!"
     },
+    "build_cyber_lab_task_title": {
+        "message": "Приказ 36: Построить Кибер Лабу"
+    },
+    "build_cyber_lab_task_text": {
+        "message": "Капитан приказывает добыть $count$ $resource$ для постройки Кибер Лабы.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "high_energy_cybers_task_title": {
+        "message": "Модернизировать Кибер Лабу"
+    },
+    "high_energy_cybers_task_text": {
+        "message": "Капитан приказывает добыть $count$ $resource$ для модернизации Кибер Лабы.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "nano_cybers_task_title": {
+        "message": "Улучшить Кибер Лабу"
+    },
+    "nano_cybers_task_text": {
+        "message": "Капитан приказывает добыть $count$ $resource$ для улучшения Кибер Лабы.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "implement": {
         "message": "Внедрить!"
+    },
+    "mansion_to": {
+        "message": "В Поместье!"
+    },
+    "mansion_title": {
+        "message": "Вот и Поместье!"
+    },
+    "settle_in_cabin_task_title": {
+        "message": "Поселиться в заброшенной Хижине"
+    },
+    "settle_in_cabin_task_text": {
+        "message": "Вы можете начать жить здесь, будто это ваша собственная Хижина."
+    },
+    "build_cottege_task_title": {
+        "message": "Построить Коттедж"
+    },
+    "build_cottege_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и построить собственный Коттедж.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "build_mansion_task_title": {
+        "message": "Достроить Поместье"
+    },
+    "build_mansion_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и достроить собственное Поместье.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "muta_lab_to": {
         "message": "В Мута Лабу!"
     },
     "muta_lab_title": {
         "message": "Это наша Мута Лаба!"
+    },
+    "build_muta_lab_task_title": {
+        "message": "Приказ 47: Построить Мута Лабу"
+    },
+    "build_muta_lab_task_text": {
+        "message": "Капитан приказывает добыть $count$ $resource$ для постройки Мута Лабы.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "beast_genes_task_title": {
+        "message": "Гены Зверя"
+    },
+    "beast_genes_task_text": {
+        "message": "Капитан приказывает добыть $count$ $resource$ для мутирования в будущем.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "reptiloid_genes_task_title": {
+        "message": "Гены Рептилоида"
+    },
+    "reptiloid_genes_task_text": {
+        "message": "Капитан приказывает добыть $count$ $resource$ для мутирования в будущем.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "insectoid_genes_task_title": {
+        "message": "Гены Инсектоида"
+    },
+    "insectoid_genes_task_text": {
+        "message": "Капитан приказывает добыть $count$ $resource$ для мутирования в будущем.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "dragon_genes_task_title": {
+        "message": "Гены Дракона"
+    },
+    "dragon_genes_task_text": {
+        "message": "Капитан приказывает добыть $count$ $resource$ для мутирования в будущем.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "mutate": {
         "message": "Мутировать!"
@@ -102,6 +274,22 @@
     "market_title": {
         "message": "Добро пожаловать на Рынок!"
     },
+    "modernize_market_task_title": {
+        "message": "Сталь на Рынке"
+    },
+    "modernize_market_task_text": {
+        "message": "Местный кузнец просит $count$ $resource$ для изготовления нового, Стального, оружия.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "buy": {
         "message": "Купить!"
     },
@@ -110,6 +298,46 @@
     },
     "academy_title": {
         "message": "Вы в Академии!"
+    },
+    "build_academy_task_title": {
+        "message": "Давай построим Академию!"
+    },
+    "build_academy_task_text": {
+        "message": "Умелые жители деревни просят $count_1$ $resource_1$ и $count_2$ $resource_2$ для строительства Академии.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },    
+    "modernize_academy_task_title": {
+        "message": "Сталь в Академии"
+    },
+    "modernize_academy_task_text": {
+        "message": "Больше умелых жителей деревни просят $count$ $resource$ для модернизации Академии.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "learn": {
         "message": "Изучить!"
@@ -120,6 +348,89 @@
     "armoury_title": {
         "message": "Это наша Оружейная!"
     },
+    "build_armoury_task_title": {
+        "message": "Построить Оружейную"
+    },
+    "build_armoury_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и построить Оружейную.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "craft": {
+        "message": "Создать!"
+    },
+    "musket_options_task_title": {
+        "message": "Чертежи мушкетов"
+    },
+    "musket_options_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и создать чертежи мушкетов.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "rifle_options_task_title": {
+        "message": "Чертежи ружей"
+    },
+    "rifle_options_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и создать чертежи ружей.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "battle_options_task_title": {
+        "message": "Чертежи клинков"
+    },
+    "battle_options_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и создать чертежи клинков.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
+    "mage_options_task_title": {
+        "message": "Чертежи мага"
+    },
+    "mage_options_task_text": {
+        "message": "Вы можете взять $count$ $resource$ и создать чертежи мага.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "focus_site_to": {
         "message": "К Месту Средоточия!"
     },
@@ -128,6 +439,22 @@
     },
     "focus_rituals_title": {
         "message": "Переживите Ритуалы Средоточия!"
+    },
+    "build_focus_site_task_title": {
+        "message": "Помоги оформить Место Средоточия"
+    },
+    "build_focus_site_task_text": {
+        "message": "Какой-то татуированный парень просит $count$ $resource$ для оформления Места Средоточия.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "focus_school_title": {
         "message": "Изучите Мастерства Мощей!"
@@ -144,11 +471,59 @@
     "wizard_school_title": {
         "message": "Изучите Мастерства Волшебства!"
     },
+    "build_wizard_school_task_title": {
+        "message": "Можешь помочь построить Школу Волшебства?"
+    },
+    "build_wizard_school_task_text": {
+        "message": "Несколько заучек просят $count$ $resource$ для строительства Школы Волшебства.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "librarium": {
         "message": "Либрариум"
     },
+    "construct_librarium_task_title": {
+        "message": "Можешь помочь возвести Либрариум?"
+    },
+    "construct_librarium_task_text": {
+        "message": "Несколько заучек просят $count$ $resource$ для возведения Либрариума.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "guild_to": {
         "message": "В Гильдию!"
+    },
+    "build_guild_task_title": {
+        "message": "Помоги основать Гильдию"
+    },
+    "build_guild_task_text": {
+        "message": "Группа иноземцев просит $count$ $resource$ для основания какой-то Гильдии.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "guild_shop_title": {
         "message": "Покупайте в Гильдейском магазине!"
@@ -159,6 +534,22 @@
     "guild_rituals_title": {
         "message": "Переживите Гильдейские Ритуалы!"
     },
+    "runes_and_rituals_task_title": {
+        "message": "Руны и Ритуалы."
+    },
+    "runes_and_rituals_task_text": {
+        "message": "Группа иноземцев просит $count$ $resource$ для каких-то мета-экспериментов.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "spell_shop_to": {
         "message": "В Заклинальню!"
     },
@@ -168,8 +559,26 @@
     "study": {
         "message": "Зазубрить!"
     },
+    "trophey_field_title": {
+        "message": "Это Поле Трофеев!"
+    },
+    "trophey_field_to": {
+        "message": "На поле трофеев!"
+    },
     "take": {
         "message": "Взять!"
+    },
+    "burn_the_bodies_task_title": {
+        "message": "Сжечь тела"
+    },
+    "burn_the_bodies_task_text": {
+        "message": "Сжечь тела для предотвращения их поднятия как нежити"
+    },
+    "bury_the_bodies_task_title": {
+        "message": "Закопать тела"
+    },
+    "bury_the_bodies_task_text": {
+        "message": "Закопать тела для предотвращения распространения вони"
     },
     "no_item_name": {
         "message": "Ничего"
@@ -206,6 +615,9 @@
     },
     "smec_health_cost": {
         "message": "Потеря Здоровья слишком высока"
+    },
+    "siec_resources": {
+        "message": "Недостаточно ресурсов"
     },
     "siec_inventory_slot": {
         "message": "Нет подходящего места в инвентаре"
@@ -465,6 +877,22 @@
     "holster_item_description": {
         "message": "Фирменная кобура для освобождения руки."
     },
+    "craft_holster": {
+        "message": "Создать кобуру"
+    },
+    "craft_holster_description": {
+        "message": "Использовать $count$ $resource$ для создания кобуры.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "musket": {
         "message": "Мушкет"
     },
@@ -476,6 +904,22 @@
     },
     "musket_butt_hit": {
         "message": "Удар прикладом мушкета"
+    },
+    "craft_musket": {
+        "message": "Создать мушкет"
+    },
+    "craft_musket_description": {
+        "message": "Использовать $count$ $resource$ для создания мушкета.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "battle_musket": {
         "message": "Боевой мушкет"
@@ -492,6 +936,22 @@
     "battle_musket_pierce": {
         "message": "Удар штыком боевого мушкета"
     },
+    "craft_battle_musket": {
+        "message": "Создать боевой мушкет"
+    },
+    "craft_battle_musket_description": {
+        "message": "Использовать $count$ $resource$ для создания боевого мушкета.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "mage_musket": {
         "message": "Мушкет мага"
     },
@@ -500,6 +960,30 @@
     },
     "mage_musket_shot": {
         "message": "Выстрел из мушкета мага"
+    },
+    "craft_mage_musket": {
+        "message": "Создать мушкет мага"
+    },
+    "craft_mage_musket_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания мушкета мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
     },
     "battle_mage_musket": {
         "message": "Боевой мушкет мага"
@@ -516,6 +1000,30 @@
     "battle_mage_musket_cold_pierce": {
         "message": "Удар ледяным штыком боевого мушкета мага"
     },
+    "craft_battle_mage_musket": {
+        "message": "Создать боевой мушкет мага"
+    },
+    "craft_battle_mage_musket_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания боевого мушкета мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
     "pistol": {
         "message": "Пистоль"
     },
@@ -524,6 +1032,22 @@
     },
     "pistol_shot": {
         "message": "Выстрел из пистоля"
+    },
+    "craft_pistol": {
+        "message": "Создать пистоль"
+    },
+    "craft_pistol_description": {
+        "message": "Использовать $count$ $resource$ для создания пистоля.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "battle_pistol": {
         "message": "Боевой пистоль"
@@ -537,6 +1061,22 @@
     "battle_pistol_slash": {
         "message": "Удар боевым пистолем"
     },
+    "craft_battle_pistol": {
+        "message": "Создать боевой пистоль"
+    },
+    "craft_battle_pistol_description": {
+        "message": "Использовать $count$ $resource$ для создания боевого пистоля.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "revolver": {
         "message": "Револьвер"
     },
@@ -545,6 +1085,22 @@
     },
     "revolver_double_shot": {
         "message": "Два выстрела из револьвера"
+    },
+    "craft_revolver": {
+        "message": "Создать револьвер"
+    },
+    "craft_revolver_description": {
+        "message": "Использовать $count$ $resource$ для создания револьвера.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "battle_revolver": {
         "message": "Боевой револьвер"
@@ -558,6 +1114,22 @@
     "battle_revolver_slash": {
         "message": "Удар боевым револьвером"
     },
+    "craft_battle_revolver": {
+        "message": "Создать боевой револьвер"
+    },
+    "craft_battle_revolver_description": {
+        "message": "Использовать $count$ $resource$ для создания боевого револьвера.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "rifle": {
         "message": "Винтовка"
     },
@@ -569,6 +1141,22 @@
     },
     "rifle_butt_hit": {
         "message": "Удар прикладом винтовки"
+    },
+    "craft_rifle": {
+        "message": "Создать винтовку"
+    },
+    "craft_rifle_description": {
+        "message": "Использовать $count$ $resource$ для создания винтовки.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "battle_rifle": {
         "message": "Боевая винтовка"
@@ -585,6 +1173,22 @@
     "battle_rifle_butt_hit": {
         "message": "Удар прикладом боевой винтовки"
     },
+    "craft_battle_rifle": {
+        "message": "Создать боевую винтовку"
+    },
+    "craft_battle_rifle_description": {
+        "message": "Использовать $count$ $resource$ для создания боевой винтовки.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "mage_rifle": {
         "message": "Винтовка мага"
     },
@@ -593,6 +1197,30 @@
     },
     "mage_rifle_double_shot": {
         "message": "Два выстрела из винтовки мага"
+    },
+    "craft_mage_rifle": {
+        "message": "Создать винтовку мага"
+    },
+    "craft_mage_rifle_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания винтовки мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
     },
     "battle_mage_rifle": {
         "message": "Боевая винтовка мага"
@@ -614,6 +1242,30 @@
     },
     "battle_mage_rifle_wind_slash": {
         "message": "Ветреный удар боевой винтовкой мага"
+    },
+    "craft_battle_mage_rifle": {
+        "message": "Создать боевую винтовку мага"
+    },
+    "craft_battle_mage_rifle_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания боевой винтовки мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
     },
     "all_weapons_massacre": {
         "message": "Тотальная резня"
@@ -649,6 +1301,22 @@
     "double_axe_slash": {
         "message": "Удар двумя топорами"
     },
+    "craft_battle_axe": {
+        "message": "Создать боевой топор"
+    },
+    "craft_battle_axe_description": {
+        "message": "Использовать $count$ $resource$ для создания боевого топора.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "mage_weapon": {
         "message": "Повышает максимальный запас Маны на 2."
     },
@@ -670,6 +1338,30 @@
     "battle_mage_axe_wind_slash": {
         "message": "Удар ветреным боевым топором мага"
     },
+    "craft_battle_mage_axe": {
+        "message": "Создать боевой топор мага"
+    },
+    "craft_battle_mage_axe_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания боевого топора мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
     "dragon_bone_blade": {
         "message": "Клинок из кости дракона"
     },
@@ -678,6 +1370,22 @@
     },
     "dragon_bone_blade_slash": {
         "message": "Удар клинком из кости дракона"
+    },
+    "craft_dragon_bone_blade": {
+        "message": "Создать клинок из кости дракона"
+    },
+    "craft_dragon_bone_blade_description": {
+        "message": "Использовать $count$ $resource$ для создания клинка из кости дракона.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "mage_dragon_bone_blade": {
         "message": "Клинок мага из кости дракона"
@@ -691,6 +1399,30 @@
     "mage_dragon_bone_blade_fire_slash": {
         "message": "Удар огненным клинком мага из кости дракона"
     },
+    "craft_mage_dragon_bone_blade": {
+        "message": "Создать клинок мага из кости дракона"
+    },
+    "craft_mage_dragon_bone_blade_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания клинка мага из кости дракона.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
     "glaive": {
         "message": "Глефа"
     },
@@ -702,6 +1434,22 @@
     },
     "glaive_pierce": {
         "message": "Выпад глефой"
+    },
+    "craft_glaive": {
+        "message": "Создать глефу"
+    },
+    "craft_glaive_description": {
+        "message": "Использовать $count$ $resource$ для создания глефы.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "mage_glaive": {
         "message": "Глефа мага"
@@ -718,6 +1466,30 @@
     "mage_glaive_wind_slash": {
         "message": "Удар ветреной глефой мага"
     },
+    "craft_mage_glaive": {
+        "message": "Создать глефу мага"
+    },
+    "craft_mage_glaive_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания глефы мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
     "halberd": {
         "message": "Алебарда"
     },
@@ -726,6 +1498,22 @@
     },
     "halberd_slash": {
         "message": "Удар алебардой"
+    },
+    "craft_halberd": {
+        "message": "Создать алебарду"
+    },
+    "craft_halberd_description": {
+        "message": "Использовать $count$ $resource$ для создания алебарды.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "mage_halberd": {
         "message": "Алебарда мага"
@@ -739,6 +1527,30 @@
     "mage_halberd_cold_slash": {
         "message": "Удар ледяной алебардой мага"
     },
+    "craft_mage_halberd": {
+        "message": "Создать алебарду мага"
+    },
+    "craft_mage_halberd_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания алебарды мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
     "katana": {
         "message": "Катана"
     },
@@ -748,6 +1560,22 @@
     "katana_slash": {
         "message": "Удар катаной"
     },
+    "craft_katana": {
+        "message": "Создать катану"
+    },
+    "craft_katana_description": {
+        "message": "Использовать $count$ $resource$ для создания катаны.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "khopesh": {
         "message": "Хопеш"
     },
@@ -756,6 +1584,22 @@
     },
     "khopesh_slash": {
         "message": "Удар хопешом"
+    },
+    "craft_khopesh": {
+        "message": "Создать хопеш"
+    },
+    "craft_khopesh_description": {
+        "message": "Использовать $count$ $resource$ для создания хопеша.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "mage_khopesh": {
         "message": "Хопеш мага"
@@ -769,6 +1613,30 @@
     "mage_khopesh_fire_slash": {
         "message": "Удар огненным хопешом мага"
     },
+    "craft_mage_khopesh": {
+        "message": "Создать хопеш мага"
+    },
+    "craft_mage_khopesh_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания хопеша мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
     "macuahuitl": {
         "message": "Макуаитль"
     },
@@ -777,6 +1645,22 @@
     },
     "macuahuitl_slash": {
         "message": "Удар макуаитлем"
+    },
+    "craft_macuahuitl": {
+        "message": "Создать макуаитль"
+    },
+    "craft_macuahuitl_description": {
+        "message": "Использовать $count$ $resource$ для создания макуаитля.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "mage_macuahuitl": {
         "message": "Макуаитль мага"
@@ -790,6 +1674,30 @@
     "mage_macuahuitl_cold_slash": {
         "message": "Удар ледяным макуаитлем мага"
     },
+    "craft_mage_macuahuitl": {
+        "message": "Создать макуаитль мага"
+    },
+    "craft_mage_macuahuitl_description": {
+        "message": "Использовать $count_1$ $resource_1$ и $count_2$ $resource_2$ для создания макуаитля мага.",
+        "placeholders": {
+            "count_1": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource_1": {
+                "content": "$2",
+                "example": ""
+            },
+            "count_2": {
+                "content": "$3",
+                "example": ""
+            },
+            "resource_2": {
+                "content": "$4",
+                "example": ""
+            }
+        }
+    },
     "rapier": {
         "message": "Рапира"
     },
@@ -798,6 +1706,22 @@
     },
     "rapier_slash": {
         "message": "Удар рапирой"
+    },
+    "craft_rapier": {
+        "message": "Создать рапиру"
+    },
+    "craft_rapier_description": {
+        "message": "Использовать $count$ $resource$ для создания рапиры.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "sabre": {
         "message": "Сабля"
@@ -808,11 +1732,43 @@
     "sabre_slash": {
         "message": "Удар саблей"
     },
+    "craft_sabre": {
+        "message": "Создать саблю"
+    },
+    "craft_sabre_description": {
+        "message": "Использовать $count$ $resource$ для создания сабли.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "mage_wand": {
         "message": "Жезл мага"
     },
     "mage_wand_item_description": {
         "message": "Фирменный жезл мага."
+    },
+    "craft_mage_wand": {
+        "message": "Создать жезл мага"
+    },
+    "craft_mage_wand_description": {
+        "message": "Использовать $count$ $resource$ для создания жезла мага.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "steel_sword": {
         "message": "Стальной меч"
@@ -1277,6 +2233,22 @@
     "ice_site_title": {
         "message": "Проходите к Ледовью!"
     },
+    "build_ice_site_task_title": {
+        "message": "Можешь помочь мне построить Ледовье, пожалуйста?"
+    },
+    "build_ice_site_task_text": {
+        "message": "Какая-то управляющая льдом девушка просит $count$ $resource$ для строительства Ледовья.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "ice_school_title": {
         "message": "Изучите Чувство Льда!"
     },
@@ -1295,11 +2267,55 @@
     "ice_shard_bending_description": {
         "message": "Заклинание для протыкания врага осколком льда."
     },
+    "ice_shard_task_title": {
+        "message": "Можешь помочь мне с $resource$, пожалуйста?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "ice_shard_task_text": {
+        "message": "Ледяная девушка просит $count$ $resource$ для создания чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "ice_spear": {
         "message": "Ледяное копьё"
     },
     "ice_spear_bending_description": {
         "message": "Заклинание для протыкания врага большим осколком льда."
+    },
+    "ice_spear_task_title": {
+        "message": "Можешь помочь мне с $resource$ снова, пожалуйста?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "ice_spear_task_text": {
+        "message": "Ледяная девушка снова просит $count$ $resource$ для создания чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "ice_hail": {
         "message": "Ледяная буря"
@@ -1307,11 +2323,55 @@
     "ice_hail_bending_description": {
         "message": "Заклинание для протыкания группы врагов осколками льда."
     },
+    "ice_hail_task_title": {
+        "message": "Можешь ещё мне помочь с $resource$, пожалуйста?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "ice_hail_task_text": {
+        "message": "Ледяная девушка просит $count$ $resource$ для создания ещё чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "cold_death": {
         "message": "Холодная смерть"
     },
     "cold_death_bending_description": {
         "message": "Заклинание для превращения врага в мёртвую ледышку."
+    },
+    "cold_death_task_title": {
+        "message": "Можешь мне ещё раз помочь с $resource$, пожалуйста?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "cold_death_task_text": {
+        "message": "Ледяная девушка просит $count$ $resource$ для постройки плота.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "freezing": {
         "message": "Леденящий "
@@ -1322,14 +2382,74 @@
     "freezing_strikes_mastery_description": {
         "message": "Мастерство использования Маны для\nдобавления урона Холодом к атакам."
     },
+    "freezing_strikes_task_title": {
+        "message": "Можешь мне ещё раз помочь с $resource$, пожалуйста?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "freezing_strikes_task_text": {
+        "message": "Ледяная девушка просит $count$ $resource$ для тренировочных чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "ice_rituals": {
         "message": "Ритуалы Льда"
+    },
+    "ice_rituals_task_title": {
+        "message": "Можешь мне помочь с $resource$, пожалуйста?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "ice_rituals_task_text": {
+        "message": "Ледяная девушка просит $count$ $resource$ для возведения Ритуальной зоны.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "fire_site_to": {
         "message": "К Огнищу!"
     },
     "fire_site_title": {
         "message": "Проходите к Огнищу!"
+    },
+    "build_fire_site_task_title": {
+        "message": "Мог бы ты помочь построить Огнище?"
+    },
+    "build_fire_site_task_text": {
+        "message": "Какая-то управляющая огнём девушка просит $count$ $resource$ для строительства Огнища.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "fire_school_title": {
         "message": "Изучите Чувство Огня!"
@@ -1349,6 +2469,28 @@
     "fire_ball_bending_description": {
         "message": "Заклинание для раскидывания врагов шаром из огня."
     },
+    "fire_ball_task_title": {
+        "message": "Можешь помочь с $resource$?",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "fire_ball_task_text": {
+        "message": "Огненная девушка просит $count$ $resource$ для тренировочных чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "flame_shield": {
         "message": "Пламенный щит"
     },
@@ -1364,6 +2506,28 @@
     "fire_wave_bending_description": {
         "message": "Заклинание для испепеления группы врагов."
     },
+    "fire_wave_task_title": {
+        "message": "Помоги мне с $resource$, пожалуйста",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "fire_wave_task_text": {
+        "message": "Огненная девушка просит $count$ $resource$ для бункера.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "enflamed": {
         "message": "Обжигающий "
     },
@@ -1373,14 +2537,74 @@
     "enflamed_strikes_mastery_description": {
         "message": "Мастерство использования Маны для\nдобавления Огненного урона к атакам."
     },
+    "enflamed_strikes_task_title": {
+        "message": "Помоги мне с $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "enflamed_strikes_task_text": {
+        "message": "Огненная девушка просит $count$ $resource$ для тренировочных чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "fire_rituals": {
         "message": "Ритуалы Огня"
+    },
+    "fire_rituals_task_title": {
+        "message": "Помоги мне с $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "fire_rituals_task_text": {
+        "message": "Огненная девушка просит $count$ $resource$ для возведения Ритуальной зоны.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "air_site_to": {
         "message": "К Перепутью Ветров!"
     },
     "air_site_title": {
         "message": "Проходите к Перепутью Ветров!"
+    },
+    "build_air_site_task_title": {
+        "message": "Хотел бы помочь мне построить Перепутье Ветров?"
+    },
+    "build_air_site_task_text": {
+        "message": "Какой-то управляющий ветром парень просит $count$ $resource$ для строительства Перепутья Ветров.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "air_school_title": {
         "message": "Изучите Чувство Воздуха!"
@@ -1469,11 +2693,55 @@
     "thunder_punch_bending_description": {
         "message": "Заклинание для удара с раскатами грома."
     },
+    "thunder_punch_task_title": {
+        "message": "Мне нужно больше $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "thunder_punch_task_text": {
+        "message": "Воздушный парень просит $count$ $resource$ для тренировочных чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "air_deprivation": {
         "message": "Удушение"
     },
     "air_deprivation_bending_description": {
         "message": "Заклинание для лишения врага воздуха и жизни."
+    },
+    "air_deprivation_task_title": {
+        "message": "Мне нужно ещё больше $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "air_deprivation_task_text": {
+        "message": "Воздушный парень просит $count$ $resource$ для высокой наблюдательной башни.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "electrified": {
         "message": "Электризованный "
@@ -1484,8 +2752,52 @@
     "electrified_strikes_mastery_description": {
         "message": "Мастерство использования Маны для\nдобавления Электрического урона к атакам."
     },
+    "electrified_strikes_task_title": {
+        "message": "Мне нужно много больше $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "electrified_strikes_task_text": {
+        "message": "Воздушный парень просит $count$ $resource$ для тренировочных чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "air_rituals": {
         "message": "Ритуалы Воздуха"
+    },
+    "air_rituals_task_title": {
+        "message": "Мне нужно $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "air_rituals_task_text": {
+        "message": "Воздушный парень просит $count$ $resource$ для возведения Ритуальной зоны.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "flying_charm": {
         "message": "Чары полёта"
@@ -1667,11 +2979,55 @@
     "deepest_insights": {
         "message": "Глубокие озарения"
     },
+    "deepest_insights_task_title": {
+        "message": "Нужно $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "deepest_insights_task_text": {
+        "message": "Татуированный парень нуждается в $count$ $resource$ для комнаты молчания.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "psi_energy": {
         "message": "Пси-энергия"
     },
     "psi_energy_mastery_description": {
         "message": "Мастерство управления потоками пси-энергии."
+    },
+    "psi_energy_task_title": {
+        "message": "Достань больше $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "psi_energy_task_text": {
+        "message": "Татуированному парню нужно $count$ $resource$ для тренировочных чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "empowered": {
         "message": "Усиленный "
@@ -1682,6 +3038,28 @@
     "empowered_strikes_mastery_description": {
         "message": "Мастерство использования Концентрации\nдля увеличения Физического урона."
     },
+    "empowered_strikes_task_title": {
+        "message": "Помоги мне с $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "empowered_strikes_task_text": {
+        "message": "Татуированный парень просит $count$ $resource$ для создания ещё чучел.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "psi_infused": {
         "message": "Псионический "
     },
@@ -1691,8 +3069,52 @@
     "psi_infused_strikes_mastery_description": {
         "message": "Мастерство использования Концентрации для\nдобавления Псионического урона к атакам."
     },
+    "psi_infused_strikes_task_title": {
+        "message": "Помоги мне ещё с $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "psi_infused_strikes_task_text": {
+        "message": "Татуированный парень просит ещё $count$ $resource$ для тренировочных чучел..",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
+    },
     "focus_rituals": {
         "message": "Ритуалы Средоточия"
+    },
+    "focus_rituals_task_title": {
+        "message": "Помоги мне теперь с $resource$",
+        "placeholders": {
+            "resource": {
+                "content": "$1",
+                "example": ""
+            }
+        }
+    },
+    "focus_rituals_task_text": {
+        "message": "Татуированный парень просит $count$ $resource$ для возведения Ритуальной зоны.",
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": ""
+            },
+            "resource": {
+                "content": "$2",
+                "example": ""
+            }
+        }
     },
     "cold_affiliation": {
         "message": "Родство с холодом"
@@ -1729,6 +3151,12 @@
     },
     "spear_affiliation_mastery_description": {
         "message": "Мастерство обращения с копьём."
+    },
+    "sellmanship": {
+        "message": "Продажник"
+    },
+    "sellmanship_mastery_description": {
+        "message": "Мастерство продавать вещи за их реальную цену."
     },
     "rip_apart": {
         "message": "Разорвать в клочья"
@@ -1832,6 +3260,24 @@
     "choose_class": {
         "message": "Выберите класс"
     },
+    "eat_title": {
+        "message": "Поесть"
+    },
+    "eat_description": {
+        "message": "Насытить тело и/или не умереть от голода"
+    },
+    "sleep_title": {
+        "message": "Поспать"
+    },
+    "sleep_description": {
+        "message": "Отдохнуть в кровати несколько часов"
+    },    
+    "train_title": {
+        "message": "Тренироваться"
+    },
+    "train_description": {
+        "message": "Использовать Выносливость на обретение Силы"
+    },
     "living_room": {
         "message": "Жилое помещение"
     },
@@ -1895,11 +3341,44 @@
     "mana": {
         "message": "Мана"
     },
+    "satiety": {
+        "message": "Сытость"
+    },
     "stamina": {
         "message": "Выносливость"
     },
+    "mecha_core": {
+        "message": "Меха-ядро"
+    },
+    "mecha_core_item_description": {
+        "message": "Для адаптации тела к Киберам"
+    },
+    "muta_gene": {
+        "message": "Мута-ген"
+    },
+    "muta_gene_item_description": {
+        "message": "Для адаптации тела к Мутациям"
+    },
+    "food": {
+        "message": "Еда"
+    },
+    "food_item_description": {
+        "message": "Содержит еды на 10 приёмов пищи."
+    },
+    "gem": {
+        "message": "Самоцвет"
+    },
+    "gem_item_description": {
+        "message": "Для участия в торгово-денежных отношениях."
+    },
     "level": {
         "message": "Уровень"
+    },
+    "no_one_to_hire": {
+        "message": "Некого нанять"
+    },
+    "hire": {
+        "message": "Нанять!"
     },
     "race_ankylosaurus": {
         "message": "Анкилозавр"
@@ -1939,6 +3418,39 @@
     },
     "race_unknown": {
         "message": "Нечто"
+    },
+    "open_task_list": {
+        "message": "Открыть список задач"
+    },
+    "close_task_list": {
+        "message": "Закрыть список задач"
+    },
+    "no_tasks_yet": {
+        "message": "Пока нет задач"
+    },
+    "actual_tasks": {
+        "message": "Актуальные задачи"
+    },
+    "completed_tasks": {
+        "message": "Завершённые задачи"
+    },
+    "put_into_storage": {
+        "message": "На склад"
+    },
+    "storage_is_full": {
+        "message": "Склад полон"
+    },
+    "open_storage": {
+        "message": "Открыть склад"
+    },
+    "close_storage": {
+        "message": "Закрыть склад"
+    },
+    "get_from_storage": {
+        "message": "Взять со склада"
+    },
+    "storage_is_empty": {
+        "message": "Складской шкафчик пуст"
     },
     "inventory_place_armor": {
         "message": "Броня"
@@ -2017,6 +3529,9 @@
     },
     "inventory_place_telekinesis_right_hand": {
         "message": "Телекинетическая правая рука"
+    },
+    "target_ally": {
+        "message": "Друг"
     },
     "target_enemy": {
         "message": "Враг"

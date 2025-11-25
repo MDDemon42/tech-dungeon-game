@@ -21,6 +21,8 @@ import Market from '../../gameScreens/Market';
 import MutaLab from '../../gameScreens/MutaLab';
 import VillageMap from '../../gameScreens/VillageMap';
 import WizardSchool from '../../gameScreens/WizardSchool';
+import Mansion from '../../gameScreens/Mansion';
+import TropheyField from '../../gameScreens/TropheyField';
 
 function GameScreen() {
     const screen = useSelector((store: IStore) => store.gameScreen.screen);
@@ -34,8 +36,10 @@ function GameScreen() {
         [SchoolGameScreens.focusSite]: <FocusSite />,
         [SchoolGameScreens.guildSchool]: <Guild />,
         [BendingGameScreens.iceSite]: <IceSite />,
+        [CommonGameScreens.mansion]: <Mansion />,
         [InventoryGameScreens.market]: <Market />,
         [InventoryGameScreens.mutaLab]: <MutaLab />,
+        [InventoryGameScreens.tropheyField]: <TropheyField />,
         [CommonGameScreens.villageMap]: <VillageMap />,
         [SchoolGameScreens.wizardSchool]: <WizardSchool />,
     }

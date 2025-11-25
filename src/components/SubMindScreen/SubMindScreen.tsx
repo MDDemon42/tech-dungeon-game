@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import styles from './SubMindScreen.module.css';
 import { IMastery, IPower, IRitual, ISpell, IStore, ISubMindMapping } from '../../enums-and-interfaces/interfaces';
 import { useDispatch } from 'react-redux';
-import character from '../../redux/slices/character';
+import gameSquad from '../../redux/slices/gameSquad';
 import { 
     MindGameScreens, 
     RitualGameScreens, 
@@ -15,7 +15,8 @@ import academyMasteries from '../../gameScreens/Academy/masteries';
 function SubMindScreen(props: {
     screenName: MindGameScreens
 }) {
-    const member = useSelector((store: IStore) => store.character);
+    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
+    const member = useSelector((store: IStore) => store.gameSquad.squadMembers[index]);
 
     const memberMind: string[] = [];
     member.general.mind.rituals.map(data => memberMind.push(data.name));
@@ -40,10 +41,10 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('academy_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                dispatch(character.actions.learnMastery(data));
+                dispatch(gameSquad.actions.learnMastery(data));
 
                 if (data.name === academyMasteries.brutalForce.name) {
-                    dispatch(character.actions.raiseStrength(3))
+                    dispatch(gameSquad.actions.raiseStrength(3))
                 }
             }
         },
@@ -53,7 +54,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('air_rituals_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IRitual) => {
-                dispatch(character.actions.surpassRitual(data));
+                dispatch(gameSquad.actions.surpassRitual(data));
             }
         }, 
         [SchoolGameScreens.airSchool]: {
@@ -62,7 +63,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('air_school_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                dispatch(character.actions.learnMastery(data));
+                dispatch(gameSquad.actions.learnMastery(data));
             }
         },
         [RitualGameScreens.fireRituals]: {
@@ -71,7 +72,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('fire_rituals_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IRitual) => {
-                dispatch(character.actions.surpassRitual(data));
+                dispatch(gameSquad.actions.surpassRitual(data));
             }
         }, 
         [SchoolGameScreens.fireSchool]: {
@@ -80,7 +81,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('fire_school_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                dispatch(character.actions.learnMastery(data));
+                dispatch(gameSquad.actions.learnMastery(data));
             }
         },
         [RitualGameScreens.focusRituals]: {
@@ -89,7 +90,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('focus_rituals_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IRitual) => {
-                dispatch(character.actions.surpassRitual(data));
+                dispatch(gameSquad.actions.surpassRitual(data));
             }
         }, 
         [SchoolGameScreens.focusSite]: {
@@ -98,7 +99,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('focus_site_title'),
             button: chrome.i18n.getMessage('develop'),
             listener: (data: IPower) => {
-                dispatch(character.actions.developPower(data));
+                dispatch(gameSquad.actions.developPower(data));
             }
         },
         [SchoolGameScreens.focusSchool]: {
@@ -107,7 +108,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('focus_school_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                dispatch(character.actions.learnMastery(data));
+                dispatch(gameSquad.actions.learnMastery(data));
             }
         },
         [RitualGameScreens.guildRituals]: {
@@ -116,7 +117,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('guild_rituals_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IRitual) => {
-                dispatch(character.actions.surpassRitual(data));
+                dispatch(gameSquad.actions.surpassRitual(data));
             }
         },       
         [SchoolGameScreens.guildSchool]: {
@@ -125,7 +126,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('guild_school_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                dispatch(character.actions.learnMastery(data));
+                dispatch(gameSquad.actions.learnMastery(data));
             }
         },
         [RitualGameScreens.iceRituals]: {
@@ -134,7 +135,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('ice_rituals_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IRitual) => {
-                dispatch(character.actions.surpassRitual(data));
+                dispatch(gameSquad.actions.surpassRitual(data));
             }
         }, 
         [SchoolGameScreens.iceSchool]: {
@@ -143,7 +144,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('ice_school_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                dispatch(character.actions.learnMastery(data));
+                dispatch(gameSquad.actions.learnMastery(data));
             }
         },
         [SchoolGameScreens.spellSchool]: {
@@ -152,7 +153,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('spell_shop_title'),
             button: chrome.i18n.getMessage('study'),
             listener: (data: ISpell) => {
-                dispatch(character.actions.studySpell(data));
+                dispatch(gameSquad.actions.studySpell({index, data}));
             }
         },
         [SchoolGameScreens.wizardSchool]: {
@@ -161,7 +162,7 @@ function SubMindScreen(props: {
             title: chrome.i18n.getMessage('wizard_school_title'),
             button: chrome.i18n.getMessage('learn'),
             listener: (data: IMastery) => {
-                dispatch(character.actions.learnMastery(data));
+                dispatch(gameSquad.actions.learnMastery(data));
             }
         }, 
     }

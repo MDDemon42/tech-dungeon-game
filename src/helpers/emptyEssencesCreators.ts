@@ -42,6 +42,7 @@ function createEmptyParams(): ICharacherParams {
             [UserParam.health]: 0,
             [UserParam.mana]: 0,
             [UserParam.focus]: 0,
+            [UserParam.satiety]: 3,
             [UserParam.stamina]: 0,
             [UserParam.blank]: 0
         },
@@ -49,6 +50,7 @@ function createEmptyParams(): ICharacherParams {
             [UserParam.health]: 0,
             [UserParam.mana]: 0,
             [UserParam.focus]: 0,
+            [UserParam.satiety]: 3,
             [UserParam.stamina]: 0,
             [UserParam.blank]: 0
         },

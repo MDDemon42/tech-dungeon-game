@@ -7,6 +7,7 @@ import airMasteries from "../../AirSite/masteries";
 import fireMasteries from "../../FireSite/masteries";
 import guildMasteries from "../../Guild/masteries";
 import coldMasteries from "../../IceSite/masteries";
+import crafts from "../crafts";
 
 const battleMageAxe = createArmouryItem(
     [
@@ -27,7 +28,8 @@ const battleMageAxe = createArmouryItem(
         1
     ],
     [
-        '', 1
+        '', 1,
+        crafts.mageWeapons.craftBattleMageAxe
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.battleMageAxeSlash
@@ -65,7 +67,8 @@ const mageDragonBoneBlade = createArmouryItem(
         3, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 2
+        '', 2,
+        crafts.mageWeapons.craftMageDragonBoneBlade
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.mageDragonBoneBladeSlash
@@ -95,7 +98,8 @@ const mageGlaive = createArmouryItem(
         3, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 2
+        '', 2,
+        crafts.mageWeapons.craftMageGlaive
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.mageGlaiveSlash,
@@ -130,7 +134,8 @@ const mageHalberd = createArmouryItem(
         3, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 2
+        '', 2,
+        crafts.mageWeapons.craftMageHalberd
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.mageHalberdSlash
@@ -160,7 +165,8 @@ const mageKhopesh = createArmouryItem(
         3, [InventoryPlace.rightHand], 1
     ],
     [
-        '', 1
+        '', 1,
+        crafts.mageWeapons.craftMageKhopesh
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.mageKhopeshSlash
@@ -190,7 +196,8 @@ const mageMacuahuitl = createArmouryItem(
         3, [InventoryPlace.rightHand], 1
     ],
     [
-        '', 1
+        '', 1,
+        crafts.mageWeapons.craftMageMacuahuitl
     ],
     [
         abilities.battleAbilities.melee.physicalSlashing.mageMacuahuitlSlash
@@ -220,7 +227,8 @@ const mageMusket = createArmouryItem(
         3, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 1
+        '', 1,
+        crafts.mageWeapons.craftMageMusket
     ],
     [
         abilities.battleAbilities.ranged.physicalPiercing.mageMusketShot
@@ -250,7 +258,8 @@ const battleMageMusket = createArmouryItem(
         4, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 2
+        '', 2,
+        crafts.mageWeapons.craftBattleMageMusket
     ],
     [
         abilities.battleAbilities.ranged.physicalPiercing.battleMageMusketShot,
@@ -285,7 +294,8 @@ const mageRifle = createArmouryItem(
         4, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 1
+        '', 1,
+        crafts.mageWeapons.craftMageRifle
     ],
     [
         abilities.battleAbilities.ranged.physicalPiercing.mageRifleDoubleShot
@@ -323,7 +333,8 @@ const battleMageRifle = createArmouryItem(
         5, [InventoryPlace.bothHands], 1
     ],
     [
-        '', 2
+        '', 2,
+        crafts.mageWeapons.craftBattleMageRifle
     ],
     [
         abilities.battleAbilities.ranged.physicalPiercing.battleMageRifleDoubleShot,
@@ -384,6 +395,7 @@ const mageWand = createArmouryItem(
     ],
     [
         fireMasteries.fireAffiliation.name, 0,
+        crafts.mageWeapons.craftMageWand
     ],
     [
         abilities.battleAbilities.ranged.fire.flame

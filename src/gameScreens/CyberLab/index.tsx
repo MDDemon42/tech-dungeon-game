@@ -1,5 +1,6 @@
 import SubInventoryScreen from '../../components/SubInventoryScreen';
 import { InventoryGameScreens } from '../../enums-and-interfaces/enums';
+import { IUpgradeButton } from '../../enums-and-interfaces/interfaces';
 import PatternScreen from '../../components/PatternScreen';
 import { Tools } from 'react-bootstrap-icons';
 
@@ -11,10 +12,25 @@ const cyberLabSubScreenMapping = {
     }
 }
 
+const cyberLabUpgradeButtons = (stage: number): IUpgradeButton[] => [
+    {
+        title: chrome.i18n.getMessage('high_energy_cybers_task_title'),
+        stage: 2,
+        disabled: stage % 2 ===0,
+        visible: stage % 2 !==0
+    },
+    {
+        title: chrome.i18n.getMessage('nano_cybers_task_title'),
+        stage: 3,
+        disabled: stage % 3 ===0,
+        visible: stage % 3 !==0
+    },
+];
 
 function CyberLab() {
     return <PatternScreen 
         screenName={InventoryGameScreens.cyberLab}
+        upgradeButtonsFunc={cyberLabUpgradeButtons}
         subScreenMapping={cyberLabSubScreenMapping}
     />
 }

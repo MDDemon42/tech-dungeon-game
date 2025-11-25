@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
 import { 
-    ICyber, IGuildItem, 
+    IArmouryItem, ICyber, IGuildItem, 
     IItem, IMutation, IWizardItem 
 } from "../../enums-and-interfaces/interfaces";
 import styles from './Icons.module.css';
-import character from "../../redux/slices/character";
+import gameSquad from "../../redux/slices/gameSquad";
 import { InventoryPlace, InventorySlotCategory } from "../../enums-and-interfaces/enums";
 import inventoryPlaces from "../../general/inventoryPlaces";
 
@@ -18,7 +18,7 @@ const backgroundColorMapping: Record<InventorySlotCategory, string> = {
 }
 
 function InventoryIcon(props: {
-    item: IItem | ICyber | IMutation | IWizardItem | IGuildItem | null,
+    item: IItem | ICyber | IMutation | IWizardItem | IGuildItem | IArmouryItem | null,
     inventoryPlace: InventoryPlace
 }) {
     const {item, inventoryPlace} = props;
@@ -41,7 +41,7 @@ function InventoryIcon(props: {
 
     if (item.category === InventorySlotCategory.item) {
         description += '\n\nClick to unequip';
-        clickHandler = () => dispatch(character.actions.unequipItem({
+        clickHandler = () => dispatch(gameSquad.actions.unequipItem({
             item, inventoryPlace
         }));
         customStyle['outline'] = '1px solid black';

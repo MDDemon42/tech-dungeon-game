@@ -9,15 +9,16 @@ import { useSelector } from "react-redux";
 function SubInventoryScreenItem(props: {
     datum: IItem | IMutation | ICyber
 }) {
-    const char = useSelector((store: IStore) => store.character);
+    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
+    const member = useSelector((store: IStore) => store.gameSquad.squadMembers[index]);
 
     const {datum} = props;
     const {
-        screenName, listener, buttonText, 
+        screenName, resource, listener, buttonText, 
     } = useContext(SubInventoryScreenItemContext);
     
     const [enabled, disableReason] = subInventoryEnableChecker(
-        char, datum, screenName
+        member, datum, screenName, resource
     );
 
     return <div className={styles.SubInventoryScreenItem}>

@@ -6,7 +6,9 @@ import {
     InventoryPlace,
     InventorySlotCategory,
     MindOption, 
-    UserParam,
+    TaskStatus, 
+    UserParam, 
+    UserResource, 
     UserStartClass
 } from "./enums"
 
@@ -14,7 +16,7 @@ import {
 export interface IStore {
     gameScreen: IGameScreen,
     gameStage: IGameStage,
-    character: ICharacher,
+    gameSquad: IGameSquad,
     opponents: IOpponentSquad
 }
 
@@ -25,6 +27,7 @@ export interface IGameScreen {
 export interface IGameStage extends Record<GameScreens, {
     stage: number,
     stageOptions: IScreenStageOptions | null,
+    tasks: IScreenTasks | null,
     usableOptions: (
         IMastery | IItem |
         ICyber | IMutation |
@@ -45,6 +48,37 @@ export interface IScreenStageOptions extends Record<string, (
     IRitual | IGuildItem |
     ICharacher
 )[]> {}
+
+export interface ITaskScreenProps {
+    screen: GameScreens,
+    stage: number,
+    leaveListener: () => void
+}
+
+export interface IGameTasks extends Record<GameScreens, IScreenTasks | null> {}
+
+export interface IScreenTasks extends Record<string, {
+    status: TaskStatus
+    task: ITask
+}> {}
+
+export interface ICraft extends ITask {}
+
+export interface ITask {
+    resourceCost: {
+        name: string,
+        amount: number
+    }[],
+    taskTitle: string,
+    taskText: string
+}
+
+export interface IGameSquad {
+    currentlyWatched: number,
+    squadMembers: Record<string, ICharacher>,
+    resources: Record<UserResource, number>,
+    storage: IItem[]
+}
 
 export interface IOpponentSquad {
     opponentsOptionsIndex: number,
@@ -75,6 +109,7 @@ export interface ICharacherParams {
         [UserParam.health]: number,
         [UserParam.mana]: number,
         [UserParam.focus]: number,
+        [UserParam.satiety]: number,
         [UserParam.stamina]: number,
         [UserParam.blank]?: number
     },
@@ -82,6 +117,7 @@ export interface ICharacherParams {
         [UserParam.health]: number,
         [UserParam.mana]: number,
         [UserParam.focus]: number,
+        [UserParam.satiety]: number,
         [UserParam.stamina]: number,
         [UserParam.blank]?: number
     },
@@ -186,6 +222,10 @@ export interface IMutation extends IInventorySlot {
 export interface IGuildItem extends IItem {
 }
 
+export interface IArmouryItem extends IItem {
+    craft: ICraft
+}
+
 export interface IItem extends IInventorySlot {
     requiredMastery: string,
     linkedAbilities: {
@@ -256,7 +296,7 @@ interface IClassInfoItem {
     name: string,
     bonusLevel?: boolean,
     bonusParam?: UserParam,
-    bonusGem?: number,
+    bonusResource?: UserResource,
     levelUpBonuses: UserParam[],
     description: string
 }
@@ -288,6 +328,10 @@ export interface IBendingMapping extends ISubMapping {
     listener: any 
 }
 
+export interface ISubInventoryMapping extends ISubMapping {
+    resource: UserResource,
+}
+
 export interface ISubMindMapping extends ISubMapping {
     capacity: number,
     posessed: number,
@@ -301,7 +345,7 @@ export interface IUpgradeButton {
     visible: boolean
 }
 
-export interface ISubMapping {
+interface ISubMapping {
     title: string,
     button: string       
 }
@@ -323,10 +367,12 @@ export interface IMemberStatus {
 
 // battle page state
 export interface IBattlePageState {
+    allyIndex: number;
+    memberIndex: number;
     opponentIndex: number;
     selectedAbility: IBattleAbility | ISupportAbility | null;
     selectedAbilityDiv: HTMLElement | null;
-    charStatus: IMemberStatus;
+    squadStatus: IMemberStatus[];
     opponentsStatus: IMemberStatus[];
     abilitiesOnTurn: (IBattleAbility | ISupportAbility)[];
     result: BattleResult;

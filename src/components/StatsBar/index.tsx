@@ -6,15 +6,16 @@ import classInfo from "../../general/classInfo";
 import ResistancesLine from "./ResistancesLine";
 
 function StatsBar() {
-    const params = useSelector((state: IStore) => state.character.params);
+    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
+    const member = useSelector((state: IStore) => state.gameSquad.squadMembers[index].params);
     const {
         race, level, 
         currentParams,
         maxParams
-    } = params;
+    } = member;
 
     const headerText = race + ', ' + 
-        classInfo[params.class].name + ', ' + 
+        classInfo[member.class].name + ', ' + 
         chrome.i18n.getMessage('level') + ' ' + level;
 
     return (
@@ -60,8 +61,15 @@ function StatsBar() {
                             maxParams.Stamina
                         }
                     </div>
+                    <div>
+                        <ParamIcon param='satiety'/>
+                        {
+                            currentParams.Satiety + '/' +
+                            maxParams.Satiety
+                        }
+                    </div>
                 </div>
-                <ResistancesLine characterParams={params} />
+                <ResistancesLine characterParams={member} />
             </div>            
         </div>
     )

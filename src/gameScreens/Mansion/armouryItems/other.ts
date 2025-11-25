@@ -1,6 +1,7 @@
 import { createArmouryItem } from ".";
 import { InventoryPlace } from "../../../enums-and-interfaces/enums";
 import images from "../../../images/images";
+import crafts from "../crafts";
 
 const holster = createArmouryItem(
     [
@@ -17,7 +18,8 @@ const holster = createArmouryItem(
         1
     ],
     [
-        '', 0
+        '', 0,
+        crafts.other.craftHolster
     ],
     null, null, null
 );

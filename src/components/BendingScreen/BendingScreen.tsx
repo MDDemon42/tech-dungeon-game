@@ -2,17 +2,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { BendingGameScreens } from "../../enums-and-interfaces/enums"
 import { IBending, IBendingMapping, IStore } from "../../enums-and-interfaces/interfaces";
 import BendingScreenItem from "./BendingScreenItem";
-import character from "../../redux/slices/character";
+import gameSquad from "../../redux/slices/gameSquad";
 import styles from './BendingScreen.module.css';
 
 function BendingScreen(props: {
     screenName: BendingGameScreens
 }) {
-    const char = useSelector((store: IStore) => store.character);
+    const index = useSelector((store: IStore) => store.gameSquad.currentlyWatched);
+    const member = useSelector((store: IStore) => store.gameSquad.squadMembers[index]);
 
-    const charMind: string[] = [];
-    char.general.mind.masteries.map((data) => charMind.push(data.name));
-    char.general.mind.bending.map((data) => charMind.push(data.name));
+    const memberMind: string[] = [];
+    member.general.mind.masteries.map(data => memberMind.push(data.name));
+    member.general.mind.bending.map(data => memberMind.push(data.name));
 
     const {screenName} = props;
     const bendingOptions = useSelector((store: IStore) => store.gameStage[screenName].usableOptions);
@@ -28,21 +29,21 @@ function BendingScreen(props: {
             title: chrome.i18n.getMessage('air_site_title'),
             button: chrome.i18n.getMessage('dominate'),
             listener: (data: IBending) => {
-                dispatch(character.actions.dominateBending(data));
+                dispatch(gameSquad.actions.dominateBending({index, data}));
             }, 
         },
         [BendingGameScreens.fireSite]: {
             title: chrome.i18n.getMessage('fire_site_title'),
             button: chrome.i18n.getMessage('dominate'),
             listener: (data: IBending) => {
-                dispatch(character.actions.dominateBending(data));
+                dispatch(gameSquad.actions.dominateBending({index, data}));
             }
         },
         [BendingGameScreens.iceSite]: {
             title: chrome.i18n.getMessage('ice_site_title'),
             button: chrome.i18n.getMessage('dominate'),
             listener: (data: IBending) => {
-                dispatch(character.actions.dominateBending(data));
+                dispatch(gameSquad.actions.dominateBending({index, data}));
             }
         }
     }
@@ -61,9 +62,9 @@ function BendingScreen(props: {
                             bending={bending as IBending}
                             buttonText={bendingMappings[screenName].button}
                             listener={bendingMappings[screenName].listener}
-                            charMind={charMind}
-                            capacity={char.params.level}
-                            posessed={char.general.mind.bending.length}
+                            memberMind={memberMind}
+                            capacity={member.params.level}
+                            posessed={member.general.mind.bending.length}
                         />
                     )
                 }
