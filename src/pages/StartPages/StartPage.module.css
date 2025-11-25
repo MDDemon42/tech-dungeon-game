@@ -1,0 +1,11 @@
+.StartPage {
+    height: 300px;
+    outline: white solid 2px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: lightslategrey;
+    border: 1px solid black;
+    padding: 5px 0;
+}

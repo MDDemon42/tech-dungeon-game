@@ -1,6 +1,6 @@
 import styles from './index.module.css';
 import CommonIcon from '../Icons/CommonIcon';
-import { upperCaseFirstLetter } from '../../pages/PopupPages/MainPage';
+import { upperCaseFirstLetter } from '../../pages/StartPages/StartPage';
 import { ICharacher, ICommon } from '../../enums-and-interfaces/interfaces';
 import { MindOption } from '../../enums-and-interfaces/enums';
 

@@ -16,7 +16,7 @@ import {
 import priorityChecker from "./priorityChecker";
 import { createNoItem } from "./emptyEssencesCreators";
 import rituals from "../general/rituals";
-import { upperCaseFirstLetter } from "../pages/PopupPages/MainPage";
+import { upperCaseFirstLetter } from "../pages/StartPages/StartPage";
 
 export function bendingEnableChecker(
     bending: IBending,

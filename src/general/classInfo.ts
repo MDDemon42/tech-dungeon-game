@@ -22,7 +22,8 @@ const classInfo: IClassInfo = {
             [
                 userParams[UserParam.health], 
                 userParams[UserParam.health], 
-                userParams[UserParam.health]
+                userParams[UserParam.health],
+                userParams[UserParam.blank]
             ]
         )
     },
@@ -34,7 +35,8 @@ const classInfo: IClassInfo = {
             [
                 userParams[UserParam.stamina], 
                 userParams[UserParam.health], 
-                userParams[UserParam.stamina]
+                userParams[UserParam.stamina],
+                userParams[UserParam.blank]
             ]
         )
     },
@@ -46,7 +48,8 @@ const classInfo: IClassInfo = {
             [
                 userParams[UserParam.mana], 
                 userParams[UserParam.health], 
-                userParams[UserParam.mana]
+                userParams[UserParam.mana],
+                userParams[UserParam.blank]
             ]
         )
     },
@@ -58,7 +61,8 @@ const classInfo: IClassInfo = {
             [
                 userParams[UserParam.focus], 
                 userParams[UserParam.health], 
-                userParams[UserParam.focus]
+                userParams[UserParam.focus],
+                userParams[UserParam.blank]
             ]
         )
     },
@@ -70,7 +74,8 @@ const classInfo: IClassInfo = {
             [
                 userParams[UserParam.stamina], 
                 userParams[UserParam.stamina], 
-                userParams[UserParam.stamina]
+                userParams[UserParam.stamina],
+                userParams[UserParam.blank]
             ]
         )
     },
@@ -82,7 +87,8 @@ const classInfo: IClassInfo = {
             [
                 userParams[UserParam.mana], 
                 userParams[UserParam.mana], 
-                userParams[UserParam.mana]
+                userParams[UserParam.mana],
+                userParams[UserParam.blank]
             ]
         )
     },
@@ -94,7 +100,8 @@ const classInfo: IClassInfo = {
             [
                 userParams[UserParam.focus], 
                 userParams[UserParam.focus], 
-                userParams[UserParam.focus]
+                userParams[UserParam.focus],
+                userParams[UserParam.blank]
             ]
         )
     },
@@ -106,7 +113,8 @@ const classInfo: IClassInfo = {
             [
                 chrome.i18n.getMessage('level'),
                 userParams[UserParam.mana], 
-                userParams[UserParam.focus]
+                userParams[UserParam.focus],
+                userParams[UserParam.blank]
             ]
         )
     },

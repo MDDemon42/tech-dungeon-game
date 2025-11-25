@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux';
 import {HashRouter, Routes, Route} from "react-router-dom";
 
-import MainPage from './pages/PopupPages/MainPage';
-import SettingsPage from './pages/PopupPages/SettingsPage';
-import ErrorPage from './pages/PopupPages/ErrorPage';
+import StartPage from './pages/StartPages/StartPage';
+import SettingsPage from './pages/StartPages/SettingsPage';
+import ErrorPage from './pages/StartPages/ErrorPage';
 import GamePage from './pages/GamePages/GamePage';
 import InfoPage from './pages/GamePages/InfoPage';
 
@@ -20,7 +20,7 @@ ReactDOM
     <HashRouter>
       <Provider store={store}>
         <Routes> 
-          <Route path={'/'} element={<MainPage />} errorElement={<ErrorPage />}/>
+          <Route path={'/'} element={<StartPage />} errorElement={<ErrorPage />}/>
           <Route path={'/settings'} element={<SettingsPage />}/>
           <Route path={'/game'} element={<GamePage />}/>
           <Route path={'/battle'} element={<BattlePage />}/>

@@ -99,13 +99,13 @@ const gameSquad = createSlice({
             })
         },
         startGame(state, action) {
-            const {userName, userClass} = action.payload;
+            const { charName, charClass } = action.payload;
 
             const newState = createGameSquad();
             const squadMember = createEmptyCharacter();
 
-            squadMember.params.name = userName;
-            squadMember.params.class = userClass;
+            squadMember.params.name = charName;
+            squadMember.params.class = charClass;
             squadMember.params.level = 1;
 
             squadMember.params.maxParams.Health = 3;

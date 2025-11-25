@@ -1,5 +1,5 @@
 import { IInventorySlot } from "../../enums-and-interfaces/interfaces";
-import { upperCaseFirstLetter } from "../../pages/PopupPages/MainPage";
+import { upperCaseFirstLetter } from "../../pages/StartPages/StartPage";
 import SubInventoryScreenItem from "./SubInventoryScreenItem";
 import styles from './index.module.css';
 

@@ -1,43 +1,34 @@
-.Popup {
-    width: 200px;
-    height: 300px;
-    outline: white solid 2px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+.StartMiniScreen {
     background-color: lightsteelblue;
-    border: 1px solid black;
-}
-
-.Popup_iconBlock {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    border: 1px solid black;
+    height: 100%;
 }
 
-.Popup_iconBlock > img {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 15px;
+.ClassIconComponent {
+    width: 130px;
+    height: 130px;
     border: 1px dashed gray;
 }
 
-.Popup_iconBlock > input {
-    width: 120px;
-    margin-bottom: 15px;
+.NameInputComponent {
+    width: 130px;
+    box-sizing: border-box;
     padding: 2px 5px;
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
 }
 
-.Popup_iconBlock > select {
+.SelectClassComponent {
     padding: 2px 5px;
-    font-size: 14px;
+    font-size: 15px;
+    text-align-last: center;
 }
 
-.Popup_buttonsBlock {
+.StartButtonComponent {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -45,20 +36,21 @@
     width: 170px;
 }
 
-.Popup_buttonsBlock > button {
+.StartButtonComponent > button {
     padding: 7px;
     font-size: 16px;
     background-color: gold;
     border-radius: 7px;
     cursor: pointer;
     border: 1px solid black;
+    min-width: 120px;
 }
 
-.Popup_buttonsBlock > a {
+.StartButtonComponent > a {
     font-size: 24px;
     margin-bottom: -4px;
 }
 
-.Popup_buttonsBlock > svg {
+.StartButtonComponent > svg {
     cursor: pointer;
 }
