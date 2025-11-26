@@ -1,5 +1,5 @@
 import { UserParam, UserStartClass } from "../../../enums-and-interfaces/enums";
-import { ICharacher } from "../../../enums-and-interfaces/interfaces";
+import { ICharacter } from "../../../enums-and-interfaces/interfaces";
 import bending from "../../../general/bending";
 import createEmptyCharacter from "../../../helpers/emptyEssencesCreators";
 import fireMasteries from "../masteries";
@@ -46,7 +46,7 @@ const pyrokineticAugust = () => {
     return character
 }
 
-export const pyrokineticRoomsOptions: Record<string, ICharacher[]> = {
+export const pyrokineticRoomsOptions: Record<string, ICharacter[]> = {
     0: [],
     1: [pyrokineticHorst(), pyrokineticAugust()],
 }

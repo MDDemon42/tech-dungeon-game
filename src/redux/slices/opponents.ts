@@ -1,10 +1,10 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { DamageType, InventoryPlace, UserParam } from '../../enums-and-interfaces/enums';
-import { IAbility, ICharacher, IItem, IOpponentSquad } from '../../enums-and-interfaces/interfaces';
+import { IAbility, ICharacter, IItem, IOpponentSquad } from '../../enums-and-interfaces/interfaces';
 import characters from '../../general/characters';
 import { createNoItem } from '../../helpers/emptyEssencesCreators';
 
-const opponents_options: Record<string, ICharacher>[] = [
+const opponents_options: Record<string, ICharacter>[] = [
     {
         0: characters.mutants.satyrBeeenny(),
     },
@@ -76,7 +76,7 @@ const opponents = createSlice({
         sufferAbility(state, action) {
             const {indexes, ability} = action.payload;
             const squad = {...state.opponentMembers};
-            const squadMembers = {} as Record<string, ICharacher>;
+            const squadMembers = {} as Record<string, ICharacter>;
             indexes.forEach((index: number) => {
                 if (squad[index]) {
                     squadMembers[index] = squad[index];

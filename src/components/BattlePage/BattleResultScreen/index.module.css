@@ -1,0 +1,14 @@
+.BattleLog {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 150px;
+    max-height: 95vh;
+    overflow-y: scroll;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.BattleLog_log {
+    border-bottom: 1px solid black;
+}

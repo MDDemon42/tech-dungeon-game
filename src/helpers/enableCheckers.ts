@@ -8,7 +8,7 @@ import {
     SchoolGameScreens 
 } from "../enums-and-interfaces/enums";
 import { 
-    IBending, ICharacher, ICyber, 
+    IBending, ICharacter, ICyber, 
     IInventory, 
     IItem, IMastery, IMutation, 
     IPower, IRitual, ISpell 
@@ -131,7 +131,7 @@ export function subMindEnableChecker(
 }
 
 export function subInventoryEnableChecker(
-    character: ICharacher,
+    character: ICharacter,
     datum: IItem | IMutation | ICyber,
     screenName: InventoryGameScreens,
     resource: number

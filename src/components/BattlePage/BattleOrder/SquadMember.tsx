@@ -1,12 +1,12 @@
-import { UserParam } from "../../enums-and-interfaces/enums";
-import { ICharacher, IMemberStatus } from "../../enums-and-interfaces/interfaces";
-import InventoryScreen from "../InventoryScreen";
-import ResistancesLine from "../StatsBar/ResistancesLine";
+import { UserParam } from "../../../enums-and-interfaces/enums";
+import { ICharacter, IMemberStatus } from "../../../enums-and-interfaces/interfaces";
+import InventoryScreen from "../../InventoryScreen";
+import ResistancesLine from "../../StatsBar/ResistancesLine";
 import SquadMemberParamLine from "./SquadMemberParamLine";
 import styles from './index.module.css';
 
 function SquadMember(props: {
-    member: ICharacher,
+    member: ICharacter,
     memberStatus: IMemberStatus | null, 
     index: number,
     listener: any

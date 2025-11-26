@@ -1,5 +1,5 @@
 import { UserParam, UserStartClass } from "../../../enums-and-interfaces/enums";
-import { ICharacher } from "../../../enums-and-interfaces/interfaces";
+import { ICharacter } from "../../../enums-and-interfaces/interfaces";
 import createEmptyCharacter from "../../../helpers/emptyEssencesCreators";
 import wizardMasteries from "../masteries";
 import spells from "../spells";
@@ -53,7 +53,7 @@ const apprenticeSimon = () => {
     return character
 }
 
-export const apprenticeRoomsOptions: Record<string, ICharacher[]> = {
+export const apprenticeRoomsOptions: Record<string, ICharacter[]> = {
     0: [],
     1: [apprenticeBilly(), apprenticeSimon()],
 }

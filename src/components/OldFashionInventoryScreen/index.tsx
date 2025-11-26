@@ -1,10 +1,10 @@
 import { InventoryPlace } from "../../enums-and-interfaces/enums";
-import { ICharacher } from "../../enums-and-interfaces/interfaces";
+import { ICharacter } from "../../enums-and-interfaces/interfaces";
 import InventoryIcon from "../Icons/InventoryIcon";
 import styles from './index.module.css';
 
 function OldFashionInventoryScreen(props: {
-    character: ICharacher
+    character: ICharacter
 }) {
     const {character} = props;
     const inventory = character.general.inventory;

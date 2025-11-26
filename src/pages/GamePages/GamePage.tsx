@@ -24,7 +24,7 @@ function GamePage() {
         });
 
         
-    }, [])
+    }, [dispatch])
 
     return (
         <div className={styles.GamePage}>

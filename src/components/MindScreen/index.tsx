@@ -1,11 +1,11 @@
 import styles from './index.module.css';
 import CommonIcon from '../Icons/CommonIcon';
 import { upperCaseFirstLetter } from '../../pages/StartPages/StartPage';
-import { ICharacher, ICommon } from '../../enums-and-interfaces/interfaces';
+import { ICharacter, ICommon } from '../../enums-and-interfaces/interfaces';
 import { MindOption } from '../../enums-and-interfaces/enums';
 
 function MindScreen(props: {
-    character: ICharacher,
+    character: ICharacter,
     name: MindOption,
     vertical: boolean
 }) {

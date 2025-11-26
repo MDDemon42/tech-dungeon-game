@@ -1,5 +1,5 @@
 import { UserParam, UserStartClass } from "../../../enums-and-interfaces/enums";
-import { ICharacher } from "../../../enums-and-interfaces/interfaces";
+import { ICharacter } from "../../../enums-and-interfaces/interfaces";
 import createEmptyCharacter from "../../../helpers/emptyEssencesCreators";
 import guildItems from "../guildItems";
 import guildMasteries from "../masteries";
@@ -52,7 +52,7 @@ const guildianShumashi = () => {
     return character
 }
 
-export const guildianRoomsOptions: Record<string, ICharacher[]> = {
+export const guildianRoomsOptions: Record<string, ICharacter[]> = {
     0: [],
     1: [guildianZarrack(), guildianShumashi()],
 }

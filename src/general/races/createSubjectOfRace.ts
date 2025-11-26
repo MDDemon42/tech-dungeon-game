@@ -1,10 +1,10 @@
 import { Race } from "../../enums-and-interfaces/enums";
-import { ICharacher, IMutationsForRaceCheck } from "../../enums-and-interfaces/interfaces";
+import { ICharacter, IMutationsForRaceCheck } from "../../enums-and-interfaces/interfaces";
 import mutations from "../../gameScreens/MutaLab/mutations";
 import createEmptyCharacter from "../../helpers/emptyEssencesCreators";
 import races from "./races";
 
-function createSubjectOfRace(raceName: Race): ICharacher {
+function createSubjectOfRace(raceName: Race): ICharacter {
     const subject = createEmptyCharacter();
     const checkRaces: Record<Race, IMutationsForRaceCheck> = {
         [Race.unknown]: races.humanRace,

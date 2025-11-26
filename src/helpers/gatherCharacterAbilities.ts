@@ -1,5 +1,5 @@
 import { DamageType, InventoryPlace } from "../enums-and-interfaces/enums";
-import { ICharacher, IBattleAbility, ISupportAbility } from "../enums-and-interfaces/interfaces";
+import { ICharacter, IBattleAbility, ISupportAbility } from "../enums-and-interfaces/interfaces";
 import checkRipApart from "../general/races/checkRipApart";
 import wizardItems from "../gameScreens/WizardSchool/wizardItems";
 import { createEmptyInventory, createNoItem } from "./emptyEssencesCreators";
@@ -17,7 +17,7 @@ import coldMasteries from "../gameScreens/IceSite/masteries";
 import gatherMultipleWeaponsAbilities from "./gatherMultipleWeaponsAbilities";
 import mutations from "../gameScreens/MutaLab/mutations";
 
-function gatherCharacterAbilities(character: ICharacher) {
+function gatherCharacterAbilities(character: ICharacter) {
     const result: (IBattleAbility | ISupportAbility)[] = [];
 
     const masteriesUser = character.general.mind.masteries.map(mastery => mastery.name);

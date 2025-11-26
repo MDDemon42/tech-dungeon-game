@@ -34,7 +34,7 @@ export interface IGameStage extends Record<GameScreens, {
         IPower | ISpell |
         IWizardItem | IBending |
         IRitual | IGuildItem |
-        ICharacher
+        ICharacter
     )[]
 }> {}
 
@@ -46,7 +46,7 @@ export interface IScreenStageOptions extends Record<string, (
     IPower | ISpell |
     IWizardItem | IBending |
     IRitual | IGuildItem |
-    ICharacher
+    ICharacter
 )[]> {}
 
 export interface ITaskScreenProps {
@@ -75,20 +75,20 @@ export interface ITask {
 
 export interface IGameSquad {
     currentlyWatched: number,
-    squadMembers: Record<string, ICharacher>,
+    squadMembers: Record<string, ICharacter>,
     resources: Record<UserResource, number>,
     storage: IItem[]
 }
 
 export interface IOpponentSquad {
     opponentsOptionsIndex: number,
-    opponentMembers: Record<string, ICharacher>
+    opponentMembers: Record<string, ICharacter>
 }
 
 // character parts //
-export interface ICharacher {
+export interface ICharacter {
     general: ICharacterGeneral,
-    params: ICharacherParams
+    params: ICharacterParams
 }
 
 export interface ICharacterGeneral {
@@ -97,7 +97,7 @@ export interface ICharacterGeneral {
     backpacks: IItem[]
 }
 
-export interface ICharacherParams {
+export interface ICharacterParams {
     class: UserStartClass,
     race: string,
     stage?: number,

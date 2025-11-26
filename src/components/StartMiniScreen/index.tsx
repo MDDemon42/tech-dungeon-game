@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { UserStartClass } from "../../enums-and-interfaces/enums";
 import styles from './index.module.css';
-import { ICharacher } from "../../enums-and-interfaces/interfaces";
+import { ICharacter } from "../../enums-and-interfaces/interfaces";
 import ClassIconComponent from "./ClassIconComponent";
 import NameInputComponent from "./NameInputComponent";
 import SelectClassComponent from "./SelectClassComponent";
 import StartButtonComponent from "./StartButtonComponent";
 
 const StartMiniScreen = (props: {
-    char?: ICharacher
+    char?: ICharacter
 }) => {
     const {char} = props;
     const [charClass, setCharClass] = useState(char?.params.class ?? UserStartClass.noIcon);

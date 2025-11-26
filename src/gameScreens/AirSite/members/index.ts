@@ -1,5 +1,5 @@
 import { UserParam, UserStartClass } from "../../../enums-and-interfaces/enums";
-import { ICharacher } from "../../../enums-and-interfaces/interfaces";
+import { ICharacter } from "../../../enums-and-interfaces/interfaces";
 import { aerotheurgy } from "../bendings";
 import createEmptyCharacter from "../../../helpers/emptyEssencesCreators";
 import airMasteries from "../masteries";
@@ -46,7 +46,7 @@ const aerotheurgDanny = () => {
     return character
 }
 
-export const aerotheurgRoomsOptions: Record<string, ICharacher[]> = {
+export const aerotheurgRoomsOptions: Record<string, ICharacter[]> = {
     0: [],
     1: [aerotheurgMackunga(), aerotheurgDanny()],
 }

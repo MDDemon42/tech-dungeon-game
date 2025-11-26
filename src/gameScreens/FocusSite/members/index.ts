@@ -1,5 +1,5 @@
 import { UserParam, UserStartClass } from "../../../enums-and-interfaces/enums";
-import { ICharacher } from "../../../enums-and-interfaces/interfaces";
+import { ICharacter } from "../../../enums-and-interfaces/interfaces";
 import createEmptyCharacter from "../../../helpers/emptyEssencesCreators";
 import psionMasteries from "../masteries";
 import powers from "../powers";
@@ -50,7 +50,7 @@ const psionAdun = () => {
     return character
 }
 
-export const psionRoomsOptions: Record<string, ICharacher[]> = {
+export const psionRoomsOptions: Record<string, ICharacter[]> = {
     0: [],
     1: [psionMoloch(), psionAdun()],
 }

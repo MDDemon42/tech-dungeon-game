@@ -1,5 +1,5 @@
 import styles from './index.module.css';
-import { ICharacher } from '../../enums-and-interfaces/interfaces';
+import { ICharacter } from '../../enums-and-interfaces/interfaces';
 import { createEmptyInventory } from '../../helpers/emptyEssencesCreators';
 import getLeftHandImage from './leftHand';
 import getHatImage from './hat';
@@ -26,7 +26,7 @@ import getBackItemImage from './backItem';
 import getShouldersItemImage from './shouldersItem';
 
 function InventoryScreen(props: {
-    character: ICharacher,
+    character: ICharacter,
     battle: boolean
 }) {
     const {character, battle} = props;

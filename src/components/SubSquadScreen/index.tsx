@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { SquadGameScreens } from "../../enums-and-interfaces/enums";
-import { ICharacher, IStore } from "../../enums-and-interfaces/interfaces";
-import SquadMember from "../BattleOrder/SquadMember";
+import { ICharacter, IStore } from "../../enums-and-interfaces/interfaces";
+import SquadMember from "../BattlePage/BattleOrder/SquadMember";
 import styles from './index.module.css';
 import { useDispatch } from "react-redux";
 import gameSquad from "../../redux/slices/gameSquad";
@@ -11,7 +11,7 @@ function SubSquadScreen(props: {
 }) {
     const {screenName} = props;
     const dataAll = useSelector((store: IStore) => 
-        store.gameStage[screenName].usableOptions) as (ICharacher)[];
+        store.gameStage[screenName].usableOptions) as (ICharacter)[];
 
     const mansionStage = useSelector((store: IStore) => store.gameStage.Mansion.stage);
     let maxSquadSize = 1;
@@ -35,7 +35,7 @@ function SubSquadScreen(props: {
         .filter(character => !squadNames.includes(character.params.name));
 
     const dispatch = useDispatch();
-    const hireButtonListener = (index: number, character: ICharacher) => 
+    const hireButtonListener = (index: number, character: ICharacter) => 
         dispatch(gameSquad.actions.hireSquaddie({
             index, character
         }));

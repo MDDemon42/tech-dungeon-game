@@ -3555,7 +3555,7 @@
         }
     },
     "battle_log_someone_uses_ability_and_result": {
-        "message": "$someone$ использует '$ability$' на $somebody$ и $result$ ($hit$/$chance$)",
+        "message": "$someone$ использует '$ability$' на $somebody$ и $result$ ($chance$/$hit$)",
         "placeholders": {
             "someone": {
                 "content": "$1",

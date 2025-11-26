@@ -1,5 +1,5 @@
-import { BattleResult } from '../../enums-and-interfaces/enums';
-import styles from './BattleOverScreen.module.css';
+import { BattleResult } from '../../../enums-and-interfaces/enums';
+import styles from './index.module.css';
 
 function BattleOverScreen(props: {
     result: BattleResult,

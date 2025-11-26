@@ -1,5 +1,5 @@
 import { UserParam, UserStartClass } from "../../../enums-and-interfaces/enums";
-import { ICharacher } from "../../../enums-and-interfaces/interfaces";
+import { ICharacter } from "../../../enums-and-interfaces/interfaces";
 import { raceNames } from "../../../general/races/races";
 import createEmptyCharacter from "../../../helpers/emptyEssencesCreators";
 import academyMasteries from "../../Academy/masteries";
@@ -95,7 +95,7 @@ const adventurerGormak = () => {
     return character
 }
 
-export const tavernOptions: Record<string, ICharacher[]> = {
+export const tavernOptions: Record<string, ICharacter[]> = {
     0: [],
     1: [adventurerLeon(), adventurerLeiShan(), adventurerDovakin(), adventurerGormak()],
 }

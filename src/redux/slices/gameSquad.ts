@@ -6,7 +6,7 @@ import createEmptyCharacter,
 } from '../../helpers/emptyEssencesCreators';
 import { 
     IAbility,
-    ICharacher, 
+    ICharacter, 
     ICyber, 
     IGameSquad, 
     IItem, 
@@ -57,7 +57,7 @@ const raceMasteries: Partial<Record<Race, IMastery>> = {
 }
 
 function integratePassiveAbility(
-    squadMember: ICharacher,
+    squadMember: ICharacter,
     data: IItem | ICyber | IMutation | IPower | IRitual, 
     sign: number
 ) {
@@ -1278,7 +1278,7 @@ const gameSquad = createSlice({
         sufferAbility(state, action) {
             const {indexes, ability} = action.payload;
             const squad = {...state.squadMembers};
-            const squadMembers = {} as Record<string, ICharacher>;
+            const squadMembers = {} as Record<string, ICharacter>;
             indexes.forEach((index: number) => {
                 if (squad[index]) {
                     squadMembers[index] = squad[index];

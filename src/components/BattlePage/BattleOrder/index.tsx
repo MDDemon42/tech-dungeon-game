@@ -1,9 +1,9 @@
-import { ICharacher, IMemberStatus } from "../../enums-and-interfaces/interfaces";
+import { ICharacter, IMemberStatus } from "../../../enums-and-interfaces/interfaces";
 import styles from './index.module.css';
 import SquadMember from "./SquadMember";
 
 function BattleOrder(props: {
-    squad: ICharacher[],
+    squad: ICharacter[],
     squadStatus: IMemberStatus[],
     listener: any
 }) {

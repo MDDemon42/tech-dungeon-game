@@ -1,10 +1,10 @@
 import { DamageType } from "../../enums-and-interfaces/enums";
-import { ICharacherParams } from "../../enums-and-interfaces/interfaces";
+import { ICharacterParams } from "../../enums-and-interfaces/interfaces";
 import ResistanceIcon from "../Icons/ResistanceIcon";
 import styles from './index.module.css';
 
 function ResistancesLine(props: {
-    characterParams: ICharacherParams
+    characterParams: ICharacterParams
 }) {
     const {
         resistances, dodge,

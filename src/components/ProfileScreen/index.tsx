@@ -2,7 +2,7 @@ import styles from './index.module.css';
 import MindScreen from "../MindScreen";
 import StatsBar from "../StatsBar";
 import InventoryScreen from "../InventoryScreen";
-import { ICharacher } from '../../enums-and-interfaces/interfaces';
+import { ICharacter } from '../../enums-and-interfaces/interfaces';
 import BackpacksScreen from '../BackpacksScreen';
 import { MindOption } from '../../enums-and-interfaces/enums';
 import OldFashionInventoryScreen from '../OldFashionInventoryScreen';
@@ -10,7 +10,7 @@ import { useState } from 'react';
 import {ToggleOn, ToggleOff} from 'react-bootstrap-icons';
 
 function ProfileScreen(props: {
-    character: ICharacher
+    character: ICharacter
 }) {
     const {character} = props;
     const [inventoryVisible, setInventoryVisible] = useState(false);

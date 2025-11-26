@@ -3569,7 +3569,7 @@
         }
     },
     "battle_log_someone_uses_ability_and_result": {
-        "message": "$someone$ uses '$ability$' on $somebody$ and $result$ ($hit$/$chance$)",
+        "message": "$someone$ uses '$ability$' on $somebody$ and $result$ ($chance$/$hit$)",
         "placeholders": {
             "someone": {
                 "content": "$1",

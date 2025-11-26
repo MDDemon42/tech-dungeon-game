@@ -1,5 +1,5 @@
-import { UserParam } from "../../enums-and-interfaces/enums";
-import ParamIcon from "../Icons/ParamIcon";
+import { UserParam } from "../../../enums-and-interfaces/enums";
+import ParamIcon from "../../Icons/ParamIcon";
 
 function SquadMemberParamLine(props: {
     paramAmount: number, 

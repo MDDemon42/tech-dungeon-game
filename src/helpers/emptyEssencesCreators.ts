@@ -1,8 +1,8 @@
 import images from "../images/images";
 import { 
     IBending,
-    ICharacher, 
-    ICharacherParams, 
+    ICharacter, 
+    ICharacterParams, 
     ICharacterGeneral, 
     ICyber, 
     IInventory, 
@@ -23,14 +23,14 @@ import {
 } from "../enums-and-interfaces/enums";
 import { raceNames } from "../general/races/races";
 
-export default function createEmptyCharacter(): ICharacher {
+export default function createEmptyCharacter(): ICharacter {
     return {
         general: createEmptyGeneral(),
         params: createEmptyParams()
     }
 }
 
-function createEmptyParams(): ICharacherParams {
+function createEmptyParams(): ICharacterParams {
     return {
         name: '',
         level: 0,
