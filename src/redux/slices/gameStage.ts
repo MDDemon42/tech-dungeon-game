@@ -13,6 +13,7 @@ import {
     GameScreens, 
     InventoryGameScreens, 
     MansionScreens, 
+    PossibleBattleLocation, 
     RitualGameScreens, 
     SchoolGameScreens, 
     SquadGameScreens, 
@@ -152,7 +153,20 @@ export const stageOptions: IGameStageOptions = {
 }
 
 export const createGameStage = (strongStart: boolean) => {
-    const result = {} as IGameStage;
+    const result = {
+        days: {
+            total: strongStart ? 50 : 1,
+            lastVictory: 0
+        },
+        possibleBattles: {
+            'acrossTheRiver': { sinceDay: 1 },
+            'nearTheRiver': { sinceDay: 0 },
+            'overTheMountains': { sinceDay: 0 },
+            'eastBeach': { sinceDay: 0 },
+            'islandBeach': { sinceDay: 0 },
+            'southBeach': { sinceDay: 0 }
+        }
+    } as IGameStage;
     const screens = [
         ...Object.values(BendingGameScreens),
         ...Object.values(SchoolGameScreens),
@@ -379,6 +393,39 @@ const gameStage = createSlice({
             }
             
             oldState[screen].usableOptions = options[stage];
+
+            state = oldState;
+        },
+        addDays(state, action) {
+            const oldState = {...state};
+            const {amount} = action.payload as {amount: number};
+            oldState.days.total += amount;
+
+            state = oldState;
+        },
+        addRandomBattle(state, action) {
+            const oldState = {...state};
+            const {possibleBattles} = oldState;
+
+            const availableBattles: string[] = [];
+            Object.keys(PossibleBattleLocation).forEach((location) => {
+                if (possibleBattles[location as PossibleBattleLocation].sinceDay === 0) {
+                    availableBattles.push(location);
+                }
+            });
+            if (availableBattles.length > 0) {
+                const randomLocation = availableBattles[
+                    Math.floor(Math.random() * availableBattles.length)];
+                oldState.possibleBattles[randomLocation as PossibleBattleLocation].sinceDay =
+                    oldState.days.total;
+            }            
+
+            state = oldState;
+        },
+        removeBattle(state, action) {
+            const oldState = {...state};
+            const {location} = action.payload as {location: PossibleBattleLocation};
+            oldState.possibleBattles[location].sinceDay = 0;         
 
             state = oldState;
         }

@@ -103,6 +103,15 @@ export enum AbilityTarget {
     place = 'place'
 }
 
+export enum PossibleBattleLocation {
+    acrossTheRiver = 'acrossTheRiver',
+    nearTheRiver = 'nearTheRiver',
+    overTheMountains = 'overTheMountains',
+    eastBeach = 'eastBeach',
+    islandBeach = 'islandBeach',
+    southBeach = 'southBeach',
+}
+
 export enum MindOption {
     masteries = 'masteries',
     spells = 'spells',

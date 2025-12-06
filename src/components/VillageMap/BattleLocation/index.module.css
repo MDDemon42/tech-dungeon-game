@@ -1,0 +1,12 @@
+.BattleLocation {
+    position: absolute;
+    width: min-content;
+    padding: 3px 3px 0;
+    background: none;
+    cursor: alias
+}
+
+.BattleLocation:hover {
+    color: red;
+    border-color: red;
+}

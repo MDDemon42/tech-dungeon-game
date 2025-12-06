@@ -2,8 +2,8 @@ import { useSelector } from "react-redux";
 import { IStore, ITask } from "../../enums-and-interfaces/interfaces";
 import { GameScreens, TaskStatus } from "../../enums-and-interfaces/enums";
 import styles from './index.module.css';
-import { screenMappings } from "../../gameScreens/VillageMap";
 import { useState } from "react";
+import screenMappings from "../../gameScreens/VillageMap/screenMappings";
 
 function TasksScreen() {
     const gameStage = useSelector((store: IStore) => store.gameStage);

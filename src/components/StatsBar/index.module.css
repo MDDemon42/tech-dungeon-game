@@ -42,6 +42,11 @@
     font-size: 12px; 
 }
 
+.StatsBar_params_low_health {
+    outline: 5px dashed red;
+    outline-offset: 3px;
+}
+
 .StatsBar_dodge {
     position: relative;
     width: 12px;

@@ -5,6 +5,9 @@ import LivingRoomOption from './LivingRoomOption';
 import gameSquad from '../../../redux/slices/gameSquad';
 import images from '../../../images/images';
 import academyMasteries from '../../Academy/masteries';
+import gameStage from '../../../redux/slices/gameStage';
+import gameScreen from '../../../redux/slices/gameScreen';
+import { CommonGameScreens } from '../../../enums-and-interfaces/enums';
 
 export interface ILivingRoomOption {
     data: ICommon,
@@ -39,6 +42,8 @@ function LivingRoom() {
             visible: true,
             listener: () => {
                 dispatch(gameSquad.actions.relaxate({}));
+                dispatch(gameStage.actions.addDays({amount: 1}));
+                dispatch(gameScreen.actions.changeScreen(CommonGameScreens.villageMap))
             }
         },
         {

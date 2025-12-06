@@ -25,7 +25,7 @@ function StatsBar() {
             </div>
             <div className={styles.StatsBar_body}>
                 <div className={styles.StatsBar_params}>
-                    <div>
+                    <div className={currentParams.Health < 3 ? styles.StatsBar_params_low_health : ''}>
                         <ParamIcon param='health'/>
                         {
                             currentParams.Health + '/' +

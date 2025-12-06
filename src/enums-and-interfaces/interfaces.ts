@@ -1,3 +1,4 @@
+import { ReactElement } from "react"
 import { 
     AbilityTarget,
     BattleResult,
@@ -6,6 +7,7 @@ import {
     InventoryPlace,
     InventorySlotCategory,
     MindOption, 
+    PossibleBattleLocation, 
     TaskStatus, 
     UserParam, 
     UserResource, 
@@ -36,9 +38,25 @@ export interface IGameStage extends Record<GameScreens, {
         IRitual | IGuildItem |
         ICharacter
     )[]
-}> {}
+}> {
+    days: {
+        total: number,
+        lastVictory: number
+    },
+    possibleBattles: Record<PossibleBattleLocation, {
+        sinceDay: number   
+    }>
+}
 
 export interface IGameStageOptions extends Record<GameScreens, IScreenStageOptions | null> {}
+
+export interface IVillageMapScreenMapping extends Partial<Record<GameScreens, {
+    title: string,
+    icon: ReactElement,
+    houses: number[],
+    requiredScreen: GameScreens,
+    requiredStage: number
+}>> {}
 
 export interface IScreenStageOptions extends Record<string, (
     IMastery | IItem |
